@@ -1,0 +1,41 @@
+{
+  "reviewed_at": "2026-10-22T10:20:12.330453+08:00",
+  "reviewer": "assistant; user created the draft through the course web UI",
+  "source_run": ".runtime/product/runs/0a243436-77f9-463a-af1a-2ca6eff67bc6-405b91df.json",
+  "trace_id": "4047fa6f4ed67bf51ece76d5213d559c",
+  "session_id": "0a243436-77f9-463a-af1a-2ca6eff67bc6",
+  "draft_id": "ad2be2b3-8cdc-4d0e-8440-3e11c3090b14",
+  "draft_hash": "a7154f2d7615c793625714a56f37b993912ab65ade573f05c3e84ff367452f24",
+  "payload": {
+    "member_id": "M001",
+    "tag": "recall_review"
+  },
+  "model_name": "deepseek-flash",
+  "model_mode": "live",
+  "product_version": "0.2.0-w1",
+  "runtime_revision": "w01-runtime-20260922",
+  "prompt_sha256": "051286bc27083b1f3cd9201ebcd09030830ec3a06401197a0adaa0f1003fcddd",
+  "checks": {
+    "live_waiting_for_approval": true,
+    "target_m001_recall_review": true,
+    "only_prepare_tag_observation": true,
+    "confirmation_matches_saved_draft": true,
+    "draft_is_pending_without_result": true,
+    "tool_result_matches_database": true,
+    "model_call_http200": true,
+    "trace_tools_only_prepare_tag": true,
+    "no_execution_span": true,
+    "label_not_created": true,
+    "no_remote_action_record": true
+  },
+  "usage": {
+    "prompt_tokens": 1625,
+    "completion_tokens": 266,
+    "total_tokens": 1891
+  },
+  "limits": [
+    "Approval, actual HTTP execution, idempotency, and undo remain untested.",
+    "No approval or tag mutation request was sent by the assistant.",
+    "Only the local fictional training tag system is involved."
+  ]
+}

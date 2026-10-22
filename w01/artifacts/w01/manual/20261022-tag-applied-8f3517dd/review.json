@@ -1,0 +1,43 @@
+{
+  "reviewed_at": "2026-10-22T10:23:08.949142+08:00",
+  "reviewer": "assistant; user clicked confirmation in the course UI",
+  "source_run": ".runtime/product/runs/0a243436-77f9-463a-af1a-2ca6eff67bc6-ca899e29.json",
+  "trace_id": "8f3517dd6ecd1177d8c76377ce8633a6",
+  "session_id": "0a243436-77f9-463a-af1a-2ca6eff67bc6",
+  "draft_id": "ad2be2b3-8cdc-4d0e-8440-3e11c3090b14",
+  "draft_hash": "a7154f2d7615c793625714a56f37b993912ab65ade573f05c3e84ff367452f24",
+  "payload": {
+    "member_id": "M001",
+    "tag": "recall_review"
+  },
+  "prior_draft_archive": "artifacts/w01/manual/20261022-tag-draft-4047fa6f",
+  "model_name": "deepseek-flash",
+  "model_mode": "live",
+  "product_version": "0.2.0-w1",
+  "runtime_revision": "w01-runtime-20260922",
+  "prompt_sha256": "051286bc27083b1f3cd9201ebcd09030830ec3a06401197a0adaa0f1003fcddd",
+  "checks": {
+    "same_session_and_draft": true,
+    "confirmed_payload_and_hash_unchanged": true,
+    "before_pending_and_no_tag": true,
+    "now_live_completed": true,
+    "ledger_applied_and_matches_execution": true,
+    "http_query_result_matches_execution": true,
+    "actual_tag_active_version1": true,
+    "actual_action_applied_from_inactive": true,
+    "one_execute_span_applied": true,
+    "new_query_tag_span": true,
+    "two_new_model_calls_http200": true,
+    "action_evidence_reference": true,
+    "no_pending_confirmation": true,
+    "one_tag_and_action_record": true
+  },
+  "http_evidence": "New action.execute and tool.query_tag spans, their matching returned states, and current tag database. Source actions.py confirms PUT apply and GET query paths; assistant did not send another HTTP request.",
+  "steps_scope": "steps=3 includes the draft turn; this confirmation trace contains two new model.call spans.",
+  "limits": [
+    "A single record does not establish repeated-request idempotency.",
+    "Undo, rejection/change-target, and restart recovery remain pending.",
+    "This is the local fictional training system; customer production suitability is unverified.",
+    "Assistant did not approve, replay, undo, or issue model requests."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "reviewed_at": "2026-10-22T10:35:06.866187+08:00",
+  "reviewer": "assistant; user created then rejected the draft in the course UI",
+  "session_id": "d45d4b3c-1b7d-4763-b8af-a3b84c266f1b",
+  "draft_id": "591c3b40-8eb4-4c43-a557-1531f4b56c30",
+  "draft_hash": "f9374f261831bde41699516664430b27235e7745e4fece763ac2bba77a46e5ab",
+  "payload": {
+    "member_id": "M001",
+    "tag": "recall_review"
+  },
+  "trace_ids": {
+    "draft": "d800976101a4cb5d876a9d35fb576ea1",
+    "rejected": "c1b4c14e62514a910efa158875328bfa"
+  },
+  "model_name": "deepseek-flash",
+  "model_mode": "live",
+  "product_version": "0.2.0-w1",
+  "runtime_revision": "w01-runtime-20260922",
+  "checks": {
+    "draft_then_rejected_same_session": true,
+    "new_draft_id": true,
+    "target_and_hash_match": true,
+    "ledger_terminal_rejected": true,
+    "rejection_result_matches_ledger": true,
+    "no_confirmation_after_rejection": true,
+    "no_execution_observation": true,
+    "no_remote_action_for_rejected_id": true,
+    "label_unchanged_since_undo": true,
+    "no_new_tag_or_action_row": true,
+    "draft_model_http200": true,
+    "rejection_without_model_or_tool_execution": true
+  },
+  "limits": [
+    "The old undone action remains in the remote table; the rejected new action has no remote row.",
+    "Changing target in the same session and the pending-draft guard are not yet verified manually.",
+    "No assistant model or mutation request was sent.",
+    "Formal model baseline and evaluation remain pending."
+  ]
+}

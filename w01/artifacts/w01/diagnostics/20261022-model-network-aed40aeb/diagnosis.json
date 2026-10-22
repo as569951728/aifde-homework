@@ -1,0 +1,49 @@
+{
+  "record_type": "preparation_diagnostic_not_final_assignment",
+  "date": "2026-10-22",
+  "source_run": ".runtime/product/runs/97073275-b0dd-4c03-b944-a348976cb6fc-b47d9aa9.json",
+  "trace_id": "aed40aeb2d727f14641da62de0d742ff",
+  "observed": {
+    "business_status": "incomplete",
+    "model_error": "MODEL_NETWORK_ERROR",
+    "model_attempts": 1,
+    "business_tool_observations": 0,
+    "default_transport_error": "SSLCertVerificationError",
+    "verify_code": 19,
+    "verify_message": "self-signed certificate in certificate chain",
+    "default_cafile_found": false,
+    "python": "3.11.16",
+    "certifi": "2026.7.22"
+  },
+  "checks": [
+    {
+      "context": "certifi",
+      "endpoint": "https://api.deepseek.com/models",
+      "http_status": 401,
+      "tls_verified": true,
+      "api_key_sent": false
+    },
+    {
+      "context": "system_truststore",
+      "endpoint": "https://api.deepseek.com/models",
+      "http_status": 401,
+      "tls_verified": true,
+      "api_key_sent": false
+    },
+    {
+      "context": "default_ssl_with_SSL_CERT_FILE_set_to_certifi",
+      "endpoint": "https://api.deepseek.com/chat/completions",
+      "http_status": 401,
+      "tls_verified": true,
+      "api_key_sent": false,
+      "certificate_verification": "required",
+      "check_hostname": true
+    }
+  ],
+  "next_step": "在用户配置密钥的原终端停止服务，设置 SSL_CERT_FILE 为项目 certifi CA 文件，重新启动服务，新任务重试原问题。",
+  "limits": [
+    "没有发送用户 API Key；401 仅验证 HTTPS 连接和服务响应，不代表账号鉴权或模型分析通过。",
+    "尚未重启用户的产品服务。",
+    "未更改业务代码、系统代理或系统证书。"
+  ]
+}

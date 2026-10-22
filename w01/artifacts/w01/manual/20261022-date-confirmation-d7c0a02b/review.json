@@ -1,0 +1,63 @@
+{
+  "reviewed_at": "2026-10-22T10:11:31.303816+08:00",
+  "source_run": ".runtime/product/runs/6c04ccb4-3dee-49bc-a71c-39ea6b477944-abdc7ff7.json",
+  "trace_id": "d7c0a02b1d9352315735aacaad1b40be",
+  "session_id": "6c04ccb4-3dee-49bc-a71c-39ea6b477944",
+  "prior_clarification_archive": "artifacts/w01/manual/20261022-clarification-3c3cabee",
+  "independently_verified_analysis_archive": "artifacts/w01/manual/20261022-analysis-26ef3d3c",
+  "reviewer": "assistant; user reported clicking the date option in the course UI",
+  "click_provenance": "User reported the click. Public run confirms the same session and windows matching option T1; HTTP request path itself is not logged.",
+  "confirmed_option": {
+    "id": "T1",
+    "windows": [
+      [
+        "2026-07-01",
+        "2026-08-01"
+      ],
+      [
+        "2026-08-01",
+        "2026-09-01"
+      ]
+    ],
+    "label": "基准 2026-07-01 至 2026-08-01；比较 2026-08-01 至 2026-09-01（均不含结束日）"
+  },
+  "checks": {
+    "same_session_as_clarification": true,
+    "new_trace_for_continuation": true,
+    "before_clarification_without_comparison": true,
+    "now_live_completed": true,
+    "windows_equal_first_offered_option": true,
+    "all_comparison_facts_match_previously_independent_check": true,
+    "recommendations_match_verified_cohort": true,
+    "evidence_reference_resolves": true,
+    "coverage_limit_disclosed": true,
+    "new_comparison_tool_call_in_trace": true,
+    "three_model_calls_http200": true,
+    "no_date_options_left": true,
+    "no_output_repairs": true
+  },
+  "model_name": "deepseek-flash",
+  "model_mode": "live",
+  "product_version": "0.2.0-w1",
+  "runtime_revision": "w01-runtime-20260922",
+  "prompt_sha256": "051286bc27083b1f3cd9201ebcd09030830ec3a06401197a0adaa0f1003fcddd",
+  "tool_sequence": [
+    "compare_spending",
+    "member_history",
+    "member_history",
+    "member_history"
+  ],
+  "agent_duration_seconds": 6.169,
+  "usage": {
+    "prompt_tokens": 11557,
+    "completion_tokens": 976,
+    "total_tokens": 12533
+  },
+  "limitations": [
+    "One date-confirmation continuation verified; restart recovery and expired-option handling were not tested.",
+    "S03 August data remain unknown.",
+    "Suggestions are unexecuted proposals requiring business review.",
+    "Formal baseline, evaluation, and action checks remain pending.",
+    "Assistant did not initiate another model call."
+  ]
+}

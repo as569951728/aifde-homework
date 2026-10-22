@@ -1,0 +1,98 @@
+{
+  "reviewed_at": "2026-10-22T10:47:12.830202+08:00",
+  "reviewer": "assistant inspected the artifacts produced by the learner-run verifier",
+  "checked_at_from_environment": "2026-10-22T02:42:44.671367+00:00",
+  "model_name": "deepseek-flash",
+  "model_mode": "live",
+  "checks": {
+    "three_json_schemas_valid": true,
+    "all_11_required_case_ids_present_once": true,
+    "all_11_cases_passed": true,
+    "baseline_failures_empty": true,
+    "all_12_evidence_hashes_match": true,
+    "baseline_and_nested_round_trace_ids_resolve": true,
+    "analysis_matches_prior_independent_calculation": true,
+    "refund_explanation_correct": true,
+    "date_text_and_button_subchecks_pass": true,
+    "pending_guard_and_reject_change_subchecks_pass": true,
+    "idempotent_repeat_keeps_version": true,
+    "undo_restores_inactive_and_increments_version": true
+  },
+  "case_ids": [
+    "clarification",
+    "refund_explanation",
+    "analysis",
+    "missing_coverage",
+    "readonly",
+    "http_action",
+    "idempotency",
+    "undo",
+    "date_text",
+    "date_button",
+    "reject_change"
+  ],
+  "baseline_run_entries": 9,
+  "trace_span_count": 63,
+  "model_call_spans": 26,
+  "environment_checks": {
+    "runtime": {
+      "status": "pass",
+      "code": "VERIFIED"
+    },
+    "database": {
+      "status": "pass",
+      "code": "VERIFIED"
+    },
+    "tool_registry": {
+      "status": "pass",
+      "code": "VERIFIED"
+    },
+    "checker": {
+      "status": "pass",
+      "code": "VERIFIED"
+    },
+    "trace": {
+      "status": "pass",
+      "code": "VERIFIED"
+    },
+    "product": {
+      "status": "pass",
+      "code": "LIVE_CASES"
+    },
+    "model_api": {
+      "status": "pass",
+      "code": "LIVE_MODEL"
+    },
+    "label_api": {
+      "status": "pass",
+      "code": "REAL_HTTP"
+    },
+    "evaluation": {
+      "status": "skipped",
+      "code": "RUN_PROMPTFOO_SEPARATELY"
+    }
+  },
+  "manual_review_notes": [
+    "Suggestions remain proposals for business review and do not promise recall effectiveness.",
+    "SMS, APP messages, in-app messaging, product categories, and consultation records mentioned in suggestions require business validation; the sample does not establish these customer channels or data exist.",
+    "The pending-draft guard deliberately rejects a request, producing one ERROR agent.run span; the recorded guard check passed.",
+    "The verifier repeats Ledger.execute and checks the remote version; this verifies that bounded path, not all distributed retry failure modes."
+  ],
+  "limits": [
+    "Promptfoo has not run yet; evaluation is skipped, so environment readiness is 8/9.",
+    "Fit-gap JSON, formal customer interview evidence, and project assessment remain pending.",
+    "This is one live verification batch, not proof of stable performance over repeated runs.",
+    "The API effort profile is locally tested but is not included in the public run payload; do not infer high effort solely from token counts.",
+    "No live model requests were issued by the assistant during this review.",
+    "13 interaction-scenario model spans lack HTTP attempt metadata because of CountedModel wrapping. Do not report all 26 spans as independently confirmed HTTP 200; the 13 recorded attempts are HTTP 200. Original evidence is preserved."
+  ],
+  "model_http_metadata": {
+    "model_call_spans": 26,
+    "with_attempt_metadata": 13,
+    "observed_http_statuses": [
+      200
+    ],
+    "without_attempt_metadata": 13,
+    "reason": "tools/interaction_scenarios.py CountedModel forwards complete but not the metadata read by models.call_summary; those spans preserve usage but contain attempts=[]."
+  }
+}

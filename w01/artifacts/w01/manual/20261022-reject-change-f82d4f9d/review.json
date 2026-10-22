@@ -1,0 +1,42 @@
+{
+  "reviewed_at": "2026-10-22T10:40:00.919764+08:00",
+  "session_id": "6633d408-5700-4fe9-b4cf-ddbf5bd13b20",
+  "reviewer": "assistant; user performed the UI actions",
+  "source_runs": [
+    ".runtime/product/runs/6633d408-5700-4fe9-b4cf-ddbf5bd13b20-6b892972.json",
+    ".runtime/product/runs/6633d408-5700-4fe9-b4cf-ddbf5bd13b20-91001c9f.json",
+    ".runtime/product/runs/6633d408-5700-4fe9-b4cf-ddbf5bd13b20-5143205d.json",
+    ".runtime/product/runs/6633d408-5700-4fe9-b4cf-ddbf5bd13b20-be2d45d9.json"
+  ],
+  "trace_ids": {
+    "m001-draft": "348b3bc7e2fc7bb9e2c97dc0df9f61cb",
+    "m001-rejected": "60b6447467df9bc75c8d841c89cf69ef",
+    "m004-draft": "209e5f69990bc4fc9aa76bb315dfc673",
+    "m004-rejected": "f82d4f9d8978221a7de165a4b0abf2bf"
+  },
+  "checks": {
+    "four_turns_same_session": true,
+    "expected_status_sequence": true,
+    "changed_target_m001_to_m004": true,
+    "distinct_draft_ids": true,
+    "both_ledger_drafts_rejected": true,
+    "both_confirmation_payloads_match_ledger": true,
+    "no_confirmation_after_each_rejection": true,
+    "no_execution_for_either_new_draft": true,
+    "labels_unchanged": true,
+    "only_historical_undone_action": true,
+    "older_rejected_m001_not_reactivated": true,
+    "no_model_call_for_rejections": true,
+    "draft_model_calls_http200": true
+  },
+  "model_name": "deepseek-flash",
+  "model_mode": "live",
+  "product_version": "0.2.0-w1",
+  "runtime_revision": "w01-runtime-20260922",
+  "outstanding_note": "A different prior session contains one unconfirmed M001 draft. The public run does not preserve verbatim input, so its cause is not inferred. It remains unexecuted and was not cancelled by the assistant.",
+  "limits": [
+    "Pending-draft change guard was not manually exercised in this four-turn chain; the official full verification still needs to test it.",
+    "Idempotency and full automated baseline remain pending.",
+    "Assistant did not call the model, approve, reject, or mutate tags."
+  ]
+}

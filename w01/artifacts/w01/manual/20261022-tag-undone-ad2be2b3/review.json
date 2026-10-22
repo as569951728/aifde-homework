@@ -1,0 +1,32 @@
+{
+  "reviewed_at": "2026-10-22T10:27:48.390996+08:00",
+  "reviewer": "assistant; user reported clicking the UI undo button",
+  "session_id": "0a243436-77f9-463a-af1a-2ca6eff67bc6",
+  "action_id": "ad2be2b3-8cdc-4d0e-8440-3e11c3090b14",
+  "payload": {
+    "member_id": "M001",
+    "tag": "recall_review"
+  },
+  "prior_applied_archive": "artifacts/w01/manual/20261022-tag-applied-8f3517dd",
+  "prior_agent_trace_id": "8f3517dd6ecd1177d8c76377ce8633a6",
+  "checks": {
+    "same_action_session_payload_hash": true,
+    "previously_applied_and_active": true,
+    "ledger_undone": true,
+    "tag_system_action_undone": true,
+    "tag_inactive": true,
+    "previous_active_restored": true,
+    "label_version_incremented_once": true,
+    "action_original_version_retained": true,
+    "ledger_result_matches_actual_state": true,
+    "records_retained_without_new_action": true,
+    "latest_run_still_confirmation_run": true
+  },
+  "evidence_basis": "Compared immutable pre-undo snapshot with current read-only ledger and tag-store rows; ledger result agrees with actual store. No new model-run file is expected for /api/undo.",
+  "limits": [
+    "No new Agent run or trace is invented for undo.",
+    "Assistant did not repeat the undo or send another HTTP/model request.",
+    "Repeated-request idempotency, later-change undo guard, and reject/change-target remain pending.",
+    "Formal model baseline and evaluation remain pending."
+  ]
+}

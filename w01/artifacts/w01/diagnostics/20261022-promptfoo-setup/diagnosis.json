@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-10-22T10:55:15.971452+08:00",
+  "node": "v24.14.0",
+  "npm": "10.5.2",
+  "macos": "26.6.2",
+  "required_promptfoo": "0.122.2",
+  "initial_attempt": {
+    "command": "npx --yes promptfoo@0.122.2 --version",
+    "exit_code": 1,
+    "error": "ETIMEDOUT while fetching https://registry.npmjs.org/ajv",
+    "npm_log": "/Users/chenzhaowen/.npm/_logs/2026-10-22T02_45_18_494Z-debug-0.log"
+  },
+  "diagnostics": {
+    "system_proxy": "http://127.0.0.1:7897",
+    "npm_proxy_before": null,
+    "npm_https_proxy_before": null,
+    "proxy_env_before_present": false,
+    "registry": "https://registry.npmjs.org/",
+    "ajv_metadata_via_proxy": {
+      "http_status": 200,
+      "seconds": 0.975964
+    },
+    "ajv_metadata_direct": {
+      "http_status": 200,
+      "seconds": 2.138957
+    },
+    "interpretation": "Transient download timeout observed; both later connection probes succeeded. Missing explicit npm proxy alone is not proven as the root cause."
+  },
+  "successful_preparation": {
+    "method": "Retried with npm_config_proxy and npm_config_https_proxy set only for this process to the existing local proxy, fetch timeout 30000 ms and one retry; optional browser download skipped and telemetry disabled.",
+    "exit_code": 0,
+    "version_output": "0.122.2",
+    "global_configuration_changed": false
+  },
+  "cached_startup": {
+    "command": "PROMPTFOO_DISABLE_TELEMETRY=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npx --offline --yes promptfoo@0.122.2 --version",
+    "exit_code": 0,
+    "version_output": "0.122.2"
+  },
+  "limits": [
+    "No eval command or live model request was issued by the assistant.",
+    "npm --offline controls package resolution; it does not disable the provider network calls used in a real evaluation.",
+    "The CLI notices a newer version, but course-pinned 0.122.2 is retained."
+  ]
+}

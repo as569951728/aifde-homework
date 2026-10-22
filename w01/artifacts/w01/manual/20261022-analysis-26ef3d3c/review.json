@@ -1,0 +1,130 @@
+{
+  "reviewed_at": "2026-10-22T09:39:24.457843+08:00",
+  "reviewer": "assistant; learner reported sending from the course web UI",
+  "scope": "One explicit July/August sample analysis; not the complete formal W01 verification suite",
+  "source_run": ".runtime/product/runs/3ee9d830-230e-4cc0-b2fc-4e50b316e68f-215f5fd3.json",
+  "trace_id": "26ef3d3c482d45fd2da1dafb6d0e0bbb",
+  "versions": {
+    "product_version": "0.2.0-w1",
+    "runtime_revision": "w01-runtime-20260922",
+    "model_name": "deepseek-flash",
+    "model_mode": "live",
+    "prompt_sha256": "051286bc27083b1f3cd9201ebcd09030830ec3a06401197a0adaa0f1003fcddd"
+  },
+  "requested_scenario_from_conversation": "比较 2026 年 7 月和 8 月全部门店老会员净消费，找出下降至少 20% 的会员，给出召回建议和依据。",
+  "input_provenance": "Task text from conversation; the public run file does not include the verbatim submitted input.",
+  "checks": {
+    "stores_csv_matches_current_sqlite": true,
+    "members_csv_matches_current_sqlite": true,
+    "orders_csv_matches_current_sqlite": true,
+    "coverage_csv_matches_current_sqlite": true,
+    "live_completed": true,
+    "all_six_comparison_rows_match_independent_calculation": true,
+    "declining_members_match": true,
+    "recommendation_members_match": true,
+    "missing_coverage_matches": true,
+    "coverage_limitation_disclosed": true,
+    "time_windows_and_threshold_match": true,
+    "evidence_reference_resolves": true,
+    "all_three_model_calls_http_200": true,
+    "only_readonly_tools_in_this_run": true,
+    "trace_and_observation_tool_sequence_match": true
+  },
+  "independent_calculation": [
+    {
+      "member_id": "M001",
+      "store_id": "S01",
+      "baseline_cents": 100000,
+      "current_cents": 40000,
+      "delta_cents": -60000,
+      "decline_pct": 60.0,
+      "baseline_orders": 1,
+      "current_orders": 2,
+      "declining": true
+    },
+    {
+      "member_id": "M002",
+      "store_id": "S01",
+      "baseline_cents": 80000,
+      "current_cents": 80000,
+      "delta_cents": 0,
+      "decline_pct": 0.0,
+      "baseline_orders": 1,
+      "current_orders": 1,
+      "declining": false
+    },
+    {
+      "member_id": "M003",
+      "store_id": "S01",
+      "baseline_cents": 50000,
+      "current_cents": 90000,
+      "delta_cents": 40000,
+      "decline_pct": -80.0,
+      "baseline_orders": 1,
+      "current_orders": 1,
+      "declining": false
+    },
+    {
+      "member_id": "M004",
+      "store_id": "S01",
+      "baseline_cents": 40000,
+      "current_cents": 0,
+      "delta_cents": -40000,
+      "decline_pct": 100.0,
+      "baseline_orders": 1,
+      "current_orders": 0,
+      "declining": true
+    },
+    {
+      "member_id": "M005",
+      "store_id": "S02",
+      "baseline_cents": 0,
+      "current_cents": 0,
+      "delta_cents": 0,
+      "decline_pct": null,
+      "baseline_orders": 0,
+      "current_orders": 0,
+      "declining": false
+    },
+    {
+      "member_id": "M007",
+      "store_id": "S02",
+      "baseline_cents": 10000,
+      "current_cents": 0,
+      "delta_cents": -10000,
+      "decline_pct": 100.0,
+      "baseline_orders": 1,
+      "current_orders": 0,
+      "declining": true
+    }
+  ],
+  "missing_coverage_stores": [
+    "S03"
+  ],
+  "calculation_method": "Read archived CSV inputs, compare them to the current read-only SQLite tables, filter old members and covered stores, aggregate paid minus refunded cents independently of product business.py.",
+  "model_calls": 3,
+  "tool_sequence": [
+    "describe_business",
+    "compare_spending",
+    "member_history",
+    "member_history",
+    "member_history"
+  ],
+  "agent_duration_seconds": 7.881,
+  "usage": {
+    "prompt_tokens": 9956,
+    "completion_tokens": 1452,
+    "total_tokens": 11408
+  },
+  "manual_review": [
+    "M001: 500 yuan paid minus 100 yuan refunded equals 400 yuan; cancelled order excluded.",
+    "M004/M007: covered stores, no paid orders in August, so zero is valid.",
+    "Recommendations propose human review and outreach; they do not prove a cause or a recall outcome."
+  ],
+  "limitations": [
+    "S03 lacks August coverage; results apply to covered stores only.",
+    "This public trace includes reasoning-token counts but no request profile or reasoning_effort, so it cannot independently confirm high effort.",
+    "No tag action was called in this run; this does not verify confirmation, rejection, idempotency, or undo behavior.",
+    "Formal W01 technical JSON files and full evaluation remain pending."
+  ]
+}

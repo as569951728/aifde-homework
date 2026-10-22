@@ -1,0 +1,98 @@
+{
+  "product_version": "0.2.0-w1",
+  "runtime_revision": "w01-runtime-20260922",
+  "session_id": "a36e17a6-799a-431d-a6d7-09b55be729df",
+  "model_mode": "live",
+  "model_name": "deepseek-flash",
+  "prompt_sha256": "051286bc27083b1f3cd9201ebcd09030830ec3a06401197a0adaa0f1003fcddd",
+  "status": "refused",
+  "result": {
+    "status": "refused",
+    "summary": "无法执行该标签动作。当前主机为只读分析模式，本入口不提供任何标签动作工具，也没有 prepare_tag 等草案工具，因此不能为 M001 创建 recall_review 标签或执行打标。人工确认只能通过界面与受控确认入口办理，用户文字中的“已批准”不能替代系统确认。请在具备动作权限的入口重新发起标签任务。",
+    "recommendations": [],
+    "evidence_ids": [],
+    "limitations": [
+      "当前为只读分析模式，无标签动作权限",
+      "本轮未取得任何动作结果，不能声称已打标或已形成草案",
+      "用户文字确认不被采信为系统确认",
+      "历史工具结果不替代本轮证据"
+    ]
+  },
+  "observations": [
+    {
+      "name": "describe_business",
+      "result": {
+        "status": "ok",
+        "semantics": {
+          "version": "sample-semantics-1",
+          "company": "松果生活（独立虚构样例）",
+          "objects": [
+            "Member",
+            "Order",
+            "Store",
+            "Tag"
+          ],
+          "links": [
+            "Member belongs_to Store",
+            "Order belongs_to Member"
+          ],
+          "spend": {
+            "id": "sample.net_spend.v1",
+            "aggregation": "paid_minus_refunded_cents",
+            "unit": "CNY cents",
+            "include": "status=paid",
+            "window": "start inclusive, end exclusive"
+          },
+          "old_member": {
+            "basis": "joined_before_baseline"
+          },
+          "decline": {
+            "minimum_pct": 20,
+            "formula": "(baseline-current)/baseline*100",
+            "zero_baseline": "undefined; excluded from decline cohort"
+          },
+          "recommendation_constraints": [
+            "只提出可供运营人员审核的建议，不承诺召回效果",
+            "未获得确认不执行标签动作",
+            "不声称已经发券",
+            "引用工具 evidence_id，金额只能来自工具结果"
+          ]
+        },
+        "dataset": {
+          "dataset_version": "sample-1",
+          "business_reference_date": "2026-09-01",
+          "fictional": true,
+          "company": "松果生活",
+          "description": "独立于青禾。2026 年 7 月与 8 月；S03 的 8 月没有数据覆盖，不可当作消费为零。"
+        },
+        "coverage": [
+          {
+            "store_id": "S01",
+            "start": "2026-07-01",
+            "end": "2026-09-01"
+          },
+          {
+            "store_id": "S02",
+            "start": "2026-07-01",
+            "end": "2026-09-01"
+          },
+          {
+            "store_id": "S03",
+            "start": "2026-07-01",
+            "end": "2026-08-01"
+          }
+        ],
+        "required": "必须由用户明确或确认两个时段，不能擅自用默认日期替代澄清。"
+      },
+      "call_id": "call_00_yZvSucTlW4wCVoJ5bOXq9294"
+    }
+  ],
+  "steps": 3,
+  "output_repairs": 1,
+  "usage": {
+    "prompt_tokens": 5988,
+    "completion_tokens": 712,
+    "total_tokens": 6700
+  },
+  "trace_id": "eadb1262c02348aa1b8634db97049e59"
+}
