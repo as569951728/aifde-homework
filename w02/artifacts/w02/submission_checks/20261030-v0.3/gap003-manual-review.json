@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-30",
+  "reviewer": "Codex FDE导师",
+  "scope": "D04/W1_IDS_MISSING中的GAP-003迁移",
+  "review_status": "mentor_review_completed_migration_supported",
+  "decision": "保留GAP-003为调查待核；维持五项现行客户诉求；携说明提交人工审阅",
+  "teacher_acceptance": "not_obtained",
+  "automated_status": "needs_revision",
+  "automated_issue": "W1_IDS_MISSING",
+  "basis": [
+    {
+      "path": "docs/w02/sources/w01_teacher_feedback_20261027.md",
+      "locator": "作业缺点",
+      "meaning": "口径核查更像待核项，可放报告待核清单"
+    },
+    {
+      "path": "docs/w02/sources/w01/transcript.json",
+      "locator": "MSG-00811、MSG-00812",
+      "meaning": "学员提出核查且角色认可方向，未确认产品功能交付"
+    }
+  ],
+  "source_bridge": [
+    {
+      "original_source": "docs/w01/interviews/official/586a7063-87f3-5da5-b8ec-e2a52c3a18f1/W1-interview-586a7063-87f3-5da5-b8ec-e2a52c3a18f1-transcript.json",
+      "submission_copy": "docs/w02/sources/w01/transcript.json",
+      "sha256": "bbcbe763a36fa334a2486966a633f91c88cc1a00d2fb15f55d5bf863433aa0a9",
+      "byte_equal_to_w01_submitted_copy": true
+    },
+    {
+      "original_source": "product/capabilities.json",
+      "submission_copy": "docs/w02/sources/w01/product_capabilities.json",
+      "sha256": "a7a090d59351d0f7bc47bb3da1c8f3bfb98cd1bc1e7f80031b7765478817ab25",
+      "byte_equal_to_w01_submitted_copy": true
+    },
+    {
+      "original_source": "artifacts/w01/evidence/analysis.json",
+      "submission_copy": "artifacts/w02/w01_baseline_evidence/analysis.json",
+      "sha256": "d34a2c5371a73c8cd7a024b046f85d1a878a11d390e28e096a5bd8c7f03896af",
+      "byte_equal_to_w01_submitted_copy": true
+    }
+  ],
+  "w01_ids": [
+    "GAP-001",
+    "GAP-002",
+    "GAP-003",
+    "GAP-004"
+  ],
+  "current_ids": [
+    "GAP-001",
+    "GAP-002",
+    "GAP-004",
+    "GAP-005",
+    "GAP-006"
+  ],
+  "absent_from_current_items": [
+    "GAP-003"
+  ],
+  "migration_locations": [
+    "docs/w02/interview_notes.md：待核清单与责任／GAP-003原项",
+    "docs/w02/interview_notes.md：变更记录",
+    "docs/w02/business_model.md：5.2",
+    "artifacts/w02/product_fit_gap.json：GAP-001/004/005的next_step"
+  ],
+  "preserved_hashes": {
+    "artifacts/w01/product_fit_gap.json": "ada9e33ee7810c03306abb0cd4680912b9a02aeb9d483c4a2d13cb97e3f755c8",
+    "artifacts/w02/product_fit_gap.json": "2e9a60aeeb0f214ec9778d60515ad6edb970b9e47536ffa4a1e8d0b6b9a045a3",
+    "artifacts/w02/product_fit_gap.xlsx": "8c2d43e217312942c7f541a53aba44f361c4a8096cb3a060f8242a627e374eb3",
+    "docs/w02/business_model.md": "ca56e94f042241a63e4c8a58db82d384314700c376cccba50bb1d09b0f8e80be",
+    "platform/fde_product/w02_natural_checker.py": "2f4c585b2f0d8999451141b76b72fe2affbfe986c77422bdc4fb5bbaf4cfd446",
+    "tools/check_w02.py": "7ba63fa2b90ea0092d16d93f2e8c56f0777b683606df33125be9c6c9b16a4e7d",
+    "contracts/w01/product_fit_gap.schema.json": "a8ab355c46a1c8927806329084e89c58ffd9e228c46556b944dc13564155fad3"
+  },
+  "notes_before_sha256": "28ab68fdb092f8c0f77075cdbc0d7dfffcd7c372238e7058749e35be3bd8ff0b",
+  "notes_after_sha256": "650b8709a20d42f76d58f2d083879ac76a21cdc82fb1749d01ba7db7a522d607",
+  "course_rule_limitation": "编号集合包含检查不读取迁移说明；契约无迁移字段。保留实际预检失败，不修改规则或假造通过。",
+  "new_model_calls": 0
+}

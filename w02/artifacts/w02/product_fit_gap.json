@@ -1,0 +1,169 @@
+{
+  "contract_version": "w01-0.2.1",
+  "product_version": "0.2.0-w1",
+  "capability_matrix_version": "w1-capabilities-0.2.0",
+  "items": [
+    {
+      "id": "GAP-001",
+      "request": "按青禾确认的业务口径，识别需要重点经营的会员，输出可供小林使用的名单。",
+      "category": "系统适配",
+      "capability_ids": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-006"
+      ],
+      "evidence_status": "reported",
+      "evidence": [
+        {
+          "source": "docs/w02/sources/w01/transcript.json",
+          "locator": "MSG-00808、MSG-00818",
+          "note": "沈总提出名单和建议需能被小林实际使用。会员老化只是判断，复购及活跃口径尚待核实；具体筛选规则和名单可用标准未确定。"
+        },
+        {
+          "source": "docs/w02/sources/w01/product_capabilities.json",
+          "locator": "CAP-003、CAP-004、CAP-006",
+          "note": "已有查询比较工具、独立样例数据及标准净消费/老会员/下降定义。能力矩阵明确青禾语义与数据需后续适配，不自动支持任意指标。"
+        },
+        {
+          "source": "artifacts/w02/w01_baseline_evidence/analysis.json",
+          "locator": "result.summary；observations[name=compare_spending]；CMP-29dcd590e6429c3a",
+          "note": "已在独立样例上识别 M001、M004、M007 的净消费下降，S03 覆盖缺失保持未知。这证明标准筛选能力；不能证明青禾筛选口径已适配或名单已可用。"
+        },
+        {
+          "source": "docs/w02/sources/w01/transcript.json",
+          "locator": "MSG-00811、MSG-00812、MSG-00814",
+          "note": "沈总认可先核清口径，由小林牵头、老周协助确认数据提供方与范围。实际资料、权限和核对时间仍待落实；MSG-00814 的指代混淆不构成数据授权。"
+        },
+        {
+          "source": "docs/w02/sources/w01_teacher_feedback_20261027.md",
+          "locator": "作业缺点；改进之处",
+          "note": "老师要求利用已验证的标准筛选能力先形成初步分类，再用小林规则验证。本轮据已有能力边界修正为系统适配，不新增客户规则或将客户证据升为已核实。"
+        }
+      ],
+      "next_step": "请小林确认重点经营规则、会员定义、比较时段及名单可用标准；老周确认数据来源、字段、覆盖和使用许可。先按规则对照标准净消费筛选，完成必要数据与语义适配，在获准样本上核对计算与名单。若规则超出现有能力，再评估补充范围。"
+    },
+    {
+      "id": "GAP-002",
+      "request": "给小林提供可审核、可实际使用的运营建议。",
+      "category": "待判断",
+      "capability_ids": [
+        "CAP-001",
+        "CAP-003",
+        "CAP-006"
+      ],
+      "evidence_status": "reported",
+      "evidence": [
+        {
+          "source": "docs/w02/sources/w01/transcript.json",
+          "locator": "MSG-00804\nMSG-00808\nMSG-00818",
+          "note": "沈总要求名单和建议能被小林实际使用。现有访谈未核实小林的审核流程、采纳标准、可用渠道与权益条件。"
+        },
+        {
+          "source": "artifacts/w02/w01_baseline_evidence/analysis.json",
+          "locator": "result.recommendations\nresult.limitations\ndescribe_business 语义",
+          "note": "真实运行能根据工具结果生成建议。标准语义明确供运营审核、不承诺召回效果，不声称已发券。人工审核是能力边界，本身不是产品缺口。"
+        },
+        {
+          "source": "artifacts/w02/w01_baseline_evidence/manual-findings.json",
+          "locator": "EVAL-MANUAL-001\nEVAL-MANUAL-002",
+          "note": "样例评估自动通过后，人工仍发现 M004 建议月份事实错误；M007 新人权益资格待核。客户采纳率尚未测量，不能将自动通过等同于业务可用。"
+        },
+        {
+          "source": "docs/w02/sources/w01/product_capabilities.json",
+          "locator": "CAP-001\nCAP-003\nCAP-006",
+          "note": "已有模型执行、业务查询工具和标准语义。青禾业务规则与流程尚未确认。当前无法确定具体差异需要配置、系统适配或能力补充，故保留待判断。"
+        }
+      ],
+      "next_step": "请小林确认建议可用标准、审核分工、渠道与权益条件。拟用获许可的代表性样例记录原样采纳、修改后采纳、未采纳及原因，另看事实准确性、整理成本和实际执行。采纳率口径及目标待确认，不能单独证明适配或复购改善。"
+    },
+    {
+      "id": "GAP-004",
+      "request": "希望复购率止跌回升，并在三个月内看到业务进展。",
+      "category": "暂不承诺",
+      "capability_ids": [
+        "CAP-004",
+        "CAP-006"
+      ],
+      "evidence_status": "reported",
+      "evidence": [
+        {
+          "source": "docs/w02/sources/w01/transcript.json",
+          "locator": "MSG-00800\nMSG-00818",
+          "note": "沈总明确复购止跌回升是业务目标，三个月是期望节奏；提升幅度、验收口径未定。这不是双方已确认的效果交付承诺。"
+        },
+        {
+          "source": "docs/w02/sources/w01/transcript.json",
+          "locator": "MSG-00802\nMSG-00806\nMSG-00812\nMSG-00814",
+          "note": "试点区域/渠道未定；小林牵头、老周配合的方向已有表态，具体时间、数据范围和权限需确认。预算合同需王经理参与，金额流程尚未核实。"
+        },
+        {
+          "source": "docs/w02/sources/w01/product_capabilities.json",
+          "locator": "CAP-004\nCAP-006",
+          "note": "现有产品基于独立虚构样例和标准净消费语义。青禾语义与数据需适配，不能由样例能力推导客户复购提升幅度或达成时间。"
+        },
+        {
+          "source": "artifacts/w02/w01_baseline_evidence/analysis.json",
+          "locator": "describe_business 语义\nresult.limitations",
+          "note": "运行中的建议约束明确不承诺召回效果。当前证据证明样例分析与建议生成，未实施青禾运营试点，尚无客户业务效果证据。"
+        }
+      ],
+      "next_step": "小林与老周先核清复购及活跃口径、四季度基线与拆分，再明确试点范围、审核执行责任、投入和效果评估方法。条件明确后拟用一周形成方案初稿，排期另定。按试点结果评估观察周期，当前不承诺改善幅度或达成时间。"
+    },
+    {
+      "id": "GAP-005",
+      "request": "让会员运营助手在青禾自己的数据上完成分析。",
+      "category": "系统适配",
+      "capability_ids": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-006"
+      ],
+      "evidence_status": "verified",
+      "evidence": [
+        {
+          "source": "docs/w02/sources/w01/01_沈总立项邮件.md",
+          "locator": "希望尽快把标准产品用起来；我先说三件事",
+          "note": "发起人希望引入标准产品分析本公司的会员。邮件中的业务效果与规模说法仍是角色陈述，不因公开保存而自动核实。"
+        },
+        {
+          "source": "docs/w02/sources/w01/02_公司与项目协作关系.md",
+          "locator": "产品尚未接入青禾优选的数据和业务系统",
+          "note": "公开材料明确当前未接入青禾数据和系统。已核实仅限这一接入现状，不代表已获得数据、权限或客户验证结果。"
+        },
+        {
+          "source": "docs/w02/sources/w01/product_capabilities.json",
+          "locator": "CAP-004、CAP-006",
+          "note": "当前是独立虚构样例与标准语义，客户数据及语义需后续适配。结合公开接入现状，可判断存在系统适配工作；具体实现与投入未定。"
+        }
+      ],
+      "next_step": "请老周确认数据提供方、字段映射、覆盖、导出或接入方式及获准使用范围，并与小林核对业务含义。先取得获准的脱敏样本，验证关联、覆盖与计算，再评估实际接入。已核实仅指未接入及需适配，不能当成授权或适配完成。"
+    },
+    {
+      "id": "GAP-006",
+      "request": "让运营团队在实际工作环境中使用会员运营助手。",
+      "category": "产品缺口",
+      "capability_ids": [
+        "CAP-008"
+      ],
+      "evidence_status": "reported",
+      "evidence": [
+        {
+          "source": "docs/w02/sources/w01/01_沈总立项邮件.md",
+          "locator": "希望尽快把它用起来；给小林运营建议，别多整理一套表",
+          "note": "发起人要求实际使用并减少额外整理。尚未确认运营团队人数、角色和部署环境，客户使用要求仍为角色转述。"
+        },
+        {
+          "source": "docs/w02/sources/w01/transcript.json",
+          "locator": "MSG-00808、MSG-00818",
+          "note": "沈总关注名单与建议能被小林实际用起来，尚未取得小林的流程或系统使用条件。"
+        },
+        {
+          "source": "docs/w02/sources/w01/product_capabilities.json",
+          "locator": "CAP-008；state=extension_required",
+          "note": "产品书面能力边界明确缺少多用户隔离、生产认证、客户审计和灰度。初判有产品缺口，必要扩展范围要结合客户场景确认，不能将全部生产能力直接承诺为本阶段交付。"
+        }
+      ],
+      "next_step": "请小林确认实际使用者、审核和协作流程；请老周确认环境、访问权限、审计及部署要求。逐项对照 CAP-008 评估本阶段必要扩展与成本，未确认的能力不纳入承诺；小样本验证和生产使用分开评审。"
+    }
+  ]
+}

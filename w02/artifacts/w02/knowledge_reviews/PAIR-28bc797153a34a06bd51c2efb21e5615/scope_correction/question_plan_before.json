@@ -1,0 +1,31 @@
+{
+  "version": "qinghe-knowledge-cases-v0.2",
+  "status": "executed_mentor_reviewed_learner_review_pending",
+  "model_document": "docs/w02/business_model.md",
+  "document_sha256": "2a32a9f7535165de284e36da55a8215433454230d176aa3ed0924e50521df94c",
+  "extraction_entry": "artifacts/w02/runs/RUN-464a69b95cb34d808810bc577557dc06/run.json",
+  "cases": [
+    {
+      "id": "QH-KNOW-01",
+      "question": "青禾准备先给小林和陈姐提供会员运营支持，你会建议第一版交付什么、怎样接到实际工作，以及怎样判断有没有帮助？",
+      "expected_for_reviewer_only": [
+        "结合小林的需关注会员及每条建议依据，解释输出要减少原有整理核对；筛选规则、Excel语义仍未知，不声称已生成名单或省时。",
+        "结合陈姐的适用范围、参与门店、任务、答复责任和待核事项，区分信息整理与人员、工作量、执行和工作记录确认；具体答复人仍待核。",
+        "两类会员按活动范围分别核查，不预设要求不同；不将候选整理方案当已批准或已运行系统。",
+        "用陈姐前中后观察方向提出未来验证，区分期望、试用、实际效果；小林提效与复购结果分别验证，不声称反馈闭环已通。"
+      ],
+      "review_method": "同一模型、同一问题、同一文档快照下分别不提供和提供业务模型。预期只供人工判读，不发送给模型。先查实际请求是否加载v0.2，再比较回答具体新增或纠正了什么，不以基线失败或措辞更谨慎为通过条件。"
+    }
+  ],
+  "execution": {
+    "pair_id": "PAIR-28bc797153a34a06bd51c2efb21e5615",
+    "runs": [
+      "artifacts/w02/knowledge_runs/RUN-8016d04653644dd49b5490e7bf950229/run.json",
+      "artifacts/w02/knowledge_runs/RUN-861b8a29df2c46cab6c1a48d455e3c6b/run.json"
+    ],
+    "verification": "artifacts/w02/knowledge_reviews/PAIR-28bc797153a34a06bd51c2efb21e5615/verification.json",
+    "mentor_review": "docs/w02/interview_notes.md",
+    "learner_review": "pending",
+    "revision_and_rerun": "pending"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-30",
+  "record_type": "migration_explanation_not_customer_request_or_checker_override",
+  "w01_baseline_sha256": "ada9e33ee7810c03306abb0cd4680912b9a02aeb9d483c4a2d13cb97e3f755c8",
+  "w02_active_request_ids": [
+    "GAP-001",
+    "GAP-002",
+    "GAP-004",
+    "GAP-005",
+    "GAP-006"
+  ],
+  "w01_original_item": {
+    "id": "GAP-003",
+    "request": "核清青禾复购率与活跃会员口径，并核对近四个季度的报表、计算明细及品类/渠道拆分。",
+    "category": "待判断",
+    "capability_ids": [
+      "CAP-003",
+      "CAP-004",
+      "CAP-006"
+    ],
+    "evidence_status": "reported",
+    "evidence": [
+      {
+        "source": "docs/w01/interviews/official/586a7063-87f3-5da5-b8ec-e2a52c3a18f1/W1-interview-586a7063-87f3-5da5-b8ec-e2a52c3a18f1-transcript.json",
+        "locator": "MSG-00811\nMSG-00812",
+        "note": "学员提出核清复购/活跃定义、统计周期与近四季度品类/渠道拆分，沈总认可方向，小林牵头、老周配合。该回复没有提供实际指标定义或报表。"
+      },
+      {
+        "source": "docs/w01/interviews/official/586a7063-87f3-5da5-b8ec-e2a52c3a18f1/W1-interview-586a7063-87f3-5da5-b8ec-e2a52c3a18f1-transcript.json",
+        "locator": "MSG-00798\nMSG-00800\nMSG-00814",
+        "note": "沈总未给出统计口径、分项降幅或数据审批细节，数据范围需老周确认。已有记录不能证明明细可导出或已获使用许可。"
+      },
+      {
+        "source": "product/capabilities.json",
+        "locator": "CAP-003\nCAP-004\nCAP-006",
+        "note": "标准工具比较净消费，标准语义有老会员和下降定义。青禾语义与数据需后续适配，不自动支持任意指标，不能用净消费下降代替复购率。"
+      },
+      {
+        "source": "artifacts/w01/evidence/analysis.json",
+        "locator": "describe_business 语义\nresult.summary",
+        "note": "已验证数据是独立虚构样例，比较 2026 年 7 月和 8 月净消费，S03 缺覆盖保持未知。它不是青禾四季度复购报表，也不能证明青禾数据完整。"
+      }
+    ],
+    "next_step": "小林确认复购分子/分母、统计周期、有效购买及活跃规则。老周确认四季度起止、字段/计算明细、覆盖与拆分、导出范围和使用许可。拟去除姓名手机号，保留稳定替代会员 ID 关联订单。取获许可样例核对报表，再区分数据适配与指标能力差异。"
+  },
+  "disposition": "GAP-003依老师批改移为调查待核，不在当前五项客户诉求中；原编号与证据保留，未复用编号",
+  "destinations": [
+    "docs/w02/interview_notes.md：待核清单与责任／GAP-003原项",
+    "docs/w02/business_model.md：5.2口径、来源、资格时点等待核",
+    "artifacts/w02/product_fit_gap.json：GAP-001、GAP-004、GAP-005相关next_step"
+  ],
+  "basis": "docs/w02/sources/w01_teacher_feedback_20261027.md：作业缺点、改进之处",
+  "checker_result": "needs_revision",
+  "checker_issue": "W1_IDS_MISSING",
+  "teacher_acceptance": "not_confirmed",
+  "action": "保留真实失败提示并交人工复核，不改检查器或恢复为客户诉求"
+}

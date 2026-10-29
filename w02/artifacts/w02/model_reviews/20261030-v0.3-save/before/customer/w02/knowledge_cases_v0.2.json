@@ -1,0 +1,66 @@
+{
+  "version": "qinghe-knowledge-cases-v0.2",
+  "status": "both_cases_executed_semantic_revision_pending",
+  "model_document": "docs/w02/business_model.md",
+  "document_sha256": "2a32a9f7535165de284e36da55a8215433454230d176aa3ed0924e50521df94c",
+  "extraction_entry": "artifacts/w02/runs/RUN-464a69b95cb34d808810bc577557dc06/run.json",
+  "cases": [
+    {
+      "id": "QH-KNOW-01",
+      "question": "青禾准备先给小林和陈姐提供会员运营支持，你会建议第一版交付什么、怎样接到实际工作，以及怎样判断有没有帮助？",
+      "expected_for_reviewer_only": [
+        "结合小林的需关注会员及每条建议依据，解释输出要减少原有整理核对；筛选规则、Excel语义仍未知，不声称已生成名单或省时。",
+        "结合陈姐的适用范围、参与门店、任务、答复责任和待核事项，区分信息整理与人员、工作量、执行和工作记录确认；具体答复人仍待核。",
+        "两类会员按活动范围分别核查，不预设要求不同；不将候选整理方案当已批准或已运行系统。",
+        "用陈姐前中后观察方向提出未来验证，区分期望、试用、实际效果；小林提效与复购结果分别验证，不声称反馈闭环已通。"
+      ],
+      "review_method": "同一模型、同一问题、同一文档快照下分别不提供和提供业务模型。预期只供人工判读，不发送给模型。先查实际请求是否加载v0.2，再比较回答具体新增或纠正了什么，不以基线失败或措辞更谨慎为通过条件。",
+      "scope_note": "仅测试小林与陈姐的岗位支持场景，不能用来确认项目第一阶段目标或已选交付范围。学员已指出该范围问题，其他判读未全量确认。"
+    },
+    {
+      "id": "QH-KNOW-02",
+      "status": "executed_mentor_findings_learner_review_pending",
+      "question": "结合青禾目前的情况，你建议第一阶段优先解决什么问题、形成什么阶段交付，供沈总判断下一步怎样推进？请说明理由。",
+      "expected_for_reviewer_only": [
+        "识别经营方向为复购止跌回升，首阶段优先验证复购下滑原因，先对齐会员范围和复购口径；会员老化是沈总优先检验的假设，不能当已知原因或排除其他待验证解释。",
+        "阶段讨论材料说明业务问题、覆盖范围、已有依据、待核项、需要谁配合和阶段结果如何观察；不只列通用进度表、上线功能或岗位工具。",
+        "范围应考虑两类会员、期间和渠道等必要边界；不把80万活跃与120万系统全量混用，不编造复购公式、数据可得性或分析结果。",
+        "结合已知参与范围说明协作，区分沈总定优先级及推动待决、小林运营、老周数据条件、陈姐门店实际情况；未知的最终定义人、分析责任、材料交付与日期继续待核，不擅自任命或许诺。",
+        "保留小林提效目标，将陈姐信息整理作为岗位支持候选，不宣告其为第一阶段目标或必建系统；详细设计、试点批准、实际执行与经营效果分开。",
+        "能根据取得了什么依据、排除了或保留了什么假设、缺口和后续验证安排说明阶段进展；具体观察办法只能作为建议，不伪造已取得数据、已验证原因、已批准试点或三个月量化承诺。"
+      ],
+      "source_basis": [
+        "MSG-01725",
+        "MSG-01731",
+        "MSG-01733",
+        "MSG-01737",
+        "MSG-01739",
+        "business_model.md §1 / §3.2 / §5"
+      ],
+      "review_method": "在同一模型、同一问题、同一文档快照下做有无知识对照；预期不进入请求。独立判断本题的经营目标及阶段推进覆盖，不与QH-KNOW-01跨题宣称改进。",
+      "execution": {
+        "pair_id": "PAIR-7414daf5e9764e6e932010564f2838d1",
+        "runs": [
+          "artifacts/w02/knowledge_runs/RUN-b00d6e9b6e88437fb6efc2499961a292/run.json",
+          "artifacts/w02/knowledge_runs/RUN-9b1a97567f2f420f9c7847ccaba9f624/run.json"
+        ],
+        "verification": "artifacts/w02/knowledge_reviews/PAIR-7414daf5e9764e6e932010564f2838d1/verification.json",
+        "mentor_review": "docs/w02/interview_notes.md",
+        "learner_review": "pending",
+        "revision_and_rerun": "pending"
+      }
+    }
+  ],
+  "execution": {
+    "pair_id": "PAIR-28bc797153a34a06bd51c2efb21e5615",
+    "runs": [
+      "artifacts/w02/knowledge_runs/RUN-8016d04653644dd49b5490e7bf950229/run.json",
+      "artifacts/w02/knowledge_runs/RUN-861b8a29df2c46cab6c1a48d455e3c6b/run.json"
+    ],
+    "verification": "artifacts/w02/knowledge_reviews/PAIR-28bc797153a34a06bd51c2efb21e5615/verification.json",
+    "mentor_review": "docs/w02/interview_notes.md",
+    "learner_review": "scope_correction_received_other_findings_not_confirmed",
+    "revision_and_rerun": "pending",
+    "case_id": "QH-KNOW-01"
+  }
+}

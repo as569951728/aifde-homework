@@ -1,0 +1,142 @@
+{
+  "contract_version": "w01-0.2.1",
+  "product_version": "0.2.0-w1",
+  "capability_matrix_version": "w1-capabilities-0.2.0",
+  "items": [
+    {
+      "id": "GAP-001",
+      "request": "按青禾确认的业务口径，识别需要重点经营的会员，输出可供小林使用的名单。",
+      "category": "待判断",
+      "capability_ids": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-006"
+      ],
+      "evidence_status": "reported",
+      "evidence": [
+        {
+          "source": "docs/w01/interviews/official/586a7063-87f3-5da5-b8ec-e2a52c3a18f1/W1-interview-586a7063-87f3-5da5-b8ec-e2a52c3a18f1-transcript.json",
+          "locator": "MSG-00808、MSG-00818",
+          "note": "沈总提出名单和建议需能被小林实际使用。会员老化只是判断，复购及活跃口径尚待核实；具体筛选规则和名单可用标准未确定。"
+        },
+        {
+          "source": "product/capabilities.json",
+          "locator": "CAP-003、CAP-004、CAP-006",
+          "note": "已有查询比较工具、独立样例数据及标准净消费/老会员/下降定义。能力矩阵明确青禾语义与数据需后续适配，不自动支持任意指标。"
+        },
+        {
+          "source": "artifacts/w01/evidence/analysis.json",
+          "locator": "result.summary；observations[name=compare_spending]；CMP-29dcd590e6429c3a",
+          "note": "已在独立样例上识别 M001、M004、M007 的净消费下降，S03 覆盖缺失保持未知。这证明标准筛选能力；不能证明青禾筛选口径已适配或名单已可用。"
+        },
+        {
+          "source": "docs/w01/interviews/official/586a7063-87f3-5da5-b8ec-e2a52c3a18f1/W1-interview-586a7063-87f3-5da5-b8ec-e2a52c3a18f1-transcript.json",
+          "locator": "MSG-00811、MSG-00812、MSG-00814",
+          "note": "沈总认可先核清口径，由小林牵头、老周协助确认数据提供方与范围。实际资料、权限和核对时间仍待落实；MSG-00814 的指代混淆不构成数据授权。"
+        }
+      ],
+      "next_step": "请小林明确重点经营会员的筛选规则、复购/活跃定义及名单可用标准。请老周确认数据来源、范围和权限。对照现有净消费规则，再判断配置、系统适配或产品补充范围，并在获许可的数据上验证名单。"
+    },
+    {
+      "id": "GAP-002",
+      "request": "给小林提供可审核、可实际使用的运营建议。",
+      "category": "待判断",
+      "capability_ids": [
+        "CAP-001",
+        "CAP-003",
+        "CAP-006"
+      ],
+      "evidence_status": "reported",
+      "evidence": [
+        {
+          "source": "docs/w01/interviews/official/586a7063-87f3-5da5-b8ec-e2a52c3a18f1/W1-interview-586a7063-87f3-5da5-b8ec-e2a52c3a18f1-transcript.json",
+          "locator": "MSG-00804\nMSG-00808\nMSG-00818",
+          "note": "沈总要求名单和建议能被小林实际使用。现有访谈未核实小林的审核流程、采纳标准、可用渠道与权益条件。"
+        },
+        {
+          "source": "artifacts/w01/evidence/analysis.json",
+          "locator": "result.recommendations\nresult.limitations\ndescribe_business 语义",
+          "note": "真实运行能根据工具结果生成建议。标准语义明确供运营审核、不承诺召回效果，不声称已发券。人工审核是能力边界，本身不是产品缺口。"
+        },
+        {
+          "source": "artifacts/w01/evaluation/20261022-promptfoo/manual-findings.json",
+          "locator": "EVAL-MANUAL-001\nEVAL-MANUAL-002",
+          "note": "样例评估自动通过后，人工仍发现 M004 建议月份事实错误；M007 新人权益资格待核。客户采纳率尚未测量，不能将自动通过等同于业务可用。"
+        },
+        {
+          "source": "product/capabilities.json",
+          "locator": "CAP-001\nCAP-003\nCAP-006",
+          "note": "已有模型执行、业务查询工具和标准语义。青禾业务规则与流程尚未确认。当前无法确定具体差异需要配置、系统适配或能力补充，故保留待判断。"
+        }
+      ],
+      "next_step": "请小林确认建议可用标准、审核分工、渠道与权益条件。拟用获许可的代表性样例记录原样采纳、修改后采纳、未采纳及原因，另看事实准确性、整理成本和实际执行。采纳率口径及目标待确认，不能单独证明适配或复购改善。"
+    },
+    {
+      "id": "GAP-003",
+      "request": "核清青禾复购率与活跃会员口径，并核对近四个季度的报表、计算明细及品类/渠道拆分。",
+      "category": "待判断",
+      "capability_ids": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-006"
+      ],
+      "evidence_status": "reported",
+      "evidence": [
+        {
+          "source": "docs/w01/interviews/official/586a7063-87f3-5da5-b8ec-e2a52c3a18f1/W1-interview-586a7063-87f3-5da5-b8ec-e2a52c3a18f1-transcript.json",
+          "locator": "MSG-00811\nMSG-00812",
+          "note": "学员提出核清复购/活跃定义、统计周期与近四季度品类/渠道拆分，沈总认可方向，小林牵头、老周配合。该回复没有提供实际指标定义或报表。"
+        },
+        {
+          "source": "docs/w01/interviews/official/586a7063-87f3-5da5-b8ec-e2a52c3a18f1/W1-interview-586a7063-87f3-5da5-b8ec-e2a52c3a18f1-transcript.json",
+          "locator": "MSG-00798\nMSG-00800\nMSG-00814",
+          "note": "沈总未给出统计口径、分项降幅或数据审批细节，数据范围需老周确认。已有记录不能证明明细可导出或已获使用许可。"
+        },
+        {
+          "source": "product/capabilities.json",
+          "locator": "CAP-003\nCAP-004\nCAP-006",
+          "note": "标准工具比较净消费，标准语义有老会员和下降定义。青禾语义与数据需后续适配，不自动支持任意指标，不能用净消费下降代替复购率。"
+        },
+        {
+          "source": "artifacts/w01/evidence/analysis.json",
+          "locator": "describe_business 语义\nresult.summary",
+          "note": "已验证数据是独立虚构样例，比较 2026 年 7 月和 8 月净消费，S03 缺覆盖保持未知。它不是青禾四季度复购报表，也不能证明青禾数据完整。"
+        }
+      ],
+      "next_step": "小林确认复购分子/分母、统计周期、有效购买及活跃规则。老周确认四季度起止、字段/计算明细、覆盖与拆分、导出范围和使用许可。拟去除姓名手机号，保留稳定替代会员 ID 关联订单。取获许可样例核对报表，再区分数据适配与指标能力差异。"
+    },
+    {
+      "id": "GAP-004",
+      "request": "希望复购率止跌回升，并在三个月内看到业务进展。",
+      "category": "暂不承诺",
+      "capability_ids": [
+        "CAP-004",
+        "CAP-006"
+      ],
+      "evidence_status": "reported",
+      "evidence": [
+        {
+          "source": "docs/w01/interviews/official/586a7063-87f3-5da5-b8ec-e2a52c3a18f1/W1-interview-586a7063-87f3-5da5-b8ec-e2a52c3a18f1-transcript.json",
+          "locator": "MSG-00800\nMSG-00818",
+          "note": "沈总明确复购止跌回升是业务目标，三个月是期望节奏；提升幅度、验收口径未定。这不是双方已确认的效果交付承诺。"
+        },
+        {
+          "source": "docs/w01/interviews/official/586a7063-87f3-5da5-b8ec-e2a52c3a18f1/W1-interview-586a7063-87f3-5da5-b8ec-e2a52c3a18f1-transcript.json",
+          "locator": "MSG-00802\nMSG-00806\nMSG-00812\nMSG-00814",
+          "note": "试点区域/渠道未定；小林牵头、老周配合的方向已有表态，具体时间、数据范围和权限需确认。预算合同需王经理参与，金额流程尚未核实。"
+        },
+        {
+          "source": "product/capabilities.json",
+          "locator": "CAP-004\nCAP-006",
+          "note": "现有产品基于独立虚构样例和标准净消费语义。青禾语义与数据需适配，不能由样例能力推导客户复购提升幅度或达成时间。"
+        },
+        {
+          "source": "artifacts/w01/evidence/analysis.json",
+          "locator": "describe_business 语义\nresult.limitations",
+          "note": "运行中的建议约束明确不承诺召回效果。当前证据证明样例分析与建议生成，未实施青禾运营试点，尚无客户业务效果证据。"
+        }
+      ],
+      "next_step": "先核清口径、基线、运营流程和数据条件，拟定试点范围、执行责任、资源及评估方案，再评审是否启动。对接条件明确后拟用一周形成方案初稿，具体排期另定。依据试点结果评估效果与观察周期；当前不承诺改善幅度或达成时间。"
+    }
+  ]
+}

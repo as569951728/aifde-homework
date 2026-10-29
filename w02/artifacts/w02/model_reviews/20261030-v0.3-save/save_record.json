@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-30",
+  "status": "saved_and_rerun_mentor_reviewed",
+  "user_quote": "按你的建议来",
+  "scope": "采用第二组判读的三段建议，明确阶段目标和观察协作，区分人数口径，并落实已纳入第三段的岗位输出及反馈边界；原题与人工预期保持不变。",
+  "method": "independent_file_revision_after_user_instruction",
+  "old_version": "v0.2",
+  "new_version": "v0.3",
+  "before_sha256": {
+    "docs/w02/business_model.md": "2a32a9f7535165de284e36da55a8215433454230d176aa3ed0924e50521df94c",
+    "docs/w02/interview_notes.md": "6288df540a945ec77e313cc611159dbdb0bef34cc4b3efe2b4673379a372d552",
+    "customer/w02/knowledge_cases_v0.2.json": "f39d1396f3f0c09eab3492a9f48754855cad1d3911a4897f1640ea0c9f14a843",
+    "customer/w02/knowledge_prompt.txt": "5c9c9f9514974834a5246464de520d8b7b7f549560743d4d12884c94f7edb6c1",
+    "customer/w02/compare_knowledge.py": "44a5f0a03d2411fcf4b27c131cb1f93058f8144b9ee2b4c93908e0b8c484e684",
+    "customer/w02/knowledge.json": "a0388b48296714c1a85402bc3d0b327681440ffc177ecd271d636a50ec602f01"
+  },
+  "live_reruns": [
+    {
+      "case_id": "QH-KNOW-02",
+      "pair_id": "PAIR-261f6421552e47c3b4a4ecedcd33e24c",
+      "runs": [
+        "RUN-34a69802888f464e87b3d92a3bbd0659",
+        "RUN-a41afe9216d74348b5f0f777a9ddf15c"
+      ],
+      "prompt_version": "original",
+      "mentor_review": "目标前提、阶段观察协作及口径边界得到具体采用；两类会员在本题未完整展开，范围覆盖限于所问内容。"
+    },
+    {
+      "case_id": "QH-KNOW-01",
+      "pair_id": "PAIR-5c3e52d084be4bf8919c8ee708720c32",
+      "runs": [
+        "RUN-12624669b79445a1b76884637acb8958",
+        "RUN-67b52344dd114cac9748eaa74ef0bf0d"
+      ],
+      "prompt_version": "original",
+      "mentor_review": "字段与岗位边界得到采用；尾句将陈姐观察及导师阶段观察统称导师建议，来源归属需收窄；本题未显式复述反馈交接，不以沉默证明该关系已验证。"
+    }
+  ],
+  "document_sha256": "ca56e94f042241a63e4c8a58db82d384314700c376cccba50bb1d09b0f8e80be",
+  "test_questions_and_expectations_unchanged": true,
+  "knowledge_prompt_unchanged": false,
+  "course_extraction_unchanged": true,
+  "old_runs_unchanged": true,
+  "planned_reruns": [
+    "QH-KNOW-02",
+    "QH-KNOW-01"
+  ],
+  "next_prompt_change": "只调整回答来源归属与限定范围，不加入青禾预期答案；原题和预期保持不变。",
+  "final_reruns": [
+    {
+      "case_id": "QH-KNOW-01",
+      "pair_id": "PAIR-498bac0718d74f4ead47a490b40fae6d",
+      "runs": [
+        "artifacts/w02/knowledge_runs/RUN-0ce5a0b47fa243098921331d4b24af89/run.json",
+        "artifacts/w02/knowledge_runs/RUN-ae54721f54774dea995173c146d94c84/run.json"
+      ],
+      "verification": "artifacts/w02/knowledge_reviews/PAIR-498bac0718d74f4ead47a490b40fae6d/verification.json",
+      "mentor_review": "docs/w02/interview_notes.md",
+      "learner_review": "rerun_outputs_not_independently_reviewed",
+      "status": "live_completed_mentor_reviewed"
+    },
+    {
+      "case_id": "QH-KNOW-02",
+      "pair_id": "PAIR-f79da9eb58634930a604724f3c40b339",
+      "runs": [
+        "artifacts/w02/knowledge_runs/RUN-2dba48b3e8d1498fb5f01e9012add5da/run.json",
+        "artifacts/w02/knowledge_runs/RUN-c56eade06bf743258b483fe498757525/run.json"
+      ],
+      "verification": "artifacts/w02/knowledge_reviews/PAIR-f79da9eb58634930a604724f3c40b339/verification.json",
+      "mentor_review": "docs/w02/interview_notes.md",
+      "learner_review": "rerun_outputs_not_independently_reviewed",
+      "status": "live_completed_mentor_reviewed"
+    }
+  ],
+  "actual_model_calls_this_revision": 8,
+  "prompt_revision": {
+    "path": "customer/w02/knowledge_prompt.txt",
+    "sha256": "f0447628feb59042278a7ad473d5e4091486a92207fcea3e9d5bd42a33bff6c5",
+    "purpose": "区分角色、学员、导师和本次建议的来源；保留局部场景范围",
+    "initial_document_only_pairs_preserved": true
+  },
+  "learner_approval_applies_to": "修订建议与重跑，不代签客户业务核验或学员对新回答的独立判读",
+  "course_workflow_applied": false,
+  "original_notes_prefix_preserved": true,
+  "after_notes_sha256": "347423c963b17e6edcb120d15543141b1ebe536a379b57d7e941b180505b2315",
+  "final_review_section": "v0.3修订采纳、同题复验与当前判断",
+  "remaining": "提交前文档证据完整性复核、按任务书打包、独立解压预检及人工复核；未最终提交。"
+}
