@@ -1,0 +1,173 @@
+{
+  "semantic_models": [
+    {
+      "name": "orders",
+      "model": "ref('orders')",
+      "defaults": {
+        "agg_time_dimension": "ordered_at"
+      },
+      "entities": [
+        {
+          "name": "order",
+          "type": "primary",
+          "expr": "order_id"
+        },
+        {
+          "name": "member",
+          "type": "foreign",
+          "expr": "member_id"
+        },
+        {
+          "name": "store",
+          "type": "foreign",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "ordered_at",
+          "type": "time",
+          "type_params": {
+            "time_granularity": "day"
+          }
+        },
+        {
+          "name": "channel",
+          "type": "categorical"
+        },
+        {
+          "name": "status",
+          "type": "categorical"
+        }
+      ],
+      "measures": [
+        {
+          "name": "net_sales_cents_sum",
+          "expr": "CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END",
+          "agg": "sum"
+        }
+      ]
+    },
+    {
+      "name": "members",
+      "model": "ref('members')",
+      "entities": [
+        {
+          "name": "member",
+          "type": "primary",
+          "expr": "member_id"
+        },
+        {
+          "name": "home_store",
+          "type": "foreign",
+          "expr": "home_store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "tier",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "name": "store",
+      "model": "ref('stores')",
+      "entities": [
+        {
+          "name": "store",
+          "type": "primary",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "region",
+          "type": "categorical"
+        },
+        {
+          "name": "store_name",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "name": "home_store",
+      "model": "ref('stores')",
+      "entities": [
+        {
+          "name": "home_store",
+          "type": "primary",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "region",
+          "type": "categorical"
+        },
+        {
+          "name": "store_name",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    }
+  ],
+  "metrics": [
+    {
+      "name": "net_sales_cents",
+      "label": "净销售额",
+      "description": "paid 订单实付金额减累计退款后的合计；取消单不计；按原订单下单日期归属；单位分。",
+      "type": "simple",
+      "type_params": {
+        "measure": "net_sales_cents_sum"
+      }
+    }
+  ],
+  "catalog": [
+    {
+      "id": "net_sales_cents",
+      "name": "净销售额",
+      "aliases": [],
+      "unit": "cents",
+      "sources": [
+        {
+          "file": "01_订单日报说明.md",
+          "quote": "paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。"
+        },
+        {
+          "file": "02_财务邮件.md",
+          "quote": "财务确认：有效订单是 paid 状态且实付大于累计退款；取消、全额退款不计有效购买。退款按原订单日期归属。金额为整数分，展示元需换算。"
+        }
+      ],
+      "constraints": [
+        "仅统计 status = 'paid' 的订单；取消单贡献零，不计入净销售额",
+        "退款按原订单下单日期归属",
+        "金额单位为整数分，展示元需换算",
+        "数据覆盖 2024-09-01（含）至 2026-09-01（不含）"
+      ],
+      "query_policy": {
+        "full_month_only": false
+      }
+    }
+  ],
+  "model_sql": {},
+  "grain_keys": {
+    "orders": [
+      "order_id"
+    ],
+    "members": [
+      "member_id"
+    ],
+    "store": [
+      "store_id"
+    ],
+    "home_store": [
+      "store_id"
+    ]
+  },
+  "unresolved": []
+}

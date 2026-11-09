@@ -1,0 +1,50 @@
+[
+  {
+    "id": "B7-Q06-missingcard",
+    "question": "请同时列出2026年8月青禾优选月末付费会员购买人数、月末付费会员有效订单数、月末付费会员净销售额（单位分）、月末付费会员复购人数、月末付费会员复购率和月末付费会员订单均额。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_paid_buyer_count",
+          "monthly_paid_order_count",
+          "monthly_paid_sales_cents",
+          "monthly_paid_repeat_buyer_count",
+          "monthly_paid_repeat_rate",
+          "monthly_paid_avg_order_value"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "rows": [
+        [
+          5,
+          8,
+          42900,
+          3,
+          0.6,
+          5362.5
+        ]
+      ],
+      "units": {
+        "monthly_paid_buyer_count": "count",
+        "monthly_paid_order_count": "count",
+        "monthly_paid_sales_cents": "cents",
+        "monthly_paid_repeat_buyer_count": "count",
+        "monthly_paid_repeat_rate": "ratio",
+        "monthly_paid_avg_order_value": "cents_per_order"
+      }
+    },
+    "expected_source": "受控缺行实验：以 qinghe-w03-20260923-small 为源，删除会员 M00013 的全部卡记录（原卡 C0000014，家庭季卡，valid_from=2026-08-31，valid_until=2027-01-01），生成派生数据集 qinghe-w03-20260923-small-missingcard。按月末资格规则独立重算 2026-08：有资格且有订单的会员由 6 人降为 5 人（M00013 两笔有效单净额 4650 分退出），故期望为 5/8/42900/3/0.6/5362.5。本用例不判定系统应否报错，只记录它是否识别“卡记录缺失”；若实际给出上述数值且回答中未提示卡表可能不完整，即证实 O7：实现把“数据缺失”当作“确实无卡”。"
+  }
+]

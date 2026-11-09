@@ -1,0 +1,407 @@
+{
+  "kind": "pure_comparison_synthetic_inputs_not_native_run",
+  "judge_path": "customer/w03/judge.py",
+  "judge_sha256": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3",
+  "checks": [
+    {
+      "name": "self_equal_B6-N01",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": true,
+      "passed": true,
+      "differences": []
+    },
+    {
+      "name": "self_equal_B6-M01",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": true,
+      "passed": true,
+      "differences": []
+    },
+    {
+      "name": "self_equal_B6-Z01",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": true,
+      "passed": true,
+      "differences": []
+    },
+    {
+      "name": "self_equal_B6-X01",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": true,
+      "passed": true,
+      "differences": []
+    },
+    {
+      "name": "self_equal_B6-X02",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": true,
+      "passed": true,
+      "differences": []
+    },
+    {
+      "name": "self_equal_B6-X03",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": true,
+      "passed": true,
+      "differences": []
+    },
+    {
+      "name": "self_equal_B6-R01",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": true,
+      "passed": true,
+      "differences": []
+    },
+    {
+      "name": "legal_month_row_reorder",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": true,
+      "passed": true,
+      "differences": []
+    },
+    {
+      "name": "wrong_date",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "intent.end",
+          "expected": "2026-09-01",
+          "actual": "2026-08-31",
+          "rule": "exact intent"
+        }
+      ]
+    },
+    {
+      "name": "wrong_metric",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "intent.metrics",
+          "expected": [
+            "monthly_buyer_count",
+            "monthly_repeat_buyer_count",
+            "monthly_repeat_rate"
+          ],
+          "actual": [
+            "buyer_count",
+            "monthly_repeat_buyer_count",
+            "monthly_repeat_rate"
+          ],
+          "rule": "exact intent"
+        }
+      ]
+    },
+    {
+      "name": "added_channel",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "intent.filters",
+          "expected": [],
+          "actual": [
+            {
+              "field": "order__channel",
+              "op": "eq",
+              "value": "小程序"
+            }
+          ],
+          "rule": "exact intent"
+        }
+      ]
+    },
+    {
+      "name": "wrong_unit",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "units",
+          "expected": {
+            "monthly_buyer_count": "count",
+            "monthly_repeat_buyer_count": "count",
+            "monthly_repeat_rate": "ratio"
+          },
+          "actual": {
+            "monthly_buyer_count": "count",
+            "monthly_repeat_buyer_count": "count",
+            "monthly_repeat_rate": "count"
+          },
+          "rule": "exact units, no missing/extra units"
+        }
+      ]
+    },
+    {
+      "name": "wrong_count",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows.{}.monthly_buyer_count",
+          "expected": 15,
+          "actual": 16,
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    },
+    {
+      "name": "error_with_original_numbers",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "status",
+          "expected": "ok",
+          "actual": "error",
+          "rule": "exact supported status"
+        }
+      ]
+    },
+    {
+      "name": "wrong_locked_data_id",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "data_version",
+          "expected": "qinghe-w03-20260923-small",
+          "actual": "not-this-fixture",
+          "rule": "locked version"
+        }
+      ]
+    },
+    {
+      "name": "missing_month",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows",
+          "expected": {
+            "metric_time__month": "2026-08-01 00:00:00",
+            "monthly_buyer_count": 15,
+            "monthly_repeat_buyer_count": 12,
+            "monthly_repeat_rate": 0.8
+          },
+          "actual": null,
+          "rule": "missing group"
+        }
+      ]
+    },
+    {
+      "name": "duplicate_month",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "actual.rows[2]",
+          "expected": "unique group",
+          "actual": [
+            "2026-07-01 00:00:00",
+            11,
+            1,
+            0.09090909090909091
+          ],
+          "rule": "duplicate group"
+        }
+      ]
+    },
+    {
+      "name": "extra_month",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows",
+          "expected": null,
+          "actual": {
+            "metric_time__month": "2026-06-01 00:00:00",
+            "monthly_buyer_count": 0,
+            "monthly_repeat_buyer_count": 0,
+            "monthly_repeat_rate": null
+          },
+          "rule": "extra group"
+        }
+      ]
+    },
+    {
+      "name": "wrong_month_identity",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows",
+          "expected": {
+            "metric_time__month": "2026-07-01 00:00:00",
+            "monthly_buyer_count": 11,
+            "monthly_repeat_buyer_count": 1,
+            "monthly_repeat_rate": 0.09090909090909091
+          },
+          "actual": null,
+          "rule": "missing group"
+        },
+        {
+          "path": "rows",
+          "expected": null,
+          "actual": {
+            "metric_time__month": "2026-06-01 00:00:00",
+            "monthly_buyer_count": 11,
+            "monthly_repeat_buyer_count": 1,
+            "monthly_repeat_rate": 0.09090909090909091
+          },
+          "rule": "extra group"
+        }
+      ]
+    },
+    {
+      "name": "swapped_month_numbers",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows.{'metric_time__month': '2026-07-01 00:00:00'}.monthly_buyer_count",
+          "expected": 11,
+          "actual": 15,
+          "rule": "null/exact integer/declared float tolerance"
+        },
+        {
+          "path": "rows.{'metric_time__month': '2026-07-01 00:00:00'}.monthly_repeat_buyer_count",
+          "expected": 1,
+          "actual": 12,
+          "rule": "null/exact integer/declared float tolerance"
+        },
+        {
+          "path": "rows.{'metric_time__month': '2026-07-01 00:00:00'}.monthly_repeat_rate",
+          "expected": 0.09090909090909091,
+          "actual": 0.8,
+          "rule": "null/exact integer/declared float tolerance"
+        },
+        {
+          "path": "rows.{'metric_time__month': '2026-08-01 00:00:00'}.monthly_buyer_count",
+          "expected": 15,
+          "actual": 11,
+          "rule": "null/exact integer/declared float tolerance"
+        },
+        {
+          "path": "rows.{'metric_time__month': '2026-08-01 00:00:00'}.monthly_repeat_buyer_count",
+          "expected": 12,
+          "actual": 1,
+          "rule": "null/exact integer/declared float tolerance"
+        },
+        {
+          "path": "rows.{'metric_time__month': '2026-08-01 00:00:00'}.monthly_repeat_rate",
+          "expected": 0.8,
+          "actual": 0.09090909090909091,
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    },
+    {
+      "name": "null_to_zero",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows.{}.monthly_repeat_rate",
+          "expected": null,
+          "actual": 0,
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    },
+    {
+      "name": "number_to_string",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows.{}.monthly_buyer_count",
+          "expected": 15,
+          "actual": "15",
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    },
+    {
+      "name": "number_to_bool",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows.{}.monthly_buyer_count",
+          "expected": 15,
+          "actual": true,
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    },
+    {
+      "name": "rate_times_100",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows.{}.monthly_repeat_rate",
+          "expected": 0.8,
+          "actual": 80,
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    },
+    {
+      "name": "wrong_denominator_20",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows.{}.monthly_repeat_rate",
+          "expected": 0.8,
+          "actual": 0.6,
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    },
+    {
+      "name": "exactly_two_instead_of_at_least_two",
+      "input_origin": "synthetic_expected_copy_only",
+      "should_pass": false,
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows.{}.monthly_repeat_buyer_count",
+          "expected": 1,
+          "actual": 0,
+          "rule": "null/exact integer/declared float tolerance"
+        },
+        {
+          "path": "rows.{}.monthly_repeat_rate",
+          "expected": 0.3333333333333333,
+          "actual": 0,
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "positive_checks": 8,
+  "negative_checks": 18
+}

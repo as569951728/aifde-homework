@@ -1,0 +1,38 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "net_sales_cents"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  SUM(case when status = 'paid' then paid_cents - refund_cents else 0 end) AS net_sales_cents\nFROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+  "columns": [
+    "net_sales_cents"
+  ],
+  "rows": [
+    [
+      513921320
+    ]
+  ],
+  "seconds": 0.041,
+  "units": {
+    "net_sales_cents": "cents"
+  },
+  "data_version": "qinghe-w03-20260923-large",
+  "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "2026年8月青禾优选的净销售额为 513,921,320 分，即 5,139,213.20 元。统计范围为2026年8月整月，按原订单下单日期归属；口径为已支付订单的实付金额减退款金额，取消单不计，全额退款行净额为零但仍纳入统计。结果未按门店或地区分组。",
+  "question": "2026年8月青禾优选的净销售额（扣除退款后的实收金额）是多少分？",
+  "trace_id": "47b3e31e-fb1b-4ec6-aaf9-7a6011d6dae1",
+  "elapsed_seconds": 31.407,
+  "model_usage": {
+    "prompt_tokens": 312971,
+    "completion_tokens": 603,
+    "total_tokens": 313574
+  },
+  "model_calls_with_usage": 2
+}

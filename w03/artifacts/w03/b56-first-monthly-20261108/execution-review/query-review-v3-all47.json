@@ -1,0 +1,504 @@
+{
+  "kind": "explanation_review_all47_v3",
+  "reviewed_at": "2026-11-09T10:58:01+08:00",
+  "reviewer": "导师/独立上下文复核（与生成会话不同上下文）",
+  "scope": "b56 第 v3 轮全部 47 题：43 small＋4 人工 fixture",
+  "criteria": [
+    "数值、状态与单位与 expected 一致（机器比较）",
+    "解释中的统计范围、时间窗口、口径定义与来源材料一致",
+    "零值、未定义、覆盖外、拒绝四类不互相冒充",
+    "不扩大覆盖范围，不把未见维度说成可用",
+    "不改写原分：失败只另存导师纠正稿"
+  ],
+  "counts": {
+    "total": 47,
+    "status": {
+      "ok": 42,
+      "unsupported": 4,
+      "clarify": 1
+    },
+    "explanation_pass": 42,
+    "explanation_fail": 5,
+    "numeric_pass": 47
+  },
+  "failures": [
+    "B6-X02",
+    "B3-D01",
+    "B3-U01",
+    "B3-F01",
+    "B2-E01"
+  ],
+  "corrections_dir": "artifacts/w03/b56-first-monthly-20261108/mentor-corrections",
+  "cases": [
+    {
+      "case_id": "B5-N01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B5-D01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B5-Z01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": "窗口表述为“2026-06-01至2026-06-30的查询窗口（覆盖6月1日至29日）”，在左闭右开语义下成立，但未写明“不含6月30日”，存在误读风险，记为提示不记失败。"
+    },
+    {
+      "case_id": "B5-H03",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B6-N01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B6-M01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B6-Z01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B6-X01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "unsupported",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": "拒绝理由给出整月替代与 buyer_count 替代，未把平台限制说成客户业务政策。"
+    },
+    {
+      "case_id": "B6-X02",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "unsupported",
+      "numeric_pass": true,
+      "explanation_verdict": "fail",
+      "reason": "拒绝说明称“可用门店维度仅为会员归属门店”，把语义图可达当成查询可用；实际 full_month_only 同时禁止按会员归属门店分组。",
+      "note": null
+    },
+    {
+      "case_id": "B6-X03",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "unsupported",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": "拒绝理由归因于指标/工具的全渠道限制，未冒称客户长期政策。"
+    },
+    {
+      "case_id": "B3-N01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B3-D01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "fail",
+      "reason": "退款会员数写成“发生退款的有效订单关联账户”，把全退订单排除在外；退款会员应含全退订单关联账户。",
+      "note": null
+    },
+    {
+      "case_id": "B3-R01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B3-R02",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B3-U01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "fail",
+      "reason": "退款会员数写成“发生退款的有效已支付订单关联账户”，把全退订单排除；与 01 材料定义不符。",
+      "note": null
+    },
+    {
+      "case_id": "B3-F01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "fail",
+      "reason": "退款会员数写成“发生退款的有效支付订单关联账户”，同 B3-D01 的退款范围错误。",
+      "note": null
+    },
+    {
+      "case_id": "B4-N01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B4-Z01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B4-R01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B4-D01-store",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B4-D01-all",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B4-F01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B2-N01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B2-R01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B2-R02",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B2-D01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B2-D02",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B2-E01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "fail",
+      "reason": "答案把半开区间描述为“2026-06-01至2026-06-30（含首尾）、比所问多包含6月30日一天”，与查询实际不含6月30日数据不符。",
+      "note": null
+    },
+    {
+      "case_id": "B1-N01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B1-R01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B1-R02",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B1-D01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B1-F01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B1-Z01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B1-D02",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "NS01-aug-total",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "NS02-july-transaction-store",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "NS03-aug-mini-program",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "NS04-partial-refund-day",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "NS05-full-refund-day",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "NS06-covered-empty",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "NS07-missing-time",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "clarify",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "NS08-outside-coverage",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+      "dataset": "small",
+      "status": "unsupported",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": "拒绝理由写“数据仅覆盖至2026-09-01”，边界表述可被读成含9月1日；结论与拒绝决定不受影响，记为提示。"
+    },
+    {
+      "case_id": "B5-H02-F",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-b5-fixture-v3/metric_test_report.json",
+      "dataset": "fixture",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B5-Z01-F",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-b5-fixture-v3/metric_test_report.json",
+      "dataset": "fixture",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B6-R01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-b6-fixture-v3/metric_test_report.json",
+      "dataset": "fixture",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    },
+    {
+      "case_id": "B2-Z01",
+      "report": "artifacts/w03/b56-first-monthly-20261108/test-b2-fixture-v3/metric_test_report.json",
+      "dataset": "fixture",
+      "status": "ok",
+      "numeric_pass": true,
+      "explanation_verdict": "pass",
+      "reason": null,
+      "note": null
+    }
+  ]
+}

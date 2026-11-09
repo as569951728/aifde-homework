@@ -1,0 +1,55 @@
+{
+  "calls": [
+    {
+      "id": "maintain-qinghe-after",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-transfer-after",
+      "mode": "maintain",
+      "input": "inputs/maintain-transfer.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-qinghe-repeat",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "confirm"
+    },
+    {
+      "id": "maintain-transfer-repeat",
+      "mode": "maintain",
+      "input": "inputs/maintain-transfer.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "confirm"
+    },
+    {
+      "id": "maintain-positive-heldout",
+      "mode": "maintain",
+      "input": "inputs/maintain-positive.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "confirm"
+    },
+    {
+      "id": "maintain-missing-heldout",
+      "mode": "maintain",
+      "input": "inputs/maintain-missing.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "confirm"
+    }
+  ],
+  "gate": "全部M/H项通过且无旧通过项退步，才跑复验和新案例；全部通过才替换。语义由导师逐条核原文，不以关键词出现评分。",
+  "limit": "最多6次回放，目标案例首轮通过后原请求各重复一次并跑两个新例；失败保留，禁止覆盖或选好结果。",
+  "formal_apply": false,
+  "baseline_runs": [
+    "../runs/maintain-qinghe-before",
+    "../runs/maintain-transfer-before"
+  ],
+  "change_reason": "v5.1两目标问题有改善但候选越界引用、正文与记录去向不一致。v5.2将可用业务句与单一去向拆列，正文按去向选句，候选范围按statement+quote核而非整条消息；原输入/预期/模型/协议保持。",
+  "acceptance": "除原rubric外，所有案例正文均须满足用户两项要求；任何新正文含取舍纠错过程阻止替换，即使个别旧rubric未单列。"
+}

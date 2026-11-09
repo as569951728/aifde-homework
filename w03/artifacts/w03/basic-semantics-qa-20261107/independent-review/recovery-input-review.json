@@ -1,0 +1,159 @@
+{
+  "created_at": "2026-11-07T02:41:33.179048+00:00",
+  "status": "needs_revision",
+  "checks": [
+    {
+      "check": "network_failure_without_public_answer",
+      "pass": true
+    },
+    {
+      "check": "frozen_input/business_model.md",
+      "pass": true
+    },
+    {
+      "check": "frozen_input/knowledge.json",
+      "pass": true
+    },
+    {
+      "check": "frozen_input/knowledge_prompt.txt",
+      "pass": true
+    },
+    {
+      "check": "frozen_input/materials/03_会员运营周报.md",
+      "pass": true
+    },
+    {
+      "check": "frozen_input/materials_index.json",
+      "pass": true
+    },
+    {
+      "check": "frozen_input/original_questions.json",
+      "pass": true
+    },
+    {
+      "check": "frozen_input/protected.json",
+      "pass": true
+    },
+    {
+      "check": "frozen_input/reviewer_expectations.json",
+      "pass": true
+    },
+    {
+      "check": "frozen_input/selected_questions.json",
+      "pass": true
+    },
+    {
+      "check": "protected_docs/w03/business_model.md",
+      "pass": true
+    },
+    {
+      "check": "protected_docs/w03/interview_notes.md",
+      "pass": true
+    },
+    {
+      "check": "protected_customer/w02/knowledge.json",
+      "pass": true
+    },
+    {
+      "check": "protected_customer/w02/knowledge_prompt.txt",
+      "pass": true
+    },
+    {
+      "check": "protected_customer/w02/workflow.json",
+      "pass": true
+    },
+    {
+      "check": "protected_customer/w02/extraction.json",
+      "pass": true
+    },
+    {
+      "check": "protected_customer/w02/skills/extract-business/SKILL.md",
+      "pass": true
+    },
+    {
+      "check": "protected_artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/session.json",
+      "pass": true
+    },
+    {
+      "check": "protected_artifacts/w03/model-draft-20261106/draft-03/business_model.md",
+      "pass": true
+    },
+    {
+      "check": "protected_docs/w03/metric_decisions.md",
+      "pass": true
+    },
+    {
+      "check": "protected_docs/w03/sow.md",
+      "pass": true
+    },
+    {
+      "check": "protected_customer/w03/tests.json",
+      "pass": true
+    },
+    {
+      "check": "same_business_model.md",
+      "pass": true
+    },
+    {
+      "check": "same_knowledge_prompt.txt",
+      "pass": true
+    },
+    {
+      "check": "same_original_questions.json",
+      "pass": true
+    },
+    {
+      "check": "same_reviewer_expectations.json",
+      "pass": true
+    },
+    {
+      "check": "same_materials_index.json",
+      "pass": false
+    },
+    {
+      "check": "only_unchanged_B04",
+      "pass": true
+    },
+    {
+      "check": "same_material_W03/实操工程/materials/w03/03_会员运营周报.md",
+      "pass": true
+    },
+    {
+      "check": "prepare_equals_preflight",
+      "pass": true
+    },
+    {
+      "check": "runner_hash",
+      "pass": true
+    },
+    {
+      "check": "runner_only_runtime_changed",
+      "pass": false
+    },
+    {
+      "check": "exact_original_failed_messages",
+      "pass": true
+    },
+    {
+      "check": "exact_original_failed_settings_question",
+      "pass": true
+    },
+    {
+      "check": "no_recovery_output_before_gate",
+      "pass": true
+    }
+  ],
+  "original_failure_run": "artifacts/w02/knowledge_runs/RUN-c3f847196e184ba094e712bd2567b185/run.json",
+  "original_output_sha256": "ba20476fb58056f43b343b581831122f86b2174c72568665ab14c722dcb1bb58",
+  "original_request_sha256": "1771d4c6c8adb17e6214bddf34b2c0c4f5af4233b23b78c58e6fef2bdd80f54b",
+  "recovery_batch": "artifacts/w03/basic-semantics-qa-20261107-network-recovery",
+  "recovery_manifest_sha256": "3bcbf4f23a8f6c8db37704219d7aeaa511344c14021c8b450a1f91202d774847",
+  "recovery_runner_sha256": "6ac49d18dd77e86649ceecde2e72dde56c344122fa6fd09bcd052e774b696ac8",
+  "basis": "B04第一次为无公开响应/答案的网络失败；恢复输入和参数与该次失败完全相同，无语义反馈或新材料。只批准一笔技术恢复请求，原失败保留indeterminate。",
+  "accounting": "首次6请求=5答复+1网络失败，技术恢复另计1请求；不得说原6次均成功或覆盖原失败。语义结果待恢复原答实际评审。",
+  "limits": [
+    "不重跑B01/B02/B03/B05/B06。",
+    "B05已有语义错误，不适用网络恢复；只能另存导师核对稿，原成绩不变。",
+    "不改变正文/提示/预期/固定材料/运行参数；审查没有调用API。"
+  ]
+}

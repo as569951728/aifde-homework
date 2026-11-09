@@ -1,0 +1,58 @@
+{
+  "version": "w03-model-understanding-v0.1",
+  "status": "mentor_draft_not_frozen_not_run",
+  "path_base": "AIFDE项目根目录",
+  "purpose": "业务模型理解测试设计；不是课程customer/w03/tests.json格式或已执行测试",
+  "default_model_document": "W03/实操工程/docs/w03/business_model.md",
+  "input_contract": "执行时只加载题目、指定模型快照和本题fixed_materials；禁止加载reviewer_expectations.json或含预期的阅读文档。U01-U04只给模型；U05增加固定小林W02原问答以核提问前提；U06固定其他材料。补充材料的测试分别报告，不将其答对全部归因模型更新。",
+  "cases": [
+    {
+      "id": "U01",
+      "dimension": "模型用途与业务目标",
+      "question": "请用业务语言说明青禾这份业务模型服务哪些目标。复购原因调查、口径核查、本期查数和小林的岗位支持之间是什么关系？哪些成果能够支持下一步判断，哪些还不能说明业务效果？",
+      "input_track": "model_only",
+      "fixed_materials": []
+    },
+    {
+      "id": "U02",
+      "dimension": "概念含义与状态区分",
+      "question": "在当前模型中，会员账户、会员卡、等级、付费资格、活跃、购买记录和复购率分别表示什么？请说明它们的区别，并举一个同一账户同时具有不同属性或状态的例子，指出哪些状态不能相互推出。",
+      "input_track": "model_only",
+      "fixed_materials": []
+    },
+    {
+      "id": "U03",
+      "dimension": "关系、统计粒度与关联路径",
+      "question": "请用“一个对象可以对应几个对象”的方式说明账户、卡、订单和门店之间的关系。假设账户归属A店、订单在B店成交，按成交门店查购买应归哪边？能否从现有关系确定订单使用了该账户的哪张卡？请说明依据及未知。",
+      "input_track": "model_only",
+      "fixed_materials": []
+    },
+    {
+      "id": "U04",
+      "dimension": "工作流程、角色和未知交接",
+      "question": "小林准备一次会员优惠券活动，如果需要门店配合，模型目前能确认哪些工作步骤和交接？哪些仍是我方设计或待核？请选一个缺口，说清需要什么记录、向哪类经手人核对以及它影响什么判断。",
+      "input_track": "model_only",
+      "fixed_materials": []
+    },
+    {
+      "id": "U05",
+      "dimension": "证据性质、来源和纠错",
+      "question": "请审查以下说法，逐条说明可采用、需要修正或尚不能判断，并给依据：A.陈姐已给本期卡日期规则，但具体文件与历史凭据未取得；B.小林独立证实之前项目全面无人使用；C.模型尚未核实反馈怎样返回门店，所以青禾没有这一环节；D.80万活跃与120万全量可直接算出活跃率；E.王经理认可分期思路，所以最终验收已获批准。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json"
+      ]
+    },
+    {
+      "id": "U06",
+      "dimension": "综合应用与模型分工",
+      "question": "以下仅为测试假设：本期38项指标在合成数据内已完成查询和独立核对。小林希望拿结果做优惠券活动。请结合业务模型和给定本期资料，说明结果现在能支持什么判断、还缺哪些条件、下一步由哪些角色参与。并说明卡资格规则、月末统计选择、候选名单和执行安排各应在哪里表达，哪些不能从测试正确直接推出。",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+        "W03/实操工程/materials/w03/07_客户内部沟通.md",
+        "W01/修订记录/20261106-W03新访谈修订/docs/w01/project_assessment.md"
+      ]
+    }
+  ]
+}

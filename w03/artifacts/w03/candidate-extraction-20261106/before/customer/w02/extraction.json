@@ -1,0 +1,25 @@
+{
+  "version": "w02-extractor-0.1.0",
+  "scope_id": "qinghe",
+  "sources": [
+    "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+    "artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+    "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+    "artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+  ],
+  "prompt": "customer/w02/extraction_prompt.txt",
+  "focus_questions": [
+    "本期总部月报的纳入/排除卡产品、等级与付费资格、购卡金额限制分别有哪些原文依据？保留原问题的范围。",
+    "在两类纳入卡和指定判定日下，开始日、计划结束日、提前终止日及空值如何解释？角色已确认规则与未取得的文件/历史凭据分开。",
+    "账户多卡如何判断资格与去重？须同一卡同时满足哪些条件？不能因多卡复制订单。",
+    "小林最初所问人数经过03867/03868的追问限定为何种人群与时点？保留后续收窄，不另添全体资格账户数。",
+    "青禾日常会员运营的目标、工作、交接和业务人员确认条件有哪些事实/一般做法/偏好/未知？个人Excel只作来源与待核记录，不进入业务模型正文。",
+    "门店日常业务的范围、工作量、现场问题和考核要求是什么？IT所述业务数据范围/含义与FDE项目的接入、材料交付条件分开。",
+    "王经理的费用/结算、项目验收、变更/延期、预算/签约/上线核查原话，仅提取为SOW/交付记录候选，不进入业务模型正文；保留假设情形和权限限定。",
+    "哪些旧未知在本期有了限定范围的依据，哪些生产/商业/因果问题仍未确认？保留提问前提，不能把附和、角色不掌握或一般做法升级为独立事实。"
+  ],
+  "batch_chars": 32000,
+  "max_batches": 24,
+  "reconcile_chars": 96000,
+  "profile": "deepseek-json"
+}

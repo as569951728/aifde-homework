@@ -1,0 +1,23 @@
+{
+  "case_id": "R02",
+  "started_at": "2026-11-06T17:34:56.503188+00:00",
+  "completed_at": "2026-11-06T17:35:05.428712+00:00",
+  "question": "人工情境：A的家庭季卡2026-06-30生效、2026-08-31计划结束、无提前终止，无其他卡；8月10日有一笔有效购买。8月付费购买人数是否纳入A？",
+  "fixture": null,
+  "input_track": "model_with_fixed_materials",
+  "fixed_materials": [
+    "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+  ],
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-fde71ed4796543ab85f093b2862d7557/run.json",
+    "run_id": "RUN-fde71ed4796543ab85f093b2862d7557",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "不纳入。本题为人工情境推导：8月付费购买人数按2026-08-31（8月最后一天）的付费资格筛选账户；A的家庭季卡虽属本期月报纳入产品范围，但其计划权益结束日为2026-08-31，按端点规则该日当天已无效，且A无其他卡可补足资格，因此A在月末不符合付费资格。A在8月10日的有效购买不要求当天已具资格，但统计上须先通过月末资格筛选，故该笔购买不使A进入8月付费购买人数。依据：本期统计确认邮件04的月末资格判断与“月末付费会员购买人数”定义；陈姐MSG-03886、03888、03890的计划结束日当天无效及空提前终止解释；小林MSG-03848、03854的家庭季卡纳入范围及单卡同时满足产品范围与有效期要求。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "75a2525ef8b4743876136f2c8445495d10acbdc6ed3e6e49325185b700c3096d"
+}

@@ -1,0 +1,2252 @@
+{
+  "version": "w03-model-tests-user-boundary-20261106-v1",
+  "audience": "reviewer_only",
+  "status": "prepared_not_run_pending_independent_review",
+  "grading": "逐例逐断言核结论、理由、范围、来源；全部必要点成立且无关键错误才通过。可等价表达，不用关键词/总分抵消关键错误。证据缺失记需补证，不自动判不存在。",
+  "phase_handling": "W03新增预期用于更新后候选；旧v0.4缺新增信息记覆盖缺口，不追改旧通过结果。先冻结题/预期/模型/输入/配置，再保存原答和逐项判读；发现预期错误另版并对受影响样本同样重评。模型知识对照须同题同配置，仅模型输入不同；不能用固定材料答对证明模型增益。",
+  "artifact_review_inputs": "T01–03需冻结候选、修订说明、原始来源与旧v0.4；任何源未在注册表中的新增文件须加注册并另版冻结。 本人新选择优先于旧题和v0.4中个人载体/交付段落；检查迁移去向，不要求复制回正文。",
+  "cases": [
+    {
+      "id": "U01",
+      "required_points": [
+        "区分理解复购变化、支持改善选择与减少运营重复整理核对两个目标；岗位提效不能证明复购改善。",
+        "保留沈总优先验证复购下降原因，会员老化为待验假设；口径和记录核查是支持路径，不替代经营目标。",
+        "能说明人群/期间/定义/来源与实际记录是判断依据；尚无证据证明具体原因、工时节省或复购改善。无需模型记载本期38项交付、技术测试阶段或个人Excel。"
+      ],
+      "unacceptable": [
+        "用“完成38项”替代原因验证目标",
+        "把会员老化写成已证实原因",
+        "把省时或复购提升写成已发生"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-0d5ba288-a623-56f1-84ac-bec076880d43-transcript.json",
+          "locator": "MSG-01731、MSG-01733、MSG-01737、MSG-01739",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+          "locator": "MSG-01925",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03856、MSG-03860",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/before-extension/business_model-v0.4.md",
+          "locator": "§1、§5",
+          "evidence_kind": "已采纳建模认识，非新增客户事实"
+        }
+      ],
+      "related_existing": [
+        "QH-KNOW-02",
+        "QH-KNOW-01"
+      ],
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "U02",
+      "required_points": [
+        "账户是本期统计标识，卡是可多张关联的权益记录，等级不等于付费资格；账户不自动等于跨系统自然人。",
+        "付费资格依业务范围和判定日；活跃依定义、期间、范围，是当前模型的分析属性，不是与付费／免费并列的永久第三身份；活跃定义未核时不能从无购买直接判不活跃。",
+        "购买是行为，由订单记录承载；复购率是有定义与范围的群体指标，定义与某期数值分开，不能当单个会员的固定身份。",
+        "例子中的结论条件一致，例如普通等级可有本期资格，但资格不证明发生购买，也不替代活跃定义。可接受其他有依据的例子，不要求固定措辞或本体术语。"
+      ],
+      "unacceptable": [
+        "把会员、卡、账户、自然人混成一个对象",
+        "把活跃定义为未经确认的固定阈值或第三身份",
+        "把等级、资格、购买和复购任意等同"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/before-extension/business_model-v0.4.md",
+          "locator": "§2：会员、活跃、购买记录／订单、复购率",
+          "evidence_kind": "已采纳的概念划分，非唯一建模形式"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "orders、members、cards",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03848、MSG-03854、MSG-03868、MSG-03870",
+          "evidence_kind": "访谈或指定材料"
+        }
+      ],
+      "related_existing": [
+        "M01",
+        "M03",
+        "M04"
+      ]
+    },
+    {
+      "id": "U03",
+      "required_points": [
+        "本期一账户可多卡、可多订单；订单关联一个CRM账户和一个成交门店，记录粒度分别是账户、卡、订单，不能按卡数重复计人或订单。",
+        "订单成交门店与账户归属门店是不同关系；题设成交统计归B店，不因账户归属A店改为A店。",
+        "仅有订单到账户、卡到账户的关联，不证明订单具体使用哪张卡；不能凭同属一个账户创造订单用卡事实。",
+        "本期测试数据关系可用于建模，不推断生产CRM与旧POS的自然人身份已统一；无需逐字背字段名或给SQL。"
+      ],
+      "unacceptable": [
+        "把归属门店当所有订单的成交门店",
+        "把账户的每张卡都连成订单实际用卡",
+        "多卡关联造成重复对象或重复订单"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "orders.member_id／store_id；members.home_store_id；cards.member_id",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03886、MSG-03890",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/07_客户内部沟通.md",
+          "locator": "IT对接纪要",
+          "evidence_kind": "访谈或指定材料"
+        }
+      ],
+      "related_existing": [
+        "M01",
+        "M03"
+      ]
+    },
+    {
+      "id": "U04",
+      "required_points": [
+        "结合小林先明确面向谁／做什么、确认执行方式与协作人、跟进发放使用反馈、整理结果和未核问题的一般做法；不捏造实际某场活动的名单条件。",
+        "门店准备要明确范围、门店任务、工作量、现场答复和记录；陈姐与门店相关同事确认人员及执行，整理完信息不等于已安排。",
+        "陈姐与小林的局部活动／反馈对接已有陈述；具体后续分析者、答复返回方式和同一实例闭环仍未核，不能说完整经营闭环已运行，也不能说不存在该流程。",
+        "活动、反馈、名单可按其业务用途说明输入产出与关联；个人Excel载体不进入模型正文。提出可核查的下一步并保留具体业务责任人未知，不擅自任命，也不以缺少个人载体描述判失败。"
+      ],
+      "unacceptable": [
+        "将我方经营框架写成客户实际已运行流程",
+        "把未知交接写成没有交接",
+        "把小林个人Excel直接当统一交付数据或完整活动平台"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03858、MSG-03860、MSG-03862",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+          "locator": "MSG-01945、MSG-01949、MSG-01953",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03888、MSG-03890",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/before-extension/business_model-v0.4.md",
+          "locator": "§2保留设计、§3局部流程与经营框架",
+          "evidence_kind": "已采纳建模选择及已标注我方设计"
+        }
+      ],
+      "related_existing": [
+        "M05",
+        "QH-KNOW-01"
+      ],
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "U05",
+      "required_points": [
+        "A保留为正确W03角色业务规则依据与尚缺凭据的并列状态，不能因文件未得而把已回答规则全部退回未知。",
+        "B需修正：原问题01918先带入“没人用”，01919的回应不构成独立证实；保留操作负担为个人感受，精确步骤与失败原因仍待核。",
+        "C需修正：未核实不代表不存在；D不能直接计算，两个角色数字的口径、来源、时点仍需核实。",
+        "E需修正：王经理提出核查意见，最终验收人、授权和批准仍未定。结论需与相应主体和来源对应，不只列一串无关引用。"
+      ],
+      "unacceptable": [
+        "所有说法一概待核，忽略已有日期规则",
+        "截掉提问前提，把角色顺答升级为独立事实",
+        "用同人复述冒充多源交叉验证或凭核查意见宣布批准"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+          "locator": "MSG-01918、MSG-01919、MSG-01921",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+          "locator": "MSG-01945、MSG-01953",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-0d5ba288-a623-56f1-84ac-bec076880d43-transcript.json",
+          "locator": "MSG-01719",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-c4fe490a-ddae-5bcb-a51b-f44dd796b854-transcript.json",
+          "locator": "MSG-01744",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+          "locator": "MSG-03911、MSG-03931、MSG-03933",
+          "evidence_kind": "访谈或指定材料"
+        }
+      ],
+      "related_existing": [
+        "M06",
+        "M07",
+        "M08"
+      ],
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "U06",
+      "required_points": [
+        "问数可帮助小林核名单和口径、发现遗漏或重复，为后续分析准备基础；没有真实业务归因、节省工时或复购改善证据。",
+        "卡范围、有效期与账户关系进入业务模型；本期报表选择与公式进入指标定义；FDE阶段成果、费用/结算/延期/变更、项目验收/批准与交付责任进入SOW/交付记录。业务模型保留青禾日常业务流程和决策职责，个人Excel内容留来源/核查记录，不能复制进正文。",
+        "统计人群、待审核候选和最终执行人群不同；需确认具体活动筛选条件、数据及审核／执行责任；不自动发券、联系会员或改记录，个人Excel不是独立真值或直接交付数据。",
+        "结合已知角色分工说明下一步：运营核业务范围与实际任务、门店按明确条件配合、IT核字段覆盖、王经理核统计与验收依据；具体未知负责人继续落实。",
+        "测试正确不等于生产已接通、预算／合同／正式验收批准或收益达成。必须保留“测试假设”性质，不把题设写回项目实际进度。"
+      ],
+      "unacceptable": [
+        "把月末资格写成一切业务的永久规则",
+        "从月报购买人数直接产生已授权营销名单",
+        "以测试通过宣布正式上线、验收或复购改善"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "统计选择与本阶段验收范围",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/07_客户内部沟通.md",
+          "locator": "运营群、IT纪要、范围评审",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03858、MSG-03860、MSG-03862、MSG-03868、MSG-03870",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+          "locator": "MSG-03911、MSG-03919、MSG-03931",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W01/修订记录/20261106-W03新访谈修订/docs/w01/project_assessment.md",
+          "locator": "§1、§5",
+          "evidence_kind": "导师代拟、本人已采纳的阶段判断；非客户批准"
+        }
+      ],
+      "related_existing": [
+        "M04",
+        "M05",
+        "M06",
+        "QH-KNOW-02"
+      ],
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "P01",
+      "required_points": [
+        "有资格；普通等级不能推出无资格。"
+      ],
+      "unacceptable": [
+        "混淆等级、支付金额、产品范围或有效状态。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03853、MSG-03854",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards、members",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "P02",
+      "required_points": [
+        "有资格；不能漏掉家庭季卡。"
+      ],
+      "unacceptable": [
+        "混淆等级、支付金额、产品范围或有效状态。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03853、MSG-03854",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards、members",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "P03",
+      "required_points": [
+        "无资格；金卡等级不能替代有效卡。"
+      ],
+      "unacceptable": [
+        "混淆等级、支付金额、产品范围或有效状态。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03853、MSG-03854",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards、members",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "P04",
+      "required_points": [
+        "无资格；收费不能使联名卡进入本期范围。"
+      ],
+      "unacceptable": [
+        "混淆等级、支付金额、产品范围或有效状态。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03853、MSG-03854",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards、members",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "P05",
+      "required_points": [
+        "无资格；有效状态不能代替产品纳入。"
+      ],
+      "unacceptable": [
+        "混淆等级、支付金额、产品范围或有效状态。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03853、MSG-03854",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards、members",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "P06",
+      "required_points": [
+        "有资格；不能用购卡金额大于零作资格门槛。"
+      ],
+      "unacceptable": [
+        "混淆等级、支付金额、产品范围或有效状态。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03853、MSG-03854",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards、members",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "P07",
+      "required_points": [
+        "不能确认；需卡产品、判定日及有效期/终止记录。"
+      ],
+      "unacceptable": [
+        "直接判有资格或无资格。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03848、MSG-03854",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "P08",
+      "required_points": [
+        "仅本期总部月报；其他报表须核其范围与口径。"
+      ],
+      "unacceptable": [
+        "全公司永久统一排除联名卡。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03848",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "P09",
+      "required_points": [
+        "都不能推出；本期资格范围不等于全系统分类规则。",
+        "两类概念需要分开核范围，但系统互斥仍未经记录核验；旧互斥判断不能升级为客户事实。"
+      ],
+      "unacceptable": [
+        "把不具本期资格直接当免费类别；把概念区分当系统绝对互斥。"
+      ],
+      "sources": [
+        {
+          "source": "H-c4fe490a",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-c4fe490a-ddae-5bcb-a51b-f44dd796b854-transcript.json",
+          "locator": "MSG-01742、MSG-01754"
+        },
+        {
+          "source": "L",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03848"
+        },
+        {
+          "source": "MODEL",
+          "path": "W03/实操工程/docs/w03/business_model.md",
+          "locator": "§2会员：已采纳建模认识及学员判断状态"
+        }
+      ],
+      "derivation": "原文及范围下的独立推导；构造条件不写客户事实",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DY01",
+      "required_points": [
+        "无效；本例区分生效前。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DY02",
+      "required_points": [
+        "有效；本例区分生效当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DY03",
+      "required_points": [
+        "有效；本例区分生效后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DY04",
+      "required_points": [
+        "有效；本例区分计划结束前一天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DY05",
+      "required_points": [
+        "无效；本例区分计划结束当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DY06",
+      "required_points": [
+        "无效；本例区分计划结束后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DY07",
+      "required_points": [
+        "有效；本例区分提前终止前一天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DY08",
+      "required_points": [
+        "无效；本例区分提前终止当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DY09",
+      "required_points": [
+        "无效；本例区分提前终止后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DY10",
+      "required_points": [
+        "无效；本例区分计划结束早于记录所填终止日。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DY11",
+      "required_points": [
+        "有效；本例区分历史判定而非运行时当前状态。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DY12",
+      "required_points": [
+        "无效：判定日早于valid_from；非空提前终止日期不免除开始日期约束。"
+      ],
+      "unacceptable": [
+        "只检查判定日早于ended_at，漏掉尚未生效，误判有效。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DQ01",
+      "required_points": [
+        "无效；本例区分生效前。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DQ02",
+      "required_points": [
+        "有效；本例区分生效当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DQ03",
+      "required_points": [
+        "有效；本例区分生效后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DQ04",
+      "required_points": [
+        "有效；本例区分计划结束前一天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DQ05",
+      "required_points": [
+        "无效；本例区分计划结束当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DQ06",
+      "required_points": [
+        "无效；本例区分计划结束后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DQ07",
+      "required_points": [
+        "有效；本例区分提前终止前一天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DQ08",
+      "required_points": [
+        "无效；本例区分提前终止当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DQ09",
+      "required_points": [
+        "无效；本例区分提前终止后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DQ10",
+      "required_points": [
+        "无效；本例区分计划结束早于记录所填终止日。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DQ11",
+      "required_points": [
+        "有效；本例区分历史判定而非运行时当前状态。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "unacceptable": [
+        "日期判断相反；忽略任一日期约束；把空终止当永久有效或拿运行日代替判定日。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "DQ12",
+      "required_points": [
+        "无效：判定日早于valid_from；非空提前终止日期不免除开始日期约束。"
+      ],
+      "unacceptable": [
+        "只检查判定日早于ended_at，漏掉尚未生效，误判有效。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "C01",
+      "required_points": [
+        "1个账户、2笔订单。",
+        "先按账户确认存在合格卡，或等效去重后关联；每笔order_id只累计一次。"
+      ],
+      "unacceptable": [
+        "按卡算2人或复制成4笔订单；人数对但订单翻倍。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03854",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03886",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "orders、cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "C02",
+      "required_points": [
+        "有；存在一张合范围且有效卡即可，其他卡不否定。"
+      ],
+      "unacceptable": [
+        "要求所有卡都有效或都纳入。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03853、MSG-03854",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03886",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "C03",
+      "required_points": [
+        "不能；必须同一张卡同时合范围且有效，本例无资格。"
+      ],
+      "unacceptable": [
+        "从不同卡分别取类型和状态拼成资格。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03848、MSG-03854",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03886",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "C04",
+      "required_points": [
+        "完整无卡为无资格；未提供卡表为未知，不能混同。"
+      ],
+      "unacceptable": [
+        "一律未知或把未提供也判无资格。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03854",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03886",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "C05",
+      "required_points": [
+        "有资格；当月无有效购买；活跃须另有定义，不能仅据该条件确定。"
+      ],
+      "unacceptable": [
+        "把资格当购买或默认活跃；无购买反推无资格。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03848、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "D3",
+          "locator": "月内购买会员数",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "C06",
+      "required_points": [
+        "1个账户、2笔订单。",
+        "先按账户确认存在合格卡，或等效去重后关联；每笔order_id只累计一次。"
+      ],
+      "unacceptable": [
+        "按卡算2人或复制成4笔订单；人数对但订单翻倍。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03854",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03886",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D5",
+          "locator": "orders、cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "R01",
+      "required_points": [
+        "纳入；8月末有资格，按月末选择账户后纳入整月有效购买。"
+      ],
+      "unacceptable": [
+        "按8月10日无卡资格排除早期购买。"
+      ],
+      "sources": [
+        {
+          "source": "D4",
+          "locator": "本期统计选择",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03865、MSG-03866、MSG-03867、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03886",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "R02",
+      "required_points": [
+        "不纳入；月底计划结束当天已无资格，购买当时有效不替代月底状态。"
+      ],
+      "unacceptable": [
+        "按购买当时有效纳入。"
+      ],
+      "sources": [
+        {
+          "source": "D4",
+          "locator": "本期统计选择",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03865、MSG-03866、MSG-03867、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03886",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "R03",
+      "required_points": [
+        "均不纳入；均无当月有效购买，不把全部有资格账户当购买账户。"
+      ],
+      "unacceptable": [
+        "把全退款当有效购买或计入无订单账户。"
+      ],
+      "sources": [
+        {
+          "source": "D4",
+          "locator": "本期统计选择",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03865、MSG-03866、MSG-03867、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03886",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D1",
+          "locator": "有效订单数",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "R04",
+      "required_points": [
+        "说明本期六项付费月报仅支持完整自然月；不静默扩成整月。"
+      ],
+      "unacceptable": [
+        "擅自改日期或返回不完整月的正式指标。"
+      ],
+      "sources": [
+        {
+          "source": "D4",
+          "locator": "查询范围限制",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+        },
+        {
+          "source": "CONTRACT",
+          "locator": "status",
+          "path": "W03/实操工程/docs/w03/contract.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "R05",
+      "required_points": [
+        "各月购买人数1、复购人数0；不可合并两笔成为月内复购，也不可把1+1当跨月唯一2人。"
+      ],
+      "unacceptable": [
+        "跨月凑两单或直接加去重人数。"
+      ],
+      "sources": [
+        {
+          "source": "D3",
+          "locator": "月内购买会员数、月内复购会员数、月内复购率",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "R06",
+      "required_points": [
+        "付费六项不支持门店或渠道拆分；连续完整多月可按月分别列出，不能合并为一个总体人数/比率。"
+      ],
+      "unacceptable": [
+        "任意按门店或渠道拆；多月率简单平均。"
+      ],
+      "sources": [
+        {
+          "source": "D4",
+          "locator": "六项指标及限制",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "R07",
+      "required_points": [
+        "分子选C；分母选B和C，A不在分母。",
+        "03已将旧全部注册会员分母改为同月有效购买账户；这是本期测试定义，不追认旧四季度报表。"
+      ],
+      "unacceptable": [
+        "分母A/B/C；把旧稿或注册人群继续当当前分母。"
+      ],
+      "sources": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "开头统计调整、月内复购率"
+        }
+      ],
+      "derivation": "原文及范围下的独立推导；构造条件不写客户事实",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "B01",
+      "required_points": [
+        "支付订单O1、O2、O4；有效购买仅O1。",
+        "退款是支付后的累计退回，优惠为原价减实付；不能混减或用paid直接代替有效。"
+      ],
+      "unacceptable": [
+        "全退/零净额/取消混入有效；将退款从优惠中抵扣。"
+      ],
+      "sources": [
+        {
+          "source": "D1",
+          "locator": "支付、有效、退款、优惠",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md"
+        },
+        {
+          "source": "D5",
+          "locator": "orders",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "B02",
+      "required_points": [
+        "可以按8月原订单日期及快照累计退款算订单口径净额；不能推出9月退款现金流，需退款事件/时间数据。"
+      ],
+      "unacceptable": [
+        "因为无退款日期阻止已定义净额；或把退款放到推测的退款月。"
+      ],
+      "sources": [
+        {
+          "source": "D1",
+          "locator": "退款金额、净销售额",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md"
+        },
+        {
+          "source": "D5",
+          "locator": "refund_cents",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "B03",
+      "required_points": [
+        "计原始3件；金额不足以推回退货件数；购卡实付不是商品订单收入。"
+      ],
+      "unacceptable": [
+        "按金额比例折算2.4件或称净销量；加购卡收入。"
+      ],
+      "sources": [
+        {
+          "source": "D1",
+          "locator": "有效订单商品件数",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md"
+        },
+        {
+          "source": "D5",
+          "locator": "cards.card_paid_cents、orders.quantity",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "B04",
+      "required_points": [
+        "全覆盖有效单先按日期和订单号排序，首单O100属于7月；8月无首单，O200为后续单；不是终身首购。"
+      ],
+      "unacceptable": [
+        "先筛8月后排序把O200当首单；选择取消订单；同日任意挑；声称终身。"
+      ],
+      "sources": [
+        {
+          "source": "D3",
+          "locator": "观测期首购、首单与后续购买",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "B05",
+      "required_points": [
+        "分别是可核的零净额、分母零的未定义、覆盖外不支持；13000分是130元，输出单位必须明确。"
+      ],
+      "unacceptable": [
+        "统一填0；未定义变0；分/元混用。"
+      ],
+      "sources": [
+        {
+          "source": "D2",
+          "locator": "分母为零",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md"
+        },
+        {
+          "source": "D3",
+          "locator": "月内复购率",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md"
+        },
+        {
+          "source": "D5",
+          "locator": "覆盖、整数分",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        },
+        {
+          "source": "CONTRACT",
+          "locator": "unsupported、units",
+          "path": "W03/实操工程/docs/w03/contract.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "B06",
+      "required_points": [
+        "members账户、cards卡、orders订单、stores门店；cards和orders均经member_id连账户；orders.store_id连成交店，members.home_store_id连归属店；缺订单到具体卡的键，不能指定某卡。"
+      ],
+      "unacceptable": [
+        "账户当自然人；成交店等同归属店；捏造order.card_id。"
+      ],
+      "sources": [
+        {
+          "source": "D5",
+          "locator": "orders、members、stores、cards",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "F01",
+      "required_points": [
+        "不能直接作为统一统计/交付事实；可在核来源、字段和具体任务后辅助还原名单与执行记录，不一律禁止阅读。"
+      ],
+      "unacceptable": [
+        "直接替代正式统计；或认为个人表完全不能参考。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03857、MSG-03858、MSG-03870",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run",
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "F02",
+      "required_points": [
+        "记录个人优先偏好与痛点；未来支持需确认范围/条件；不等于已纳入本期或授权自动发券联系改记录。"
+      ],
+      "unacceptable": [
+        "把偏好写成获批交付或自动执行授权；把助手权限限制写为小林本人无权。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03859、MSG-03860",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "W",
+          "locator": "MSG-03910、MSG-03911",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run",
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "F03",
+      "required_points": [
+        "不能；需选具体活动核名单来源/条件、执行与协作记录、反馈来源及结果；一般步骤不是已发生的完整实例。"
+      ],
+      "unacceptable": [
+        "编出最近活动、阈值或闭环；把未知写成流程不存在。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03858、MSG-03860、MSG-03862",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "F04",
+      "required_points": [
+        "明确适用范围、门店任务/工作量、现场问题责任、工作记录与考核影响；陈姐据明确安排配合，需澄清再安排；整理不等于执行获批。"
+      ],
+      "unacceptable": [
+        "信息齐就视为人手、考核、执行已确认。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03886、MSG-03887、MSG-03888、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "H-d260d7d2",
+          "locator": "MSG-01949、MSG-01953",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "F05",
+      "required_points": [
+        "不证明；分析接收者、反馈返回门店及下一轮决策仍缺记录。可对具体活动交接/分析/复盘记录找实际经手人核；不指定未确认人名。"
+      ],
+      "unacceptable": [
+        "把局部交接写完整闭环，或未知即不存在。"
+      ],
+      "sources": [
+        {
+          "source": "H-d260d7d2",
+          "locator": "MSG-01945、MSG-01949、MSG-01953",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03862",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "F06",
+      "required_points": [
+        "未有工时测量或因果统计；还有权益说明与未购会员回访；效果、执行、建议采纳分别核。"
+      ],
+      "unacceptable": [
+        "把感受写精确耗时/原因；把全部运营限于发券。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03856、MSG-03858、MSG-03860",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "H-4abeb711",
+          "locator": "MSG-01919、MSG-01921",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "F07",
+      "required_points": [
+        "说明对象用途范围；配合取数条件、范围时间统计说明，列待补记录责任；没有生产权限/真实接入/固定交付或日期承诺。"
+      ],
+      "unacceptable": [
+        "一律拒绝核查；或将配合写成已交付/批准接入。"
+      ],
+      "sources": [
+        {
+          "source": "Z",
+          "locator": "MSG-03873、MSG-03876、MSG-03877、MSG-03879、MSG-03881、MSG-03883",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run",
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "F08",
+      "required_points": [
+        "四种状态分开；需要核销与订单关联、范围时间、购买及比较依据，不能从发放直接推出效果。"
+      ],
+      "unacceptable": [
+        "发放等于使用或促销导致改善。"
+      ],
+      "sources": [
+        {
+          "source": "H-d70b1629",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d70b1629-b176-53d1-8357-f195328c0193-transcript.json",
+          "locator": "MSG-01648"
+        },
+        {
+          "source": "H-c4fe490a",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-c4fe490a-ddae-5bcb-a51b-f44dd796b854-transcript.json",
+          "locator": "MSG-01752"
+        },
+        {
+          "source": "D7",
+          "path": "W03/实操工程/materials/w03/07_客户内部沟通.md",
+          "locator": "范围评审安排"
+        },
+        {
+          "source": "MODEL",
+          "path": "W03/实操工程/docs/w03/business_model.md",
+          "locator": "§2、§4"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "F09",
+      "required_points": [
+        "只确认该发放记录；不能从发放对象推出允许使用对象或具体商品/门店限制。",
+        "优惠来源、适用对象及系统/人工限制须对具体规则和记录核，不能编造限制或确认人。"
+      ],
+      "unacceptable": [
+        "收到即允许使用；自行断言全店全品类通用或任一具体规则。"
+      ],
+      "sources": [
+        {
+          "source": "H-d70b1629",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d70b1629-b176-53d1-8357-f195328c0193-transcript.json",
+          "locator": "MSG-01648"
+        },
+        {
+          "source": "H-c4fe490a",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-c4fe490a-ddae-5bcb-a51b-f44dd796b854-transcript.json",
+          "locator": "MSG-01752"
+        },
+        {
+          "source": "MODEL",
+          "path": "W03/实操工程/docs/w03/business_model.md",
+          "locator": "§4.2、§6优惠来源和限制：已采纳业务边界"
+        }
+      ],
+      "derivation": "原文及范围下的独立推导；构造条件不写客户事实",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "F10",
+      "required_points": [
+        "陈姐明确导购有会员注册指标；完整构成、计入方法和最终规则责任仍待核。",
+        "王经理转问不等于小林能确认；小林明确不掌握，个人Excel不能当考核依据。"
+      ],
+      "unacceptable": [
+        "转交即确认；指定小林为最终负责人；个人工作表直接计分。"
+      ],
+      "sources": [
+        {
+          "source": "H-33120509",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-33120509-3939-5d6c-81f1-3959fed49789-transcript.json",
+          "locator": "MSG-01685"
+        },
+        {
+          "source": "H-31e9e8f6",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-31e9e8f6-dbdd-5aca-90d0-c92014f1c5f0-transcript.json",
+          "locator": "MSG-01824"
+        },
+        {
+          "source": "H-4abeb711",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+          "locator": "MSG-01907"
+        }
+      ],
+      "derivation": "原文及范围下的独立推导；构造条件不写客户事实",
+      "execution_status": "not_run",
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "A01",
+      "required_points": [
+        "本期合成测试内38项查询与独立核对；客户提供/确认清单、测试范围、口径、验收依据和留证；交付方查询/校验/追溯/责任草案；运营业务、IT字段覆盖、王经理统计与验收依据核查。会员筛选运营后续。"
+      ],
+      "unacceptable": [
+        "写成生产上线、正式验收或已完成；漏掉独立核对。"
+      ],
+      "sources": [
+        {
+          "source": "W",
+          "locator": "MSG-03910、MSG-03911、MSG-03918、MSG-03919",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run",
+      "scope_note": "题目用于交付核查，不要求业务模型记载费用、结算、延期、变更、项目验收或批准事项。",
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "A02",
+      "required_points": [
+        "不能；只是核查意见；最终验收人、审批权限/授权额度与执行安排责任方尚待落实，不代指定。"
+      ],
+      "unacceptable": [
+        "擅定王经理或沈总为最终验收批准人。"
+      ],
+      "sources": [
+        {
+          "source": "W",
+          "locator": "MSG-03930、MSG-03931、MSG-03932、MSG-03933",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run",
+      "scope_note": "题目用于交付核查，不要求业务模型记载费用、结算、延期、变更、项目验收或批准事项。",
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "A03",
+      "required_points": [
+        "可列费用构成/计价依据以及拟与阶段成果记录对应；金额、节点划分、确认记录形式及付款安排待双方谈定。"
+      ],
+      "unacceptable": [
+        "编金额比例或节点已获承诺。"
+      ],
+      "sources": [
+        {
+          "source": "W",
+          "locator": "MSG-03926、MSG-03927",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run",
+      "scope_note": "题目用于交付核查，不要求业务模型记载费用、结算、延期、变更、项目验收或批准事项。",
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "A04",
+      "required_points": [
+        "书面说明内容、范围差异、费用责任影响；补依据后复核，具体批准权限另核；王经理只核查，不是自动批准。"
+      ],
+      "unacceptable": [
+        "口头同意自动纳入；无依据加费或扩范围。"
+      ],
+      "sources": [
+        {
+          "source": "W",
+          "locator": "MSG-03924、MSG-03925",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run",
+      "scope_note": "题目用于交付核查，不要求业务模型记载费用、结算、延期、变更、项目验收或批准事项。",
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "A05",
+      "required_points": [
+        "留缺项、通知时间、实际影响、受影响/不受影响工作；执行安排方决定继续与排期；受影响排期费用双方书面确认再复核，未谈金额待定。"
+      ],
+      "unacceptable": [
+        "写客户已经延期；自动顺延/加费；王经理决定执行安排。"
+      ],
+      "sources": [
+        {
+          "source": "W",
+          "locator": "MSG-03928、MSG-03929、MSG-03931",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run",
+      "scope_note": "题目用于交付核查，不要求业务模型记载费用、结算、延期、变更、项目验收或批准事项。",
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "A06",
+      "required_points": [
+        "逐项记依据责任，待确认由业务补后复核；依据不足/费用不清暂缓财务确认，不是永久否决或已批准。"
+      ],
+      "unacceptable": [
+        "无条件通过或扩大为永久停项。"
+      ],
+      "sources": [
+        {
+          "source": "W",
+          "locator": "MSG-03911、MSG-03922、MSG-03923",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run",
+      "scope_note": "题目用于交付核查，不要求业务模型记载费用、结算、延期、变更、项目验收或批准事项。",
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "E01",
+      "required_points": [
+        "“没人用”前提出自问题，原回答沿用，不算独立证实全面使用情况/原因；三步为个人感受非精确测量；保留原问答，核具体任务。"
+      ],
+      "unacceptable": [
+        "把学员前提改写小林独立事实；删原问答或把感受精确化。"
+      ],
+      "sources": [
+        {
+          "source": "H-4abeb711",
+          "locator": "MSG-01918、MSG-01919、MSG-01921",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "E02",
+      "required_points": [
+        "四季下降是角色报告未独立复算；老化为待验原因；三个月为期望；本期正确查询支持口径和查数，不能直接证明旧趋势原因或收益。"
+      ],
+      "unacceptable": [
+        "把老化因果、收益或三个月承诺写为事实。"
+      ],
+      "sources": [
+        {
+          "source": "H-0d5ba288",
+          "locator": "MSG-01719、MSG-01731、MSG-01739",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-0d5ba288-a623-56f1-84ac-bec076880d43-transcript.json"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03856",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "E03",
+      "required_points": [
+        "不可；先核来源、定义、时间、覆盖和去重，不能由两个不同总体直接推率/差值或矛盾。"
+      ],
+      "unacceptable": [
+        "给出66.7%或40万作为业务结论。"
+      ],
+      "sources": [
+        {
+          "source": "H-0d5ba288",
+          "locator": "MSG-01719",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-0d5ba288-a623-56f1-84ac-bec076880d43-transcript.json"
+        },
+        {
+          "source": "H-c4fe490a",
+          "locator": "MSG-01744",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-c4fe490a-ddae-5bcb-a51b-f44dd796b854-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "E04",
+      "required_points": [
+        "可在本期两类卡测试范围采用陈姐角色确认的日期规则；旧不掌握不是反规则冲突。文件、历史执行、生产普适性另待核，不能一律阻塞测试范围更新。"
+      ],
+      "unacceptable": [
+        "继续把全部日期规则写未知；或写生产历史已验证/所有产品通用。"
+      ],
+      "sources": [
+        {
+          "source": "L",
+          "locator": "MSG-03849、MSG-03850",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "Z",
+          "locator": "MSG-03874、MSG-03875",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "E05",
+      "required_points": [
+        "不作为W03事实、条件或缺口关闭依据；作废归档保留，真实名单条件待正确资料核实。"
+      ],
+      "unacceptable": [
+        "混入当前事实或以曾在对话出现为依据。"
+      ],
+      "sources": [
+        {
+          "source": "W3_RULE",
+          "locator": "作废W04规则",
+          "path": "W03/实操工程/AGENTS.md"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03858、MSG-03860、MSG-03862",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        }
+      ],
+      "derivation": "来源拒绝测试；题中作废身份为已核定输入，不测试独立识别周次",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "E06",
+      "required_points": [
+        "陈姐答复范围为两类卡本期月报；王经理讨论学员阶段草案并补四类说明；总结认可须连前文，不变成客户主动提出全部方案或正式批准。"
+      ],
+      "unacceptable": [
+        "省略问句范围外推；把总结认可当签约批准。"
+      ],
+      "sources": [
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "W",
+          "locator": "MSG-03910、MSG-03911、MSG-03932、MSG-03933",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "T01",
+      "required_points": [
+        "业务模型正文只描述青禾经营目标、业务对象/关系/规则、真实业务工作与交接、业务决策职责及相应未知。",
+        "个人Excel/工作账及其语义放来源/核查记录，不建模型专段/对象/关系；FDE项目费用/结算/延期/变更/项目验收批准及交付责任放SOW/交付记录。",
+        "来源核查、取舍与测试日志不混入业务正文；允许必要业务依据引用，但不把“本文排除Excel/费用”的过程解释当成新的业务正文段落。"
+      ],
+      "unacceptable": [
+        "正文写成长篇逐条取舍过程；删除审计记录；把导师代拟记本人独立完成。",
+        "以原v0.4包含个人表为由继续保留其正文专段；把FDE交付条款换名为业务规则后写入。"
+      ],
+      "sources": [
+        {
+          "source": "ROOT_RULE",
+          "locator": "保留原话与学习记录边界",
+          "path": "AGENTS.md"
+        },
+        {
+          "source": "TASK",
+          "locator": "模型更新与验证",
+          "path": "W03/W03 材料包/05_作业任务书.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run",
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "T02",
+      "required_points": [
+        "所有新增采用有准确来源、范围与性质；无课堂/参考/作废来源污染；字典实际字段与建议属性分开；复核源片段而非仅检查文件存在。"
+      ],
+      "unacceptable": [
+        "假引用、只看回答不看前提、无据字段、合成测试冒充生产。"
+      ],
+      "sources": [
+        {
+          "source": "ROOT_RULE",
+          "locator": "案例与来源",
+          "path": "AGENTS.md"
+        },
+        {
+          "source": "D5",
+          "locator": "数据接入层",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md"
+        },
+        {
+          "source": "Z",
+          "locator": "MSG-03875、MSG-03877",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run"
+    },
+    {
+      "id": "T03",
+      "required_points": [
+        "保留业务目标、真实局部业务流程、业务动作的决策职责及关键未知；新证据在本期范围内可修正旧未知。",
+        "按本人选择迁出个人Excel和FDE交付条款属合规范围调整，不因旧正文/旧题出现而判回归失败；对应原事实仍在原文/核查/SOW中可追溯。",
+        "保留W02原稿和旧评分；候选、配置、设计审核、实际问答和客户验收分开。"
+      ],
+      "unacceptable": [
+        "覆盖W02基线或倒改旧评分；只剩六项月报；新规则与旧未知自相矛盾。"
+      ],
+      "sources": [
+        {
+          "source": "MODEL",
+          "locator": "§1至§7",
+          "path": "W03/实操工程/docs/w03/business_model.md"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03848、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03886",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "TASK",
+          "locator": "模型更新",
+          "path": "W03/W03 材料包/05_作业任务书.md"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run",
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "REG01",
+      "required_points": [
+        "沿用旧题中有来源的经营目标、岗位/流程、证据和权限边界。",
+        "新增本期规则可在限定范围内修正旧未知；未给生产证据/筛选条件/效果的部分仍未知。",
+        "具体分项基准见legacy_invariants，更新取舍另留记录，不能按字面旧答案惩罚有据修订。"
+      ],
+      "unacceptable": [
+        "丢失旧目标/权限；把候选当执行；抄旧未知阻塞有证据更新。"
+      ],
+      "sources": [
+        {
+          "source": "REG",
+          "locator": "QH-KNOW-01",
+          "path": "W03/实操工程/customer/w02/knowledge_cases_v0.3.json"
+        },
+        {
+          "source": "MODEL",
+          "locator": "§1至§7",
+          "path": "W03/实操工程/docs/w03/business_model.md"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03848、MSG-03860、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03886",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "H-0d5ba288",
+          "locator": "MSG-01731、MSG-01739",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-0d5ba288-a623-56f1-84ac-bec076880d43-transcript.json"
+        },
+        {
+          "source": "H-4abeb711",
+          "locator": "MSG-01925",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run",
+      "legacy_invariants": [
+        "结合小林的需关注会员及每条建议依据，解释输出要减少原有整理核对；具体人群规则仍未知，不声称已生成名单或省时。个人Excel及其调查细节不要求在模型正文表达。",
+        "结合陈姐的适用范围、参与门店、任务、答复责任和待核事项，区分信息整理与人员、工作量、执行和工作记录确认；具体答复人仍待核。",
+        "两类会员按活动范围分别核查，不预设要求不同；不将候选整理方案当已批准或已运行系统。",
+        "用陈姐前中后观察方向提出未来验证，区分期望、试用、实际效果；小林提效与复购结果分别验证，不声称反馈闭环已通。"
+      ],
+      "original_case_id": "QH-KNOW-01",
+      "historical_scores": "保留，另记录本期结果；不倒改",
+      "historical_legacy_invariants": [
+        "结合小林的需关注会员及每条建议依据，解释输出要减少原有整理核对；筛选规则、Excel语义仍未知，不声称已生成名单或省时。",
+        "结合陈姐的适用范围、参与门店、任务、答复责任和待核事项，区分信息整理与人员、工作量、执行和工作记录确认；具体答复人仍待核。",
+        "两类会员按活动范围分别核查，不预设要求不同；不将候选整理方案当已批准或已运行系统。",
+        "用陈姐前中后观察方向提出未来验证，区分期望、试用、实际效果；小林提效与复购结果分别验证，不声称反馈闭环已通。"
+      ],
+      "boundary_change_source": {
+        "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+        "nature": "本人明确建模取舍",
+        "locator": "user_quotes、excel_disposition、delivery_disposition"
+      }
+    },
+    {
+      "id": "REG02",
+      "required_points": [
+        "沿用旧题中有来源的经营目标、岗位/流程、证据和权限边界。",
+        "新增本期规则可在限定范围内修正旧未知；未给生产证据/筛选条件/效果的部分仍未知。",
+        "具体分项基准见legacy_invariants，更新取舍另留记录，不能按字面旧答案惩罚有据修订。"
+      ],
+      "unacceptable": [
+        "丢失旧目标/权限；把候选当执行；抄旧未知阻塞有证据更新。"
+      ],
+      "sources": [
+        {
+          "source": "REG",
+          "locator": "QH-KNOW-02",
+          "path": "W03/实操工程/customer/w02/knowledge_cases_v0.3.json"
+        },
+        {
+          "source": "MODEL",
+          "locator": "§1至§7",
+          "path": "W03/实操工程/docs/w03/business_model.md"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03848、MSG-03860、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03886",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "H-0d5ba288",
+          "locator": "MSG-01731、MSG-01739",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-0d5ba288-a623-56f1-84ac-bec076880d43-transcript.json"
+        },
+        {
+          "source": "H-4abeb711",
+          "locator": "MSG-01925",
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json"
+        }
+      ],
+      "derivation": "原文支持及指定情境下推导",
+      "execution_status": "not_run",
+      "legacy_invariants": [
+        "识别经营方向为复购止跌回升，首阶段优先验证复购下滑原因，先对齐会员范围和复购口径；会员老化是沈总优先检验的假设，不能当已知原因或排除其他待验证解释。",
+        "阶段讨论材料说明业务问题、覆盖范围、已有依据、待核项、需要谁配合和阶段结果如何观察；不只列通用进度表、上线功能或岗位工具。",
+        "范围应考虑两类会员、期间和渠道等必要边界；不把80万活跃与120万系统全量混用，不编造复购公式、数据可得性或分析结果。",
+        "结合已知参与范围说明协作，区分沈总定优先级及推动待决、小林运营、老周数据条件、陈姐门店实际情况；未知的最终定义人、分析责任、材料交付与日期继续待核，不擅自任命或许诺。",
+        "保留小林提效目标，将陈姐信息整理作为岗位支持候选，不宣告其为第一阶段目标或必建系统；详细设计、试点批准、实际执行与经营效果分开。",
+        "能根据取得了什么依据、排除了或保留了什么假设、缺口和后续验证安排说明阶段进展；具体观察办法只能作为建议，不伪造已取得数据、已验证原因、已批准试点或三个月量化承诺。"
+      ],
+      "original_case_id": "QH-KNOW-02",
+      "historical_scores": "保留，另记录本期结果；不倒改"
+    }
+  ]
+}

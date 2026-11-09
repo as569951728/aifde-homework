@@ -1,0 +1,40 @@
+{
+  "purpose": "Pure interface/type check only; no business data, generated SQL, metric build, native query, or test actual used.",
+  "inputs_and_results": [
+    {
+      "input_type": "date",
+      "input": "2026-07-01",
+      "mf_cell_type": "datetime",
+      "engine_serialized": "2026-07-01 00:00:00"
+    },
+    {
+      "input_type": "datetime",
+      "input": "2026-07-01 00:00:00",
+      "mf_cell_type": "datetime",
+      "engine_serialized": "2026-07-01 00:00:00"
+    },
+    {
+      "input_type": "date",
+      "input": "2026-08-01",
+      "mf_cell_type": "datetime",
+      "engine_serialized": "2026-08-01 00:00:00"
+    }
+  ],
+  "conclusion": "MetricFlowDataTable converts date to midnight datetime. Engine str(datetime) yields YYYY-MM-DD 00:00:00. Monthly group-key expected representation may use this format independently of business totals.",
+  "sources": {
+    "mf_table": {
+      "path": ".venv/lib/python3.11/site-packages/metricflow/data_table/mf_table.py",
+      "lines": "258-280",
+      "sha256": "1825bbd85cdb6537089b02aa2d21c50020b617dbeb3e2e81cf64b068a447372f"
+    },
+    "engine": {
+      "path": "platform/fde_product/metrics/engine.py",
+      "lines": "149-157"
+    },
+    "adapter_client": {
+      "path": ".venv/lib/python3.11/site-packages/dbt_metricflow/cli/dbt_connectors/adapter_backed_client.py",
+      "lines": "172-177"
+    }
+  },
+  "native_business_queries": 0
+}

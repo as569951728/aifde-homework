@@ -1,0 +1,316 @@
+{
+  "client_date": "2026-11-08",
+  "counts": {
+    "unique_cases": 6,
+    "passed_cases": 5,
+    "unresolved_ids": [
+      "U05"
+    ],
+    "original_cases": 5,
+    "control_cases": 1,
+    "native_runs": 7,
+    "http_attempts": 8,
+    "successful_native_answers": 6,
+    "original_82_not_rerun_on_new_body": 77,
+    "tracks": {
+      "model_only": {
+        "cases": 4,
+        "passed": 4,
+        "unresolved_ids": []
+      },
+      "source_context_original": {
+        "cases": 1,
+        "passed": 0,
+        "unresolved_ids": [
+          "U05"
+        ]
+      },
+      "independent_control": {
+        "cases": 1,
+        "passed": 1,
+        "unresolved_ids": []
+      }
+    }
+  },
+  "stages": [
+    {
+      "stage": "qa-01",
+      "review_sha256": "0c5eb2fa773b6cc21c3c969ac7d33c5ae7d88cbc785ace50a9f6a8ad838d7a2b",
+      "protocol_audit_sha256": "6ee66e43fb8bbf25999e6315635207730bd721376237f5b47a35991b3f4e274f",
+      "summary": {
+        "total_cases": 6,
+        "original_cases": 5,
+        "controls": 1,
+        "semantic_passed": 5,
+        "semantic_failed": 0,
+        "semantic_not_assessable": 1,
+        "not_assessable_ids": [
+          "U05"
+        ],
+        "original_cases_passed": 4,
+        "controls_passed": 1,
+        "model_only": {
+          "cases": 4,
+          "passed": 4
+        },
+        "source_context_original": {
+          "cases": 1,
+          "not_assessable": 1
+        },
+        "native_runs": 6,
+        "http_attempts": 7,
+        "native_successes": 5,
+        "format_failures": 0,
+        "no_public_response": 0,
+        "no_final_public_response": 1,
+        "partial_public_response_only": 1,
+        "framework_length_expansions": 1,
+        "semantic_retries": 0,
+        "checks_passed": 331,
+        "checks_failed": 0
+      }
+    },
+    {
+      "stage": "qa-02-u05-recovery",
+      "review_sha256": "8a59db30932e54e797a35e5a9ebcbc283a9919856545a322df2b598e7bf27c63",
+      "protocol_audit_sha256": "d2bd047b0c4490b3a00eb57539e56920957a6df9d313d6f9d94474f8982ea47e",
+      "summary": {
+        "total_cases": 1,
+        "semantic_passed": 0,
+        "semantic_failed": 1,
+        "semantic_failed_ids": [
+          "U05"
+        ],
+        "semantic_not_assessable": 0,
+        "native_runs": 1,
+        "http_attempts": 1,
+        "native_successes": 1,
+        "format_failures": 0,
+        "no_public_response": 0,
+        "no_final_public_response": 0,
+        "partial_public_response_only": 0,
+        "framework_length_expansions": 0,
+        "semantic_retries": 0,
+        "checks_passed": 76,
+        "checks_failed": 0
+      }
+    }
+  ],
+  "executions": [
+    {
+      "stage": "qa-01",
+      "id": "U01",
+      "verdict": "passed",
+      "native_status": "succeeded",
+      "http_attempts": 1,
+      "output": "artifacts/w03/model-clarification-20261108/qa-01/output/U01.json",
+      "output_sha256": "67e221568f83afb57c387d8afd0d14bb7fb5a841901ce35517d62697ceb3213d",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-f7ace08ec82a4acdb1505503a7fcad3a/run.json",
+      "native_run_sha256": "f4d0953213046ee894376ceb00e4ad381f7a663d409d3c3800d3322b7f3f605b",
+      "review": "artifacts/w03/model-clarification-20261108/qa-01/independent-review/review.json",
+      "review_sha256": "0c5eb2fa773b6cc21c3c969ac7d33c5ae7d88cbc785ace50a9f6a8ad838d7a2b",
+      "reason": "经营原因验证与岗位提效分开，角色判断/期望/未验证效果保持；80万/120万的具体定义范围时点来源明确待核。统计、候选和实际执行集合分开，简写与重排未改变三者含义，前文保留业务负责人确认。",
+      "input_track": "model_only",
+      "case_origin": "original_82"
+    },
+    {
+      "stage": "qa-01",
+      "id": "U05",
+      "verdict": "not_assessable_technical_failure",
+      "native_status": "failed",
+      "http_attempts": 2,
+      "output": "artifacts/w03/model-clarification-20261108/qa-01/output/U05.json",
+      "output_sha256": "99b0979c34ccfe81e2af3278d8d65d066555ac101b68ea02959a2412a7cc650e",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-cbbfb3342c3545e5ab32cd2c9ad48daf/run.json",
+      "native_run_sha256": "0ac0ab9bc7d4ff0be99e249a43710417faead4a03a64cedac7303780fe44e98a",
+      "review": "artifacts/w03/model-clarification-20261108/qa-01/independent-review/review.json",
+      "review_sha256": "0c5eb2fa773b6cc21c3c969ac7d33c5ae7d88cbc785ace50a9f6a8ad838d7a2b",
+      "reason": "首个8192响应confirmed length截断，公开部分文本只至B开头；固定扩容16384后发生MODEL_NETWORK_ERROR。最终无有效answer，不评整题语义，不按纯网络无公开响应处理。",
+      "input_track": "model_with_source_context",
+      "case_origin": "original_82"
+    },
+    {
+      "stage": "qa-01",
+      "id": "E03",
+      "verdict": "passed",
+      "native_status": "succeeded",
+      "http_attempts": 1,
+      "output": "artifacts/w03/model-clarification-20261108/qa-01/output/E03.json",
+      "output_sha256": "7be13fa79610f85dfff6700b8fa87a911ae8615808126a5a112e5442948fd94c",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-07ce186edd0041ed810df565767f8cd4/run.json",
+      "native_run_sha256": "736fbbc7bb115cbf9aff019623d451ee2e00782aea88e90084e570eeaa2ea72e",
+      "review": "artifacts/w03/model-clarification-20261108/qa-01/independent-review/review.json",
+      "review_sha256": "0c5eb2fa773b6cc21c3c969ac7d33c5ae7d88cbc785ace50a9f6a8ad838d7a2b",
+      "reason": "分别拒绝直接活跃率、差值沉睡和同口径矛盾；正确区分活跃/系统全量，保留分子分母范围时点可比性待核，没有追加必须同一来源。",
+      "input_track": "model_only",
+      "case_origin": "original_82"
+    },
+    {
+      "stage": "qa-01",
+      "id": "REG01",
+      "verdict": "passed",
+      "native_status": "succeeded",
+      "http_attempts": 1,
+      "output": "artifacts/w03/model-clarification-20261108/qa-01/output/REG01.json",
+      "output_sha256": "3a4637d253cdc9e0d725e4035a97557c668204184dcfd2a08b901e0f19f1325b",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-cb407857183a4e6f8845f4a717722b76/run.json",
+      "native_run_sha256": "5469aa36809046af477fb9d00ea9c97965528f852395ea968dddff3224b7c28d",
+      "review": "artifacts/w03/model-clarification-20261108/qa-01/independent-review/review.json",
+      "review_sha256": "0c5eb2fa773b6cc21c3c969ac7d33c5ae7d88cbc785ace50a9f6a8ad838d7a2b",
+      "reason": "交付包、工作接入和评估均标建议；三集合分开，月报资格不外推券活动，人群/执行需业务确认且无自动动作；过程提效与复购结果分别验证。",
+      "input_track": "model_only",
+      "case_origin": "original_82"
+    },
+    {
+      "stage": "qa-01",
+      "id": "P01",
+      "verdict": "passed",
+      "native_status": "succeeded",
+      "http_attempts": 1,
+      "output": "artifacts/w03/model-clarification-20261108/qa-01/output/P01.json",
+      "output_sha256": "29b381fe47418d743b4f6e00df8811bde536d5dafb891fd5b9d614bac08d3357",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-89f0e0b0a4254f4b9ada9eb4044afb81/run.json",
+      "native_run_sha256": "151d72ee8d55b58428787433e10338abf721162e5cdff712c201423b2f6d602a",
+      "review": "artifacts/w03/model-clarification-20261108/qa-01/independent-review/review.json",
+      "review_sha256": "0c5eb2fa773b6cc21c3c969ac7d33c5ae7d88cbc785ace50a9f6a8ad838d7a2b",
+      "reason": "题设完整有效悦享年卡足以使账户A在本期月报判定日有资格；普通等级和购卡金额不改变判断。产品与日期出处准确，明确人工推导非客户真实查询。",
+      "input_track": "model_only",
+      "case_origin": "original_82"
+    },
+    {
+      "stage": "qa-01",
+      "id": "CTRL02",
+      "verdict": "passed",
+      "native_status": "succeeded",
+      "http_attempts": 1,
+      "output": "artifacts/w03/model-clarification-20261108/qa-01/output/CTRL02.json",
+      "output_sha256": "04dc1e12831fed1e29b6b5908854aa7c76396b99e5a932f595c2fde874bab0b0",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-99b04a81be02478f8a4ee35418422e9e/run.json",
+      "native_run_sha256": "14e9674bfe471a39681f908e07f7a54505140e4c43c7668e87b79ed16e83d684",
+      "review": "artifacts/w03/model-clarification-20261108/qa-01/independent-review/review.json",
+      "review_sha256": "0c5eb2fa773b6cc21c3c969ac7d33c5ae7d88cbc785ace50a9f6a8ad838d7a2b",
+      "reason": "题设已核同集合/标识/去重/月份/范围及子集，允许不同来源相除60/240=25%；180仅为本定义下未购账户，不推流失沉睡/原因/资格或自然人数。",
+      "input_track": "model_with_source_context",
+      "case_origin": "independent_control"
+    },
+    {
+      "stage": "qa-02-u05-recovery",
+      "id": "U05",
+      "verdict": "failed",
+      "native_status": "succeeded",
+      "http_attempts": 1,
+      "output": "artifacts/w03/model-clarification-20261108/qa-02-u05-recovery/output/U05.json",
+      "output_sha256": "907fb52fd1aa47285e3e867682ad790364de4c81ccc91dc3692ee4f19da4514b",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-46922bfcf57546619e70f4c94bb0c133/run.json",
+      "native_run_sha256": "66462050ea5fd1a76c8b7a2b87edb4cf3c53f308144b28ed28acf927e5ad0aca",
+      "review": "artifacts/w03/model-clarification-20261108/qa-02-u05-recovery/independent-review/review.json",
+      "review_sha256": "8a59db30932e54e797a35e5a9ebcbc283a9919856545a322df2b598e7bf27c63",
+      "reason": "完整答复与严格JSON有效；A—E主判断基本正确，但B把01921后续限定误归01919，E把概括文字当03911原句引用。按原来源准确性标准判语义失败。",
+      "input_track": "model_with_source_context",
+      "case_origin": "original_82"
+    }
+  ],
+  "current_case_results": [
+    {
+      "stage": "qa-01",
+      "id": "U01",
+      "verdict": "passed",
+      "native_status": "succeeded",
+      "http_attempts": 1,
+      "output": "artifacts/w03/model-clarification-20261108/qa-01/output/U01.json",
+      "output_sha256": "67e221568f83afb57c387d8afd0d14bb7fb5a841901ce35517d62697ceb3213d",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-f7ace08ec82a4acdb1505503a7fcad3a/run.json",
+      "native_run_sha256": "f4d0953213046ee894376ceb00e4ad381f7a663d409d3c3800d3322b7f3f605b",
+      "review": "artifacts/w03/model-clarification-20261108/qa-01/independent-review/review.json",
+      "review_sha256": "0c5eb2fa773b6cc21c3c969ac7d33c5ae7d88cbc785ace50a9f6a8ad838d7a2b",
+      "reason": "经营原因验证与岗位提效分开，角色判断/期望/未验证效果保持；80万/120万的具体定义范围时点来源明确待核。统计、候选和实际执行集合分开，简写与重排未改变三者含义，前文保留业务负责人确认。",
+      "input_track": "model_only",
+      "case_origin": "original_82"
+    },
+    {
+      "stage": "qa-02-u05-recovery",
+      "id": "U05",
+      "verdict": "failed",
+      "native_status": "succeeded",
+      "http_attempts": 1,
+      "output": "artifacts/w03/model-clarification-20261108/qa-02-u05-recovery/output/U05.json",
+      "output_sha256": "907fb52fd1aa47285e3e867682ad790364de4c81ccc91dc3692ee4f19da4514b",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-46922bfcf57546619e70f4c94bb0c133/run.json",
+      "native_run_sha256": "66462050ea5fd1a76c8b7a2b87edb4cf3c53f308144b28ed28acf927e5ad0aca",
+      "review": "artifacts/w03/model-clarification-20261108/qa-02-u05-recovery/independent-review/review.json",
+      "review_sha256": "8a59db30932e54e797a35e5a9ebcbc283a9919856545a322df2b598e7bf27c63",
+      "reason": "完整答复与严格JSON有效；A—E主判断基本正确，但B把01921后续限定误归01919，E把概括文字当03911原句引用。按原来源准确性标准判语义失败。",
+      "input_track": "model_with_source_context",
+      "case_origin": "original_82"
+    },
+    {
+      "stage": "qa-01",
+      "id": "E03",
+      "verdict": "passed",
+      "native_status": "succeeded",
+      "http_attempts": 1,
+      "output": "artifacts/w03/model-clarification-20261108/qa-01/output/E03.json",
+      "output_sha256": "7be13fa79610f85dfff6700b8fa87a911ae8615808126a5a112e5442948fd94c",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-07ce186edd0041ed810df565767f8cd4/run.json",
+      "native_run_sha256": "736fbbc7bb115cbf9aff019623d451ee2e00782aea88e90084e570eeaa2ea72e",
+      "review": "artifacts/w03/model-clarification-20261108/qa-01/independent-review/review.json",
+      "review_sha256": "0c5eb2fa773b6cc21c3c969ac7d33c5ae7d88cbc785ace50a9f6a8ad838d7a2b",
+      "reason": "分别拒绝直接活跃率、差值沉睡和同口径矛盾；正确区分活跃/系统全量，保留分子分母范围时点可比性待核，没有追加必须同一来源。",
+      "input_track": "model_only",
+      "case_origin": "original_82"
+    },
+    {
+      "stage": "qa-01",
+      "id": "REG01",
+      "verdict": "passed",
+      "native_status": "succeeded",
+      "http_attempts": 1,
+      "output": "artifacts/w03/model-clarification-20261108/qa-01/output/REG01.json",
+      "output_sha256": "3a4637d253cdc9e0d725e4035a97557c668204184dcfd2a08b901e0f19f1325b",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-cb407857183a4e6f8845f4a717722b76/run.json",
+      "native_run_sha256": "5469aa36809046af477fb9d00ea9c97965528f852395ea968dddff3224b7c28d",
+      "review": "artifacts/w03/model-clarification-20261108/qa-01/independent-review/review.json",
+      "review_sha256": "0c5eb2fa773b6cc21c3c969ac7d33c5ae7d88cbc785ace50a9f6a8ad838d7a2b",
+      "reason": "交付包、工作接入和评估均标建议；三集合分开，月报资格不外推券活动，人群/执行需业务确认且无自动动作；过程提效与复购结果分别验证。",
+      "input_track": "model_only",
+      "case_origin": "original_82"
+    },
+    {
+      "stage": "qa-01",
+      "id": "P01",
+      "verdict": "passed",
+      "native_status": "succeeded",
+      "http_attempts": 1,
+      "output": "artifacts/w03/model-clarification-20261108/qa-01/output/P01.json",
+      "output_sha256": "29b381fe47418d743b4f6e00df8811bde536d5dafb891fd5b9d614bac08d3357",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-89f0e0b0a4254f4b9ada9eb4044afb81/run.json",
+      "native_run_sha256": "151d72ee8d55b58428787433e10338abf721162e5cdff712c201423b2f6d602a",
+      "review": "artifacts/w03/model-clarification-20261108/qa-01/independent-review/review.json",
+      "review_sha256": "0c5eb2fa773b6cc21c3c969ac7d33c5ae7d88cbc785ace50a9f6a8ad838d7a2b",
+      "reason": "题设完整有效悦享年卡足以使账户A在本期月报判定日有资格；普通等级和购卡金额不改变判断。产品与日期出处准确，明确人工推导非客户真实查询。",
+      "input_track": "model_only",
+      "case_origin": "original_82"
+    },
+    {
+      "stage": "qa-01",
+      "id": "CTRL02",
+      "verdict": "passed",
+      "native_status": "succeeded",
+      "http_attempts": 1,
+      "output": "artifacts/w03/model-clarification-20261108/qa-01/output/CTRL02.json",
+      "output_sha256": "04dc1e12831fed1e29b6b5908854aa7c76396b99e5a932f595c2fde874bab0b0",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-99b04a81be02478f8a4ee35418422e9e/run.json",
+      "native_run_sha256": "14e9674bfe471a39681f908e07f7a54505140e4c43c7668e87b79ed16e83d684",
+      "review": "artifacts/w03/model-clarification-20261108/qa-01/independent-review/review.json",
+      "review_sha256": "0c5eb2fa773b6cc21c3c969ac7d33c5ae7d88cbc785ace50a9f6a8ad838d7a2b",
+      "reason": "题设已核同集合/标识/去重/月份/范围及子集，允许不同来源相除60/240=25%；180仅为本定义下未购账户，不推流失沉睡/原因/资格或自然人数。",
+      "input_track": "model_with_source_context",
+      "case_origin": "independent_control"
+    }
+  ],
+  "original_qa01_U05_retained": true,
+  "technical_recovery_selection_rule": "QA01 U05 has no complete answer; one pre-approved new run only, not best-of semantic selection",
+  "formal_model_applied": false,
+  "prompt_or_skill_replaced": false,
+  "metric_queries_executed": 0
+}

@@ -1,0 +1,24 @@
+{
+  "case_id": "B01",
+  "started_at": "2026-11-07T02:39:03.735261+00:00",
+  "completed_at": "2026-11-07T02:39:17.704580+00:00",
+  "question": "人工订单：O1 paid实付1000退款200；O2 paid实付1000退款1000；O3 cancelled实付0退款0；O4 paid实付0退款0。分别判断支付订单与有效购买，并说明退款与优惠的区别。",
+  "fixture": null,
+  "input_track": "model_with_fixed_materials",
+  "fixed_materials": [
+    "W03/实操工程/materials/w03/01_订单日报说明.md",
+    "W03/实操工程/materials/w03/05_数据字典.md"
+  ],
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-2960bd2bbd54489b902f0944d6d3e3e0/run.json",
+    "run_id": "RUN-2960bd2bbd54489b902f0944d6d3e3e0",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "在题设人工订单字段成立的前提下（仅按给定状态、实付和累计退款判断，未查询客户系统）：O1：支付订单为是；有效购买为是。依据：《订单日报说明》支付订单数按 status=paid 计，包括后来全部退款的订单；有效订单数为 paid 且实付减退款大于零。O1 实付1000减退款200=800>0。O2：支付订单为是；有效购买为否（1000-1000=0，全退不计）。O3：支付订单为否；有效购买为否（cancelled，取消单不计）。O4：支付订单为是（status=paid）；有效购买为否（实付0减退款0=0，不满足大于零）。退款与优惠的区别：按《订单日报说明》，优惠金额是 paid 订单原价减实付的金额，退款不冲减原优惠金额；退款金额是 paid 订单的累计退款，按原订单下单日期归属，不按现金退款发生日。退款影响净销售额和有效购买判断，优惠是购买时的价格折让，二者不是同一事实，不能用退款冲减优惠，也不能把优惠当作退款或净销售额。依据范围为《订单日报说明》相关项目及《数据字典》orders 的 status、paid_cents、refund_cents、gross_cents 字段；题设未要求判断其他指标。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "7a342a5c70fea580f8abb2825051bf87a65fe42bccbe7c2fbf9b10a2fd68b322"
+}

@@ -1,0 +1,20 @@
+{
+  "case_id": "F09",
+  "started_at": "2026-11-07T03:28:33.594095+00:00",
+  "completed_at": "2026-11-07T03:28:42.486820+00:00",
+  "question": "人工情境：名单能证明A收到某张优惠券，但未提供该券使用规则。能否判定A一定有使用资格、适用于所有商品和门店？哪些可以确认，哪些需核？",
+  "fixture": null,
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-4a429f3b07314333ae25668b46f8d4f7/run.json",
+    "run_id": "RUN-4a429f3b07314333ae25668b46f8d4f7",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "在题设情境成立的前提下，只能确认A收到该张优惠券（以名单所载为限），不能确认A一定有使用资格，也不能确认该券适用于所有商品和门店。依据：业务模型第2节“优惠与券”将发放、核销、购买、复购改善视为不同事实；第3节规则6明确“发放对象不自动等于允许使用对象”，券发放与核销应分别取证；规则7还要求人群和执行方案由业务人员确认。使用资格及商品、门店适用范围属于券使用规则，材料未提供，不能由“收到券”推出，也不能把名单当作券规则或核销记录。需核：该券的正式使用规则或权益说明（适用对象、资格条件、有效期、商品与门店范围、是否叠加等）、实际发放记录与名单来源、核销记录，以及相应业务负责人对规则和适用范围的确认；如涉及订单使用，还需订单与券的关联依据。可确认“收到”不等于“可使用”“已使用”或“适用于全范围”。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "556b70ff5f02c0dd8ae7c41dee981bb96a6c7af8c8c8b496879ebf0d3342f9f2"
+}

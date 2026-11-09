@@ -1,0 +1,114 @@
+{
+  "cases": [
+    {
+      "id": "B05",
+      "dimension": "零、未定义和越界",
+      "question": "请分别解释：覆盖内筛选无匹配订单的净额、覆盖内无购买账户月份的复购率、覆盖外月份的净额。金额13000分是否等于13000元？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/02_财务邮件.md",
+        "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "DQ10",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-25",
+        "decision_date": "2026-08-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "B01",
+      "dimension": "订单分类",
+      "question": "人工订单：O1 paid实付1000退款200；O2 paid实付1000退款1000；O3 cancelled实付0退款0；O4 paid实付0退款0。分别判断支付订单与有效购买，并说明退款与优惠的区别。",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "B04",
+      "dimension": "首购与窗口",
+      "question": "人工情境：同一账户全覆盖历史中最早订单取消；随后7月10日有有效订单O100、O101；8月又有有效订单O200。查8月观测期首单时应选哪笔？同日如何排序？这能叫终身首购吗？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/03_会员运营周报.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "DQ09",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-16"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ11",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-10",
+        "hypothetical_run_date": "2026-08-31"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "NUMCTRL01",
+      "dimension": "独立对照：各自分母、零分子与零分母",
+      "question": "下列为覆盖内、同一口径的两组人工汇总小值，不是客户实际数据。A组：净销售额30分、有效订单2笔、购买账户1个、退款金额0分、实付金额30分、取消订单1笔、创建订单3笔；B组：净销售额0分、有效订单0笔、购买账户0个、退款金额0分、实付金额0分、取消订单1笔、创建订单1笔。请分别写出两组的有效订单均额、购买会员人均消费、退款金额占比和取消率，列出各自分子/分母、结果与单位；分数可保留，不自行补客户事实。",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/02_财务邮件.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用；人工数字控制"
+    },
+    {
+      "id": "DATECTRL01",
+      "dimension": "独立对照：提前终止前的逐条件与综合判断",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-12",
+        "decision_date": "2026-08-11"
+      },
+      "evaluation_domain": "业务知识问答；人工日期控制"
+    }
+  ]
+}

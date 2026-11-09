@@ -1,0 +1,60 @@
+{
+  "scope": "next_execution_plan_only_not_run",
+  "target_cumulative_metrics": 32,
+  "course_small": {
+    "new_cases": 10,
+    "regression_cases": 33,
+    "frozen_cases": "tests-regression-small.json",
+    "new_candidate_file": "artifacts/w03/b56-first-monthly-20261108/tests-new-small-v2.json",
+    "all_candidate_file": "artifacts/w03/b56-first-monthly-20261108/tests-small-all-planned-v2.json"
+  },
+  "isolated_datasets": {
+    "original_B2": {
+      "cases": 1,
+      "source_data": "artifacts/w03/b2-order-counts-20261108/independent/fixture-data",
+      "tests": "tests-regression-b2-fixture.json"
+    },
+    "B5": "独立人工数据补首单顺序和不同事实日期",
+    "B6": "独立人工数据补一有效单加全退不复购"
+  },
+  "build_strategy": "累计已验证24项加B5/B6八项一次生成32项；ratio依赖和B5-A01的valid_order_count包含在目标中；若生成失败保留，不手拼同名模型。",
+  "execution_strategy": "生成物独立审查后merge/load不同项目；数据和库hash运行前绑定；可将small新增/原33回归以各自原生报告并行，最多2个问数进程；人工数据分别加载。",
+  "comparison": [
+    "status和完整intent",
+    "数据/库版本",
+    "columns及units",
+    "各分组身份与每个数值",
+    "整数精确、浮点沿既定容差",
+    "null与0",
+    "原SQL语义与全覆盖排序位置",
+    "完整中文回答，数值通过不自动视为解释通过"
+  ],
+  "known_explanation_regression": [
+    {
+      "id": "B3-U01",
+      "failure": "退款会员误限有效订单",
+      "required": "依据paid且退款>0，含全额退款账户；不改原题"
+    },
+    {
+      "id": "B1-Z01",
+      "failure": "半开截止6月30日误说含当日",
+      "required": "6月1–29日含首尾，排除6月30日；不改原题"
+    }
+  ],
+  "new_answer_audit": [
+    "首购是测试覆盖内而非终身首购",
+    "后续订单数不称月内复购人数",
+    "CRM账户不声称自然人",
+    "注册按当前归属店/等级分组，不声称历史等级",
+    "月内复购率分母是当月有效购买账户",
+    "多月分别列出，不相加账户数/平均比率",
+    "全渠道限制来源是当前工具契约，非03新增客户事实"
+  ],
+  "user_decision_policy": "仅现有材料无法解决的业务取舍交本人；常规设计/引用/实现问题自主修复并独立复核",
+  "native_calls_this_design_round": 0,
+  "native_queries_this_design_round": 0,
+  "approved_b6_source": "independent-b6-v2",
+  "planned_total_questions": 47,
+  "planned_new_questions": 13,
+  "design_review": "artifacts/w03/b56-first-monthly-20261108/design-review/final-review-v2.json"
+}

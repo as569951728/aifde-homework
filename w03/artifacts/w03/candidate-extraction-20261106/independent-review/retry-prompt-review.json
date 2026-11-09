@@ -1,0 +1,18 @@
+{
+  "status": "task_appendix_acceptable_for_one_bounded_retry",
+  "date": "2026-11-06",
+  "review_scope": "已阅读retry-1/extraction_prompt.txt完整文本和change.json；本结论仅评估本轮追加约束是否注入业务答案或违背来源，不证明新运行结果。",
+  "prompt_sha256": "65f01bb0bd7c6e25bb04e2d45b493f02895a4d178027dbfa45f321c6406fa4c2",
+  "change_sha256": "807fb31dff56320fee035ae25b34fbbea4193420324725037b3c8b0e72a1869e",
+  "findings": [
+    "追加约束要求quote与meeting_id/message_id逐字对应，问题与回答分别引用；未给定业务答案。",
+    "要求后续收窄保留、未知不升级为否定事实，属于证据处理规则。",
+    "不能确认原因不等于受访者已提出因果假设，是归属规则澄清。",
+    "紧凑输出仍要求保留具体规则、条件和权限，没有要求删除相关证据。"
+  ],
+  "limits": [
+    "仅一次新的原生工作流；不resume失败状态、不更改原始响应。",
+    "正式Skill/v2不据此升级。",
+    "首轮39条raw审查及QUOTE_NOT_FOUND保持原结论；新运行须单独审查。"
+  ]
+}

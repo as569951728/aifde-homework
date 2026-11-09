@@ -1,0 +1,89 @@
+{
+  "status": "approved_for_frozen_input_review",
+  "approved": true,
+  "created_at": "2026-11-07T05:34:12.524682+00:00",
+  "approval_scope": "source_evidence_mechanism_only_not_execution",
+  "approved_for_execution": false,
+  "run_allowed": false,
+  "checks": [
+    {
+      "name": "only_evidence_mechanism_replaced",
+      "passed": true
+    },
+    {
+      "name": "scope_source_math_date_json_rules_unchanged",
+      "passed": true
+    },
+    {
+      "name": "one_record_no_parallel_duplicate_summary",
+      "passed": true
+    },
+    {
+      "name": "necessary_three_field_contract",
+      "passed": true
+    },
+    {
+      "name": "first_premise_repetition_and_new_observation_distinguished",
+      "passed": true
+    },
+    {
+      "name": "qualifier_scope_and_visible_limit_retained",
+      "passed": true
+    },
+    {
+      "name": "unknown_different_and_explicit_test_conditions_retained",
+      "passed": true
+    },
+    {
+      "name": "normal_rule_date_proposal_not_forced_into_record",
+      "passed": true
+    },
+    {
+      "name": "no_case_specific_answers_or_ids",
+      "passed": true
+    },
+    {
+      "name": "business_model.md_identical_to_stage4",
+      "passed": true
+    },
+    {
+      "name": "controls.json_identical_to_stage4",
+      "passed": true
+    },
+    {
+      "name": "reviewer_expectations.json_identical_to_stage4",
+      "passed": true
+    },
+    {
+      "name": "selected_questions.json_identical_to_stage4",
+      "passed": true
+    },
+    {
+      "name": "requests_semantic_content_same",
+      "passed": true
+    },
+    {
+      "name": "stage4_results_fixed_before_this_candidate_review",
+      "passed": true
+    }
+  ],
+  "failed_checks": [],
+  "candidate_prompt_sha256": "703da892e1c284843f499b60efad2e95d60849bd5d22595f71270382df607bfe",
+  "previous_prompt_sha256": "f30959d4c19c0324f76ad11d642e0842d3d7e6c5e7694a4505c7585caf531065",
+  "previous_result_sha256": "c6c596c7506091c8e7fa759200a78a028e96489785f32ff28ec720db916fea2d",
+  "change": {
+    "removed_mechanism_characters": 492,
+    "new_mechanism_characters": 586,
+    "kind": "replace_two_pass_table_and_full_conclusion_with_one_per_item_record"
+  },
+  "conclusion": "值得一次有界验证：改变重复生成的输出组织，每个断言只交付一份记录；必要问答来源、后续限定、未知状态和新观察均保留。不是仅加一句禁止，也没有业务答案入提示。",
+  "limits": [
+    "不能证明删重复一定能修正语义；本次仅机制设计通过，实际模型答复待跑待审。",
+    "短不等于正确：直接依据必须充分，不能删提问前提/后续限定或把A2细节挂A1。",
+    "三字段可使用必要短引，不应把“每个断言一次”解为禁止引用依据；不得再并行生成第二套事实总结。",
+    "若仍有关键错误，保持失败并回到证据处理/验证机制，不以同提示重抽筛通过。"
+  ],
+  "next_validation": "同22题、同原输入/预期，由两名评审分别重审18+4，E01/U05/TRACE均不预记通过；执行门禁另审。",
+  "human_decisions": [],
+  "api_calls": 0
+}

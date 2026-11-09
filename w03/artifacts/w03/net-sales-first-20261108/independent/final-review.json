@@ -1,0 +1,137 @@
+{
+  "status": "approved_within_tested_scope",
+  "approved": true,
+  "failed_checks": [],
+  "conclusion": "net_sales_cents 首项闭环在已冻结small样本及8条用例范围内通过：原材料独立核算→Skill真实生成→原生检查/加载→真实问数→确定性判定→逐题解释复核。",
+  "scope": "只验证 net_sales_cents；6成功查询+缺日期澄清+覆盖外不支持，非38项完成、非全12维度业务验证、非规模/生产/客户验收。",
+  "generation": {
+    "build": "build-v3",
+    "skill": "v0.1.2",
+    "library": "library-v2",
+    "project": ".runtime/qinghe-net-sales-small-v2",
+    "passed": true,
+    "review": "independent/generation-review-v3.json",
+    "unit": "cents",
+    "formula": "按ordered_at汇总全部paid订单的paid_cents-refund_cents；取消不计，paid全退净贡献0；订单粒度，不连接卡明细",
+    "source_scope": "source_check/grain_check/dimension_check/metricflow_check通过；仅结构上12维度可达"
+  },
+  "independent_expected": {
+    "file": "independent/tests.json",
+    "sha256": "85cd3a21466edc7d48f56941ff50cfc20d3a4d4cdea8e327be59966226431dcc",
+    "frozen_before_generated_sql_and_actual": true,
+    "derived_by": "标准csv逐单核算；order-ledger.csv 6×48依据；原材料01/02/05及manifest",
+    "execution_changes": "仅增加预先选择项目的data_sha256/catalog_sha256，两轮业务期望不变"
+  },
+  "real_query": {
+    "report": "test-v2/metric_test_report.json",
+    "complete": true,
+    "passed": 8,
+    "total": 8,
+    "data_version": "qinghe-w03-20260923-small",
+    "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+    "catalog_sha256": "587271f8e3ee11d468a34125903b086fcb6cdd01306f37806ea8cd1ddb925694"
+  },
+  "explanation_review": {
+    "successful_answers_passed": 6,
+    "successful_answers_total": 6,
+    "non_ok_reasons_passed": 2,
+    "non_ok_reasons_total": 2,
+    "cases": [
+      {
+        "id": "NS01-aug-total",
+        "trace_id": "aee0f50f-22c1-4cdc-84d7-ea4bce33512b",
+        "structured_passed": true,
+        "explanation_or_reason_passed": true,
+        "review": "100300分正确换算1003.00元；八月全月、已付款扣退、取消排除和原订单归期说明正确；没有有效购买或账户数限定。",
+        "findings": []
+      },
+      {
+        "id": "NS02-july-transaction-store",
+        "trace_id": "21134362-443b-4363-8711-33faa71617ce",
+        "structured_passed": true,
+        "explanation_or_reason_passed": true,
+        "review": "7月1日至31日，按订单成交门店；S01=125、S02=100、S03=90元均正确，未误用归属门店。",
+        "findings": []
+      },
+      {
+        "id": "NS03-aug-mini-program",
+        "trace_id": "58b0773a-0d62-453e-a375-ce63938257da",
+        "structured_passed": true,
+        "explanation_or_reason_passed": true,
+        "review": "487.00元，小程序筛选和未分组忠实；全部已支付扣退，未迁移有效购买条件。",
+        "findings": []
+      },
+      {
+        "id": "NS04-partial-refund-day",
+        "trace_id": "93a925ee-597f-4774-bb8d-5623c2256a1f",
+        "structured_passed": true,
+        "explanation_or_reason_passed": true,
+        "review": "8月15日70.00元；已支付扣退、取消排除、原订单归期正确，未再说排除全退。",
+        "findings": []
+      },
+      {
+        "id": "NS05-full-refund-day",
+        "trace_id": "6ca87c43-0438-4919-910a-df38db5cc788",
+        "structured_passed": true,
+        "explanation_or_reason_passed": true,
+        "review": "8月10日0.00元/0分；已支付扣退与覆盖内零值正确；“账户范围内”描述客户数据边界，没有把金额单位或事实粒度改为账户，也未声称无订单/全退被排除。",
+        "findings": []
+      },
+      {
+        "id": "NS06-covered-empty",
+        "trace_id": "37830f78-1ab2-4c6c-948a-7d6134944851",
+        "structured_passed": true,
+        "explanation_or_reason_passed": true,
+        "review": "6月1日至29日含首尾、0元且非未定义；已支付订单口径正确。“会员账户数据范围”描述客户范围，未声明按账户计数/分组；不机械按出现“账户”误报。",
+        "findings": []
+      },
+      {
+        "id": "NS07-missing-time",
+        "trace_id": "f959913b-52b8-4be1-857b-3d3727542b65",
+        "structured_passed": true,
+        "explanation_or_reason_passed": true,
+        "review": "明确缺起止日期并请求补充，未猜月、未给数值。",
+        "findings": []
+      },
+      {
+        "id": "NS08-outside-coverage",
+        "trace_id": "1010df90-99bb-473f-be24-83a41065666f",
+        "structured_passed": true,
+        "explanation_or_reason_passed": true,
+        "review": "明确9月不受覆盖支持，未把不支持说成0；理由用覆盖起止简写但没有承诺结束日包含或改查其他日期。",
+        "findings": []
+      }
+    ]
+  },
+  "judge": {
+    "file": "customer/w03/judge.py",
+    "sha256": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3",
+    "pure_compare_source_review_passed": true,
+    "independent_synthetic_checks": 31,
+    "real_result_copy_checks": 13,
+    "negative_checks": 10,
+    "negative_rejected": 10,
+    "positive_checks": 3,
+    "injection_report": "judge-injections-v2.json",
+    "null_case": "合成比较输入，不是净销售额真实null结果；其余副本不改原实际结果"
+  },
+  "preserved_failures": {
+    "build-v1": "单位写分，拒绝使用并保留；v0.1.1重生成修复",
+    "test-v1": "结构8/8，5/6成功解释存在有效购买串口径，NS01/03另有金额/账户混淆；query-review-v1.json保留原分",
+    "repair": "v0.1.2只修来源片段选择及目录事实粒度/行集合方法，标准回答提示、独立期望、judge不改；一次v3构建及同8例回归通过"
+  },
+  "limitations": [
+    "取消单实付/退款皆0，净额本身无法数值证明取消排除；本次另审实际生成paid条件。",
+    "无退款发生日，不能据此声称通过真实跨月现金退款归期验证。",
+    "paid全退贡献0，与预先过滤全退可同值；本次依据SQL/目录/解释复核，不推断其他支付单数指标正确。",
+    "只运行一次修复后8例，不证明自然语言长期稳定；其他37项、规模数据与客户验收未做。"
+  ],
+  "evidence_sha256": {
+    "test-v2/metric_test_report.json": "95639272f35c9b077e43a60f4fd2ca82517757cf2e7b7228003329a397d0485c",
+    "judge-injections-v2.json": "88de82cc665e3369bbd5d6617f52fed024b94a39ef490c5b641df81b60a0f601",
+    "version-binding-v2.json": "6a65b1ad9e1667c81ab2a6add450054e8cbb1fad76eef5343e908aa0d14188d5",
+    "execution-tests-v2.json": "1b3ed6a42e7d869f1bf094d27d90baccaf05e1090494659b48e297ba20f58561",
+    "build-v3/metrics.yml": "1ba2e332c26e001b10af98412eb2b6c0d90f843cdb2da75583d1bb1272b4b19c",
+    "build-v3/catalog.json": "adb2a6d9ca7aefb4eda003f45d5a58f45f99a3e93c8ffcf8c77c2ef91008a166"
+  }
+}

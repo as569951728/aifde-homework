@@ -1,0 +1,39 @@
+[
+  {
+    "id": "B6-R01",
+    "question": "请同时列出2026年8月青禾优选全门店、全渠道的月内购买会员数、月内复购会员数和月内复购率。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "rows": [
+        [
+          3,
+          1,
+          0.3333333333333333
+        ]
+      ],
+      "units": {
+        "monthly_buyer_count": "count",
+        "monthly_repeat_buyer_count": "count",
+        "monthly_repeat_rate": "ratio"
+      },
+      "data_version": "qinghe-w03-b6-independent-fixture-20261108-v1"
+    },
+    "expected_source": "依据materials/w03/03_会员运营周报.md（月内3项）与01_订单日报说明.md（有效订单）、05_数据字典.md，原small manifest与4表sha逐项验证。以paid且paid_cents-refund_cents>0选订单，再按CRM账户和自然月建订单ID集合；>=1为购买，>=2为复购；复购账户数/购买账户数，零分母null；与卡张数、会员等级、付费资格无关。本题仅在fixture-data人工隔离数据上执行：M00001有效{FXB6-001}，FXB6-002全退及003取消排除；M00002有效{004,005}（005部分退仍有效）；M00003有效{006}；M00004仅007取消。购买{M00001,M00002,M00003}=3，复购{M00002}=1，率1/3；M00001两卡不能将1有效单变2单。其余表原small逐字节复制，人工7订单不充当客户事实或课程small。"
+  }
+]

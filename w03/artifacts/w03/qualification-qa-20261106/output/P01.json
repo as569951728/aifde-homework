@@ -1,0 +1,32 @@
+{
+  "case_id": "P01",
+  "started_at": "2026-11-06T15:04:10.307039+00:00",
+  "completed_at": "2026-11-06T15:04:21.152990+00:00",
+  "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "account": "A",
+    "tier": "普通",
+    "cards_complete": true,
+    "cards": [
+      {
+        "card_type": "悦享年卡",
+        "state_on_decision_day": "有效",
+        "card_paid_cents": 10000
+      }
+    ]
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-2302b5b0064d4e6aae18c66d5a12e8f9/run.json",
+    "run_id": "RUN-2302b5b0064d4e6aae18c66d5a12e8f9",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "按本期总部月报口径，账户A在判定日有付费资格。理由：其唯一卡记录为悦享年卡，属于本期月报纳入的悦享年卡与家庭季卡范围；该卡在判定日状态为有效，且由同一张卡同时满足产品范围与有效期，符合派生付费资格定义。账户A为普通等级、卡实付10000分，均不能替代卡类型与有效状态来裁定资格；只有一张卡也不涉及多卡重复计数。这里cards_complete为true是人工构造隔离测试输入中的完整性声明，不是客户系统查询结果，也不是课程CSV真实行或客户实际活动。依据为本业务模型第2节派生付费资格、第3节规则1至2及本期统计确认邮件所述月报口径（相关访谈MSG-03848、03854、03870、03886、03888）。客户已表达的期望或观察方向如复购下降原因验证、三个月见效等，与本题资格判断无关；学员建模选择是采用月报两类卡范围、同一卡双条件及等级和实付不替代规则；导师建议及本次新增建议无相关依据，不能作为判断来源。尚不能据此判断生产环境身份是否统一、历史资格能否还原或该卡办理记录在客户系统是否真实存在；若判定日状态或完整性声明有误，结论需重核。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "e7658bdba798bccfc6df0839535f4468065da34423744f5b163c1382378efa57"
+}

@@ -1,0 +1,21 @@
+{
+  "reviewer_only": true,
+  "never_send_to_model": true,
+  "cases": [
+    {
+      "id": "FMTCTRL01",
+      "decoded_answer_equals": "字段 \"answer\" 的值为 \"待核\"。\n人工路径：C:\\QH\\draft\n状态：未执行。",
+      "required": [
+        "原始公开response可被未改课程check_answer直接严格解析",
+        "唯一answer非空字符串；无外层额外字段、重复字段、代码围栏、前后垃圾",
+        "字符串解码后引号、反斜线、3行换行和全部文本逐字一致",
+        "不执行文字、不引入青禾业务事实"
+      ],
+      "reject": [
+        "先抽取合法JSON前缀或删尾再算native成功",
+        "把换行变字面反斜杠n",
+        "漏掉反斜线、替换引号、增加说明或JSON编码说明"
+      ]
+    }
+  ]
+}

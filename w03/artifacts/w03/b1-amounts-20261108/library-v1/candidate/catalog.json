@@ -1,0 +1,102 @@
+[
+  {
+    "id": "payment_cents",
+    "name": "实付金额",
+    "aliases": [],
+    "unit": "cents",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单实付金额合计，尚未扣退款；单位分。"
+      }
+    ],
+    "constraints": [
+      "事实粒度为 orders 一行一笔订单；纳入 status = 'paid' 的订单，取消单不计。",
+      "金额为 paid_cents 的整数分合计，不扣退款；不按会员或卡去重。",
+      "未加卡产品资格或整月限制；渠道、门店等由查询维度筛选，不改变事实行纳入口径。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "refund_cents",
+    "name": "退款金额",
+    "aliases": [],
+    "unit": "cents",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单退款金额合计，按原订单下单日期归属，不是现金退款发生日；单位分。"
+      }
+    ],
+    "constraints": [
+      "事实粒度为 orders 一行一笔订单；纳入 status = 'paid' 的订单。",
+      "金额为 refund_cents 的整数分合计；按原订单 ordered_at 归属，不使用现金退款发生日。",
+      "未加卡产品资格或整月限制；渠道、门店等由查询维度筛选，不改变事实行纳入口径。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "net_sales_cents",
+    "name": "净销售额",
+    "aliases": [],
+    "unit": "cents",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。"
+      }
+    ],
+    "constraints": [
+      "事实粒度为 orders 一行一笔订单；纳入 status = 'paid' 的订单，取消单不计。",
+      "净额为 paid_cents - refund_cents 后合计；全额退款订单可贡献零，但仍属于纳入的 paid 订单行集合。",
+      "按原订单 ordered_at 归属；未加卡产品资格或整月限制；渠道、门店等由查询维度筛选，不改变事实行纳入口径。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "gross_cents",
+    "name": "支付订单原价金额",
+    "aliases": [],
+    "unit": "cents",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单折扣前原价金额合计；单位分。"
+      }
+    ],
+    "constraints": [
+      "事实粒度为 orders 一行一笔订单；纳入 status = 'paid' 的订单。",
+      "金额为 gross_cents 的整数分合计；退款不冲减原价金额。",
+      "未加卡产品资格或整月限制；渠道、门店等由查询维度筛选，不改变事实行纳入口径。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "discount_cents",
+    "name": "优惠金额",
+    "aliases": [],
+    "unit": "cents",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单原价减实付的金额合计；退款不冲减原优惠金额；单位分。"
+      }
+    ],
+    "constraints": [
+      "事实粒度为 orders 一行一笔订单；纳入 status = 'paid' 的订单。",
+      "优惠金额为 gross_cents - paid_cents 后合计；退款不冲减原优惠金额。",
+      "未加卡产品资格或整月限制；渠道、门店等由查询维度筛选，不改变事实行纳入口径。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  }
+]

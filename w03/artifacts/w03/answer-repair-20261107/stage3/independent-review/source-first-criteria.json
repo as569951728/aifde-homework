@@ -1,0 +1,448 @@
+{
+  "created_at": "2026-11-07T04:43:14.231149+00:00",
+  "stage": "source_first_before_new_stage_prompts_or_actual_answers",
+  "reviewer": "/root/w03_qualification_qa_reviewer",
+  "independence": "原F06记录、原题、原材料与有效访谈先读后形成。已参与旧失败评审，不称完全盲审；本次尚未读取stage1/2/3新增提示。",
+  "source_question": {
+    "path": "artifacts/w03/basic-semantics-qa-20261107/input/original_questions.json",
+    "sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343"
+  },
+  "sources": [
+    {
+      "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+      "sha256": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71"
+    },
+    {
+      "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+      "sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308"
+    },
+    {
+      "path": "artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+      "sha256": "eef0d4127f42f96a0fc5219749c3355cfe8252d028b2e8e495117d1ea3821f07"
+    },
+    {
+      "path": "artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+      "sha256": "8c16cefc6005cd21914dc2219208e8819ca490787cb6f677347a269b62ca9920"
+    },
+    {
+      "path": "artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+      "sha256": "fb6435f8ab761dbb26a995ec93f11530ef67840661251ab8b4c59d19ffbbf5ce"
+    },
+    {
+      "path": "artifacts/w02/sources/W2-interview-0d5ba288-a623-56f1-84ac-bec076880d43-transcript.json",
+      "sha256": "9227f13032f2ef354d1d207b7ea99b4865f7158e521eef68fad72ee004a40001"
+    },
+    {
+      "path": "artifacts/w02/sources/W2-interview-c4fe490a-ddae-5bcb-a51b-f44dd796b854-transcript.json",
+      "sha256": "3cda76145150cd3f01b51307972d081784cf86d351cb4ec1bb5c8f89663feea4"
+    },
+    {
+      "path": "artifacts/w03/date-consistency-qa-20261107/independent-review/check_date_answer.py",
+      "sha256": "f035a2c54a069a6d47f896be1abfaf3f4590d25c510c64623547292469486aee"
+    },
+    {
+      "path": "platform/fde_product/natural_knowledge.py",
+      "sha256": "0622a655662a7ffbe38bcc6c0e9a6d0d1545455efd3d2baf15a9abd5a2dcd68a"
+    },
+    {
+      "path": "platform/fde_product/interview_extraction.py",
+      "sha256": "4158dd8cf48092fbd515c562e326d403e60d15feb76511dd04b9991c77de6e53"
+    },
+    {
+      "path": "materials/w03/01_订单日报说明.md",
+      "sha256": "976fa129493e6bd2861a58d74df2ba3ad4448ea01a2d25651124222a61cebb67"
+    },
+    {
+      "path": "materials/w03/02_财务邮件.md",
+      "sha256": "f81e0ddb5c03dd4eb2d01094816716d8375d03fe883b947ec8297edf8d525557"
+    },
+    {
+      "path": "materials/w03/03_会员运营周报.md",
+      "sha256": "25ab933556bf34bef21b528d4c7838c9baad33ae289d59f09501e765080bb492"
+    },
+    {
+      "path": "materials/w03/05_数据字典.md",
+      "sha256": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16"
+    }
+  ],
+  "selected_original_cases": [
+    {
+      "id": "U01",
+      "dimension": "模型用途与业务目标",
+      "question": "请用业务语言说明青禾的经营目标、会员运营工作和当前关键未知。理解复购变化与减少重复整理核对是什么关系？哪些观察能支持业务判断，哪些还不能说明原因或效果已经得到验证？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "U05",
+      "dimension": "证据性质、来源和纠错",
+      "question": "请审查以下说法，逐条说明可采用、需要修正或尚不能判断，并给依据：A.陈姐已给本期卡日期规则，但具体文件与历史凭据未取得；B.小林独立证实之前项目全面无人使用；C.模型尚未核实反馈怎样返回门店，所以青禾没有这一环节；D.80万活跃与120万全量可直接算出活跃率；E.王经理认可分期思路，所以最终验收已获批准。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+      ],
+      "evaluation_domain": "原文证据/主体/权限审查，不评价正文是否含项目验收"
+    },
+    {
+      "id": "P09",
+      "dimension": "系统类别与本期资格",
+      "question": "人工情境：账户A只有有效异业联名卡，因此不在本期总部月报的付费资格范围。能否据此确定A在全系统属于免费注册类别？现有“付费会员卡、免费注册会员两类”的说法能否证明两类在系统绝对互斥？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ10",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-25",
+        "decision_date": "2026-08-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "B05",
+      "dimension": "零、未定义和越界",
+      "question": "请分别解释：覆盖内筛选无匹配订单的净额、覆盖内无购买账户月份的复购率、覆盖外月份的净额。金额13000分是否等于13000元？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/02_财务邮件.md",
+        "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "F06",
+      "dimension": "成效与活动多样性",
+      "question": "小林觉得整理名单费力，是否已测得工时并证明这是复购下降原因？除优惠券活动，是否还有其他工作？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "A03",
+      "dimension": "费用与结算",
+      "question": "本期费用与结算条款现在可写哪些内容，哪些还不能写成约定？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "E01",
+      "dimension": "提问前提",
+      "question": "阅读给定W02小林二访MSG-01918/01919及01921。“之前项目没人用”“多了三步”分别应如何记录与使用？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "E03",
+      "dimension": "不同统计总体",
+      "question": "沈总说80万活跃，老周说120万系统全量，可否直接算活跃率、相减作沉睡人数或认定同口径矛盾？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "E05",
+      "dimension": "失效来源拒绝",
+      "question": "某备忘声称每周一从CRM拉60天未购、排除员工并核勿扰名单。经来源核验，该说法只来自已作废W04会议5e112925-9605-5362-b908-1ef8849d9c5f，未获有效W03来源支持。应否加入当前模型？应保留什么状态？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "REG01",
+      "dimension": "W02原题回归",
+      "question": "青禾准备先给小林和陈姐提供会员运营支持，你会建议第一版交付什么、怎样接到实际工作，以及怎样判断有没有帮助？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "F05",
+      "dimension": "局部链与完整闭环",
+      "question": "模型确认小林协调、陈姐落实部分门店安排，是否证明策划—执行—分析—反馈—下一轮决策全链已打通？请给一个可核查的后续动作。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "P01",
+      "dimension": "产品与等级",
+      "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "account": "A",
+        "tier": "普通",
+        "cards_complete": true,
+        "cards": [
+          {
+            "card_type": "悦享年卡",
+            "state_on_decision_day": "有效",
+            "card_paid_cents": 10000
+          }
+        ]
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ09",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-16"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "E02",
+      "dimension": "经营假设",
+      "question": "复购连续四季下滑、会员老化、三个月希望看到改善，应分别作为哪类信息？本期月报测试能证明什么？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    }
+  ],
+  "control_ids": [
+    "FMTCTRL01"
+  ],
+  "criteria": {
+    "F06": {
+      "required": [
+        "未量化工时，费力是岗位体验/帮助期望；未证明为复购下降原因",
+        "除优惠券活动还有权益说明、未购买会员回访",
+        "不得只顾JSON而删失必要内容或来源范围"
+      ],
+      "sources": [
+        "小林W2 MSG-01917；W3 MSG-03856/03860"
+      ],
+      "old_failure": "有效公开文本之外尾多两个字符；旧native无answer"
+    },
+    "F05": {
+      "required": [
+        "小林协调与陈姐部分门店执行仅局部链，不证明分析反馈下一轮决策闭环",
+        "提出一个可核查动作及所需记录/经手角色，用建议语气",
+        "缺记录仅待核；未发生需肯定证据，未知不等于不存在"
+      ],
+      "sources": [
+        "小林W2 MSG-01913/01915/01917；陈姐W2 MSG-01945/01947/01951/01953"
+      ]
+    },
+    "U01": {
+      "required": [
+        "复购止跌回升/原因验证与岗位减负相连但不能等同已证实因果/效果",
+        "角色趋势、老化假设、3个月期望分别记录；保留原始范围与未知",
+        "80万活跃和120万系统全量已知范围不同；不能断言其时点/来源/完整定义已经确认不同"
+      ],
+      "sources": [
+        "沈总W2 MSG-01719/01729/01731/01737/01739；老周W2 MSG-01744/01746；小林W3 MSG-03856/03860"
+      ]
+    },
+    "U05": {
+      "required": [
+        "A可采用：陈姐当前日期规则有依据，具体文件历史凭据仍未得",
+        "B需修：没人用是01918提问前提后被01919复述，不是独立全面使用调查",
+        "C需修：未知反馈返回方式不等于无环节",
+        "D不可直接比率：活跃定义/范围/时点/来源需核且确认可比",
+        "E需修：王经理核查认可不构成最终验收批准"
+      ],
+      "sources": [
+        "题目指定W2小林完整上下文01918/01919/01921",
+        "陈姐W3 MSG-03886/03890",
+        "王经理W3 MSG-03911/03931/03933",
+        "老周W2 MSG-01744/01746"
+      ]
+    },
+    "P09": {
+      "required": [
+        "本期月报资格排除不等于全系统免费注册类别",
+        "两类并存/分开核查不证明系统绝对互斥",
+        "题设只有有效异业联名卡限定类型而未给卡数量，不可增补一张"
+      ],
+      "sources": [
+        "小林W3 MSG-03848/03854；老周W2 MSG-01744/01746"
+      ]
+    },
+    "DQ10": {
+      "required": [
+        "生效/计划结束/提前终止三条件为是/否/是；无效",
+        "计划和综合[2026-05-20,2026-08-20)，不能延长或回填条件",
+        "ASCII两表、完整字段、来源分层与整体结论全部保持"
+      ],
+      "sources": [
+        "陈姐W3 MSG-03886/03888/03890；小林W3 MSG-03848/03854",
+        "stage2 source-first同题判据及旧checker"
+      ]
+    },
+    "B05": {
+      "required": [
+        "覆盖内无匹配净额0；无购买账户复购率未定义；覆盖外不作0",
+        "13000分=130元",
+        "题外附加比率也须分子分母正确，零分子不自动未定义"
+      ],
+      "sources": [
+        "材料01/02/03/05；本题按指定材料轨道计分"
+      ]
+    },
+    "A03": {
+      "required": [
+        "可写费用构成及计价依据待议草稿；金额没谈妥列待确认，不冒称具体费用项和计价方式已确认",
+        "结算节点对应约定阶段成果与确认记录，具体节点/记录/付款安排待双方谈定",
+        "王经理提供材料核查意见，不能承诺预算/签约/验收；授权仍待核",
+        "如提出常见费用例子须清楚标一般建议，不把访谈例项扩大为已确认实际条款"
+      ],
+      "sources": [
+        "王经理W3 MSG-03911/03923/03927/03929/03931/03933"
+      ],
+      "scope": "SOW材料应用，不补进业务正文、不计正文记忆"
+    },
+    "E01": {
+      "required": [
+        "保留01918提问前提来源、01919角色重复与亲历界面体验不同层级",
+        "之前没人用不得作独立核验的全员事实/原因结论",
+        "多了三步是小林体验，不是精确操作清单；页面/动作待实际界面核实",
+        "不编步骤或把学员提问归小林独立发现"
+      ],
+      "sources": [
+        "指定W2小林 MSG-01918/01919/01920/01921完整上下文"
+      ],
+      "scope": "原文应用，不归功正文独立记忆"
+    },
+    "E03": {
+      "required": [
+        "不能直接计算活跃率、沉睡差值或同口径矛盾",
+        "分别核定义/范围/时点/来源并确认可比，不能附加必须同一来源条件",
+        "保留80万活跃/120万全量身份"
+      ],
+      "sources": [
+        "沈总W2 MSG-01719/01729；老周W2 MSG-01744/01746"
+      ]
+    },
+    "E05": {
+      "required": [
+        "拒用已作废W04事实，隔离留痕/未采纳，待有效来源核实",
+        "不能因此排除有效W02来源，或要求只有W03才可用",
+        "不把周一/60天/员工/勿扰限制写成现行业务已知"
+      ],
+      "sources": [
+        "当前AGENTS失效来源指令；有效W02/W03原访谈及模型范围"
+      ]
+    },
+    "REG01": {
+      "required": [
+        "建议第一版需落入小林/陈姐实际协作，业务确认人群与执行，店方条件与权限保留",
+        "效率/核对便利与复购成效分别取证，不预称有效",
+        "如写月报资格清单须显式限定月报，不直接成为券使用资格",
+        "数字身份准确：80万活跃/120万系统全量；不得合并为两种活跃口径"
+      ],
+      "sources": [
+        "小林W2 MSG-01913/01925；小林W3 MSG-03856/03860；陈姐W2 MSG-01947/01951；老周W2 MSG-01744"
+      ]
+    },
+    "P01": {
+      "required": [
+        "A有本期付费资格：完整记录有有效悦享年卡",
+        "普通等级/付卡金额不否定或单独决定资格",
+        "账户一次；无需展开单卡日期表，已有状态题设保持"
+      ],
+      "sources": [
+        "小林W3 MSG-03848/03854"
+      ]
+    },
+    "DQ09": {
+      "required": [
+        "三条件是/是/否，无效",
+        "计划[2026-05-20,2026-08-20)，综合[2026-05-20,2026-08-15)",
+        "保持表格与来源规则完整，不为JSON删表或改日期"
+      ],
+      "sources": [
+        "陈姐W3 MSG-03886/03888/03890；小林W3 MSG-03848/03854"
+      ]
+    },
+    "E02": {
+      "required": [
+        "4季下滑是角色趋势陈述，老化为待验证假设，3个月为期望",
+        "本期合成月报测试仅支持覆盖内定义/查询/校验结果，非真实全量趋势/因果/ROI",
+        "不得宣称本答已实际跑完查询或获验收"
+      ],
+      "sources": [
+        "沈总W2 MSG-01719/01731/01733；本期数据与材料边界"
+      ]
+    },
+    "FMTCTRL01": {
+      "required": [
+        "解码answer逐字等于独立controls_expectations中的3行文本",
+        "严格完整JSON一次解析成功，不修raw"
+      ],
+      "sources": [
+        "课程GUARD/ANSWER_SCHEMA/parse_json，题设人工文字"
+      ]
+    }
+  },
+  "old_F06_native_evidence": {
+    "run": "artifacts/w02/knowledge_runs/RUN-aa011785ca4e471da324a65d6ac73a11/run.json",
+    "run_sha256": "af80f47d87fbc2758d4e039a287aeb9a8f1b9351bce2dd59913355538286bb67",
+    "response_sha256": "27d13611b635127b6f96b1236df43b6f485aeaee54b8971d91d2c28afdd4f188",
+    "attempts_sha256": "0bc29a85f62ab4a040b432ea60f515b52fd3ad58fde3c1911c00e521352e4183",
+    "answer_json_exists": false,
+    "native_failure": "JSON_INVALID",
+    "http_attempts": 1,
+    "public_response_present": true,
+    "json_prefix_diagnostic_only": {
+      "decoded_keys": [
+        "answer"
+      ],
+      "trailing_characters": "\"}",
+      "trailing_character_count": 2
+    },
+    "policy": "保留原F06格式失败；公开文本可诊断语义但不能作原生有效答案。新阶段新run，不改解析器、不修raw。"
+  },
+  "minimal_change_boundary": [
+    "仅客户层prompt追加通用外层JSON终检；不改GUARD、ANSWER_SCHEMA、parse_json、模型正文、原题、原预期、框架或日期表格协议",
+    "无需在提示写任何题号、答案、客户规则、来源ID、算例结果",
+    "仍由同一原生严格解析器判有效，不能截前缀/容错清尾/先改答复再登记成功",
+    "各题单次成功或失败原样留存；格式失败不可当网络无答恢复；评审不发API"
+  ],
+  "minimum_set": {
+    "original_failures": 11,
+    "positive_regressions": [
+      "F05",
+      "P01",
+      "DQ09",
+      "E02"
+    ],
+    "format_controls": 1,
+    "total": 16,
+    "adequate_for_bounded_final_prompt_regression": true,
+    "why": "同一最终累计提示复测11失败；兼顾来源/未知、类别/题设、日期表格和效用边界，控制覆盖引号/反斜线/换行编码。",
+    "limits": "通过仅证明这16个已见/人工输入本次表现，非82全量回归、可靠失败率估计或未见题泛化；阶段成绩分开，不覆盖旧成绩。"
+  },
+  "input_track_policy": "固定材料/原文应用保持题设指定原文和原顺序；不是正文记忆。格式控制不计业务能力覆盖。",
+  "execution_authorized": false
+}

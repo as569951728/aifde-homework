@@ -1,0 +1,140 @@
+{
+  "status": "changes_required_for_explanations",
+  "approved": false,
+  "failed_checks": [
+    "NS01-aug-total.answer",
+    "NS03-aug-mini-program.answer",
+    "NS04-partial-refund-day.answer",
+    "NS05-full-refund-day.answer",
+    "NS06-covered-empty.answer"
+  ],
+  "structured_validation": {
+    "complete": true,
+    "passed": 8,
+    "total": 8,
+    "independent_expected_preserved": true,
+    "sql_review": "six successful SQLs match frozen intent, paid net amount, dates, store role and channel; no cards join or hidden effective-order filter"
+  },
+  "explanation_validation": {
+    "successful_answers_passed": 1,
+    "successful_answers_total": 6,
+    "non_ok_reasons_passed": 2,
+    "non_ok_reasons_total": 2,
+    "defects": 5
+  },
+  "cases": [
+    {
+      "id": "NS01-aug-total",
+      "trace_id": "7987105b-1a11-48aa-995c-158ebfb64912",
+      "structured_result_passed": true,
+      "sql_review_passed": true,
+      "explanation_or_reason_passed": false,
+      "findings": [
+        {
+          "quote": "有效已支付订单",
+          "reason": "原指标包括全部paid，未要求净额>0的有效订单；全退仍为paid并贡献0。"
+        },
+        {
+          "quote": "按CRM会员账户统计",
+          "reason": "金额按订单行相加，不是人数/账户计数；scope统计单位不应变成金额事实粒度。"
+        }
+      ],
+      "answer_or_reason": "2026年8月青禾优选净销售额为1003.00元。统计范围为2026年8月1日至2026年8月31日（结束日9月1日不含），基于当前已加载的青禾客户数据，按CRM会员账户统计。口径为有效已支付订单的实付金额减退款，退款按原订单下单日期归属，取消订单不计入；金额已从分换算为元。数据来自合成测试库，覆盖2024年9月1日至2026年9月1日。"
+    },
+    {
+      "id": "NS02-july-transaction-store",
+      "trace_id": "8245dc05-7075-465f-80be-9fdf48b72552",
+      "structured_result_passed": true,
+      "sql_review_passed": true,
+      "explanation_or_reason_passed": true,
+      "findings": [],
+      "answer_or_reason": "统计范围为2026年7月（2026-07-01至2026-08-01前，按原订单下单日期归属），对象为青禾当前已加载数据。净销售额口径为已支付订单实付金额减退款，取消订单不计；金额已由分换算为元。按订单成交门店编号列示：S01为125.00元，S02为100.00元，S03为90.00元。数据来自本周合成测试库，覆盖2024-09-01至2026-09-01。"
+    },
+    {
+      "id": "NS03-aug-mini-program",
+      "trace_id": "ceca9243-1833-4a50-abdc-f2b22ee81170",
+      "structured_result_passed": true,
+      "sql_review_passed": true,
+      "explanation_or_reason_passed": false,
+      "findings": [
+        {
+          "quote": "有效订单实付金额减退款后的合计",
+          "reason": "实际为小程序paid订单净额，没有有效订单净额>0筛选。"
+        },
+        {
+          "quote": "统计单位为CRM会员账户",
+          "reason": "本指标单位为分、展示元，事实粒度为订单，不是账户人数。"
+        }
+      ],
+      "answer_or_reason": "2026年8月（8月1日至8月31日）青禾客户范围内，小程序渠道的净销售额为 487.00 元。该口径为有效订单实付金额减退款后的合计，取消单不计入，退款按原订单下单日期归属；统计单位为CRM会员账户。本次结果来自本周合成测试库，覆盖范围内该筛选口径的合计为上述金额。"
+    },
+    {
+      "id": "NS04-partial-refund-day",
+      "trace_id": "ee15727c-7c27-44f6-9ceb-99df1c6e70c5",
+      "structured_result_passed": true,
+      "sql_review_passed": true,
+      "explanation_or_reason_passed": false,
+      "findings": [
+        {
+          "quote": "有效订单净销售额",
+          "reason": "把有效订单条件迁移到通用净额。"
+        },
+        {
+          "quote": "取消单和全额退款不计",
+          "reason": "SQL只将非paid置0；全退paid保留并净贡献0，不能描述为排除。"
+        }
+      ],
+      "answer_or_reason": "2026年8月15日当天，青禾优选净销售额为70.00元。统计范围为当日（至次日零点前）的有效订单净销售额；口径为已支付订单实付金额减退款后合计，取消单和全额退款不计，退款按原订单下单日期归属；金额已由分换算为元。结果未按门店维度拆分或筛选。"
+    },
+    {
+      "id": "NS05-full-refund-day",
+      "trace_id": "5e8168f2-1f65-4136-9048-33435eaf5f65",
+      "structured_result_passed": true,
+      "sql_review_passed": true,
+      "explanation_or_reason_passed": false,
+      "findings": [
+        {
+          "quote": "有效已支付订单实付金额减退款",
+          "reason": "全退测试日实际存在paid全退单；净额0不是把有效购买过滤当指标定义。"
+        }
+      ],
+      "answer_or_reason": "在青禾当前合成测试库范围内，按净销售额口径（有效已支付订单实付金额减退款，退款按原订单下单日期归属，取消订单不计），2026年8月10日当天净销售额合计为 0.00 元。该结果是统计覆盖范围内的零值，不是未定义；本次未按门店或地区分组。"
+    },
+    {
+      "id": "NS06-covered-empty",
+      "trace_id": "fd518a85-f6ed-4c89-af5c-9df14cd63e96",
+      "structured_result_passed": true,
+      "sql_review_passed": true,
+      "explanation_or_reason_passed": false,
+      "findings": [
+        {
+          "quote": "有效订单实付金额减退款后合计",
+          "reason": "覆盖内空窗为0的数值正确，但口径仍额外声称有效订单。"
+        }
+      ],
+      "answer_or_reason": "在青禾当前CRM会员账户数据范围内，按2026年6月1日至6月29日（含首尾）统计，净销售额为0.00元（0分）。口径为有效订单实付金额减退款后合计，取消单不计，退款按原订单下单日期归属；本次结果为零，表示查询覆盖范围内该口径合计为零，并非未定义。"
+    },
+    {
+      "id": "NS07-missing-time",
+      "trace_id": "ae3db51a-58c3-4103-a5d3-85710fe69fb5",
+      "structured_result_passed": true,
+      "sql_review_passed": null,
+      "explanation_or_reason_passed": true,
+      "findings": [],
+      "answer_or_reason": "缺少查询时间范围，请提供净销售额的起止日期；客户名称“青禾优选”仅代表当前数据集，不作为门店筛选。"
+    },
+    {
+      "id": "NS08-outside-coverage",
+      "trace_id": "90ba6c6c-510f-402e-8507-9f91cc139dd3",
+      "structured_result_passed": true,
+      "sql_review_passed": null,
+      "explanation_or_reason_passed": true,
+      "findings": [],
+      "answer_or_reason": "数据覆盖范围为2024-09-01（含）至2026-09-01（不含），2026年9月不在覆盖范围内，无法查询该月净销售额。"
+    }
+  ],
+  "cause_assessment": "Inference: catalog includes a finance quote combining effective-order definition with refund-date/unit clauses; this provides a nearby other-metric definition in the answer input. Original formula and executed SQL remain correct. statistics_unit in customer scope also appears to have leaked into amount explanation. This is not a proven exclusive cause.",
+  "revision_boundaries": "Revise only build Skill source selection and catalog semantics; preserve test-v1, all expected values, judge and standard answer prompt. Regenerate/review/load fresh project, replay same eight cases once. Do not retry indefinitely or overwrite first-run findings.",
+  "correct_business_explanation": "净销售额按订单下单日期汇总全部paid订单的实付减累计退款；取消单不计，paid全额退款单净贡献为0。底层金额单位为分，展示为元；不是账户数指标。",
+  "report_sha256": "dc86cb8c3cf4ff646b238ffd06e95fc5aaea40764b01afa6711ef857c66ae9ca"
+}

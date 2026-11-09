@@ -1,0 +1,45 @@
+{
+  "id": "P01",
+  "reviewed_at": "2026-11-08T02:07:51.960056+00:00",
+  "status": "failed_output_protocol",
+  "semantic_passed": null,
+  "citation_attribution_passed": null,
+  "literal_quote_exact_all": null,
+  "quote_rows": [],
+  "output_sha256": "e40854f40d9a3f4a8e2a97450a3299417b3ed982275fb7e7f1e01d6847fe6e11",
+  "public_response_path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/response.json",
+  "public_response_sha256": "1ea6c2436a60737a7a0fa6caf6946f051dedd9d0af0175da0545f8721db8d072",
+  "public_text_sha256": "9d69fac7d0d1ff0829100f566da4dec2748be4ce0892576de425c00311c29f11",
+  "native_answer_exists": false,
+  "accepted_answer": false,
+  "native_error": "JSON_INVALID",
+  "json_parse_error": {
+    "message": "Invalid control character at",
+    "position": 27,
+    "line": 1,
+    "column": 28
+  },
+  "actual_answer_is_null": true,
+  "observational_semantics_only": {
+    "qualification_conclusion": "有资格，符合给定有效悦享年卡与本期范围",
+    "explanation": "普通等级及购卡金额不替代卡类型/有效期；题设合成、未查真实系统的边界保留。",
+    "source_check": "正文所列规则对应模型第3节规则1/2及第2节；引号是题设值/术语，不声称原访谈逐字引用。",
+    "finding": "公开文本未见资格业务判断错误；不是原生成功，不计作通过答案，也未修补原JSON。"
+  },
+  "blocking_findings": [
+    {
+      "id": "P01-JSON_INVALID",
+      "kind": "output_protocol",
+      "detail": "answer字符串内部含原始换行而非JSON转义，标准解析报Invalid control character。finish_reason=stop，非截断；原生记录完整性passed不能代替答案协议成功。"
+    }
+  ],
+  "nonblocking_findings": [],
+  "protocol_review": {
+    "audit_status": "passed",
+    "execution_status": "failed",
+    "protocol_audit_sha256": "c986d4957c9a40baab466e2578809e132fca0950d087eed5806cb257a9e9c346",
+    "http_attempts": 1,
+    "finish_reason": "stop"
+  },
+  "permissive_parse_or_repair_performed": false
+}

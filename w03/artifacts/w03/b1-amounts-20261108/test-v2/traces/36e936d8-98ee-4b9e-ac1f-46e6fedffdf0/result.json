@@ -1,0 +1,54 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "payment_cents",
+      "refund_cents",
+      "net_sales_cents",
+      "gross_cents",
+      "discount_cents"
+    ],
+    "start": "2026-06-01",
+    "end": "2026-06-30",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END) AS payment_cents\n  , SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS refund_cents\n  , SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS net_sales_cents\n  , SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END) AS gross_cents\n  , SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS discount_cents\nFROM \"data\".\"main\".\"orders\" orders_model_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-06-01' AND '2026-06-29'",
+  "columns": [
+    "payment_cents",
+    "refund_cents",
+    "net_sales_cents",
+    "gross_cents",
+    "discount_cents"
+  ],
+  "rows": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "seconds": 0.03,
+  "units": {
+    "payment_cents": "cents",
+    "refund_cents": "cents",
+    "net_sales_cents": "cents",
+    "gross_cents": "cents",
+    "discount_cents": "cents"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452",
+  "answer": "在青禾当前数据范围内，按2026年6月1日至6月29日（含首尾；结束边界按次日处理）汇总已支付订单：实付金额0.00元、退款金额0.00元、净销售额0.00元、支付订单原价金额0.00元、优惠金额0.00元。口径为已支付订单，取消单不计；退款按原订单下单日期归属，优惠金额按原价减实付且退款不冲减。以上为本次合成测试数据覆盖范围内的聚合零值，并非指标未定义；未按门店分组。",
+  "question": "请同时列出2026年6月1日至6月29日（含首尾）青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+  "trace_id": "36e936d8-98ee-4b9e-ac1f-46e6fedffdf0",
+  "elapsed_seconds": 15.766,
+  "model_usage": {
+    "prompt_tokens": 5045,
+    "completion_tokens": 2005,
+    "total_tokens": 7050
+  },
+  "model_calls_with_usage": 2
+}

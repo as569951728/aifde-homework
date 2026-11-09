@@ -1,0 +1,277 @@
+{
+  "status": "passed",
+  "report_sha256": "6ded2892d2684ab3d8b5dfa1990819c478a150c4ebb0c1b09265465086925214",
+  "judge_sha256": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3",
+  "B1_A01": {
+    "kind": "auxiliary_not_independent_expected",
+    "rows_checked": 14,
+    "checks": [
+      {
+        "case": "B1-N01",
+        "row": 0,
+        "net_identity": true,
+        "discount_identity": true
+      },
+      {
+        "case": "B1-R01",
+        "row": 0,
+        "net_identity": true,
+        "discount_identity": true
+      },
+      {
+        "case": "B1-R02",
+        "row": 0,
+        "net_identity": true,
+        "discount_identity": true
+      },
+      {
+        "case": "B1-D01",
+        "row": 0,
+        "net_identity": true,
+        "discount_identity": true
+      },
+      {
+        "case": "B1-D01",
+        "row": 1,
+        "net_identity": true,
+        "discount_identity": true
+      },
+      {
+        "case": "B1-D01",
+        "row": 2,
+        "net_identity": true,
+        "discount_identity": true
+      },
+      {
+        "case": "B1-F01",
+        "row": 0,
+        "net_identity": true,
+        "discount_identity": true
+      },
+      {
+        "case": "B1-Z01",
+        "row": 0,
+        "net_identity": true,
+        "discount_identity": true
+      },
+      {
+        "case": "B1-D02",
+        "row": 0,
+        "net_identity": true,
+        "discount_identity": true
+      },
+      {
+        "case": "B1-D02",
+        "row": 1,
+        "net_identity": true,
+        "discount_identity": true
+      },
+      {
+        "case": "B1-D02",
+        "row": 2,
+        "net_identity": true,
+        "discount_identity": true
+      },
+      {
+        "case": "B1-D02",
+        "row": 3,
+        "net_identity": true,
+        "discount_identity": true
+      },
+      {
+        "case": "B1-D02",
+        "row": 4,
+        "net_identity": true,
+        "discount_identity": true
+      },
+      {
+        "case": "B1-D02",
+        "row": 5,
+        "net_identity": true,
+        "discount_identity": true
+      }
+    ]
+  },
+  "multi_metric_controls": {
+    "total": 8,
+    "negative": 6,
+    "checks": [
+      {
+        "id": "multi_original",
+        "case": "B1-N01",
+        "expected_passed": true,
+        "comparison": {
+          "passed": true,
+          "differences": []
+        }
+      },
+      {
+        "id": "multi_columns_reordered_with_values",
+        "case": "B1-N01",
+        "expected_passed": true,
+        "comparison": {
+          "passed": true,
+          "differences": []
+        }
+      },
+      {
+        "id": "multi_omit_one_column",
+        "case": "B1-N01",
+        "expected_passed": false,
+        "comparison": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "actual.columns",
+              "expected": [
+                "discount_cents",
+                "gross_cents",
+                "net_sales_cents",
+                "payment_cents",
+                "refund_cents"
+              ],
+              "actual": [
+                "payment_cents",
+                "refund_cents",
+                "net_sales_cents",
+                "discount_cents"
+              ],
+              "rule": "unique exact columns"
+            }
+          ]
+        }
+      },
+      {
+        "id": "multi_swap_amount_values",
+        "case": "B1-N01",
+        "expected_passed": false,
+        "comparison": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "rows.{}.payment_cents",
+              "expected": 119050,
+              "actual": 18750,
+              "rule": "null/exact integer/declared float tolerance"
+            },
+            {
+              "path": "rows.{}.refund_cents",
+              "expected": 18750,
+              "actual": 119050,
+              "rule": "null/exact integer/declared float tolerance"
+            }
+          ]
+        }
+      },
+      {
+        "id": "multi_one_metric_unit_wrong",
+        "case": "B1-N01",
+        "expected_passed": false,
+        "comparison": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "units",
+              "expected": {
+                "payment_cents": "cents",
+                "refund_cents": "cents",
+                "net_sales_cents": "cents",
+                "gross_cents": "cents",
+                "discount_cents": "cents"
+              },
+              "actual": {
+                "payment_cents": "yuan",
+                "refund_cents": "cents",
+                "net_sales_cents": "cents",
+                "gross_cents": "cents",
+                "discount_cents": "cents"
+              },
+              "rule": "exact units, no missing/extra units"
+            }
+          ]
+        }
+      },
+      {
+        "id": "multi_one_cell_wrong",
+        "case": "B1-N01",
+        "expected_passed": false,
+        "comparison": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "rows.{}.discount_cents",
+              "expected": 5200,
+              "actual": 5201,
+              "rule": "null/exact integer/declared float tolerance"
+            }
+          ]
+        }
+      },
+      {
+        "id": "multi_extra_metric",
+        "case": "B1-N01",
+        "expected_passed": false,
+        "comparison": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "intent.metrics",
+              "expected": [
+                "payment_cents",
+                "refund_cents",
+                "net_sales_cents",
+                "gross_cents",
+                "discount_cents"
+              ],
+              "actual": [
+                "payment_cents",
+                "refund_cents",
+                "net_sales_cents",
+                "gross_cents",
+                "discount_cents",
+                "paid_order_count"
+              ],
+              "rule": "exact intent"
+            }
+          ]
+        }
+      },
+      {
+        "id": "multi_omit_one_AND_filter",
+        "case": "B1-F01",
+        "expected_passed": false,
+        "comparison": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "intent.filters",
+              "expected": [
+                {
+                  "field": "order__channel",
+                  "op": "eq",
+                  "value": "小程序"
+                },
+                {
+                  "field": "store__region",
+                  "op": "eq",
+                  "value": "华东"
+                }
+              ],
+              "actual": [
+                {
+                  "field": "order__channel",
+                  "op": "eq",
+                  "value": "小程序"
+                }
+              ],
+              "rule": "exact intent"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "model_calls": 0,
+  "queries": 0,
+  "original_report_unchanged": true
+}

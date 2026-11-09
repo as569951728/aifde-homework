@@ -1,0 +1,23 @@
+{
+  "case_id": "R07",
+  "started_at": "2026-11-06T17:35:30.935952+00:00",
+  "completed_at": "2026-11-06T17:35:40.637612+00:00",
+  "question": "人工情境：测试覆盖内完整8月、全门店；同月已注册账户A没有有效订单，B有1笔有效订单，C有2笔有效订单。按当前会员周报，复购率分子、分母分别选哪些账户？为什么不能使用旧草稿的人群？",
+  "fixture": null,
+  "input_track": "model_with_fixed_materials",
+  "fixed_materials": [
+    "W03/实操工程/materials/w03/03_会员运营周报.md"
+  ],
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-fb0579be8cb64d0fafaf429dcfec6588/run.json",
+    "run_id": "RUN-fb0579be8cb64d0fafaf429dcfec6588",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "在题设“测试覆盖内完整8月、全门店”条件成立的前提下，按当前《会员运营周报》口径：分母“月内购买会员数”选B、C；分子“月内复购会员数”选C。A没有有效订单，不进入分母；B只有1笔有效订单，进入分母但不进入分子；C有2笔有效订单，同时进入分母和分子。\n\n依据是《会员运营周报》中“月内购买会员数”定义为同一自然月至少一笔有效订单的账户数，“月内复购会员数”定义为同一自然月至少两笔有效订单的账户数，“月内复购率”为二者相除，且限整月、全门店口径。\n\n不能使用旧草稿的人群，是因为该文件明确说明：原周报草稿曾以全部注册会员作为复购率分母，现改为同月有效购买账户；本文件是该项统计调整的当前依据。旧草稿的“全部注册会员”会纳入A这类同月已注册但没有有效订单的账户，与当前分母口径不一致，因此不能作为当前复购率的人群口径。上述为情境推导，不代表已查询客户系统或客户真实记录。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "06e8b5c1c1d23e3c2fc867b3706dd1bc486bccf49d3e8028ecc796f2fa43c02c"
+}

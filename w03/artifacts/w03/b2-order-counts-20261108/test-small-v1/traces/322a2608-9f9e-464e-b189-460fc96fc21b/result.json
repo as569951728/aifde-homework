@@ -1,0 +1,38 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "net_sales_cents"
+    ],
+    "start": "2026-08-15",
+    "end": "2026-08-16",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  SUM(case when status = 'paid' then paid_cents - refund_cents else 0 end) AS net_sales_cents\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-15' AND '2026-08-15'",
+  "columns": [
+    "net_sales_cents"
+  ],
+  "rows": [
+    [
+      7000
+    ]
+  ],
+  "seconds": 0.015,
+  "units": {
+    "net_sales_cents": "cents"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "466a44dff3612cc4ca54f51e23c9d31729d2c53326c63e2c23edd5338f273949",
+  "answer": "2026年8月15日当天青禾优选净销售额为70.00元。统计口径为：按下单日期归属当天，汇总已支付订单的实付金额减退款金额，取消单不计；结果由分换算为元。数据范围为当前已加载的青禾客户本周合成测试库，本次未额外按门店或地区筛选。",
+  "question": "2026年8月15日当天青禾优选净销售额是多少？",
+  "trace_id": "322a2608-9f9e-464e-b189-460fc96fc21b",
+  "elapsed_seconds": 6.347,
+  "model_usage": {
+    "prompt_tokens": 6436,
+    "completion_tokens": 514,
+    "total_tokens": 6950
+  },
+  "model_calls_with_usage": 2
+}

@@ -1,0 +1,237 @@
+{
+  "fixture_kind": "W02真实来源与隔离旧稿组合；不对正式业务模型apply",
+  "task": "根据新增材料，准备业务模型局部更新草稿与核查记录增量，同时复核相关fit-gap与待核安排。明确需要FDE判断的地方。",
+  "current_scope": "支持小林减少整理负担，保留业务人员确认；本轮不判断复购效果。",
+  "existing_model": "小林希望识别重点会员并得到可审核的建议；其具体采用条件待核。具体操作、名单规则和实际成效仍未知。",
+  "existing_fit_gap": [
+    {
+      "id": "GAP-001",
+      "request": "按青禾确认的业务口径，识别需要重点经营的会员，输出可供小林使用的名单。",
+      "category": "系统适配",
+      "capability_ids": [
+        "CAP-003",
+        "CAP-004",
+        "CAP-006"
+      ],
+      "evidence_status": "reported",
+      "evidence": [
+        {
+          "source": "docs/w02/sources/w01/transcript.json",
+          "locator": "MSG-00808、MSG-00818",
+          "note": "沈总提出名单和建议需能被小林实际使用。会员老化只是判断，复购及活跃口径尚待核实；具体筛选规则和名单可用标准未确定。"
+        },
+        {
+          "source": "docs/w02/sources/w01/product_capabilities.json",
+          "locator": "CAP-003、CAP-004、CAP-006",
+          "note": "已有查询比较工具、独立样例数据及标准净消费/老会员/下降定义。能力矩阵明确青禾语义与数据需后续适配，不自动支持任意指标。"
+        },
+        {
+          "source": "artifacts/w02/w01_baseline_evidence/analysis.json",
+          "locator": "result.summary；observations[name=compare_spending]；CMP-29dcd590e6429c3a",
+          "note": "已在独立样例上识别 M001、M004、M007 的净消费下降，S03 覆盖缺失保持未知。这证明标准筛选能力；不能证明青禾筛选口径已适配或名单已可用。"
+        },
+        {
+          "source": "docs/w02/sources/w01/transcript.json",
+          "locator": "MSG-00811、MSG-00812、MSG-00814",
+          "note": "沈总认可先核清口径，由小林牵头、老周协助确认数据提供方与范围。实际资料、权限和核对时间仍待落实；MSG-00814 的指代混淆不构成数据授权。"
+        },
+        {
+          "source": "docs/w02/sources/w01_teacher_feedback_20261027.md",
+          "locator": "作业缺点；改进之处",
+          "note": "老师要求利用已验证的标准筛选能力先形成初步分类，再用小林规则验证。本轮据已有能力边界修正为系统适配，不新增客户规则或将客户证据升为已核实。"
+        }
+      ],
+      "next_step": "请小林确认重点经营规则、会员定义、比较时段及名单可用标准；老周确认数据来源、字段、覆盖和使用许可。先按规则对照标准净消费筛选，完成必要数据与语义适配，在获准样本上核对计算与名单。若规则超出现有能力，再评估补充范围。"
+    },
+    {
+      "id": "GAP-002",
+      "request": "给小林提供可审核、可实际使用的运营建议。",
+      "category": "待判断",
+      "capability_ids": [
+        "CAP-001",
+        "CAP-003",
+        "CAP-006"
+      ],
+      "evidence_status": "reported",
+      "evidence": [
+        {
+          "source": "docs/w02/sources/w01/transcript.json",
+          "locator": "MSG-00804\nMSG-00808\nMSG-00818",
+          "note": "沈总要求名单和建议能被小林实际使用。现有访谈未核实小林的审核流程、采纳标准、可用渠道与权益条件。"
+        },
+        {
+          "source": "artifacts/w02/w01_baseline_evidence/analysis.json",
+          "locator": "result.recommendations\nresult.limitations\ndescribe_business 语义",
+          "note": "真实运行能根据工具结果生成建议。标准语义明确供运营审核、不承诺召回效果，不声称已发券。人工审核是能力边界，本身不是产品缺口。"
+        },
+        {
+          "source": "artifacts/w02/w01_baseline_evidence/manual-findings.json",
+          "locator": "EVAL-MANUAL-001\nEVAL-MANUAL-002",
+          "note": "样例评估自动通过后，人工仍发现 M004 建议月份事实错误；M007 新人权益资格待核。客户采纳率尚未测量，不能将自动通过等同于业务可用。"
+        },
+        {
+          "source": "docs/w02/sources/w01/product_capabilities.json",
+          "locator": "CAP-001\nCAP-003\nCAP-006",
+          "note": "已有模型执行、业务查询工具和标准语义。青禾业务规则与流程尚未确认。当前无法确定具体差异需要配置、系统适配或能力补充，故保留待判断。"
+        }
+      ],
+      "next_step": "请小林确认建议可用标准、审核分工、渠道与权益条件。拟用获许可的代表性样例记录原样采纳、修改后采纳、未采纳及原因，另看事实准确性、整理成本和实际执行。采纳率口径及目标待确认，不能单独证明适配或复购改善。"
+    }
+  ],
+  "historical_entry": {
+    "id": "GAP-003",
+    "request": "核清复购/活跃定义和报表",
+    "history": "原为调查任务，已决定转入待核清单，原表本轮尚未同步。不得当作新交付诉求。"
+  },
+  "extracted_candidates": [
+    {
+      "id": "CLM-001-0009",
+      "statement": "小林说上一个项目最后没人用；她看到的是那个界面让操作“又多了三步”，但“多了三步”是她当时用下来的感受，不是精确的操作清单。具体多出哪些操作、对应哪些页面、每一步叫什么，她不掌握，需要对着实际界面再核实。",
+      "kind": "fact",
+      "evidence_status": "reported",
+      "qualifiers": [
+        "个人使用感受",
+        "不是精确操作清单",
+        "具体界面细节待核"
+      ],
+      "evidence": [
+        {
+          "meeting_id": "4abeb711-5ac6-500b-a2e7-ad7a131a85d7",
+          "message_id": "MSG-01919",
+          "quote": "上一个项目最后没人用。我看到的是那个界面让我们的操作又多了三步，具体怎么改，还得结合实际工作再看。"
+        },
+        {
+          "meeting_id": "4abeb711-5ac6-500b-a2e7-ad7a131a85d7",
+          "message_id": "MSG-01921",
+          "quote": "“多了三步”是我当时用下来的感受，不是精确的操作清单。"
+        }
+      ],
+      "conflict_ids": [],
+      "review": {
+        "status": "pending",
+        "note": ""
+      }
+    }
+  ],
+  "raw_transcripts": [
+    {
+      "contract_version": "w02-0.1.0-draft",
+      "scope_id": "qinghe",
+      "origin": "live",
+      "meeting_id": "4abeb711-5ac6-500b-a2e7-ad7a131a85d7",
+      "week": 2,
+      "role_id": "ROLE-LIN",
+      "scenario_version": "w02-scenario-0.1.3",
+      "purpose": "核实会员注册考核，了解会员运营的执行、记录和反馈流程，明确助手可优先帮助改进的环节。",
+      "state": "ended",
+      "messages": [
+        {
+          "id": "MSG-01918",
+          "speaker": "user",
+          "content": "上一个项目为什么没人用，她希望助手帮她做什么、不能替她做什么。"
+        },
+        {
+          "id": "MSG-01919",
+          "speaker": "assistant",
+          "content": "上一个项目最后没人用。我看到的是那个界面让我们的操作又多了三步，具体怎么改，还得结合实际工作再看。\n\n我希望助手先帮我整理出需要关注的会员，把建议依据说清楚，减少我重复整理和核对。但人群和执行方案还是要业务人员确认，我没有授权它自动发券、联系会员或修改记录。"
+        },
+        {
+          "id": "MSG-01920",
+          "speaker": "user",
+          "content": "你提到那个界面让操作多了三步，具体多出来的是哪些操作？"
+        },
+        {
+          "id": "MSG-01921",
+          "speaker": "assistant",
+          "content": "“多了三步”是我当时用下来的感受，不是精确的操作清单。具体多出来的是哪些操作、对应哪些页面、每一步叫什么，我不掌握，得对着实际界面再核实，不能凭空补。"
+        },
+        {
+          "id": "MSG-01924",
+          "speaker": "user",
+          "content": "前面讲到的工作，你最希望助手先帮哪一步，做到什么程度你才觉得有帮助？"
+        },
+        {
+          "id": "MSG-01925",
+          "speaker": "assistant",
+          "content": "我最希望助手先帮我把需要关注的会员整理出来，并且把每条建议的依据说清楚。做到这个程度我就觉得有帮助：我不用再重复整理名单、反复核对不一致的信息，能省掉一部分费力的活。\n\n不过人群和执行方案还是得业务人员确认，我没有授权它自动发券、联系会员或修改记录。新系统如果只是让我多用一套工具、原来的活一样不少，我不会有太大期待。"
+        }
+      ]
+    }
+  ],
+  "review_state": "旧范围已采纳。新增候选尚未获FDE反馈。已有长过程日志，正式取舍表仍为空。",
+  "notes_template": [
+    "原始候选与原文位置",
+    "核查发现",
+    "采用/修订/暂不采用及理由",
+    "对应模型位置或后续去向"
+  ],
+  "evidence_context_index": {
+    "kind": "original_export_context_index",
+    "claims": [
+      {
+        "claim_id": "CLM-001-0009",
+        "claim_evidence_message_ids": [
+          "MSG-01919",
+          "MSG-01921"
+        ],
+        "source_contexts": [
+          {
+            "meeting_id": "4abeb711-5ac6-500b-a2e7-ad7a131a85d7",
+            "role_id": "ROLE-LIN",
+            "previous_question": {
+              "id": "MSG-01918",
+              "speaker": "user",
+              "content": "上一个项目为什么没人用，她希望助手帮她做什么、不能替她做什么。"
+            },
+            "cited_message": {
+              "id": "MSG-01919",
+              "speaker": "assistant",
+              "content": "上一个项目最后没人用。我看到的是那个界面让我们的操作又多了三步，具体怎么改，还得结合实际工作再看。\n\n我希望助手先帮我整理出需要关注的会员，把建议依据说清楚，减少我重复整理和核对。但人群和执行方案还是要业务人员确认，我没有授权它自动发券、联系会员或修改记录。"
+            },
+            "cited_quote": "上一个项目最后没人用。我看到的是那个界面让我们的操作又多了三步，具体怎么改，还得结合实际工作再看。",
+            "next_two_messages": [
+              {
+                "id": "MSG-01920",
+                "speaker": "user",
+                "content": "你提到那个界面让操作多了三步，具体多出来的是哪些操作？"
+              },
+              {
+                "id": "MSG-01921",
+                "speaker": "assistant",
+                "content": "“多了三步”是我当时用下来的感受，不是精确的操作清单。具体多出来的是哪些操作、对应哪些页面、每一步叫什么，我不掌握，得对着实际界面再核实，不能凭空补。"
+              }
+            ]
+          },
+          {
+            "meeting_id": "4abeb711-5ac6-500b-a2e7-ad7a131a85d7",
+            "role_id": "ROLE-LIN",
+            "previous_question": {
+              "id": "MSG-01920",
+              "speaker": "user",
+              "content": "你提到那个界面让操作多了三步，具体多出来的是哪些操作？"
+            },
+            "cited_message": {
+              "id": "MSG-01921",
+              "speaker": "assistant",
+              "content": "“多了三步”是我当时用下来的感受，不是精确的操作清单。具体多出来的是哪些操作、对应哪些页面、每一步叫什么，我不掌握，得对着实际界面再核实，不能凭空补。"
+            },
+            "cited_quote": "“多了三步”是我当时用下来的感受，不是精确的操作清单。",
+            "next_two_messages": [
+              {
+                "id": "MSG-01924",
+                "speaker": "user",
+                "content": "前面讲到的工作，你最希望助手先帮哪一步，做到什么程度你才觉得有帮助？"
+              },
+              {
+                "id": "MSG-01925",
+                "speaker": "assistant",
+                "content": "我最希望助手先帮我把需要关注的会员整理出来，并且把每条建议的依据说清楚。做到这个程度我就觉得有帮助：我不用再重复整理名单、反复核对不一致的信息，能省掉一部分费力的活。\n\n不过人群和执行方案还是得业务人员确认，我没有授权它自动发券、联系会员或修改记录。新系统如果只是让我多用一套工具、原来的活一样不少，我不会有太大期待。"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "boundary": "前后邻接只用于阅读原问答，不证明存在引导、支持该候选或已获确认。保留原候选，人工核主张与证据。"
+  }
+}

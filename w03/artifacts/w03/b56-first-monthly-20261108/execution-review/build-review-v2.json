@@ -1,0 +1,120 @@
+{
+  "reviewer": "b56_execution_review",
+  "reviewed_at": "2026-11-08T15:13:27.305091+00:00",
+  "build": "artifacts/w03/b56-first-monthly-20261108/build-v2",
+  "stage": "raw_response_review_after_source_gate_failure",
+  "status": "blocked_at_source_check",
+  "approved_for_merge_load": false,
+  "semantic_all_passed": false,
+  "failed_checks": [
+    {
+      "id": "G01-SOURCE_QUOTE_NOT_EXACT",
+      "severity": "blocking",
+      "quote": "统计口径要求：人数或金额统计需明确会员范围、期间、渠道、有效购买条件与来源；标签字段含义应结合实际填写核实",
+      "reason": "The source has **统计口径要求**： immediately before the following text. The generated quote removes Markdown ** around the heading then joins it to the sentence; hence not an exact continuous input span. This is quote-boundary/format alteration, not evidence of a new fabricated business rule.",
+      "required_change": "Generate a new separate response with direct continuous original excerpts; do not hand edit response or bypass source check."
+    }
+  ],
+  "passed_checks": [
+    {
+      "id": "targets32-raw",
+      "finding": "Raw response defines32 targets once, catalog IDs match, unresolved empty; this is not a loadable library."
+    },
+    {
+      "id": "catalog-quotes-raw",
+      "finding": "All catalog source quotes are continuous original input spans."
+    },
+    {
+      "id": "B5-common-effective-fact",
+      "finding": "Four first/repeat measures now share one full-history effective-order sequence; ROW_NUMBER partitions account, orders date and ID; first distinct account uses NULL for no match and sum metrics use ELSE0."
+    },
+    {
+      "id": "B5-scope-dates",
+      "finding": "Sequence includes paid/net>0 only before ranking; original ordered_at retained; window is not pushed into ranking SQL; registration is separate members fact on registered_at."
+    },
+    {
+      "id": "B6-grain-threshold",
+      "finding": "GROUP BY member_id,month_start, explicit two-column grain_keys; flags >=2 and 1 per purchased account-month; ratio dependencies match."
+    },
+    {
+      "id": "B6-policy-raw",
+      "finding": "Three monthly catalog policies are full_month_only=true."
+    },
+    {
+      "id": "old24-raw-review",
+      "finding": "Old24 raw expressions and ratio mappings remain source-consistent; no new clear semantic defect found in static inspection."
+    }
+  ],
+  "reviewed_metrics": [
+    "order_count",
+    "paid_order_count",
+    "valid_order_count",
+    "cancelled_order_count",
+    "refund_order_count",
+    "partial_refund_order_count",
+    "full_refund_order_count",
+    "payment_cents",
+    "refund_cents",
+    "net_sales_cents",
+    "gross_cents",
+    "discount_cents",
+    "buyer_count",
+    "refund_buyer_count",
+    "selling_store_count",
+    "valid_order_items",
+    "avg_order_value",
+    "avg_buyer_value",
+    "purchase_frequency",
+    "refund_amount_rate",
+    "cancel_rate",
+    "refund_order_rate",
+    "discount_rate",
+    "items_per_order",
+    "new_member_count",
+    "first_buyer_count",
+    "first_order_sales_cents",
+    "first_order_count",
+    "repeat_order_count",
+    "monthly_buyer_count",
+    "monthly_repeat_buyer_count",
+    "monthly_repeat_rate"
+  ],
+  "not_executed": [
+    "dbt build",
+    "dimension/grain/metricflow validation",
+    "H03 deterministic replay",
+    "merge",
+    "load",
+    "natural-language queries",
+    "answer review"
+  ],
+  "diagnostic": {
+    "model_api_calls_by_reviewer": 0,
+    "native_queries": 0
+  },
+  "potential_limitations": [
+    {
+      "id": "B5-invalid-only-groups",
+      "finding": "Shared sequence contains effective orders only, not rank markers rejoined to all original orders. It statically resolves original H03 with effective groups, but a combined query for groups having only invalid orders may still leave B5 NULL. Not tested or claimed covered."
+    },
+    {
+      "id": "B5-channel-dimension",
+      "finding": "channel retained physically in sequence but not declared as its categorical dimension. Native path availability cannot be established without validation."
+    },
+    {
+      "id": "B6-empty-month-groups",
+      "finding": "No full month spine in monthly model; previous untested grouped-empty-month limitation persists."
+    }
+  ],
+  "evidence_sha256": {
+    "artifacts/w03/b56-first-monthly-20261108/build-v2/trace.json": "42a477478e333d102d54973f3f95550bcb393ed87d9cb4a68d464c2f0fa32927",
+    "artifacts/w03/b56-first-monthly-20261108/build-v2/skill_used.md": "95b5155c97e480469a0735e27cd1cc8cd08907963bf7f93678d90604c6126a5a",
+    "artifacts/w03/b56-first-monthly-20261108/build-v2/input.json": "5f72f23fc0061473b08692b5e7fe2f163ebc64e18f79e6f34614c7b5eaa07f4b",
+    "artifacts/w03/b56-first-monthly-20261108/build-v2/source_check.json": "f77dba1ac4eee7f19bcafcac074e65e85a2941197e41036f882a92be91060b50",
+    "artifacts/w03/b56-first-monthly-20261108/build-v2/response.json": "1d27607d874446f00e67df8af777610546ea1fbb8d3559d2e6e21f6462e7fda4",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/review-contract.json": "ffdf5e69885f9a5c8a50df395f64f65d979dd904d5dd2b6746aed691039d7670",
+    "docs/w03/business_model.md": "4e3187d124adc0856163b74a2cdd5edba064cf4ed39a698c553c9fe196ec00fb",
+    "artifacts/w03/b56-first-monthly-20261108/candidate-v013/SKILL.md": "95b5155c97e480469a0735e27cd1cc8cd08907963bf7f93678d90604c6126a5a"
+  },
+  "next": "Review narrow v014 source-copy method and regenerate; fresh source/structural checks and actual H03 remain required."
+}

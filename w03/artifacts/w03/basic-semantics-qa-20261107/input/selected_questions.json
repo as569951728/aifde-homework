@@ -1,0 +1,72 @@
+{
+  "version": "w03-model-tests-user-boundary-20261106-v1",
+  "selection_reason": "Existing six basic-semantics fixed-material cases; original case objects unchanged.",
+  "cases": [
+    {
+      "id": "B01",
+      "dimension": "订单分类",
+      "question": "人工订单：O1 paid实付1000退款200；O2 paid实付1000退款1000；O3 cancelled实付0退款0；O4 paid实付0退款0。分别判断支付订单与有效购买，并说明退款与优惠的区别。",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "B02",
+      "dimension": "退款归期",
+      "question": "一笔8月下单的paid订单在快照中已记录累计退款，但没有退款发生日期。能否核8月订单口径净销售额？能否据此统计9月退款现金流？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "B03",
+      "dimension": "金额与件数",
+      "question": "人工订单原始quantity=3、paid=1000、refund=200且仍有效。有效订单商品件数计几件？能否从退款金额推出退了几件？购卡金额可否并入商品净额？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "B04",
+      "dimension": "首购与窗口",
+      "question": "人工情境：同一账户全覆盖历史中最早订单取消；随后7月10日有有效订单O100、O101；8月又有有效订单O200。查8月观测期首单时应选哪笔？同日如何排序？这能叫终身首购吗？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/03_会员运营周报.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "B05",
+      "dimension": "零、未定义和越界",
+      "question": "请分别解释：覆盖内筛选无匹配订单的净额、覆盖内无购买账户月份的复购率、覆盖外月份的净额。金额13000分是否等于13000元？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/02_财务邮件.md",
+        "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "B06",
+      "dimension": "维度与物理关系",
+      "question": "四张原始表各一行代表什么？关联键是什么？如果A归属甲店而O1成交乙店，两种门店统计如何区分？能否据此确定O1用了哪张卡？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    }
+  ]
+}

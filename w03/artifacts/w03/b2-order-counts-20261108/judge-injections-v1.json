@@ -1,0 +1,247 @@
+{
+  "status": "passed",
+  "report": "artifacts/w03/b2-order-counts-20261108/test-small-v1/metric_test_report.json",
+  "report_sha256": "9e1a831607a60715aa3d9c4f30e44a33663c4d2d1aeb7007591fbd4ead9de642",
+  "judge_sha256": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3",
+  "checks": [
+    {
+      "id": "correct_original",
+      "source_kind": "real_result_copy",
+      "source_case": "NS01-aug-total",
+      "expected_passed": true,
+      "actual_comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "original_result_unchanged": true
+    },
+    {
+      "id": "row_order_only",
+      "source_kind": "real_result_copy",
+      "source_case": "NS02-july-transaction-store",
+      "expected_passed": true,
+      "actual_comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "original_result_unchanged": true
+    },
+    {
+      "id": "column_order_only",
+      "source_kind": "real_result_copy",
+      "source_case": "NS02-july-transaction-store",
+      "expected_passed": true,
+      "actual_comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "original_result_unchanged": true
+    },
+    {
+      "id": "wrong_date",
+      "source_kind": "real_result_copy",
+      "source_case": "NS01-aug-total",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "intent.end",
+            "expected": "2026-09-01",
+            "actual": "2026-08-31",
+            "rule": "exact intent"
+          }
+        ]
+      },
+      "original_result_unchanged": true
+    },
+    {
+      "id": "wrong_metric",
+      "source_kind": "real_result_copy",
+      "source_case": "NS01-aug-total",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "intent.metrics",
+            "expected": [
+              "net_sales_cents"
+            ],
+            "actual": [
+              "paid_amount_cents"
+            ],
+            "rule": "exact intent"
+          }
+        ]
+      },
+      "original_result_unchanged": true
+    },
+    {
+      "id": "extra_filter",
+      "source_kind": "real_result_copy",
+      "source_case": "NS01-aug-total",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "intent.filters",
+            "expected": [],
+            "actual": [
+              {
+                "field": "store",
+                "op": "eq",
+                "value": "S01"
+              }
+            ],
+            "rule": "exact intent"
+          }
+        ]
+      },
+      "original_result_unchanged": true
+    },
+    {
+      "id": "wrong_unit",
+      "source_kind": "real_result_copy",
+      "source_case": "NS01-aug-total",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "units",
+            "expected": {
+              "net_sales_cents": "cents"
+            },
+            "actual": {
+              "net_sales_cents": "yuan"
+            },
+            "rule": "exact units, no missing/extra units"
+          }
+        ]
+      },
+      "original_result_unchanged": true
+    },
+    {
+      "id": "wrong_value_one_cent",
+      "source_kind": "real_result_copy",
+      "source_case": "NS01-aug-total",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.net_sales_cents",
+            "expected": 100300,
+            "actual": 100301,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "original_result_unchanged": true
+    },
+    {
+      "id": "error_with_original_number",
+      "source_kind": "real_result_copy",
+      "source_case": "NS01-aug-total",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "status",
+            "expected": "ok",
+            "actual": "error",
+            "rule": "exact supported status"
+          }
+        ]
+      },
+      "original_result_unchanged": true
+    },
+    {
+      "id": "wrong_data_version",
+      "source_kind": "real_result_copy",
+      "source_case": "NS01-aug-total",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "data_version",
+            "expected": "qinghe-w03-20260923-small",
+            "actual": "synthetic-wrong-version",
+            "rule": "locked version"
+          }
+        ]
+      },
+      "original_result_unchanged": true
+    },
+    {
+      "id": "missing_group",
+      "source_kind": "real_result_copy",
+      "source_case": "NS02-july-transaction-store",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows",
+            "expected": {
+              "store": "S01",
+              "net_sales_cents": 12500
+            },
+            "actual": null,
+            "rule": "missing group"
+          }
+        ]
+      },
+      "original_result_unchanged": true
+    },
+    {
+      "id": "duplicate_group",
+      "source_kind": "real_result_copy",
+      "source_case": "NS02-july-transaction-store",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "actual.rows[3]",
+            "expected": "unique group",
+            "actual": [
+              "S02",
+              10000
+            ],
+            "rule": "duplicate group"
+          }
+        ]
+      },
+      "original_result_unchanged": true
+    },
+    {
+      "id": "null_replaced_by_zero",
+      "source_kind": "synthetic_null_contract_not_real_net_sales",
+      "source_case": "synthetic-null-comparator-only",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.net_sales_cents",
+            "expected": null,
+            "actual": 0,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "original_result_unchanged": true
+    }
+  ],
+  "total": 13,
+  "negative_checks": 10,
+  "negative_rejected": 10,
+  "model_calls": 0,
+  "queries": 0,
+  "raw_results_modified": false
+}

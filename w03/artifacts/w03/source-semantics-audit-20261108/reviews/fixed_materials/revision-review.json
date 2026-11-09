@@ -1,0 +1,164 @@
+{
+  "reviewer": "independent_fixed_materials_source_semantics",
+  "completed_at": "2026-11-08T02:25:50.526174+00:00",
+  "reviewed_artifact": "candidate/reviewer_expectations.json",
+  "sha256": "f799da7f4420620386e73f6b447efe219ed37f22ef881f08595f995b2b5280a2",
+  "scope": "固定材料15题来源语义专项复审：R03/F08引用修改及其余13题不变；不是全维度测试设计验收、模型问答通过或正式采纳。",
+  "status": "passed_in_scope",
+  "api_calls": 0,
+  "input_or_historical_grades_modified": false,
+  "checks": {
+    "candidate_sha_matches_root": true,
+    "R03_exact_patch": true,
+    "F08_exact_patch": true,
+    "other_13_cases_unchanged": true,
+    "all_15_required_and_unacceptable_unchanged": true,
+    "original_expectations_unchanged": true,
+    "original_questions_model_and_fixed_sources_unchanged": true,
+    "additional_review_sources_unchanged": true,
+    "criteria_unchanged": true,
+    "F08_cited_model_section_2_unchanged_in_candidate": true,
+    "F08_cited_model_section_3_unchanged_in_candidate": true,
+    "F08_cited_model_section_5_unchanged_in_candidate": true
+  },
+  "cases": [
+    {
+      "id": "U06",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "该题完整预期对象与原input一致，沿用此前逐题独立来源判据及专项复核结论。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "R01",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "该题完整预期对象与原input一致，沿用此前逐题独立来源判据及专项复核结论。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "R02",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "该题完整预期对象与原input一致，沿用此前逐题独立来源判据及专项复核结论。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "R03",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "陈姐日期/归并来源已移除；04购买人群、01有效订单及小林03868保留，直接支持题设完整订单情境下A/B均不属于购买人数。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "R04",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "该题完整预期对象与原input一致，沿用此前逐题独立来源判据及专项复核结论。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "R05",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "该题完整预期对象与原input一致，沿用此前逐题独立来源判据及专项复核结论。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "R06",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "该题完整预期对象与原input一致，沿用此前逐题独立来源判据及专项复核结论。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "R07",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "该题完整预期对象与原input一致，沿用此前逐题独立来源判据及专项复核结论。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "B01",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "该题完整预期对象与原input一致，沿用此前逐题独立来源判据及专项复核结论。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "B02",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "该题完整预期对象与原input一致，沿用此前逐题独立来源判据及专项复核结论。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "B03",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "该题完整预期对象与原input一致，沿用此前逐题独立来源判据及专项复核结论。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "B04",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "该题完整预期对象与原input一致，沿用此前逐题独立来源判据及专项复核结论。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "B05",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "该题完整预期对象与原input一致，沿用此前逐题独立来源判据及专项复核结论。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "B06",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "该题完整预期对象与原input一致，沿用此前逐题独立来源判据及专项复核结论。"
+      ],
+      "findings": []
+    },
+    {
+      "id": "F08",
+      "status": "passed_in_scope",
+      "checked_claims": [
+        "MODEL引用已绑定本轮冻结input/business_model.md，明确标注候选而非正式基线；第26、44、72行直接支持四状态取证及关联未知，候选模型§2/3/5与该快照完全一致。"
+      ],
+      "findings": []
+    }
+  ],
+  "resolved_findings": [
+    {
+      "finding_id": "FM-CITE-01",
+      "status": "resolved",
+      "field": "/cases/47/sources/2",
+      "resolution": "精确删除原陈姐来源，未改业务要求与反例。"
+    },
+    {
+      "finding_id": "FM-CITE-02",
+      "status": "resolved",
+      "field": "/cases/65/sources/3",
+      "resolution": "精确替换为冻结候选来源与相应定位，未将其宣称为正式模型。",
+      "frozen_model_sha256": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9"
+    }
+  ],
+  "remaining_findings": [],
+  "fact_conflicts_requiring_user_decision": [],
+  "model_revision_boundary": "candidate/business_model.md的MSG-01731措辞更正由模型组另审；本组仅核F08所引用§2/3/5未变，不替代正文全量复审。"
+}

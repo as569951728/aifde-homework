@@ -1,0 +1,31 @@
+{
+  "source": "examples/w03/materials/report.md + examples/w03/data/orders.csv",
+  "method": "逐记录筛 paid 与半开月区间，按账户累加实付减退款；不导入指标库或被测 SQL。课程原测试期望先核对后运行。",
+  "months": {
+    "2026-07": {
+      "included_orders": [
+        "WO4",
+        "WO5",
+        "WO6"
+      ],
+      "net_by_member_cents": {
+        "W1": 10000,
+        "W2": 0
+      },
+      "net_receipts_cents": 10000,
+      "monthly_large_buyer_count": 1
+    },
+    "2026-08": {
+      "included_orders": [
+        "WO1",
+        "WO2"
+      ],
+      "net_by_member_cents": {
+        "W1": 8000,
+        "W2": 5000
+      },
+      "net_receipts_cents": 13000,
+      "monthly_large_buyer_count": 0
+    }
+  }
+}

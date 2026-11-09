@@ -1,0 +1,44 @@
+{
+  "status": "preparing_independent_expected_before_build",
+  "date": "2026-11-08",
+  "batch": "B2",
+  "new_metrics": [
+    "order_count",
+    "paid_order_count",
+    "valid_order_count",
+    "cancelled_order_count",
+    "refund_order_count",
+    "partial_refund_order_count",
+    "full_refund_order_count"
+  ],
+  "build_metrics": [
+    "payment_cents",
+    "refund_cents",
+    "net_sales_cents",
+    "gross_cents",
+    "discount_cents",
+    "order_count",
+    "paid_order_count",
+    "valid_order_count",
+    "cancelled_order_count",
+    "refund_order_count",
+    "partial_refund_order_count",
+    "full_refund_order_count"
+  ],
+  "regression_cases": 15,
+  "planned_small_new_cases": [
+    "B2-N01",
+    "B2-R01",
+    "B2-R02",
+    "B2-D01",
+    "B2-D02",
+    "B2-E01"
+  ],
+  "fixture_design": "B2-Z01; zero-paid missing in original small; explicitly artificial isolated data",
+  "auxiliary": "B2-A01 is not another query",
+  "original_data_unchanged": true,
+  "next_batch_not_started": "B3",
+  "workflow": "source-derived expectations and independent gate, build cumulative12, inspect generated, load separate projects, same15 regression and newB2, explanation review",
+  "small_tests_with_regression": 21,
+  "fixture_tests": 1
+}

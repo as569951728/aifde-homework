@@ -1,0 +1,72 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "avg_order_value",
+      "avg_buyer_value",
+      "purchase_frequency",
+      "refund_amount_rate",
+      "cancel_rate",
+      "refund_order_rate",
+      "discount_rate",
+      "items_per_order"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": [
+      {
+        "field": "order__channel",
+        "op": "eq",
+        "value": "小程序"
+      }
+    ]
+  },
+  "sql": "SELECT\n  CAST(SUM(net_sales_cents) AS DOUBLE) / CAST(NULLIF(SUM(valid_order_count), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(net_sales_cents) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT buyer_count), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(valid_order_count) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT buyer_count), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(refund_cents) AS DOUBLE) / CAST(NULLIF(SUM(payment_cents), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(cancelled_order_count) AS DOUBLE) / CAST(NULLIF(SUM(order_count), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(refund_order_count) AS DOUBLE) / CAST(NULLIF(SUM(paid_order_count), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(discount_cents) AS DOUBLE) / CAST(NULLIF(SUM(gross_cents), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(valid_order_items) AS DOUBLE) / CAST(NULLIF(SUM(valid_order_count), 0) AS DOUBLE) AS items_per_order\nFROM (\n  SELECT\n    channel AS order__channel\n    , 1 AS order_count\n    , CASE WHEN status = 'paid' THEN 1 ELSE 0 END AS paid_order_count\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END AS valid_order_count\n    , CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END AS cancelled_order_count\n    , CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END AS refund_order_count\n    , CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END AS payment_cents\n    , CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END AS refund_cents\n    , CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END AS net_sales_cents\n    , CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END AS gross_cents\n    , CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END AS discount_cents\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END AS buyer_count\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END AS valid_order_items\n  FROM \"data\".\"main\".\"orders\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_15\nWHERE order__channel in ('小程序')",
+  "columns": [
+    "avg_order_value",
+    "avg_buyer_value",
+    "purchase_frequency",
+    "refund_amount_rate",
+    "cancel_rate",
+    "refund_order_rate",
+    "discount_rate",
+    "items_per_order"
+  ],
+  "rows": [
+    [
+      3746.153846153846,
+      3746.153846153846,
+      1.0,
+      0.22328548644338117,
+      0.0625,
+      0.13333333333333333,
+      0.04711246200607903,
+      1.1538461538461537
+    ]
+  ],
+  "seconds": 0.126,
+  "units": {
+    "avg_order_value": "cents_per_order",
+    "avg_buyer_value": "cents_per_member",
+    "purchase_frequency": "orders_per_member",
+    "refund_amount_rate": "ratio",
+    "cancel_rate": "ratio",
+    "refund_order_rate": "ratio",
+    "discount_rate": "ratio",
+    "items_per_order": "items_per_order"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+  "answer": "统计范围：青禾客户，2026年8月（按2026-08-01至2026-09-01左闭右开覆盖整月），渠道为小程序；数据为合成测试库，本次结果未按门店等维度分组。口径与结果：有效订单均额为37.46元/单；购买会员人均消费为37.46元/账户；购买频次为1.00单/账户；退款金额占比为22.33%；取消率为6.25%；退款订单率为13.33%；优惠率为4.71%；单均商品件数为1.15件/单。金额已由分换算为元并保留两位小数，比例已换算为百分数并适当四舍五入。限制：以上均为该客户、该月份、该渠道范围内的汇总值，不能据此推断其他渠道、其他月份或门店分组；购买会员按CRM会员账户计数，不等同于跨系统自然人已去重。",
+  "question": "请同时列出2026年8月青禾优选小程序渠道的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+  "trace_id": "4cdc1dbf-1262-4041-becb-a99fc5e2b165",
+  "elapsed_seconds": 11.553,
+  "model_usage": {
+    "prompt_tokens": 11941,
+    "completion_tokens": 1529,
+    "total_tokens": 13470
+  },
+  "model_calls_with_usage": 2
+}

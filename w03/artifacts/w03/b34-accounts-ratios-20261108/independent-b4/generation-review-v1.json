@@ -1,0 +1,592 @@
+{
+  "approved_to_load_and_query": true,
+  "failed_checks": [],
+  "reviewed_at_utc": "2026-11-08T09:26:45.275389+00:00",
+  "build": "build-v1",
+  "scope": "B4 eight ratio definitions and twelve distinct base metric dependencies",
+  "checks": [
+    {
+      "id": "avg_order_value_ratio",
+      "passed": true,
+      "detail": {
+        "numerator": "net_sales_cents",
+        "denominator": "valid_order_count"
+      }
+    },
+    {
+      "id": "avg_order_value_dependencies",
+      "passed": true,
+      "detail": {
+        "numerator": "net_sales_cents",
+        "denominator": "valid_order_count"
+      }
+    },
+    {
+      "id": "avg_order_value_catalog",
+      "passed": true,
+      "detail": {
+        "unit": "cents_per_order",
+        "query_policy": {
+          "full_month_only": false
+        },
+        "constraints": [
+          "分子为净销售额 net_sales_cents，分母为有效订单数 valid_order_count；分母零时未定义；单位分/单。"
+        ]
+      }
+    },
+    {
+      "id": "avg_order_value_source",
+      "passed": true,
+      "detail": {
+        "file": "02_财务邮件.md",
+        "quote": "净销售额除以有效订单数，单位分／单；分母零时未定义。"
+      }
+    },
+    {
+      "id": "avg_buyer_value_ratio",
+      "passed": true,
+      "detail": {
+        "numerator": "net_sales_cents",
+        "denominator": "buyer_count"
+      }
+    },
+    {
+      "id": "avg_buyer_value_dependencies",
+      "passed": true,
+      "detail": {
+        "numerator": "net_sales_cents",
+        "denominator": "buyer_count"
+      }
+    },
+    {
+      "id": "avg_buyer_value_catalog",
+      "passed": true,
+      "detail": {
+        "unit": "cents_per_member",
+        "query_policy": {
+          "full_month_only": false
+        },
+        "constraints": [
+          "分子为净销售额 net_sales_cents，分母为购买会员数 buyer_count；分母零时未定义；单位分/账户。"
+        ]
+      }
+    },
+    {
+      "id": "avg_buyer_value_source",
+      "passed": true,
+      "detail": {
+        "file": "02_财务邮件.md",
+        "quote": "净销售额除以购买会员数，单位分／账户；分母零时未定义。"
+      }
+    },
+    {
+      "id": "purchase_frequency_ratio",
+      "passed": true,
+      "detail": {
+        "numerator": "valid_order_count",
+        "denominator": "buyer_count"
+      }
+    },
+    {
+      "id": "purchase_frequency_dependencies",
+      "passed": true,
+      "detail": {
+        "numerator": "valid_order_count",
+        "denominator": "buyer_count"
+      }
+    },
+    {
+      "id": "purchase_frequency_catalog",
+      "passed": true,
+      "detail": {
+        "unit": "orders_per_member",
+        "query_policy": {
+          "full_month_only": false
+        },
+        "constraints": [
+          "分子为有效订单数 valid_order_count，分母为购买会员数 buyer_count；分母零时未定义；单位单/账户。"
+        ]
+      }
+    },
+    {
+      "id": "purchase_frequency_source",
+      "passed": true,
+      "detail": {
+        "file": "02_财务邮件.md",
+        "quote": "有效订单数除以购买会员数，单位单／账户；分母零时未定义。"
+      }
+    },
+    {
+      "id": "refund_amount_rate_ratio",
+      "passed": true,
+      "detail": {
+        "numerator": "refund_cents",
+        "denominator": "payment_cents"
+      }
+    },
+    {
+      "id": "refund_amount_rate_dependencies",
+      "passed": true,
+      "detail": {
+        "numerator": "refund_cents",
+        "denominator": "payment_cents"
+      }
+    },
+    {
+      "id": "refund_amount_rate_catalog",
+      "passed": true,
+      "detail": {
+        "unit": "ratio",
+        "query_policy": {
+          "full_month_only": false
+        },
+        "constraints": [
+          "分子为退款金额 refund_cents，分母为实付金额 payment_cents；分母零时未定义；无量纲比率。"
+        ]
+      }
+    },
+    {
+      "id": "refund_amount_rate_source",
+      "passed": true,
+      "detail": {
+        "file": "02_财务邮件.md",
+        "quote": "退款金额除以实付金额；分母零时未定义。"
+      }
+    },
+    {
+      "id": "cancel_rate_ratio",
+      "passed": true,
+      "detail": {
+        "numerator": "cancelled_order_count",
+        "denominator": "order_count"
+      }
+    },
+    {
+      "id": "cancel_rate_dependencies",
+      "passed": true,
+      "detail": {
+        "numerator": "cancelled_order_count",
+        "denominator": "order_count"
+      }
+    },
+    {
+      "id": "cancel_rate_catalog",
+      "passed": true,
+      "detail": {
+        "unit": "ratio",
+        "query_policy": {
+          "full_month_only": false
+        },
+        "constraints": [
+          "分子为取消订单数 cancelled_order_count，分母为创建订单数 order_count；分母零时未定义；无量纲比率。"
+        ]
+      }
+    },
+    {
+      "id": "cancel_rate_source",
+      "passed": true,
+      "detail": {
+        "file": "02_财务邮件.md",
+        "quote": "取消订单数除以创建订单数；分母零时未定义。"
+      }
+    },
+    {
+      "id": "refund_order_rate_ratio",
+      "passed": true,
+      "detail": {
+        "numerator": "refund_order_count",
+        "denominator": "paid_order_count"
+      }
+    },
+    {
+      "id": "refund_order_rate_dependencies",
+      "passed": true,
+      "detail": {
+        "numerator": "refund_order_count",
+        "denominator": "paid_order_count"
+      }
+    },
+    {
+      "id": "refund_order_rate_catalog",
+      "passed": true,
+      "detail": {
+        "unit": "ratio",
+        "query_policy": {
+          "full_month_only": false
+        },
+        "constraints": [
+          "分子为退款订单数 refund_order_count，分母为支付订单数 paid_order_count；分母零时未定义；无量纲比率。"
+        ]
+      }
+    },
+    {
+      "id": "refund_order_rate_source",
+      "passed": true,
+      "detail": {
+        "file": "02_财务邮件.md",
+        "quote": "退款订单数除以支付订单数；分母零时未定义。"
+      }
+    },
+    {
+      "id": "discount_rate_ratio",
+      "passed": true,
+      "detail": {
+        "numerator": "discount_cents",
+        "denominator": "gross_cents"
+      }
+    },
+    {
+      "id": "discount_rate_dependencies",
+      "passed": true,
+      "detail": {
+        "numerator": "discount_cents",
+        "denominator": "gross_cents"
+      }
+    },
+    {
+      "id": "discount_rate_catalog",
+      "passed": true,
+      "detail": {
+        "unit": "ratio",
+        "query_policy": {
+          "full_month_only": false
+        },
+        "constraints": [
+          "分子为优惠金额 discount_cents，分母为支付订单原价金额 gross_cents；分母零时未定义；无量纲比率。"
+        ]
+      }
+    },
+    {
+      "id": "discount_rate_source",
+      "passed": true,
+      "detail": {
+        "file": "02_财务邮件.md",
+        "quote": "优惠金额除以支付订单原价金额；分母零时未定义。"
+      }
+    },
+    {
+      "id": "items_per_order_ratio",
+      "passed": true,
+      "detail": {
+        "numerator": "valid_order_items",
+        "denominator": "valid_order_count"
+      }
+    },
+    {
+      "id": "items_per_order_dependencies",
+      "passed": true,
+      "detail": {
+        "numerator": "valid_order_items",
+        "denominator": "valid_order_count"
+      }
+    },
+    {
+      "id": "items_per_order_catalog",
+      "passed": true,
+      "detail": {
+        "unit": "items_per_order",
+        "query_policy": {
+          "full_month_only": false
+        },
+        "constraints": [
+          "分子为有效订单商品件数 valid_order_items，分母为有效订单数 valid_order_count；分母零时未定义；单位件/单。"
+        ]
+      }
+    },
+    {
+      "id": "items_per_order_source",
+      "passed": true,
+      "detail": {
+        "file": "02_财务邮件.md",
+        "quote": "有效订单商品件数除以有效订单数；分母零时未定义。"
+      }
+    },
+    {
+      "id": "net_sales_cents_base_semantics",
+      "passed": true,
+      "detail": {
+        "name": "net_sales_cents_measure",
+        "expr": "CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END",
+        "agg": "sum"
+      }
+    },
+    {
+      "id": "net_sales_cents_base_source",
+      "passed": true,
+      "detail": {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。"
+      }
+    },
+    {
+      "id": "valid_order_count_base_semantics",
+      "passed": true,
+      "detail": {
+        "name": "valid_order_count_measure",
+        "expr": "CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END",
+        "agg": "sum"
+      }
+    },
+    {
+      "id": "valid_order_count_base_source",
+      "passed": true,
+      "detail": {
+        "file": "01_订单日报说明.md",
+        "quote": "状态为 paid 且实付金额减退款金额大于零的订单数；取消和全退不计。"
+      }
+    },
+    {
+      "id": "buyer_count_base_semantics",
+      "passed": true,
+      "detail": {
+        "name": "buyer_count_measure",
+        "expr": "CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END",
+        "agg": "count_distinct"
+      }
+    },
+    {
+      "id": "buyer_count_base_source",
+      "passed": true,
+      "detail": {
+        "file": "01_订单日报说明.md",
+        "quote": "统计窗口及筛选条件内有有效订单的不同 CRM 会员账户数，不做跨系统自然人去重。"
+      }
+    },
+    {
+      "id": "refund_cents_base_semantics",
+      "passed": true,
+      "detail": {
+        "name": "refund_cents_measure",
+        "expr": "CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END",
+        "agg": "sum"
+      }
+    },
+    {
+      "id": "refund_cents_base_source",
+      "passed": true,
+      "detail": {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单退款金额合计，按原订单下单日期归属，不是现金退款发生日；单位分。"
+      }
+    },
+    {
+      "id": "payment_cents_base_semantics",
+      "passed": true,
+      "detail": {
+        "name": "payment_cents_measure",
+        "expr": "CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END",
+        "agg": "sum"
+      }
+    },
+    {
+      "id": "payment_cents_base_source",
+      "passed": true,
+      "detail": {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单实付金额合计，尚未扣退款；单位分。"
+      }
+    },
+    {
+      "id": "cancelled_order_count_base_semantics",
+      "passed": true,
+      "detail": {
+        "name": "cancelled_order_count_measure",
+        "expr": "CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END",
+        "agg": "sum"
+      }
+    },
+    {
+      "id": "cancelled_order_count_base_source",
+      "passed": true,
+      "detail": {
+        "file": "01_订单日报说明.md",
+        "quote": "状态为 cancelled 的订单数。"
+      }
+    },
+    {
+      "id": "order_count_base_semantics",
+      "passed": true,
+      "detail": {
+        "name": "order_count_measure",
+        "expr": "1",
+        "agg": "sum"
+      }
+    },
+    {
+      "id": "order_count_base_source",
+      "passed": true,
+      "detail": {
+        "file": "01_订单日报说明.md",
+        "quote": "按下单日期统计全部订单，每个订单号一次，包含取消单。"
+      }
+    },
+    {
+      "id": "refund_order_count_base_semantics",
+      "passed": true,
+      "detail": {
+        "name": "refund_order_count_measure",
+        "expr": "CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END",
+        "agg": "sum"
+      }
+    },
+    {
+      "id": "refund_order_count_base_source",
+      "passed": true,
+      "detail": {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 状态且退款金额大于零的订单数，包括部分退款与全部退款。"
+      }
+    },
+    {
+      "id": "paid_order_count_base_semantics",
+      "passed": true,
+      "detail": {
+        "name": "paid_order_count_measure",
+        "expr": "CASE WHEN status = 'paid' THEN 1 ELSE 0 END",
+        "agg": "sum"
+      }
+    },
+    {
+      "id": "paid_order_count_base_source",
+      "passed": true,
+      "detail": {
+        "file": "01_订单日报说明.md",
+        "quote": "状态为 paid 的订单数，包括后来全部退款的订单。"
+      }
+    },
+    {
+      "id": "discount_cents_base_semantics",
+      "passed": true,
+      "detail": {
+        "name": "discount_cents_measure",
+        "expr": "CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END",
+        "agg": "sum"
+      }
+    },
+    {
+      "id": "discount_cents_base_source",
+      "passed": true,
+      "detail": {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单原价减实付的金额合计；退款不冲减原优惠金额；单位分。"
+      }
+    },
+    {
+      "id": "gross_cents_base_semantics",
+      "passed": true,
+      "detail": {
+        "name": "gross_cents_measure",
+        "expr": "CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END",
+        "agg": "sum"
+      }
+    },
+    {
+      "id": "gross_cents_base_source",
+      "passed": true,
+      "detail": {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单折扣前原价金额合计；单位分。"
+      }
+    },
+    {
+      "id": "valid_order_items_base_semantics",
+      "passed": true,
+      "detail": {
+        "name": "valid_order_items_measure",
+        "expr": "CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END",
+        "agg": "sum"
+      }
+    },
+    {
+      "id": "valid_order_items_base_source",
+      "passed": true,
+      "detail": {
+        "file": "01_订单日报说明.md",
+        "quote": "有效订单中的原始购买件数合计；退款金额不能推算退货件数，此项不是净商品销量。"
+      }
+    },
+    {
+      "id": "fact_grain_time_and_no_derived_filter",
+      "passed": true,
+      "detail": {
+        "fact_model": "original orders",
+        "date": "ordered_at",
+        "no_extra_models": true
+      }
+    },
+    {
+      "id": "required_native_dimensions",
+      "passed": true,
+      "detail": "Each B4 metric has native store and order__channel path; required intersection exists."
+    },
+    {
+      "id": "source_check.json",
+      "passed": true,
+      "detail": "Build reports passed; structural/native gate does not replace independent numeric test."
+    },
+    {
+      "id": "validation.json",
+      "passed": true,
+      "detail": "Build reports passed; structural/native gate does not replace independent numeric test."
+    },
+    {
+      "id": "grain_check.json",
+      "passed": true,
+      "detail": "Build reports passed; structural/native gate does not replace independent numeric test."
+    },
+    {
+      "id": "metricflow_check.json",
+      "passed": true,
+      "detail": "Build reports passed; structural/native gate does not replace independent numeric test."
+    },
+    {
+      "id": "dimension_check.json",
+      "passed": true,
+      "detail": "Build reports passed; structural/native gate does not replace independent numeric test."
+    },
+    {
+      "id": "native_null_guard_static",
+      "passed": true,
+      "detail": "Installed native ratio renderer uses NULLIF denominator 0 then DOUBLE cast; actual SQL still to be checked after query."
+    },
+    {
+      "id": "engine_retains_ratio_null",
+      "passed": true,
+      "detail": "Engine fills null only for simple metrics, ratio null remains unchanged."
+    },
+    {
+      "id": "targets_24_complete",
+      "passed": true,
+      "detail": "24 unique metric definitions; B4 denominator dependencies are within this single generation."
+    },
+    {
+      "id": "frozen_expectations_unchanged",
+      "passed": true,
+      "detail": "Frozen before candidate, not derived from generated output."
+    }
+  ],
+  "evidence_sha256": {
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/response.json": "3d70616c1c5a2efa8c2ead9fec0e2ea79595e7daf4bcfe3bad2500c3a4a489f1",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/metrics.yml": "ca6afa515fb587ba758280241aca9dbff4268b0aaf78c9de1b68eb41969bcaf7",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/catalog.json": "e2b109a2e0447ce57b1df6b139ad183f1080871401a1d9cf9c4c979970b1339a",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/scope.json": "3c03f74df77702d68cd217e0ccba2ec6095819271a4c44343fc42ee69c36f366",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/grain_check.json": "c7e2710339b23c2444dbf724f431b58efb1737c3d7d23f78888c4d3e7c00b947",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/source_check.json": "76aa3b58148d89cc797ae408eba304f008308b708476e2db124fcf4e5d1c7a2e",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/validation.json": "f89a21df157ae1c1e0c79da911bf96c8e5c2378155cfa462537116f10fbbefd6",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/metricflow_check.json": "ffa428660c9d30c2ea887a3bb0a792de1834ce292d189d767c20b78d0e95caa9",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/dimension_check.json": "cb203f754726020ee1cc2ef56bd56f7ded51a94dda9080e6cea9b3d8ea2bc739",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/input.json": "89dd24fcb1bcc893a9ad9842779eb2a6986d9228458456d961b49c6ff93ac965",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/skill_used.md": "d40329243c2c60c64ddfee0cb1b0617c4c2745c4b52d2b5d2f4b2b2570ea0fb2",
+    "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json": "573d50edc16c228e68188644fb49f871ccfcbb52d57b9e647a9956cab6d55e66",
+    "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/expected-freeze.json": "5231a98e4f9a59072641adc9c89e258a1569038c387d119958429058c7ad41f0",
+    ".venv/lib/python3.11/site-packages/metricflow/sql/render/expr_renderer.py": "3942da9f496a2823e674ab48ff1668f005ef579e5c8456873eefbdcb87a7ea6a",
+    "platform/fde_product/metrics/engine.py": "e8b39da2517a65f6406da4d261173291c795248ea6c62638137e09ce750a98f3"
+  },
+  "model_calls": 0,
+  "query_calls": 0,
+  "pending": [
+    "Real six-case SQL/numeric/answer review",
+    "Real-result-copy null, percentage and unweighted-store-mean controls"
+  ],
+  "human_decisions": []
+}

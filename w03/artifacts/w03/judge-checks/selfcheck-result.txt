@@ -1,0 +1,12 @@
+00-control-exact                   passed= True | 
+00-control-reordered               passed= True | 
+01-wrong-metric                    passed= False | intent.metrics
+02-wrong-date                      passed= False | intent.end
+03-wrong-filter                    passed= False | intent.filters
+04-wrong-group                     passed= False | intent.group_by; actual.columns
+05-missing-group                   passed= False | rows
+06-unit-confusion                  passed= False | units
+07-ratio-as-percent                passed= False | rows.{'metric_time__month': '2026-08-01 00:00:00'}.monthly_repeat_rate; rows.{'metric_time__month': '2026-07-01 00:00:00'}.monthly_repeat_rate
+08-null-as-zero                    passed= False | rows.{}.monthly_paid_avg_order_value; rows.{}.monthly_paid_repeat_rate
+09-tampered-value                  passed= False | rows.{}.payment_cents
+10-error-disguised                 passed= False | status

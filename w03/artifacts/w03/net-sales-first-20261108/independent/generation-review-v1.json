@@ -1,0 +1,44 @@
+{
+  "reviewed_generation": "build-v1",
+  "generated_library_review": {
+    "status": "rejected",
+    "approved": false,
+    "failed_checks": [
+      {
+        "path": "catalog[0].unit",
+        "expected": "cents",
+        "actual": "分",
+        "severity": "blocking_for_query_validation"
+      }
+    ],
+    "other_blocking_findings": []
+  },
+  "definition_review": {
+    "paid_contribution": "CASE WHEN status = paid THEN paid_cents - refund_cents ELSE 0 END; sum at unique order_id grain matches original materials",
+    "time": "ordered_at; day; month restriction false matches nonmonthly net-sales scope",
+    "relationships": "order -> member and store; member -> home_store; separate store/home_store primary roles; no cards join and no model_sql",
+    "dimensions": "12 target dimensions queryable per generated semantic graph; structural evidence only",
+    "source": "catalog first quote directly supports net sales; model usage quotes support grain, roles, current-tier limitation and source scope; no copied expected numbers",
+    "checks": "source_check, grain_check, dimension_check and metricflow_check all passed, but those checks did not enforce unit identifier"
+  },
+  "skill_revision_review": {
+    "status": "approved",
+    "approved": true,
+    "failed_checks": [],
+    "change": "v0.1.1 only title + protocol unit mapping; cents for integer cents, no formula/data/expectation changes"
+  },
+  "new_skill_sha256": "0323ec4217f06f9aba9faaf69091073371d34724ed3c4608fef893d49d13c1a4",
+  "approved_to_regenerate": true,
+  "approved_to_query_build_v1": false,
+  "next": "Preserve v1; regenerate using v0.1.1; review v2 and run unchanged independent tests.",
+  "reviewed_sha256": {
+    "build-v1/response.json": "d187cd31baacf82916aab6b5c7abff4610926a4d345e3821c335eda1543091ed",
+    "build-v1/metrics.yml": "434e6d297ed40f8091393760600980b47492724c8189df85795eb50bad2d47b7",
+    "build-v1/catalog.json": "05f0a5fed31619b4ff2a2622bb28bcdc6e8645933b15ad7b177f2c0ab4a92573",
+    "build-v1/source_check.json": "76aa3b58148d89cc797ae408eba304f008308b708476e2db124fcf4e5d1c7a2e",
+    "build-v1/grain_check.json": "ec59475164c8c0b15fb076542869156e3e08a5efec473efa7e1eec7796238442",
+    "build-v1/dimension_check.json": "8984a710e45579cf8cf4b283124e7fddcedc25a3ad45b680d80ccb20bf4add33",
+    "build-v1/metricflow_check.json": "c7f18b19e26208893c91d1b5f4bded60fa2b5d563bf0c79f65a489cfb48a36bc",
+    "skill-unit-fix.diff": "fc3bab88ca5f3e12339215e6ac83bc5ffd8243abd3bbf9e6ad27f9b2b9b5de29"
+  }
+}

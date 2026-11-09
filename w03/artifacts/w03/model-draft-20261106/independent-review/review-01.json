@@ -1,0 +1,947 @@
+{
+  "version": "w03-actual-draft-independent-review-01",
+  "created_at": "2026-11-06T22:37:36.393661+08:00",
+  "review_object": {
+    "draft": "artifacts/w03/model-draft-20261106/draft-01",
+    "hashes": {
+      "business_model.md": "94ad8ace10d1580429bce05a5860ea3ffdd923e996eb759897157ccedbacf19f",
+      "notes_update.md": "677af01ae7e69058f131d54722c65052efdc1537fddcb2a4ce750b7973d23ca5",
+      "summary.md": "d209880b6aa0da677bf8c09ed247bf719c00a416a07f43ed4e413b9e7ccfd549",
+      "model.diff": "bef1c9b2c1b57d75d12a1b8001a7012d014f190db0396c52525331d85a08d6b2",
+      "proposal.json": "03418b1a56aa00a53dcfba300e5c1456b67919161ecae2b68252a514273fd548"
+    },
+    "proposal_hash_matches_parent": true,
+    "body_hash_matches_parent": true,
+    "exported_text_matches_proposal": true
+  },
+  "method": "Read actual full body/notes/summary/diff/proposal; reuse source-first criteria and re-read implicated original paragraphs and MD definitions. Parent feedback text is not source truth.",
+  "verdict": "needs_revision_before_static_approval",
+  "apply_recommendation": "Do not treat draft-01 as approved; revise these source-resolvable items and re-review new hash.",
+  "test_verdicts": {
+    "T01": "needs_revision",
+    "T02": "needs_revision",
+    "T03": "needs_revision"
+  },
+  "case_results": [
+    {
+      "id": "T01-1",
+      "test": "T01",
+      "focus": "整体可读性与双目标",
+      "verdict": "pass",
+      "actual_location": "business_model.md:3–9、15、37、50、62",
+      "reason": "正文五节清楚，双目标仍在；本项通过不抵消下列实质错误。",
+      "finding_ids": [],
+      "evidence": []
+    },
+    {
+      "id": "T01-2",
+      "test": "T01",
+      "focus": "规则与统计选择分层",
+      "verdict": "needs_revision",
+      "actual_location": "business_model.md:41、43; notes_update.md:23",
+      "reason": "统计选择及退款归期仍并入业务规则，notes作用域混写。",
+      "finding_ids": [
+        "R04"
+      ],
+      "evidence": [
+        {
+          "source": "D1",
+          "path": "materials/w03/01_订单日报说明.md",
+          "locator": "11、15、23、35–43行",
+          "evidence": "支付包括后来全退；有效订单排除全退；退款订单含部分及全部退款；退款额为paid订单累计。"
+        },
+        {
+          "source": "D2",
+          "path": "materials/w03/02_财务邮件.md",
+          "locator": "5行",
+          "evidence": "取消、全额退款不计有效购买，退款按原订单日期归属。"
+        },
+        {
+          "source": "D3",
+          "path": "materials/w03/03_会员运营周报.md",
+          "locator": "9、13–37行",
+          "evidence": "注册/观测期指标和月内三项不同；三项月内指标明确整月/全门店。"
+        },
+        {
+          "source": "D4",
+          "path": "materials/w03/04_本期统计确认邮件.md",
+          "locator": "5、9、13–33行",
+          "evidence": "六项付费月报限定完整月、全渠道/全门店、月末资格与整月购买。"
+        }
+      ]
+    },
+    {
+      "id": "T01-3",
+      "test": "T01",
+      "focus": "已定正文排除边界",
+      "verdict": "needs_revision",
+      "actual_location": "business_model.md:48、57、68、75",
+      "reason": "Excel已迁出，但FDE接入/交付/批准/执行证据仍进正文。",
+      "finding_ids": [
+        "R03"
+      ],
+      "evidence": [
+        {
+          "source": "USER",
+          "path": "artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+          "locator": "excel_disposition、delivery_disposition",
+          "evidence": "个人载体不入正文；FDE项目费用/延期/交付/验收批准等进入SOW/记录，保留真实业务工作。"
+        },
+        {
+          "source": "OLD",
+          "path": "docs/w03/business_model.md",
+          "locator": "26、28、30、52–53、65行",
+          "evidence": "旧稿候选/设计/个人载体和接入事项是待迁移基线，不是新稿必须继承的业务事实。"
+        }
+      ]
+    },
+    {
+      "id": "T01-4",
+      "test": "T01",
+      "focus": "流程与业务动作保留",
+      "verdict": "needs_revision",
+      "actual_location": "business_model.md:54–56、60",
+      "reason": "局部交接保留，但流程类型、触发和回流状态失真/遗漏。",
+      "finding_ids": [
+        "R01",
+        "R06"
+      ],
+      "evidence": [
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03862",
+          "evidence": "“拿我经手的会员优惠券活动来说”限定流程类型；具体哪次及筛选条件不能确认。"
+        },
+        {
+          "source": "C",
+          "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03888",
+          "evidence": "“门店能协助核对的是”及“我才好安排门店配合”是能力/条件，非已执行或确定未安排。"
+        },
+        {
+          "source": "HC2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+          "locator": "MSG-01945、01953",
+          "evidence": "反馈后的处理答复或调整安排及返回门店方式不掌握。"
+        },
+        {
+          "source": "HL2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+          "locator": "MSG-01913",
+          "evidence": "“这次要做什么”来自未做完任务和反馈；这是一般方式，不是实例闭环。"
+        },
+        {
+          "source": "HL2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+          "locator": "MSG-01913、01925",
+          "evidence": "任务触发为未完任务/反馈；希望关注会员和建议依据，减少原有整理核对。"
+        },
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03866–03870",
+          "evidence": "查数用于核名单与口径、找遗漏/重复，非已生成营销人群。"
+        },
+        {
+          "source": "HC1",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-33120509-3939-5d6c-81f1-3959fed49789-transcript.json",
+          "locator": "MSG-01685",
+          "evidence": "已知导购有会员注册指标，完整构成/口径未知。"
+        },
+        {
+          "source": "HC2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+          "locator": "MSG-01951、01953",
+          "evidence": "希望开始时清楚、执行中少来回确认、结束后重复问题减少；尚未实际试验。"
+        }
+      ]
+    },
+    {
+      "id": "T01-5",
+      "test": "T01",
+      "focus": "正文与维护过程分离",
+      "verdict": "needs_revision",
+      "actual_location": "business_model.md:17–35",
+      "reason": "保留理由、高重要、学员取舍及设计观察要求仍混取舍过程。",
+      "finding_ids": [
+        "R03"
+      ],
+      "evidence": [
+        {
+          "source": "USER",
+          "path": "artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+          "locator": "excel_disposition、delivery_disposition",
+          "evidence": "个人载体不入正文；FDE项目费用/延期/交付/验收批准等进入SOW/记录，保留真实业务工作。"
+        },
+        {
+          "source": "OLD",
+          "path": "docs/w03/business_model.md",
+          "locator": "26、28、30、52–53、65行",
+          "evidence": "旧稿候选/设计/个人载体和接入事项是待迁移基线，不是新稿必须继承的业务事实。"
+        }
+      ]
+    },
+    {
+      "id": "T02-1",
+      "test": "T02",
+      "focus": "对象、基数及身份",
+      "verdict": "pass",
+      "actual_location": "business_model.md:19–25、31–33",
+      "reason": "账户/卡/派生资格已拆，一对多、两类门店关系及不猜订单用卡已表达；需R05/R07收准来源及范围。",
+      "finding_ids": [],
+      "evidence": []
+    },
+    {
+      "id": "T02-2",
+      "test": "T02",
+      "focus": "卡资格及日期规则",
+      "verdict": "pass",
+      "actual_location": "business_model.md:39–42、66",
+      "reason": "本期产品、同卡同时满足、日期端点、空值不无限和多卡去重语义正确；不将文件未知否定角色说明。",
+      "finding_ids": [],
+      "evidence": []
+    },
+    {
+      "id": "T02-3",
+      "test": "T02",
+      "focus": "原MD业务知识吸收",
+      "verdict": "needs_revision",
+      "actual_location": "business_model.md:25、43",
+      "reason": "第2节有效购买/快照/件数正确，但第3节退款压缩句可能扩大排除对象。",
+      "finding_ids": [
+        "R04"
+      ],
+      "evidence": [
+        {
+          "source": "D1",
+          "path": "materials/w03/01_订单日报说明.md",
+          "locator": "11、15、23、35–43行",
+          "evidence": "支付包括后来全退；有效订单排除全退；退款订单含部分及全部退款；退款额为paid订单累计。"
+        },
+        {
+          "source": "D2",
+          "path": "materials/w03/02_财务邮件.md",
+          "locator": "5行",
+          "evidence": "取消、全额退款不计有效购买，退款按原订单日期归属。"
+        },
+        {
+          "source": "D3",
+          "path": "materials/w03/03_会员运营周报.md",
+          "locator": "9、13–37行",
+          "evidence": "注册/观测期指标和月内三项不同；三项月内指标明确整月/全门店。"
+        },
+        {
+          "source": "D4",
+          "path": "materials/w03/04_本期统计确认邮件.md",
+          "locator": "5、9、13–33行",
+          "evidence": "六项付费月报限定完整月、全渠道/全门店、月末资格与整月购买。"
+        }
+      ]
+    },
+    {
+      "id": "T02-4",
+      "test": "T02",
+      "focus": "时间与资料覆盖限定",
+      "verdict": "needs_revision",
+      "actual_location": "business_model.md:20–21、67、71",
+      "reason": "已知本期关系和历史生产未知尚未拆清，活动名单范围也未收准。",
+      "finding_ids": [
+        "R07"
+      ],
+      "evidence": [
+        {
+          "source": "D5",
+          "path": "materials/w03/05_数据字典.md",
+          "locator": "12–13、28–31、45–55行",
+          "evidence": "本期关系已给定，不能继续整体待核。"
+        },
+        {
+          "source": "C",
+          "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03885–03890",
+          "evidence": "本期两类卡端点/空值已有角色说明；缺具体文件与历史凭据。"
+        },
+        {
+          "source": "Z",
+          "path": "artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+          "locator": "MSG-03873、03875",
+          "evidence": "不掌握解释及测试不等生产的边界，不是相反规则。"
+        },
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03848、03862",
+          "evidence": "资格只约束本期月报；具体活动选人条件未确认。"
+        }
+      ]
+    },
+    {
+      "id": "T02-5",
+      "test": "T02",
+      "focus": "流程来源与未知断点",
+      "verdict": "needs_revision",
+      "actual_location": "business_model.md:54–56",
+      "reason": "未知回流变实际输出，可协助核对变固定门店动作。",
+      "finding_ids": [
+        "R01"
+      ],
+      "evidence": [
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03862",
+          "evidence": "“拿我经手的会员优惠券活动来说”限定流程类型；具体哪次及筛选条件不能确认。"
+        },
+        {
+          "source": "C",
+          "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03888",
+          "evidence": "“门店能协助核对的是”及“我才好安排门店配合”是能力/条件，非已执行或确定未安排。"
+        },
+        {
+          "source": "HC2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+          "locator": "MSG-01945、01953",
+          "evidence": "反馈后的处理答复或调整安排及返回门店方式不掌握。"
+        },
+        {
+          "source": "HL2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+          "locator": "MSG-01913",
+          "evidence": "“这次要做什么”来自未做完任务和反馈；这是一般方式，不是实例闭环。"
+        }
+      ]
+    },
+    {
+      "id": "T02-6",
+      "test": "T02",
+      "focus": "新增断言逐项溯源",
+      "verdict": "needs_revision",
+      "actual_location": "business_model.md:23、28、39、60; notes_update.md:27、30",
+      "reason": "存在极性、主体/角色、审批词义、损坏ID与证据范围错配。",
+      "finding_ids": [
+        "R02",
+        "R05"
+      ],
+      "evidence": [
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03856",
+          "evidence": "“我没量过工时，也不能说它就是复购下滑的原因”。"
+        },
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03860、03862",
+          "evidence": "03860为“我不会让助手自动发券、联系会员或改记录”；03862另说明她不单独定人群等。"
+        },
+        {
+          "source": "W",
+          "path": "artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+          "locator": "MSG-03931",
+          "evidence": "“得由公司内部按审批流程定”与“审批安排还没定”。"
+        },
+        {
+          "source": "HL1",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d70b1629-b176-53d1-8357-f195328c0193-transcript.json",
+          "locator": "MSG-01648；role_id=ROLE-LIN",
+          "evidence": "券发放/核销区分由小林说明。"
+        },
+        {
+          "source": "HZ2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-14af3b0b-9103-56ac-97bb-eb35cd50832d-transcript.json",
+          "locator": "MSG-01932",
+          "evidence": "有线上/门店渠道；具体关联字段无可确认说明。"
+        },
+        {
+          "source": "D5",
+          "path": "materials/w03/05_数据字典.md",
+          "locator": "12–13、28–31、45–55行",
+          "evidence": "账户/门店关系、卡属性和购卡款语义的直接来源。"
+        },
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03848、03854",
+          "evidence": "产品范围/资格；不提供完整物理属性表。"
+        }
+      ]
+    },
+    {
+      "id": "T03-1",
+      "test": "T03",
+      "focus": "旧业务认识回归",
+      "verdict": "needs_revision",
+      "actual_location": "business_model.md:5–9、46、54、58、60; model.diff",
+      "reason": "双目标/80万120万/助手限制仍在，但真实触发、用途、注册指标及门店观察条件有回归遗漏。",
+      "finding_ids": [
+        "R06"
+      ],
+      "evidence": [
+        {
+          "source": "HL2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+          "locator": "MSG-01913、01925",
+          "evidence": "任务触发为未完任务/反馈；希望关注会员和建议依据，减少原有整理核对。"
+        },
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03866–03870",
+          "evidence": "查数用于核名单与口径、找遗漏/重复，非已生成营销人群。"
+        },
+        {
+          "source": "HC1",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-33120509-3939-5d6c-81f1-3959fed49789-transcript.json",
+          "locator": "MSG-01685",
+          "evidence": "已知导购有会员注册指标，完整构成/口径未知。"
+        },
+        {
+          "source": "HC2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+          "locator": "MSG-01951、01953",
+          "evidence": "希望开始时清楚、执行中少来回确认、结束后重复问题减少；尚未实际试验。"
+        }
+      ]
+    },
+    {
+      "id": "T03-2",
+      "test": "T03",
+      "focus": "旧未知按范围更新",
+      "verdict": "needs_revision",
+      "actual_location": "business_model.md:39–42、67、71",
+      "reason": "日期规则已进，旧关系未知仍有过宽保留。",
+      "finding_ids": [
+        "R07"
+      ],
+      "evidence": [
+        {
+          "source": "D5",
+          "path": "materials/w03/05_数据字典.md",
+          "locator": "12–13、28–31、45–55行",
+          "evidence": "本期关系已给定，不能继续整体待核。"
+        },
+        {
+          "source": "C",
+          "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03885–03890",
+          "evidence": "本期两类卡端点/空值已有角色说明；缺具体文件与历史凭据。"
+        },
+        {
+          "source": "Z",
+          "path": "artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+          "locator": "MSG-03873、03875",
+          "evidence": "不掌握解释及测试不等生产的边界，不是相反规则。"
+        },
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03848、03862",
+          "evidence": "资格只约束本期月报；具体活动选人条件未确认。"
+        }
+      ]
+    },
+    {
+      "id": "T03-3",
+      "test": "T03",
+      "focus": "合法迁移不误判退步",
+      "verdict": "needs_revision",
+      "actual_location": "notes_update.md:13–17; business_model.md:48、57、68、75",
+      "reason": "旧购买时点与Excel迁出正确，FDE及维护过程未迁净；无须回填旧排除内容。",
+      "finding_ids": [
+        "R03"
+      ],
+      "evidence": [
+        {
+          "source": "USER",
+          "path": "artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+          "locator": "excel_disposition、delivery_disposition",
+          "evidence": "个人载体不入正文；FDE项目费用/延期/交付/验收批准等进入SOW/记录，保留真实业务工作。"
+        },
+        {
+          "source": "OLD",
+          "path": "docs/w03/business_model.md",
+          "locator": "26、28、30、52–53、65行",
+          "evidence": "旧稿候选/设计/个人载体和接入事项是待迁移基线，不是新稿必须继承的业务事实。"
+        }
+      ]
+    },
+    {
+      "id": "T03-4",
+      "test": "T03",
+      "focus": "对象版本与完成状态",
+      "verdict": "needs_revision",
+      "actual_location": "summary.md:1; proposal.json:claim_ids/human_reviews/base_hashes",
+      "reason": "正式基线未变、proposal尚未apply/运行状态正确；summary未分20反馈与18使用及审核主体。",
+      "finding_ids": [
+        "R05"
+      ],
+      "evidence": [
+        {
+          "source": "HL1",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d70b1629-b176-53d1-8357-f195328c0193-transcript.json",
+          "locator": "MSG-01648；role_id=ROLE-LIN",
+          "evidence": "券发放/核销区分由小林说明。"
+        },
+        {
+          "source": "HZ2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-14af3b0b-9103-56ac-97bb-eb35cd50832d-transcript.json",
+          "locator": "MSG-01932",
+          "evidence": "有线上/门店渠道；具体关联字段无可确认说明。"
+        },
+        {
+          "source": "D5",
+          "path": "materials/w03/05_数据字典.md",
+          "locator": "12–13、28–31、45–55行",
+          "evidence": "账户/门店关系、卡属性和购卡款语义的直接来源。"
+        },
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03848、03854",
+          "evidence": "产品范围/资格；不提供完整物理属性表。"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "R01",
+      "priority": "P1",
+      "title": "流程表出现未经证明的回流与安排状态，并把券流程套到全部工作",
+      "locations": [
+        "business_model.md:54–56"
+      ],
+      "actual": "54行“日常会员运营”同时列权益说明、回访，却统一接“发放与使用反馈”；55行写“门店依据同一套有效期规则逐卡核对…但完整门店任务尚未安排”；56行写“反馈汇入下一轮安排”。",
+      "reason": "03862只说明优惠券活动的一般做法；03888是本期门店可协助核对的内容和条件，不能变成所有活动的固定步骤或现实任务未安排。反馈整理/已有任务反馈触发不证明处理结果实际汇入下一轮，且同一行又把衔接留未知。",
+      "evidence": [
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03862",
+          "evidence": "“拿我经手的会员优惠券活动来说”限定流程类型；具体哪次及筛选条件不能确认。"
+        },
+        {
+          "source": "C",
+          "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03888",
+          "evidence": "“门店能协助核对的是”及“我才好安排门店配合”是能力/条件，非已执行或确定未安排。"
+        },
+        {
+          "source": "HC2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+          "locator": "MSG-01945、01953",
+          "evidence": "反馈后的处理答复或调整安排及返回门店方式不掌握。"
+        },
+        {
+          "source": "HL2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+          "locator": "MSG-01913",
+          "evidence": "“这次要做什么”来自未做完任务和反馈；这是一般方式，不是实例闭环。"
+        }
+      ],
+      "minimal_fix": "先列三种工作类型；通用步骤写准备/协作/跟进/反馈，另用券活动例说明发放与使用。删“完整门店任务尚未安排”，本期逐卡核对能力放核查记录。56行产出改为“整理后的反馈与未核问题；是否及怎样进入下一轮安排待核”。保留原来有来源的小林—陈姐局部交接。",
+      "validation": "静态重读U04/F03–F05所要求的范围：权益说明不得被解释成发券；提供整理结果不得推出已回流/已排期/确无安排。",
+      "human_decision_required": false
+    },
+    {
+      "id": "R02",
+      "priority": "P1",
+      "title": "将不确定判断改为否定意见，且notes再次混淆动作主体与审批概念",
+      "locations": [
+        "business_model.md:60",
+        "notes_update.md:27",
+        "notes_update.md:30"
+      ],
+      "actual": "“她…也不认为这是复购下滑的原因”；“小林不会单独定人群、自动发券、联系会员或改记录（MSG-03860）”；“审批流程…均未定”。",
+      "reason": "不能说明原因不等于认为不是原因；03860禁止的是助手自动动作，不能把小林本人限制成不能改记录。03931已提公司内部审批流程，只说本次审批安排/具体权限未定，不能改成流程本身未定。",
+      "evidence": [
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03856",
+          "evidence": "“我没量过工时，也不能说它就是复购下滑的原因”。"
+        },
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03860、03862",
+          "evidence": "03860为“我不会让助手自动发券、联系会员或改记录”；03862另说明她不单独定人群等。"
+        },
+        {
+          "source": "W",
+          "path": "artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+          "locator": "MSG-03931",
+          "evidence": "“得由公司内部按审批流程定”与“审批安排还没定”。"
+        }
+      ],
+      "minimal_fix": "60行改为“未量化工时，也不能据此认定复购下滑原因”。notes27分开写“人群/方案需业务确认；不让助手自动发券、联系会员或改记录”，不要将不同句的主体合并。notes30将“审批流程”收准为“本期审批安排与具体审批权限”，保留公司有内部流程的原话边界。",
+      "validation": "问“是否已排除重复整理为原因”应答未得依据；问“小林不能改业务记录吗”不得从助手限制推出；问“公司没有审批流程吗”不得肯定。",
+      "human_decision_required": false
+    },
+    {
+      "id": "R03",
+      "priority": "P1",
+      "title": "已定的正文迁移尚未落实，summary/notes却称已迁出",
+      "locations": [
+        "business_model.md:7、11、13、17–29、34–35、48、57、68、75",
+        "notes_update.md:15–17",
+        "summary.md:1"
+      ],
+      "actual": "正文仍有试点批准/验收未落实、权限批准、暂停接入、数据/日期承诺、测试验收、具体查询月份/核对证据；同时保留“保留理由/高重要”“学员建模选择”、载体取舍及“无购买参与者也应能被观察”的设计要求。summary称FDE验收及阶段框架/取舍理由不进正文。",
+      "reason": "用户已定业务正文只留青禾业务知识，FDE接入、交付/验收/批准和维护过程应分流。个人Excel本身确已迁出，不能因此声称整体迁移完成。真实业务角色和门店条件仍应保留，不能全部删除。",
+      "evidence": [
+        {
+          "source": "USER",
+          "path": "artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+          "locator": "excel_disposition、delivery_disposition",
+          "evidence": "个人载体不入正文；FDE项目费用/延期/交付/验收批准等进入SOW/记录，保留真实业务工作。"
+        },
+        {
+          "source": "OLD",
+          "path": "docs/w03/business_model.md",
+          "locator": "26、28、30、52–53、65行",
+          "evidence": "旧稿候选/设计/个人载体和接入事项是待迁移基线，不是新稿必须继承的业务事实。"
+        }
+      ],
+      "minimal_fix": "正文保留复购目标、三个月期望与业务未量化边界，迁出项目批准/验收/接入承诺。数据协作只留理解业务范围/字段/记录的业务角色，不留FDE交付及审批状态。移68行查询执行待办和75行接入批准；历史业务状态能否还原单独保留。对象表保留必要来源，移“保留理由/高重要”与学员取舍；34–35行只留必要实际业务用途/未知，把设计目标迁notes。随后重写summary的迁移完成陈述，使其与实际草稿一致。",
+      "validation": "T01/T03逐段查：不得以换名保留FDE或个人载体；也不得删掉真实名单用途、角色动作和门店前置条件。",
+      "human_decision_required": false
+    },
+    {
+      "id": "R04",
+      "priority": "P1",
+      "title": "退款排除条件和统计范围被压缩到含混表达，分层仍不完整",
+      "locations": [
+        "business_model.md:41、43",
+        "notes_update.md:20–23"
+      ],
+      "actual": "43行“有效购买与退款归属…退款按原订单日期归属，取消与全额退款不计”；41行仍把“本期月报取月末”附在通用权益端点规则中。notes23把完整月/全渠道/全门店、分子分母、退款/首单/字段SQL混成一串“其余本月继承项”。",
+      "reason": "“全退不计”只针对有效购买；全退paid订单仍计支付订单和退款订单/退款金额，不能在退款归属句中无对象排除。月末选择及退款归期应有指标层单一落点；完整月/全渠道等不能泛化到全部38项或全部通用报表。",
+      "evidence": [
+        {
+          "source": "D1",
+          "path": "materials/w03/01_订单日报说明.md",
+          "locator": "11、15、23、35–43行",
+          "evidence": "支付包括后来全退；有效订单排除全退；退款订单含部分及全部退款；退款额为paid订单累计。"
+        },
+        {
+          "source": "D2",
+          "path": "materials/w03/02_财务邮件.md",
+          "locator": "5行",
+          "evidence": "取消、全额退款不计有效购买，退款按原订单日期归属。"
+        },
+        {
+          "source": "D3",
+          "path": "materials/w03/03_会员运营周报.md",
+          "locator": "9、13–37行",
+          "evidence": "注册/观测期指标和月内三项不同；三项月内指标明确整月/全门店。"
+        },
+        {
+          "source": "D4",
+          "path": "materials/w03/04_本期统计确认邮件.md",
+          "locator": "5、9、13–33行",
+          "evidence": "六项付费月报限定完整月、全渠道/全门店、月末资格与整月购买。"
+        }
+      ],
+      "minimal_fix": "43行仅写“有效购买沿用第2节，取消和全额退款不计入有效购买”；退款归期迁指标承接。41行保留按指定日判定，改简短指向具体指标口径而非把月末并入端点规则。notes23分三类：六项付费月报按04；三项普通月内指标按03；其余通用指标按01–03各自定义，不统一加月度/付费过滤。无须抄38项公式，但明确归期/首单/零分母各依什么定义。",
+      "validation": "全退paid单的支付/退款统计仍纳入、有效购买排除；普通订单日期窗口不因notes被强制改成整月；R01–R07/B01–B06仍沿各题指定材料。这里只作静态审查，未实际运行。",
+      "human_decision_required": false
+    },
+    {
+      "id": "R05",
+      "priority": "P2",
+      "title": "修正不存在的消息标识、角色错挂和不能支持断言的引用，并收准审查人数说明",
+      "locations": [
+        "business_model.md:19–24、28、39",
+        "summary.md:1",
+        "proposal.json:claim_ids/human_reviews"
+      ],
+      "actual": "39行“MS丛-03854”是损坏标识；28行将MSG-01648列在“陈姐、老周”后；23行将门店关系归于01932与无明确定位的核查记录；20行购卡金额属性/收入区别没有给字典直接来源。summary写五组“18项原生已审ID”。",
+      "reason": "损坏ID与真实ID但支持范围不符应区别处理。01932真实存在但回答是渠道及对应字段不掌握，不证明成交/归属门店关系；01648真实但角色是小林。五组human_reviews含20个不同原生ID，claim_ids是18个实际采用/承接ID，两个计数不能混成18项已审。",
+      "evidence": [
+        {
+          "source": "HL1",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d70b1629-b176-53d1-8357-f195328c0193-transcript.json",
+          "locator": "MSG-01648；role_id=ROLE-LIN",
+          "evidence": "券发放/核销区分由小林说明。"
+        },
+        {
+          "source": "HZ2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-14af3b0b-9103-56ac-97bb-eb35cd50832d-transcript.json",
+          "locator": "MSG-01932",
+          "evidence": "有线上/门店渠道；具体关联字段无可确认说明。"
+        },
+        {
+          "source": "D5",
+          "path": "materials/w03/05_数据字典.md",
+          "locator": "12–13、28–31、45–55行",
+          "evidence": "账户/门店关系、卡属性和购卡款语义的直接来源。"
+        },
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03848、03854",
+          "evidence": "产品范围/资格；不提供完整物理属性表。"
+        }
+      ],
+      "minimal_fix": "纠正MS丛为MSG，01648归小林；字典直接支持对象/门店/卡属性，旧访谈只支持其确实说明的范围，不用未知回答给新关系背书。当前属性/历史缺项明确写“本期资料未提供变更历史”，不是公司无历史。summary改为“五组20项收到主导师依据既有独立审查录入的反馈，其中18项用于正文或notes承接”；这次实际正文独立审查结论另记，不暗示5组新反馈逐组独立通过。",
+      "validation": "核每一出处存在且主体/断言匹配；复核20 reviewed、18 included、2 only-source/deferred。不得只做字符串存在检查。",
+      "human_decision_required": false
+    },
+    {
+      "id": "R06",
+      "priority": "P2",
+      "title": "恢复被删掉的关键业务输入、使用目的与既有观察条件",
+      "locations": [
+        "business_model.md:54、58、60",
+        "model.diff:原v0.4第30、36、49、51、61–62行的删除部分"
+      ],
+      "actual": "日常流程输入列变成活动类型枚举，原“未完任务与反馈”触发消失；模型保留岗位负担但未再说明关注会员/建议依据及核对漏重的具体用途；导购已有注册指标和陈姐明确的前/中/后观察条件也只剩笼统考核未知。",
+      "reason": "这些是已获来源的业务工作与使用判断，不是个人Excel或FDE验收条款。将导师阶段建议迁出不应一并丢掉陈姐自己的观察方式。双目标仍在，但缺少实际输入和判断用途会使正文更接近规则目录。",
+      "evidence": [
+        {
+          "source": "HL2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+          "locator": "MSG-01913、01925",
+          "evidence": "任务触发为未完任务/反馈；希望关注会员和建议依据，减少原有整理核对。"
+        },
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03866–03870",
+          "evidence": "查数用于核名单与口径、找遗漏/重复，非已生成营销人群。"
+        },
+        {
+          "source": "HC1",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-33120509-3939-5d6c-81f1-3959fed49789-transcript.json",
+          "locator": "MSG-01685",
+          "evidence": "已知导购有会员注册指标，完整构成/口径未知。"
+        },
+        {
+          "source": "HC2",
+          "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+          "locator": "MSG-01951、01953",
+          "evidence": "希望开始时清楚、执行中少来回确认、结束后重复问题减少；尚未实际试验。"
+        }
+      ],
+      "minimal_fix": "用少量句子恢复：未完任务/反馈是通用触发，类型单列；关注会员及建议依据、问数查漏重是期望用途；统计人群、待审核候选、实际执行人群不同；导购已有注册指标但完整口径未知；门店信息整理的观察条件来自陈姐，未测量效果。无需恢复整个旧候选支持表或导师设计段。",
+      "validation": "U01/U04及REG01–REG02静态覆盖检查；问“提效具体看什么”能回答有来源观察，但不得称已节省工时；月报账户数不得自动成为已批准触达名单。",
+      "human_decision_required": false
+    },
+    {
+      "id": "R07",
+      "priority": "P2",
+      "title": "未决表仍把本期已知关系与历史/生产未知捆在一起",
+      "locations": [
+        "business_model.md:20–21、66–67、71、75"
+      ],
+      "actual": "71行将“会员—订单—优惠／活动追踪的关联、历史资格还原、自然人统一”一起写为“字段与关联待样例核”；67行未限定生产/历史却再问空终止填写一致性；20行称卡是“资格判断的唯一载体”，21行称其为“月报人群与名单口径的共同基础”。",
+      "reason": "本期字典已给账户—订单、账户—卡关系，陈姐已给本期空值含义；真正缺的是优惠/活动追踪关系、生产历史证据等。宽泛未知可能重新阻断本期工作。卡资格是本期月报规则，活动筛选条件未确认，不能由此默认所有运营名单都共用这一资格条件。",
+      "evidence": [
+        {
+          "source": "D5",
+          "path": "materials/w03/05_数据字典.md",
+          "locator": "12–13、28–31、45–55行",
+          "evidence": "本期关系已给定，不能继续整体待核。"
+        },
+        {
+          "source": "C",
+          "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03885–03890",
+          "evidence": "本期两类卡端点/空值已有角色说明；缺具体文件与历史凭据。"
+        },
+        {
+          "source": "Z",
+          "path": "artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+          "locator": "MSG-03873、03875",
+          "evidence": "不掌握解释及测试不等生产的边界，不是相反规则。"
+        },
+        {
+          "source": "L",
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03848、03862",
+          "evidence": "资格只约束本期月报；具体活动选人条件未确认。"
+        }
+      ],
+      "minimal_fix": "71行拆为本期关系已知与“优惠/活动追踪关联、生产历史及自然人关系仍待核”；67行如保留明确为生产/历史填写与凭据核验，不重新打开本期空值解释。20–21行将“唯一/共同基础”收准为本期月报资格判断依据；活动名单按其独立业务条件确认。历史业务状态还原保留业务未知，接入权限按R03迁出。",
+      "validation": "E04/T03静态核对：不能因生产凭据缺失拒绝本期规则起草；不能将月报资格推广成优惠券目标人群的必选条件。",
+      "human_decision_required": false
+    }
+  ],
+  "prior_design_findings": {
+    "D01": {
+      "status": "substantially_implemented_with_remaining_scope_and_citation_fixes",
+      "findings": [
+        "R05",
+        "R07"
+      ]
+    },
+    "D02": {
+      "status": "partially_resolved",
+      "findings": [
+        "R04"
+      ]
+    },
+    "D03": {
+      "status": "partially_resolved",
+      "findings": [
+        "R04",
+        "R07"
+      ]
+    },
+    "D04": {
+      "status": "needs_revision",
+      "findings": [
+        "R01",
+        "R06"
+      ]
+    },
+    "D05": {
+      "status": "needs_revision",
+      "findings": [
+        "R03"
+      ]
+    }
+  },
+  "strengths": [
+    "五节组织与双目标保留，账户/卡/派生资格拆清，多卡存在条件及去重、开始/结束/提前终止端点正确。",
+    "第2节吸收有效购买、累计退款快照、原始件数及购卡款不等于商品订单收入；不虚构订单实际用卡。",
+    "个人Excel与旧购买时点候选已迁出，notes保留来源和历史；没有声称正式apply或85题/38项运行通过。"
+  ],
+  "human_decisions": [],
+  "business_decision_required": false,
+  "source_aliases": {
+    "L": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+    "Z": "artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+    "C": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+    "W": "artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+    "D1": "materials/w03/01_订单日报说明.md",
+    "D2": "materials/w03/02_财务邮件.md",
+    "D3": "materials/w03/03_会员运营周报.md",
+    "D4": "materials/w03/04_本期统计确认邮件.md",
+    "D5": "materials/w03/05_数据字典.md",
+    "USER": "artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+    "OLD": "docs/w03/business_model.md",
+    "HL1": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d70b1629-b176-53d1-8357-f195328c0193-transcript.json",
+    "HL2": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+    "HC1": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-33120509-3939-5d6c-81f1-3959fed49789-transcript.json",
+    "HC2": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+    "HZ2": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-14af3b0b-9103-56ac-97bb-eb35cd50832d-transcript.json"
+  },
+  "source_recheck_inventory": [
+    {
+      "path": "artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+      "sha256": "fb6435f8ab761dbb26a995ec93f11530ef67840661251ab8b4c59d19ffbbf5ce",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    },
+    {
+      "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+      "sha256": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    },
+    {
+      "path": "artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+      "sha256": "4d60b0499cfff1ce466183fa32c6c593956abe0513d1336ded239e4e53f3211c",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    },
+    {
+      "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+      "sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    },
+    {
+      "path": "artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+      "sha256": "4daff76aa52ff879aa6f2576d83fe936df4521fee90003402150d4cacdc1a4c8",
+      "read_scope": "Prior full reading reused; current hash checked, not newly re-read in this pass."
+    },
+    {
+      "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-14af3b0b-9103-56ac-97bb-eb35cd50832d-transcript.json",
+      "sha256": "e77c747c40f4a9d84075b2d195a82caa4e9c08446861c01279e8214731e53b80",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    },
+    {
+      "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-33120509-3939-5d6c-81f1-3959fed49789-transcript.json",
+      "sha256": "f582e55b0468ca02a84b35c9f668a6dcef21adf6748a43e9bed528981f6c6059",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    },
+    {
+      "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+      "sha256": "eef0d4127f42f96a0fc5219749c3355cfe8252d028b2e8e495117d1ea3821f07",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    },
+    {
+      "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+      "sha256": "8c16cefc6005cd21914dc2219208e8819ca490787cb6f677347a269b62ca9920",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    },
+    {
+      "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d70b1629-b176-53d1-8357-f195328c0193-transcript.json",
+      "sha256": "d64d119413bba354dd8ada3d0c78cca35d55364df6a666c7c67b6ff7b85ed34e",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    },
+    {
+      "path": "docs/w03/business_model.md",
+      "sha256": "6e48419390810b44cdaa1ba430b01038a54be37c9f8692b58933ac8785592bf0",
+      "read_scope": "Prior full baseline reading reused; full model.diff read this pass; current base hash checked."
+    },
+    {
+      "path": "materials/w03/01_订单日报说明.md",
+      "sha256": "976fa129493e6bd2861a58d74df2ba3ad4448ea01a2d25651124222a61cebb67",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    },
+    {
+      "path": "materials/w03/02_财务邮件.md",
+      "sha256": "f81e0ddb5c03dd4eb2d01094816716d8375d03fe883b947ec8297edf8d525557",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    },
+    {
+      "path": "materials/w03/03_会员运营周报.md",
+      "sha256": "25ab933556bf34bef21b528d4c7838c9baad33ae289d59f09501e765080bb492",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    },
+    {
+      "path": "materials/w03/04_本期统计确认邮件.md",
+      "sha256": "c4f847fd90fd0765d37ad22f20d4a4eb0bab90f8543ae0f05d7a3cbee104c4be",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    },
+    {
+      "path": "materials/w03/05_数据字典.md",
+      "sha256": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16",
+      "read_scope": "targeted relevant message paragraphs or MD lines; full prior source inventory reused, not re-read wholesale"
+    }
+  ],
+  "integrity": {
+    "baseline_body_matches_proposal_base": true,
+    "baseline_notes_matches_proposal_base": true,
+    "native_feedback_id_count": 20,
+    "proposal_used_id_count": 18,
+    "draft_files_edited": false,
+    "formal_files_edited": false,
+    "workflow_mutated": false,
+    "skill_edited": false,
+    "model_test_cases_run": 0,
+    "metric_tests_run": 0
+  },
+  "limits": [
+    "本轮为实际首稿静态审核，不是85题问答或38指标执行。",
+    "来源能支持的事实/引用/范围/表达问题均由Agent修订；没有新业务取舍需请用户决定。",
+    "静态通过后仍需另行判断草稿采纳/apply与后续测试，不据本轮自动登记。"
+  ],
+  "low_priority_readability": [
+    {
+      "id": "N01",
+      "priority": "P3",
+      "location": "draft-01/business_model.md:77",
+      "finding": "草稿副本中的interview_notes.md相对链接在当前draft-01目录下无法打开；正式docs/w03落点对应文件存在。",
+      "verified": {
+        "draft_relative_target_exists": false,
+        "intended_formal_target_exists": true
+      },
+      "recommendation": "审阅副本提供清楚的来源/notes导航链接或说明正式落点；不要为了草稿预览永久破坏正式文档的相对路径。",
+      "blocks_semantic_approval": false
+    }
+  ]
+}

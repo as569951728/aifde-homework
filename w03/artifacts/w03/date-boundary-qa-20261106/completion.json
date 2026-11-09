@@ -1,0 +1,161 @@
+{
+  "completed_at": "2026-11-06T15:57:13.925313+00:00",
+  "step": "24 date-boundary cases with one bounded source-attribution correction",
+  "status": "execution_and_independent_review_complete_one_answer_still_requires_revision",
+  "r1_counts": {
+    "cases": 24,
+    "date_logic_pass": 24,
+    "full_answer_pass": 19,
+    "full_answer_pass_with_nonblocking_suggestion": 1,
+    "full_answer_fail_requires_revision": 4,
+    "full_answer_acceptable_including_nonblocking": 20,
+    "needs_business_decision": 0,
+    "live_model_runs": 24,
+    "http_attempts": 24
+  },
+  "r2_counts": {
+    "cases": 8,
+    "final_validity_conclusion_pass": 8,
+    "complete_date_explanation_pass": 7,
+    "complete_date_explanation_fail": 1,
+    "source_attribution_pass": 8,
+    "original_source_failures_resolved": 4,
+    "full_answer_pass": 5,
+    "full_answer_pass_with_nonblocking_suggestion": 2,
+    "full_answer_acceptable_including_nonblocking": 7,
+    "full_answer_fail_requires_revision": 1,
+    "live_model_runs": 8,
+    "http_attempts": 8,
+    "needs_user_business_decision": 0
+  },
+  "step_live_model_calls": 32,
+  "step_http_attempts": 32,
+  "cumulative_model_qa_calls_including_previous_qualification_batch": 66,
+  "conditions": [
+    {
+      "name": "R1 date batch",
+      "prompt_sha256": "c2947d4bb17dcd5faf3a4da8740983c4ade6b91310d570ce18e228bfc4beaa63",
+      "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+      "input_manifest_sha256": "d334b16ada0804abe68d34095c734b1cd963589d2d05b451bc9c611e7d0a8083",
+      "run_index_sha256": "e5d877389b3706b47a409568681accf267084a5edc33e06fca00fa24f254285b",
+      "independent_review": "artifacts/w03/date-boundary-qa-20261106/independent-review/review.json",
+      "review_sha256": "3c25e5a849d701ba499b6fbfe060b20b17f5ad3208f36a28f77be10a42d77b12",
+      "protocol_audit_sha256": "f35b8604cf5a40cfab82779b89a4d155bbc62a603957a7d2a85a8b72b4bf940f"
+    },
+    {
+      "name": "R2 bounded regression",
+      "prompt_sha256": "dd555f4d004aeac3141e37bfc43528b7880e00cf29429fd7b3d9f045183bd7f4",
+      "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+      "input_manifest_sha256": "1e80c47e79e58b7f5ea81e0e83749cf912555c620be7f8788c68b137ce82cfb7",
+      "run_index_sha256": "d9b6207c10355b20be4958b186a11ec5e2aef2de30144c39964916bc79fdbb39",
+      "independent_review": "artifacts/w03/date-boundary-qa-20261106/independent-review/review-r2.json",
+      "review_sha256": "8bc196fb5152ffb1a033994cc23f22497e029fcfed809130dd5db8656f6073ca",
+      "protocol_audit_sha256": "9a9a224e23be57194c5b71d0d7c0c992d0eb3e956bbc28baf91b1d12be8060a7"
+    }
+  ],
+  "suite_execution_counts": {
+    "total_cases": 85,
+    "qa_executed_unique": 41,
+    "qa_with_acceptable_evidence_under_recorded_conditions": 40,
+    "qa_needs_revision": 1,
+    "qa_not_run": 41,
+    "static_cases_passed": 3
+  },
+  "remaining_failed_case_ids": [
+    "DQ12"
+  ],
+  "original_source_failures_preserved": [
+    "DY01",
+    "DY11",
+    "DY12",
+    "DQ12"
+  ],
+  "next_action": "Prepare per-condition and effective-interval consistency checking for DQ12, then a separately frozen bounded regression. No third prompt or further model call in this step.",
+  "formal_model_applied": false,
+  "formal_prompt_replaced": false,
+  "skill_changed": false,
+  "metric_queries_executed": 0,
+  "workflow_status": "awaiting_apply",
+  "workflow_step": 13,
+  "protected_files": [
+    {
+      "path": "docs/w03/business_model.md",
+      "before": "6e48419390810b44cdaa1ba430b01038a54be37c9f8692b58933ac8785592bf0",
+      "after": "6e48419390810b44cdaa1ba430b01038a54be37c9f8692b58933ac8785592bf0",
+      "unchanged": true
+    },
+    {
+      "path": "docs/w03/interview_notes.md",
+      "before": "79d4565446c27f52e572dee1010647fd3d50eca6cda694d94275370bdda704c3",
+      "after": "79d4565446c27f52e572dee1010647fd3d50eca6cda694d94275370bdda704c3",
+      "unchanged": true
+    },
+    {
+      "path": "customer/w02/knowledge.json",
+      "before": "a0388b48296714c1a85402bc3d0b327681440ffc177ecd271d636a50ec602f01",
+      "after": "a0388b48296714c1a85402bc3d0b327681440ffc177ecd271d636a50ec602f01",
+      "unchanged": true
+    },
+    {
+      "path": "customer/w02/knowledge_prompt.txt",
+      "before": "f0447628feb59042278a7ad473d5e4091486a92207fcea3e9d5bd42a33bff6c5",
+      "after": "f0447628feb59042278a7ad473d5e4091486a92207fcea3e9d5bd42a33bff6c5",
+      "unchanged": true
+    },
+    {
+      "path": "customer/w02/workflow.json",
+      "before": "7e8ca7713feafdd94a7ad39dc1a6e65a3865f4663cab0578930f72fe6e1cea1b",
+      "after": "7e8ca7713feafdd94a7ad39dc1a6e65a3865f4663cab0578930f72fe6e1cea1b",
+      "unchanged": true
+    },
+    {
+      "path": "customer/w02/extraction.json",
+      "before": "2174cead29aa9b579fbc3fd24f62c221efb92be132917925496539995eaa1002",
+      "after": "2174cead29aa9b579fbc3fd24f62c221efb92be132917925496539995eaa1002",
+      "unchanged": true
+    },
+    {
+      "path": "customer/w02/skills/extract-business/SKILL.md",
+      "before": "925a9b94ec4cad9afeafea3e214e2de3f677bd56efb32b5ffa9e55721c609e1e",
+      "after": "925a9b94ec4cad9afeafea3e214e2de3f677bd56efb32b5ffa9e55721c609e1e",
+      "unchanged": true
+    },
+    {
+      "path": "artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/session.json",
+      "before": "e2476369a4821f26094b2fb22628b4ce0da95ee271d565681600b04a95088e26",
+      "after": "e2476369a4821f26094b2fb22628b4ce0da95ee271d565681600b04a95088e26",
+      "unchanged": true
+    },
+    {
+      "path": "artifacts/w03/model-draft-20261106/draft-03/business_model.md",
+      "before": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+      "after": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+      "unchanged": true
+    },
+    {
+      "path": "docs/w03/metric_decisions.md",
+      "before": "58119844b4cc562fd68a7edeb4ad63de558363dc1fc1b3492bf28c7448bfd5bc",
+      "after": "58119844b4cc562fd68a7edeb4ad63de558363dc1fc1b3492bf28c7448bfd5bc",
+      "unchanged": true
+    },
+    {
+      "path": "docs/w03/sow.md",
+      "before": "23973277b7b7362ca9e942ec32da5c0b905dd797860af23a4f8e62f6ebd1d870",
+      "after": "23973277b7b7362ca9e942ec32da5c0b905dd797860af23a4f8e62f6ebd1d870",
+      "unchanged": true
+    },
+    {
+      "path": "customer/w03/tests.json",
+      "before": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "after": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "unchanged": true
+    }
+  ],
+  "human_decisions_needed": [],
+  "limits": [
+    "Artificial single-card date reasoning only; no production or formal policy authentication.",
+    "R2 tested only eight selected cases and failed DQ12; do not promote or generalize.",
+    "Passes from different prompt conditions are not a full regression of one candidate.",
+    "Agent execution and review are not independent learner answers, verbatim adoption or client acceptance."
+  ]
+}

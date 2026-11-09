@@ -1,0 +1,323 @@
+{
+  "date": "2026-11-07",
+  "recorded_at": "2026-11-07T04:07:19.945548+00:00",
+  "status": "all_cases_validated_with_preserved_raw_failures",
+  "starting_completion": "artifacts/w03/operations-qa-20261107/completion.json",
+  "starting_completion_sha256": "0cf5b8826742b1df2d7e2e0bf0fccdd1927104a6471c165e050303f5c1ad7af8",
+  "candidate_model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "candidate_prompt_sha256": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+  "counts": {
+    "total_designed_cases": 85,
+    "qa_cases_attempted_current_version": 82,
+    "qa_native_accepted_answers_current_version": 81,
+    "qa_full_pass_current_version": 71,
+    "qa_semantic_failures_current_version": 10,
+    "qa_output_protocol_failures_current_version": 1,
+    "qa_current_version_unattempted": 0,
+    "static_current_candidate_pass": 3,
+    "static_current_candidate_total": 3,
+    "qa_tracks": {
+      "model_only": {
+        "attempted": 53,
+        "native_accepted_answers": 52,
+        "full_pass": 46,
+        "semantic_failures": 6,
+        "output_protocol_failures": 1
+      },
+      "model_with_fixed_materials": {
+        "attempted": 15,
+        "native_accepted_answers": 15,
+        "full_pass": 14,
+        "semantic_failures": 1,
+        "output_protocol_failures": 0
+      },
+      "model_with_source_context": {
+        "attempted": 14,
+        "native_accepted_answers": 14,
+        "full_pass": 11,
+        "semantic_failures": 3,
+        "output_protocol_failures": 0
+      }
+    },
+    "current_raw_failed_ids": [
+      "U01",
+      "U05",
+      "P09",
+      "DQ10",
+      "B05",
+      "F06",
+      "A03",
+      "E01",
+      "E03",
+      "E05",
+      "REG01"
+    ],
+    "coverage_percent_current_qa": 100,
+    "qa_any_historical_full_pass": 73,
+    "historical_extra_pass_case_ids": [
+      "P09",
+      "DQ10"
+    ]
+  },
+  "this_turn": {
+    "qa_runs": 33,
+    "http_attempts": 33,
+    "native_accepted_answers": 33,
+    "full_pass": 27,
+    "semantic_failures": 6,
+    "format_failures": 0,
+    "static_pass": 3,
+    "semantic_retries": 0,
+    "technical_recoveries": 0
+  },
+  "cumulative_model_qa_calls": 161,
+  "batches": [
+    {
+      "batch": "evidence-goals-qa-20261107",
+      "cases": 5,
+      "model_runs": 5,
+      "http_attempts": 5,
+      "native_accepted_answers": 5,
+      "full_pass": 2,
+      "raw_failed_ids": [
+        "E03",
+        "E05",
+        "REG01"
+      ],
+      "review_path": "artifacts/w03/evidence-goals-qa-20261107/independent-review/review.json",
+      "review_sha256": "7d24bc0fc7fe5781ead27ed51879d79a6d23a70d77e6073c2522ca6596c74252",
+      "run_index_sha256": "4bfa0fe38721b73c680c6b528a8180b0e5065e0a20c1a61c1bd68a5dfdc336bc",
+      "native_review_sha256": "242eb753cc05a09366710bc5319caf9dac5c1f28996d302106ce4407b591b15c",
+      "semantic_retries": 0,
+      "technical_recoveries": 0
+    },
+    {
+      "batch": "remaining-date-qa-20261107",
+      "cases": 12,
+      "model_runs": 12,
+      "http_attempts": 12,
+      "native_accepted_answers": 12,
+      "full_pass": 12,
+      "raw_failed_ids": [],
+      "review_path": "artifacts/w03/remaining-date-qa-20261107/independent-review/review.json",
+      "review_sha256": "fc6a11f234c650e546f4584e5a2af96b2beccf6f351fe2f0a83b7602546003e0",
+      "run_index_sha256": "b849ef3abe7adc0c84cceceefa126893751537fcffef5a8753bba1c00e1f6cd7",
+      "native_review_sha256": "396f4e8033fe07f999e8909b5a94a637c3c5f172708fa2d9679b93eca3705747",
+      "semantic_retries": 0,
+      "technical_recoveries": 0
+    },
+    {
+      "batch": "context-application-qa-20261107",
+      "cases": 16,
+      "model_runs": 16,
+      "http_attempts": 16,
+      "native_accepted_answers": 16,
+      "full_pass": 13,
+      "raw_failed_ids": [
+        "U05",
+        "A03",
+        "E01"
+      ],
+      "review_path": "artifacts/w03/context-application-qa-20261107/independent-review/review.json",
+      "review_sha256": "b8bfc3bc0ba1e61eb7ffc527c60b64dec5262f280386ac40328c0d0aef5440d5",
+      "run_index_sha256": "d7b351c2c6cfa5c1313d7601bc7077cbc86683d30c2873b858cc40cfd2a5b2a8",
+      "native_review_sha256": "20ca1d6c9d8f4cac25c4b8b8b0ddb2b4a7b6cf55a0193b594b83f2c203ebe5b3",
+      "semantic_retries": 0,
+      "technical_recoveries": 0
+    }
+  ],
+  "static_review_sha256": "22b64cbe2858956f0339a723e4406b49dbf6e120213d881ff688c495d6621e14",
+  "execution_ledger_sha256": "f7d334ec45b6f7ba2f6f9ebae1c856733b0d1bf87f35e7e0d064018c984c6043",
+  "protected_files": [
+    {
+      "path": "docs/w03/business_model.md",
+      "before": "6e48419390810b44cdaa1ba430b01038a54be37c9f8692b58933ac8785592bf0",
+      "after": "6e48419390810b44cdaa1ba430b01038a54be37c9f8692b58933ac8785592bf0",
+      "unchanged": true
+    },
+    {
+      "path": "docs/w03/interview_notes.md",
+      "before": "79d4565446c27f52e572dee1010647fd3d50eca6cda694d94275370bdda704c3",
+      "after": "79d4565446c27f52e572dee1010647fd3d50eca6cda694d94275370bdda704c3",
+      "unchanged": true
+    },
+    {
+      "path": "customer/w02/knowledge.json",
+      "before": "a0388b48296714c1a85402bc3d0b327681440ffc177ecd271d636a50ec602f01",
+      "after": "a0388b48296714c1a85402bc3d0b327681440ffc177ecd271d636a50ec602f01",
+      "unchanged": true
+    },
+    {
+      "path": "customer/w02/knowledge_prompt.txt",
+      "before": "f0447628feb59042278a7ad473d5e4091486a92207fcea3e9d5bd42a33bff6c5",
+      "after": "f0447628feb59042278a7ad473d5e4091486a92207fcea3e9d5bd42a33bff6c5",
+      "unchanged": true
+    },
+    {
+      "path": "customer/w02/workflow.json",
+      "before": "7e8ca7713feafdd94a7ad39dc1a6e65a3865f4663cab0578930f72fe6e1cea1b",
+      "after": "7e8ca7713feafdd94a7ad39dc1a6e65a3865f4663cab0578930f72fe6e1cea1b",
+      "unchanged": true
+    },
+    {
+      "path": "customer/w02/extraction.json",
+      "before": "2174cead29aa9b579fbc3fd24f62c221efb92be132917925496539995eaa1002",
+      "after": "2174cead29aa9b579fbc3fd24f62c221efb92be132917925496539995eaa1002",
+      "unchanged": true
+    },
+    {
+      "path": "customer/w02/skills/extract-business/SKILL.md",
+      "before": "925a9b94ec4cad9afeafea3e214e2de3f677bd56efb32b5ffa9e55721c609e1e",
+      "after": "925a9b94ec4cad9afeafea3e214e2de3f677bd56efb32b5ffa9e55721c609e1e",
+      "unchanged": true
+    },
+    {
+      "path": "artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/session.json",
+      "before": "e2476369a4821f26094b2fb22628b4ce0da95ee271d565681600b04a95088e26",
+      "after": "e2476369a4821f26094b2fb22628b4ce0da95ee271d565681600b04a95088e26",
+      "unchanged": true
+    },
+    {
+      "path": "artifacts/w03/model-draft-20261106/draft-03/business_model.md",
+      "before": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+      "after": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+      "unchanged": true
+    },
+    {
+      "path": "docs/w03/metric_decisions.md",
+      "before": "58119844b4cc562fd68a7edeb4ad63de558363dc1fc1b3492bf28c7448bfd5bc",
+      "after": "58119844b4cc562fd68a7edeb4ad63de558363dc1fc1b3492bf28c7448bfd5bc",
+      "unchanged": true
+    },
+    {
+      "path": "docs/w03/sow.md",
+      "before": "23973277b7b7362ca9e942ec32da5c0b905dd797860af23a4f8e62f6ebd1d870",
+      "after": "23973277b7b7362ca9e942ec32da5c0b905dd797860af23a4f8e62f6ebd1d870",
+      "unchanged": true
+    },
+    {
+      "path": "customer/w03/tests.json",
+      "before": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "after": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "unchanged": true
+    }
+  ],
+  "native_workflow": {
+    "status": "awaiting_apply",
+    "step": 13,
+    "pending_proposal": "artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/proposal-3.json",
+    "pending_proposal_sha256": "c6c0a6bc7965b217cb9f1efbd73b391496cf06b3bc8f92846e826c47568cee85",
+    "pending_proposal_is_source_refined_candidate": false,
+    "note": "来源细化候选为导师局部编辑副本，尚未接回原生提案；必要回归后须对齐提案，不能直接把旧proposal3当成本候选写入。"
+  },
+  "formal_model_applied": false,
+  "formal_prompt_replaced": false,
+  "skill_changed": false,
+  "metric_queries_executed": 0,
+  "human_decisions_needed": [],
+  "mentor_reviews_pending": [],
+  "next_step_file": "后续处理清单.md",
+  "new_mentor_working_copies": [
+    {
+      "case_id": "U05",
+      "path": "artifacts/w03/context-application-qa-20261107/reviewed-answer/U05.json",
+      "sha256": "a0bec0c1c47e2ee0e8845cf4a3959d6f527536137983edee27569526248d0f7e",
+      "review_path": "artifacts/w03/context-application-qa-20261107/independent-review/reviewed-answer-review.json",
+      "review_sha256": "3f5509ae1d9e7da195acc698631f7feb5e330b6cde7cc91667bfcebf81abcc5a",
+      "status": "approved_mentor_edit_only",
+      "counts_as_model_pass": false
+    },
+    {
+      "case_id": "A03",
+      "path": "artifacts/w03/context-application-qa-20261107/reviewed-answer/A03.json",
+      "sha256": "52544db0e8dc391ea4ca7381fc359a00d4b371a1fc942b0d7499e028bb091959",
+      "review_path": "artifacts/w03/context-application-qa-20261107/independent-review/reviewed-answer-review.json",
+      "review_sha256": "3f5509ae1d9e7da195acc698631f7feb5e330b6cde7cc91667bfcebf81abcc5a",
+      "status": "approved_mentor_edit_only",
+      "counts_as_model_pass": false
+    },
+    {
+      "case_id": "E01",
+      "path": "artifacts/w03/context-application-qa-20261107/reviewed-answer/E01.json",
+      "sha256": "f062a434225973749038302ca5ac4ce7e020fa041ad8f7f3c8bb86868d9179fa",
+      "review_path": "artifacts/w03/context-application-qa-20261107/independent-review/reviewed-answer-review.json",
+      "review_sha256": "3f5509ae1d9e7da195acc698631f7feb5e330b6cde7cc91667bfcebf81abcc5a",
+      "status": "approved_mentor_edit_only",
+      "counts_as_model_pass": false
+    },
+    {
+      "case_id": "E03",
+      "path": "artifacts/w03/evidence-goals-qa-20261107/reviewed-answer/E03.json",
+      "sha256": "f521b1936c51ce1e20b560f7c12c0d4af8cbcfbf712f9088e156acb7e5651898",
+      "review_path": "artifacts/w03/evidence-goals-qa-20261107/independent-review/reviewed-answer-E03.json",
+      "review_sha256": "101da63b470f2950cb128c3952d476797f5911e88cfba67ebe491dd47e88f272",
+      "status": "approved_mentor_edit_only",
+      "counts_as_model_pass": false
+    },
+    {
+      "case_id": "E05",
+      "path": "artifacts/w03/evidence-goals-qa-20261107/reviewed-answer/E05.json",
+      "sha256": "a13b176da0124d1ff7ede0fa3cacba6b11982a48453ac1587f88afe7eb387bd8",
+      "review_path": "artifacts/w03/evidence-goals-qa-20261107/independent-review/reviewed-answer-E05.json",
+      "review_sha256": "1a0aed439c881a28860712f9a0df5897efad8a7680e6858e2c544f897ddaa15a",
+      "status": "approved_mentor_edit_only",
+      "counts_as_model_pass": false
+    },
+    {
+      "case_id": "REG01",
+      "path": "artifacts/w03/evidence-goals-qa-20261107/reviewed-answer/REG01.json",
+      "sha256": "bd4c1b0073fd478a8aec9d1c59356f13840bad3b251bc23885365d1965313487",
+      "review_path": "artifacts/w03/evidence-goals-qa-20261107/independent-review/reviewed-answer-REG01.json",
+      "review_sha256": "63e1daeb62d891e95e4e883062ce917beef57c7cd863a6a08793706ae20aec47",
+      "status": "approved_mentor_edit_only",
+      "counts_as_model_pass": false
+    }
+  ],
+  "original_questions_sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+  "reviewer_expectations_sha256": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+  "continuity_updates": [
+    {
+      "path": "W03/W03-学习会话接续.md",
+      "before": "7b71afd5716dcbe685b392b99dc47ea54b7070576a1605a844f36b342ece72aa",
+      "after": "41aaeb9033017d16bb55d8e7720ec45cc8459dc1e364487c936cce0f71ff470d"
+    },
+    {
+      "path": "W03/实操工程/开始这里.md",
+      "before": "ab25186070f1d505e82999c3c0211d6b908853313091ea8e72cebd955ef83607",
+      "after": "50024da1e6e402ff00d3075a14f5eec017969b74f1265c270ab687ec56700ef8"
+    },
+    {
+      "path": "W03/实操工程/docs/w03/model_changes.md",
+      "before": "8d78b4b8fc8ff181efdb21ce1ba19888a97d9e7400b2e7ca2e4c8978f6c00763",
+      "after": "48789a46a421c97edb2640c5a579d3cccfe126705367ae6266a3be99ae84b3e1"
+    },
+    {
+      "path": "W03/实操工程/docs/w03/test_design.md",
+      "before": "3730a0f93c81172c1e8ff6dfd768fe0256965665dec7d8637dd47a953dc13edf",
+      "after": "ed4d929a0373b09aae3baab43ee19b03d330a896997630bc7dcf0ed6fe10eaa7"
+    },
+    {
+      "path": "W03/实操工程/docs/w03/model_validation_cases.md",
+      "before": "853e52124d541b90156c7455a6a1eafd71c608d56f1575d90e6cda751d1c6007",
+      "after": "7d2ced37623ad4b004950a6244c8d73c7b681fa49eb35139d58c513e10f0344a"
+    },
+    {
+      "path": "W03/W03-学习笔记.md",
+      "before": "17d8f6ea5aa47fad9b78d82bd177b8cd785bc921e61d49a0b45010f9e6885fcd",
+      "after": "376a3cd911981ab386dc4418d1ec364ef5b595be9a3c381177012458fb9c9d7b"
+    }
+  ],
+  "continuity_updated_at": "2026-11-07T04:09:26.931078+00:00",
+  "aggregate_review": {
+    "status": "approved_aggregate_accounting_with_preserved_test_failures",
+    "path": "artifacts/w03/full-validation-20261107/aggregate-review/final-aggregate-review.json",
+    "sha256": "1f0021072b202f3319f83ec5d736857d329bde8d4b3fd0e417a36ce8b36d20fd",
+    "report_path": "artifacts/w03/full-validation-20261107/aggregate-review/final-aggregate-review.md",
+    "report_sha256": "8b9fe7e0f519338b89d022a62c8e6ebd60070e30667778c6d6b3aec3b1842ed8"
+  },
+  "reviewed_completion_snapshot": {
+    "path": "artifacts/w03/full-validation-20261107/aggregate-review/reviewed-completion.json",
+    "sha256": "fc8f452d94af18efa729bbf4aeb43d6d01a0bf1173ea660afc628bea46634d1b"
+  },
+  "finalized_at": "2026-11-07T04:17:32.456311+00:00"
+}

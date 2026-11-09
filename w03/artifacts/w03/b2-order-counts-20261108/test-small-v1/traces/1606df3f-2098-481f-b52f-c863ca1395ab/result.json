@@ -1,0 +1,44 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "net_sales_cents"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": [
+      {
+        "field": "order__channel",
+        "op": "eq",
+        "value": "小程序"
+      }
+    ]
+  },
+  "sql": "SELECT\n  SUM(net_sales_cents) AS net_sales_cents\nFROM (\n  SELECT\n    channel AS order__channel\n    , case when status = 'paid' then paid_cents - refund_cents else 0 end AS net_sales_cents\n  FROM \"data\".\"main\".\"orders\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_4\nWHERE order__channel in ('小程序')",
+  "columns": [
+    "net_sales_cents"
+  ],
+  "rows": [
+    [
+      48700
+    ]
+  ],
+  "seconds": 0.018,
+  "units": {
+    "net_sales_cents": "cents"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "466a44dff3612cc4ca54f51e23c9d31729d2c53326c63e2c23edd5338f273949",
+  "answer": "按当前已加载的青禾客户数据统计，2026年8月小程序渠道的净销售额为487.00元。口径为：按下单日期归属，纳入已支付订单，以实付金额减退款金额计算，取消订单不计入；金额由分换算为元。",
+  "question": "2026年8月青禾优选小程序渠道的净销售额是多少？",
+  "trace_id": "1606df3f-2098-481f-b52f-c863ca1395ab",
+  "elapsed_seconds": 7.15,
+  "model_usage": {
+    "prompt_tokens": 6457,
+    "completion_tokens": 656,
+    "total_tokens": 7113
+  },
+  "model_calls_with_usage": 2
+}

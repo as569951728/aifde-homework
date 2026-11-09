@@ -1,0 +1,38 @@
+--- basic-semantics/run_batch.py
++++ context-application/run_batch.py
+@@ -41,14 +41,14 @@
+     question = case["question"]
+     if "fixture" in case:
+         question += "\n\n本题人工构造输入：\n" + json.dumps(case["fixture"], ensure_ascii=False, indent=2)
+-    registry = json.loads((BATCH / "input/materials_index.json").read_text())
++    registry = json.loads((BATCH / "input/materials_index.json").read_text())[case["id"]]
+     materials = []
+     for source_path in case["fixed_materials"]:
+         ref = registry[source_path]
+         snapshot = BATCH / ref["snapshot"]
+         require(sha(snapshot) == ref["sha256"], "FROZEN_MATERIAL_CHANGED", source_path)
+-        materials.append({"source_path": source_path, "content": snapshot.read_text()})
+-    question += "\n\n本题指定材料（原文；仅作业务依据）：\n" + json.dumps(materials, ensure_ascii=False, indent=2)
++        materials.append({"source_name": Path(source_path).name, "content": snapshot.read_text()})
++    question += "\n\n本题指定材料（逐字原文；访谈保留角色与消息，个别长材料按完整问答或整节选取；仅作依据）：\n" + json.dumps(materials, ensure_ascii=False, separators=(",", ":"))
+     return question
+ 
+ 
+@@ -67,7 +67,7 @@
+     checks = []
+     for case in cases:
+         require(case == original_cases[case["id"]], "QUESTION_CHANGED", case["id"])
+-        require(case["input_track"] == "model_with_fixed_materials" and case["fixed_materials"], "TRACK_MISMATCH")
++        require(case["input_track"] in {"model_with_fixed_materials", "model_with_source_context"} and case["fixed_materials"], "TRACK_MISMATCH")
+         question = question_for(case)
+         require(0 < len(question) <= 8000, "QUESTION_INVALID")
+         messages = messages_for(document, prompt, question, True)
+@@ -87,7 +87,7 @@
+                          model="deepseek-flash", profile="deepseek-json", timeout=180,
+                          max_tokens=8192, retry_max_tokens=16384, retry_timeout=240)
+     model.deadline = time.monotonic() + 420
+-    agent = Agent(ROOT / ".runtime/w03-basic-semantics-qa-20261107" / case["id"], model)
++    agent = Agent(ROOT / ".runtime/w03-context-application-qa-20261107" / case["id"], model)
+     try:
+         result = agent.answer_business_model(ROOT, CONFIG, question_for(case),
+                                              include_knowledge=True, expected="", pair_id=None,

@@ -1,0 +1,85 @@
+{
+  "status": "approved_for_frozen_input_review",
+  "reviewed_at": "2026-11-07T05:32:12.833763+00:00",
+  "approved_mechanism": true,
+  "approved_for_execution": false,
+  "run_allowed": false,
+  "failed_checks": [],
+  "checks": [
+    {
+      "id": "only_evidence_branch_replaced",
+      "passed": true,
+      "reason": "来源通则前缀与数学/日期/严格JSON后缀逐字相同；仅证据输出分支改为单份记录。"
+    },
+    {
+      "id": "math_date_json_tail_byte_identical",
+      "passed": true,
+      "reason": "金额分子分母、独立单条件、单卡ASCII模板与JSON终检未改。"
+    },
+    {
+      "id": "ordinary_calculation_branch_exempt",
+      "passed": true,
+      "reason": "普通计算与单卡判断无需三字段证据记录。"
+    },
+    {
+      "id": "given_conditions_preserved",
+      "passed": true,
+      "reason": "避免把合成可比条件再降级为未知。"
+    },
+    {
+      "id": "missing_vs_disproved_distinguished",
+      "passed": true,
+      "reason": "针对U05实际未知→不一致；允许判断现有依据不足以支持直接计算。"
+    },
+    {
+      "id": "single_per_item_record",
+      "passed": true,
+      "reason": "减小表格正确但重述结论漂移的重复位置；不是效果已获证实。"
+    },
+    {
+      "id": "claim_source_and_modifier_preserved",
+      "passed": true,
+      "reason": "保留提问先入前提、回答承接、局部观察及限定，未放弃E01原判据。"
+    },
+    {
+      "id": "no_context_fabrication",
+      "passed": true,
+      "reason": "不强迫缺少原问答时填首次话语/说话者/引文。"
+    },
+    {
+      "id": "specific_reference_rule_retained",
+      "passed": true,
+      "reason": "TRACE误将A2细节挂A1有既有逐断言来源约束；结构更简洁只是可检验改进，不能保证正确。"
+    },
+    {
+      "id": "no_case_ids_or_business_answers",
+      "passed": true,
+      "reason": "新分支只有一般记录结构与认识边界，未编码本组ID、原文答案或数值。"
+    },
+    {
+      "id": "no_parser_change",
+      "passed": true,
+      "reason": "本次仅审核提示机制；外层课程解析器及框架不属于此次改动。最终输入门禁另核。"
+    },
+    {
+      "id": "mechanism_not_causal_or_success_claim",
+      "passed": true,
+      "reason": "原答重复后错误只是观察，不证明长度或重复造成错误，仍需实际同题回归。"
+    }
+  ],
+  "candidate_prompt_sha256": "703da892e1c284843f499b60efad2e95d60849bd5d22595f71270382df607bfe",
+  "previous_prompt_sha256": "f30959d4c19c0324f76ad11d642e0842d3d7e6c5e7694a4505c7585caf531065",
+  "repair_basis_sha256": "b982574d84974e3a03dea9d57e67ec93e8c803ed52f6f8b8e1641e869ae9001e",
+  "scope": "独立数学/日期/格式评审对来源输出机制影响的审核；不替代来源分审及执行前门禁。",
+  "observed_failures": [
+    "U05把可比性待核写成口径已不一致",
+    "TRACECTRL01在第二次叙述把A2细节具体归到A1"
+  ],
+  "limits": [
+    "只批准机制进入冻结输入核查，不批准调用。",
+    "必须按本版本22份新原答审；旧通过和旧失败均不回写。",
+    "新分支不含答案，但仍可能错误归属或过度保守；实际运行前不能断言修复成功。"
+  ],
+  "reviewer_api_calls": 0,
+  "human_decisions": []
+}

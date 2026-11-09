@@ -1,0 +1,90 @@
+[
+  {
+    "id": "B5-H02-F",
+    "question": "2026年6月18日当天，青禾优选的观测期首购会员数、观测期首单净销售额（单位分）、观测期首单数、观测期后续购买订单数和有效订单数分别是多少？",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count",
+          "valid_order_count"
+        ],
+        "start": "2026-06-18",
+        "end": "2026-06-19",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count",
+        "valid_order_count"
+      ],
+      "rows": [
+        [
+          1,
+          137,
+          1,
+          1,
+          2
+        ]
+      ],
+      "units": {
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count",
+        "valid_order_count": "count"
+      }
+    },
+    "expected_source": "独立CSV核算；规则：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单、05_数据字典.md字段关系；数据qinghe-w03-b5-independent-artificial-20261108-v1；Asia/Shanghai [2026-06-18,2026-06-19)。注册按registered_at；有效为paid且paid_cents-refund_cents>0；先全覆盖按账户/ordered_at/order_id排序，后筛窗口。窗口注册账户0个；首单明细B5F-O003=137分；后续有效单1笔。完整账户/订单/注册与过滤明细见本目录ledger-fixture-cases.json#B5-H02-F，源文件hash见expected-freeze.json。卡不参与计数；金额整数分，不推终身首购。"
+  },
+  {
+    "id": "B5-Z01-F",
+    "question": "2026年6月1日至15日（包含1日和15日），青禾优选的注册会员数、观测期首购会员数、观测期首单净销售额（单位分）、观测期首单数和观测期后续购买订单数分别是多少？",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "new_member_count",
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count"
+        ],
+        "start": "2026-06-01",
+        "end": "2026-06-16",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "new_member_count",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "rows": [
+        [
+          2,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "units": {
+        "new_member_count": "count",
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count"
+      }
+    },
+    "expected_source": "独立CSV核算；规则：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单、05_数据字典.md字段关系；数据qinghe-w03-b5-independent-artificial-20261108-v1；Asia/Shanghai [2026-06-01,2026-06-16)。注册按registered_at；有效为paid且paid_cents-refund_cents>0；先全覆盖按账户/ordered_at/order_id排序，后筛窗口。窗口注册账户2个；首单明细无；后续有效单0笔。完整账户/订单/注册与过滤明细见本目录ledger-fixture-cases.json#B5-Z01-F，源文件hash见expected-freeze.json。卡不参与计数；金额整数分，不推终身首购。"
+  }
+]

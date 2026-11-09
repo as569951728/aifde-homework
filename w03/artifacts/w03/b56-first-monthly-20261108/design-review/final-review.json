@@ -1,0 +1,257 @@
+{
+  "stage": "design_only_independent_review",
+  "reviewer": "independent reviewer distinct from B5 and B6 authors",
+  "reviewed_at": "2026-11-08T10:48:25.390849+00:00",
+  "status": "changes_requested",
+  "approved_for_build_preparation": false,
+  "failed_checks": [
+    {
+      "id": "B6-GTE2-DISCRIMINATION",
+      "severity": "required_design_fix",
+      "detail": "原small和R01账户月最多2有效单，>=2与错误==2均通过；在R01已有2单账户加第3笔有效单，保留3买家/1复购/1÷3，同时错误==2应变0。保留v1并另存v2，不增加问数候选。"
+    }
+  ],
+  "independence": {
+    "review_contract_frozen_before_author_read": true,
+    "review_contract_sha256": "c6acefffe7e0bb57d548bac2ec8d40b69dac6fa18ab951809b1e36881803baf1",
+    "author_notification_order": "B5 freeze notice then read B5; B6 freeze notice then read B6",
+    "no_author_calculator_executed": true,
+    "raw_csv_recomputed_by_reviewer": true,
+    "generated_SQL_or_actual_as_expected": false,
+    "interface_only_check": "MetricFlowDataTable date/datetime pure conversion; no native metric query"
+  },
+  "reviewed_case_ids": [
+    "B5-N01",
+    "B5-D01",
+    "B5-Z01",
+    "B5-H03",
+    "B5-H02-F",
+    "B5-Z01-F",
+    "B6-N01",
+    "B6-M01",
+    "B6-Z01",
+    "B6-X01",
+    "B6-X02",
+    "B6-X03",
+    "B6-R01"
+  ],
+  "reviewed_design_ids": [
+    "B5-N01",
+    "B5-D01",
+    "B5-H01",
+    "B5-H02",
+    "B5-H03",
+    "B5-Z01",
+    "B5-A01",
+    "B6-N01",
+    "B6-M01",
+    "B6-R01",
+    "B6-Z01",
+    "B6-X01",
+    "B6-X02",
+    "B6-X03"
+  ],
+  "coverage": {
+    "new_metrics": [
+      "new_member_count",
+      "first_buyer_count",
+      "first_order_sales_cents",
+      "first_order_count",
+      "repeat_order_count",
+      "monthly_buyer_count",
+      "monthly_repeat_buyer_count",
+      "monthly_repeat_rate"
+    ],
+    "new_metric_count": 8,
+    "design_ids": 14,
+    "unique_query_candidates": 13,
+    "new_small_candidates": 10,
+    "new_fixture_candidates": 3,
+    "new_ok_candidates": 10,
+    "new_unsupported_candidates": 3,
+    "existing_metric_count_numerically_validated": 24,
+    "planned_future_cumulative_metric_count": 32
+  },
+  "verification": {
+    "static_raw_csv_and_hash_check_count": 177,
+    "static_failed": 0,
+    "composition_checks": {
+      "formal_33_unchanged_objects": true,
+      "formal_33_bytes_unchanged": true,
+      "new_small_is_exact_frozen_10": true,
+      "counts": true,
+      "unique_ids": true,
+      "old_failures_retained": true,
+      "combined43_exact_objects_by_id": true
+    },
+    "original_33_not_semantically_reaudited": true,
+    "B5_original_plan_matches_before_snapshot": true,
+    "business_expected_counts_are_not_native_pass_counts": true
+  },
+  "decisions": [
+    {
+      "id": "B5-values",
+      "conclusion": "All six expected case outputs independently match raw CSV, including August [0,5,12800,5,22,27], exact first order IDs, four July registration groups, two explicit account rows, synthetic tie [1,137,1,1,2] and registration-only [2,0,0,0,0]."
+    },
+    {
+      "id": "B5-A01",
+      "conclusion": "No A01 standalone query. Identity assertions consume N01/H03/H02-F with valid_order_count explicitly asked; identities supplement independently checked first identities and net cents."
+    },
+    {
+      "id": "B5-grouped-zero",
+      "conclusion": "M00005 and M00007 each has a valid August order, so both returned groups exist. M00005 first metrics zero and M00007 repeat zero are known business counts/sums. These expectations do not assume blanket grouped null-to-zero normalization; a future generated model must represent empty selected subsets correctly. Judge must not rewrite actual null to zero."
+    },
+    {
+      "id": "B6-values",
+      "conclusion": "All 24 monthly summary entries and both 480-row account/month ledgers independently match original or isolated CSV; July 11/1/1÷11, August 15/12/0.8, covered May 0/0/null, synthetic R01 3/1/1÷3."
+    },
+    {
+      "id": "B6-unsupported-attribution",
+      "conclusion": "X01 partial month and X02 full-store restriction are business-source supported. X03 channel restriction is current full_month_only contract/engine boundary, not attributed to a customer prohibition."
+    },
+    {
+      "id": "B6-month-key",
+      "conclusion": "YYYY-MM-DD 00:00:00 keys supported by installed MetricFlowDataTable date normalization and engine str; verified using pure type conversion independent of business results."
+    },
+    {
+      "id": "discrimination",
+      "conclusion": "Window reranking, invalid first rows, same-day physical ordering, first net vs paid, registration without orders, month boundaries, all-registered denominator, one-valid-plus-full-refund/cancel and card join inflation yield distinct outcomes in selected cases. Uncovered combinations remain limitations, not claimed pass."
+    },
+    {
+      "id": "fixture-integrity",
+      "conclusion": "B5 keeps all original rows and adds 3 members/5 orders; B6 has separate 7 artificial orders and byte-identical other three tables. Both manifest hashes, PK/FK and source identity verified. Original course small unchanged."
+    }
+  ],
+  "limitations": [
+    {
+      "id": "L01",
+      "topic": "B5筛选先后",
+      "detail": "业务已固定全覆盖首次后筛窗口。13题仅账户in筛选；未实测跨渠道/成交店筛选前后重新排名。先全覆盖身份后筛渠道/门店为定义推导，不冒充新增客户原话，后续相关维度范围需专例。",
+      "severity": "bounded_scope_not_blocking_build_preparation"
+    },
+    {
+      "id": "L02",
+      "topic": "B6大于2单门槛",
+      "detail": "当前B6原small和R01只出现1/2有效单；尚不能区分>=2与错误==2。独立判据保留3+仍计一复购账户控制，留后续补测；不能用24月台账或13题设计称所有门槛组合已验证。",
+      "severity": "bounded_scope_not_blocking_build_preparation"
+    },
+    {
+      "id": "L03",
+      "topic": "B6零率与跨月拒绝",
+      "detail": "已有零分母0/0=null候选；有购买但零复购的0比率在原small 6月台账可复算，未单列运行候选。未单列用户主动索取跨月合计拒绝、未测按月零业务补行、未新增覆盖外/缺时间题。",
+      "severity": "bounded_scope_not_blocking_build_preparation"
+    },
+    {
+      "id": "L04",
+      "topic": "B6 paid零实付",
+      "detail": "R01无paid实付0；原B2人工边界保留作通用有效订单回归，不冒称B6新题已覆盖这项。",
+      "severity": "bounded_scope_not_blocking_build_preparation"
+    },
+    {
+      "id": "L05",
+      "topic": "候选与运行关系",
+      "detail": "home_store/member__tier/member及metric_time__month均需未来累计库实际可达；catalog/data运行hash待真实构建加载后另存绑定副本。当前manifest/CSV哈希完整冻结。",
+      "severity": "future_execution_gate"
+    },
+    {
+      "id": "L06",
+      "topic": "来源说明精度",
+      "detail": "B5-D01 expected_source附了同窗首单过程明细，但该题只问注册数；额外信息不改变预期，注册四组和12账户能从members及注册台账清楚复算。可在后续人读摘要精简，当前无须改动冻结期望。",
+      "severity": "nonblocking_editorial"
+    }
+  ],
+  "regression_obligations": {
+    "original_small_case_count": 33,
+    "original_B2_fixture_case_count": 1,
+    "future_total_if_all_planned_executed": 47,
+    "original_explanation_failures": [
+      "B3-U01",
+      "B1-Z01"
+    ],
+    "required": "Preserve original failed answers and original verdicts; future native regression includes both. Teacher-reviewed copies do not mark original native explanation fixed. Do not repeat review of historical34 in this design phase."
+  },
+  "execution_boundary": {
+    "native_build_calls": 0,
+    "native_query_calls": 0,
+    "native_test_runs": 0,
+    "current_metrics_numerically_validated": 24,
+    "scale_metrics_validated": 0,
+    "formal_tests_json_unchanged": true,
+    "not_claimed": [
+      "32 metrics numerically validated",
+      "13 candidate tests passed",
+      "native explanation fixed",
+      "acceptance",
+      "learner independent mastery",
+      "formal submission"
+    ],
+    "approval_meaning": "Design frozen and reviewable for later build preparation only. Current user scope remains design; do not build/query in this turn."
+  },
+  "input_snapshot_mapping": {
+    "mutable_register_original": "before/customer/w03/metric_register.json",
+    "mutable_plan_original": "before/customer/w03/test-plans/metric_cases.json",
+    "use": "Later status bookkeeping is not a rule/expected change; original candidate B5 entries verified against immutable before snapshot."
+  },
+  "evidence_sha256": {
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/expected-freeze.json": "dbd709b0a2338e00628239ecbc43ea1b956701e0650b303382950e2c2fcd7c0b",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/calculate_expected.py": "c027b2c90e4b72e6fd130454f5e8af94168f8baba112610781facf28a3d9ba13",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/design.json": "43bb302c392a14d43b5ba76149248a0c8999decd3499a3099585fb3906c90316",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/discrimination-checks.json": "7a4e71448e4452fb03b4642a9b4f9eee9467ebc7d944ba338bc6fd1900f6683e",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/fixture-data/README.md": "d54841035b2549ff78e0e8164172658f429eaacf852eecde8edba7efbf05f2ab",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/fixture-data/cards.csv": "d27bdabd508d7881a1bea84cb79400c2a770fc1ad42fdb81877163cc018bb8d5",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/fixture-data/manifest.json": "3772c8037c3d672c154a01aba60d826e72197800758025de675b45298b4b6ae7",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/fixture-data/members.csv": "33564649e2faa821dcf4fa0db1af6d8eeff212d8cb579fd7286635d66b21bc86",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/fixture-data/orders.csv": "07a186647fff9d3afdf2edc42b40e51522dd4a09af1606841712d4aa0e31d589",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/fixture-data/stores.csv": "e8160804fd485853f6c75d9a095b1ee6f05bbbd40ba851cac84def35488aa41d",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/ledger-fixture-accounts.csv": "4b69136a79bc25fb4a5f99f787b79bca4acff9c94a760a621a8e89163fb1230d",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/ledger-fixture-cases.json": "3a35562d3fea9289e202ad180a4501335a2c543e2b297cdc820d18fbd46112f9",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/ledger-fixture-orders.csv": "cbbb7726b5fb3709fe3b314aa23040bfeed3dad7c4be558d332d1f651bdeb2e4",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/ledger-fixture-registrations.csv": "c2fd6c2241a57c4b2a24e67ef602a54f2da52ef2bbeb33717e6e1bd75b02ec92",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/ledger-small-accounts.csv": "8328da783500f63badca336f20d918ee786532f8cdc723c0840be563359628ad",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/ledger-small-cases.json": "1aa5b70e8c125797e94fd2b29838c34c462e98e8edf07bc3a2d9cb30695087be",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/ledger-small-orders.csv": "9eb49f9dde3ad20394dda82e85d0308de6918f487e12875605f843849b8b55d8",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/ledger-small-registrations.csv": "a1cce8b089cbcdf45db79d3190fb24349ba0ccfb2105382ad17946c0f71f71c2",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/manual-controls.json": "2d06a096cbe4254b15a4a054edc82886415e4e7b9740b3ad7f51708e51fafd55",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/original-designs.json": "ac952c5a3b59cfdbf36c0c87b4de3cde4369a5ca284545d8b40396402ed56a84",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/preflight-review.json": "16c9a8ea955264bc48e72b3ca6853cd1e727194aee5b33799e05156da28f9d26",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/preflight-review.md": "e1561a0dbf8ccc852d56d66f3b7e2e7cdc805742c20881a189211b4026b4ecf9",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/summary.md": "56bd4ab4598b976343d4ba37fb8c5ef98fb562886b5d8ce8f7ff455656430712",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/tests-fixture.json": "c3cd3367a275152fbd662ebbe21873f9aab648856ef1e8a5200b85c3d54b5ad8",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/tests-small.json": "5106bd343b90476341348b3cbefad65bcf04b24c62ac7bbd1811f07f6d3b05dc",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/expected-freeze.json": "0ee49a8c1afb18abb2c3e47e27eac3343af71345e59b896b8b4642d0d7f9fa9d",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/summary.md": "64cf32330f8dee9655b0085a80e8d4f83aedfeccb75b1ffeaf61d2db86508b06",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/account-ledger-notes.md": "d74722bd7b0cd164b70d7d24258f379a3bd79ee5b7d9c72bfa82c75c1e3787ce",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/calculation-summary.json": "032e063a433b326505ad5727e81183cba295a9cd7979ff66c919ca725c10f662",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/judge-selfcheck.json": "71252d46710d370af9ad6ce3d94daaf4683425d3d1ac35a3af941ff78bd8561e",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/monthly-summary-small.json": "fbe156362046a414a2738d3556bcc4926fb35f67cb2d52e78adb530e6b7d9438",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/monthly-summary-fixture.json": "c816f238b17d782612bef3bd9de485736c42245ce2a704228975d1752d1e65e9",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/calculate_expected.py": "ec0fbc0bd005f4b4e95753540c907874df527f0638e9d8916061e1895b2f045d",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/finalize_design.py": "aa53f473d8355f5219785d1a18328f05de4fb75d4c1e605a2405d7b328c82622",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/tests-small.json": "9f3407294d6345ffafef81f3cd2a675beca17c00576737690b93f8de33158c8c",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/preflight-review.md": "2da7deed80542da04c0576ad1d448a72f3e5fdfe4d1f845d31736df1fa90b962",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/ledger-small.csv": "e715a2dfcc96f303301d91f6ae0449e2a1125500dae1fee32e8d52268e3ecb59",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/interface-evidence.json": "21849b3ce7620a300a92b8de718c55de35b7437fea64a4bba52ea6ab79bf1158",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/tests-fixture.json": "4dee3c27e4688ff0576f8f7ec4f56ba1f3589adaa1d5055d36307ab9126d6123",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/preflight-review.json": "8f1f8d73a63128917577ef4eec9ec6b7b3863356eb14b4c6357834ffdd1c437f",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/ledger-fixture.csv": "4368f99edcbe27e1dece998b95952e892ab971b88f92d4c470a0325e7a19fc98",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/design.json": "94762e51b3c9147f6502801c7c050257c8120febd7e80f691a0610b2891fa917",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/fixture-data/orders.csv": "511e6ab7996d05e163dce05ad14525bc95e6342c57379fbdd0e4b4e8eba69c05",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/fixture-data/cards.csv": "d27bdabd508d7881a1bea84cb79400c2a770fc1ad42fdb81877163cc018bb8d5",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/fixture-data/members.csv": "e99b7e82389722b1ae2e4fd267c74dd84bd61dfeabaa161221d7ae44ae955b2f",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/fixture-data/manifest.json": "a8f4351b64efbd1590f08bcc205ef034417f4d5fbb754b927386fc887804b54c",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6/fixture-data/stores.csv": "e8160804fd485853f6c75d9a095b1ee6f05bbbd40ba851cac84def35488aa41d",
+    "customer/w03/tests.json": "2a37f79dc67627dd6a25a5872aca3c3f996eae4bec11dd404abfa5cee3a5119a",
+    "artifacts/w03/b56-first-monthly-20261108/before/customer/w03/tests.json": "2a37f79dc67627dd6a25a5872aca3c3f996eae4bec11dd404abfa5cee3a5119a",
+    "artifacts/w03/b56-first-monthly-20261108/tests-new-small.json": "744dbad170cce146caf9d3abb2ef8c2ffb011dc8969faad62d266eca8c4a4f5e",
+    "artifacts/w03/b56-first-monthly-20261108/tests-small-all-planned.json": "76dac6e1cd91468c7547bbe4d7b9059ee7e69735134039fcda080800e30b66e2",
+    "artifacts/w03/b56-first-monthly-20261108/design-review/review-contract.json": "c6acefffe7e0bb57d548bac2ec8d40b69dac6fa18ab951809b1e36881803baf1",
+    "artifacts/w03/b56-first-monthly-20261108/design-review/month-key-interface-check.json": "bda34e2586083de2afe074944552fc7b9cbe7c4fb27b4b234d2a81d5553f4186",
+    "artifacts/w03/b56-first-monthly-20261108/design-review/verification-results.json": "b973259959dd325d579ed2491837b11e797dd625107cead983615be27a436b76",
+    "artifacts/w03/b56-first-monthly-20261108/design-review/composition-check.json": "602a2e3326a1f9f0908ce691f6578dbc77e1ef731c872b199934f917136a4803",
+    "artifacts/w03/b56-first-monthly-20261108/design-review/verify_frozen_designs.py": "b5b832dcea9db3f5adce5242627a6526ec8bc6afa6c0c44c3841a9aff2d8417a",
+    "artifacts/w03/b56-first-monthly-20261108/before/customer/w03/test-plans/metric_cases.json": "a85d659e5a984080f0b68265e3029c5aebeb8bbfa2108e200834550a813dbd15",
+    "artifacts/w03/b56-first-monthly-20261108/before/customer/w03/metric_register.json": "b2c63897b93157ca6130bedbec7c36c7401c12f7454efc1e3abc32e8ff0f2606"
+  },
+  "next": "Wait for B6 version2 freeze, verify newly discriminating third valid order and unchanged expected 3/1/1÷3, recheck all frozen artifacts then issue current final review.",
+  "prior_review_status": "review-v1-initial initially treated missing >=3 boundary as nonblocking; superseded before any execution after review discussion, original review and 177 checks retained."
+}

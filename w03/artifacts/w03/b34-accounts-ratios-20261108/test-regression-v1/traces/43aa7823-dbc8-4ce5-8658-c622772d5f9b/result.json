@@ -1,0 +1,38 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "net_sales_cents"
+    ],
+    "start": "2026-06-01",
+    "end": "2026-06-30",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS net_sales_cents\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-06-01' AND '2026-06-29'",
+  "columns": [
+    "net_sales_cents"
+  ],
+  "rows": [
+    [
+      0
+    ]
+  ],
+  "seconds": 0.015,
+  "units": {
+    "net_sales_cents": "cents"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+  "answer": "在已加载的青禾客户数据范围内，按2026年6月1日至6月29日（含首尾）统计，净销售额合计为0.00元（0分）。口径为按原订单下单日期归属，纳入已支付订单，以实付金额减退款金额合计，取消单不计。该结果为查询覆盖范围内的零值合计，不是未定义；本次未按门店分组，因此不能据此推断各门店分别情况。",
+  "question": "2026年6月1日至6月29日（含首尾两天）青禾优选净销售额是多少？",
+  "trace_id": "43aa7823-dbc8-4ce5-8658-c622772d5f9b",
+  "elapsed_seconds": 8.114,
+  "model_usage": {
+    "prompt_tokens": 9267,
+    "completion_tokens": 768,
+    "total_tokens": 10035
+  },
+  "model_calls_with_usage": 2
+}

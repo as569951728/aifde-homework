@@ -1,0 +1,33 @@
+[
+  {
+    "id": "NS01-aug-total",
+    "question": "2026年8月青禾优选净销售额是多少？",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "net_sales_cents"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "net_sales_cents"
+      ],
+      "rows": [
+        [
+          100300
+        ]
+      ],
+      "units": {
+        "net_sales_cents": "cents"
+      },
+      "data_version": "qinghe-w03-20260923-small",
+      "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立 CSV 核算；materials/w03/01_订单日报说明.md 净销售额及 02_财务邮件.md，05_数据字典.md 的成交门店/日期/金额字段；数据 qinghe-w03-20260923-small，orders.csv SHA256=c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1；Asia/Shanghai [2026-08-01,2026-09-01)，paid 实付 119050 分减累计退款 18750 分=100300 分；分组/筛选以 intent 为准。逐单纳入/排除原因见 artifacts/w03/net-sales-first-20261108/independent/order-ledger.csv 的 NS01-aug-total，复算脚本同目录 calculate_expected.py。"
+  }
+]

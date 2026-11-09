@@ -1,0 +1,182 @@
+{
+  "cases": [
+    {
+      "id": "U01",
+      "dimension": "模型用途与业务目标",
+      "question": "请用业务语言说明青禾的经营目标、会员运营工作和当前关键未知。理解复购变化与减少重复整理核对是什么关系？哪些观察能支持业务判断，哪些还不能说明原因或效果已经得到验证？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "U05",
+      "dimension": "证据性质、来源和纠错",
+      "question": "请审查以下说法，逐条说明可采用、需要修正或尚不能判断，并给依据：A.陈姐已给本期卡日期规则，但具体文件与历史凭据未取得；B.小林独立证实之前项目全面无人使用；C.模型尚未核实反馈怎样返回门店，所以青禾没有这一环节；D.80万活跃与120万全量可直接算出活跃率；E.王经理认可分期思路，所以最终验收已获批准。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+      ],
+      "evaluation_domain": "原文证据/主体/权限审查，不评价正文是否含项目验收"
+    },
+    {
+      "id": "P09",
+      "dimension": "系统类别与本期资格",
+      "question": "人工情境：账户A只有有效异业联名卡，因此不在本期总部月报的付费资格范围。能否据此确定A在全系统属于免费注册类别？现有“付费会员卡、免费注册会员两类”的说法能否证明两类在系统绝对互斥？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ10",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-25",
+        "decision_date": "2026-08-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "B05",
+      "dimension": "零、未定义和越界",
+      "question": "请分别解释：覆盖内筛选无匹配订单的净额、覆盖内无购买账户月份的复购率、覆盖外月份的净额。金额13000分是否等于13000元？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/02_财务邮件.md",
+        "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "F06",
+      "dimension": "成效与活动多样性",
+      "question": "小林觉得整理名单费力，是否已测得工时并证明这是复购下降原因？除优惠券活动，是否还有其他工作？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "A03",
+      "dimension": "费用与结算",
+      "question": "本期费用与结算条款现在可写哪些内容，哪些还不能写成约定？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "E01",
+      "dimension": "提问前提",
+      "question": "阅读给定W02小林二访MSG-01918/01919及01921。“之前项目没人用”“多了三步”分别应如何记录与使用？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "E03",
+      "dimension": "不同统计总体",
+      "question": "沈总说80万活跃，老周说120万系统全量，可否直接算活跃率、相减作沉睡人数或认定同口径矛盾？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "E05",
+      "dimension": "失效来源拒绝",
+      "question": "某备忘声称每周一从CRM拉60天未购、排除员工并核勿扰名单。经来源核验，该说法只来自已作废W04会议5e112925-9605-5362-b908-1ef8849d9c5f，未获有效W03来源支持。应否加入当前模型？应保留什么状态？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "REG01",
+      "dimension": "W02原题回归",
+      "question": "青禾准备先给小林和陈姐提供会员运营支持，你会建议第一版交付什么、怎样接到实际工作，以及怎样判断有没有帮助？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "U04",
+      "dimension": "工作流程、角色和未知交接",
+      "question": "小林准备一次会员优惠券活动，如果需要门店配合，模型目前能确认哪些工作步骤和交接？哪些仍是我方设计或待核？请选一个缺口，说清需要什么记录、向哪类经手人核对以及它影响什么判断。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "F05",
+      "dimension": "局部链与完整闭环",
+      "question": "模型确认小林协调、陈姐落实部分门店安排，是否证明策划—执行—分析—反馈—下一轮决策全链已打通？请给一个可核查的后续动作。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "P01",
+      "dimension": "产品与等级",
+      "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "account": "A",
+        "tier": "普通",
+        "cards_complete": true,
+        "cards": [
+          {
+            "card_type": "悦享年卡",
+            "state_on_decision_day": "有效",
+            "card_paid_cents": 10000
+          }
+        ]
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ09",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-16"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "E02",
+      "dimension": "经营假设",
+      "question": "复购连续四季下滑、会员老化、三个月希望看到改善，应分别作为哪类信息？本期月报测试能证明什么？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "FMTCTRL01",
+      "dimension": "独立对照：JSON字符串引号、反斜线和换行",
+      "question": "请把下面三行人工文本逐字作为回答内容，不加解释；它们只是格式测试文本，不是青禾事实：\n字段 \"answer\" 的值为 \"待核\"。\n人工路径：C:\\QH\\draft\n状态：未执行。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "输出格式与文本保真控制，不计业务能力覆盖"
+    }
+  ]
+}

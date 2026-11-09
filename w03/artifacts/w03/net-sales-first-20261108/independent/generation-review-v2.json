@@ -1,0 +1,30 @@
+{
+  "status": "approved",
+  "approved": true,
+  "failed_checks": [],
+  "approved_to_load_and_query": true,
+  "reviewed_generation": "build-v2",
+  "findings": [],
+  "checks": {
+    "unit": "cents matches contract and frozen expected",
+    "formula": "sum CASE status paid THEN paid_cents-refund_cents ELSE 0 END; no positive-only eligibility filter",
+    "grain": "order_id is unique primary; no cards or one-to-many join",
+    "time": "ordered_at/day, unrestricted partial window, correct material attribution",
+    "roles": "store orders.store_id; home_store members.home_store_id; distinct semantic roles",
+    "business_model_usage": "all four quotes are continuous substrings of current v0.5 and support the declared order/account grains and distinct store roles; metric formula is sourced separately from order report",
+    "source_and_structural_checks": "all four checks passed; 12 targets structurally reachable",
+    "scope": "only net_sales_cents; no other metrics or qualification logic generated"
+  },
+  "reviewed_sha256": {
+    "build-v2/response.json": "d5cf5b85e05ea7a1aa6b4dafd8d931403e840fc3fd62280f8f7441b5f2b32b5a",
+    "build-v2/metrics.yml": "da91e7ab91d35643d3b236cb7138de959c545afa108a3436515877c0556e1d6c",
+    "build-v2/catalog.json": "ff6fc9f6c7f8d9df4b6612c6279217beb2b9a266dfb42c2d9172358aed3621b7",
+    "build-v2/skill_used.md": "0323ec4217f06f9aba9faaf69091073371d34724ed3c4608fef893d49d13c1a4",
+    "build-v2/source_check.json": "76aa3b58148d89cc797ae408eba304f008308b708476e2db124fcf4e5d1c7a2e",
+    "build-v2/grain_check.json": "750da69221730c9b504cfd6724176a9d1e2fb77bf516f60e26d6cf784233c16c",
+    "build-v2/dimension_check.json": "8984a710e45579cf8cf4b283124e7fddcedc25a3ad45b680d80ccb20bf4add33",
+    "build-v2/metricflow_check.json": "c7f18b19e26208893c91d1b5f4bded60fa2b5d563bf0c79f65a489cfb48a36bc"
+  },
+  "expected_unchanged_sha256": "85cd3a21466edc7d48f56941ff50cfc20d3a4d4cdea8e327be59966226431dcc",
+  "limitations": "Approval covers generated definitions and readiness for loading/querying, not completed Agent validation or 12-dimension business tests."
+}

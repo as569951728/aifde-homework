@@ -1,0 +1,304 @@
+{
+  "semantic_models": [
+    {
+      "name": "orders",
+      "model": "ref('orders')",
+      "defaults": {
+        "agg_time_dimension": "ordered_at"
+      },
+      "entities": [
+        {
+          "name": "order",
+          "type": "primary",
+          "expr": "order_id"
+        },
+        {
+          "name": "member",
+          "type": "foreign",
+          "expr": "member_id"
+        },
+        {
+          "name": "store",
+          "type": "foreign",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "ordered_at",
+          "type": "time",
+          "type_params": {
+            "time_granularity": "day"
+          }
+        },
+        {
+          "name": "channel",
+          "type": "categorical"
+        },
+        {
+          "name": "status",
+          "type": "categorical"
+        }
+      ],
+      "measures": [
+        {
+          "name": "order_paid_cents",
+          "expr": "CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END",
+          "agg": "sum"
+        },
+        {
+          "name": "order_refund_cents",
+          "expr": "CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END",
+          "agg": "sum"
+        },
+        {
+          "name": "order_net_sales_cents",
+          "expr": "CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END",
+          "agg": "sum"
+        },
+        {
+          "name": "order_gross_cents",
+          "expr": "CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END",
+          "agg": "sum"
+        },
+        {
+          "name": "order_discount_cents",
+          "expr": "CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END",
+          "agg": "sum"
+        }
+      ]
+    },
+    {
+      "name": "members",
+      "model": "ref('members')",
+      "entities": [
+        {
+          "name": "member",
+          "type": "primary",
+          "expr": "member_id"
+        },
+        {
+          "name": "home_store",
+          "type": "foreign",
+          "expr": "home_store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "tier",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "name": "stores",
+      "model": "ref('stores')",
+      "entities": [
+        {
+          "name": "store",
+          "type": "primary",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "region",
+          "type": "categorical"
+        },
+        {
+          "name": "store_name",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "name": "home_stores",
+      "model": "ref('stores')",
+      "entities": [
+        {
+          "name": "home_store",
+          "type": "primary",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "region",
+          "type": "categorical"
+        },
+        {
+          "name": "store_name",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    }
+  ],
+  "metrics": [
+    {
+      "name": "payment_cents",
+      "label": "实付金额",
+      "description": "统计 paid 订单的实付金额合计（尚未扣退款），按原订单下单日期归属，单位整数分。",
+      "type": "simple",
+      "type_params": {
+        "measure": "order_paid_cents"
+      }
+    },
+    {
+      "name": "refund_cents",
+      "label": "退款金额",
+      "description": "统计 paid 订单的累计退款金额合计，按原订单下单日期归属，单位整数分。",
+      "type": "simple",
+      "type_params": {
+        "measure": "order_refund_cents"
+      }
+    },
+    {
+      "name": "net_sales_cents",
+      "label": "净销售额",
+      "description": "统计 paid 订单实付减累计退款后的净额合计，取消单不计，按原订单下单日期归属，单位整数分。",
+      "type": "simple",
+      "type_params": {
+        "measure": "order_net_sales_cents"
+      }
+    },
+    {
+      "name": "gross_cents",
+      "label": "支付订单原价金额",
+      "description": "统计 paid 订单折扣前原价金额合计，单位整数分。",
+      "type": "simple",
+      "type_params": {
+        "measure": "order_gross_cents"
+      }
+    },
+    {
+      "name": "discount_cents",
+      "label": "优惠金额",
+      "description": "统计 paid 订单原价减实付的优惠金额合计，退款不冲减原优惠金额，单位整数分。",
+      "type": "simple",
+      "type_params": {
+        "measure": "order_discount_cents"
+      }
+    }
+  ],
+  "catalog": [
+    {
+      "id": "payment_cents",
+      "name": "实付金额",
+      "aliases": [],
+      "unit": "cents",
+      "sources": [
+        {
+          "file": "01_订单日报说明.md",
+          "quote": "paid 订单实付金额合计，尚未扣退款；单位分。"
+        }
+      ],
+      "constraints": [
+        "事实粒度为 orders 一行一笔订单；纳入 status = 'paid' 的订单，取消单不计。",
+        "金额为 paid_cents 的整数分合计，不扣退款；不按会员或卡去重。",
+        "未加卡产品资格或整月限制；渠道、门店等由查询维度筛选，不改变事实行纳入口径。"
+      ],
+      "query_policy": {
+        "full_month_only": false
+      }
+    },
+    {
+      "id": "refund_cents",
+      "name": "退款金额",
+      "aliases": [],
+      "unit": "cents",
+      "sources": [
+        {
+          "file": "01_订单日报说明.md",
+          "quote": "paid 订单退款金额合计，按原订单下单日期归属，不是现金退款发生日；单位分。"
+        }
+      ],
+      "constraints": [
+        "事实粒度为 orders 一行一笔订单；纳入 status = 'paid' 的订单。",
+        "金额为 refund_cents 的整数分合计；按原订单 ordered_at 归属，不使用现金退款发生日。",
+        "未加卡产品资格或整月限制；渠道、门店等由查询维度筛选，不改变事实行纳入口径。"
+      ],
+      "query_policy": {
+        "full_month_only": false
+      }
+    },
+    {
+      "id": "net_sales_cents",
+      "name": "净销售额",
+      "aliases": [],
+      "unit": "cents",
+      "sources": [
+        {
+          "file": "01_订单日报说明.md",
+          "quote": "paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。"
+        }
+      ],
+      "constraints": [
+        "事实粒度为 orders 一行一笔订单；纳入 status = 'paid' 的订单，取消单不计。",
+        "净额为 paid_cents - refund_cents 后合计；全额退款订单可贡献零，但仍属于纳入的 paid 订单行集合。",
+        "按原订单 ordered_at 归属；未加卡产品资格或整月限制；渠道、门店等由查询维度筛选，不改变事实行纳入口径。"
+      ],
+      "query_policy": {
+        "full_month_only": false
+      }
+    },
+    {
+      "id": "gross_cents",
+      "name": "支付订单原价金额",
+      "aliases": [],
+      "unit": "cents",
+      "sources": [
+        {
+          "file": "01_订单日报说明.md",
+          "quote": "paid 订单折扣前原价金额合计；单位分。"
+        }
+      ],
+      "constraints": [
+        "事实粒度为 orders 一行一笔订单；纳入 status = 'paid' 的订单。",
+        "金额为 gross_cents 的整数分合计；退款不冲减原价金额。",
+        "未加卡产品资格或整月限制；渠道、门店等由查询维度筛选，不改变事实行纳入口径。"
+      ],
+      "query_policy": {
+        "full_month_only": false
+      }
+    },
+    {
+      "id": "discount_cents",
+      "name": "优惠金额",
+      "aliases": [],
+      "unit": "cents",
+      "sources": [
+        {
+          "file": "01_订单日报说明.md",
+          "quote": "paid 订单原价减实付的金额合计；退款不冲减原优惠金额；单位分。"
+        }
+      ],
+      "constraints": [
+        "事实粒度为 orders 一行一笔订单；纳入 status = 'paid' 的订单。",
+        "优惠金额为 gross_cents - paid_cents 后合计；退款不冲减原优惠金额。",
+        "未加卡产品资格或整月限制；渠道、门店等由查询维度筛选，不改变事实行纳入口径。"
+      ],
+      "query_policy": {
+        "full_month_only": false
+      }
+    }
+  ],
+  "model_sql": {},
+  "grain_keys": {
+    "orders": [
+      "order_id"
+    ],
+    "members": [
+      "member_id"
+    ],
+    "stores": [
+      "store_id"
+    ],
+    "home_stores": [
+      "store_id"
+    ]
+  },
+  "unresolved": []
+}

@@ -1,0 +1,27 @@
+{
+  "case_id": "DY02",
+  "started_at": "2026-11-06T15:35:00.755386+00:00",
+  "completed_at": "2026-11-06T15:35:06.855264+00:00",
+  "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "card_type": "悦享年卡",
+    "valid_from": "2025-08-20",
+    "valid_until": "2026-08-20",
+    "ended_at": null,
+    "decision_date": "2025-08-20"
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-32989de44dc344b7bfed02dec0db0c56/run.json",
+    "run_id": "RUN-32989de44dc344b7bfed02dec0db0c56",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "在该人工构造的隔离测试情境条件下，这张卡在判定日 2025-08-20 有效。逐项日期依据如下：1）产品范围：卡类型为“悦享年卡”，属于本期总部运营月报纳入的悦享年卡与家庭季卡范围；异业联名卡、体验卡不纳入的排除情形不适用于本卡。依据为业务模型第3节规则1及 MSG-03848、03854。2）生效日期：valid_from 为 2025-08-20，按本期已说明的悦享年卡权益端点规则，权益在生效日期当天起有效，因此判定日当天已进入有效期。依据为业务模型第3节规则3及 MSG-03886、03890、03888。3）计划结束日期：valid_until 为 2026-08-20，按规则计划权益结束日期当天已无效；判定日 2025-08-20 早于该日，因此尚未因计划结束而失效。4）提前终止：ended_at 为 null，按规则仅表示该记录没有提前终止，不等于无限期；本卡仍受计划结束日期限制，但在判定日不构成失效原因。综上，在该题设日期条件下，同一张卡同时满足产品范围与判定日有效期要求，结论为有效。该结论是人工构造情境推导，不是客户真实卡记录、生产核验或已执行查询；若判定日改为计划结束日 2026-08-20 或之后，则按同一端点规则将不在有效期内。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "b6b317782b61f26b289f89ac9830779822d2783763e208d421314789769c5778"
+}

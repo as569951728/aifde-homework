@@ -1,0 +1,75 @@
+{
+  "version": "date-answer-table-1",
+  "outer_contract": "unchanged course JSON object with only nonempty string answer",
+  "line_labels": {
+    "判定日": "ISO date",
+    "产品范围": [
+      "纳入",
+      "排除",
+      "待核"
+    ],
+    "结论": [
+      "有效",
+      "无效",
+      "待核"
+    ]
+  },
+  "condition_table": {
+    "columns": [
+      "检查项",
+      "题设日期",
+      "判定日是否满足本项条件",
+      "依据"
+    ],
+    "rows": [
+      "生效日",
+      "计划结束日",
+      "提前终止日"
+    ],
+    "date_values": "ISO date or 空",
+    "satisfied_values": [
+      "是",
+      "否",
+      "待核"
+    ]
+  },
+  "interval_table": {
+    "columns": [
+      "区间种类",
+      "起点",
+      "含起点",
+      "终点",
+      "含终点"
+    ],
+    "rows": [
+      "计划区间",
+      "综合有效区间"
+    ],
+    "endpoint_inclusion_values": [
+      "是",
+      "否"
+    ]
+  },
+  "source_line_label": "来源与范围",
+  "unknown_policy": "待核 is allowed when evidence missing; must not be auto-passed",
+  "score_boundaries": [
+    "Machine check only structural values, independently computed date conditions and interval consistency.",
+    "Independent Agent reviews all textual rule/source/scope statements.",
+    "Do not supply checker results or expected outputs to answering model."
+  ],
+  "selected_cases": [
+    "DY07",
+    "DY08",
+    "DY09",
+    "DY10",
+    "DY11",
+    "DY12",
+    "DQ07",
+    "DQ08",
+    "DQ09",
+    "DQ10",
+    "DQ11",
+    "DQ12"
+  ],
+  "stop_rule": "One call per case; retain failures; no semantic resampling or second candidate this step."
+}

@@ -1,0 +1,53 @@
+{
+  "calls": [
+    {
+      "id": "maintain-qinghe-after",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-transfer-after",
+      "mode": "maintain",
+      "input": "inputs/maintain-transfer.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-positive-after",
+      "mode": "maintain",
+      "input": "inputs/maintain-positive.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-missing-after",
+      "mode": "maintain",
+      "input": "inputs/maintain-missing.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-qinghe-repeat",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "confirm"
+    },
+    {
+      "id": "maintain-missing-repeat",
+      "mode": "maintain",
+      "input": "inputs/maintain-missing.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "confirm"
+    }
+  ],
+  "baseline_runs": [
+    "../runs/maintain-qinghe-before",
+    "../runs/maintain-transfer-before"
+  ],
+  "change_reason": "v6审核前两目标和审核后正例通过，但缺上下文案例N2将协助诉求改成管理员自己的动作。v6.1恢复并明确主语/执行/确认/意图的逐句守恒，其他方法不变；原输入和标准全部不变。",
+  "gate": "四案例22项全通过且正文无取舍污染，再重复青禾和缺上下文；还须通过两原目标审核后整合；失败不替换。",
+  "limit": "本版本6次回放和2次针对性审核后整合；不以再次抽样覆盖失败。"
+}

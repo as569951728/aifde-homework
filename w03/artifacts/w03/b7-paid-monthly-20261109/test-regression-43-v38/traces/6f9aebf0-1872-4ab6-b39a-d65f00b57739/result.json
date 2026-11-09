@@ -1,0 +1,66 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "avg_order_value",
+      "avg_buyer_value",
+      "purchase_frequency",
+      "refund_amount_rate",
+      "cancel_rate",
+      "refund_order_rate",
+      "discount_rate",
+      "items_per_order"
+    ],
+    "start": "2026-08-10",
+    "end": "2026-08-11",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  CAST(SUM(case when status = 'paid' then paid_cents - refund_cents else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN case when status = 'paid' and paid_cents - refund_cents > 0 then order_id end IS NOT NULL THEN 1 ELSE 0 END), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(case when status = 'paid' then paid_cents - refund_cents else 0 end) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then member_id end), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(CASE WHEN case when status = 'paid' and paid_cents - refund_cents > 0 then order_id end IS NOT NULL THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then member_id end), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(case when status = 'paid' then refund_cents else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(case when status = 'paid' then paid_cents else 0 end), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(CASE WHEN case when status = 'cancelled' then order_id end IS NOT NULL THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN order_id IS NOT NULL THEN 1 ELSE 0 END), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(CASE WHEN case when status = 'paid' and refund_cents > 0 then order_id end IS NOT NULL THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN case when status = 'paid' then order_id end IS NOT NULL THEN 1 ELSE 0 END), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(case when status = 'paid' then gross_cents - paid_cents else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(case when status = 'paid' then gross_cents else 0 end), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(case when status = 'paid' and paid_cents - refund_cents > 0 then quantity else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN case when status = 'paid' and paid_cents - refund_cents > 0 then order_id end IS NOT NULL THEN 1 ELSE 0 END), 0) AS DOUBLE) AS items_per_order\nFROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-10' AND '2026-08-10'",
+  "columns": [
+    "avg_order_value",
+    "avg_buyer_value",
+    "purchase_frequency",
+    "refund_amount_rate",
+    "cancel_rate",
+    "refund_order_rate",
+    "discount_rate",
+    "items_per_order"
+  ],
+  "rows": [
+    [
+      null,
+      null,
+      null,
+      1.0,
+      0.5,
+      1.0,
+      0.0,
+      null
+    ]
+  ],
+  "seconds": 0.126,
+  "units": {
+    "avg_order_value": "cents_per_order",
+    "avg_buyer_value": "cents_per_member",
+    "purchase_frequency": "orders_per_member",
+    "refund_amount_rate": "ratio",
+    "cancel_rate": "ratio",
+    "refund_order_rate": "ratio",
+    "discount_rate": "ratio",
+    "items_per_order": "items_per_order"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "在青禾当前测试数据范围内，按2026年8月10日查询区间统计，未按门店分组。有效订单均额、购买会员人均消费、购买频次、单均商品件数均未定义（相应计算分母为零或缺少有效订单/购买会员基础），未定义不等于零。退款金额占比为100.00%，取消率为50.00%，退款订单率为100.00%，优惠率为0.00%；其中优惠率0.00%为覆盖范围内的零值。人数口径为CRM会员账户计数，订单按订单笔数，金额以分存储、展示需换算为元（本次未给出可展示金额）。限制：均额、频次和单均件数无法计算，不能据此推断具体金额或会员消费水平。",
+  "question": "请同时列出2026年8月10日青禾优选的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+  "trace_id": "6f9aebf0-1872-4ab6-b39a-d65f00b57739",
+  "elapsed_seconds": 36.221,
+  "model_usage": {
+    "prompt_tokens": 13275,
+    "completion_tokens": 1812,
+    "total_tokens": 15087
+  },
+  "model_calls_with_usage": 2
+}

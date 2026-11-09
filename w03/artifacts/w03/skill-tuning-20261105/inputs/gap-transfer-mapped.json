@@ -1,0 +1,70 @@
+{
+  "fixture_kind": "第二轮新留出：溪岸维修统计，导师虚构，非青禾事实",
+  "task": "只核对工单关闭数 closed_count 的依据和缺口，不计算、不生成定义。",
+  "target": {
+    "id": "closed_count",
+    "name": "工单关闭数"
+  },
+  "old_model": "有效工单定义、设备保内资格规则和数据覆盖尚未核实。",
+  "materials": [
+    {
+      "id": "R1",
+      "content": "本期关闭数按closed状态、关闭本地日期计，每工单号一次；取消不计。单位单。本期固定快照覆盖2026-01-01包含到2026-04-01不含，时区Asia/Shanghai，覆盖外不是零。"
+    },
+    {
+      "id": "R2",
+      "content": "保内设备月度关闭数 warranty_monthly_closed_count：先按月末保内设备筛选，统计当月有效关闭工单；保修卡种类与失效端点仍需问服务主管。本规则只用于此子指标。"
+    },
+    {
+      "id": "R3",
+      "content": "工单表一行一工单；job_id唯一，status=closed/cancelled/open，closed_at为关闭本地日期；device_id关联设备。"
+    }
+  ],
+  "data_state": "未提供实际CSV；现有材料的定义来源已给，不代表数据已核查。",
+  "scope_packet": {
+    "selected_target": {
+      "id": "closed_count",
+      "name": "工单关闭数"
+    },
+    "catalog": [
+      {
+        "id": "closed_count",
+        "name": "工单关闭数"
+      },
+      {
+        "id": "warranty_monthly_closed_count",
+        "name": "保内设备月度关闭数"
+      }
+    ],
+    "source_sha256": {
+      "R1": "624d2af04d5dad5c4744ac52b5f912ad730ab1d73e5488e461431a9826a576ea",
+      "R2": "63b17e029138da04373b6b50d58392e125acf0006bb2a4004cf6e3589fcd48a7",
+      "R3": "ca646211924f8f5554cae0bb980beb4a8308a644133395e2de68f89244358031"
+    },
+    "heading_index": [
+      {
+        "source": "R1",
+        "heading": "工单关闭数",
+        "line": 1,
+        "catalog_ids": [
+          "closed_count"
+        ],
+        "relation": "selected_title",
+        "verbatim_section": "## 工单关闭数\n本期关闭数按closed状态、关闭本地日期计，每工单号一次；取消不计。单位单。本期固定快照覆盖2026-01-01包含到2026-04-01不含，时区Asia/Shanghai，覆盖外不是零。"
+      },
+      {
+        "source": "R2",
+        "heading": "保内设备月度关闭数",
+        "line": 1,
+        "catalog_ids": [
+          "warranty_monthly_closed_count"
+        ],
+        "relation": "other_target_title",
+        "verbatim_section": "## 保内设备月度关闭数\n保内设备月度关闭数 warranty_monthly_closed_count：先按月末保内设备筛选，统计当月有效关闭工单；保修卡种类与失效端点仍需问服务主管。本规则只用于此子指标。"
+      }
+    ],
+    "exact_title_match_found": true,
+    "mapping_kind": "exact_catalog_name_to_heading_only",
+    "limitation": "目录与标题用于定位，不裁定规则优先级或依赖。未匹配/一名多ID须核；正文、跨章节依赖及共同边界仍读原文。原资料未裁剪。"
+  }
+}

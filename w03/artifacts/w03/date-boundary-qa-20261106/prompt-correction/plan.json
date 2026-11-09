@@ -1,0 +1,31 @@
+{
+  "created_at": "2026-11-06T15:45:54.645931+00:00",
+  "change": "Only append generic source-to-claim matching instruction to isolated answering prompt; no dates, card rules, case answers or source IDs inserted.",
+  "previous_sha256": "c2947d4bb17dcd5faf3a4da8740983c4ade6b91310d570ce18e228bfc4beaa63",
+  "candidate_sha256": "dd555f4d004aeac3141e37bfc43528b7880e00cf29429fd7b3d9f045183bd7f4",
+  "failed_cases": [
+    "DY01",
+    "DY11",
+    "DY12",
+    "DQ12"
+  ],
+  "control_cases": [
+    "DQ11",
+    "DY02",
+    "DY10",
+    "DQ08"
+  ],
+  "planned_case_ids": [
+    "DY01",
+    "DY11",
+    "DY12",
+    "DQ12",
+    "DQ11",
+    "DY02",
+    "DY10",
+    "DQ08"
+  ],
+  "controls_reason": "邻近邮件引用的语义区分、生效日正例、计划截止不可延长、提前终止当天负例。",
+  "limitations": "一次有界8题回归。R2在其他题的结果未知；不覆盖或改判R1的24题结果。",
+  "pending_independent_prompt_review": true
+}

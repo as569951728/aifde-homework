@@ -1,0 +1,77 @@
+{
+  "version": "w03-model-tests-user-boundary-20261106-v1",
+  "selection_reason": "Existing seven fixed-material monthly-application cases; original case objects unchanged.",
+  "cases": [
+    {
+      "id": "R01",
+      "dimension": "月末与购买时点",
+      "question": "人工情境：A的悦享年卡2026-08-31生效、2027-08-31计划结束、无提前终止；A在2026-08-10有一笔有效购买。8月付费购买人数是否纳入A？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "R02",
+      "dimension": "月末反方向",
+      "question": "人工情境：A的家庭季卡2026-06-30生效、2026-08-31计划结束、无提前终止，无其他卡；8月10日有一笔有效购买。8月付费购买人数是否纳入A？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "R03",
+      "dimension": "月末有资格但未购买",
+      "question": "人工情境：A月末已确认有资格，但完整8月订单只有一笔全额退款订单；B月末也有资格但无订单。8月付费购买人数是否纳入A、B？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "R04",
+      "dimension": "整月限制",
+      "question": "要求查2026-08-10至2026-08-31（不含）的付费会员复购率，应直接计算、补问还是说明不支持？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "R05",
+      "dimension": "跨月去重",
+      "question": "人工情境：A在7月、8月各只有一笔有效订单。分别解释两个月的月内购买/复购人数；能否把两个月人数相加当成跨月唯一人数？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/03_会员运营周报.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "R06",
+      "dimension": "分组与范围",
+      "question": "要求按成交门店或渠道拆8月付费会员复购率；另要求7、8月一起查。分别应如何回应？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "R07",
+      "dimension": "当前月内复购分母",
+      "question": "人工情境：测试覆盖内完整8月、全门店；同月已注册账户A没有有效订单，B有1笔有效订单，C有2笔有效订单。按当前会员周报，复购率分子、分母分别选哪些账户？为什么不能使用旧草稿的人群？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/03_会员运营周报.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    }
+  ]
+}

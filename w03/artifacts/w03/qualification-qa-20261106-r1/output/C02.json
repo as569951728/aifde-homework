@@ -1,0 +1,20 @@
+{
+  "case_id": "C02",
+  "started_at": "2026-11-06T15:14:42.721970+00:00",
+  "completed_at": "2026-11-06T15:14:46.550525+00:00",
+  "question": "A完整卡记录中有一张已确认有效的家庭季卡、一张失效悦享年卡和一张异业联名卡。A在本期有资格吗？",
+  "fixture": null,
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-d5f3eeba06d64f9fa1e7b586a0ec7432/run.json",
+    "run_id": "RUN-d5f3eeba06d64f9fa1e7b586a0ec7432",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "有资格。题设已给定 A 的完整卡记录中有一张“已确认有效的家庭季卡”；按本期总部运营月报口径，家庭季卡属于纳入产品范围，且资格判断要求同一张卡同时满足产品范围与判定日有效，满足即可，其他卡不影响。因此，那张失效的悦享年卡不影响资格，异业联名卡即使收费也不属本期自营会员范围、同样不影响判断。依据为模型第 3 节规则 1、2、3 及来源 MSG-03848、03854、03870、MSG-03886、03888；这是基于题目给定卡记录成立的情境推导，不代表已查询客户系统。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "d3b61a5d9e844a60ed0cbcda345276451b745bb2fb02fd11f4e4d4938ff8fd7e"
+}

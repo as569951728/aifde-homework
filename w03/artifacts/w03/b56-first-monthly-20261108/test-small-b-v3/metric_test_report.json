@@ -1,0 +1,2200 @@
+{
+  "contract_version": "w03-0.1.0",
+  "complete": true,
+  "passed": 21,
+  "total": 21,
+  "cases": [
+    {
+      "id": "B2-N01",
+      "question": "请同时列出2026年8月青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            32,
+            30,
+            27,
+            2,
+            4,
+            1,
+            3
+          ]
+        ],
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(1) AS order_count\n  , SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END) AS paid_order_count\n  , SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS valid_order_count\n  , SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled_order_count\n  , SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS refund_order_count\n  , SUM(CASE WHEN status = 'paid' AND refund_cents > 0 AND refund_cents < paid_cents THEN 1 ELSE 0 END) AS partial_refund_order_count\n  , SUM(CASE WHEN status = 'paid' AND paid_cents > 0 AND refund_cents = paid_cents THEN 1 ELSE 0 END) AS full_refund_order_count\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+        "columns": [
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            32,
+            30,
+            27,
+            2,
+            4,
+            1,
+            3
+          ]
+        ],
+        "seconds": 0.053,
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "统计范围为2026年8月（按下单日期归属）当前客户数据范围内的订单，未按门店筛选或分组。结果如下：创建订单数32笔；支付订单数30笔；有效订单数27笔；取消订单数2笔；退款订单数4笔，其中部分退款订单数1笔、全额退款订单数3笔。以上均为订单笔数口径；支付订单数包含后续退款的订单，退款订单数包含部分退款与全额退款。",
+        "question": "请同时列出2026年8月青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数。",
+        "trace_id": "44cadd37-efd4-40c0-8037-5e73bdcc45aa",
+        "elapsed_seconds": 8.628,
+        "model_usage": {
+          "prompt_tokens": 11801,
+          "completion_tokens": 956,
+          "total_tokens": 12757
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B2-R01",
+      "question": "请同时列出2026年8月10日青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-08-10",
+          "end": "2026-08-11",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            2,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+          ]
+        ],
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-08-10",
+          "end": "2026-08-11",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(1) AS order_count\n  , SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END) AS paid_order_count\n  , SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS valid_order_count\n  , SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled_order_count\n  , SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS refund_order_count\n  , SUM(CASE WHEN status = 'paid' AND refund_cents > 0 AND refund_cents < paid_cents THEN 1 ELSE 0 END) AS partial_refund_order_count\n  , SUM(CASE WHEN status = 'paid' AND paid_cents > 0 AND refund_cents = paid_cents THEN 1 ELSE 0 END) AS full_refund_order_count\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-10' AND '2026-08-10'",
+        "columns": [
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            2,
+            1,
+            0,
+            1,
+            1,
+            0,
+            1
+          ]
+        ],
+        "seconds": 0.041,
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "2026年8月10日青禾客户范围内：创建订单数2笔；支付订单数1笔；有效订单数0笔；取消订单数1笔；退款订单数1笔；部分退款订单数0笔；全额退款订单数1笔。统计口径为按订单日期归属当天；创建订单包含全部订单且每单计一次、含取消单；支付订单包含后续退款的订单；有效订单要求已支付且实付金额减退款金额大于0；退款订单包含部分退款与全额退款。上述0为本次统计覆盖范围内的零值。",
+        "question": "请同时列出2026年8月10日青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数。",
+        "trace_id": "b5ecea79-dd6b-4c9f-b758-2bf220059ad6",
+        "elapsed_seconds": 9.617,
+        "model_usage": {
+          "prompt_tokens": 11805,
+          "completion_tokens": 970,
+          "total_tokens": 12775
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B2-R02",
+      "question": "请同时列出2026年8月15日青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-08-15",
+          "end": "2026-08-16",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-08-15",
+          "end": "2026-08-16",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(1) AS order_count\n  , SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END) AS paid_order_count\n  , SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS valid_order_count\n  , SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled_order_count\n  , SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS refund_order_count\n  , SUM(CASE WHEN status = 'paid' AND refund_cents > 0 AND refund_cents < paid_cents THEN 1 ELSE 0 END) AS partial_refund_order_count\n  , SUM(CASE WHEN status = 'paid' AND paid_cents > 0 AND refund_cents = paid_cents THEN 1 ELSE 0 END) AS full_refund_order_count\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-15' AND '2026-08-15'",
+        "columns": [
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            0
+          ]
+        ],
+        "seconds": 0.041,
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "在当前客户青禾的数据范围内，按下单日期统计2026年8月15日：创建订单数1笔、支付订单数1笔、有效订单数1笔、取消订单数0笔、退款订单数1笔、部分退款订单数1笔、全额退款订单数0笔。口径上，创建订单数按订单号计数并包含取消订单；支付订单数包含后续发生退款的订单；有效订单数为支付后实付金额减退款金额仍大于零的订单；退款订单数包含部分退款和全额退款。取消订单数0和全额退款订单数0是本次统计范围内的零值。该结果仅为该客户在指定日期的汇总，未按门店或其他维度拆分，不能据此推断其他日期或范围。",
+        "question": "请同时列出2026年8月15日青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数。",
+        "trace_id": "fa198ee3-a4a1-4f1c-84a6-cb790696a2c1",
+        "elapsed_seconds": 9.503,
+        "model_usage": {
+          "prompt_tokens": 11805,
+          "completion_tokens": 1075,
+          "total_tokens": 12880
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B2-D01",
+      "question": "请将2026年8月青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数按订单状态分别列出。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [
+            "order__status"
+          ],
+          "filters": []
+        },
+        "columns": [
+          "order__status",
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            "cancelled",
+            2,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            "paid",
+            30,
+            30,
+            27,
+            0,
+            4,
+            1,
+            3
+          ]
+        ],
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [
+            "order__status"
+          ],
+          "filters": []
+        },
+        "sql": "SELECT\n  order__status\n  , SUM(__order_count) AS order_count\n  , SUM(__paid_order_count) AS paid_order_count\n  , SUM(__valid_order_count) AS valid_order_count\n  , SUM(__cancelled_order_count) AS cancelled_order_count\n  , SUM(__refund_order_count) AS refund_order_count\n  , SUM(__partial_refund_order_count) AS partial_refund_order_count\n  , SUM(__full_refund_order_count) AS full_refund_order_count\nFROM (\n  SELECT\n    status AS order__status\n    , 1 AS __order_count\n    , CASE WHEN status = 'paid' THEN 1 ELSE 0 END AS __paid_order_count\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END AS __valid_order_count\n    , CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END AS __cancelled_order_count\n    , CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END AS __refund_order_count\n    , CASE WHEN status = 'paid' AND refund_cents > 0 AND refund_cents < paid_cents THEN 1 ELSE 0 END AS __partial_refund_order_count\n    , CASE WHEN status = 'paid' AND paid_cents > 0 AND refund_cents = paid_cents THEN 1 ELSE 0 END AS __full_refund_order_count\n  FROM \"data\".\"main\".\"orders\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_11\nGROUP BY\n  order__status",
+        "columns": [
+          "order__status",
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            "paid",
+            30,
+            30,
+            27,
+            0,
+            4,
+            1,
+            3
+          ],
+          [
+            "cancelled",
+            2,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0
+          ]
+        ],
+        "seconds": 0.047,
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "统计范围为当前客户青禾，订单日期在2026-08-01至2026-09-01（即2026年8月），未附加门店等额外筛选，按订单状态分组。结果列出两个状态：\n- 已支付：创建订单数30笔；支付订单数30笔；有效订单数27笔；取消订单数0笔；退款订单数4笔，其中部分退款1笔、全额退款3笔。\n- 已取消：创建订单数2笔；支付订单数0笔；有效订单数0笔；取消订单数2笔；退款订单数0笔，其中部分退款0笔、全额退款0笔。\n口径说明：创建订单数按下单日期统计全部订单且每单计一次，包含取消单；支付订单数为已支付订单数，包含后续退款的订单；有效订单数为已支付且实付金额减退款金额大于0的订单数；退款订单数为已支付且退款金额大于0的订单数，包含部分退款和全额退款。上述0为结果覆盖范围内计数为0；结果仅列出已支付和已取消两个状态，其他状态未列出，不能据此推断为零或未定义。",
+        "question": "请将2026年8月青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数按订单状态分别列出。",
+        "trace_id": "35b8e21a-d82d-4c82-9166-bb8dfd1119ff",
+        "elapsed_seconds": 12.794,
+        "model_usage": {
+          "prompt_tokens": 11848,
+          "completion_tokens": 1717,
+          "total_tokens": 13565
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B2-D02",
+      "question": "请将2026年6月30日至7月1日（含首尾）青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数按订单下单日期逐日列出。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-06-30",
+          "end": "2026-07-02",
+          "group_by": [
+            "metric_time__day"
+          ],
+          "filters": []
+        },
+        "columns": [
+          "metric_time__day",
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            "2026-06-30 00:00:00",
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            "2026-07-01 00:00:00",
+            2,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ]
+        ],
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-06-30",
+          "end": "2026-07-02",
+          "group_by": [
+            "metric_time__day"
+          ],
+          "filters": []
+        },
+        "sql": "SELECT\n  metric_time__day\n  , SUM(__order_count) AS order_count\n  , SUM(__paid_order_count) AS paid_order_count\n  , SUM(__valid_order_count) AS valid_order_count\n  , SUM(__cancelled_order_count) AS cancelled_order_count\n  , SUM(__refund_order_count) AS refund_order_count\n  , SUM(__partial_refund_order_count) AS partial_refund_order_count\n  , SUM(__full_refund_order_count) AS full_refund_order_count\nFROM (\n  SELECT\n    DATE_TRUNC('day', ordered_at) AS metric_time__day\n    , 1 AS __order_count\n    , CASE WHEN status = 'paid' THEN 1 ELSE 0 END AS __paid_order_count\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END AS __valid_order_count\n    , CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END AS __cancelled_order_count\n    , CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END AS __refund_order_count\n    , CASE WHEN status = 'paid' AND refund_cents > 0 AND refund_cents < paid_cents THEN 1 ELSE 0 END AS __partial_refund_order_count\n    , CASE WHEN status = 'paid' AND paid_cents > 0 AND refund_cents = paid_cents THEN 1 ELSE 0 END AS __full_refund_order_count\n  FROM \"data\".\"main\".\"orders\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-06-30' AND '2026-07-01'\n) subq_11\nGROUP BY\n  metric_time__day",
+        "columns": [
+          "metric_time__day",
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            "2026-07-01 00:00:00",
+            2,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            "2026-06-30 00:00:00",
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "seconds": 0.043,
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "统计范围为青禾客户在2026年6月30日至2026年7月1日（含首尾）按下单日期逐日统计的订单笔数；本次未按门店筛选，覆盖当前客户全部成交门店。口径：创建订单数按订单号计一次并包含取消订单；支付订单数包含后续发生全额退款的订单；有效订单数为已支付且实付金额减退款金额大于零的订单；退款订单数包含部分退款和全额退款。逐日结果如下：\n\n| 下单日期 | 创建订单数 | 支付订单数 | 有效订单数 | 取消订单数 | 退款订单数 | 部分退款订单数 | 全额退款订单数 |\n|---|---:|---:|---:|---:|---:|---:|---:|\n| 2026-06-30 | 1 | 1 | 1 | 0 | 0 | 0 | 0 |\n| 2026-07-01 | 2 | 1 | 1 | 1 | 0 | 0 | 0 |\n\n两天均有返回记录；表中的0表示对应日期该类订单计数为零。以上为订单笔数口径，不是人数口径。",
+        "question": "请将2026年6月30日至7月1日（含首尾）青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数按订单下单日期逐日列出。",
+        "trace_id": "3775c48c-0023-45ee-812d-a11138a82f45",
+        "elapsed_seconds": 9.43,
+        "model_usage": {
+          "prompt_tokens": 11896,
+          "completion_tokens": 1091,
+          "total_tokens": 12987
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B2-E01",
+      "question": "请同时列出2026年6月1日至6月29日（含首尾）青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-06-01",
+          "end": "2026-06-30",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-06-01",
+          "end": "2026-06-30",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(1) AS order_count\n  , SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END) AS paid_order_count\n  , SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS valid_order_count\n  , SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled_order_count\n  , SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS refund_order_count\n  , SUM(CASE WHEN status = 'paid' AND refund_cents > 0 AND refund_cents < paid_cents THEN 1 ELSE 0 END) AS partial_refund_order_count\n  , SUM(CASE WHEN status = 'paid' AND paid_cents > 0 AND refund_cents = paid_cents THEN 1 ELSE 0 END) AS full_refund_order_count\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-06-01' AND '2026-06-29'",
+        "columns": [
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "seconds": 0.043,
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "本次在青禾客户数据范围内统计订单笔数。实际执行日期为2026-06-01至2026-06-30（含首尾），比所问截止6月29日多包含6月30日一天。该区间内：创建订单数0、支付订单数0、有效订单数0、取消订单数0、退款订单数0、部分退款订单数0、全额退款订单数0。以上均为覆盖范围内的计数零，不是未定义；由于整段七项计数均为0，所问6月1日至6月29日同样为0。口径：创建订单按订单号计全部订单并含取消单；支付订单为已支付订单（含后续退款）；有效订单为已支付且实付减退款大于0；取消订单为取消状态；退款订单含部分与全额退款，部分退款为退款大于0且小于实付，全额退款为实付大于0且退款等于实付。限制：结果为合成测试数据，未按门店或会员分组；本答案只反映订单计数，不涉及金额或人数。",
+        "question": "请同时列出2026年6月1日至6月29日（含首尾）青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数。",
+        "trace_id": "65f48e99-b4bb-4b6d-baba-056d1bb5a8b8",
+        "elapsed_seconds": 15.563,
+        "model_usage": {
+          "prompt_tokens": 11823,
+          "completion_tokens": 1835,
+          "total_tokens": 13658
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B1-N01",
+      "question": "请同时列出2026年8月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            119050,
+            18750,
+            100300,
+            124250,
+            5200
+          ]
+        ],
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END) AS payment_cents\n  , SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS refund_cents\n  , SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS net_sales_cents\n  , SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END) AS gross_cents\n  , SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS discount_cents\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+        "columns": [
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            119050,
+            18750,
+            100300,
+            124250,
+            5200
+          ]
+        ],
+        "seconds": 0.033,
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "统计范围：当前客户青禾，2026年8月（按下单日期归属，8月1日至8月31日），未按门店分组，汇总为一行结果。口径：仅统计已支付订单；退款金额按原订单下单日期归属，不是现金退款发生日；净销售额为实付金额减退款金额，取消单不计；优惠金额为原价金额减实付金额，退款不冲减原优惠。金额已由分换算为元。\n实付金额：1,190.50元\n退款金额：187.50元\n净销售额：1,003.00元\n支付订单原价金额：1,242.50元\n优惠金额：52.00元",
+        "question": "请同时列出2026年8月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+        "trace_id": "ff728d17-7365-437f-ac37-ce8daed1d81b",
+        "elapsed_seconds": 12.268,
+        "model_usage": {
+          "prompt_tokens": 11553,
+          "completion_tokens": 1552,
+          "total_tokens": 13105
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B1-R01",
+      "question": "请同时列出2026年8月10日青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-08-10",
+          "end": "2026-08-11",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            5000,
+            5000,
+            0,
+            5000,
+            0
+          ]
+        ],
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-08-10",
+          "end": "2026-08-11",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END) AS payment_cents\n  , SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS refund_cents\n  , SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS net_sales_cents\n  , SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END) AS gross_cents\n  , SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS discount_cents\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-10' AND '2026-08-10'",
+        "columns": [
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            5000,
+            5000,
+            0,
+            5000,
+            0
+          ]
+        ],
+        "seconds": 0.033,
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "在当前客户数据范围内，按 2026-08-10 当日统计（按下单日期归属，未按门店分组）：实付金额 50.00 元；退款金额 50.00 元；净销售额 0.00 元；支付订单原价金额 50.00 元；优惠金额 0.00 元。口径为仅统计已支付订单，退款按原订单下单日期归属，净销售额为实付减退款，优惠金额为原价减实付且退款不冲减优惠。",
+        "question": "请同时列出2026年8月10日青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+        "trace_id": "f0ff63a9-bd33-4a50-8f1d-a8df6e465c7d",
+        "elapsed_seconds": 11.092,
+        "model_usage": {
+          "prompt_tokens": 11555,
+          "completion_tokens": 1304,
+          "total_tokens": 12859
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B1-R02",
+      "question": "请同时列出2026年8月15日青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-08-15",
+          "end": "2026-08-16",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            9000,
+            2000,
+            7000,
+            10000,
+            1000
+          ]
+        ],
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-08-15",
+          "end": "2026-08-16",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END) AS payment_cents\n  , SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS refund_cents\n  , SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS net_sales_cents\n  , SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END) AS gross_cents\n  , SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS discount_cents\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-15' AND '2026-08-15'",
+        "columns": [
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            9000,
+            2000,
+            7000,
+            10000,
+            1000
+          ]
+        ],
+        "seconds": 0.034,
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "在青禾客户数据范围内，按订单下单日期归属统计2026年8月15日的支付订单：实付金额90.00元，退款金额20.00元，净销售额70.00元，支付订单原价金额100.00元，优惠金额10.00元。口径上，实付金额尚未扣退款；净销售额为实付减退款；退款按原订单下单日期归属，优惠金额为原价减实付，且退款不冲减原优惠。",
+        "question": "请同时列出2026年8月15日青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+        "trace_id": "9d026bff-684a-4f45-ac96-c76abc551a0f",
+        "elapsed_seconds": 11.689,
+        "model_usage": {
+          "prompt_tokens": 11557,
+          "completion_tokens": 1251,
+          "total_tokens": 12808
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B1-D01",
+      "question": "请将2026年7月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额按订单成交门店编号分别列出。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-07-01",
+          "end": "2026-08-01",
+          "group_by": [
+            "store"
+          ],
+          "filters": []
+        },
+        "columns": [
+          "store",
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            "S01",
+            12500,
+            0,
+            12500,
+            12500,
+            0
+          ],
+          [
+            "S02",
+            10500,
+            500,
+            10000,
+            10500,
+            0
+          ],
+          [
+            "S03",
+            10000,
+            1000,
+            9000,
+            10000,
+            0
+          ]
+        ],
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-07-01",
+          "end": "2026-08-01",
+          "group_by": [
+            "store"
+          ],
+          "filters": []
+        },
+        "sql": "SELECT\n  store\n  , SUM(__payment_cents) AS payment_cents\n  , SUM(__refund_cents) AS refund_cents\n  , SUM(__net_sales_cents) AS net_sales_cents\n  , SUM(__gross_cents) AS gross_cents\n  , SUM(__discount_cents) AS discount_cents\nFROM (\n  SELECT\n    store_id AS store\n    , CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END AS __payment_cents\n    , CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END AS __refund_cents\n    , CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END AS __net_sales_cents\n    , CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END AS __gross_cents\n    , CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END AS __discount_cents\n  FROM \"data\".\"main\".\"orders\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-07-01' AND '2026-07-31'\n) subq_9\nGROUP BY\n  store",
+        "columns": [
+          "store",
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            "S02",
+            10500,
+            500,
+            10000,
+            10500,
+            0
+          ],
+          [
+            "S01",
+            12500,
+            0,
+            12500,
+            12500,
+            0
+          ],
+          [
+            "S03",
+            10000,
+            1000,
+            9000,
+            10000,
+            0
+          ]
+        ],
+        "seconds": 0.039,
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "统计范围为2026年7月，按下单日期归属，并按订单成交门店编号分组；口径为支付订单，取消单不计。退款金额按原订单下单日期归属，不是现金退款发生日；净销售额为实付金额减退款金额；优惠金额为原价减实付，退款不冲减优惠。金额单位已由分换算为元并保留两位。结果：S02 实付金额105.00元、退款金额5.00元、净销售额100.00元、支付订单原价金额105.00元、优惠金额0.00元；S01 实付金额125.00元、退款金额0.00元、净销售额125.00元、支付订单原价金额125.00元、优惠金额0.00元；S03 实付金额100.00元、退款金额10.00元、净销售额90.00元、支付订单原价金额100.00元、优惠金额0.00元。以上优惠金额均为0.00元，属于本次统计覆盖范围内的零值。",
+        "question": "请将2026年7月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额按订单成交门店编号分别列出。",
+        "trace_id": "63c772ce-f62d-49bd-afcc-464d4aea4904",
+        "elapsed_seconds": 10.448,
+        "model_usage": {
+          "prompt_tokens": 11618,
+          "completion_tokens": 1253,
+          "total_tokens": 12871
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B1-F01",
+      "question": "请同时列出2026年8月青禾优选小程序渠道且订单成交地区为华东的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": [
+            {
+              "field": "order__channel",
+              "op": "eq",
+              "value": "小程序"
+            },
+            {
+              "field": "store__region",
+              "op": "eq",
+              "value": "华东"
+            }
+          ]
+        },
+        "columns": [
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            29700,
+            0,
+            29700,
+            32200,
+            2500
+          ]
+        ],
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": [
+            {
+              "field": "order__channel",
+              "op": "eq",
+              "value": "小程序"
+            },
+            {
+              "field": "store__region",
+              "op": "eq",
+              "value": "华东"
+            }
+          ]
+        },
+        "sql": "SELECT\n  SUM(payment_cents) AS payment_cents\n  , SUM(refund_cents) AS refund_cents\n  , SUM(net_sales_cents) AS net_sales_cents\n  , SUM(gross_cents) AS gross_cents\n  , SUM(discount_cents) AS discount_cents\nFROM (\n  SELECT\n    subq_7.order__channel AS order__channel\n    , selling_store_src_10000.region AS store__region\n    , subq_7.__payment_cents AS payment_cents\n    , subq_7.__refund_cents AS refund_cents\n    , subq_7.__net_sales_cents AS net_sales_cents\n    , subq_7.__gross_cents AS gross_cents\n    , subq_7.__discount_cents AS discount_cents\n  FROM (\n    SELECT\n      store_id AS store\n      , channel AS order__channel\n      , CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END AS __payment_cents\n      , CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END AS __refund_cents\n      , CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END AS __net_sales_cents\n      , CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END AS __gross_cents\n      , CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END AS __discount_cents\n    FROM \"data\".\"main\".\"orders\" orders_src_10000\n    WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n  ) subq_7\n  LEFT OUTER JOIN\n    \"data\".\"main\".\"stores\" selling_store_src_10000\n  ON\n    subq_7.store = selling_store_src_10000.store_id\n) subq_11\nWHERE (order__channel in ('小程序')) AND (store__region in ('华东'))",
+        "columns": [
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            29700,
+            0,
+            29700,
+            32200,
+            2500
+          ]
+        ],
+        "seconds": 0.05,
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "2026年8月1日至8月31日（按下单日期归属），在青禾小程序渠道、订单成交门店所在地区为华东的范围内，汇总已支付订单：实付金额为297.00元，退款金额为0.00元，净销售额为297.00元，支付订单原价金额为322.00元，优惠金额为25.00元。口径上，退款金额按原订单下单日期归属，不代表现金退款发生日；净销售额为实付金额减退款金额；优惠金额为原价金额减实付金额，退款不冲减原优惠金额。本次结果为该范围内单组汇总，未按其他维度拆分。",
+        "question": "请同时列出2026年8月青禾优选小程序渠道且订单成交地区为华东的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+        "trace_id": "aa23d630-02b4-4628-ac0e-f9b01e53e4d7",
+        "elapsed_seconds": 6.588,
+        "model_usage": {
+          "prompt_tokens": 11609,
+          "completion_tokens": 675,
+          "total_tokens": 12284
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B1-Z01",
+      "question": "请同时列出2026年6月1日至6月29日（含首尾）青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-06-01",
+          "end": "2026-06-30",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-06-01",
+          "end": "2026-06-30",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END) AS payment_cents\n  , SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS refund_cents\n  , SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS net_sales_cents\n  , SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END) AS gross_cents\n  , SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS discount_cents\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-06-01' AND '2026-06-29'",
+        "columns": [
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "seconds": 0.033,
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "统计范围为青禾客户在2026年6月1日至6月29日（含首尾，按下单日期归属）的已支付订单。结果：实付金额0.00元、退款金额0.00元、净销售额0.00元、支付订单原价金额0.00元、优惠金额0.00元。以上均为该范围内的覆盖结果，零表示符合条件的已支付订单合计为零，并非未定义。口径上，实付金额尚未扣退款；退款金额按原订单下单日期归属；净销售额为实付金额减退款金额；优惠金额为原价减实付，退款不冲减原优惠金额。",
+        "question": "请同时列出2026年6月1日至6月29日（含首尾）青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+        "trace_id": "08e70d38-5cde-4e9d-8965-04edcc31df54",
+        "elapsed_seconds": 8.089,
+        "model_usage": {
+          "prompt_tokens": 11570,
+          "completion_tokens": 766,
+          "total_tokens": 12336
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B1-D02",
+      "question": "请将2026年8月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额按订单下单日期逐日列出。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [
+            "metric_time__day"
+          ],
+          "filters": []
+        },
+        "columns": [
+          "metric_time__day",
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            "2026-08-01 00:00:00",
+            19000,
+            9000,
+            10000,
+            19000,
+            0
+          ],
+          [
+            "2026-08-05 00:00:00",
+            26700,
+            0,
+            26700,
+            27800,
+            1100
+          ],
+          [
+            "2026-08-10 00:00:00",
+            5000,
+            5000,
+            0,
+            5000,
+            0
+          ],
+          [
+            "2026-08-15 00:00:00",
+            9000,
+            2000,
+            7000,
+            10000,
+            1000
+          ],
+          [
+            "2026-08-20 00:00:00",
+            7000,
+            0,
+            7000,
+            7000,
+            0
+          ],
+          [
+            "2026-08-31 00:00:00",
+            52350,
+            2750,
+            49600,
+            55450,
+            3100
+          ]
+        ],
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [
+            "metric_time__day"
+          ],
+          "filters": []
+        },
+        "sql": "SELECT\n  metric_time__day\n  , SUM(__payment_cents) AS payment_cents\n  , SUM(__refund_cents) AS refund_cents\n  , SUM(__net_sales_cents) AS net_sales_cents\n  , SUM(__gross_cents) AS gross_cents\n  , SUM(__discount_cents) AS discount_cents\nFROM (\n  SELECT\n    DATE_TRUNC('day', ordered_at) AS metric_time__day\n    , CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END AS __payment_cents\n    , CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END AS __refund_cents\n    , CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END AS __net_sales_cents\n    , CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END AS __gross_cents\n    , CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END AS __discount_cents\n  FROM \"data\".\"main\".\"orders\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_9\nGROUP BY\n  metric_time__day",
+        "columns": [
+          "metric_time__day",
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            "2026-08-20 00:00:00",
+            7000,
+            0,
+            7000,
+            7000,
+            0
+          ],
+          [
+            "2026-08-31 00:00:00",
+            52350,
+            2750,
+            49600,
+            55450,
+            3100
+          ],
+          [
+            "2026-08-05 00:00:00",
+            26700,
+            0,
+            26700,
+            27800,
+            1100
+          ],
+          [
+            "2026-08-10 00:00:00",
+            5000,
+            5000,
+            0,
+            5000,
+            0
+          ],
+          [
+            "2026-08-01 00:00:00",
+            19000,
+            9000,
+            10000,
+            19000,
+            0
+          ],
+          [
+            "2026-08-15 00:00:00",
+            9000,
+            2000,
+            7000,
+            10000,
+            1000
+          ]
+        ],
+        "seconds": 0.035,
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "统计范围：青禾当前测试数据中，按订单下单日期归属、2026年8月内实际返回的日期数据。口径：仅统计已支付订单；退款金额按原订单下单日期归属，不按退款发生日；净销售额为实付金额减退款金额；优惠金额为支付订单原价金额减实付金额，退款不冲减优惠金额。金额已由分换算为元。按日期升序列出如下：\n\n| 下单日期 | 实付金额(元) | 退款金额(元) | 净销售额(元) | 支付订单原价金额(元) | 优惠金额(元) |\n|---|---:|---:|---:|---:|---:|\n| 2026-08-01 | 190.00 | 90.00 | 100.00 | 190.00 | 0.00 |\n| 2026-08-05 | 267.00 | 0.00 | 267.00 | 278.00 | 11.00 |\n| 2026-08-10 | 50.00 | 50.00 | 0.00 | 50.00 | 0.00 |\n| 2026-08-15 | 90.00 | 20.00 | 70.00 | 100.00 | 10.00 |\n| 2026-08-20 | 70.00 | 0.00 | 70.00 | 70.00 | 0.00 |\n| 2026-08-31 | 523.50 | 27.50 | 496.00 | 554.50 | 31.00 |\n\n限制说明：以上仅为实际返回的6个下单日期；未列出的日期仅表示本次结果未列出，不能推断为零或未定义。",
+        "question": "请将2026年8月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额按订单下单日期逐日列出。",
+        "trace_id": "6aa2fe7a-dbad-4390-b4c3-218453c6bece",
+        "elapsed_seconds": 11.562,
+        "model_usage": {
+          "prompt_tokens": 11755,
+          "completion_tokens": 1565,
+          "total_tokens": 13320
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "NS01-aug-total",
+      "question": "2026年8月青禾优选净销售额是多少？",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "net_sales_cents"
+        ],
+        "rows": [
+          [
+            100300
+          ]
+        ],
+        "units": {
+          "net_sales_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS net_sales_cents\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+        "columns": [
+          "net_sales_cents"
+        ],
+        "rows": [
+          [
+            100300
+          ]
+        ],
+        "seconds": 0.019,
+        "units": {
+          "net_sales_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "2026年8月青禾优选的净销售额为 1003.00 元（100300 分）。统计口径为：按原订单下单日期归属到 2026年8月，取已支付订单的实付金额减退款金额后合计，取消单不计。本次结果未附加其他门店或地区筛选。",
+        "question": "2026年8月青禾优选净销售额是多少？",
+        "trace_id": "420440b8-a253-4d15-b2cb-c7bd028d5d79",
+        "elapsed_seconds": 6.225,
+        "model_usage": {
+          "prompt_tokens": 10958,
+          "completion_tokens": 466,
+          "total_tokens": 11424
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "NS02-july-transaction-store",
+      "question": "2026年7月青禾优选净销售额按订单成交门店编号分别列出。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "2026-07-01",
+          "end": "2026-08-01",
+          "group_by": [
+            "store"
+          ],
+          "filters": []
+        },
+        "columns": [
+          "store",
+          "net_sales_cents"
+        ],
+        "rows": [
+          [
+            "S01",
+            12500
+          ],
+          [
+            "S02",
+            10000
+          ],
+          [
+            "S03",
+            9000
+          ]
+        ],
+        "units": {
+          "net_sales_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "2026-07-01",
+          "end": "2026-08-01",
+          "group_by": [
+            "store"
+          ],
+          "filters": []
+        },
+        "sql": "SELECT\n  store\n  , SUM(__net_sales_cents) AS net_sales_cents\nFROM (\n  SELECT\n    store_id AS store\n    , CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END AS __net_sales_cents\n  FROM \"data\".\"main\".\"orders\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-07-01' AND '2026-07-31'\n) subq_5\nGROUP BY\n  store",
+        "columns": [
+          "store",
+          "net_sales_cents"
+        ],
+        "rows": [
+          [
+            "S03",
+            9000
+          ],
+          [
+            "S02",
+            10000
+          ],
+          [
+            "S01",
+            12500
+          ]
+        ],
+        "seconds": 0.02,
+        "units": {
+          "net_sales_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "统计范围为2026年7月（按下单日期归属），按订单成交门店编号分组；净销售额口径为已支付订单实付金额减退款，取消单不计。结果：S01为125.00元，S02为100.00元，S03为90.00元。",
+        "question": "2026年7月青禾优选净销售额按订单成交门店编号分别列出。",
+        "trace_id": "7c0544d1-c103-4733-a541-30cedb2f791e",
+        "elapsed_seconds": 5.755,
+        "model_usage": {
+          "prompt_tokens": 10996,
+          "completion_tokens": 514,
+          "total_tokens": 11510
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "NS03-aug-mini-program",
+      "question": "2026年8月青禾优选小程序渠道的净销售额是多少？",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": [
+            {
+              "field": "order__channel",
+              "op": "eq",
+              "value": "小程序"
+            }
+          ]
+        },
+        "columns": [
+          "net_sales_cents"
+        ],
+        "rows": [
+          [
+            48700
+          ]
+        ],
+        "units": {
+          "net_sales_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": [
+            {
+              "field": "order__channel",
+              "op": "eq",
+              "value": "小程序"
+            }
+          ]
+        },
+        "sql": "SELECT\n  SUM(net_sales_cents) AS net_sales_cents\nFROM (\n  SELECT\n    channel AS order__channel\n    , CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END AS net_sales_cents\n  FROM \"data\".\"main\".\"orders\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_4\nWHERE order__channel in ('小程序')",
+        "columns": [
+          "net_sales_cents"
+        ],
+        "rows": [
+          [
+            48700
+          ]
+        ],
+        "seconds": 0.024,
+        "units": {
+          "net_sales_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "2026年8月青禾小程序渠道净销售额为487.00元。统计口径为：按下单日期归属2026年8月，仅统计已支付订单，净销售额按实付金额减退款金额合计，取消订单不计。该结果属于当前青禾客户范围，数据来自本周合成测试库。",
+        "question": "2026年8月青禾优选小程序渠道的净销售额是多少？",
+        "trace_id": "9571661b-4b95-4238-867a-e1562ca65af4",
+        "elapsed_seconds": 6.191,
+        "model_usage": {
+          "prompt_tokens": 10985,
+          "completion_tokens": 513,
+          "total_tokens": 11498
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "NS04-partial-refund-day",
+      "question": "2026年8月15日当天青禾优选净销售额是多少？",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "2026-08-15",
+          "end": "2026-08-16",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "net_sales_cents"
+        ],
+        "rows": [
+          [
+            7000
+          ]
+        ],
+        "units": {
+          "net_sales_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "2026-08-15",
+          "end": "2026-08-16",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS net_sales_cents\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-15' AND '2026-08-15'",
+        "columns": [
+          "net_sales_cents"
+        ],
+        "rows": [
+          [
+            7000
+          ]
+        ],
+        "seconds": 0.019,
+        "units": {
+          "net_sales_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "2026年8月15日当天，青禾优选的净销售额为 70.00 元（结果以 7000 分计）。统计口径为：下单日期落在当天的订单，仅计入已支付（paid）订单，按实付金额减退款金额合计，取消订单不计入。本次未按门店或地区等维度拆分，因此结果是当天的整体合计。",
+        "question": "2026年8月15日当天青禾优选净销售额是多少？",
+        "trace_id": "884e2341-ce6f-476f-b04a-feb61fd25cc5",
+        "elapsed_seconds": 5.178,
+        "model_usage": {
+          "prompt_tokens": 10964,
+          "completion_tokens": 396,
+          "total_tokens": 11360
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "NS05-full-refund-day",
+      "question": "2026年8月10日当天青禾优选净销售额是多少？",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "2026-08-10",
+          "end": "2026-08-11",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "net_sales_cents"
+        ],
+        "rows": [
+          [
+            0
+          ]
+        ],
+        "units": {
+          "net_sales_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "2026-08-10",
+          "end": "2026-08-11",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS net_sales_cents\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-10' AND '2026-08-10'",
+        "columns": [
+          "net_sales_cents"
+        ],
+        "rows": [
+          [
+            0
+          ]
+        ],
+        "seconds": 0.019,
+        "units": {
+          "net_sales_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "2026年8月10日当天，青禾的净销售额为0.00元。统计口径为：按原订单下单日期归属到当天，仅统计已支付订单，以实付金额减退款后合计，取消订单不计。该结果是在当前客户数据覆盖范围内得到的零值，表示当天没有形成净销售额，并非指标未定义。",
+        "question": "2026年8月10日当天青禾优选净销售额是多少？",
+        "trace_id": "f803915d-545c-4323-80ad-5756b5879a35",
+        "elapsed_seconds": 6.276,
+        "model_usage": {
+          "prompt_tokens": 10963,
+          "completion_tokens": 556,
+          "total_tokens": 11519
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "NS06-covered-empty",
+      "question": "2026年6月1日至6月29日（含首尾两天）青禾优选净销售额是多少？",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "2026-06-01",
+          "end": "2026-06-30",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "net_sales_cents"
+        ],
+        "rows": [
+          [
+            0
+          ]
+        ],
+        "units": {
+          "net_sales_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "2026-06-01",
+          "end": "2026-06-30",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS net_sales_cents\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-06-01' AND '2026-06-29'",
+        "columns": [
+          "net_sales_cents"
+        ],
+        "rows": [
+          [
+            0
+          ]
+        ],
+        "seconds": 0.02,
+        "units": {
+          "net_sales_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "按2026年6月1日至6月29日（含首尾）统计，当前客户范围内的净销售额为0.00元。口径为：仅计入已支付订单，按下单日期归属，以实付金额减退款金额合计，取消单不计；该结果为覆盖范围内聚合得到的零值，并非未定义。",
+        "question": "2026年6月1日至6月29日（含首尾两天）青禾优选净销售额是多少？",
+        "trace_id": "6c23f9d6-05f7-4d42-bb76-b8f7ddd3117b",
+        "elapsed_seconds": 8.961,
+        "model_usage": {
+          "prompt_tokens": 10981,
+          "completion_tokens": 766,
+          "total_tokens": 11747
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "NS07-missing-time",
+      "question": "青禾优选净销售额是多少？",
+      "expected": {
+        "status": "clarify"
+      },
+      "actual": {
+        "status": "clarify",
+        "reason": "请补充净销售额的查询时间范围（开始日期与结束日期，end 为不包含）；当前未提供时间范围，无法确定统计窗口。客户名称“青禾优选”按当前数据集主体理解，不作为门店筛选。",
+        "intent": {
+          "status": "clarify",
+          "reason": "请补充净销售额的查询时间范围（开始日期与结束日期，end 为不包含）；当前未提供时间范围，无法确定统计窗口。客户名称“青禾优选”按当前数据集主体理解，不作为门店筛选。",
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "",
+          "end": "",
+          "group_by": [],
+          "filters": []
+        },
+        "question": "青禾优选净销售额是多少？",
+        "trace_id": "179c98ee-a14b-4740-9466-4c78d105504f",
+        "elapsed_seconds": 2.707,
+        "model_usage": {
+          "prompt_tokens": 9818,
+          "completion_tokens": 318,
+          "total_tokens": 10136
+        },
+        "model_calls_with_usage": 1
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "NS08-outside-coverage",
+      "question": "2026年9月青禾优选净销售额是多少？",
+      "expected": {
+        "status": "unsupported"
+      },
+      "actual": {
+        "status": "unsupported",
+        "reason": "所请求的2026年9月净销售额超出数据覆盖范围：当前数据仅覆盖至2026-09-01，无法提供2026年9月全月数据。",
+        "intent": {
+          "status": "unsupported",
+          "reason": "所请求的2026年9月净销售额超出数据覆盖范围：当前数据仅覆盖至2026-09-01，无法提供2026年9月全月数据。",
+          "metrics": [
+            "net_sales_cents"
+          ],
+          "start": "2026-09-01",
+          "end": "2026-10-01",
+          "group_by": [],
+          "filters": []
+        },
+        "question": "2026年9月青禾优选净销售额是多少？",
+        "trace_id": "4bd35703-11bb-4677-8d53-778e99a3f05a",
+        "elapsed_seconds": 6.112,
+        "model_usage": {
+          "prompt_tokens": 9823,
+          "completion_tokens": 972,
+          "total_tokens": 10795
+        },
+        "model_calls_with_usage": 1
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    }
+  ]
+}

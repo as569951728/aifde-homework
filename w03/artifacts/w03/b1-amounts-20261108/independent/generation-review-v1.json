@@ -1,0 +1,382 @@
+{
+  "status": "approved_to_load_and_query",
+  "created_at": "2026-11-08T05:38:24.187360+00:00",
+  "approved_to_load_and_query": true,
+  "failed_checks": [],
+  "checks": [
+    {
+      "id": "expected_freeze_unchanged",
+      "passed": true,
+      "evidence": "All frozen expected artifacts preserved; no recomputation"
+    },
+    {
+      "id": "skill_same_v012",
+      "passed": true,
+      "evidence": "Exact same Skill text, no tuning"
+    },
+    {
+      "id": "judge_unchanged",
+      "passed": true,
+      "evidence": "Same deterministic judge passed preflight 27 checks"
+    },
+    {
+      "id": "tests_adopted_without_changes",
+      "passed": true,
+      "evidence": "15 questions and business expectations unchanged"
+    },
+    {
+      "id": "targets_exactly_five",
+      "passed": true,
+      "evidence": "Selected five simple amount metrics only"
+    },
+    {
+      "id": "no_unresolved_or_model_sql",
+      "passed": true,
+      "evidence": "No borrowed dependencies/derived card logic"
+    },
+    {
+      "id": "source_check.json",
+      "passed": true,
+      "evidence": {
+        "passed": true,
+        "errors": []
+      }
+    },
+    {
+      "id": "dimension_check.json",
+      "passed": true,
+      "evidence": {
+        "passed": true,
+        "items": [
+          {
+            "id": "store",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "home_store",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "member",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "store__region",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "store__store_name",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "home_store__region",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "home_store__store_name",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "order__channel",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "order__status",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "member__tier",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "metric_time__day",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "metric_time__month",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          }
+        ],
+        "available": [
+          "home_store",
+          "home_store__region",
+          "home_store__store_name",
+          "member",
+          "member__tier",
+          "metric_time__day",
+          "metric_time__month",
+          "order__channel",
+          "order__status",
+          "store",
+          "store__region",
+          "store__store_name"
+        ],
+        "per_metric": {
+          "discount_cents": {
+            "store": "store",
+            "home_store": "home_store",
+            "member": "member",
+            "store__region": "store__region",
+            "store__store_name": "store__store_name",
+            "home_store__region": "member__home_store__region",
+            "home_store__store_name": "member__home_store__store_name",
+            "order__channel": "order__channel",
+            "order__status": "order__status",
+            "member__tier": "member__tier",
+            "metric_time__day": "metric_time__day",
+            "metric_time__month": "metric_time__month"
+          },
+          "gross_cents": {
+            "store": "store",
+            "home_store": "home_store",
+            "member": "member",
+            "store__region": "store__region",
+            "store__store_name": "store__store_name",
+            "home_store__region": "member__home_store__region",
+            "home_store__store_name": "member__home_store__store_name",
+            "order__channel": "order__channel",
+            "order__status": "order__status",
+            "member__tier": "member__tier",
+            "metric_time__day": "metric_time__day",
+            "metric_time__month": "metric_time__month"
+          },
+          "net_sales_cents": {
+            "store": "store",
+            "home_store": "home_store",
+            "member": "member",
+            "store__region": "store__region",
+            "store__store_name": "store__store_name",
+            "home_store__region": "member__home_store__region",
+            "home_store__store_name": "member__home_store__store_name",
+            "order__channel": "order__channel",
+            "order__status": "order__status",
+            "member__tier": "member__tier",
+            "metric_time__day": "metric_time__day",
+            "metric_time__month": "metric_time__month"
+          },
+          "payment_cents": {
+            "store": "store",
+            "home_store": "home_store",
+            "member": "member",
+            "store__region": "store__region",
+            "store__store_name": "store__store_name",
+            "home_store__region": "member__home_store__region",
+            "home_store__store_name": "member__home_store__store_name",
+            "order__channel": "order__channel",
+            "order__status": "order__status",
+            "member__tier": "member__tier",
+            "metric_time__day": "metric_time__day",
+            "metric_time__month": "metric_time__month"
+          },
+          "refund_cents": {
+            "store": "store",
+            "home_store": "home_store",
+            "member": "member",
+            "store__region": "store__region",
+            "store__store_name": "store__store_name",
+            "home_store__region": "member__home_store__region",
+            "home_store__store_name": "member__home_store__store_name",
+            "order__channel": "order__channel",
+            "order__status": "order__status",
+            "member__tier": "member__tier",
+            "metric_time__day": "metric_time__day",
+            "metric_time__month": "metric_time__month"
+          }
+        }
+      }
+    },
+    {
+      "id": "grain_check.json",
+      "passed": true,
+      "evidence": {
+        "passed": true,
+        "items": [
+          {
+            "model": "orders",
+            "check": "primary_key",
+            "columns": [
+              "order_id"
+            ],
+            "rows": 48,
+            "null_rows": 0,
+            "duplicate_rows": 0,
+            "passed": true
+          },
+          {
+            "model": "orders",
+            "entity": "member",
+            "target": "members",
+            "check": "foreign_key",
+            "unmatched_rows": 0,
+            "passed": true
+          },
+          {
+            "model": "orders",
+            "entity": "store",
+            "target": "stores",
+            "check": "foreign_key",
+            "unmatched_rows": 0,
+            "passed": true
+          },
+          {
+            "model": "members",
+            "check": "primary_key",
+            "columns": [
+              "member_id"
+            ],
+            "rows": 20,
+            "null_rows": 0,
+            "duplicate_rows": 0,
+            "passed": true
+          },
+          {
+            "model": "members",
+            "entity": "home_store",
+            "target": "home_stores",
+            "check": "foreign_key",
+            "unmatched_rows": 0,
+            "passed": true
+          },
+          {
+            "model": "stores",
+            "check": "primary_key",
+            "columns": [
+              "store_id"
+            ],
+            "rows": 3,
+            "null_rows": 0,
+            "duplicate_rows": 0,
+            "passed": true
+          },
+          {
+            "model": "home_stores",
+            "check": "primary_key",
+            "columns": [
+              "store_id"
+            ],
+            "rows": 3,
+            "null_rows": 0,
+            "duplicate_rows": 0,
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "metricflow_check.json",
+      "passed": true,
+      "evidence": {
+        "passed": true,
+        "metrics_compiled": [
+          "discount_cents",
+          "gross_cents",
+          "net_sales_cents",
+          "payment_cents",
+          "refund_cents"
+        ],
+        "validator": "SemanticManifestValidator; native explain + DuckDB EXPLAIN"
+      }
+    },
+    {
+      "id": "validation.json",
+      "passed": true,
+      "evidence": {
+        "passed": true,
+        "failures": []
+      }
+    },
+    {
+      "id": "catalog_quotes_exact_current_input",
+      "passed": true,
+      "evidence": "5 contiguous direct source quotations from 01; manually matched each meaning"
+    },
+    {
+      "id": "business_model_usage_exact",
+      "passed": true,
+      "evidence": "Four usage entries quote original object grain/relationships/role/tier text; no formula invented as business-model quote"
+    },
+    {
+      "id": "business_model_input_matches_current",
+      "passed": true,
+      "evidence": "W03 v0.5 current model unchanged"
+    },
+    {
+      "id": "input_01_订单日报说明.md",
+      "passed": true,
+      "evidence": "Exact material content match"
+    },
+    {
+      "id": "input_02_财务邮件.md",
+      "passed": true,
+      "evidence": "Exact material content match"
+    },
+    {
+      "id": "input_05_数据字典.md",
+      "passed": true,
+      "evidence": "Exact material content match"
+    },
+    {
+      "id": "all_five_measures_business_semantics",
+      "passed": true,
+      "evidence": "Each correct per-row paid case; refund not deducted from payment/gross/discount; no distinct or positive-net restriction"
+    },
+    {
+      "id": "order_time_grain_and_dimensions",
+      "passed": true,
+      "evidence": "One order per row; original order date; independent store/member foreign keys; no card join"
+    },
+    {
+      "id": "catalog_units_policy_and_row_meaning",
+      "passed": true,
+      "evidence": "Constraints describe orders and paid set, net explicitly retains full refunds contributing zero; no account/valid-buyer substitution"
+    },
+    {
+      "id": "role_paths_correct",
+      "passed": true,
+      "evidence": "stores store entity via orders.store_id; home_stores home_store entity via members.home_store_id; 12 structural paths per each metric checked, not 12 behavior tests"
+    },
+    {
+      "id": "input_no_expected_leak",
+      "passed": true,
+      "evidence": "Generation input contains business_model/materials/targets/access_tables/dimension_targets/native_format/contract; CSV/expected absent"
+    }
+  ],
+  "reviewed_files_sha256": {
+    "artifacts/w03/b1-amounts-20261108/build-v1/response.json": "fb67656c05d401e1f0c363b340d16c03070f7212457747d5254cd35152eabf7c",
+    "artifacts/w03/b1-amounts-20261108/build-v1/metrics.yml": "252096fef1c07b65bbf0aa281f9762a95b9a06080e8d090454fbf58028edd39d",
+    "artifacts/w03/b1-amounts-20261108/build-v1/catalog.json": "a0e8e5caeb22693f0f2375bca03dddb015686716fcd20495f47a32ebe135f242",
+    "artifacts/w03/b1-amounts-20261108/build-v1/input.json": "cf6aa9f168f71325ce134c19da02efaf893f26cbfda57ee47d45fa1ce3603921",
+    "artifacts/w03/b1-amounts-20261108/build-v1/skill_used.md": "d40329243c2c60c64ddfee0cb1b0617c4c2745c4b52d2b5d2f4b2b2570ea0fb2",
+    "artifacts/w03/b1-amounts-20261108/build-v1/source_check.json": "76aa3b58148d89cc797ae408eba304f008308b708476e2db124fcf4e5d1c7a2e",
+    "artifacts/w03/b1-amounts-20261108/build-v1/dimension_check.json": "66b87d5fef0dc760d30aa812e5884add46a6f2fe9b67c3de6693e2893159a3fb",
+    "artifacts/w03/b1-amounts-20261108/build-v1/grain_check.json": "ec59475164c8c0b15fb076542869156e3e08a5efec473efa7e1eec7796238442",
+    "artifacts/w03/b1-amounts-20261108/build-v1/metricflow_check.json": "62812e9f52773f69a84786da782348d586ad33ac35323de95a87a7a96033137d",
+    "artifacts/w03/b1-amounts-20261108/build-v1/validation.json": "f89a21df157ae1c1e0c79da911bf96c8e5c2378155cfa462537116f10fbbefd6",
+    "artifacts/w03/b1-amounts-20261108/independent/expected-freeze.json": "92c3adb4786aadeb36f5542c23e66b158dbcc7687363000c1ff6c46bf1f318c3"
+  },
+  "next": "Single-library promotion/load with fresh structural checks, then 15 real NL questions; no change to frozen business expectations. Review answers and actual SQL after run."
+}

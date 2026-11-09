@@ -1,0 +1,24 @@
+{
+  "case_id": "F07",
+  "started_at": "2026-11-07T04:00:23.988220+00:00",
+  "completed_at": "2026-11-07T04:00:45.353311+00:00",
+  "question": "老周目前可配合哪些核查？开始前需说明什么？这是否意味着已获得生产访问、交付时间和真实数据？",
+  "fixture": null,
+  "input_track": "model_with_source_context",
+  "fixed_materials": [
+    "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+    "W03/实操工程/materials/w03/07_客户内部沟通.md"
+  ],
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-b9f42a96f1494032b82617a17bacc315/run.json",
+    "run_id": "RUN-b9f42a96f1494032b82617a17bacc315",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "依据老周本轮访谈（MSG-03873、03875、03877、03879、03881、03883）及《07_客户内部沟通》的IT对接纪要：老周目前可配合核对取数条件、系统统计所用的范围、时间和统计说明；核查过程中可形成核查对象与用途、统计说明、待补记录清单和待确认责任项等记录，但具体记录名称和内容要看实际材料，不能预先承诺交付。测试库层面只支持结构、覆盖和关联边界的核对，不能当作生产规则或验收结论。\n\n开始前需说明核查对象、用途和范围；本轮MSG-03876已说明范围是本周测试数据覆盖内的完整自然月、全渠道全门店、按账户去重，纳入悦享年卡和家庭季卡，老周在MSG-03877、03883确认。日期端点（权益开始当天、计划结束当天是否有效）和提前终止空值含义，老周没有可确认解释；启动核查最需要补的是业务规则说明及可对照实际记录，应由运营和业务规则负责人确认。老周不替小林确认日期边界，也不指定具体岗位（MSG-03877、03879）。\n\n这不意味着已获得生产访问、交付时间和真实数据：本周给的是干净合成测试库，测试字典和合成库不等于生产规则或真实数据已接通；生产数据清理、导入及联调时间另行安排；具体记录不能预先承诺交付（MSG-03875、03877、03881、03883；《07_客户内部沟通》IT对接纪要）。上述是材料陈述和核查准备说明，不等于已经查询、计算、执行或交付结果。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "2c8ace853d10e08d9832b3ae38f37b5a0be695b7cda0f9d1a731db10e0a6986a"
+}

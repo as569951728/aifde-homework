@@ -1,0 +1,354 @@
+[
+  {
+    "id": "B5-N01",
+    "question": "请同时列出2026年8月青禾优选的注册会员数、观测期首购会员数、观测期首单净销售额（单位分）、观测期首单数、观测期后续购买订单数和有效订单数。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "new_member_count",
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count",
+          "valid_order_count"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "new_member_count",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count",
+        "valid_order_count"
+      ],
+      "rows": [
+        [
+          0,
+          5,
+          12800,
+          5,
+          22,
+          27
+        ]
+      ],
+      "units": {
+        "new_member_count": "count",
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count",
+        "valid_order_count": "count"
+      }
+    },
+    "expected_source": "独立CSV核算；规则：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单、05_数据字典.md字段关系；数据qinghe-w03-20260923-small；Asia/Shanghai [2026-08-01,2026-09-01)。注册按registered_at；有效为paid且paid_cents-refund_cents>0；先全覆盖按账户/ordered_at/order_id排序，后筛窗口。窗口注册账户0个；首单明细O0000011=3000分, O0000019=1900分, O0000036=2500分, O0000038=2600分, O0000041=2800分；后续有效单22笔。完整账户/订单/注册与过滤明细见本目录ledger-small-cases.json#B5-N01，源文件hash见expected-freeze.json。卡不参与计数；金额整数分，不推终身首购。"
+  },
+  {
+    "id": "B5-D01",
+    "question": "2026年7月青禾优选的注册会员数按会员归属门店、会员等级列出。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "new_member_count"
+        ],
+        "start": "2026-07-01",
+        "end": "2026-08-01",
+        "group_by": [
+          "home_store",
+          "member__tier"
+        ],
+        "filters": []
+      },
+      "columns": [
+        "home_store",
+        "member__tier",
+        "new_member_count"
+      ],
+      "rows": [
+        [
+          "S01",
+          "普通",
+          4
+        ],
+        [
+          "S01",
+          "金卡",
+          2
+        ],
+        [
+          "S02",
+          "普通",
+          4
+        ],
+        [
+          "S02",
+          "金卡",
+          2
+        ]
+      ],
+      "units": {
+        "new_member_count": "count"
+      }
+    },
+    "expected_source": "独立CSV核算；规则：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单、05_数据字典.md字段关系；数据qinghe-w03-20260923-small；Asia/Shanghai [2026-07-01,2026-08-01)。注册按registered_at；有效为paid且paid_cents-refund_cents>0；先全覆盖按账户/ordered_at/order_id排序，后筛窗口。窗口注册账户12个；首单明细O0000006=8000分, O0000008=4000分, O0000010=2000分, O0000017=2000分, O0000023=1500分, O0000026=1500分, O0000029=1500分, O0000032=1500分, O0000035=1500分, O0000045=1500分, O0000048=1500分；后续有效单1笔。完整账户/订单/注册与过滤明细见本目录ledger-small-cases.json#B5-D01，源文件hash见expected-freeze.json。卡不参与计数；金额整数分，不推终身首购。"
+  },
+  {
+    "id": "B5-Z01",
+    "question": "2026年6月1日至29日（包含1日和29日），青禾优选的注册会员数、观测期首购会员数、观测期首单净销售额（单位分）、观测期首单数和观测期后续购买订单数分别是多少？",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "new_member_count",
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count"
+        ],
+        "start": "2026-06-01",
+        "end": "2026-06-30",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "new_member_count",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "rows": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "units": {
+        "new_member_count": "count",
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count"
+      }
+    },
+    "expected_source": "独立CSV核算；规则：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单、05_数据字典.md字段关系；数据qinghe-w03-20260923-small；Asia/Shanghai [2026-06-01,2026-06-30)。注册按registered_at；有效为paid且paid_cents-refund_cents>0；先全覆盖按账户/ordered_at/order_id排序，后筛窗口。窗口注册账户0个；首单明细无；后续有效单0笔。完整账户/订单/注册与过滤明细见本目录ledger-small-cases.json#B5-Z01，源文件hash见expected-freeze.json。卡不参与计数；金额整数分，不推终身首购。"
+  },
+  {
+    "id": "B5-H03",
+    "question": "只看CRM账户M00005和M00007，按会员账户分别列出2026年8月的观测期首购会员数、观测期首单净销售额（单位分）、观测期首单数、观测期后续购买订单数和有效订单数。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count",
+          "valid_order_count"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [
+          "member"
+        ],
+        "filters": [
+          {
+            "field": "member",
+            "op": "in",
+            "value": [
+              "M00005",
+              "M00007"
+            ]
+          }
+        ]
+      },
+      "columns": [
+        "member",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count",
+        "valid_order_count"
+      ],
+      "rows": [
+        [
+          "M00005",
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          "M00007",
+          1,
+          3000,
+          1,
+          0,
+          1
+        ]
+      ],
+      "units": {
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count",
+        "valid_order_count": "count"
+      }
+    },
+    "expected_source": "独立CSV核算；规则：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单、05_数据字典.md字段关系；数据qinghe-w03-20260923-small；Asia/Shanghai [2026-08-01,2026-09-01)。注册按registered_at；有效为paid且paid_cents-refund_cents>0；先全覆盖按账户/ordered_at/order_id排序，后筛窗口。窗口注册账户0个；首单明细O0000011=3000分；后续有效单1笔。完整账户/订单/注册与过滤明细见本目录ledger-small-cases.json#B5-H03，源文件hash见expected-freeze.json。卡不参与计数；金额整数分，不推终身首购。"
+  },
+  {
+    "id": "B6-N01",
+    "question": "请同时列出2026年8月青禾优选全门店、全渠道的月内购买会员数、月内复购会员数和月内复购率。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "rows": [
+        [
+          15,
+          12,
+          0.8
+        ]
+      ],
+      "units": {
+        "monthly_buyer_count": "count",
+        "monthly_repeat_buyer_count": "count",
+        "monthly_repeat_rate": "ratio"
+      },
+      "data_version": "qinghe-w03-20260923-small"
+    },
+    "expected_source": "依据materials/w03/03_会员运营周报.md（月内3项）与01_订单日报说明.md（有效订单）、05_数据字典.md，原small manifest与4表sha逐项验证。以paid且paid_cents-refund_cents>0选订单，再按CRM账户和自然月建订单ID集合；>=1为购买，>=2为复购；复购账户数/购买账户数，零分母null；与卡张数、会员等级、付费资格无关。2026-08购买15账户、复购12账户，12/15=0.8。明细见ledger-small.csv和monthly-summary-small.json；均按原订单日期归月。"
+  },
+  {
+    "id": "B6-M01",
+    "question": "请按自然月分别列出2026年7月和8月青禾优选全门店、全渠道的月内购买会员数、月内复购会员数和月内复购率；保留各月，不给跨月合计或平均率。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "start": "2026-07-01",
+        "end": "2026-09-01",
+        "group_by": [
+          "metric_time__month"
+        ],
+        "filters": []
+      },
+      "columns": [
+        "metric_time__month",
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "rows": [
+        [
+          "2026-07-01 00:00:00",
+          11,
+          1,
+          0.09090909090909091
+        ],
+        [
+          "2026-08-01 00:00:00",
+          15,
+          12,
+          0.8
+        ]
+      ],
+      "units": {
+        "monthly_buyer_count": "count",
+        "monthly_repeat_buyer_count": "count",
+        "monthly_repeat_rate": "ratio"
+      },
+      "data_version": "qinghe-w03-20260923-small"
+    },
+    "expected_source": "依据materials/w03/03_会员运营周报.md（月内3项）与01_订单日报说明.md（有效订单）、05_数据字典.md，原small manifest与4表sha逐项验证。以paid且paid_cents-refund_cents>0选订单，再按CRM账户和自然月建订单ID集合；>=1为购买，>=2为复购；复购账户数/购买账户数，零分母null；与卡张数、会员等级、付费资格无关。2026-07为11、1、1/11；2026-08为15、12、12/15，月组须为各月月首00:00:00。M00005两月各1有效单，均非月内复购；不得合并人数、跨月凑两单或平均比率。"
+  },
+  {
+    "id": "B6-Z01",
+    "question": "2026年5月青禾优选全门店、全渠道的月内购买会员数、月内复购会员数和月内复购率分别是多少？",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "start": "2026-05-01",
+        "end": "2026-06-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "rows": [
+        [
+          0,
+          0,
+          null
+        ]
+      ],
+      "units": {
+        "monthly_buyer_count": "count",
+        "monthly_repeat_buyer_count": "count",
+        "monthly_repeat_rate": "ratio"
+      },
+      "data_version": "qinghe-w03-20260923-small"
+    },
+    "expected_source": "依据materials/w03/03_会员运营周报.md（月内3项）与01_订单日报说明.md（有效订单）、05_数据字典.md，原small manifest与4表sha逐项验证。以paid且paid_cents-refund_cents>0选订单，再按CRM账户和自然月建订单ID集合；>=1为购买，>=2为复购；复购账户数/购买账户数，零分母null；与卡张数、会员等级、付费资格无关。manifest覆盖2024-09-01至2026-09-01（不含）；2026年5月全月原orders无行，两个集合均空，结果0、0、null（分母为零，非覆盖外）。"
+  },
+  {
+    "id": "B6-X01",
+    "question": "请列出2026年8月1日至8月15日（含15日）青禾优选的月内购买会员数、月内复购会员数和月内复购率。",
+    "expected": {
+      "status": "unsupported"
+    },
+    "expected_source": "03_会员运营周报限定完整自然月；所问半开区间[2026-08-01,2026-08-16)不是完整月，contract及engine.py:117-120也明确拒绝。不得偷偷扩到整月。"
+  },
+  {
+    "id": "B6-X02",
+    "question": "请将2026年8月青禾优选的月内购买会员数、月内复购会员数和月内复购率按订单成交门店分别列出。",
+    "expected": {
+      "status": "unsupported"
+    },
+    "expected_source": "03_会员运营周报明确仅整月、全门店口径；contract/engine当前full_month_only拒绝成交门店分组。不能改用会员归属门店或仍返回全店数。"
+  },
+  {
+    "id": "B6-X03",
+    "question": "2026年8月青禾优选仅小程序渠道的月内购买会员数、月内复购会员数和月内复购率是多少？",
+    "expected": {
+      "status": "unsupported"
+    },
+    "expected_source": "业务材料03未明确禁止渠道；当前contract的full_month_only明确全渠道且engine.py:118拒绝filters，因此预期unsupported是当前实现边界，不是客户原文禁止。不得静默去掉渠道筛选。"
+  }
+]

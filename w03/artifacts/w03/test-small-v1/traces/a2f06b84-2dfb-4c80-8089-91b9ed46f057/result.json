@@ -1,0 +1,30 @@
+{
+  "status": "unsupported",
+  "reason": "monthly_paid_buyer_count 仅支持完整自然月、全门店、全渠道口径，不支持按“小程序”渠道筛选；2026年8月是完整自然月，但“仅小程序渠道”超出该指标能力。",
+  "intent": {
+    "status": "unsupported",
+    "reason": "monthly_paid_buyer_count 仅支持完整自然月、全门店、全渠道口径，不支持按“小程序”渠道筛选；2026年8月是完整自然月，但“仅小程序渠道”超出该指标能力。",
+    "metrics": [
+      "monthly_paid_buyer_count"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": [
+      {
+        "field": "order__channel",
+        "op": "eq",
+        "value": "小程序"
+      }
+    ]
+  },
+  "question": "2026年8月青禾优选仅小程序渠道的月末付费会员购买人数是多少？",
+  "trace_id": "a2f06b84-2dfb-4c80-8089-91b9ed46f057",
+  "elapsed_seconds": 5.536,
+  "model_usage": {
+    "prompt_tokens": 11252,
+    "completion_tokens": 764,
+    "total_tokens": 12016
+  },
+  "model_calls_with_usage": 1
+}

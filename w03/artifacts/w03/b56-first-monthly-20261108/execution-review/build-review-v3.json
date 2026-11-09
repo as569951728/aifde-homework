@@ -1,0 +1,240 @@
+{
+  "reviewer": "b56_execution_review",
+  "reviewed_at": "2026-11-08T15:19:20.365763+00:00",
+  "stage": "actual_generated_library_semantic_review",
+  "build": "artifacts/w03/b56-first-monthly-20261108/build-v3",
+  "status": "approved_for_merge_load",
+  "approved_for_merge_load": true,
+  "failed_checks": [],
+  "passed_checks": [
+    {
+      "id": "sources",
+      "finding": "Every catalog and business_model_usage quote exact original; v2 formatted heading defect absent; source check independently rechecked."
+    },
+    {
+      "id": "target_and_files",
+      "finding": "32 targets exactly once, no unresolved, response matches generated YAML/catalog/SQL, ratios closed."
+    },
+    {
+      "id": "old24",
+      "finding": "Old24 source semantics and financial ratios reviewed; original orders preserve paid, refund, cancelled and valid scopes, amount units and distinct-account/store measures."
+    },
+    {
+      "id": "B5-registration",
+      "finding": "members one row per member, sum1 by registered_at; no order join filtering registrations."
+    },
+    {
+      "id": "B5-valid-rank",
+      "finding": "One order_sequence fact keeps all effective orders; paid and net>0 before ROW_NUMBER, partition member_id/order ordered_at,order_id over full coverage."
+    },
+    {
+      "id": "B5-first-repeat",
+      "finding": "Conditional distinct first member, conditional first net, first count and seq>=2 repeat count share effective fact; amounts cents and original order date."
+    },
+    {
+      "id": "B5-H03",
+      "finding": "Same frozen intent/expected, unchanged judge: M00005 zeros and M00007 repeat0 now pass; actual SQL uses conditional measures with NULL exclusion for distinct key and ELSE0 sums."
+    },
+    {
+      "id": "B5-dimensions",
+      "finding": "Actual MetricFlow graph exposes all12 targets for first/repeat via unique order/member/store paths; order relation is one-to-one and retains full-history identity."
+    },
+    {
+      "id": "B6-grain",
+      "finding": "member_id+month_start GROUP BY and grain_keys explicit; primary composite and synthetic key checked unique/non-null; no card join."
+    },
+    {
+      "id": "B6-threshold-denominator",
+      "finding": ">=1 buyer, >=2 repeat sum flags per account-month, ratio repeat/buyer; no all-registration denominator or cross-month collapse."
+    },
+    {
+      "id": "B6-policy",
+      "finding": "All3 monthly metrics full_month_only=true; engine rejects partial month, filters/nonmonth groups and ungrouped crossmonth; zero denominator remains null."
+    },
+    {
+      "id": "technical_gates",
+      "finding": "Current source,grain,dimension,metricflow and validation all true;32 native compiles; input and frozen hashes consistent."
+    },
+    {
+      "id": "partition",
+      "finding": "22/21 split is object-identical to original frozen43; no change in new13 questions or expectations."
+    }
+  ],
+  "mechanical_checks": {
+    "passed": 19,
+    "total": 19
+  },
+  "reviewed_metrics": [
+    "order_count",
+    "paid_order_count",
+    "valid_order_count",
+    "cancelled_order_count",
+    "refund_order_count",
+    "partial_refund_order_count",
+    "full_refund_order_count",
+    "payment_cents",
+    "refund_cents",
+    "net_sales_cents",
+    "gross_cents",
+    "discount_cents",
+    "buyer_count",
+    "refund_buyer_count",
+    "selling_store_count",
+    "valid_order_items",
+    "avg_order_value",
+    "avg_buyer_value",
+    "purchase_frequency",
+    "refund_amount_rate",
+    "cancel_rate",
+    "refund_order_rate",
+    "discount_rate",
+    "items_per_order",
+    "new_member_count",
+    "first_buyer_count",
+    "first_order_sales_cents",
+    "first_order_count",
+    "repeat_order_count",
+    "monthly_buyer_count",
+    "monthly_repeat_buyer_count",
+    "monthly_repeat_rate"
+  ],
+  "resolved_findings": [
+    {
+      "id": "B5-08-grouped-zero",
+      "prior": "v1 H03 four NULL vs0 failures retained",
+      "resolution": "v3 identical H03 exact matched after common-fact conditional generation; not patched actual or expected"
+    },
+    {
+      "id": "G01-SOURCE_QUOTE_NOT_EXACT",
+      "prior": "v2 source quote format deletion retained",
+      "resolution": "v3 all quotes continuous original strings"
+    }
+  ],
+  "diagnostic": {
+    "native_deterministic_queries": 1,
+    "model_api_calls": 0,
+    "case_id": "B5-H03",
+    "passed": true,
+    "expected_rows": [
+      [
+        "M00005",
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        "M00007",
+        1,
+        3000,
+        1,
+        0,
+        1
+      ]
+    ],
+    "actual_rows": [
+      [
+        "M00007",
+        1,
+        3000,
+        1,
+        0,
+        1
+      ],
+      [
+        "M00005",
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    ],
+    "project": "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v3-project",
+    "raw_generated_files_modified": false,
+    "formal47_test_count": 0
+  },
+  "limitations": [
+    {
+      "id": "valid-only-group-limit",
+      "detail": "order_sequence contains valid orders, not all original rows. Groups represented only by invalid orders in combined queries have not been tested; approval does not certify such absent subgroup zero handling."
+    },
+    {
+      "id": "grouped-empty-month-limit",
+      "detail": "monthly fact has only purchasing account-months. A single ungrouped empty month is supported by engine zero handling, but grouped zero-month completion is not verified or claimed."
+    },
+    {
+      "id": "dimensions-vs-testing",
+      "detail": "B5 store/channel paths now structurally reachable, but no channel/store reranking runtime case in frozen13; graph reachability is not execution coverage."
+    },
+    {
+      "id": "catalog-precision",
+      "detail": "first_buyer_count constraint uses abbreviated 按 member_id 排序; actual source and SQL unambiguously mean partition by account then ordered_at,order_id. Answer review must use complete definition and not repeat this abbreviation as the sort keys."
+    },
+    {
+      "id": "pending-execution",
+      "detail": "Only deterministic H03 executed here. Planned47 natural-language tests,13 new full answers, prior regressions,4 dataset loads and scale validation remain separate gates."
+    }
+  ],
+  "approval_scope": "Permit this exact32 library to single-input merge and load all4 frozen data suites, followed by47 natural-language tests and separate full answer review. This does not certify all queries, scale, production, learner mastery, or submission.",
+  "evidence_sha256": {
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/trace.json": "20664e3334786f5ec35762f0c83948d3f78ec70cb03ab97e74700259a4556b68",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/skill_used.md": "e0af34b7f8da18a15030df93d2672a88ef662a6c526ec2d4c0492b57faf55bcd",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/provenance.json": "8e1cd443755e93f9644288a9f0f015929a9aab34429c45444c23fba40d427ce1",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/input.json": "5f72f23fc0061473b08692b5e7fe2f163ebc64e18f79e6f34614c7b5eaa07f4b",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/scope.json": "3c03f74df77702d68cd217e0ccba2ec6095819271a4c44343fc42ee69c36f366",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/grain_check.json": "43297d822dec04ff3d5c824a1709c5f53ac05178234bb4d7801933b63cf5a1a1",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/dimension_targets.json": "061912a5979c60cb59e90d90939d1eb6857437d930c8a1d9b275d50a0d10cd25",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/metrics.yml": "8b4792bad4befa2ffb4d68bfdb06c18bd2caad1263dbe74a46222f69ffa6fd6c",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/dimension_check.json": "b4e9fdf55355348435a22342946f1ddc8597078e94a137caf7716e1ef4f63bdd",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/monthly_member_fact.sql": "d53a4cc0716abbeb878da972c4f6e50293067655476810d2bec53b94a0124539",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/validation.json": "f89a21df157ae1c1e0c79da911bf96c8e5c2378155cfa462537116f10fbbefd6",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/source_check.json": "76aa3b58148d89cc797ae408eba304f008308b708476e2db124fcf4e5d1c7a2e",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/order_sequence.sql": "647db79aa8596a85b6c9309e43386a5c142e141a3b0f1dc258a479b908ee9101",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/metricflow_check.json": "bfaa876f0025eaa1f2deaa278f6c6c4332a6eda564ee3d97d0a0e0524fd0494a",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/unresolved.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/catalog.json": "5807a7995c0daa630d99c0f19007cc6b07f62c40f3272b370bd2c84a1500bd3a",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/response.json": "2cb6797a135383beb060991a71adae3f32d09eb6b026d7f354468880aeafb856",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/grain_contract.json": "e0c2c41b60cf6fb9c6b192149e126e82a648d9e8e18d4f2c8781b97400a53a9d",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/validation-project/dataset.json": "58cb8f3eaa015cb767d7c6335fc8996c9196f3fdc689dcf585df4f46cbb10451",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/validation-project/dimensions.json": "c44b5f56ee01e7157ee282be959024fdaa5be9db85e60f4ac98702a57069ef64",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/validation-project/validation.json": "f89a21df157ae1c1e0c79da911bf96c8e5c2378155cfa462537116f10fbbefd6",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/validation-project/grain_check.json": "43297d822dec04ff3d5c824a1709c5f53ac05178234bb4d7801933b63cf5a1a1",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/validation-project/metricflow_check.json": "bfaa876f0025eaa1f2deaa278f6c6c4332a6eda564ee3d97d0a0e0524fd0494a",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/review-contract.json": "ffdf5e69885f9a5c8a50df395f64f65d979dd904d5dd2b6746aed691039d7670",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/review-contract.md": "97c4c596f3037d5c8e9eaf9c814c8cb2bffe97caf94334c84fea6c532859b8c1",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/static-checks-v3.json": "a7945636b3778bf20ea9b8469ff6e7a666c55e31cb23e9e2feddd3fc9056f4e9",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/review_build_v3_static.py": "2c6e009770eab3a43fe64bb637a2269bfb56e12653c19d66c33bc36551687b2e",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/run_diagnostic_v3.py": "1039a4b53a0b09869526a933d7c9ef7cf3de2ecbb999df164dc8d2241736b92c",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v3-request.json": "971b1426838d71f8ac7b4d0e430ffd487b71a2ef8ee40b8bbc5af9237807a6f5",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v3-actual.json": "46ab263ae3273ed2040372a45e3cda3e0b7b4abb1330d840901973fa2bcfcc30",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v3-judge.json": "eb6116fba0f791e7ddbbe3f229dbcda7bce8d24b6ae7ec40576bbaec26054292",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v3.sql": "dbb6dd9e7e6dd2e9bbf2cc1cc23f0ef1d1fff1046afabdfc17eb87d72924666e",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v3.log": "45bb116a1938f45859d4096916bb8b447f99d943d5aa5d91fa8245a9fb4a3041",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/candidate-method-review-v014.json": "418f71dec141372fdbe21eec34c9ff9bd93d77a119d4fb738eaacd175d6cdfaf",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/build-review-v1.json": "25ec0996ce975291a389264199171d043856d3d6f80b22412636a54b49b2b7db",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/build-review-v2.json": "758533c941ca064c83dbfe5a36d2ce4a051701c2cdb71e1806ee0a2891e72aea",
+    "artifacts/w03/b56-first-monthly-20261108/execution-partition.json": "a619eb0ee6482e9c531bbb308dcac1f6d52d859a5068b1e2c2f6bdc9150836e1",
+    "artifacts/w03/b56-first-monthly-20261108/tests-small-a-frozen.json": "7a8b4cc6ec537b695aa28ba4ee8a76f995bc331f944bac458dcd1268d3e1f0c4",
+    "artifacts/w03/b56-first-monthly-20261108/tests-small-b-frozen.json": "99cf8d0dcdb30277c629ae0d6cb6d24a9351a193bc5ff3b4c6b7296753085a5d",
+    "artifacts/w03/b56-first-monthly-20261108/tests-small-all-planned-v2.json": "76dac6e1cd91468c7547bbe4d7b9059ee7e69735134039fcda080800e30b66e2",
+    "artifacts/w03/b56-first-monthly-20261108/design-review/final-review-v2.json": "6df785172eed6c1543b3168ffba99ab7647549c41fede8542ee5eb47c107a222",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/expected-freeze.json": "dbd709b0a2338e00628239ecbc43ea1b956701e0650b303382950e2c2fcd7c0b",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/tests-small.json": "5106bd343b90476341348b3cbefad65bcf04b24c62ac7bbd1811f07f6d3b05dc",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/tests-fixture.json": "c3cd3367a275152fbd662ebbe21873f9aab648856ef1e8a5200b85c3d54b5ad8",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/expected-freeze.json": "18b010781fdf4d133926f36090ef3dcdd0141bdd449389ec874fe31f1f3743eb",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/tests-small.json": "9f3407294d6345ffafef81f3cd2a675beca17c00576737690b93f8de33158c8c",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/tests-fixture.json": "bcea4c0268204758f78100061a6eabf3389e8bf3e32be71f95a3f5f934dc84c5",
+    "materials/w03/01_订单日报说明.md": "976fa129493e6bd2861a58d74df2ba3ad4448ea01a2d25651124222a61cebb67",
+    "materials/w03/03_会员运营周报.md": "25ab933556bf34bef21b528d4c7838c9baad33ae289d59f09501e765080bb492",
+    "materials/w03/05_数据字典.md": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16",
+    "docs/w03/business_model.md": "4e3187d124adc0856163b74a2cdd5edba064cf4ed39a698c553c9fe196ec00fb",
+    "docs/w03/contract.md": "76df027ee419a5c02a92459641e7a126ab3e8db713cdf3bc63c4ffd42bf62042",
+    "materials/w03/02_财务邮件.md": "f81e0ddb5c03dd4eb2d01094816716d8375d03fe883b947ec8297edf8d525557",
+    "materials/data/small/orders.csv": "c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1",
+    "customer/w03/judge.py": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3",
+    "platform/fde_product/metrics/engine.py": "e8b39da2517a65f6406da4d261173291c795248ea6c62638137e09ce750a98f3",
+    "artifacts/w03/b56-first-monthly-20261108/candidate-v014/SKILL.md": "e0af34b7f8da18a15030df93d2672a88ef662a6c526ec2d4c0492b57faf55bcd"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "case_id": "DQ11",
+  "started_at": "2026-11-06T16:38:35.280321+00:00",
+  "completed_at": "2026-11-06T16:38:46.759052+00:00",
+  "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "card_type": "家庭季卡",
+    "valid_from": "2026-05-20",
+    "valid_until": "2026-08-20",
+    "ended_at": null,
+    "decision_date": "2026-08-10",
+    "hypothetical_run_date": "2026-08-31"
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-1790300be5a244acb32a68b034b9f2dd/run.json",
+    "run_id": "RUN-1790300be5a244acb32a68b034b9f2dd",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "判定日：2026-08-10\n产品范围：纳入\n结论：有效\n\n| 检查项 | 题设日期 | 判定日是否满足本项条件 | 依据 |\n| --- | --- | --- | --- |\n| 生效日 | 2026-05-20 | 是 | 家庭季卡权益自生效日当天起有效；判定日2026-08-10不早于生效日（陈姐 MSG-03886、03888） |\n| 计划结束日 | 2026-08-20 | 是 | 计划权益结束日当天已无效；判定日2026-08-10早于该日（陈姐 MSG-03886、03888、03890） |\n| 提前终止日 | 空 | 是 | 提前终止日期为空，表示无提前终止；仍受计划结束日限制（陈姐 MSG-03886、03890） |\n\n| 区间种类 | 起点 | 含起点 | 终点 | 含终点 |\n| --- | --- | --- | --- | --- |\n| 计划区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n| 综合有效区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n\n来源与范围：产品范围依据小林 MSG-03848、03854，本期总部运营月报纳入悦享年卡与家庭季卡；日期端点依据陈姐 MSG-03886、03888、03890。本题为人工构造的隔离测试情境推导，不是生产查询或客户实际记录核验；hypothetical_run_date 2026-08-31 未参与指定判定日判断。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "81a6b637ac9ceb2bc69d6720fd01cdba870a612c8ea8fb0e72c70a37e69f1427"
+}

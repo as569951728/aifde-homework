@@ -1,0 +1,345 @@
+{
+  "status": "completed_passed",
+  "reviewed_at": "2026-11-07T05:03:49.499222+00:00",
+  "independent_source_first": true,
+  "criteria_reused_from": "artifacts/w03/answer-repair-20261107/stage2/independent-review/source-first-criteria.json",
+  "criteria_sha256": "a73f64fdef4959e9693c9c6dd61d42397857dca4aa56b8de6d3a1dfcebb91d4e",
+  "control_expectations_sha256": "5e41963103e177f0fa21dfd7c4f1d2521d80aff606169e9042ffd7f0f803fc65",
+  "candidate_prompt_sha256": "31b3c6582f7e9f1498f985f578cf3c2ad63da5a844d26f5c05baa7b670b00e1d",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "summary": {
+    "total_cases": 8,
+    "semantic_passed": 8,
+    "semantic_failed": 0,
+    "semantic_not_assessable": 0,
+    "original_failures_passed": 2,
+    "positive_regressions_passed": 4,
+    "independent_controls_passed": 2,
+    "native_runs": 8,
+    "http_attempts": 8,
+    "format_failures": 0,
+    "network_failures": 0,
+    "framework_length_expansions": 0,
+    "semantic_retries": 0
+  },
+  "cases": [
+    {
+      "id": "B05",
+      "group": "original_failure",
+      "input_track": "model_with_fixed_materials",
+      "verdict": "passed",
+      "required_point_review": [
+        {
+          "criterion": "覆盖内空集净额",
+          "result": "passed",
+          "evidence_and_reason": "明确0分，注明由合计定义推导，未给展示规则不阻断数值结论。"
+        },
+        {
+          "criterion": "零分母与覆盖外",
+          "result": "passed",
+          "evidence_and_reason": "无购买账户月复购率未定义而非0；覆盖外不支持并非0。“无复购”紧接复购率，按率的解释读，不否定已知账户计数。"
+        },
+        {
+          "criterion": "单位与附加解释",
+          "result": "passed",
+          "evidence_and_reason": "13000分=130元；未再引入错误的人均/单均分母。引用01/02/03/05匹配指定材料。"
+        }
+      ],
+      "source_and_complete_answer_review": "passed",
+      "findings": [],
+      "question": "请分别解释：覆盖内筛选无匹配订单的净额、覆盖内无购买账户月份的复购率、覆盖外月份的净额。金额13000分是否等于13000元？",
+      "fixture": null,
+      "actual_answer": "1）覆盖内筛选无匹配订单的净额：按材料中的净销售额口径理解，净销售额为 paid 订单实付减退款后的合计，取消单不计，按原订单下单日期归属，单位分（《订单日报说明》）。若筛选在覆盖期内没有任何匹配订单，则没有可汇总订单，本次推导为 0 分；这是空集求和推导，材料未单列“空结果如何展示”的规则。2）覆盖内无购买账户月份的复购率：月内复购率＝月内复购会员数÷月内购买会员数，仅整月、全门店口径，分母零时未定义，跨多月须按月展示（《会员运营周报》；《财务邮件》亦明确零分母未定义）。因此该月购买账户数为 0 时，复购率未定义，不能填 0，也不能表述为“无复购”。3）覆盖外月份的净额：数据覆盖为 2024-09-01（含）至 2026-09-01（不含）（《数据字典》）；覆盖外月份没有本期数据依据，净额不可计算／不适用，且《财务邮件》明确“数据覆盖之外不是零”，不能填 0。4）13000 分不等于 13000 元；按金额为整数分、展示元需换算（《财务邮件》），13000 分＝130 元。",
+      "actual_answer_sha256": "ef4a2636944fbd9cd8f7395b9e703c706a1e2a294aaa4591348692e05dc04aa8",
+      "output_path": "artifacts/w03/answer-repair-20261107/stage2-r2/output/B05.json",
+      "output_sha256": "3df25a3560c88feb6d7f6e422121ad556ac5461917fcb4e415b851328fe41a81",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-fc0730780a2c458f9e7f402d164bad61/run.json",
+      "native_run_sha256": "3dde65ae16048a5ecde7a473b636dbb3872ef9fb52159ab7e7a1b49223d3e6c3",
+      "request_sha256": "ed4972657a00de3bd138c502c50de5bf82b5244574d8a82eaa20ebf584c6adff",
+      "http_attempts": 1,
+      "date_machine_pass": null
+    },
+    {
+      "id": "DQ10",
+      "group": "original_failure",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "required_point_review": [
+        {
+          "criterion": "逐条件",
+          "result": "passed",
+          "evidence_and_reason": "是/否/是；提前终止单项未被计划结束失败覆盖，理由明确2026-08-20早于08-25。"
+        },
+        {
+          "criterion": "区间与结论",
+          "result": "passed",
+          "evidence_and_reason": "计划/综合均[2026-05-20,2026-08-20)，无效；后置终止不能延长。"
+        },
+        {
+          "criterion": "来源与范围",
+          "result": "passed",
+          "evidence_and_reason": "产品小林03848/03854；日期陈姐03886/03888/03890，人工情境及正式文件缺口保持。"
+        }
+      ],
+      "source_and_complete_answer_review": "passed",
+      "findings": [],
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-25",
+        "decision_date": "2026-08-20"
+      },
+      "actual_answer": "判定日：2026-08-20\n产品范围：纳入\n结论：无效\n\n| 检查项 | 题设日期 | 判定日是否满足本项条件 | 依据 |\n| --- | --- | --- | --- |\n| 生效日 | 2026-05-20 | 是 | 权益在生效日期当天起有效；判定日不早于生效日。陈姐 MSG-03886、03890 |\n| 计划结束日 | 2026-08-20 | 否 | 计划权益结束日期当天已无效；判定日等于计划结束日。陈姐 MSG-03886、03890 |\n| 提前终止日 | 2026-08-25 | 是 | 提前终止自当天起无效；判定日2026-08-20早于该日，本项不触发无效。陈姐 MSG-03886、03888、03890 |\n\n| 区间种类 | 起点 | 含起点 | 终点 | 含终点 |\n| --- | --- | --- | --- | --- |\n| 计划区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n| 综合有效区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n\n来源与范围：产品范围依据小林 MSG-03848、03854，本期月报纳入家庭季卡；日期规则依据陈姐 MSG-03886、03888、03890，正式规则文件尚未取得。综合终点取计划结束日；提前终止日2026-08-25晚于该日，不改变计划结束造成的失效。以上为人工构造隔离测试情境下的推导，不是客户真实记录或已执行查询。",
+      "actual_answer_sha256": "c46c8ab84222e0745e85614b960b272e649dfc8932646dc4131ccfa5776dc81f",
+      "output_path": "artifacts/w03/answer-repair-20261107/stage2-r2/output/DQ10.json",
+      "output_sha256": "e9637bf0efdcde17c0f0da4ea981feb33bd0fc18115ee93f56ab3a5b0f501d50",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-b82f4ebb0cff4487869dca5611558b3c/run.json",
+      "native_run_sha256": "adb15bead7049bfea7fdd1f73fef3f35507b544a65d7bfc05b6d4fec931cc42f",
+      "request_sha256": "8491109996a85654fb5ec27b1d059d38c6fcf63f6193b4dfa37b3904114bb8ad",
+      "http_attempts": 1,
+      "date_machine_pass": true
+    },
+    {
+      "id": "B01",
+      "group": "positive_regression",
+      "input_track": "model_with_fixed_materials",
+      "verdict": "passed",
+      "required_point_review": [
+        {
+          "criterion": "四订单分类",
+          "result": "passed",
+          "evidence_and_reason": "O1支付且有效；O2/O4支付非有效；O3均否。每单状态、净额与理由一致。"
+        },
+        {
+          "criterion": "退款优惠与来源",
+          "result": "passed",
+          "evidence_and_reason": "退款累计、按原订单日期归属；优惠原价减实付且不冲退款。未编缺失原价或优惠额。"
+        }
+      ],
+      "source_and_complete_answer_review": "passed",
+      "findings": [],
+      "question": "人工订单：O1 paid实付1000退款200；O2 paid实付1000退款1000；O3 cancelled实付0退款0；O4 paid实付0退款0。分别判断支付订单与有效购买，并说明退款与优惠的区别。",
+      "fixture": null,
+      "actual_answer": "按题设给定状态和金额逐单判断（人工构造情境推导，不是系统查询）：\n\n| 订单 | 支付订单 | 有效购买 | 直接依据 |\n| --- | --- | --- | --- |\n| O1 | 是 | 是 | paid；1000-200=800，大于0 |\n| O2 | 是 | 否 | paid；1000-1000=0，全额退款不计有效购买 |\n| O3 | 否 | 否 | cancelled；取消不计，且0-0不大于0 |\n| O4 | 是 | 否 | paid，按状态计入支付订单；但0-0=0，不大于0，不构成有效购买 |\n\n依据：《订单日报说明》支付订单数定义为状态为 paid 的订单数，包括后来全部退款的订单；有效订单数定义为 paid 且实付金额减退款金额大于零，取消和全退不计。业务模型中的有效购买采用该条件。O4 虽状态为 paid、计入支付订单，但因净额不大于零，不是有效购买。\n\n退款与优惠的区别：优惠金额是 paid 订单原价减实付的金额合计，属于价格折让，退款不冲减原优惠金额；退款金额是 paid 订单的累计退款，按原订单下单日期归属，不是现金退款发生日。有效购买判断使用实付减退款，不以优惠金额替代退款。依据：《订单日报说明》‘优惠金额’‘退款金额’；《数据字典》orders 的 gross_cents、paid_cents、refund_cents 分别表示原价、实付和截至快照的累计退款。",
+      "actual_answer_sha256": "c74b87b8d5c2734373ea0eb4738988019918ffabf52d2f48b4971072ea5720d7",
+      "output_path": "artifacts/w03/answer-repair-20261107/stage2-r2/output/B01.json",
+      "output_sha256": "99313d2fecf3c5a7f875f65d9eb3ef0357de690938f46fb1bcc9101f1881a471",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-9c44eef0ca804caeb568296cdcd41102/run.json",
+      "native_run_sha256": "8b281b301b8b387b437ac924988f43c066e03525b1e1294b42916960bb6a60d0",
+      "request_sha256": "683767d04b83e121b642fba32aafcb757be2b7688bfddbf35cc44bd3677693e6",
+      "http_attempts": 1,
+      "date_machine_pass": null
+    },
+    {
+      "id": "B04",
+      "group": "positive_regression",
+      "input_track": "model_with_fixed_materials",
+      "verdict": "passed",
+      "required_point_review": [
+        {
+          "criterion": "排序和窗口",
+          "result": "passed",
+          "evidence_and_reason": "全覆盖先排取消，再日期/订单号排序，7月10日O100先于O101；8月无此账户首单，O200为后续单。"
+        },
+        {
+          "criterion": "概念与范围",
+          "result": "passed",
+          "evidence_and_reason": "不是终身首购，作为题设情境推导，不冒称真实查询，也没重用旧恢复答复。"
+        }
+      ],
+      "source_and_complete_answer_review": "passed",
+      "findings": [],
+      "question": "人工情境：同一账户全覆盖历史中最早订单取消；随后7月10日有有效订单O100、O101；8月又有有效订单O200。查8月观测期首单时应选哪笔？同日如何排序？这能叫终身首购吗？",
+      "fixture": null,
+      "actual_answer": "按《会员运营周报》的口径：先在全测试覆盖期内为每个账户按“订单日期、订单号”排序，取第一笔有效订单，再看它是否落入查询窗口。取消订单不属于有效订单，应排除。因此本题情境下，该账户最早订单取消后，第一笔有效订单是7月10日的O100；同日O100、O101按订单号排序，O100在前，O101为同日第二笔。查8月观测期首单时，不能选8月的O200：该账户的首笔有效订单是7月10日O100，未落入8月窗口，故该账户不计入8月观测期首单；O200属于第二笔及以后的有效订单，应归入“观测期后续购买订单数”而非首单。该口径只称“测试覆盖期内首次有效订单”，周报明确“不代表终身首购”，所以不能叫终身首购。以上为基于题设完整记录和该周报定义的情境推导，不是客户真实记录查询结果。",
+      "actual_answer_sha256": "9b84459c01b0459fe07e3d37e8043fa34d0d21cad395871ea48175dbc0e9fd6d",
+      "output_path": "artifacts/w03/answer-repair-20261107/stage2-r2/output/B04.json",
+      "output_sha256": "7214bc74a1bbb28506121b52ede7b12128bc49239a882efa2979e8b43399d15f",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-0ec36b7a19884f359a405a0c7849badb/run.json",
+      "native_run_sha256": "7e856ba41682f96a76e6e493f286e5184ce5c39a3bbc505df89c4bea3f75d9ce",
+      "request_sha256": "2fd504d5ac8c2e2ba471cd541706fa63526c1e3f991ce0ce9b2dd79ed1b27860",
+      "http_attempts": 1,
+      "date_machine_pass": null
+    },
+    {
+      "id": "DQ09",
+      "group": "positive_regression",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "required_point_review": [
+        {
+          "criterion": "逐条件",
+          "result": "passed",
+          "evidence_and_reason": "2026-08-16：是/是/否；提前终止日08-15之后无效。"
+        },
+        {
+          "criterion": "区间与结论",
+          "result": "passed",
+          "evidence_and_reason": "计划[05-20,08-20)，综合[05-20,08-15)；总体无效与各项一致。"
+        },
+        {
+          "criterion": "来源与范围",
+          "result": "passed",
+          "evidence_and_reason": "产品和端点来源分开且准确，不冒称生产记录。"
+        }
+      ],
+      "source_and_complete_answer_review": "passed",
+      "findings": [],
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-16"
+      },
+      "actual_answer": "判定日：2026-08-16\n产品范围：纳入\n结论：无效\n\n| 检查项 | 题设日期 | 判定日是否满足本项条件 | 依据 |\n| --- | --- | --- | --- |\n| 生效日 | 2026-05-20 | 是 | 权益在生效日期当天起有效；判定日不早于生效日（陈姐 MSG-03886、03888、03890） |\n| 计划结束日 | 2026-08-20 | 是 | 计划权益结束日期当天已无效；判定日早于计划结束日，尚未触发该终点（陈姐 MSG-03886、03888、03890） |\n| 提前终止日 | 2026-08-15 | 否 | 存在提前终止日期时，从提前终止当天起无效；判定日2026-08-16已在终止日之后（陈姐 MSG-03886、03888、03890） |\n\n| 区间种类 | 起点 | 含起点 | 终点 | 含终点 |\n| --- | --- | --- | --- | --- |\n| 计划区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n| 综合有效区间 | 2026-05-20 | 是 | 2026-08-15 | 否 |\n\n来源与范围：产品范围依据小林 MSG-03848、03854（本期月报只纳入悦享年卡与家庭季卡）；日期端点及按判定日检查依据陈姐 MSG-03886、03888、03890；本次为人工构造隔离测试情境的推导，不是客户真实记录、生产核验或已执行查询。",
+      "actual_answer_sha256": "4d9166c5b4f96b4507c61ffad485cdb8c80e03c2e4434e8d657c247969775159",
+      "output_path": "artifacts/w03/answer-repair-20261107/stage2-r2/output/DQ09.json",
+      "output_sha256": "64ecd0bec6a8fc8b56760cb90911293796b3aeeaf956d44909deb43cdad0c7e4",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-ae4b72decdcf4fde8e06cdc02fae58f6/run.json",
+      "native_run_sha256": "f28117bc64e064adc8bca0b85b7a9870a2048f6ce7a23ebd4854e14355361076",
+      "request_sha256": "a7d6b55bba1571f87d42c5ba38ac1fdafea1506c0ff693780e7ff4c5d1017879",
+      "http_attempts": 1,
+      "date_machine_pass": true
+    },
+    {
+      "id": "DQ11",
+      "group": "positive_regression",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "required_point_review": [
+        {
+          "criterion": "判定日及空值",
+          "result": "passed",
+          "evidence_and_reason": "按08-10而非假定运行日08-31；是/是/是，有效；空只表示无提前终止仍受计划日限制。"
+        },
+        {
+          "criterion": "区间与来源",
+          "result": "passed",
+          "evidence_and_reason": "计划/综合[05-20,08-20)；陈姐端点/空值、小林产品引用准确，人工范围保持。"
+        }
+      ],
+      "source_and_complete_answer_review": "passed",
+      "findings": [],
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-10",
+        "hypothetical_run_date": "2026-08-31"
+      },
+      "actual_answer": "判定日：2026-08-10\n产品范围：纳入\n结论：有效\n\n| 检查项 | 题设日期 | 判定日是否满足本项条件 | 依据 |\n| --- | --- | --- | --- |\n| 生效日 | 2026-05-20 | 是 | 权益自生效日期当天起有效；判定日2026-08-10晚于生效日（陈姐 MSG-03886、03888）。 |\n| 计划结束日 | 2026-08-20 | 是 | 计划权益结束日期当天已无效；判定日早于结束日，仍处有效期内（陈姐 MSG-03886、03888）。 |\n| 提前终止日 | 空 | 是 | 提前终止为空，仅表示无提前终止；仍受计划结束日限制，不导致本卡提前失效（陈姐 MSG-03886、03890）。 |\n\n| 区间种类 | 起点 | 含起点 | 终点 | 含终点 |\n| --- | --- | --- | --- | --- |\n| 计划区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n| 综合有效区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n\n来源与范围：产品范围依据小林 MSG-03848、03854（本期月报只纳入悦享年卡与家庭季卡持有人）；日期规则依据陈姐 MSG-03886、03888、03890。本次判断基于人工构造的隔离测试情境，不是客户真实记录、生产核验或已执行查询；正式规则文件和生产执行凭据未取得。",
+      "actual_answer_sha256": "a237692c905764cfa1ea47a3399c98749fa5389929c50b2275dfe353d0b0879d",
+      "output_path": "artifacts/w03/answer-repair-20261107/stage2-r2/output/DQ11.json",
+      "output_sha256": "5adcf3a5f5feb2a43cc0a81c9d0aa9bc7598f42044c0a20a1223f072b37fec99",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-802deeb43cfb4db9b30dc3eb5aca0772/run.json",
+      "native_run_sha256": "1dbbe40709e3d4fe039c12f0388f3c3e94c4b18c91969bbc4ceb98082e9cd8ba",
+      "request_sha256": "4335b55d6fab4aaf516794f57bd9121fb546800eaf9600e977f10854d7575357",
+      "http_attempts": 1,
+      "date_machine_pass": true
+    },
+    {
+      "id": "NUMCTRL01",
+      "group": "independent_control",
+      "input_track": "model_with_fixed_materials",
+      "verdict": "passed",
+      "required_point_review": [
+        {
+          "criterion": "A组四公式",
+          "result": "passed",
+          "evidence_and_reason": "30/2=15分/单；30/1=30分/账户；0/30=0；1/3约33.33%。各自分子分母正确。"
+        },
+        {
+          "criterion": "B组零分母",
+          "result": "passed",
+          "evidence_and_reason": "前三式0/0未定义；取消1/1=1。没有把净额0传染所有比率，也没把零分子说成未定义。"
+        },
+        {
+          "criterion": "单位和来源",
+          "result": "passed",
+          "evidence_and_reason": "有定义结果单位/无量纲明确，未定义项不编金额；01/02来源及人工覆盖范围正确。"
+        }
+      ],
+      "source_and_complete_answer_review": "passed",
+      "findings": [],
+      "question": "下列为覆盖内、同一口径的两组人工汇总小值，不是客户实际数据。A组：净销售额30分、有效订单2笔、购买账户1个、退款金额0分、实付金额30分、取消订单1笔、创建订单3笔；B组：净销售额0分、有效订单0笔、购买账户0个、退款金额0分、实付金额0分、取消订单1笔、创建订单1笔。请分别写出两组的有效订单均额、购买会员人均消费、退款金额占比和取消率，列出各自分子/分母、结果与单位；分数可保留，不自行补客户事实。",
+      "fixture": null,
+      "actual_answer": "本题为覆盖内人工构造情境，按题设数值与财务邮件公式推导，不是客户实际数据。\nA组：\n- 有效订单均额：分子为净销售额30分，分母为有效订单2笔，结果15分/单。\n- 购买会员人均消费：分子为净销售额30分，分母为购买账户1个，结果30分/账户。\n- 退款金额占比：分子为退款金额0分，分母为实付金额30分，结果0（0%，无量纲）。\n- 取消率：分子为取消订单1笔，分母为创建订单3笔，结果1/3（约33.33%，无量纲）。\nB组：\n- 有效订单均额：分子为净销售额0分，分母为有效订单0笔；分母为零，未定义。\n- 购买会员人均消费：分子为净销售额0分，分母为购买账户0个；分母为零，未定义。\n- 退款金额占比：分子为退款金额0分，分母为实付金额0分；分母为零，未定义。\n- 取消率：分子为取消订单1笔，分母为创建订单1笔，结果1（100%，无量纲）。\n依据：财务邮件给出四项公式及“分母零时未定义”；订单日报说明给出有效订单、购买会员数、取消订单数和创建订单数的含义；两份材料均声明本期测试数据覆盖内适用，不代表青禾真实全量数据。",
+      "actual_answer_sha256": "bb0eaa73756d6e247123af047ec5e4fb4697ec351a3c38c04e27a305bfcb900d",
+      "output_path": "artifacts/w03/answer-repair-20261107/stage2-r2/output/NUMCTRL01.json",
+      "output_sha256": "307422ba05274e158cf0f0454c430553a11205d01c00e1d2c9f439df30bb0024",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-80c7ce35791443168f27d709db0f7e3d/run.json",
+      "native_run_sha256": "8dbe08d56ee9658c957728f5d5488077907ca077c4c03ab2b83c05955e28f540",
+      "request_sha256": "8ef65908ca25666ffb2d7b473c3b596be3378ebc37a0dae6d36114b19856f4ac",
+      "http_attempts": 1,
+      "date_machine_pass": null
+    },
+    {
+      "id": "DATECTRL01",
+      "group": "independent_control",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "required_point_review": [
+        {
+          "criterion": "提前终止前",
+          "result": "passed",
+          "evidence_and_reason": "08-11早于08-12提前终止，且在计划期间：是/是/是，有效。"
+        },
+        {
+          "criterion": "区间不同",
+          "result": "passed",
+          "evidence_and_reason": "计划[05-20,08-20)，综合[05-20,08-12)；没有因已给提前终止日期就判现在无效。"
+        },
+        {
+          "criterion": "来源与范围",
+          "result": "passed",
+          "evidence_and_reason": "完整字段及所有条件按题设，产品小林/日期陈姐准确，未越为真实记录。"
+        }
+      ],
+      "source_and_complete_answer_review": "passed",
+      "findings": [],
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-12",
+        "decision_date": "2026-08-11"
+      },
+      "actual_answer": "判定日：2026-08-11\n产品范围：纳入\n结论：有效\n\n| 检查项 | 题设日期 | 判定日是否满足本项条件 | 依据 |\n| --- | --- | --- | --- |\n| 生效日 | 2026-05-20 | 是 | 权益在生效日期当天起有效；判定日不早于生效日（陈姐 MSG-03886、03888、03890） |\n| 计划结束日 | 2026-08-20 | 是 | 计划权益结束日期当天已无效，判定日须早于该日；2026-08-11早于2026-08-20（陈姐 MSG-03886、03888、03890） |\n| 提前终止日 | 2026-08-12 | 是 | 存在提前终止时从终止当天起无效；判定日早于2026-08-12，尚未进入无效段（陈姐 MSG-03886、03888、03890） |\n\n| 区间种类 | 起点 | 含起点 | 终点 | 含终点 |\n| --- | --- | --- | --- | --- |\n| 计划区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n| 综合有效区间 | 2026-05-20 | 是 | 2026-08-12 | 否 |\n\n来源与范围：家庭季卡属本期月报纳入产品范围（小林 MSG-03848、03854）；日期端点规则见陈姐 MSG-03886、03888、03890。本次判断基于题设人工构造的隔离测试情境推导，不是客户真实卡记录或已执行查询；正式规则文件和历史执行凭据仍未取得。",
+      "actual_answer_sha256": "b8750fbc95b0f1ee34415401d4c4dbae6061bd77dc716243dc1402824ff57e79",
+      "output_path": "artifacts/w03/answer-repair-20261107/stage2-r2/output/DATECTRL01.json",
+      "output_sha256": "7c4bfcd75481f6a36bf6535770f5352ed145da022a83d1533e79703acbc1632f",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-9a1e183b348d4f08b1888c76a49ba0ae/run.json",
+      "native_run_sha256": "3b9537481e615d1924caa833fdde66d31965e8dcafcb6f977f169ea48a0b7428",
+      "request_sha256": "e7e3235687616aca690b5f74ecd72b7e20cbc424199238cdfe7b4aeeb3de3fcf",
+      "http_attempts": 1,
+      "date_machine_pass": true
+    }
+  ],
+  "native_review": "native-request-review.json",
+  "native_review_sha256": "2b9671704a26071c0cd521b94242861fdfc7bc8cfa8566042423eca4708ce5bb",
+  "date_check_sha256": "b1be90575a80fa544ddcbb5b8588b2064074c3e57c6e2b5d8b432ec1902c840e",
+  "raw_failures_preserved": [
+    "原B05分母错误",
+    "原DQ10提前终止单项错误",
+    "stage1的U04/REG01新错和E01网络失败"
+  ],
+  "boundaries": [
+    "仅本次stage2-r2的8题；独立数字/日期控制不计原82题覆盖。",
+    "B01/B04/B05/NUMCTRL01为指定材料应用，不能计正文独立记忆。",
+    "未替换正式模型/prompt/Skill；未完成38指标数值测试。",
+    "stage3-r2尚未运行，不能把stage1/2结果拼成其17题通过。"
+  ],
+  "reviewer_api_calls": 0,
+  "human_decisions": []
+}

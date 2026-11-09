@@ -1,0 +1,130 @@
+{
+  "id": "TRACECTRL01",
+  "reviewed_at": "2026-11-08T02:04:25.057413+00:00",
+  "status": "semantic_and_citation_passed",
+  "semantic_passed": true,
+  "citation_attribution_passed": true,
+  "literal_quote_exact_all": true,
+  "output_sha256": "dbdb317de651303e2bb7628eb81288390dcfc3b5eb2b89e31b4dd6b35f933f1d",
+  "answer_sha256": "aeb2b3ad95e73536610fe68f213b48d9a473af22cc6433a90154f82edbbe006c",
+  "quote_rows": [
+    {
+      "id": "TRACECTRL01-Q01",
+      "answer_location": "可记录内容1",
+      "mode": "direct_quote",
+      "source_message": "SYN-Q1",
+      "source_path": "qa-01/input/requests.json:TRACECTRL01合成题设",
+      "quote": "新排班表启用后，所有晚班都出现了空岗",
+      "raw_substring_match": true,
+      "attribution": "passed",
+      "semantic_support": "passed"
+    },
+    {
+      "id": "TRACECTRL01-Q02",
+      "answer_location": "可记录内容1",
+      "mode": "direct_quote",
+      "source_message": "SYN-A1",
+      "source_path": "qa-01/input/requests.json:TRACECTRL01合成题设",
+      "quote": "新表启用后，所有晚班都出现了空岗",
+      "raw_substring_match": true,
+      "attribution": "passed",
+      "semantic_support": "passed"
+    },
+    {
+      "id": "TRACECTRL01-Q03",
+      "answer_location": "直接依据1",
+      "mode": "direct_quote",
+      "source_message": "SYN-Q1",
+      "source_path": "qa-01/input/requests.json:TRACECTRL01合成题设",
+      "quote": "新排班表启用后，所有晚班都出现了空岗，您觉得该怎么处理？",
+      "raw_substring_match": true,
+      "attribution": "passed",
+      "semantic_support": "passed"
+    },
+    {
+      "id": "TRACECTRL01-Q04",
+      "answer_location": "直接依据1",
+      "mode": "direct_quote",
+      "source_message": "SYN-A1",
+      "source_path": "qa-01/input/requests.json:TRACECTRL01合成题设",
+      "quote": "新表启用后，所有晚班都出现了空岗。",
+      "raw_substring_match": true,
+      "attribution": "passed",
+      "semantic_support": "passed"
+    },
+    {
+      "id": "TRACECTRL01-Q05",
+      "answer_location": "直接依据1",
+      "mode": "direct_quote",
+      "source_message": "SYN-A1",
+      "source_path": "qa-01/input/requests.json:TRACECTRL01合成题设",
+      "quote": "其他晚班的情况我没有查过记录。",
+      "raw_substring_match": true,
+      "attribution": "passed",
+      "semantic_support": "passed"
+    },
+    {
+      "id": "TRACECTRL01-Q06",
+      "answer_location": "直接依据2",
+      "mode": "direct_quote",
+      "source_message": "SYN-A1",
+      "source_path": "qa-01/input/requests.json:TRACECTRL01合成题设",
+      "quote": "我亲眼看到的是，周二我值守的东门岗在交接时空了约十分钟；",
+      "raw_substring_match": true,
+      "attribution": "passed",
+      "semantic_support": "passed"
+    },
+    {
+      "id": "TRACECTRL01-Q07",
+      "answer_location": "直接依据2",
+      "mode": "direct_quote",
+      "source_message": "SYN-Q2",
+      "source_path": "qa-01/input/requests.json:TRACECTRL01合成题设",
+      "quote": "周二东门岗的“约十分钟”是根据计时记录算的吗？",
+      "raw_substring_match": true,
+      "attribution": "passed",
+      "semantic_support": "passed"
+    },
+    {
+      "id": "TRACECTRL01-Q08",
+      "answer_location": "直接依据2",
+      "mode": "direct_quote",
+      "source_message": "SYN-A2",
+      "source_path": "qa-01/input/requests.json:TRACECTRL01合成题设",
+      "quote": "约十分钟是我当时的估计，没有计时。",
+      "raw_substring_match": true,
+      "attribution": "passed",
+      "semantic_support": "passed"
+    },
+    {
+      "id": "TRACECTRL01-Q09",
+      "answer_location": "直接依据2",
+      "mode": "direct_quote",
+      "source_message": "SYN-A2",
+      "source_path": "qa-01/input/requests.json:TRACECTRL01合成题设",
+      "quote": "那天交接时接岗同事还没到，我看到东门岗暂时没人值守；其他班次的情况仍需查记录。",
+      "raw_substring_match": true,
+      "attribution": "passed",
+      "semantic_support": "passed"
+    }
+  ],
+  "paraphrase_checks": [
+    {
+      "content": "总体说法待核、局部亲见可留、时长估计未计时、其他班次未核",
+      "passed": true,
+      "support": "分别来自SYN-Q1/A1/Q2/A2且限定未迁移。"
+    },
+    {
+      "content": "接岗同事未到",
+      "passed": true,
+      "support": "精确归于SYN-A2，未挂SYN-A1。"
+    }
+  ],
+  "semantic_findings": [
+    "保留提问前提与回答复述，并保留值班员新增的局部观察；未得出新表造成空岗的因果。",
+    "明确题设合成情境，不并入青禾事实；未把亲眼看到限定迁移到所有晚班。"
+  ],
+  "nonblocking_findings": [],
+  "blocking_findings": [],
+  "protocol_review": "awaiting_root_native_audit"
+}

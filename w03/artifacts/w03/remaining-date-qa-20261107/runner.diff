@@ -1,0 +1,11 @@
+--- operations/run_batch.py
++++ remaining-date-qa-20261107/run_batch.py
+@@ -79,7 +79,7 @@
+                          model="deepseek-flash", profile="deepseek-json", timeout=180,
+                          max_tokens=8192, retry_max_tokens=16384, retry_timeout=240)
+     model.deadline = time.monotonic() + 420
+-    agent = Agent(ROOT / ".runtime/w03-operations-qa-20261107" / case["id"], model)
++    agent = Agent(ROOT / ".runtime/w03-remaining-date-qa-20261107" / case["id"], model)
+     try:
+         result = agent.answer_business_model(ROOT, CONFIG, question_for(case),
+                                              include_knowledge=True, expected="", pair_id=None,

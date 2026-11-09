@@ -1,0 +1,249 @@
+--- v1/docs/w03/指标核对与测试登记.md
++++ v2/docs/w03/指标核对与测试登记.md
+@@ -18,7 +18,7 @@
+ | B6 | 普通月内购买与复购 | 3 | 排队，依赖核定后整批推进 |
+ | B7 | 月末付费会员月报 | 6 | 排队，依赖核定后整批推进 |
+ 
+-默认累计已核范围＋当前批次，在新目录一次构建，避免同名语义模型冲突；比率的分子/分母必须在同次生成目标内。业务批次不等于可直接merge的文件包。若因输出规模改成局部试验库，批前记录依赖闭合目标，最终仍需一次一致的38项库和全套回归；不得手改生成物拼装。
++默认累计已核范围＋当前批次，在新目录一次构建，避免同名语义模型冲突；比率的分子/分母必须在同次生成目标内。业务批次不等于可直接merge的文件包。若因输出规模改成局部试验库，取本批主目标与测试所选指标的并集，再递归闭合依赖，并核派生模型与维度：例如B5主目标5项，但交叉检查需要有效订单数，局部测试库至少6项目标。最终仍需一次一致的38项库和全套回归；不得手改生成物拼装。
+ 
+ ## 逐项状态
+ 
+--- v1/docs/w03/指标模型测试集设计.md
++++ v2/docs/w03/指标模型测试集设计.md
+@@ -119,7 +119,7 @@
+ | B7-Q03 | 资格人工边界：终止空值、计划结束早于终止、终止早于计划结束、尚未生效但已有未来终止。 | 空终止只表示没有提前终止，仍看计划结束；开始和两种结束条件同卡同时满足。 | 空值当无限期、只看某一个日期 |
+ | B7-Q04 | 资格人工边界：有效纳入卡混失效/排除卡；双年卡；年卡加季卡；一张在范围却失效、另一张范围外却有效。 | 至少一张同卡同时满足范围与日期即可；不能跨卡拼条件；多卡不重复账户和订单金额。 | 多卡扇出、全卡都要有效、跨卡拼资格 |
+ | B7-Q05 | 月末生效但月中已购买；购买当天有效但月底失效；月末有资格但无购买/仅全退；一单与两笔有效单。 | 资格按月末；购买用当月全部有效单；无购买资格账户不进入付费购买人数；复购需>=2有效单。 | 资格人数代购买人数、按购买日截单、全退凑单 |
+-| B7-Q06 | 原数据完整时无卡账户；另设卡数据缺失的受控测试输入。 | 完整无卡可判不合格；缺记录是数据完整性问题，不能伪作客户无卡事实；异常输入不改正式CSV。 | 缺失与不具资格混为一谈 |
++| B7-Q06 | 原数据完整时无卡账户；另设卡数据缺失的受控测试输入。 | 先有独立完整性清单或明确受控故障标记才可判记录缺失；不能仅凭卡表无行猜现实无卡。完整无卡可判不合格；异常输入不改正式CSV。 | 缺失与不具资格混为一谈 |
+ | B7-Z01 | 选择覆盖内无付费有效购买的完整月，查六项付费月报指标。 | 四项人数/单数/金额加总为0，两项率/均额分母0为null；原样本缺例用独立fixture。 | 有资格无购买算买家、null当0 |
+ | B7-X01 | 查询2026年8月1日至15日的六项付费月报指标。 | 不支持部分月，不扩月、不报0。 | 静默改问法 |
+ | B7-X02 | 2026年8月六项付费月报按成交门店分别列出。 | 业务原文和当前引擎均限制全店，拒绝拆店。 | 可达维度冒充支持范围 |
+@@ -128,7 +128,7 @@
+ ## 共享覆盖与升级为可执行测试
+ 
+ 1. 所有新增成功设计先核原始样本能否区分目标错误。取消金额本来为0、全退净额也为0，单比金额不够；需核行集合、SQL与解释，必要时借支付单数区分，不伪造客户数据。退款时间列不存在，不能声称现金退款跨月已实证。
+-2. 期望程序不导入被测库或SQL。数据/材料版本、独立原始明细、结构化intent、columns/rows/units与expected_source审核后才能进入customer/w03/tests.json。未知期望在设计字段标待算，不写expected.rows的null；null仅用于已确定的零分母。
++2. 期望程序不导入被测库或SQL。数据/材料版本、独立原始明细、结构化intent、columns/rows/units与expected_source审核后才能进入customer/w03/tests.json。运行前将‘上述/五项/七项’等简写展开成独立完整问句；B4-D01门店分组与全店整体拆成独立intent/子例。未知期望在设计字段标待算，不写expected.rows的null；null仅用于已确定的零分母。
+ 3. 资格边界B7-Q01—Q06共享设计适用于六项指标；要保存逐卡→账户→月份→订单的入选/排除理由及各项数值。Q02为两产品多端点的参数化设计，未拆具体记录/子例前不可运行，也不算多个题已完成。
+ 4. 12维度沿用旧common计划，当前只store分组及order__channel的eq筛选有真实证据；还需归属门店/名称/地区、会员、等级、成交名称/地区、日期/月分组。每个维度按实际可达指标核，受限月报不能强加全部维度。
+ 5. 状态共享：缺日期澄清、覆盖外不支持已有净额实例；部分月/维度限制见B6/B7。error只用受控故障副本测试，不能制造业务事实。OR、任意SQL与不支持维度拒绝场景沿契约补入对应批次。
+--- v1/customer/w03/metric_register.json
++++ v2/customer/w03/metric_register.json
+@@ -20,14 +20,22 @@
+         "net_sales_cents"
+       ],
+       "metric_dependencies": {},
+-      "local_build_minimum_dependency_closure": [
++      "primary_metric_dependency_closure": [
+         "payment_cents",
+         "refund_cents",
+         "net_sales_cents",
+         "gross_cents",
+         "discount_cents"
+       ],
+-      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型"
++      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型",
++      "test_required_dependency_closure": [
++        "payment_cents",
++        "refund_cents",
++        "net_sales_cents",
++        "gross_cents",
++        "discount_cents"
++      ],
++      "local_build_rule": "局部构建取本批主目标与测试所选指标的并集，再递归闭合metric依赖；还须核派生模型及维度关系。B5交叉检查因此为6项而不是仅5项。"
+     },
+     {
+       "id": "B2",
+@@ -44,7 +52,7 @@
+       "status": "queued",
+       "already_small_passed": [],
+       "metric_dependencies": {},
+-      "local_build_minimum_dependency_closure": [
++      "primary_metric_dependency_closure": [
+         "order_count",
+         "paid_order_count",
+         "valid_order_count",
+@@ -53,7 +61,17 @@
+         "partial_refund_order_count",
+         "full_refund_order_count"
+       ],
+-      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型"
++      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型",
++      "test_required_dependency_closure": [
++        "order_count",
++        "paid_order_count",
++        "valid_order_count",
++        "cancelled_order_count",
++        "refund_order_count",
++        "partial_refund_order_count",
++        "full_refund_order_count"
++      ],
++      "local_build_rule": "局部构建取本批主目标与测试所选指标的并集，再递归闭合metric依赖；还须核派生模型及维度关系。B5交叉检查因此为6项而不是仅5项。"
+     },
+     {
+       "id": "B3",
+@@ -67,13 +85,20 @@
+       "status": "queued",
+       "already_small_passed": [],
+       "metric_dependencies": {},
+-      "local_build_minimum_dependency_closure": [
++      "primary_metric_dependency_closure": [
+         "buyer_count",
+         "refund_buyer_count",
+         "selling_store_count",
+         "valid_order_items"
+       ],
+-      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型"
++      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型",
++      "test_required_dependency_closure": [
++        "buyer_count",
++        "refund_buyer_count",
++        "selling_store_count",
++        "valid_order_items"
++      ],
++      "local_build_rule": "局部构建取本批主目标与测试所选指标的并集，再递归闭合metric依赖；还须核派生模型及维度关系。B5交叉检查因此为6项而不是仅5项。"
+     },
+     {
+       "id": "B4",
+@@ -124,7 +149,7 @@
+           "valid_order_count"
+         ]
+       },
+-      "local_build_minimum_dependency_closure": [
++      "primary_metric_dependency_closure": [
+         "order_count",
+         "paid_order_count",
+         "valid_order_count",
+@@ -146,7 +171,30 @@
+         "discount_rate",
+         "items_per_order"
+       ],
+-      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型"
++      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型",
++      "test_required_dependency_closure": [
++        "order_count",
++        "paid_order_count",
++        "valid_order_count",
++        "cancelled_order_count",
++        "refund_order_count",
++        "payment_cents",
++        "refund_cents",
++        "net_sales_cents",
++        "gross_cents",
++        "discount_cents",
++        "buyer_count",
++        "valid_order_items",
++        "avg_order_value",
++        "avg_buyer_value",
++        "purchase_frequency",
++        "refund_amount_rate",
++        "cancel_rate",
++        "refund_order_rate",
++        "discount_rate",
++        "items_per_order"
++      ],
++      "local_build_rule": "局部构建取本批主目标与测试所选指标的并集，再递归闭合metric依赖；还须核派生模型及维度关系。B5交叉检查因此为6项而不是仅5项。"
+     },
+     {
+       "id": "B5",
+@@ -161,14 +209,23 @@
+       "status": "queued",
+       "already_small_passed": [],
+       "metric_dependencies": {},
+-      "local_build_minimum_dependency_closure": [
++      "primary_metric_dependency_closure": [
+         "new_member_count",
+         "first_buyer_count",
+         "first_order_sales_cents",
+         "first_order_count",
+         "repeat_order_count"
+       ],
+-      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型"
++      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型",
++      "test_required_dependency_closure": [
++        "valid_order_count",
++        "new_member_count",
++        "first_buyer_count",
++        "first_order_sales_cents",
++        "first_order_count",
++        "repeat_order_count"
++      ],
++      "local_build_rule": "局部构建取本批主目标与测试所选指标的并集，再递归闭合metric依赖；还须核派生模型及维度关系。B5交叉检查因此为6项而不是仅5项。"
+     },
+     {
+       "id": "B6",
+@@ -186,12 +243,18 @@
+           "monthly_buyer_count"
+         ]
+       },
+-      "local_build_minimum_dependency_closure": [
++      "primary_metric_dependency_closure": [
+         "monthly_buyer_count",
+         "monthly_repeat_buyer_count",
+         "monthly_repeat_rate"
+       ],
+-      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型"
++      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型",
++      "test_required_dependency_closure": [
++        "monthly_buyer_count",
++        "monthly_repeat_buyer_count",
++        "monthly_repeat_rate"
++      ],
++      "local_build_rule": "局部构建取本批主目标与测试所选指标的并集，再递归闭合metric依赖；还须核派生模型及维度关系。B5交叉检查因此为6项而不是仅5项。"
+     },
+     {
+       "id": "B7",
+@@ -216,7 +279,7 @@
+           "monthly_paid_order_count"
+         ]
+       },
+-      "local_build_minimum_dependency_closure": [
++      "primary_metric_dependency_closure": [
+         "monthly_paid_buyer_count",
+         "monthly_paid_order_count",
+         "monthly_paid_sales_cents",
+@@ -224,7 +287,16 @@
+         "monthly_paid_repeat_rate",
+         "monthly_paid_avg_order_value"
+       ],
+-      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型"
++      "default_build_strategy": "累计已核范围+本批，一次重新生成新库；不merge各批不一致的同名模型",
++      "test_required_dependency_closure": [
++        "monthly_paid_buyer_count",
++        "monthly_paid_order_count",
++        "monthly_paid_sales_cents",
++        "monthly_paid_repeat_buyer_count",
++        "monthly_paid_repeat_rate",
++        "monthly_paid_avg_order_value"
++      ],
++      "local_build_rule": "局部构建取本批主目标与测试所选指标的并集，再递归闭合metric依赖；还须核派生模型及维度关系。B5交叉检查因此为6项而不是仅5项。"
+     }
+   ],
+   "metrics": [
+--- v1/customer/w03/test-plans/metric_cases.json
++++ v2/customer/w03/test-plans/metric_cases.json
+@@ -4,7 +4,12 @@
+   "not_native_tests_json": true,
+   "source_plan": "artifacts/w03/full-test-design-20261106/v2",
+   "rule": "新条目为设计，未含expected.rows，不可直接交w03 test；未知期望不写0/null。参数化一行不是已具备多个可执行子例。",
+-  "promotion": "核定义/字段/支持范围→核原样本并独立算期望→独立审核→冻结原生tests及数据/库版本→真实运行→解释复核；按批升级",
++  "promotion": "核定义/字段/支持范围→展开每条独立问句和fixture子例→核原样本并独立算期望→独立审核→冻结原生tests及数据/库版本→真实运行→解释复核；按批升级",
++  "expansion_before_freeze": [
++    "运行问句必须独立完整，将上述/五项/七项等设计简写替换成明确指标名称，不依赖上一题上下文",
++    "B4-D01的门店分组与全店整体拆成独立intent/子例，分别核算期望，再辅助对照，不塞进一个不支持的双意图",
++    "B7-Q02按产品和端点落实唯一子例ID；Q06记录独立完整性依据或受控故障标记"
++  ],
+   "cases": [
+     {
+       "id": "B1-N01",
+@@ -2705,7 +2710,7 @@
+       ],
+       "kind": "data_integrity_design",
+       "question_or_fixture": "原数据完整时无卡账户；另设卡数据缺失的受控测试输入。",
+-      "expected_behavior": "完整无卡可判不合格；缺记录是数据完整性问题，不能伪作客户无卡事实；异常输入不改正式CSV。",
++      "expected_behavior": "先有独立完整性清单或明确受控故障标记才可判记录缺失；不能仅凭卡表无行猜现实无卡。完整无卡可判不合格；异常输入不改正式CSV。",
+       "fault_to_detect": "缺失与不具资格混为一谈",
+       "state": "design_pending_definition_and_expected",
+       "executable": false,

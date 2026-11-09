@@ -1,0 +1,80 @@
+{
+  "created_at": "2026-11-07T04:38:51.311256+00:00",
+  "user_request": "好，修复",
+  "baseline_completion": "artifacts/w03/full-validation-20261107/completion.json",
+  "baseline_completion_sha256": "603ce5daa287d1b1099a5107b0c38ea73dd5354d59c6960c70193a5fbd987e45",
+  "baseline_model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "baseline_prompt_sha256": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+  "historical_raw_failure_ids": [
+    "U01",
+    "U05",
+    "P09",
+    "DQ10",
+    "B05",
+    "F06",
+    "A03",
+    "E01",
+    "E03",
+    "E05",
+    "REG01"
+  ],
+  "scope": "Improve isolated answer prompt in three independently gated stages; preserve model body, original question/material/expected, formal model and Skill",
+  "stages": [
+    {
+      "stage": "stage1",
+      "change": "statement provenance, speaker premise and unsupported assumptions",
+      "failures": [
+        "U01",
+        "U05",
+        "P09",
+        "A03",
+        "E01",
+        "E03",
+        "E05",
+        "REG01"
+      ],
+      "existing_controls": [
+        "U04",
+        "P01",
+        "P05",
+        "E02",
+        "A02",
+        "F05"
+      ],
+      "independent_new_controls": 4
+    },
+    {
+      "stage": "stage2",
+      "change": "arithmetic and per-condition consistency",
+      "failures": [
+        "B05",
+        "DQ10"
+      ],
+      "existing_controls": [
+        "B01",
+        "B04",
+        "DQ09",
+        "DQ11"
+      ],
+      "independent_new_controls": 2
+    },
+    {
+      "stage": "stage3",
+      "change": "strict output contract review",
+      "failures": [
+        "F06"
+      ],
+      "regression_controls": [
+        "F05",
+        "E01",
+        "DQ10"
+      ],
+      "independent_new_controls": "reviewer chooses minimal"
+    }
+  ],
+  "replacement_policy": "No automatic apply of formal model or replacement of existing skill; validated answer-prompt candidate is separate and versioned. No claims of all82 on latest prompt without executing them.",
+  "no_same_prompt_semantic_retries": true,
+  "no_parser_leniency": true,
+  "model_calls_so_far": 0,
+  "user_business_decisions_pending": []
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "source_first_control_criteria_v1",
+  "created_at": "2026-11-07T05:15:50.012063+00:00",
+  "reviewer": "independent source-first Agent",
+  "scope": "stage4 control design; no execution approval or model score",
+  "new_prompt_read": false,
+  "api_calls": 0,
+  "source_first_method": "复用此前已审原材料及既有5题的判据；新增题先按合成原问答中的首次出现位置、说话方和限定范围形成判据，再等待新提示与实际输入。不是对旧题的重新盲审。",
+  "previous_result_preserved": {
+    "report": "artifacts/w03/answer-repair-20261107/stage3-r2/independent-review/source-answer-review.json",
+    "sha256": "b6ede8bf3d754757afa955a5de82660b456b1c02894ce6dbbfdda59d5bf43441",
+    "owned_cases": 13,
+    "semantic_passed": 12,
+    "semantic_failed": [
+      "E01"
+    ]
+  },
+  "source_rules": [
+    "结果说法先由提问方引入、回答重复承接，只能如实记录该问答关系，不能升级为回答方独立提供或已核实的总体观察。",
+    "回答中另外新增的、角色实际看到的局部细节应保留，不能因为同一回答承接前提就将整段弃用。",
+    "限定语按其真实修饰对象记录；局部观察限定不能反向给前面的总体说法增加证据。",
+    "后续追问明确的估计、未查其他记录和范围边界约束最终记录；时间先后不能直接证明因果。",
+    "引用位置、公开证据摘要表与结论须一致；仅有模型转述时不得伪造原始问答来源。",
+    "有效W02来源按案例和适用范围使用；不同来源如已明确可比则可计算；未知、至少和完整/不完整集合不擅补。"
+  ],
+  "new_control_design": {
+    "id": "TRACECTRL01",
+    "origin": "reviewer-created explicit synthetic shift-handover transcript; not Qinghe evidence",
+    "transfer": "以排班交接和局部空岗观察替换旧项目使用情况，改变情境、措辞与具体证据；保留提问先引入总体结果、回答重复并另给局部观察的结构。",
+    "must_distinguish": [
+      {
+        "statement": "新排班表启用后，所有晚班都出现空岗",
+        "first_occurrence": "SYN-Q1 / 访谈者",
+        "answer_relation": "SYN-A1重复承接；不构成独立核实全部晚班",
+        "record_boundary": "可以记录访谈中提出并承接的说法，需核排班与交接记录；不可记成值班员主动报告或已查实总体事实。"
+      },
+      {
+        "statement": "周二东门岗交接时约空十分钟",
+        "first_occurrence": "SYN-A1 / 值班员",
+        "answer_relation": "本人新增的局部亲见观察",
+        "record_boundary": "亲眼看到只修饰此局部事件；约十分钟为SYN-A2说明的当时估计，非计时证据；不可推广其他晚班或全量比例。"
+      }
+    ],
+    "additional_boundaries": [
+      "SYN-A2保留未计时、未查其他班次记录；不倒推精确日期、总体数量或新表造成空岗。",
+      "合成材料不得写为青禾事实。",
+      "允许不同措辞或记录布局；不能只因含通用谨慎措辞就通过，须两类断言来源归属均正确。"
+    ],
+    "expected_discrimination": "能区分提问带入的总体结果与回答新增的局部观察；CTRL01保证非诱导角色观察不被一律否定，CTRL03保证有效W02来源不被误排。"
+  },
+  "human_decisions": []
+}

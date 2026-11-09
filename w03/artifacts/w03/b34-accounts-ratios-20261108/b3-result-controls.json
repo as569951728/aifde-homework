@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "total": 4,
+  "negative_rejected": 3,
+  "controls": [
+    {
+      "id": "correct_B3_original",
+      "case": "B3-U01",
+      "expected_passed": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "order_count_misused_as_account_count",
+      "case": "B3-U01",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.buyer_count",
+            "expected": 17,
+            "actual": 39,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      }
+    },
+    {
+      "id": "refund_orders_misused_as_accounts",
+      "case": "B3-U01",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.refund_buyer_count",
+            "expected": 5,
+            "actual": 6,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      }
+    },
+    {
+      "id": "multi_card_join_inflates_items",
+      "case": "B3-N01",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.valid_order_items",
+            "expected": 33,
+            "actual": 42,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      }
+    }
+  ],
+  "wrong_values_source": "independent-b3/sample-and-scope.json and auxiliary ledgers",
+  "original_native_reports_unchanged": true,
+  "model_calls": 0,
+  "queries": 0
+}

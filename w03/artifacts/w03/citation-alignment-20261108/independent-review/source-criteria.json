@@ -1,0 +1,195 @@
+{
+  "version": "citation-alignment-source-criteria-v1",
+  "created_at": "2026-11-08T02:00:18.504618+00:00",
+  "reviewer": "citation_source_review",
+  "phase": "independent-source-criteria-before-prompts-and-expectations",
+  "scope": "仅青禾业务模型与问答引用；无通用维护Skill调优；不运行模型",
+  "independence": {
+    "old_answers_read": false,
+    "old_case_expectations_read": false,
+    "old_case_reviews_read": false,
+    "new_or_old_prompt_read": false,
+    "required_AGENTS_read": true,
+    "note": "判据直接形成于当前候选模型、六题原题/输入、原始访谈；先前规则/记忆中泛化经验不作为逐题判定来源。"
+  },
+  "global_criteria": [
+    "结论、主体、问题前提、限定和来源支持关系均须正确；业务语义正确与引用准确分别判。",
+    "直接引文应为被标来源的逐字连续片段；省略拼接必须显式标出，分别核各片段，不能改写冒充原话。",
+    "转述可用不同措辞；须保留谁说/谁带入、证据性质、适用范围和不确定性，不加引号冒充原文。术语引号不自动等于直接引文，应结合上下文识别。",
+    "只给模型时可准确定位章节；来源可见程度与回答所声称的确定性一致。不新增必须逐字背固定答案的门槛。",
+    "人工合成证据与真实课程访谈控制分开：TRACECTRL01为纯合成；CTRL01为真实访谈；P01的账户卡记录为合成题设。",
+    "原始访谈复核优先于摘要或模型复述；相邻消息必须逐条归属，不能仅整文件命中。"
+  ],
+  "cases": [
+    {
+      "id": "U05",
+      "nature": "真实青禾模型与W02/W03角色访谈复核题",
+      "conclusion_criteria": [
+        "A可采用但保留证据范围：陈姐已说明本期两类卡日期规则；具体规则文件、办理记录和历史执行凭据仍未取得。不能因文件待核而否认已有规则陈述，也不能升级为生产历史已验证。",
+        "B需修正：无人使用是MSG-01918访谈者先带入的前提，MSG-01919小林随后重复；没有独立全公司使用记录支撑全面无人使用。保留该说法及待核状态，不能当不存在该陈述。",
+        "C需修正：模型未核实返店环节仅表示证据缺口，不能推导青禾没有该环节。",
+        "D需修正：80万活跃与120万全量定义、范围、时点和来源未对齐，不能直接计算有业务含义的活跃率。",
+        "E需修正：王经理认可阶段划分并提出核查意见，不代表最终验收批准；授权人与权限待核。"
+      ],
+      "subject_premise_qualifier": "陈姐日期说明限定本期悦享年卡、家庭季卡及指定判定日；小林说法需前提链；王经理权限保留个人职责边界。",
+      "message_attribution": {
+        "A": [
+          "MSG-03885 user 提供本期两类卡语境",
+          "MSG-03886 assistant 陈姐给日期规则并说不掌握文件与凭据",
+          "MSG-03888 assistant 陈姐补门店配合和历史凭据范围",
+          "MSG-03890 assistant 陈姐重申空终止和文件待核"
+        ],
+        "B": [
+          "MSG-01918 user 首引无人使用",
+          "MSG-01919 assistant 小林重复并新增使用感受",
+          "MSG-01921 assistant 限定三步为感受"
+        ],
+        "C": [
+          "模型第4节反馈整理与后续、第5节业务未决"
+        ],
+        "D": [
+          "模型第1节、第5节；原文MSG-01719沈总80万活跃、MSG-01744老周120万全量、MSG-01754口径未知"
+        ],
+        "E": [
+          "MSG-03910 user 阶段划分提议",
+          "MSG-03911 assistant 思路认可与权限限制",
+          "MSG-03919 assistant 分工及测试不等于验收",
+          "MSG-03923 assistant 核查意见非审批",
+          "MSG-03931、03933 assistant 最终验收权限仍不明"
+        ]
+      },
+      "quotation_criteria": "逐字引文分别与所标消息匹配，不将相邻03911、03919、03923、03931的不同句子合挂单一消息；允许语义准确的转述并标明定位。"
+    },
+    {
+      "id": "E01",
+      "nature": "真实W02小林二访原文来源链题",
+      "conclusion_criteria": [
+        "无人使用按带入前提及被访者重复的未独立验证说法记录，不能升级为全公司无人用或项目失败原因。",
+        "多三步是MSG-01919小林提出的界面使用感受；MSG-01921明确非精确操作清单，尚不知道页面、动作和步骤名。可作可用性及重复劳动待核线索，不能当准确三步、原因已证实或改造方案。"
+      ],
+      "subject_premise_qualifier": "完整保留01918访谈者前提→01919小林重复且新增界面体验→01920追问→01921小林限定；人的感受与可量化事实分开。",
+      "message_attribution": {
+        "premise": "MSG-01918 user",
+        "repeat_and_new_observation": "MSG-01919 assistant",
+        "followup": "MSG-01920 user",
+        "qualification": "MSG-01921 assistant",
+        "adjacency_guard": "MSG-01923是统计范围协作及个人Excel；MSG-01925是助手诉求与未授权执行；MSG-01929是统计口径和找负责人核对。不能把01925的动作边界错挂01923或01929。"
+      },
+      "quotation_criteria": "上一个项目最后没人用为01919而非01918原句；多了三步可作为术语引用但不能把概括整句包引号伪装原话。允许把三步概括为主观感受，只要不冒充逐字引文。"
+    },
+    {
+      "id": "TRACECTRL01",
+      "nature": "纯人工合成迁移控制；不是青禾事实",
+      "conclusion_criteria": [
+        "全体晚班空岗先由SYN-Q1访谈者带入，SYN-A1值班员重复；值班员明说未查其他晚班记录，不能作全量现象已证实或新表造成空岗的因果结论。",
+        "周二东门岗交接空岗是SYN-A1新增的本人观察；约十分钟由SYN-A2限定为估计且未计时。可作该岗位该次事件的核查线索，持续时间和全量分布仍待记录核查。"
+      ],
+      "subject_premise_qualifier": "原题明确人物、排班、事件全为人造；保留观察主体、周二、东门岗、交接时、约、未计时、其他班次未核实，不并入青禾业务模型。",
+      "message_attribution": {
+        "SYN-Q1": "访谈者首次引入全体晚班空岗",
+        "SYN-A1": "值班员重复全体说法；新增周二东门岗约十分钟亲见观察；未查其他晚班记录",
+        "SYN-Q2": "访谈者询问是否计时",
+        "SYN-A2": "估计无计时；接岗同事未到；看到暂时无人值守；其他班次待核"
+      },
+      "quotation_criteria": "接岗同事还没到只在SYN-A2，不能挂SYN-A1；同义转述可用但不标直接引文。严格子串核对时分开记录两个来源，不以整段聚合命中掩盖错挂。"
+    },
+    {
+      "id": "CTRL01",
+      "nature": "独立设计控制题，输入是有效W02陈姐真实课程访谈，不是合成访谈",
+      "conclusion_criteria": [
+        "可保留接安排先核会员范围/参与门店/具体工作，说明并确认人员执行安排，执行中收问题反馈、找运营核对，结束后整理情况，和小林对接安排及现场反馈。",
+        "要求清楚衔接顺、要求不清反复确认费力是陈姐个人工作感受；一开始讲清范围/工作/答疑责任是期望；没有耗时损失量化，不能当已证明提效或复购改善。",
+        "线上看到活动不代表所有门店可执行，需核适用范围；未给出完整闭环、统一SOP、全门店频率或效果数字。"
+      ],
+      "subject_premise_qualifier": "根据原始week=2、ROLE-CHEN、meeting=33120509-3939-5d6c-81f1-3959fed49789核实真实来源；不因控制题标签降低成合成事实，不因真实访谈升级为实际执行已验证。",
+      "message_attribution": {
+        "MSG-01664": "user 访谈者提问，不承载被访者工作事实",
+        "MSG-01665": "assistant 陈姐提供做法、感受与期望、未量化限制"
+      },
+      "quotation_criteria": "一条业务核查记录允许将多个含义准确转述，但如加引号称原话，须为01665原文相应片段；感受与期望不能合并成已达成结果。"
+    },
+    {
+      "id": "U01",
+      "nature": "仅模型的业务理解题",
+      "conclusion_criteria": [
+        "理解复购变化并选择/验证改善措施，与减少运营名单和执行信息重复整理核对，是相关但分别观察的目标；岗位提效不能直接证明复购改善。",
+        "描述小林三类日常工作（券活动、权益说明、未购回访）以及准备协调、门店承接、反馈、数据口径协作等主要工作，不将券一般流程覆盖全部工作。",
+        "说明原报表、老化因果、活跃与复购定义、名单规则及来源、反馈闭环等关键未知；角色观察和个人期望能支持核查方向，不能说明原因、效果、授权已获证实。"
+      ],
+      "subject_premise_qualifier": "沈总个人老化判断/三个月效果期望、小林岗位偏好、陈姐观察条件分别归属，不合并为公司确定因果或已实现效果。",
+      "message_attribution": {
+        "sufficient_sources": [
+          "模型第1节业务目的与适用边界",
+          "模型第4节实际工作与决策条件",
+          "模型第5节业务未决与来源索引"
+        ]
+      },
+      "quotation_criteria": "本题没有原始访谈逐字文，准确引用模型章节、标明转述即可；不得强迫补造原句，亦不得以没有原始访谈为由拒绝模型能支持的业务判断。"
+    },
+    {
+      "id": "P01",
+      "nature": "原业务规则题；账户A完整卡记录为人工构造测试情境",
+      "conclusion_criteria": [
+        "按给定本期口径，A有付费资格：一张悦享年卡在判定日有效，满足同一张卡的范围与有效性。",
+        "普通会员等级不否定付费资格；10000分购卡金额不能充当资格标准；记录已声明完整且有效性已给定，无须再编日期或拒绝判断。",
+        "仅判断题设账户的本期资格，不能推出生产账户情况、有效购买、实际名单授权或统计值。"
+      ],
+      "subject_premise_qualifier": "本期总部月报、给定判定日、同一张卡、人工题设；不将A写为真实青禾账户。",
+      "message_attribution": {
+        "sufficient_sources": [
+          "模型第2节派生付费资格与会员等级",
+          "模型第3节规则1、2",
+          "本题人工构造输入 cards_complete=true 及卡记录"
+        ]
+      },
+      "quotation_criteria": "用模型规则章节和题设字段准确转述即充分，无需虚构原始消息；不能把题设字段值拼装成访谈者原句。"
+    }
+  ],
+  "source_file_hashes": [
+    {
+      "path": "artifacts/w03/model-clarification-20261108/candidate/business_model.md",
+      "sha256": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9"
+    },
+    {
+      "path": "artifacts/w03/answer-repair-20261107/stage5-compact-evidence/input/selected_questions.json",
+      "sha256": "aff278dcd7e08c91a22e70b2c09155958f95b5e4d217b6c4f391ea798bce6da6"
+    },
+    {
+      "path": "artifacts/w03/answer-repair-20261107/stage5-compact-evidence/input/requests.json",
+      "sha256": "6f34694e823bc77648102a74c52492534b430527d1ef1548c45def286bd0b3b5"
+    },
+    {
+      "path": "artifacts/w03/answer-repair-20261107/stage5-compact-evidence/input/controls.json",
+      "sha256": "ab9b9cc644734f711da910f947c6ec37e35b1882bfebee458624f51cfc9bb528"
+    },
+    {
+      "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+      "sha256": "eef0d4127f42f96a0fc5219749c3355cfe8252d028b2e8e495117d1ea3821f07"
+    },
+    {
+      "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-33120509-3939-5d6c-81f1-3959fed49789-transcript.json",
+      "sha256": "f582e55b0468ca02a84b35c9f668a6dcef21adf6748a43e9bed528981f6c6059"
+    },
+    {
+      "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-0d5ba288-a623-56f1-84ac-bec076880d43-transcript.json",
+      "sha256": "9227f13032f2ef354d1d207b7ea99b4865f7158e521eef68fad72ee004a40001"
+    },
+    {
+      "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-c4fe490a-ddae-5bcb-a51b-f44dd796b854-transcript.json",
+      "sha256": "3cda76145150cd3f01b51307972d081784cf86d351cb4ec1bb5c8f89663feea4"
+    },
+    {
+      "path": "artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+      "sha256": "fb6435f8ab761dbb26a995ec93f11530ef67840661251ab8b4c59d19ffbbf5ce"
+    },
+    {
+      "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+      "sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308"
+    }
+  ],
+  "unresolved": [
+    "U05 A仍缺具体规则文件和历史凭据，属原证据边界，不妨碍判断已获得规则陈述。",
+    "U05 E最终验收权限仍未知；本轮只审原说法，未请求或取得客户批准。"
+  ],
+  "external_model_calls": 0
+}

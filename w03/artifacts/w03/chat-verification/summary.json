@@ -1,0 +1,80 @@
+[
+  {
+    "file": "83ec09cf-20f1-4512-b976-071546d68b19-eb1442bb.json",
+    "trace_id": "ccdbd53ca43e2b200c48e4f83412ea51",
+    "status": "completed",
+    "question": "2026年8月青禾优选的净销售额（单位分）和有效订单数分别是多少？",
+    "answer": "2026年8月，青禾范围内净销售额为100300分（即1003.00元）；有效订单数为27笔。统计口径为已支付订单的实付金额减退款金额合计，取消单不计；有效订单指已支付且实付减退款大于0的订单。",
+    "reason": null,
+    "metrics": [
+      "net_sales_cents",
+      "valid_order_count"
+    ],
+    "data_version": "qinghe-w03-20260923-small",
+    "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+    "elapsed": 6.44,
+    "steps": 1
+  },
+  {
+    "file": "a285e5e7-2d70-4c29-9c69-e1cdebb1bfa8-78df09dc.json",
+    "trace_id": "a3a3dd3a9d58a4feb7eb1168aaa99a34",
+    "status": "completed",
+    "question": "2026年8月青禾优选的观测期首购会员数是多少？",
+    "answer": "2026年8月青禾优选的观测期首购会员数为 5 人（按CRM会员账户计数）。口径是：先基于全测试覆盖历史确定每个账户的首笔有效订单，再统计首笔订单落在2026年8月窗口内的不同会员账户数；该指标不代表终身首购。",
+    "reason": null,
+    "metrics": [
+      "first_buyer_count"
+    ],
+    "data_version": "qinghe-w03-20260923-small",
+    "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+    "elapsed": 7.885,
+    "steps": 1
+  },
+  {
+    "file": "ed40b10d-b179-4f9e-bea1-b8695f553617-59323371.json",
+    "trace_id": "bb0557c5d41795caac26160e3f4753b1",
+    "status": "completed",
+    "question": "2026年8月青禾优选的月内复购会员数和月内复购率分别是多少？",
+    "answer": "2026年8月（完整自然月，全门店、全渠道，当前客户青禾范围内），月内复购会员数为12个CRM会员账户；月内复购率为80.00%（12除以当月购买会员账户数）。人数按CRM会员账户计数，不等同于跨系统自然人。",
+    "reason": null,
+    "metrics": [
+      "monthly_repeat_buyer_count",
+      "monthly_repeat_rate"
+    ],
+    "data_version": "qinghe-w03-20260923-small",
+    "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+    "elapsed": 7.23,
+    "steps": 1
+  },
+  {
+    "file": "9f68681a-5814-4e2a-a5f4-06984e6f6144-c96b161e.json",
+    "trace_id": "675a34af46503551388ab017de426570",
+    "status": "completed",
+    "question": "请列出2026年8月青禾优选月末付费会员购买人数和月末付费会员净销售额（单位分）。",
+    "answer": "2026年8月青禾月末付费会员购买人数为6个账户；月末付费会员净销售额为47,550分，即475.50元。统计范围为2026年8月完整自然月、全门店、全渠道：人数按CRM会员账户计数，仅纳入月末仍符合悦享年卡或家庭季卡付费资格、且当月有有效订单的账户，同一账户多卡不重复；净销售额为这些账户当月有效订单实付金额减退款后的合计。结果未按门店分组。",
+    "reason": null,
+    "metrics": [
+      "monthly_paid_buyer_count",
+      "monthly_paid_sales_cents"
+    ],
+    "data_version": "qinghe-w03-20260923-small",
+    "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+    "elapsed": 8.408,
+    "steps": 1
+  },
+  {
+    "file": "b30e8d2d-9e1b-4d3f-aa2e-cfb115eb1f24-e4b6d3b4.json",
+    "trace_id": "3055613e0d15665d7306cd6fc69f4c31",
+    "status": "refused",
+    "question": "2026年8月按小程序渠道拆分，青禾优选的月末付费会员购买人数是多少？",
+    "answer": null,
+    "reason": "月末付费会员购买人数仅支持完整自然月、全门店、全渠道口径，不能按小程序渠道拆分或筛选。",
+    "metrics": [
+      "monthly_paid_buyer_count"
+    ],
+    "data_version": null,
+    "catalog_sha256": null,
+    "elapsed": 4.158,
+    "steps": 1
+  }
+]

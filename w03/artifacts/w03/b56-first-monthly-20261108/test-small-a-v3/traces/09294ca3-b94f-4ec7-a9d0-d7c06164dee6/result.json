@@ -1,0 +1,60 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "new_member_count"
+    ],
+    "start": "2026-07-01",
+    "end": "2026-08-01",
+    "group_by": [
+      "home_store",
+      "member__tier"
+    ],
+    "filters": []
+  },
+  "sql": "SELECT\n  home_store\n  , member__tier\n  , SUM(__new_member_count) AS new_member_count\nFROM (\n  SELECT\n    home_store_id AS home_store\n    , tier AS member__tier\n    , 1 AS __new_member_count\n  FROM \"data\".\"main\".\"members\" members_src_10000\n  WHERE DATE_TRUNC('day', registered_at) BETWEEN '2026-07-01' AND '2026-07-31'\n) subq_5\nGROUP BY\n  home_store\n  , member__tier",
+  "columns": [
+    "home_store",
+    "member__tier",
+    "new_member_count"
+  ],
+  "rows": [
+    [
+      "S02",
+      "普通",
+      4
+    ],
+    [
+      "S01",
+      "金卡",
+      2
+    ],
+    [
+      "S01",
+      "普通",
+      4
+    ],
+    [
+      "S02",
+      "金卡",
+      2
+    ]
+  ],
+  "seconds": 0.023,
+  "units": {
+    "new_member_count": "count"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+  "answer": "2026年7月（7月1日至7月31日，查询截止8月1日）青禾优选注册会员账户按会员归属门店和会员等级统计：S01普通4个、S01金卡2个；S02普通4个、S02金卡2个；合计12个CRM会员账户。口径说明：注册会员数按2026年7月注册的CRM会员账户计数，不等于跨系统自然人；门店维度为会员归属门店，不是订单成交门店。未列出的门店与等级组合未出现在本次结果中，不据此判断为零或覆盖不足。",
+  "question": "2026年7月青禾优选的注册会员数按会员归属门店、会员等级列出。",
+  "trace_id": "09294ca3-b94f-4ec7-a9d0-d7c06164dee6",
+  "elapsed_seconds": 8.925,
+  "model_usage": {
+    "prompt_tokens": 11017,
+    "completion_tokens": 1002,
+    "total_tokens": 12019
+  },
+  "model_calls_with_usage": 2
+}

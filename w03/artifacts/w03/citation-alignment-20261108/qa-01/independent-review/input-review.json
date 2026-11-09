@@ -1,0 +1,105 @@
+{
+  "created_at": "2026-11-08T02:02:09.608614+00:00",
+  "reviewer": "citation_source_review",
+  "status": "approved_for_bounded_six_case_execution",
+  "approved": true,
+  "execution_approved": true,
+  "failed_checks": [],
+  "approval_scope": "仅冻结六题的单次新原生运行；不是语义通过、正式模型采纳、查询校验或业务验收",
+  "manifest_sha256": "d454e804c858176ce642796fd60c8c01788b06d6a343a2d9ad2446023f475cd8",
+  "preflight_sha256": "149b5801ec9e7cad9460da8ea3a3d5fa127fd1deeaa63ce284d7dfc5cd41f325",
+  "runner_sha256": "a594b197a85587c26b0686d21c93d9e7bfb421edc13c12827930176d223040d8",
+  "case_ids": [
+    "U05",
+    "E01",
+    "TRACECTRL01",
+    "CTRL01",
+    "U01",
+    "P01"
+  ],
+  "criteria": {
+    "source_first": "../../independent-review/source-criteria.json",
+    "source_first_sha256": "13e8dbc9b7bfaf796b9e6b8d35f6a739785e07b17600aa91a723fc7320b1a03d",
+    "clarification": "../../independent-review/source-criteria-clarification.json",
+    "clarification_sha256": "258214d400f75d85f6500fad6d2f019095532fae7e2c1aee7fd6fdcc42364fd0"
+  },
+  "candidate_review_sha256": "2f502cdc9604b6485b38b0c15bb085a5d007bd6e594597a29af331e620f25228",
+  "mechanical_review": {
+    "path": "../../input-integrity/mechanical-check.json",
+    "sha256": "f1eacdb8a2619bc431c036fee756c34e56402b0ed70f02e6d360c20ed4973ead",
+    "checks_passed": 332,
+    "approval_scope": "mechanical_input_integrity_only",
+    "execution_approved": false
+  },
+  "supplementary_source_input_checks": {
+    "path": "../../independent-review/source-input-mechanical.json",
+    "sha256": "aa202d215a5a84284e10ff29c6d728632d53db0743d5fea635f863773b7ffd5e",
+    "passed": 79,
+    "failed": 0
+  },
+  "expectation_crosscheck": [
+    {
+      "id": "U05",
+      "passed": true,
+      "detail": "A规则陈述与缺凭据并列；B带入前提；C未知不等于无；D不同口径陈述与具体属性待核并存；E核查意见非审批。"
+    },
+    {
+      "id": "E01",
+      "passed": true,
+      "detail": "前提/承接/新增使用感受及01921非精确步骤一致。"
+    },
+    {
+      "id": "TRACECTRL01",
+      "passed": true,
+      "detail": "总体结果前提、局部新增观察、估计未计时及合成边界一致。"
+    },
+    {
+      "id": "CTRL01",
+      "passed": true,
+      "detail": "真实非诱导提问允许保留陈姐做法、个人感受和期望，不量化或作因果。"
+    },
+    {
+      "id": "U01",
+      "passed": true,
+      "detail": "经营双目标、沈总优先级与老化待验、原因及效果缺口一致；允许模型章节支持。"
+    },
+    {
+      "id": "P01",
+      "passed": true,
+      "detail": "给定有效悦享年卡支持有资格，普通等级不否定；人工完整题设可推导。"
+    }
+  ],
+  "control_expectations": {
+    "path": "artifacts/w03/answer-repair-20261107/stage4-evidence-trace/independent-review/controls_expectations.json",
+    "sha256": "0ffec813232510aeb658bc9986d352f4bdce1408f127328c8242895e8ecb1b32",
+    "binding": "与冻结new_control_approval所指原控制批准的controls_expectations_sha256相同；只读CTRL01/TRACECTRL01期望，不发送模型"
+  },
+  "input_findings": [
+    "全部11个冻结输入文件hash当前一致；候选模型及提示分别一致。",
+    "六题最终question和元信息与Stage5完全相同；原期望、控制文件、批准绑定及original_questions按字节保持。",
+    "U05及E01嵌入的全部消息已逐条核原始访谈speaker与content；CTRL01的两条原文完整存在。",
+    "先独立形成source-criteria，再读取新旧提示、原业务期望和旧控制设计批准；未读取旧实际答案来制定标准。",
+    "机械检查JSON approved=true仅限机械完整性，execution_approved=false；332项全通过且正文一致。本独立审核补齐来源/候选/期望语义后才签发执行批准。",
+    "本次进一步79项核验全通过。运行协议只发送business_model/question和提示，expected为空且tools为空。"
+  ],
+  "runtime_constraints": {
+    "case_count": 6,
+    "per_case_new_native_runs": 1,
+    "model": "deepseek-flash",
+    "timeout": 180,
+    "retry_timeout": 240,
+    "max_concurrency": 2,
+    "only_native_confirmed_length_expansion": true,
+    "semantic_or_format_resampling": false,
+    "separate_network_recovery": false
+  },
+  "postrun_required": [
+    "按实际答复逐断言核结论、主体、前提、限定、消息归属、直接引文与转述。",
+    "真实直接引文以被指向单条原文作子串核验；不能整文件命中掩盖相邻消息错挂。",
+    "仅模型题核章节与规则支持，不补编原句；合成题设不记青禾事实。",
+    "核原生结构、JSON协议和机械结果，但这些不替代语义复审。"
+  ],
+  "open_decisions_requiring_user": [],
+  "actual_model_calls_by_reviewer": 0,
+  "prose": "来源、候选及冻结输入审查通过；failed_checks为空，准许六题各一次新原生运行。实际答复尚未产生，结果语义待审。"
+}

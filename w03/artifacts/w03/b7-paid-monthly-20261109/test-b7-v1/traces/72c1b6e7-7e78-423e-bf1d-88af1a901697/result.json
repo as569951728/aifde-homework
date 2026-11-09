@@ -1,0 +1,42 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "monthly_paid_buyer_count",
+      "monthly_paid_repeat_buyer_count"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  SUM(CASE WHEN case when is_paid_eligible then member_id end IS NOT NULL THEN 1 ELSE 0 END) AS monthly_paid_buyer_count\n  , SUM(CASE WHEN case when is_paid_eligible and valid_order_count >= 2 then member_id end IS NOT NULL THEN 1 ELSE 0 END) AS monthly_paid_repeat_buyer_count\nFROM \"data\".\"main\".\"monthly_paid_member_summary\" monthly_paid_member_summary_src_10000\nWHERE DATE_TRUNC('month', month_start) BETWEEN '2026-08-01' AND '2026-08-31'",
+  "columns": [
+    "monthly_paid_buyer_count",
+    "monthly_paid_repeat_buyer_count"
+  ],
+  "rows": [
+    [
+      6,
+      4
+    ]
+  ],
+  "seconds": 0.028,
+  "units": {
+    "monthly_paid_buyer_count": "count",
+    "monthly_paid_repeat_buyer_count": "count"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "2026年8月完整自然月内，青禾客户范围内，月末符合付费会员资格（悦享年卡或家庭季卡且当日有效，按账户去重）的账户中：当月有至少一笔有效订单的购买人数为6人；同一自然月至少有兩笔有效订单的复购人数为4人。统计覆盖全渠道、全门店，人数按CRM会员账户计数，不等于跨系统自然人。",
+  "question": "2026年8月青禾优选月末付费会员购买人数和复购人数分别是多少？",
+  "trace_id": "72c1b6e7-7e78-423e-bf1d-88af1a901697",
+  "elapsed_seconds": 25.206,
+  "model_usage": {
+    "prompt_tokens": 12688,
+    "completion_tokens": 654,
+    "total_tokens": 13342
+  },
+  "model_calls_with_usage": 2
+}

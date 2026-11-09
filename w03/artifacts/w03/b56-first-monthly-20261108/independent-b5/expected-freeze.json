@@ -1,0 +1,72 @@
+{
+  "phase": "design_freeze_before_execution",
+  "source_files": {
+    "materials/w03/01_订单日报说明.md": "976fa129493e6bd2861a58d74df2ba3ad4448ea01a2d25651124222a61cebb67",
+    "materials/w03/03_会员运营周报.md": "25ab933556bf34bef21b528d4c7838c9baad33ae289d59f09501e765080bb492",
+    "materials/w03/05_数据字典.md": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16",
+    "docs/w03/business_model.md": "4e3187d124adc0856163b74a2cdd5edba064cf4ed39a698c553c9fe196ec00fb",
+    "docs/w03/contract.md": "76df027ee419a5c02a92459641e7a126ab3e8db713cdf3bc63c4ffd42bf62042",
+    "docs/w03/test-guide.md": "59a643eff2eda31b2eaf2d18cec83c7aaeb46e31fd2dc5117f50f6acc9b00d2b",
+    "templates/w03/dimension_targets.json": "061912a5979c60cb59e90d90939d1eb6857437d930c8a1d9b275d50a0d10cd25"
+  },
+  "data_sources": {
+    "small": {
+      "id": "qinghe-w03-20260923-small",
+      "kind": "course_synthetic",
+      "files": {
+        "materials/data/small/cards.csv": "d27bdabd508d7881a1bea84cb79400c2a770fc1ad42fdb81877163cc018bb8d5",
+        "materials/data/small/manifest.json": "b547dfbb713644b7972d4d28e403880b09ae7bf49b0006c6dbc122aea3e30c60",
+        "materials/data/small/members.csv": "e99b7e82389722b1ae2e4fd267c74dd84bd61dfeabaa161221d7ae44ae955b2f",
+        "materials/data/small/orders.csv": "c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1",
+        "materials/data/small/stores.csv": "e8160804fd485853f6c75d9a095b1ee6f05bbbd40ba851cac84def35488aa41d"
+      }
+    },
+    "fixture": {
+      "id": "qinghe-w03-b5-independent-artificial-20261108-v1",
+      "kind": "artificial_minimal_additions",
+      "files": {
+        "artifacts/w03/b56-first-monthly-20261108/independent-b5/fixture-data/cards.csv": "d27bdabd508d7881a1bea84cb79400c2a770fc1ad42fdb81877163cc018bb8d5",
+        "artifacts/w03/b56-first-monthly-20261108/independent-b5/fixture-data/manifest.json": "3772c8037c3d672c154a01aba60d826e72197800758025de675b45298b4b6ae7",
+        "artifacts/w03/b56-first-monthly-20261108/independent-b5/fixture-data/members.csv": "33564649e2faa821dcf4fa0db1af6d8eeff212d8cb579fd7286635d66b21bc86",
+        "artifacts/w03/b56-first-monthly-20261108/independent-b5/fixture-data/orders.csv": "07a186647fff9d3afdf2edc42b40e51522dd4a09af1606841712d4aa0e31d589",
+        "artifacts/w03/b56-first-monthly-20261108/independent-b5/fixture-data/stores.csv": "e8160804fd485853f6c75d9a095b1ee6f05bbbd40ba851cac84def35488aa41d"
+      }
+    }
+  },
+  "artifacts": {
+    "calculate_expected.py": "c027b2c90e4b72e6fd130454f5e8af94168f8baba112610781facf28a3d9ba13",
+    "design.json": "43bb302c392a14d43b5ba76149248a0c8999decd3499a3099585fb3906c90316",
+    "discrimination-checks.json": "7a4e71448e4452fb03b4642a9b4f9eee9467ebc7d944ba338bc6fd1900f6683e",
+    "fixture-data/README.md": "d54841035b2549ff78e0e8164172658f429eaacf852eecde8edba7efbf05f2ab",
+    "fixture-data/cards.csv": "d27bdabd508d7881a1bea84cb79400c2a770fc1ad42fdb81877163cc018bb8d5",
+    "fixture-data/manifest.json": "3772c8037c3d672c154a01aba60d826e72197800758025de675b45298b4b6ae7",
+    "fixture-data/members.csv": "33564649e2faa821dcf4fa0db1af6d8eeff212d8cb579fd7286635d66b21bc86",
+    "fixture-data/orders.csv": "07a186647fff9d3afdf2edc42b40e51522dd4a09af1606841712d4aa0e31d589",
+    "fixture-data/stores.csv": "e8160804fd485853f6c75d9a095b1ee6f05bbbd40ba851cac84def35488aa41d",
+    "ledger-fixture-accounts.csv": "4b69136a79bc25fb4a5f99f787b79bca4acff9c94a760a621a8e89163fb1230d",
+    "ledger-fixture-cases.json": "3a35562d3fea9289e202ad180a4501335a2c543e2b297cdc820d18fbd46112f9",
+    "ledger-fixture-orders.csv": "cbbb7726b5fb3709fe3b314aa23040bfeed3dad7c4be558d332d1f651bdeb2e4",
+    "ledger-fixture-registrations.csv": "c2fd6c2241a57c4b2a24e67ef602a54f2da52ef2bbeb33717e6e1bd75b02ec92",
+    "ledger-small-accounts.csv": "8328da783500f63badca336f20d918ee786532f8cdc723c0840be563359628ad",
+    "ledger-small-cases.json": "1aa5b70e8c125797e94fd2b29838c34c462e98e8edf07bc3a2d9cb30695087be",
+    "ledger-small-orders.csv": "9eb49f9dde3ad20394dda82e85d0308de6918f487e12875605f843849b8b55d8",
+    "ledger-small-registrations.csv": "a1cce8b089cbcdf45db79d3190fb24349ba0ccfb2105382ad17946c0f71f71c2",
+    "manual-controls.json": "2d06a096cbe4254b15a4a054edc82886415e4e7b9740b3ad7f51708e51fafd55",
+    "original-designs.json": "ac952c5a3b59cfdbf36c0c87b4de3cde4369a5ca284545d8b40396402ed56a84",
+    "preflight-review.json": "16c9a8ea955264bc48e72b3ca6853cd1e727194aee5b33799e05156da28f9d26",
+    "preflight-review.md": "e1561a0dbf8ccc852d56d66f3b7e2e7cdc805742c20881a189211b4026b4ecf9",
+    "summary.md": "56bd4ab4598b976343d4ba37fb8c5ef98fb562886b5d8ce8f7ff455656430712",
+    "tests-fixture.json": "c3cd3367a275152fbd662ebbe21873f9aab648856ef1e8a5200b85c3d54b5ad8",
+    "tests-small.json": "5106bd343b90476341348b3cbefad65bcf04b24c62ac7bbd1811f07f6d3b05dc"
+  },
+  "original_design_source": "customer/w03/test-plans/metric_cases.json (B5 entries copied into original-designs.json)",
+  "generated_sql_or_actual_used": false,
+  "runtime_binding": {
+    "status": "pending_actual_load",
+    "catalog_sha256": null,
+    "data_sha256": null,
+    "note": "These nulls are freeze metadata placeholders, not unknown business expected values. Never submit fabricated runtime hashes."
+  },
+  "actual_test_status": "not_run",
+  "independent_review_status": "pending_external_reviewer"
+}

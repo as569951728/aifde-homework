@@ -1,0 +1,235 @@
+[
+  {
+    "id": "B7-N01",
+    "question": "请同时列出2026年8月青禾优选月末付费会员购买人数、月末付费会员有效订单数、月末付费会员净销售额（单位分）、月末付费会员复购人数、月末付费会员复购率和月末付费会员订单均额。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_paid_buyer_count",
+          "monthly_paid_order_count",
+          "monthly_paid_sales_cents",
+          "monthly_paid_repeat_buyer_count",
+          "monthly_paid_repeat_rate",
+          "monthly_paid_avg_order_value"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "rows": [
+        [
+          6,
+          10,
+          47550,
+          4,
+          0.6666666666666666,
+          4755
+        ]
+      ],
+      "units": {
+        "monthly_paid_buyer_count": "count",
+        "monthly_paid_order_count": "count",
+        "monthly_paid_sales_cents": "cents",
+        "monthly_paid_repeat_buyer_count": "count",
+        "monthly_paid_repeat_rate": "ratio",
+        "monthly_paid_avg_order_value": "cents_per_order"
+      },
+      "data_version": "qinghe-w03-20260923-small",
+      "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立CSV核算：月末2026-08-31按悦享年卡/家庭季卡、valid_from<=D<valid_until、ended_at空或D<ended_at判资格；8个账户有资格，6个有有效订单，共10笔，净额47550分，4个复购；比率4/6，均额47550/10。"
+  },
+  {
+    "id": "B7-M01",
+    "question": "请按自然月分别列出2026年7月和8月青禾优选的月末付费会员购买人数、月末付费会员有效订单数、月末付费会员净销售额（单位分）、月末付费会员复购人数、月末付费会员复购率和月末付费会员订单均额；保留各月，不给跨月合计。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_paid_buyer_count",
+          "monthly_paid_order_count",
+          "monthly_paid_sales_cents",
+          "monthly_paid_repeat_buyer_count",
+          "monthly_paid_repeat_rate",
+          "monthly_paid_avg_order_value"
+        ],
+        "start": "2026-07-01",
+        "end": "2026-09-01",
+        "group_by": [
+          "metric_time__month"
+        ],
+        "filters": []
+      },
+      "columns": [
+        "metric_time__month",
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "rows": [
+        [
+          "2026-07-01 00:00:00",
+          6,
+          6,
+          15500,
+          0,
+          0,
+          2583.3333333333335
+        ],
+        [
+          "2026-08-01 00:00:00",
+          6,
+          10,
+          47550,
+          4,
+          0.6666666666666666,
+          4755
+        ]
+      ],
+      "units": {
+        "monthly_paid_buyer_count": "count",
+        "monthly_paid_order_count": "count",
+        "monthly_paid_sales_cents": "cents",
+        "monthly_paid_repeat_buyer_count": "count",
+        "monthly_paid_repeat_rate": "ratio",
+        "monthly_paid_avg_order_value": "cents_per_order"
+      },
+      "data_version": "qinghe-w03-20260923-small",
+      "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立CSV核算：7月末11个有资格账户中6个有有效订单、6笔、15500分、无复购（复购率0），均额15500/6；8月同上题；各月单列，不跨月合计。"
+  },
+  {
+    "id": "B7-Z01",
+    "question": "请同时列出2026年5月青禾优选月末付费会员购买人数、月末付费会员有效订单数、月末付费会员净销售额（单位分）、月末付费会员复购人数、月末付费会员复购率和月末付费会员订单均额。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_paid_buyer_count",
+          "monthly_paid_order_count",
+          "monthly_paid_sales_cents",
+          "monthly_paid_repeat_buyer_count",
+          "monthly_paid_repeat_rate",
+          "monthly_paid_avg_order_value"
+        ],
+        "start": "2026-05-01",
+        "end": "2026-06-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "rows": [
+        [
+          0,
+          0,
+          0,
+          0,
+          null,
+          null
+        ]
+      ],
+      "units": {
+        "monthly_paid_buyer_count": "count",
+        "monthly_paid_order_count": "count",
+        "monthly_paid_sales_cents": "cents",
+        "monthly_paid_repeat_buyer_count": "count",
+        "monthly_paid_repeat_rate": "ratio",
+        "monthly_paid_avg_order_value": "cents_per_order"
+      },
+      "data_version": "qinghe-w03-20260923-small",
+      "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立CSV核算：2026-05月末有11个有资格账户，但当月无有效订单；人数/订单/净额/复购人数为0，复购率与均额分母为零为null。"
+  },
+  {
+    "id": "B7-Q01",
+    "question": "2026年8月青禾优选月末付费会员购买人数和复购人数分别是多少？",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_paid_buyer_count",
+          "monthly_paid_repeat_buyer_count"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_repeat_buyer_count"
+      ],
+      "rows": [
+        [
+          6,
+          4
+        ]
+      ],
+      "units": {
+        "monthly_paid_buyer_count": "count",
+        "monthly_paid_repeat_buyer_count": "count"
+      },
+      "data_version": "qinghe-w03-20260923-small",
+      "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立CSV核算：8月6个有资格且有有效订单的账户，其中4个至少2笔；解释须说明月末判定与卡产品/端点规则。"
+  },
+  {
+    "id": "B7-X01",
+    "question": "请列出2026年8月1日至8月15日青禾优选的月末付费会员购买人数和月末付费会员净销售额。",
+    "expected": {
+      "status": "unsupported"
+    },
+    "expected_source": "六项只支持完整自然月；半月应拒绝，不得截断计算。"
+  },
+  {
+    "id": "B7-X02",
+    "question": "请将2026年8月青禾优选的月末付费会员购买人数和有效订单数按订单成交门店分别列出。",
+    "expected": {
+      "status": "unsupported"
+    },
+    "expected_source": "六项只支持全门店汇总；按成交门店拆分应拒绝。"
+  },
+  {
+    "id": "B7-X03",
+    "question": "2026年8月青禾优选仅小程序渠道的月末付费会员购买人数是多少？",
+    "expected": {
+      "status": "unsupported"
+    },
+    "expected_source": "六项只支持全渠道；按渠道筛选应拒绝，理由是口径/工具限制，不冒称客户政策。"
+  },
+  {
+    "id": "B7-C01",
+    "question": "本月青禾优选的月末付费会员购买人数是多少？",
+    "expected": {
+      "status": "clarify"
+    },
+    "expected_source": "未给具体自然月；月末判定依赖明确月份，应先澄清。"
+  }
+]

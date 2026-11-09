@@ -1,0 +1,681 @@
+{
+  "reviewer": "independent_fixed_materials_source_semantics",
+  "completed_at": "2026-11-08T02:21:57.352307+00:00",
+  "scope": "15题来源归属、已知/未知与统计选择/业务规则/物理层/建模落点专项；不是全维度设计验收或模型问答实测",
+  "scope_complete": true,
+  "overall_status": "semantics_supported_citation_corrections_recommended",
+  "api_calls": 0,
+  "actual_model_answers_reviewed": false,
+  "old_answers_or_scores_read": false,
+  "test_design_comprehensive_acceptance": false,
+  "source_first_audit": {
+    "criteria_created_at": "2026-11-08T02:20:22.720641+00:00",
+    "criteria_sha256": "fde04e6a8c3c24228c2546f86c894a3d4684e4957fd92483aff70942c6477eb9",
+    "expectations_first_read_recorded_at": "2026-11-08T02:20:34.456363+00:00",
+    "expectations_sha256": "151e861e71de7bb6e56da8ae2954b1eabe1db591180afd571256846ce12ddb4d"
+  },
+  "summary": {
+    "cases_reviewed": 15,
+    "supported_in_scope": 13,
+    "supported_with_citation_correction": 2,
+    "required_points_semantic_changes": 0,
+    "unacceptable_semantic_changes": 0,
+    "citation_findings": 2,
+    "fact_conflicts_requiring_user_decision": 0,
+    "conclusion": "15题本次被审的业务语义要求均有依据；R03一条冗余来源与F08模型来源版本宜修。仅为来源/确定程度/分层专项，不是测试设计全面通过或模型问答通过。"
+  },
+  "additional_sources_read_after_criteria": [
+    {
+      "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+      "sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308"
+    },
+    {
+      "path": "W03/实操工程/docs/w03/contract.md",
+      "sha256": "76df027ee419a5c02a92459641e7a126ab3e8db713cdf3bc63c4ffd42bf62042"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d70b1629-b176-53d1-8357-f195328c0193-transcript.json",
+      "sha256": "d64d119413bba354dd8ada3d0c78cca35d55364df6a666c7c67b6ff7b85ed34e"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-c4fe490a-ddae-5bcb-a51b-f44dd796b854-transcript.json",
+      "sha256": "3cda76145150cd3f01b51307972d081784cf86d351cb4ec1bb5c8f89663feea4"
+    },
+    {
+      "path": "W03/实操工程/docs/w03/business_model.md",
+      "sha256": "6e48419390810b44cdaa1ba430b01038a54be37c9f8692b58933ac8785592bf0"
+    }
+  ],
+  "cases": [
+    {
+      "id": "U06",
+      "status": "supported_in_scope",
+      "expectation_index": 5,
+      "checked_claims": [
+        "38项完成是题干合成假设；可支持指定范围内定义追溯、查询和独立核对及运营核口径/遗漏/重复，不是实际运行记录、客户验收、生产数据正确或收益证据。",
+        "本期月末资格、完整自然月、全门店全渠道的统计选择已有04邮件，不能因生产证据缺失或其他口径仍待核而重置为未知；适用范围不得扩大。",
+        "具体卡产品与账户资格由小林答复；有效期端点在所给模型中由陈姐答复支持，04邮件未列产品/端点；统计时点来自04，物理字典不能定业务产品范围。",
+        "卡资格规则保留业务模型；本期月末统计选择放指标定义/核查记录；候选筛选、业务确认、实际执行分别保留，不能由统计人口直接充当可触达名单。",
+        "小林提供运营用途并协调，运营核业务范围，IT核字段覆盖，王经理核统计口径/验收依据；具体候选条件与确认人、触达/执行安排需核实，王经理意见不等于公司批准。",
+        "个人Excel只能供来源核查/辅助对照，非统一口径或交付数据；项目费用/验收等依本人决定进入SOW/交付记录而非业务模型。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 5,
+          "assessment": "5项要求均保留测试假设、统计人群/候选/执行分离、业务模型与指标/SOW落点及角色范围；没有把04既定统计选择改成未知。"
+        },
+        "unacceptable": {
+          "count": 3,
+          "assessment": "3项不可接受均拦截超范围归因与授权，无过强否定。"
+        },
+        "sources": {
+          "count": 5,
+          "assessment": "04支持统计选择/测试范围；07支持合成边界；小林03858/60/62/68/70支持个人表、偏好、执行边界、月底人群；王经理03911/19/31支持核查责任/未掌握最终验收人；阶段判断明确为导师代拟本人采纳；本人模型边界由boundary_change_source提供，未冒称客户规则。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "lines": "5-9,13-33",
+          "supports": "既定统计选择与阶段测试边界"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/07_客户内部沟通.md",
+          "lines": "7-17",
+          "supports": "合成/生产边界与范围评审"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "lines": "MSG-03848/03854/03856/03858/03860/03862/03866/03868/03870",
+          "supports": "卡范围、用途、候选与执行边界"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+          "lines": "MSG-03910/03911/03919/03931/03932/03933",
+          "supports": "提案/认可/核查分工和未知授权"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/source-semantics-audit-20261108/input/business_model.md",
+          "lines": "36-46,54-63,83-86",
+          "supports": "模型内业务规则、门店承接与来源分工"
+        },
+        {
+          "path": "W01/修订记录/20261106-W03新访谈修订/docs/w01/project_assessment.md",
+          "lines": "7-13,19-23,54-80",
+          "supports": "已采纳判断仍分测试/经营/执行"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+          "lines": "8-14",
+          "supports": "本人建模落点约束，不是客户事实"
+        }
+      ],
+      "findings": [],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "R01",
+      "status": "supported_in_scope",
+      "expectation_index": 45,
+      "checked_claims": [
+        "纳入A：8月31日生效且无终止、计划结束在未来，按模型规则月末有效；04选择允许8月10日先购买后在月末取得资格。",
+        "月末取点是本期统计选择，开始日含来自模型中的陈姐规则，不得归给04邮件。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 1,
+          "assessment": "纳入与独立来源判据一致；月末生效和月前购买是两个条件，月末取点已定。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "拒绝按购买日无卡而排除符合04。"
+        },
+        "sources": {
+          "count": 3,
+          "assessment": "04与小林03868支持月底取点；陈姐03886在03885两类卡限定下支持开始日含，来源分工成立。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "lines": "5,9,13",
+          "supports": "月末资格选账户后统计当月有效订单"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/source-semantics-audit-20261108/input/business_model.md",
+          "lines": "36-38,83-85",
+          "supports": "悦享年卡纳入与开始日含的独立来源"
+        }
+      ],
+      "findings": [],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "R02",
+      "status": "supported_in_scope",
+      "expectation_index": 46,
+      "checked_claims": [
+        "不纳入A：仅此卡且计划结束日8月31日当天已无效，月末无资格；购买日曾有资格不改变本期月末选择。",
+        "否定依据是完整卡情境与既有端点规则，不是材料没提别卡即默认没有。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 1,
+          "assessment": "排除与完整人工记录及结束日不含一致，未把未知推为否定。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "禁止用购买日资格替代月末资格，符合04。"
+        },
+        "sources": {
+          "count": 3,
+          "assessment": "04给统计日期；陈姐03886给端点，小林03868给购买人群/月底口径。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "lines": "5,13",
+          "supports": "月末资格"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/source-semantics-audit-20261108/input/business_model.md",
+          "lines": "36-38,83-85",
+          "supports": "计划结束日不含，与统计时点来源区分"
+        }
+      ],
+      "findings": [],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "R03",
+      "status": "supported_with_citation_correction",
+      "expectation_index": 47,
+      "checked_claims": [
+        "A、B均不纳入购买人数：明确完整8月范围中A仅全退、B无订单，不满足至少一次有效购买；有资格不等于有购买。",
+        "对人工完整情境可作否定，不推导真实客户不存在订单或该账户没有资格。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 1,
+          "assessment": "A/B无有效订单的结论来自明确完整订单情境及01/04，不是缺资料即判无。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "全退非有效、无订单非购买均有直接定义。"
+        },
+        "sources": {
+          "count": 4,
+          "assessment": "D1、D4直接支持；小林03868补充购买人群。陈姐03886只给资格日期/账户归并，在本题资格已知时不支持无购买断言，应移除冗余引用。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "lines": "11-15",
+          "supports": "paid不等于有效购买，全退不计"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "lines": "5,13",
+          "supports": "资格与有效购买共同条件"
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "FM-CITE-01",
+          "severity": "low",
+          "category": "irrelevant_source_attribution",
+          "field": "/cases/47/sources/2",
+          "current_value": {
+            "source": "C",
+            "locator": "MSG-03886",
+            "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+          },
+          "reason": "MSG-03886仅直接说明卡有效期、判定日、账户归并和门店配合；本题已明确A/B月末有资格，真正待判的全退/无订单不满足购买由01有效订单和04购买人数支持。把该日期规则列在本题全部论据中会增加不对应的引用。",
+          "impact": "引用清理；不改变required_points、unacceptable、题干或业务判断。",
+          "replacement_suggestion": {
+            "op": "remove",
+            "path": "/cases/47/sources/2"
+          },
+          "resolution": "现有来源可直接修，无需客户确认"
+        }
+      ],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "R04",
+      "status": "supported_in_scope",
+      "expectation_index": 48,
+      "checked_claims": [
+        "题目已给定不完整自然月，04明确本期不支持，不能直接计算或自行补齐/改写窗口；可以说明限制并让请求者选择完整月。",
+        "该限制已确定，不以补生产资料为前提；不给部分月假结果。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 1,
+          "assessment": "部分月不支持、不能静默扩整月与04明确限制一致。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "不要求重新确认已经规定的完整月限制。"
+        },
+        "sources": {
+          "count": 2,
+          "assessment": "04为业务统计限制；contract.status和第29行解释接口呈现/限制落实，未取代业务规则来源。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "lines": "9",
+          "supports": "仅完整自然月"
+        }
+      ],
+      "findings": [],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "R05",
+      "status": "supported_in_scope",
+      "expectation_index": 49,
+      "checked_claims": [
+        "7月和8月各月购买1、复购0；两笔跨月订单不成为任一月内复购；跨月唯一账户不能把月去重人数相加。",
+        "本期多月按月展示，不把材料约束误表述为数学上无法跨月去重。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 1,
+          "assessment": "每月购买1复购0、不能按月人次相加作跨月唯一人数，与03及人工情境一致。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "跨月凑单/月去重相加均违反该月内定义。"
+        },
+        "sources": {
+          "count": 1,
+          "assessment": "03月内三项和开头说明直接支持，不依赖真实数据重算。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "lines": "5,29-37",
+          "supports": "月内定义、按月展示及跨月去重禁用相加"
+        }
+      ],
+      "findings": [],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "R06",
+      "status": "supported_in_scope",
+      "expectation_index": 50,
+      "checked_claims": [
+        "不支持按门店/渠道拆本期付费月报；7月与8月可按月分别列出（完整月全范围）。",
+        "不把暂不支持说成业务永远不得分析门店/渠道，不直接把两月率平均或合为一个率。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 1,
+          "assessment": "不支持按门店/渠道、完整多月逐月显示与04一致；不能合并限定于本期六项支持范围。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "禁止任意拆分或简单平均与本期按月输出限制一致。"
+        },
+        "sources": {
+          "count": 1,
+          "assessment": "04第9行直接支持，是本期已定选择，不是所有业务永久限制。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "lines": "5,9,25-29",
+          "supports": "六项月报查询范围已知"
+        }
+      ],
+      "findings": [],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "R07",
+      "status": "supported_in_scope",
+      "expectation_index": 51,
+      "checked_claims": [
+        "当前分母B、C为同月有效购买账户，分子C；A仅注册无有效购买不入分母。旧全部注册分母已被03明确替换，不得继续判为冲突未定。",
+        "本轮不重跑数值指标；题干账户集可据定义语义核验，不能泛推旧报表已重算。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 2,
+          "assessment": "分子C分母B/C、排除仅注册A与03已修订口径一致；旧四季报表不被追认。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "禁止旧稿分母有当前材料直接支持，不应判为冲突待核。"
+        },
+        "sources": {
+          "count": 1,
+          "assessment": "03开头明示替换，月内复购率给当前分母。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "lines": "3-5,29-37",
+          "supports": "当前调整及分子分母"
+        }
+      ],
+      "findings": [],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "B01",
+      "status": "supported_in_scope",
+      "expectation_index": 52,
+      "checked_claims": [
+        "支付订单O1/O2/O4；有效购买仅O1。paid只表示支付状态，0实付0退款为零净额不有效，也不满足原文全退实付大于0条件。",
+        "退款是实付后累计退回，优惠=原价减实付，不用退款扣减原优惠；退款金额字段不提供退款发生日。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 2,
+          "assessment": "支付状态与有效购买分类、累计退款与原价优惠区别均据01/05成立。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "全退/零净额/取消不有效、退款不扣优惠直接受01支持。"
+        },
+        "sources": {
+          "count": 2,
+          "assessment": "01给业务报表定义；05给物理金额/快照含义，两者未混淆。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "lines": "11-15,23-31,49-51",
+          "supports": "订单分类与优惠定义"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "lines": "15-18",
+          "supports": "物理状态金额字段与累计快照"
+        }
+      ],
+      "findings": [],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "B02",
+      "status": "supported_in_scope",
+      "expectation_index": 53,
+      "checked_claims": [
+        "可按8月原订单日期及快照累计退款核该单8月订单口径净额；退款日期缺失不妨碍已明确的订单归期。",
+        "不能凭快照累计退款得9月退款现金流；缺退款日期是输入不足，不是9月没有退款；不能改写为生产退款完全不可追溯。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 1,
+          "assessment": "可以核8月订单净额、不能推出9月现金流符合归期与快照定义；未因退款日期缺失重开已定净额。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "不阻止既定净额、不推测退款月，否定范围仅为所给输入不足。"
+        },
+        "sources": {
+          "count": 2,
+          "assessment": "01第39/43行直接支持订单归期，05 refund_cents支持累计快照且无事件日期。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "lines": "39-43",
+          "supports": "退款/净额订单日期归属"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "lines": "14,18",
+          "supports": "下单日和快照累计退款，无退款发生日"
+        }
+      ],
+      "findings": [],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "B03",
+      "status": "supported_in_scope",
+      "expectation_index": 54,
+      "checked_claims": [
+        "有效订单原始quantity=3计3件；该指标不是净销量，退款金额不能推出退货件数。",
+        "购卡金额不同于商品订单收入，不能并入本期商品净销售额。该判断是本期字段/指标口径，不代表企业收入会计的一般结论。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 1,
+          "assessment": "原始3件、金额不能推出退货件数、购卡不属商品订单收入均有直接依据。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "不按退款比例折件或称净销量，不把购卡收入并入本期商品指标。"
+        },
+        "sources": {
+          "count": 2,
+          "assessment": "01件数定义、05两个字段含义直接支持。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "lines": "43,65-67",
+          "supports": "订单净额与原始件数"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "lines": "19,55",
+          "supports": "原始件数与购卡金额物理含义"
+        }
+      ],
+      "findings": [],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "B04",
+      "status": "supported_in_scope",
+      "expectation_index": 55,
+      "checked_claims": [
+        "覆盖历史首笔有效单是7月10日O100（同日期按订单号）；8月查询首单不选O200，因为先全历史确定首笔再筛窗口，所以A在8月不贡献首单。",
+        "取消首单不候选，O101及O200属于观测期后续订单；覆盖内首次不等于终身首次。排序是03指标规则，不是数据接入层自动已做。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 1,
+          "assessment": "先覆盖历史后查8月、O100在7月、8月无首单、非终身，均符合03。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "禁止窗口内重排、取消单、任意同日顺序及终身表述都有来源。"
+        },
+        "sources": {
+          "count": 1,
+          "assessment": "03首购/首单/后续购买直接支持；未将排序规则归给课程接入层。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "lines": "13-25",
+          "supports": "覆盖期首次、顺序及查询窗口"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/source-semantics-audit-20261108/input/business_model.md",
+          "lines": "11,23",
+          "supports": "覆盖边界及有效订单含义"
+        }
+      ],
+      "findings": [],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "B05",
+      "status": "supported_in_scope",
+      "expectation_index": 56,
+      "checked_claims": [
+        "覆盖内确无匹配订单的净额可为0；复购率分母0则未定义；覆盖外不能以0表示。",
+        "整数分需换算，13000分为130元。未知覆盖外与覆盖内无发生不可混同；本期约定不需生产数据证据重开。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 1,
+          "assessment": "覆盖内空集零/零分母未定义/覆盖外不支持及分元换算与输入/接口约定一致。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "禁止都填0和单位混用具有来源。"
+        },
+        "sources": {
+          "count": 4,
+          "assessment": "02支持零分母/覆盖外不是0/分元；03支持月内率；05支持覆盖；contract第43行明确覆盖内无订单可零、覆盖外不当零，属接口规则而非生产事实。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "lines": "43",
+          "supports": "净额合计单位分"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "lines": "5",
+          "supports": "零分母未定义，覆盖外不是零，展示换算"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "lines": "37",
+          "supports": "复购率零分母"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "lines": "3,16-18",
+          "supports": "测试覆盖和分单位"
+        }
+      ],
+      "findings": [],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "B06",
+      "status": "supported_in_scope",
+      "expectation_index": 57,
+      "checked_claims": [
+        "orders一单、members一CRM账户、stores一店、cards一卡；orders.member_id/cards.member_id到members，orders.store_id及members.home_store_id分别关联stores。",
+        "A归属甲，O1成交乙，须按要求选不同关系；不能从同账户多卡推O1用了某卡；这是材料未提供订单卡对应，不是现实不存在对应。",
+        "05明确是课程合成物理层，不是生产身份统一证据，不决定纳入产品或日期端点；业务排序/汇总/资格派生由学员Skill生成。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 1,
+          "assessment": "4表粒度、两种门店、账户关联、无订单卡键都符合05；缺键限定本期字典。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "自然人/成交归属混同与捏造键均受05直接排除。"
+        },
+        "sources": {
+          "count": 1,
+          "assessment": "05描述本期合成物理层，未把卡枚举/字段名当纳入/端点的业务裁定；未要求生产证据来否定本期关联。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "lines": "3-59",
+          "supports": "完整字典粒度、关联和接入层边界"
+        }
+      ],
+      "findings": [],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    },
+    {
+      "id": "F08",
+      "status": "supported_with_citation_correction",
+      "expectation_index": 65,
+      "checked_claims": [
+        "取得发放记录至多说明记录范围内发放事实，不能推出核销、购买或复购改善；需分别核使用/核销与订单记录、账户/时间/活动关联，再在可比定义/范围内判断变化及原因。",
+        "07只直接支持查数不等于收益和合成/生产边界，具体发放/核销区分也由所给模型的业务规则支持；补核动作是建议，不是已存在的字段或客户已确认流程。"
+      ],
+      "expected_field_audit": {
+        "required_points": {
+          "count": 1,
+          "assessment": "四状态分开、核销订单关联/范围时间/比较依据属于必要的后续核查，未写成关联已存在。"
+        },
+        "unacceptable": {
+          "count": 1,
+          "assessment": "发放等于使用或等于因果改善均缺证据，应拒绝。"
+        },
+        "sources": {
+          "count": 4,
+          "assessment": "两份W02原文直接支持发放≠核销及渠道/实际字段待核；07支持查数≠收益；MODEL所指v0.4确有同义规则，但并非本轮实际冻结候选，需要更正引用版本。"
+        }
+      },
+      "source_refs": [
+        {
+          "path": "W03/实操工程/materials/w03/07_客户内部沟通.md",
+          "lines": "7,11,15",
+          "supports": "资格/名单用途区分及查数不等于复购提升"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/source-semantics-audit-20261108/input/business_model.md",
+          "lines": "26,32,44,55,72",
+          "supports": "发放核销购买效果分别取证及实际关联未知"
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "FM-CITE-02",
+          "severity": "low",
+          "category": "model_source_version_mismatch",
+          "field": "/cases/65/sources/3",
+          "current_value": {
+            "source": "MODEL",
+            "path": "W03/实操工程/docs/w03/business_model.md",
+            "locator": "§2、§4"
+          },
+          "reason": "MODEL路径当前内容是W02 v0.4（第1行），实际提供给本轮问答的是input/business_model.md的11月8日候选。v0.4第21/48行确实支持断言，故不是业务结论错误；但引用没有指明历史来源且与本轮模型版本不一致。",
+          "impact": "使引用定位到本轮实际冻结候选，避免把旧基线当本轮MODEL；不把旧版本的其他未知重新带入本期。",
+          "replacement_suggestion": {
+            "op": "replace",
+            "path": "/cases/65/sources/3",
+            "value": {
+              "source": "MODEL",
+              "path": "W03/实操工程/artifacts/w03/source-semantics-audit-20261108/input/business_model.md",
+              "locator": "§2 优惠与券（第26行）、§3 规则6（第44行）、§5 实际关联待核（第72行）",
+              "evidence_kind": "本轮冻结的业务模型候选；非正式基线"
+            }
+          },
+          "resolution": "现有冻结模型可直接修，无需客户确认"
+        }
+      ],
+      "numerical_execution": "not_performed; 人工题设只核定义语义，未重算实际指标或重跑模型"
+    }
+  ],
+  "proposed_patches": [
+    {
+      "op": "remove",
+      "path": "/cases/47/sources/2"
+    },
+    {
+      "op": "replace",
+      "path": "/cases/65/sources/3",
+      "value": {
+        "source": "MODEL",
+        "path": "W03/实操工程/artifacts/w03/source-semantics-audit-20261108/input/business_model.md",
+        "locator": "§2 优惠与券（第26行）、§3 规则6（第44行）、§5 实际关联待核（第72行）",
+        "evidence_kind": "本轮冻结的业务模型候选；非正式基线"
+      }
+    }
+  ]
+}

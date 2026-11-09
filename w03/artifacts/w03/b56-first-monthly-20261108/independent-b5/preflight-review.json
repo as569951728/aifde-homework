@@ -1,0 +1,67 @@
+{
+  "status": "author_self_check_passed_pending_independent_review",
+  "reviewer": "same design/expected author",
+  "third_party_review": false,
+  "actual_agent_query_count": 0,
+  "build_count": 0,
+  "checks": [
+    {
+      "id": "scope",
+      "status": "pass",
+      "note": "Only independent-b5 written; no build/query/formal test or W02 changes by this script."
+    },
+    {
+      "id": "input_integrity",
+      "status": "pass",
+      "note": "Both manifests verified against all CSV hashes; PK/FK/status/amount/date checks passed."
+    },
+    {
+      "id": "coverage",
+      "status": "pass",
+      "note": "B5 five targets and seven original designs mapped to six unique questions."
+    },
+    {
+      "id": "independence",
+      "status": "pass",
+      "note": "stdlib CSV only; no generated SQL, library, actual result, or LLM query used as answer."
+    },
+    {
+      "id": "manual_calibration",
+      "status": "pass",
+      "note": "Named August first IDs and fixture 200-63=137 checked against literal controls."
+    },
+    {
+      "id": "schema",
+      "status": "pass",
+      "note": "All six tests have exactly id/question/expected/expected_source; integer values; expected full intent/columns/rows/units."
+    },
+    {
+      "id": "group_contract",
+      "status": "pass",
+      "note": "D01 retains four groups; H03 two explicit member groups; missing/extra/duplicate groups must fail downstream judge."
+    },
+    {
+      "id": "A01",
+      "status": "pass",
+      "note": "valid_order_count is explicitly asked in N01/H03/H02-F, all expected rows satisfy both identities."
+    },
+    {
+      "id": "honesty",
+      "status": "pass",
+      "note": "No runtime data/catalog hash invented; no real execution or business acceptance claimed."
+    },
+    {
+      "id": "discrimination",
+      "status": "pass",
+      "note": "Ten specified wrong hypotheses differ from correct results; untested combinations documented."
+    }
+  ],
+  "unresolved_business_decisions": [],
+  "remaining_execution_gates": [
+    "independent review",
+    "authorized build/load",
+    "actual dimensions and version binding",
+    "real Agent run",
+    "answer review"
+  ]
+}

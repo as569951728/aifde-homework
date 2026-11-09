@@ -1,0 +1,33 @@
+{
+  "reason": "首轮缺口v0.1越界；scope-v4遗漏提问前提，未晋升。一次有界修订。",
+  "cases": [
+    [
+      "gap-current",
+      "after-v02"
+    ],
+    [
+      "gap-transfer",
+      "before"
+    ],
+    [
+      "gap-transfer",
+      "after-v02"
+    ],
+    [
+      "maintain-qinghe",
+      "after-v41"
+    ],
+    [
+      "maintain-transfer",
+      "after-v41"
+    ]
+  ],
+  "fixed": "复用原4案例与原期望不修改；新增留出仅测试按目标范围筛缺口。旧方法新留出同输入一次对照。",
+  "stop": "本轮5次完成后不继续调到好看；仍有关键失败则保留候选，正式方法不晋升。",
+  "files": {
+    "inputs/skill-after-v41.md": "81449b295ef27cd19ae0179c3f2b4db633a133ee7b5dde750e0d1d2fcd56ed63",
+    "inputs/gap-after-v02.md": "0bb5098b4cc34809aeb80fe45d89bee334148651264a58fbebd4f02e96e9fcbe",
+    "inputs/gap-transfer.json": "84c8821629efbd13bdc500d817314d2e2b96077844bbd336c0886c975d6d88de",
+    "expected/gap-transfer.json": "154f457bff34bf3aed31aed06a61a9773677f16416710f6505123b83891008cb"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "client_date": "2026-11-08",
+  "cases": [
+    {
+      "id": "U05",
+      "dimension": "证据性质、来源和纠错",
+      "question": "请审查以下说法，逐条说明可采用、需要修正或尚不能判断，并给依据：A.陈姐已给本期卡日期规则，但具体文件与历史凭据未取得；B.小林独立证实之前项目全面无人使用；C.模型尚未核实反馈怎样返回门店，所以青禾没有这一环节；D.80万活跃与120万全量可直接算出活跃率；E.王经理认可分期思路，所以最终验收已获批准。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+      ],
+      "evaluation_domain": "原文证据/主体/权限审查，不评价正文是否含项目验收"
+    },
+    {
+      "id": "U01",
+      "dimension": "模型用途与业务目标",
+      "question": "请用业务语言说明青禾的经营目标、会员运营工作和当前关键未知。理解复购变化与减少重复整理核对是什么关系？哪些观察能支持业务判断，哪些还不能说明原因或效果已经得到验证？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "P01",
+      "dimension": "产品与等级",
+      "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "account": "A",
+        "tier": "普通",
+        "cards_complete": true,
+        "cards": [
+          {
+            "card_type": "悦享年卡",
+            "state_on_decision_day": "有效",
+            "card_paid_cents": 10000
+          }
+        ]
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "E01",
+      "dimension": "提问前提",
+      "question": "阅读给定W02小林二访MSG-01918/01919及01921。“之前项目没人用”“多了三步”分别应如何记录与使用？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "TRACECTRL01",
+      "dimension": "独立迁移对照：结果说法的来源与局部观察范围",
+      "question": "以下为独立编写的证据记录测试，人物、排班和事件均为人工合成，不是青禾资料，也不代表真实单位的运行情况。\n\nSYN-Q1 · 访谈者\n新排班表启用后，所有晚班都出现了空岗，您觉得该怎么处理？\n\nSYN-A1 · 值班员\n新表启用后，所有晚班都出现了空岗。我亲眼看到的是，周二我值守的东门岗在交接时空了约十分钟；其他晚班的情况我没有查过记录。\n\nSYN-Q2 · 访谈者\n周二东门岗的“约十分钟”是根据计时记录算的吗？\n\nSYN-A2 · 值班员\n约十分钟是我当时的估计，没有计时。那天交接时接岗同事还没到，我看到东门岗暂时没人值守；其他班次的情况仍需查记录。\n\n请将“新表启用后所有晚班都出现空岗”和“周二东门岗交接时约空十分钟”分别整理为可用的核查记录，说明各自的证据范围及后续使用方式，并保留可核对的来源定位。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [],
+      "evaluation_domain": "显式合成证据归属对照，不是青禾事实或业务效果验证"
+    },
+    {
+      "id": "CTRL01",
+      "dimension": "非诱导原文的角色新增观察",
+      "question": "请将下列完整问答中可以保留的工作做法、感受和期望整理成一条业务核查记录，并说明它能支持什么判断、还不能支持什么判断。\n\n来源：本人课程角色访谈原始记录；week=2；role_id=ROLE-CHEN；meeting_id=33120509-3939-5d6c-81f1-3959fed49789。\nMSG-01664 · user\n陈姐你好，我想了解一下会员活动到了门店以后是怎么做的。你能从平时接到活动通知开始，跟我讲讲吗？这个协同活动的过程中，你觉得哪些好，哪些不好的？\n\nMSG-01665 · assistant\n接到活动安排，我一般先核对三件事：面向哪些会员、哪些门店参与、门店具体要做什么。核完再跟门店同事说明，把人员和执行安排确认下来。执行中收集顾客问题和门店反馈，有不清楚的就找运营核对，结束后整理执行情况。\n\n我和小林对接活动安排和现场反馈。比如会员拿着线上活动来问门店能不能参加，我们得先核对适用范围再答复，不能因为线上看到了就认定所有门店都能执行。\n\n好的地方是要求清楚时，门店照着做、衔接就顺。不好的地方是活动要求不清楚时，门店一边接待顾客一边来回找人确认，挺费劲。我希望适用范围、门店要做的事、现场问题由谁答，一开始就讲清楚，少些反复沟通。这只是我的工作感受，没算过耗时或损失。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [],
+      "evaluation_domain": "有效原文应用，非正文独立增益"
+    },
+    {
+      "id": "E03",
+      "dimension": "不同统计总体",
+      "question": "沈总说80万活跃，老周说120万系统全量，可否直接算活跃率、相减作沉睡人数或认定同口径矛盾？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    }
+  ]
+}

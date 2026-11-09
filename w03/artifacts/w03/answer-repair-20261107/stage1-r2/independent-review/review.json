@@ -1,0 +1,717 @@
+{
+  "status": "completed_passed_with_nonblocking_wording_advisories",
+  "reviewed_at": "2026-11-07T04:58:13.381636+00:00",
+  "independent_source_first": true,
+  "criteria_reused_from": "artifacts/w03/answer-repair-20261107/stage1/independent-review/source-first-criteria.json",
+  "criteria_sha256": "107d0f8063b6e15a6ec6ef836fce5e221bec08f1d376165492e0f15827c00cb0",
+  "controls_expectations_sha256": "138007d3f14b71d4e917802086d4ab86a76af3b8cc60bae7b55ed9865f894c26",
+  "candidate_prompt_sha256": "180b3ff1b301892e3967745913ccb0070a79c0241d5247a9eecbc936106171b9",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "summary": {
+    "total_cases": 18,
+    "semantic_passed": 18,
+    "semantic_failed": 0,
+    "semantic_not_assessable": 0,
+    "by_group": {
+      "original_failure": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0
+      },
+      "positive_regression": {
+        "total": 6,
+        "passed": 6,
+        "failed": 0
+      },
+      "independent_control": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0
+      }
+    },
+    "native_runs": 18,
+    "native_structure_passed": 18,
+    "native_execution_succeeded": 18,
+    "http_attempts": 19,
+    "course_builtin_truncation_expansions": 1,
+    "network_recovery_calls": 0,
+    "semantic_retries": 0,
+    "runner_level_retries": 0
+  },
+  "cases": [
+    {
+      "id": "U01",
+      "group": "original_failure",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "reason": "经营原因验证和岗位提效分别说明；角色报告、老化假设和三个月期望未当因果/承诺；80万/120万定义、范围、时点、来源保留待核，未再写已不同。内容偏长，但没有关键新增事实。",
+      "required_point_review": [
+        {
+          "criterion": "经营方向为复购止跌回升；连续四季下滑为角色报告，会员老化为沈总待验证判断，三个月是期望而非承诺。",
+          "result": "passed"
+        },
+        {
+          "criterion": "减少重复整理、核对、跟进是小林岗位负担及使用诉求，未量化工时，不是已证实复购下滑原因，也非公司优先级或已实现效果。",
+          "result": "passed"
+        },
+        {
+          "criterion": "描述已知运营一般流程与小林/陈姐交接，保留具体人群选择、活跃定义、历史复购统计、实际结果与反馈分析交接等未知。",
+          "result": "passed"
+        },
+        {
+          "criterion": "80万活跃与120万全量应区分统计概念，范围、时点、定义/来源尚未齐；不能断言所有条件已不同或已可比较。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/U01.json",
+      "output_sha256": "bbda9228b02f0ffb5f02c2ada7fb8c6f64ed17b97b7fcaa99d38fbe0b2db6424",
+      "actual_answer_sha256": "02298bdfc94827a9ffc4b5b4a9d4ef063f3a9e1a22d880115d9bfbeeb6799328",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/run.json",
+      "native_run_sha256": "d3855354670c089e311e5426bd3c003608b1e728ee3aba11caafa1e5733d6f4e",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "U05",
+      "group": "original_failure",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "reason": "A—E均逐项回答；日期规则与未取得凭据并列，01918提问前提及01919/01921新增体验和限定明确，未知不等于不存在，不能直接求率或把认可当验收批准。",
+      "required_point_review": [
+        {
+          "criterion": "逐条评A—E；A可采用陈姐本期两卡日期解释，同时保留正式规则文件与历史凭据未掌握。",
+          "result": "passed"
+        },
+        {
+          "criterion": "B须归01918提问者先带入没人用、01919沿用；01921三步是个人感受而非精确步骤，不能视为独立证实全项目无人使用。",
+          "result": "passed"
+        },
+        {
+          "criterion": "C未知反馈回店不等于不存在；D不能直接由80万/120万计算被核实活跃率。",
+          "result": "passed"
+        },
+        {
+          "criterion": "E阶段认可只支持核查意见，不能推定最终验收批准；最终确认人/权限仍待核。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/U05.json",
+      "output_sha256": "cab672a11e32aa2477ed57c271b8fbffc025bda45144f56ba2d35001e35240d7",
+      "actual_answer_sha256": "bf522178b3ba0fb0412a93a908f0c031b64c4d0edd1489c4c6116a2539919144",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/run.json",
+      "native_run_sha256": "397cded0124eaa9488ea118a23b1a85c7fc4ccd375ebdd6d653615ac7062a82f",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "P09",
+      "group": "original_failure",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "reason": "仅在本期月报排除联名卡，不推出全系统免费类别或两类互斥；没有补单卡数量。",
+      "required_point_review": [
+        {
+          "criterion": "只有有效联名卡不符合本期自营月报资格。",
+          "result": "passed"
+        },
+        {
+          "criterion": "本期不纳入不能推出系统免费注册类别；两类称谓不证明全系统互斥，重叠与分类映射待核。",
+          "result": "passed"
+        },
+        {
+          "criterion": "只依题给卡条件，不增造有效卡数量、金额、身份归类或新资格。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/P09.json",
+      "output_sha256": "98ab0dd7d2102be02c80597402780bb3ace4b54ced14d7657c479ed51477efec",
+      "actual_answer_sha256": "735ea9797ef1ec59dbaaf44658d2541574923e02c32e9d2352bb0a6372bedd49",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/run.json",
+      "native_run_sha256": "04738b03188d6a707e93b57bc0eeb6d86463c90f21b1ac588a784e31c549b754",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "A03",
+      "group": "original_failure",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "reason": "费用/计价依据、阶段记录与变更延期核查来自王经理原文；金额/节点/付款待谈，核查非批准，未虚构正文已有SOW事实。",
+      "required_point_review": [
+        {
+          "criterion": "可准备费用构成/计价依据、范围责任和留证框架，未谈妥金额待确认。",
+          "result": "passed"
+        },
+        {
+          "criterion": "结算原则对应约定阶段成果与确认记录；具体节点、记录形式、付款/金额尚待双方谈定。",
+          "result": "passed"
+        },
+        {
+          "criterion": "核查意见不等于预算签约验收上线批准；不补金额/比例/账期/确认人。",
+          "result": "passed"
+        },
+        {
+          "criterion": "依据应归本题指定王经理访谈；不虚构业务模型某节含费用合同内容，不要求商业条款回填正文。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [
+        {
+          "severity": "nonblocking_reason_wording",
+          "quote": "业务模型未把费用与结算写成已确认的客户业务规则，因此这些内容只能作为待确认草稿",
+          "suggested_replacement": "指定王经理访谈表明金额、节点及授权等尚待谈定或核实，因此现阶段仅能形成相应草稿和待确认事项",
+          "why_nonblocking": "主体答复已准确归访谈并列待谈事项；末句宜避免让正文未收录成为批准状态的推理依据。"
+        }
+      ],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/A03.json",
+      "output_sha256": "fd395befe523be4af459fc6e7da2eaedd568c1561cd14dd0b35c127863250f54",
+      "actual_answer_sha256": "a0a036a12539141005d6f711e44f04c093569b4014c802bfb94d5cc3968acd8d",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/run.json",
+      "native_run_sha256": "04d64f3a4185562ac216bc1a4a6ea7f8950f7643af47f21dc8f49b81f1029437",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "E01",
+      "group": "original_failure",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "reason": "实际答复准确区分01918提问带入、01919承接与自身界面体验、01921非精确清单限定；未将没人用当独立证实，三步只作定性负担线索。",
+      "required_point_review": [
+        {
+          "criterion": "01918提问者先带入没人用，01919沿用，不能登记为小林独立证实上一项目采用情况。",
+          "result": "passed"
+        },
+        {
+          "criterion": "01919“我看到的是”直接修饰界面操作多三步；01921进一步限定体验非精确清单，具体步骤/页面待核。",
+          "result": "passed"
+        },
+        {
+          "criterion": "分别保留来源、原话、体验和未核界限；不能全盘丢弃角色新增诉求，不能把未经证实前提作为后续既定事实。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/E01.json",
+      "output_sha256": "0a50eb18b7dc55e93e3fc5921eebca1d83334f2d5964d60c71b9e76128a81932",
+      "actual_answer_sha256": "6c74b759d21659b23051a743d3db7d5066ad1becf3875f1956382d53d0dcb7b9",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/run.json",
+      "native_run_sha256": "1c5e938953a6b810fc20eb0fab76f9fd3725d07533955e625bc2ed92ace76e27",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "E03",
+      "group": "original_failure",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "reason": "分别否定直接算率、沉睡差值和同口径矛盾；未知条件继续待核，没有加入必须同源限制。",
+      "required_point_review": [
+        {
+          "criterion": "80万活跃/120万全量是不同统计概念，活跃定义、对象集合、时点、范围与来源未齐，不能直接算已核活跃率或沉睡人数。",
+          "result": "passed"
+        },
+        {
+          "criterion": "不能认定同口径矛盾；也不能把未齐写成时点/范围/来源均已证明不同。",
+          "result": "passed"
+        },
+        {
+          "criterion": "比较须核可比范围、口径、时间、标识去重和子集关系；来源可以不同，不能擅加必须同一报表/同一来源的门槛。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/E03.json",
+      "output_sha256": "2897adc0844cfdad6728b0134f13efb6943bc48e806e33185d2e5f6e0c42a538",
+      "actual_answer_sha256": "fedc8a315db2da516380e66f462b63c73379f75c68636743dcf5d6db935cc88d",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/run.json",
+      "native_run_sha256": "2b5913407d9a0014bd8199edd0b53b2de6e948fa269c55e882a97fac8eb7b95e",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "E05",
+      "group": "original_failure",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "reason": "拒绝作废W04陈述进当前规则/流程，来源留痕且明确未采纳；待有效来源核查，不再把有效W02整体排除。",
+      "required_point_review": [
+        {
+          "criterion": "排除本题已作废W04唯一来源及其具体周一/60天/员工/勿扰规则，不加入事实模型。",
+          "result": "passed"
+        },
+        {
+          "criterion": "保留作废标识和追溯，若该工作有必要可另列待核，不重复当问题既定前提。",
+          "result": "passed"
+        },
+        {
+          "criterion": "有效来源按案例、范围、证据性质判断；不扩大成当前业务知识只许W03或一律排除W02。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/E05.json",
+      "output_sha256": "96786fdbceb9fbfa51f40192477856d02dc599c0bb9e9fca4ed282713f5b6c9b",
+      "actual_answer_sha256": "4e362767a1ef52430acf3cd0f78d8220231eb97afed5d2ff6c70f5ea34ff5d37",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/run.json",
+      "native_run_sha256": "40b7c0be90b56994c90e109e4814c2de4365f41e9266bdc866deba2c200f3c47",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "REG01",
+      "group": "original_failure",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "reason": "第一版建议、接入小林/陈姐工作及过程评估完整，业务确认和不自动操作边界保留，未把省时当复购收益；旧客户=账户定义、三类人群误述与全量误活跃均未再出现。月报规则明确标本期口径，活动范围仍需业务确认。",
+      "required_point_review": [
+        {
+          "criterion": "可提出先帮小林整理需关注会员及依据、优惠券活动工作和执行记录/待核信息；门店材料讲清适用范围、参与店、任务、工作量、答复责任与工作记录。",
+          "result": "passed"
+        },
+        {
+          "criterion": "所有第一版交付细节标建议，具体人群条件/数据范围/接入权限需核；不自动发券联系或改记录。",
+          "result": "passed"
+        },
+        {
+          "criterion": "承接既有业务确认与门店安排，未知分析反馈闭环不伪称已打通。",
+          "result": "passed"
+        },
+        {
+          "criterion": "评估要观察减少整理核对/反复问询、实际采纳执行、工作负担等过程；业务复购另需可比依据，不保证改善。",
+          "result": "passed"
+        },
+        {
+          "criterion": "不得把未知会员标签称为已确认“活跃标签”，也不得新增筛选阈值、人数或已验证收益。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [
+        {
+          "severity": "nonblocking_wording",
+          "code": "FORMAL_EVIDENCE_SCOPE_NEEDS_PRECISION",
+          "quote": "该口径正式规则文件尚未取得，应标待确认。",
+          "suggested_replacement": "这些本期规则已有角色说明；正式规则文件和生产/历史执行凭据仍未取得，继续标为待核。",
+          "why_nonblocking": "前文已按现有规则完整列产品/资格/端点/去重，并未将规则退为未知或拒绝使用；应把待确认标注对象写清，避免读者误解。"
+        }
+      ],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/REG01.json",
+      "output_sha256": "cca75acba7d152256e361da4a09b6c2d21b1574cc68fa67be3b86f4632ba747b",
+      "actual_answer_sha256": "5db7430a474ebc5adb2cd5f009fdc1950a1726234bb8d8aaa4fb0970b7eec818",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/run.json",
+      "native_run_sha256": "0179095b774d88f627008bbb45db7119d3835e8970d806e49838f4157309b358",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 2,
+      "original_response_preserved": true
+    },
+    {
+      "id": "U04",
+      "group": "positive_regression",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "reason": "保留一般流程、门店前置条件、局部交接、未核闭环与具体后续记录/经手人/影响判断；月报产品范围不直接成为券活动筛选条件；未再追加时点/来源已不同。",
+      "required_point_review": [
+        {
+          "criterion": "列小林从任务反馈明确人群用途、确认执行方式/协作人、跟进发放使用反馈、整理结果待核的通常流程。",
+          "result": "passed"
+        },
+        {
+          "criterion": "门店与陈姐核范围/门店/任务并确认人员安排，收集现场反馈。",
+          "result": "passed"
+        },
+        {
+          "criterion": "具体活动名单筛选、线上对接岗位、分析接收者与回店/下轮决策未知；不得强加已闭环。",
+          "result": "passed"
+        },
+        {
+          "criterion": "至少选一缺口给所需活动/交接记录、实际经手岗位及影响的判断；拟议流程标建议。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/U04.json",
+      "output_sha256": "e386792a05ac5719142fc0e8fead8c708ba754bf4d66ee7a0b831138a801a559",
+      "actual_answer_sha256": "5d803542c558a4ed9433b0769b16e01bfee38f8f187cf103bbc9e411b0c436b7",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/run.json",
+      "native_run_sha256": "2e783b7999bb93b6c7333e8ecade091380362a1c7a8a84223aefe3189eac37f7",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "P01",
+      "group": "positive_regression",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "reason": "完整记录的一张有效悦享年卡已足以有资格，普通等级/实付不替代产品有效条件，题设与真实记录分清。",
+      "required_point_review": [
+        {
+          "criterion": "完整记录下，普通等级的一张有效悦享年卡已足以具备本期资格。",
+          "result": "passed"
+        },
+        {
+          "criterion": "资格按产品/有效状态，等级和支付金额不能替代，不加金额门槛。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/P01.json",
+      "output_sha256": "9d97f2858a4c58af71f359fb0bda9aac95dae92a21bd05c0c76e80d3d4a8e7d8",
+      "actual_answer_sha256": "e5f48fa93d5c92581d8462c9cfc7e8fc07dadb3e45dd8fc1486097cf64b46922",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/run.json",
+      "native_run_sha256": "05980c09564ea40237f90a41287f378c39c031c994f43ae2f26571e5f509818a",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "P05",
+      "group": "positive_regression",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "reason": "完整记录只有体验卡，无资格，理由为产品不纳入且无其他卡，非零金额或等级判断。",
+      "required_point_review": [
+        {
+          "criterion": "完整记录只有有效体验卡，不在本期范围，无本期资格。",
+          "result": "passed"
+        },
+        {
+          "criterion": "理由为卡产品排除，不能把免费/零元或普通等级当判定依据，也不能认定全系统免费注册类别。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/P05.json",
+      "output_sha256": "a11f1bde5c27a9b8f64ed7db3e3c3c94099ee80583ad692e470bfe9c8964fbc6",
+      "actual_answer_sha256": "b9c6d39aec3346df0f41c8a7105cba3b7f378e39104bf21aaac643f1fc4ed3ef",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/run.json",
+      "native_run_sha256": "3351185514d1fdac1462fe3cd73132099266815dbef0bb77b3ef1a9851af1903",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "E02",
+      "group": "positive_regression",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "reason": "下降是未复算角色陈述、老化为待验假设、三个月为期望非承诺；测试不证明原因/收益/生产身份或历史还原。",
+      "required_point_review": [
+        {
+          "criterion": "连续四季下滑为角色所述观察，历史口径仍待核；会员老化为未证实原因假设。",
+          "result": "passed"
+        },
+        {
+          "criterion": "三个月见效为沈总期望，不是获批或承诺的数值目标/因果结果。",
+          "result": "passed"
+        },
+        {
+          "criterion": "月报测试支持指定合成范围内定义追溯和查询校验，不支持实际业务改善、原因验证或验收批准。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/E02.json",
+      "output_sha256": "0a973ecabd696dbf5da5a0ab5bf83402f15e5badae884d7a4a3691364f8e26f1",
+      "actual_answer_sha256": "3e7fdb36ebac1112cfd37a17e09c4141f11b8c6172a7edbe7c1697f23318d3cb",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/run.json",
+      "native_run_sha256": "ef79343b50717243c41fb578f72788b0b70a417c13f20841b644e6a9ecbae764",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "A02",
+      "group": "positive_regression",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "reason": "核查意见与公司审批/验收分清，王经理和沈总均未被擅定为本期最终拍板人，具体审批/授权仍待核。",
+      "required_point_review": [
+        {
+          "criterion": "王经理提供统计口径/验收依据、预算合同材料核查；认可总结不是最终验收/预算签约/上线批准。",
+          "result": "passed"
+        },
+        {
+          "criterion": "最终确认人、审批人及授权额度尚需内部流程核实，不能按职务猜定。",
+          "result": "passed"
+        },
+        {
+          "criterion": "依据归本题王经理访谈，别用业务正文的门店考核责任去证明项目审批权限。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/A02.json",
+      "output_sha256": "f47ee77916ba1694c0368562117b85ba76dfaa0ea34e5bebeb3e10f4b6616564",
+      "actual_answer_sha256": "382e81811cf22b777239a3701e5381d87fc1841ef0cb37c4b1949e5880816e90",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/run.json",
+      "native_run_sha256": "6aabdf5d794976198cdd2dd3d641ebd213586d6c368615ec3297c11bdf613ff4",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "F05",
+      "group": "positive_regression",
+      "input_track": "model_only",
+      "verdict": "passed",
+      "reason": "局部执行链不能推出全部闭环；建议同一实际活动按策划/执行/反馈/分析答复/下轮决策查记录及责任，并只在该实例可核时确认，不外推。",
+      "required_point_review": [
+        {
+          "criterion": "小林协调与陈姐落实是已述局部工作链，不证明分析反馈至下一轮决策全闭环。",
+          "result": "passed"
+        },
+        {
+          "criterion": "反馈分析接收者/方式/下轮运用未核，不能据未知断言公司没有。",
+          "result": "passed"
+        },
+        {
+          "criterion": "给可查证下一步：选实际活动留存任务/执行/反馈与回复记录，向对应经手人核对缺口及实际使用。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/F05.json",
+      "output_sha256": "49cf7c8567db66f91c938d81626309d1564cf069637123efda976bd70874fada",
+      "actual_answer_sha256": "9adf4a523307a383ab5b89b13e48a081cbc78f071967fc60cd50b30495c16f15",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/run.json",
+      "native_run_sha256": "50b3e180586c26608e7af5b1d781aabcb9038c3882c48cfd0dfaed8a2d33b01f",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "CTRL01",
+      "group": "independent_control",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "reason": "非诱导提问中陈姐新增工作做法、个人感受和期望被保留并正确归回答；不量化耗时损失、不当正式制度或实际效果，未一律拒绝角色观察。",
+      "required_point_review": [
+        {
+          "criterion": "保留陈姐主动叙述的工作流程与来回确认负担感受；提问只请描述，不先给出该负担结论。",
+          "result": "passed"
+        },
+        {
+          "criterion": "区分通常做法、个人感受与希望，不把感受升为量化损失、全公司故障或已验证因果。",
+          "result": "passed"
+        },
+        {
+          "criterion": "不得机械套用01918模式，声称全部是提问者带入；也不能因未独立计时就删除体验线索。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/CTRL01.json",
+      "output_sha256": "0fc68de62e4a55a1593a1dfe96d8a1a7bc668c1a8f6844916e663147e764a008",
+      "actual_answer_sha256": "a7daced87e2ba476fe97c0735b3e416f0eed74dc4ac59d2a659ebb298ca7fe79",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/run.json",
+      "native_run_sha256": "1e2595481e09456c5b08790e343e8994418aff0f7d5efce113831c6b22602951",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "CTRL02",
+      "group": "independent_control",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "reason": "不同来源但同范围/时点/账户去重且子集已核时可算60/240=25%；按账户和测试情境限定，未补同源门槛、沉睡定义、青禾事实或业务原因。题目未要求计算余数，未报180不构成漏答。",
+      "required_point_review": [
+        {
+          "criterion": "在题设已核同集合、时间、范围、账户去重和子集条件下，不同资料来源不妨碍本题计算。",
+          "result": "passed"
+        },
+        {
+          "criterion": "本题购买活跃率60/240=25%；其余180只可称本题定义下当月没有有效购买，不可直接命名沉睡/流失或原因。",
+          "result": "passed"
+        },
+        {
+          "criterion": "明确结论仅适用于合成测试；不迁入青禾80万/120万或否认该题已给可比条件。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [
+        {
+          "severity": "nonblocking_terminology",
+          "quote": "不能将240个CRM账户等同于自然人数或会员人数",
+          "suggested_replacement": "不能把240个CRM账户直接当作跨系统自然人会员人数；本题按CRM账户口径计数仍成立",
+          "why_nonblocking": "主结论明确同集合按CRM账户算25%，没有拒绝账户口径；“会员人数”字样需限定自然人含义，避免泛化。"
+        }
+      ],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/CTRL02.json",
+      "output_sha256": "9fb8744a5f2db8fc1213bba9fc42b68b06c0894517780f12d402bc22feff7668",
+      "actual_answer_sha256": "35593c504e1640b2c5284c7b9433ebd97f4de752d6e26a3c6a06ca6ce0579d0a",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/run.json",
+      "native_run_sha256": "0e09a8c17b8d3c292dc2ad7926915ecc4ea7f46898e38ae0814cf50025c0fb0f",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "CTRL03",
+      "group": "independent_control",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "reason": "有效W02访谈可按来源/范围保留，岗位诉求与公司优先级、已实现效果分开；人群执行确认及未授权自动操作边界未丢。",
+      "required_point_review": [
+        {
+          "criterion": "可保留小林希望整理关注会员及每条依据、减少重复整理和核对的诉求，标W02本人访谈来源。",
+          "result": "passed"
+        },
+        {
+          "criterion": "人群和执行方案仍由业务人员确认，未授权助手发券联系改记录；额外工具不减少原活时预期有限。",
+          "result": "passed"
+        },
+        {
+          "criterion": "未见撤回且范围适用，不能仅凭周次W02剔除；仍是岗位诉求非全公司优先级/已经有效。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/CTRL03.json",
+      "output_sha256": "263080480116bdc5a829ca38a9e77fcac09dd49410e486f267380ace11d4076b",
+      "actual_answer_sha256": "226f2dc51ac630bf99def49810bbab0c7d584fd49a2d6faeeb59c5a278ecc3e6",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/run.json",
+      "native_run_sha256": "f261ae9580b7cd9b516d46ae63bca8b43d1c495cd921d6d466668fe97c5cd217",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    },
+    {
+      "id": "CTRL04",
+      "group": "independent_control",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "reason": "甲资格有、购买贡献与确切卡数未知；乙资格无、不计入、2卡；丙资格/贡献/卡数未知。按完整性与正证据分别判断，没将只查到变只有，未新增条件。",
+      "required_point_review": [
+        {
+          "criterion": "甲有资格；购买状态未知，购买人数贡献不能定，若满足购买则仅1；总卡数未知且至少1，不能凭示例补两张。",
+          "result": "passed"
+        },
+        {
+          "criterion": "乙无资格且贡献0，完整记录下总卡数2；不因联名卡有效或当月购买而改变。",
+          "result": "passed"
+        },
+        {
+          "criterion": "丙资格和贡献均未知，尚未核其他卡，不能据当前体验卡就断定无资格；确切卡数未知，至少1。",
+          "result": "passed"
+        },
+        {
+          "criterion": "账户去重，不按有效卡数重复算人；未知有购买/资格需分别保留，不擅加金额/等级/同类型多卡要求。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage1-r2/output/CTRL04.json",
+      "output_sha256": "24fb6e35eba3b0eef39d638a45711cf3c16696279addd19300d24574f1c55356",
+      "actual_answer_sha256": "3ed27a500c6a6ea3bbfe5d76608fe596a8483ff14c350ca597a0ec6b23214760",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/run.json",
+      "native_run_sha256": "a273aba15dcad5df8279689b674d93eb6e04986866d7580371d14820fb1fab35",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "original_response_preserved": true
+    }
+  ],
+  "native_review": "native-request-review.json",
+  "native_review_sha256": "c798d8b267a692f09bb48ec4d2d736a95be1947a60ed538bdbbd9c5657fcfda1",
+  "truncation_expansion_details": [
+    {
+      "case_id": "REG01",
+      "run": "artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/run.json",
+      "first": {
+        "http_status": 200,
+        "finish_reason": "length",
+        "error": "MODEL_OUTPUT_TRUNCATED",
+        "max_tokens": 8192,
+        "timeout_seconds": 180.0
+      },
+      "second": {
+        "http_status": 200,
+        "finish_reason": "stop",
+        "max_tokens": 16384,
+        "timeout_seconds": 240.0
+      },
+      "same_messages": true,
+      "classification": "course_builtin_truncation_token_expansion_not_semantic_retry",
+      "attempts_sha256": "2a5ffca4b33b4171ee21b1f18b7ae066f20198797ab5f643f658f8a2235ed518"
+    }
+  ],
+  "grading_boundary": "全部必要问题判断正确且无关键新增事实才通过。未按“旧错消失”给分，18题均重新审全文。3项有歧义/不够精确的附加措辞列非关键建议，其上下文已明确正确判断与来源，未改变资格、授权或计算结论。控制题CTRL02的180是边界反例，不要求题目未问的余数计算；答复未给余数或沉睡标签，未触发禁止项。",
+  "historical_state": {
+    "stage1": "15通过/2语义失败/1技术无答复，原记录保留",
+    "stage1_network_recovery": "准备和审核后取消，0API；E01在R2按新提示运行，不是同版本恢复",
+    "earlier_11_failures": "历史原始失败不回改；本报告仅确认stage1范围8个原失败在R2回归通过，其余B05/DQ10/F06由后续阶段检验。"
+  },
+  "not_proven": [
+    "当前累计提示已通过全82题",
+    "正式模型v0.4已apply",
+    "38指标实现与独立数值校验",
+    "生产接入/业务收益/客户验收",
+    "提示对全部未测问题已无来源错误"
+  ],
+  "human_decisions": []
+}

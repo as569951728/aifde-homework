@@ -1,0 +1,380 @@
+{
+  "reviewed_at_utc": "2026-11-08T08:53:35.927028+00:00",
+  "reviewer": "b2_orders_independent_review",
+  "approved_to_load_and_query": true,
+  "failed_checks": [],
+  "reviewed_build": "artifacts/w03/b2-order-counts-20261108/build-v1",
+  "decision": "生成12项业务定义、来源、粒度和范围通过；可load同一library到small及独立fixture项目并执行既定21+1题。",
+  "checks": {
+    "target_catalog_metric_sets_exact_12": true,
+    "all_three_native_reports_passed": true,
+    "sources_contiguous_and_semantically_relevant": true,
+    "business_model_usage_contiguous_and_relevant": true,
+    "original_material_and_model_hashes_match_build": true,
+    "skill_unchanged_v012": true,
+    "expected_freeze_unchanged": true,
+    "orders_48_unique_nonnull_order_ids": true,
+    "foreign_keys_no_unmatched": true,
+    "preserve_cancelled_rows": true,
+    "no_join_or_derived_model_fanout": true,
+    "paid_zero_counts_as_paid_not_valid_not_refund_not_full_refund": true,
+    "full_refund_paid_positive_guard": true,
+    "partial_refund_strict_both_bounds": true,
+    "B1_all_five_formulas_preserved": true,
+    "scope_distinguishes_order_account_money": true,
+    "per_metric_dimension_paths_all_12_reachable": true,
+    "no_full_month_only_restriction": true
+  },
+  "metric_reviews": [
+    {
+      "metric_id": "order_count",
+      "type": "simple",
+      "measure": {
+        "name": "order_count_measure",
+        "expr": "order_id",
+        "agg": "count"
+      },
+      "unit": "count",
+      "definition_source_and_constraints_passed": true,
+      "ordered_at_and_order_grain_passed": true,
+      "notes": "COUNT非空order_id/条件order_id；订单主键非空且唯一，未全局筛paid，状态分组保留全部订单"
+    },
+    {
+      "metric_id": "paid_order_count",
+      "type": "simple",
+      "measure": {
+        "name": "paid_order_count_measure",
+        "expr": "case when status = 'paid' then order_id end",
+        "agg": "count"
+      },
+      "unit": "count",
+      "definition_source_and_constraints_passed": true,
+      "ordered_at_and_order_grain_passed": true,
+      "notes": "COUNT非空order_id/条件order_id；订单主键非空且唯一，未全局筛paid，状态分组保留全部订单"
+    },
+    {
+      "metric_id": "valid_order_count",
+      "type": "simple",
+      "measure": {
+        "name": "valid_order_count_measure",
+        "expr": "case when status = 'paid' and paid_cents > refund_cents then order_id end",
+        "agg": "count"
+      },
+      "unit": "count",
+      "definition_source_and_constraints_passed": true,
+      "ordered_at_and_order_grain_passed": true,
+      "notes": "COUNT非空order_id/条件order_id；订单主键非空且唯一，未全局筛paid，状态分组保留全部订单"
+    },
+    {
+      "metric_id": "cancelled_order_count",
+      "type": "simple",
+      "measure": {
+        "name": "cancelled_order_count_measure",
+        "expr": "case when status = 'cancelled' then order_id end",
+        "agg": "count"
+      },
+      "unit": "count",
+      "definition_source_and_constraints_passed": true,
+      "ordered_at_and_order_grain_passed": true,
+      "notes": "COUNT非空order_id/条件order_id；订单主键非空且唯一，未全局筛paid，状态分组保留全部订单"
+    },
+    {
+      "metric_id": "refund_order_count",
+      "type": "simple",
+      "measure": {
+        "name": "refund_order_count_measure",
+        "expr": "case when status = 'paid' and refund_cents > 0 then order_id end",
+        "agg": "count"
+      },
+      "unit": "count",
+      "definition_source_and_constraints_passed": true,
+      "ordered_at_and_order_grain_passed": true,
+      "notes": "COUNT非空order_id/条件order_id；订单主键非空且唯一，未全局筛paid，状态分组保留全部订单"
+    },
+    {
+      "metric_id": "partial_refund_order_count",
+      "type": "simple",
+      "measure": {
+        "name": "partial_refund_order_count_measure",
+        "expr": "case when status = 'paid' and refund_cents > 0 and refund_cents < paid_cents then order_id end",
+        "agg": "count"
+      },
+      "unit": "count",
+      "definition_source_and_constraints_passed": true,
+      "ordered_at_and_order_grain_passed": true,
+      "notes": "COUNT非空order_id/条件order_id；订单主键非空且唯一，未全局筛paid，状态分组保留全部订单"
+    },
+    {
+      "metric_id": "full_refund_order_count",
+      "type": "simple",
+      "measure": {
+        "name": "full_refund_order_count_measure",
+        "expr": "case when status = 'paid' and paid_cents > 0 and refund_cents = paid_cents then order_id end",
+        "agg": "count"
+      },
+      "unit": "count",
+      "definition_source_and_constraints_passed": true,
+      "ordered_at_and_order_grain_passed": true,
+      "notes": "COUNT非空order_id/条件order_id；订单主键非空且唯一，未全局筛paid，状态分组保留全部订单"
+    },
+    {
+      "metric_id": "payment_cents",
+      "type": "simple",
+      "measure": {
+        "name": "payment_cents_measure",
+        "expr": "case when status = 'paid' then paid_cents else 0 end",
+        "agg": "sum"
+      },
+      "unit": "cents",
+      "definition_source_and_constraints_passed": true,
+      "ordered_at_and_order_grain_passed": true,
+      "notes": "paid行级金额合计；全退保留为paid行；优惠不减退款，分单位保留"
+    },
+    {
+      "metric_id": "refund_cents",
+      "type": "simple",
+      "measure": {
+        "name": "refund_cents_measure",
+        "expr": "case when status = 'paid' then refund_cents else 0 end",
+        "agg": "sum"
+      },
+      "unit": "cents",
+      "definition_source_and_constraints_passed": true,
+      "ordered_at_and_order_grain_passed": true,
+      "notes": "paid行级金额合计；全退保留为paid行；优惠不减退款，分单位保留"
+    },
+    {
+      "metric_id": "net_sales_cents",
+      "type": "simple",
+      "measure": {
+        "name": "net_sales_cents_measure",
+        "expr": "case when status = 'paid' then paid_cents - refund_cents else 0 end",
+        "agg": "sum"
+      },
+      "unit": "cents",
+      "definition_source_and_constraints_passed": true,
+      "ordered_at_and_order_grain_passed": true,
+      "notes": "paid行级金额合计；全退保留为paid行；优惠不减退款，分单位保留"
+    },
+    {
+      "metric_id": "gross_cents",
+      "type": "simple",
+      "measure": {
+        "name": "gross_cents_measure",
+        "expr": "case when status = 'paid' then gross_cents else 0 end",
+        "agg": "sum"
+      },
+      "unit": "cents",
+      "definition_source_and_constraints_passed": true,
+      "ordered_at_and_order_grain_passed": true,
+      "notes": "paid行级金额合计；全退保留为paid行；优惠不减退款，分单位保留"
+    },
+    {
+      "metric_id": "discount_cents",
+      "type": "simple",
+      "measure": {
+        "name": "discount_cents_measure",
+        "expr": "case when status = 'paid' then gross_cents - paid_cents else 0 end",
+        "agg": "sum"
+      },
+      "unit": "cents",
+      "definition_source_and_constraints_passed": true,
+      "ordered_at_and_order_grain_passed": true,
+      "notes": "paid行级金额合计；全退保留为paid行；优惠不减退款，分单位保留"
+    }
+  ],
+  "source_reviews": [
+    {
+      "metric_id": "order_count",
+      "file": "01_订单日报说明.md",
+      "quote": "按下单日期统计全部订单，每个订单号一次，包含取消单。",
+      "exact_contiguous": true
+    },
+    {
+      "metric_id": "paid_order_count",
+      "file": "01_订单日报说明.md",
+      "quote": "状态为 paid 的订单数，包括后来全部退款的订单。",
+      "exact_contiguous": true
+    },
+    {
+      "metric_id": "valid_order_count",
+      "file": "01_订单日报说明.md",
+      "quote": "状态为 paid 且实付金额减退款金额大于零的订单数；取消和全退不计。",
+      "exact_contiguous": true
+    },
+    {
+      "metric_id": "cancelled_order_count",
+      "file": "01_订单日报说明.md",
+      "quote": "状态为 cancelled 的订单数。",
+      "exact_contiguous": true
+    },
+    {
+      "metric_id": "refund_order_count",
+      "file": "01_订单日报说明.md",
+      "quote": "paid 状态且退款金额大于零的订单数，包括部分退款与全部退款。",
+      "exact_contiguous": true
+    },
+    {
+      "metric_id": "partial_refund_order_count",
+      "file": "01_订单日报说明.md",
+      "quote": "paid 状态且退款大于零、小于实付金额的订单数。",
+      "exact_contiguous": true
+    },
+    {
+      "metric_id": "full_refund_order_count",
+      "file": "01_订单日报说明.md",
+      "quote": "paid 状态且实付大于零、退款等于实付的订单数。",
+      "exact_contiguous": true
+    },
+    {
+      "metric_id": "payment_cents",
+      "file": "01_订单日报说明.md",
+      "quote": "paid 订单实付金额合计，尚未扣退款；单位分。",
+      "exact_contiguous": true
+    },
+    {
+      "metric_id": "refund_cents",
+      "file": "01_订单日报说明.md",
+      "quote": "paid 订单退款金额合计，按原订单下单日期归属，不是现金退款发生日；单位分。",
+      "exact_contiguous": true
+    },
+    {
+      "metric_id": "net_sales_cents",
+      "file": "01_订单日报说明.md",
+      "quote": "paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。",
+      "exact_contiguous": true
+    },
+    {
+      "metric_id": "gross_cents",
+      "file": "01_订单日报说明.md",
+      "quote": "paid 订单折扣前原价金额合计；单位分。",
+      "exact_contiguous": true
+    },
+    {
+      "metric_id": "discount_cents",
+      "file": "01_订单日报说明.md",
+      "quote": "paid 订单原价减实付的金额合计；退款不冲减原优惠金额；单位分。",
+      "exact_contiguous": true
+    }
+  ],
+  "business_model_usage_review": [
+    {
+      "quote": "一行一笔订单。保留订单识别、关联账户、渠道（门店或小程序）、下单日期、支付状态、原价、实付、累计退款、原始购买件数的含义。",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "orders"
+        },
+        {
+          "kind": "dimension",
+          "name": "order__channel"
+        },
+        {
+          "kind": "dimension",
+          "name": "order__status"
+        },
+        {
+          "kind": "dimension",
+          "name": "metric_time__day"
+        },
+        {
+          "kind": "dimension",
+          "name": "metric_time__month"
+        }
+      ]
+    },
+    {
+      "quote": "本期字典给出：账户—卡为一对多，账户—订单为一对多，卡与订单均关联账户。",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "orders"
+        },
+        {
+          "kind": "semantic_model",
+          "name": "members"
+        },
+        {
+          "kind": "dimension",
+          "name": "member"
+        }
+      ]
+    },
+    {
+      "quote": "会员归属门店描述账户归属；订单成交门店描述交易发生门店，两者是不同关系，不可互相替代",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "stores"
+        },
+        {
+          "kind": "semantic_model",
+          "name": "home_stores"
+        },
+        {
+          "kind": "dimension",
+          "name": "store"
+        },
+        {
+          "kind": "dimension",
+          "name": "home_store"
+        }
+      ]
+    },
+    {
+      "quote": "普通、银卡、金卡，与付费资格是两回事；资料只给当前等级，当前等级不能还原过去各日的等级",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "members"
+        },
+        {
+          "kind": "dimension",
+          "name": "member__tier"
+        }
+      ]
+    },
+    {
+      "quote": "已支付且实付减累计退款后大于零；取消与全额退款不计为有效购买。",
+      "used_for": [
+        {
+          "kind": "metric",
+          "name": "valid_order_count"
+        }
+      ]
+    }
+  ],
+  "evidence_sha256": {
+    "artifacts/w03/b2-order-counts-20261108/build-v1/trace.json": "022aa529a3daa8b8f225de184cd5f3a9c9cf460cf1d30d9fc8df531c80a6edad",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/skill_used.md": "d40329243c2c60c64ddfee0cb1b0617c4c2745c4b52d2b5d2f4b2b2570ea0fb2",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/provenance.json": "01d7970fc959927aa30a21fd5efeab060800825528617d6199cb1e7ff0deb1cb",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/input.json": "930db31d9c4532e18fdf591941b884f979eb40cc95029c921f5b5e1e876ef264",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/scope.json": "3c03f74df77702d68cd217e0ccba2ec6095819271a4c44343fc42ee69c36f366",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/grain_check.json": "ec59475164c8c0b15fb076542869156e3e08a5efec473efa7e1eec7796238442",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/dimension_targets.json": "061912a5979c60cb59e90d90939d1eb6857437d930c8a1d9b275d50a0d10cd25",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/metrics.yml": "17bd936d31c72e274c72a3c8c8de737da9777cfb64b3d8ae0a0b2583b5a77a63",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/dimension_check.json": "a0c7858e39b8f3f6573f17607aab4a8dcd86cf055ba17a6e85985e1d845c5907",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/validation.json": "f89a21df157ae1c1e0c79da911bf96c8e5c2378155cfa462537116f10fbbefd6",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/source_check.json": "76aa3b58148d89cc797ae408eba304f008308b708476e2db124fcf4e5d1c7a2e",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/metricflow_check.json": "79444b471284768ad4f18c95f1f72144fb940f9f101b8820facafd8c4b71deb4",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/unresolved.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/catalog.json": "7bccfb2f405eaaaa3f9f801b28f8d3b4f1edb2be0fddd4bc8923096c03a6a905",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/response.json": "a8e09fb6b4adedc7a10e7f51ec1aa1d7ce5ac6f957326d038bbd9191de3a4525",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/grain_contract.json": "e1b503f0495c86c7e783a97e7c8b880a384f121de796c3e8b5dc1fe34c25c73b",
+    "artifacts/w03/b2-order-counts-20261108/build-v1/validation-project/models/orders.sql": "2b74e3e32048ff33e221121a8326a34a255ec75dfa18b201ccecc219b2a0a13c",
+    "artifacts/w03/b2-order-counts-20261108/independent/expected-freeze.json": "07066e52d656a9bc5cb07f00bb296592ad758f8fc83658842ba87ef2f90d46ce",
+    "artifacts/w03/b2-order-counts-20261108/independent/preflight-review.json": "f81dba7cb6ed2752a7fe97c6853080c780b5d14ec0fc4fb164f47f8aad67e4e5"
+  },
+  "execution_scope": {
+    "small_cases": 21,
+    "fixture_cases": 1,
+    "fixtures_are_not_business_facts": true,
+    "not_approved_for_batch_closeout_yet": true
+  },
+  "limitations": [
+    "本次为生成物准入，不是实际数值或解释结果。",
+    "COUNT order_id依赖已核一行一单与非空唯一主键；不推断脏数据去重能力。",
+    "12维可达仅结构证明，不能写成每维均有业务回归。",
+    "load须再次通过原生三项检查并核数据/库hash；fixture与small不可混用。"
+  ]
+}

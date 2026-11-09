@@ -1,0 +1,278 @@
+{
+  "checks": [
+    {
+      "id": "targets32",
+      "passed": true,
+      "detail": "32 cumulative metrics defined exactly once; no unresolved"
+    },
+    {
+      "id": "catalog_ids",
+      "passed": true,
+      "detail": "Response and catalog correspond"
+    },
+    {
+      "id": "serialized_models",
+      "passed": true,
+      "detail": "Response metrics and semantic models equal YAML"
+    },
+    {
+      "id": "serialized_sql",
+      "passed": true,
+      "detail": "Generated SQL unchanged from raw response"
+    },
+    {
+      "id": "raw_materials",
+      "passed": true,
+      "detail": "Input materials equal current source files"
+    },
+    {
+      "id": "raw_business_model",
+      "passed": true,
+      "detail": "Business model input equals current approved working model"
+    },
+    {
+      "id": "catalog_quotes",
+      "passed": true,
+      "detail": "Every catalog quote occurs in its exact source; manually reviewed support as well"
+    },
+    {
+      "id": "business_quotes",
+      "passed": true,
+      "detail": "Every business-model usage quote is a continuous original span"
+    },
+    {
+      "id": "ratio_dependencies",
+      "passed": true,
+      "detail": "Ratio dependency closure, then manually checked formulas"
+    },
+    {
+      "id": "three_month_policies",
+      "passed": true,
+      "detail": "All three monthly metrics enforce full_month_only"
+    },
+    {
+      "id": "source_check",
+      "passed": true,
+      "detail": "Current generated check report passed; not semantic approval"
+    },
+    {
+      "id": "dimension_check",
+      "passed": true,
+      "detail": "Current generated check report passed; not semantic approval"
+    },
+    {
+      "id": "grain_check",
+      "passed": true,
+      "detail": "Current generated check report passed; not semantic approval"
+    },
+    {
+      "id": "metricflow_check",
+      "passed": true,
+      "detail": "Current generated check report passed; not semantic approval"
+    },
+    {
+      "id": "validation",
+      "passed": true,
+      "detail": "Current generated check report passed; not semantic approval"
+    },
+    {
+      "id": "frozen_inputs_artifacts",
+      "passed": true,
+      "detail": "41 frozen file references checked"
+    },
+    {
+      "id": "H03_expected_independent",
+      "passed": true,
+      "detail": "Recomputed from raw CSV without generated SQL: [['M00005', 0, 0, 0, 1, 1], ['M00007', 1, 3000, 1, 0, 1]]"
+    },
+    {
+      "id": "H03_grouped_zero",
+      "passed": false,
+      "detail": "Native deterministic result compared against unchanged frozen expected; four null-versus-zero cells fail"
+    }
+  ],
+  "frozen_hash_checks": [
+    {
+      "path": "materials/w03/01_订单日报说明.md",
+      "passed": true
+    },
+    {
+      "path": "materials/w03/03_会员运营周报.md",
+      "passed": true
+    },
+    {
+      "path": "materials/w03/05_数据字典.md",
+      "passed": true
+    },
+    {
+      "path": "docs/w03/business_model.md",
+      "passed": true
+    },
+    {
+      "path": "docs/w03/contract.md",
+      "passed": true
+    },
+    {
+      "path": "docs/w03/test-guide.md",
+      "passed": true
+    },
+    {
+      "path": "customer/w03/judge.py",
+      "passed": true
+    },
+    {
+      "path": "templates/w03/dimension_targets.json",
+      "passed": true
+    },
+    {
+      "path": "materials/data/small/manifest.json",
+      "passed": true
+    },
+    {
+      "path": "materials/data/small/orders.csv",
+      "passed": true
+    },
+    {
+      "path": "materials/data/small/members.csv",
+      "passed": true
+    },
+    {
+      "path": "materials/data/small/stores.csv",
+      "passed": true
+    },
+    {
+      "path": "materials/data/small/cards.csv",
+      "passed": true
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/dbt_metricflow/cli/dbt_connectors/adapter_backed_client.py",
+      "passed": true
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/metricflow/data_table/mf_table.py",
+      "passed": true
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/metricflow/sql/render/expr_renderer.py",
+      "passed": true
+    },
+    {
+      "path": "platform/fde_product/metrics/engine.py",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/summary.md",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/version-change.md",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/account-ledger-notes.md",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/calculation-summary.json",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/judge-selfcheck.json",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/monthly-summary-small.json",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/monthly-summary-fixture.json",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/calculate_expected.py",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/threshold-discrimination.json",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/finalize_design.py",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/tests-small.json",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/preflight-review.md",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/ledger-small.csv",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/interface-evidence.json",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/tests-fixture.json",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/preflight-review.json",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/v1-preservation.json",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/ledger-fixture.csv",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/design.json",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/fixture-data/orders.csv",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/fixture-data/cards.csv",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/fixture-data/members.csv",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/fixture-data/manifest.json",
+      "passed": true
+    },
+    {
+      "path": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/fixture-data/stores.csv",
+      "passed": true
+    }
+  ],
+  "raw_csv_recomputed_H03": [
+    [
+      "M00005",
+      0,
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      "M00007",
+      1,
+      3000,
+      1,
+      0,
+      1
+    ]
+  ]
+}

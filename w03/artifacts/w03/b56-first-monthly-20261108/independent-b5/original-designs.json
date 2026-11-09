@@ -1,0 +1,331 @@
+[
+  {
+    "id": "B5-N01",
+    "batch": "B5",
+    "metric_ids": [
+      "new_member_count",
+      "first_buyer_count",
+      "first_order_sales_cents",
+      "first_order_count",
+      "repeat_order_count"
+    ],
+    "kind": "normal_multi_metric",
+    "question_or_fixture": "请同时列出2026年8月青禾优选的注册会员数、观测期首购会员数、观测期首单净销售额、观测期首单数、观测期后续购买订单数。",
+    "expected_behavior": "逐项按其来源定义独立核算；统一窗口不等于各指标使用同一日期字段、分母或行集合；核每列值与单位。",
+    "fault_to_detect": "漏指标、交换列、套用同一口径、金额/人数/比率单位混用",
+    "state": "design_pending_definition_and_expected",
+    "executable": false,
+    "expected_state": "not_computed",
+    "execution_state": "not_run",
+    "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+    "expected_method": "独立读members按registered_at筛选、核member_id；全覆盖orders先筛有效，按member/date/id排序，再筛首单日期；独立全历史排序取首单，窗口筛选再累计净额；独立取全覆盖有效单首位并数窗口内order_id；独立全覆盖排序rank>=2后按订单日筛",
+    "source_refs": [
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "注册会员数"
+      },
+      {
+        "source": "D5",
+        "path": "W03/实操工程/materials/w03/05_数据字典.md",
+        "locator": "覆盖、表字段"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首购会员数"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首单净销售额"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首单数"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期后续购买订单数"
+      }
+    ]
+  },
+  {
+    "id": "B5-D01",
+    "batch": "B5",
+    "metric_ids": [
+      "new_member_count"
+    ],
+    "kind": "query_scenario",
+    "question_or_fixture": "2026年8月注册会员数按会员归属门店、会员等级列出。",
+    "expected_behavior": "按registered_at计账户，未购买的注册账户仍计，不用ordered_at或成交店。",
+    "fault_to_detect": "把注册人数当购买人数，错误日期或门店角色",
+    "state": "design_pending_definition_and_expected",
+    "executable": false,
+    "expected_state": "not_computed",
+    "execution_state": "not_run",
+    "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+    "expected_method": "独立读members按registered_at筛选、核member_id",
+    "source_refs": [
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "注册会员数"
+      },
+      {
+        "source": "D5",
+        "path": "W03/实操工程/materials/w03/05_数据字典.md",
+        "locator": "覆盖、表字段"
+      }
+    ]
+  },
+  {
+    "id": "B5-H01",
+    "batch": "B5",
+    "metric_ids": [
+      "first_buyer_count",
+      "first_order_sales_cents",
+      "first_order_count",
+      "repeat_order_count"
+    ],
+    "kind": "query_scenario",
+    "question_or_fixture": "2026年8月观测期首购人数、首单金额、首单数和后续购买单数是多少？",
+    "expected_behavior": "先在全覆盖有效订单中按账户排序，再筛8月；不能在8月重新找第一笔。",
+    "fault_to_detect": "窗口首单冒充观测期首单",
+    "state": "design_pending_definition_and_expected",
+    "executable": false,
+    "expected_state": "not_computed",
+    "execution_state": "not_run",
+    "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+    "expected_method": "全覆盖orders先筛有效，按member/date/id排序，再筛首单日期；独立全历史排序取首单，窗口筛选再累计净额；独立取全覆盖有效单首位并数窗口内order_id；独立全覆盖排序rank>=2后按订单日筛",
+    "source_refs": [
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首购会员数"
+      },
+      {
+        "source": "D5",
+        "path": "W03/实操工程/materials/w03/05_数据字典.md",
+        "locator": "覆盖、表字段"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首单净销售额"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首单数"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期后续购买订单数"
+      }
+    ]
+  },
+  {
+    "id": "B5-H02",
+    "batch": "B5",
+    "metric_ids": [
+      "first_buyer_count",
+      "first_order_sales_cents",
+      "first_order_count",
+      "repeat_order_count"
+    ],
+    "kind": "fixture_design",
+    "question_or_fixture": "隔离排序例：同账户首条记录取消或全退，其后同一天有两笔有效订单。",
+    "expected_behavior": "跳过无效单；有效单同日按order_id排序；首单1笔，其余进入后续。",
+    "fault_to_detect": "取创建首单、时间并列不稳定、重复首单",
+    "state": "design_pending_definition_and_expected",
+    "executable": false,
+    "expected_state": "not_computed",
+    "execution_state": "not_run",
+    "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+    "expected_method": "全覆盖orders先筛有效，按member/date/id排序，再筛首单日期；独立全历史排序取首单，窗口筛选再累计净额；独立取全覆盖有效单首位并数窗口内order_id；独立全覆盖排序rank>=2后按订单日筛",
+    "source_refs": [
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首购会员数"
+      },
+      {
+        "source": "D5",
+        "path": "W03/实操工程/materials/w03/05_数据字典.md",
+        "locator": "覆盖、表字段"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首单净销售额"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首单数"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期后续购买订单数"
+      }
+    ]
+  },
+  {
+    "id": "B5-H03",
+    "batch": "B5",
+    "metric_ids": [
+      "first_buyer_count",
+      "first_order_sales_cents",
+      "first_order_count",
+      "repeat_order_count"
+    ],
+    "kind": "fixture_design",
+    "question_or_fixture": "隔离历史例：账户7月已有有效首单，8月又买；另一账户8月第一次有效买。",
+    "expected_behavior": "前一账户8月计后续不计首购；后一账户计首购；仅为观测期，不推终身。",
+    "fault_to_detect": "按查询窗口重新排名、冒称终身新客",
+    "state": "design_pending_definition_and_expected",
+    "executable": false,
+    "expected_state": "not_computed",
+    "execution_state": "not_run",
+    "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+    "expected_method": "全覆盖orders先筛有效，按member/date/id排序，再筛首单日期；独立全历史排序取首单，窗口筛选再累计净额；独立取全覆盖有效单首位并数窗口内order_id；独立全覆盖排序rank>=2后按订单日筛",
+    "source_refs": [
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首购会员数"
+      },
+      {
+        "source": "D5",
+        "path": "W03/实操工程/materials/w03/05_数据字典.md",
+        "locator": "覆盖、表字段"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首单净销售额"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首单数"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期后续购买订单数"
+      }
+    ]
+  },
+  {
+    "id": "B5-Z01",
+    "batch": "B5",
+    "metric_ids": [
+      "new_member_count",
+      "first_buyer_count",
+      "first_order_sales_cents",
+      "first_order_count",
+      "repeat_order_count"
+    ],
+    "kind": "query_scenario",
+    "question_or_fixture": "2026年6月1日至29日分别列注册数及四项观测期指标。",
+    "expected_behavior": "不同日期字段各自选记录，不能因没有订单就断定注册为0；期望由两张原表独立求出。",
+    "fault_to_detect": "跨事实表共享空结果",
+    "state": "design_pending_definition_and_expected",
+    "executable": false,
+    "expected_state": "not_computed",
+    "execution_state": "not_run",
+    "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+    "expected_method": "独立读members按registered_at筛选、核member_id；全覆盖orders先筛有效，按member/date/id排序，再筛首单日期；独立全历史排序取首单，窗口筛选再累计净额；独立取全覆盖有效单首位并数窗口内order_id；独立全覆盖排序rank>=2后按订单日筛",
+    "source_refs": [
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "注册会员数"
+      },
+      {
+        "source": "D5",
+        "path": "W03/实操工程/materials/w03/05_数据字典.md",
+        "locator": "覆盖、表字段"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首购会员数"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首单净销售额"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首单数"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期后续购买订单数"
+      }
+    ]
+  },
+  {
+    "id": "B5-A01",
+    "batch": "B5",
+    "metric_ids": [
+      "first_buyer_count",
+      "first_order_sales_cents",
+      "first_order_count",
+      "repeat_order_count",
+      "valid_order_count"
+    ],
+    "kind": "cross_metric_assertion",
+    "question_or_fixture": "辅助检查：同窗首购账户数＝首单数；首单数＋后续单数＝有效订单数。",
+    "expected_behavior": "全覆盖排序口径一致且字段核定后使用；每项仍保留独立期望和首单身份。",
+    "fault_to_detect": "集合错但合计凑对",
+    "state": "design_pending_definition_and_expected",
+    "executable": false,
+    "expected_state": "not_computed",
+    "execution_state": "not_run",
+    "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+    "expected_method": "全覆盖orders先筛有效，按member/date/id排序，再筛首单日期；独立全历史排序取首单，窗口筛选再累计净额；独立取全覆盖有效单首位并数窗口内order_id；独立全覆盖排序rank>=2后按订单日筛；独立逐单计算净值并标有效，再计数",
+    "source_refs": [
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首购会员数"
+      },
+      {
+        "source": "D5",
+        "path": "W03/实操工程/materials/w03/05_数据字典.md",
+        "locator": "覆盖、表字段"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首单净销售额"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期首单数"
+      },
+      {
+        "source": "D3",
+        "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "locator": "观测期后续购买订单数"
+      },
+      {
+        "source": "D1",
+        "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "locator": "有效订单数"
+      }
+    ]
+  }
+]

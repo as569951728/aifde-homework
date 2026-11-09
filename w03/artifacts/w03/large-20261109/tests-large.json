@@ -1,0 +1,975 @@
+[
+  {
+    "id": "LG-B1",
+    "question": "请同时列出2026年8月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额和优惠金额。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "payment_cents",
+        "refund_cents",
+        "net_sales_cents",
+        "gross_cents",
+        "discount_cents"
+      ],
+      "rows": [
+        [
+          570270646,
+          56349326,
+          513921320,
+          633763245,
+          63492599
+        ]
+      ],
+      "units": {
+        "payment_cents": "cents",
+        "refund_cents": "cents",
+        "net_sales_cents": "cents",
+        "gross_cents": "cents",
+        "discount_cents": "cents"
+      },
+      "data_version": "qinghe-w03-20260923-large",
+      "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 与 small 轮 B1-N01 同口径，规模数据独立重算。"
+  },
+  {
+    "id": "LG-B2",
+    "question": "请同时列出2026年8月青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数和全额退款订单数。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "order_count",
+        "paid_order_count",
+        "valid_order_count",
+        "cancelled_order_count",
+        "refund_order_count",
+        "partial_refund_order_count",
+        "full_refund_order_count"
+      ],
+      "rows": [
+        [
+          34306,
+          31564,
+          29933,
+          2742,
+          4718,
+          3087,
+          1631
+        ]
+      ],
+      "units": {
+        "order_count": "count",
+        "paid_order_count": "count",
+        "valid_order_count": "count",
+        "cancelled_order_count": "count",
+        "refund_order_count": "count",
+        "partial_refund_order_count": "count",
+        "full_refund_order_count": "count"
+      },
+      "data_version": "qinghe-w03-20260923-large",
+      "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 恒等式：创建=支付+取消（34306=31564+2742）；退款=部分退+全退（4718=3087+1631）。"
+  },
+  {
+    "id": "LG-B3",
+    "question": "请同时列出2026年8月青禾优选的购买会员数、退款会员数、成交门店数和有效订单商品件数。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "buyer_count",
+          "refund_buyer_count",
+          "selling_store_count",
+          "valid_order_items"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "rows": [
+        [
+          16504,
+          4173,
+          24,
+          120210
+        ]
+      ],
+      "units": {
+        "buyer_count": "count",
+        "refund_buyer_count": "count",
+        "selling_store_count": "count",
+        "valid_order_items": "count"
+      },
+      "data_version": "qinghe-w03-20260923-large",
+      "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。"
+  },
+  {
+    "id": "LG-B4",
+    "question": "请同时列出2026年8月青禾优选的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率和单均商品件数。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "avg_order_value",
+        "avg_buyer_value",
+        "purchase_frequency",
+        "refund_amount_rate",
+        "cancel_rate",
+        "refund_order_rate",
+        "discount_rate",
+        "items_per_order"
+      ],
+      "rows": [
+        [
+          17169.054889252664,
+          31139.19777023752,
+          1.813681531749879,
+          0.09881154920956602,
+          0.07992770943858217,
+          0.1494740843999493,
+          0.10018346677709276,
+          4.0159689974275885
+        ]
+      ],
+      "units": {
+        "avg_order_value": "cents_per_order",
+        "avg_buyer_value": "cents_per_member",
+        "purchase_frequency": "orders_per_member",
+        "refund_amount_rate": "ratio",
+        "cancel_rate": "ratio",
+        "refund_order_rate": "ratio",
+        "discount_rate": "ratio",
+        "items_per_order": "items_per_order"
+      },
+      "data_version": "qinghe-w03-20260923-large",
+      "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 比率在窗口内先聚合分子分母再相除，不取逐单或逐店比率的平均。"
+  },
+  {
+    "id": "LG-B5",
+    "question": "请同时列出2026年8月青禾优选的注册会员数、观测期首购会员数、观测期首单净销售额、观测期首单数和观测期后续购买订单数。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "new_member_count",
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "new_member_count",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "rows": [
+        [
+          0,
+          15,
+          289662,
+          15,
+          29918
+        ]
+      ],
+      "units": {
+        "new_member_count": "count",
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count"
+      },
+      "data_version": "qinghe-w03-20260923-large",
+      "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 该窗注册 0 人；首单数+后续单数=29933=29933。"
+  },
+  {
+    "id": "LG-B5-h",
+    "question": "2026年8月青禾优选有多少会员是首次购买？他们的首单净销售额合计多少分、共几笔？此后这些账户又产生了多少笔有效订单？",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "rows": [
+        [
+          15,
+          289662,
+          15,
+          29918
+        ]
+      ],
+      "units": {
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count"
+      },
+      "data_version": "qinghe-w03-20260923-large",
+      "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 与 LG-B5 同值不同问法；首购不代表终身首购。"
+  },
+  {
+    "id": "LG-B6",
+    "question": "请列出2026年8月青禾优选的月内购买会员数、月内复购会员数和月内复购率。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "rows": [
+        [
+          16504,
+          7302,
+          0.44243819680077556
+        ]
+      ],
+      "units": {
+        "monthly_buyer_count": "count",
+        "monthly_repeat_buyer_count": "count",
+        "monthly_repeat_rate": "ratio"
+      },
+      "data_version": "qinghe-w03-20260923-large",
+      "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 复购=同月有效订单≥2笔的账户；复购率=复购人数/购买人数，分母 0 时为 null。"
+  },
+  {
+    "id": "LG-B6-m",
+    "question": "请分别列出2026年7月和2026年8月青禾优选的月内购买会员数、月内复购会员数和月内复购率。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "start": "2026-07-01",
+        "end": "2026-09-01",
+        "group_by": [
+          "metric_time__month"
+        ],
+        "filters": []
+      },
+      "columns": [
+        "metric_time__month",
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "rows": [
+        [
+          "2026-07-01 00:00:00",
+          16436,
+          7388,
+          0.4495010951569725
+        ],
+        [
+          "2026-08-01 00:00:00",
+          16504,
+          7302,
+          0.44243819680077556
+        ]
+      ],
+      "units": {
+        "monthly_buyer_count": "count",
+        "monthly_repeat_buyer_count": "count",
+        "monthly_repeat_rate": "ratio"
+      },
+      "data_version": "qinghe-w03-20260923-large",
+      "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 多月按自然月分行，资格、账户与订单不跨月串用。"
+  },
+  {
+    "id": "LG-B7",
+    "question": "请同时列出2026年8月青禾优选的月末付费会员购买人数、月末付费会员有效订单数、月末付费会员净销售额、月末付费会员复购人数、月末付费会员复购率和月末付费会员订单均额。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_paid_buyer_count",
+          "monthly_paid_order_count",
+          "monthly_paid_sales_cents",
+          "monthly_paid_repeat_buyer_count",
+          "monthly_paid_repeat_rate",
+          "monthly_paid_avg_order_value"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "rows": [
+        [
+          3683,
+          6565,
+          113027218,
+          1643,
+          0.4461037197936465,
+          17216.63640517898
+        ]
+      ],
+      "units": {
+        "monthly_paid_buyer_count": "count",
+        "monthly_paid_order_count": "count",
+        "monthly_paid_sales_cents": "cents",
+        "monthly_paid_repeat_buyer_count": "count",
+        "monthly_paid_repeat_rate": "ratio",
+        "monthly_paid_avg_order_value": "cents_per_order"
+      },
+      "data_version": "qinghe-w03-20260923-large",
+      "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 月末资格按 2026-08-31 判定；先筛资格再连当月有效订单。"
+  },
+  {
+    "id": "LG-B7-jul",
+    "question": "2026年7月的月末付费会员六项月报指标分别是多少？",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_paid_buyer_count",
+          "monthly_paid_order_count",
+          "monthly_paid_sales_cents",
+          "monthly_paid_repeat_buyer_count",
+          "monthly_paid_repeat_rate",
+          "monthly_paid_avg_order_value"
+        ],
+        "start": "2026-07-01",
+        "end": "2026-08-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "rows": [
+        [
+          3566,
+          6074,
+          103238748,
+          1529,
+          0.428771733034212,
+          16996.830424761276
+        ]
+      ],
+      "units": {
+        "monthly_paid_buyer_count": "count",
+        "monthly_paid_order_count": "count",
+        "monthly_paid_sales_cents": "cents",
+        "monthly_paid_repeat_buyer_count": "count",
+        "monthly_paid_repeat_rate": "ratio",
+        "monthly_paid_avg_order_value": "cents_per_order"
+      },
+      "data_version": "qinghe-w03-20260923-large",
+      "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 判定日为 2026-07-31，与 8 月独立重判。"
+  },
+  {
+    "id": "LG-B4-store",
+    "question": "请按成交门店列出2026年8月青禾优选的净销售额、有效订单数、购买会员数和八项均值比率。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "net_sales_cents",
+          "valid_order_count",
+          "buyer_count",
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [
+          "store"
+        ],
+        "filters": []
+      },
+      "columns": [
+        "store",
+        "net_sales_cents",
+        "valid_order_count",
+        "buyer_count",
+        "avg_order_value",
+        "avg_buyer_value",
+        "purchase_frequency",
+        "refund_amount_rate",
+        "cancel_rate",
+        "refund_order_rate",
+        "discount_rate",
+        "items_per_order"
+      ],
+      "rows": [
+        [
+          "S01",
+          19903920,
+          1171,
+          1135,
+          16997.369769427838,
+          17536.493392070486,
+          1.0317180616740087,
+          0.10250932259562706,
+          0.08845029239766082,
+          0.15396952686447474,
+          0.10069070334305609,
+          4.175064047822374
+        ],
+        [
+          "S02",
+          20664360,
+          1207,
+          1157,
+          17120.43082021541,
+          17860.293863439932,
+          1.0432152117545377,
+          0.09645889678871153,
+          0.08026030368763558,
+          0.14622641509433962,
+          0.10104895110392488,
+          4.054681027340513
+        ],
+        [
+          "S03",
+          21655034,
+          1275,
+          1235,
+          16984.340392156864,
+          17534.44048582996,
+          1.0323886639676114,
+          0.09891830836585731,
+          0.08503401360544217,
+          0.1591078066914498,
+          0.09959969120266671,
+          3.988235294117647
+        ],
+        [
+          "S04",
+          22019001,
+          1275,
+          1226,
+          17269.804705882354,
+          17960.03344208809,
+          1.0399673735725938,
+          0.10226402406106806,
+          0.09280430396772024,
+          0.14381022979985175,
+          0.10266230320798798,
+          3.985098039215686
+        ],
+        [
+          "S05",
+          21685993,
+          1272,
+          1234,
+          17048.736635220124,
+          17573.738249594815,
+          1.0307941653160453,
+          0.1008439531300973,
+          0.06759581881533101,
+          0.1517189835575486,
+          0.09913311855559875,
+          3.964622641509434
+        ],
+        [
+          "S06",
+          20839433,
+          1218,
+          1176,
+          17109.550903119867,
+          17720.606292517008,
+          1.0357142857142858,
+          0.10183359368225318,
+          0.07708933717579251,
+          0.1647150663544106,
+          0.10289095028301691,
+          3.9277504105090313
+        ],
+        [
+          "S07",
+          22282617,
+          1243,
+          1213,
+          17926.48189863234,
+          18369.84089035449,
+          1.0247320692497939,
+          0.09465431375197945,
+          0.06709493219129194,
+          0.15378729915837797,
+          0.096691668365642,
+          3.9975864843121482
+        ],
+        [
+          "S08",
+          20389160,
+          1200,
+          1165,
+          16990.966666666667,
+          17501.424892703864,
+          1.0300429184549356,
+          0.09071838080374352,
+          0.08660844250363901,
+          0.1402390438247012,
+          0.09961719408302153,
+          3.9183333333333334
+        ],
+        [
+          "S09",
+          21546183,
+          1243,
+          1210,
+          17334.016894609817,
+          17806.762809917356,
+          1.0272727272727273,
+          0.09813030010332109,
+          0.08064516129032258,
+          0.14187643020594964,
+          0.10136005842336288,
+          3.99195494770716
+        ],
+        [
+          "S10",
+          21632457,
+          1280,
+          1234,
+          16900.35703125,
+          17530.354132901135,
+          1.0372771474878444,
+          0.1016286457462525,
+          0.07849829351535836,
+          0.15333333333333332,
+          0.0987960100464797,
+          3.99609375
+        ],
+        [
+          "S11",
+          23696805,
+          1339,
+          1277,
+          17697.389843166544,
+          18556.62098668755,
+          1.048551292090838,
+          0.09391918298268567,
+          0.07652060170045781,
+          0.14801699716713881,
+          0.10293729244791681,
+          3.976101568334578
+        ],
+        [
+          "S12",
+          21135093,
+          1245,
+          1209,
+          16975.978313253014,
+          17481.466501240695,
+          1.0297766749379653,
+          0.0956669351057128,
+          0.08957312806158152,
+          0.1452728670253651,
+          0.09972470838985514,
+          3.970281124497992
+        ],
+        [
+          "S13",
+          21020695,
+          1218,
+          1175,
+          17258.37027914614,
+          17889.953191489363,
+          1.0365957446808511,
+          0.11289273666327704,
+          0.08059914407988587,
+          0.1613653995345229,
+          0.09987323044177285,
+          4.188834154351396
+        ],
+        [
+          "S14",
+          19944860,
+          1203,
+          1166,
+          16579.268495428096,
+          17105.368782161237,
+          1.0317324185248713,
+          0.10879521851538405,
+          0.07507288629737609,
+          0.16233254531126873,
+          0.09908681923864514,
+          3.914380714879468
+        ],
+        [
+          "S15",
+          22717397,
+          1282,
+          1242,
+          17720.278471138845,
+          18290.979871175525,
+          1.0322061191626408,
+          0.09355547439713036,
+          0.07813570938999315,
+          0.14275092936802974,
+          0.10020237293367656,
+          4.036661466458658
+        ],
+        [
+          "S16",
+          21946369,
+          1283,
+          1215,
+          17105.509742790335,
+          18062.85514403292,
+          1.0559670781893005,
+          0.09295407112573682,
+          0.07618393960192175,
+          0.13595839524517087,
+          0.10103495237651156,
+          4.066250974279034
+        ],
+        [
+          "S17",
+          22893224,
+          1286,
+          1237,
+          17801.88491446345,
+          18507.052546483428,
+          1.0396119644300728,
+          0.07898163150976055,
+          0.08117326057298772,
+          0.12694877505567928,
+          0.10027563541675301,
+          4.044323483670295
+        ],
+        [
+          "S18",
+          22464118,
+          1287,
+          1250,
+          17454.63714063714,
+          17971.2944,
+          1.0296,
+          0.09851855481372872,
+          0.07394843962008141,
+          0.15604395604395604,
+          0.09952360139781172,
+          3.986013986013986
+        ],
+        [
+          "S19",
+          19758947,
+          1197,
+          1164,
+          16507.056808688387,
+          16975.040378006874,
+          1.0283505154639174,
+          0.09385784944590536,
+          0.0739385065885798,
+          0.15177865612648223,
+          0.10054549115942486,
+          4.157894736842105
+        ],
+        [
+          "S20",
+          21539973,
+          1276,
+          1238,
+          16880.8565830721,
+          17399.00888529887,
+          1.0306946688206786,
+          0.09776389674669757,
+          0.08139534883720931,
+          0.14594192107222637,
+          0.1001829975651709,
+          3.9725705329153604
+        ],
+        [
+          "S21",
+          21232818,
+          1247,
+          1200,
+          17027.119486768242,
+          17694.015,
+          1.0391666666666666,
+          0.10619596765608123,
+          0.07789473684210527,
+          0.15144596651445966,
+          0.10038997198872762,
+          3.97514033680834
+        ],
+        [
+          "S22",
+          20927907,
+          1240,
+          1198,
+          16877.34435483871,
+          17469.037562604342,
+          1.0350584307178632,
+          0.11559755114770406,
+          0.07536636427076064,
+          0.15849056603773584,
+          0.09908073860871573,
+          4.026612903225806
+        ],
+        [
+          "S23",
+          21713897,
+          1257,
+          1218,
+          17274.38106603023,
+          17827.501642036124,
+          1.0320197044334976,
+          0.10232753922436746,
+          0.08038808038808039,
+          0.14845516201959308,
+          0.09962671657427172,
+          3.9801113762927605
+        ],
+        [
+          "S24",
+          20311059,
+          1189,
+          1163,
+          17082.47182506308,
+          17464.367153912295,
+          1.0223559759243337,
+          0.09394934249846568,
+          0.09410919540229885,
+          0.14512291831879462,
+          0.0991964182492384,
+          4.109335576114382
+        ]
+      ],
+      "units": {
+        "net_sales_cents": "cents",
+        "valid_order_count": "count",
+        "buyer_count": "count",
+        "avg_order_value": "cents_per_order",
+        "avg_buyer_value": "cents_per_member",
+        "purchase_frequency": "orders_per_member",
+        "refund_amount_rate": "ratio",
+        "cancel_rate": "ratio",
+        "refund_order_rate": "ratio",
+        "discount_rate": "ratio",
+        "items_per_order": "items_per_order"
+      },
+      "data_version": "qinghe-w03-20260923-large",
+      "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 每组独立聚合分子分母；门店来自 orders.store_id；24 家门店。"
+  },
+  {
+    "id": "LG-B4-channel",
+    "question": "2026年8月青禾优选小程序渠道的净销售额、有效订单数和购买会员数是多少？",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "net_sales_cents",
+          "valid_order_count",
+          "buyer_count"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": [
+          {
+            "field": "order__channel",
+            "op": "eq",
+            "value": "小程序"
+          }
+        ]
+      },
+      "columns": [
+        "net_sales_cents",
+        "valid_order_count",
+        "buyer_count"
+      ],
+      "rows": [
+        [
+          256861328,
+          14934,
+          10649
+        ]
+      ],
+      "units": {
+        "net_sales_cents": "cents",
+        "valid_order_count": "count",
+        "buyer_count": "count"
+      },
+      "data_version": "qinghe-w03-20260923-large",
+      "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 渠道筛选取 orders.channel='小程序'；通用指标支持渠道过滤，六项付费月报不支持。"
+  },
+  {
+    "id": "LG-X1",
+    "question": "请列出2026年8月1日至8月15日青禾优选的月末付费会员购买人数和月末付费会员净销售额。",
+    "expected": {
+      "status": "unsupported"
+    },
+    "expected_source": "六项付费月报只支持完整自然月（04_本期统计确认邮件.md、docs/w03/contract.md）；半月窗口无法确定月末资格，应拒绝且不得截断计算或返回 0。"
+  },
+  {
+    "id": "LG-X2",
+    "question": "请将2026年8月青禾优选的月末付费会员购买人数按订单成交门店分别列出。",
+    "expected": {
+      "status": "unsupported"
+    },
+    "expected_source": "六项付费月报为全门店汇总口径，dimension_targets 未为其开放 store 维度；应拒绝，理由写口径或工具限制，不冒称客户政策。"
+  },
+  {
+    "id": "LG-B1-b",
+    "question": "2026年8月青禾优选的净销售额（扣除退款后的实收金额）是多少分？",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "net_sales_cents"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "net_sales_cents"
+      ],
+      "rows": [
+        [
+          513921320
+        ]
+      ],
+      "units": {
+        "net_sales_cents": "cents"
+      },
+      "data_version": "qinghe-w03-20260923-large",
+      "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 与 LG-B1 同值不同问法，检验单指标识别与单位。"
+  }
+]

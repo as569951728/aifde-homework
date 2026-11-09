@@ -1,0 +1,291 @@
+{
+  "status": "approved_as_mentor_working_copies",
+  "reviewed_at": "2026-11-07T04:07:42.716901+00:00",
+  "independent_source_first": true,
+  "criteria_sha256": "d56b76b5a544f5797aa14d6767f8bd9078c1dc0fca5b88c69dab8070aed8e529",
+  "raw_review_sha256": "b8bfc3bc0ba1e61eb7ffc527c60b64dec5262f280386ac40328c0d0aef5440d5",
+  "input_model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "input_prompt_sha256": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+  "source_hashes": [
+    {
+      "path": "artifacts/w03/context-application-qa-20261107/input/source_snapshots/01-W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+      "sha256": "eef0d4127f42f96a0fc5219749c3355cfe8252d028b2e8e495117d1ea3821f07"
+    },
+    {
+      "path": "artifacts/w03/context-application-qa-20261107/input/source_snapshots/02-W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+      "sha256": "fb6435f8ab761dbb26a995ec93f11530ef67840661251ab8b4c59d19ffbbf5ce"
+    },
+    {
+      "path": "artifacts/w03/context-application-qa-20261107/input/source_snapshots/03-W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+      "sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308"
+    }
+  ],
+  "summary": {
+    "mentor_copies_reviewed": 3,
+    "mentor_copies_passed": 3,
+    "mentor_copies_failed": 0,
+    "original_semantic_passed": 13,
+    "original_semantic_failed": 3,
+    "additional_model_calls": 0,
+    "raw_scores_changed": false
+  },
+  "cases": [
+    {
+      "case_id": "U05",
+      "status": "passed_as_mentor_working_copy",
+      "verdict": "passed",
+      "original_verdict": "failed",
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/U05.json",
+      "original_output_sha256": "671b8188792fdd20cf93251acbc2e993bf18b04e1c7f87eb79f28e721c4ed685",
+      "working_copy": "artifacts/w03/context-application-qa-20261107/reviewed-answer/U05.json",
+      "working_copy_sha256": "a0bec0c1c47e2ee0e8845cf4a3959d6f527536137983edee27569526248d0f7e",
+      "working_copy_markdown_sha256": "cf88707a72960eed0d96613673ede535972ae884140ccd0a965dc3e697638a4c",
+      "working_copy_diff_sha256": "ab889d387bc0fd232880521ffd6760cc66fb9d10bcae9fff840e7c72200e6962",
+      "answer_sha256": "fa0dd5b2653eb073bbdedfb760916e11395ee5910b8b1379c09173ecfe87d294",
+      "source_anchors": [
+        "W02小林01918—01921",
+        "陈姐03885—03890",
+        "王经理03910/03911/03930—03933",
+        "冻结候选模型§1/§3/§4/§5"
+      ],
+      "reason": "B已明确“没人用”为01918提问者先带入、01919沿用，并保留01921的个人体验及未知具体步骤；E已改为不能由阶段认可推定最终验收批准，保留验收确认人和授权待核。A/C/D原有正确判断保留。",
+      "requirement_checks": [
+        {
+          "requirement": "逐条评A—E，不以全句笼统正确/错误代替。A可采用陈姐本期两卡日期解释并保留正式文件/历史凭据未知。",
+          "result": "passed"
+        },
+        {
+          "requirement": "B须纠正：01918由提问者先带入没人用，01919沿用；三步由小林给体验但01921否认精确清单，不算独立证实全面无人使用。",
+          "result": "passed"
+        },
+        {
+          "requirement": "C须纠正：模型/材料未核实反馈回店不等于企业没有该环节。",
+          "result": "passed"
+        },
+        {
+          "requirement": "D须纠正：活跃定义、时间及全量范围/一致性未齐，不能直接用80万/120万当已核活跃率。",
+          "result": "passed"
+        },
+        {
+          "requirement": "E须纠正：王经理认可分期只是核查意见，不构成最终验收批准。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed",
+      "checks": [
+        {
+          "id": "raw_hash_matches_working_copy_reference",
+          "passed": true
+        },
+        {
+          "id": "raw_hash_matches_frozen_independent_report",
+          "passed": true
+        },
+        {
+          "id": "original_verdict_remains_failed",
+          "passed": true
+        },
+        {
+          "id": "replacement_1_unique_original_span",
+          "passed": true
+        },
+        {
+          "id": "replacement_2_unique_original_span",
+          "passed": true
+        },
+        {
+          "id": "all_and_only_recorded_replacements_applied",
+          "passed": true
+        },
+        {
+          "id": "markdown_contains_exact_revised_answer",
+          "passed": true
+        },
+        {
+          "id": "diagnostic_diff_matches_original_and_revision",
+          "passed": true
+        },
+        {
+          "id": "clearly_mentor_copy_no_model_call_or_raw_rescore",
+          "passed": true
+        },
+        {
+          "id": "source_attribution_and_semantics_passed",
+          "passed": true
+        }
+      ],
+      "failed_checks": [],
+      "human_decisions": []
+    },
+    {
+      "case_id": "A03",
+      "status": "passed_as_mentor_working_copy",
+      "verdict": "passed",
+      "original_verdict": "failed",
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/A03.json",
+      "original_output_sha256": "30bce9904e14df5a2369a6bd3060a09085fe6570dc45feec793a362fd35e5a0b",
+      "working_copy": "artifacts/w03/context-application-qa-20261107/reviewed-answer/A03.json",
+      "working_copy_sha256": "52544db0e8dc391ea4ca7381fc359a00d4b371a1fc942b0d7499e028bb091959",
+      "working_copy_markdown_sha256": "a1b6a2d8bbe4519be13c7c1d3065cf05eb7ebc33fa0ba18d1207f9ab2713300d",
+      "working_copy_diff_sha256": "7763cb78dabd2cb6921347f9d53e9b56dc98eb2e6c23a14a33406cad55db19bd",
+      "answer_sha256": "f603fcf31ec005c1086bb2a018cb014683fb516e630b5ac01ecb51d477f3dd07",
+      "source_anchors": [
+        "王经理03910—03933（完整指定访谈）",
+        "冻结候选模型§5核实不含所述SOW未决内容"
+      ],
+      "reason": "费用构成、结算节点及待谈事项直接归指定王经理访谈，已移除虚构的模型第5节承载；金额、付款、节点切分、验收授权仍为待确认，不要求SOW内容进入业务正文。",
+      "requirement_checks": [
+        {
+          "requirement": "可写费用构成和计价依据的准备要求，未谈妥金额明确待确认；核查要对范围、责任和留证。",
+          "result": "passed"
+        },
+        {
+          "requirement": "结算应对应约定阶段成果和确认记录，但具体节点、记录形式/付款安排、金额尚待双方谈定。",
+          "result": "passed"
+        },
+        {
+          "requirement": "王经理仅核查，不据此承诺预算、签约、验收/续约；不擅填金额比例或期限。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed",
+      "checks": [
+        {
+          "id": "raw_hash_matches_working_copy_reference",
+          "passed": true
+        },
+        {
+          "id": "raw_hash_matches_frozen_independent_report",
+          "passed": true
+        },
+        {
+          "id": "original_verdict_remains_failed",
+          "passed": true
+        },
+        {
+          "id": "replacement_1_unique_original_span",
+          "passed": true
+        },
+        {
+          "id": "all_and_only_recorded_replacements_applied",
+          "passed": true
+        },
+        {
+          "id": "markdown_contains_exact_revised_answer",
+          "passed": true
+        },
+        {
+          "id": "diagnostic_diff_matches_original_and_revision",
+          "passed": true
+        },
+        {
+          "id": "clearly_mentor_copy_no_model_call_or_raw_rescore",
+          "passed": true
+        },
+        {
+          "id": "source_attribution_and_semantics_passed",
+          "passed": true
+        }
+      ],
+      "failed_checks": [],
+      "human_decisions": []
+    },
+    {
+      "case_id": "E01",
+      "status": "passed_as_mentor_working_copy",
+      "verdict": "passed",
+      "original_verdict": "failed",
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/E01.json",
+      "original_output_sha256": "5894b2a91dfdfca804f342977a3dec2b7e7198a4ddbaab9f7293d1c3d7f7f6b2",
+      "working_copy": "artifacts/w03/context-application-qa-20261107/reviewed-answer/E01.json",
+      "working_copy_sha256": "f062a434225973749038302ca5ac4ce7e020fa041ad8f7f3c8bb86868d9179fa",
+      "working_copy_markdown_sha256": "180aba385559063d1dcc59bbfa634446e493dbd9827d3f520ebfd4091255a52f",
+      "working_copy_diff_sha256": "5321924085cc86b43866257f6daf4bb868cc72782246c94c2eb504b77039b387",
+      "answer_sha256": "7ceeab3a20ba2261b6f2a5bc44698be27a4661957004f3339fff66b07462d57c",
+      "source_anchors": [
+        "W02小林01918—01921（完整问答）"
+      ],
+      "reason": "已区分01918的提问前提与小林对界面负担的个人体验；“我看到的是”只修饰界面操作负担，三步不是精确清单，无虚构页面/步骤或因果；未经独立证实的前提不用于设定后续问题。",
+      "requirement_checks": [
+        {
+          "requirement": "01918提问者先带入之前没人用，01919沿用，不能当小林独立证实全项目无人使用。",
+          "result": "passed"
+        },
+        {
+          "requirement": "操作多三步由小林叙述，但01921明确为体验，不是精确操作清单；不能列出虚构三步/页面或量化工时。",
+          "result": "passed"
+        },
+        {
+          "requirement": "保留对增加工作负担的体验、需核实际页面/使用记录；助手诉求及不得自动发券联系改记录的边界不能因提问诱导而丢弃。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed",
+      "checks": [
+        {
+          "id": "raw_hash_matches_working_copy_reference",
+          "passed": true
+        },
+        {
+          "id": "raw_hash_matches_frozen_independent_report",
+          "passed": true
+        },
+        {
+          "id": "original_verdict_remains_failed",
+          "passed": true
+        },
+        {
+          "id": "replacement_1_unique_original_span",
+          "passed": true
+        },
+        {
+          "id": "replacement_2_unique_original_span",
+          "passed": true
+        },
+        {
+          "id": "replacement_3_unique_original_span",
+          "passed": true
+        },
+        {
+          "id": "all_and_only_recorded_replacements_applied",
+          "passed": true
+        },
+        {
+          "id": "markdown_contains_exact_revised_answer",
+          "passed": true
+        },
+        {
+          "id": "diagnostic_diff_matches_original_and_revision",
+          "passed": true
+        },
+        {
+          "id": "clearly_mentor_copy_no_model_call_or_raw_rescore",
+          "passed": true
+        },
+        {
+          "id": "source_attribution_and_semantics_passed",
+          "passed": true
+        }
+      ],
+      "failed_checks": [],
+      "human_decisions": []
+    }
+  ],
+  "checks": [
+    {
+      "id": "original_report_unchanged_during_correction_review",
+      "passed": true
+    },
+    {
+      "id": "original_summary_remains_13_pass_3_fail",
+      "passed": true
+    },
+    {
+      "id": "all_corrections_reviewed_separately",
+      "passed": true
+    }
+  ],
+  "failed_checks": [],
+  "boundary": "本报告只批准3份导师核对稿作为另存的来源修正文本。原始模型答案仍13/16，U05/A03/E01原失败及原生记录保留；不代表模型重跑通过、用户独立作答、正式模型apply、数值校验或业务验收。E01题目询问两条表述的记录和使用，不要求重复本题未询问的全部助手诉求；修订未否定或删除原访谈中的助手诉求与不得自动操作的边界。",
+  "human_decisions": []
+}

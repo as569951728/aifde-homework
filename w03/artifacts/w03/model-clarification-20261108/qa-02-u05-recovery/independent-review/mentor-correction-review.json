@@ -1,0 +1,96 @@
+{
+  "status": "pass_as_mentor_working_copy",
+  "reviewed_at": "2026-11-07T16:57:58.886335+00:00",
+  "approved_static_working_copy": true,
+  "failed_checks": [],
+  "checks": [
+    {
+      "id": "raw_output_hash_preserved",
+      "passed": true
+    },
+    {
+      "id": "document_hash_matches_metadata",
+      "passed": true
+    },
+    {
+      "id": "corrected_body_hash",
+      "passed": true
+    },
+    {
+      "id": "replacement_unique_1",
+      "passed": true
+    },
+    {
+      "id": "replacement_unique_2",
+      "passed": true
+    },
+    {
+      "id": "only_two_replacements_and_no_other_answer_changes",
+      "passed": true
+    },
+    {
+      "id": "MSG-01919:source_hash_and_content",
+      "passed": true
+    },
+    {
+      "id": "MSG-01921:source_hash_and_content",
+      "passed": true
+    },
+    {
+      "id": "MSG-03911:source_hash_and_content",
+      "passed": true
+    },
+    {
+      "id": "B_01919_observation_exact",
+      "passed": true
+    },
+    {
+      "id": "B_01921_qualifier_correct",
+      "passed": true
+    },
+    {
+      "id": "B_01918_premise_retained",
+      "passed": true
+    },
+    {
+      "id": "E_exact_quote:我只能对预算和合同材料提核查意见",
+      "passed": true
+    },
+    {
+      "id": "E_exact_quote:预算额度、签约、验收和正式上线我不能替公司承诺",
+      "passed": true
+    },
+    {
+      "id": "raw_failed_score_preserved",
+      "passed": true
+    },
+    {
+      "id": "mentor_not_model_result",
+      "passed": true
+    }
+  ],
+  "reviewed_document": "artifacts/w03/model-clarification-20261108/U05-引用核对稿.md",
+  "reviewed_document_sha256": "18ebc34908ee331d825765a94eec9c96cd8cfe0d6ed6d978daa2b47d8799a5e3",
+  "reviewed_metadata_sha256": "7c8a9c372fa73a382fa8c5cf98f7c5418965325c17c58cbb54bc058b16a263ca",
+  "corrected_answer_sha256": "2b5f037bd1627d8fb77dac013bc01d157e1c915850d981d765b9186ac4eadecc",
+  "source_output_sha256": "907fb52fd1aa47285e3e867682ad790364de4c81ccc91dc3692ee4f19da4514b",
+  "raw_result_review_sha256": "8a59db30932e54e797a35e5a9ebcbc283a9919856545a322df2b598e7bf27c63",
+  "raw_verdict_unchanged": "failed",
+  "new_model_calls": 0,
+  "reviewer_api_calls": 0,
+  "findings": [
+    "B已将01919观察与01921后续限定分开，保留01918前提及非独立证实边界。",
+    "E两处短引在03911原文逐字存在，权限判断未改变。",
+    "修订全文除两次声明替换外与原答完全一致；A/C/D及其他解释保持。"
+  ],
+  "status_wrapper_update": {
+    "allowed": true,
+    "scope": "仅稿件状态标记及对应文档/元数据hash更新，正文必须保持corrected_answer_sha256。",
+    "body_change_requires_review": true
+  },
+  "limits": [
+    "这是导师静态核对稿，不是新模型输出或模型能力通过。",
+    "QA02 U05原答failed、QA01混合技术失败、累计7run/8HTTP均不回改。",
+    "不证明模型此后能自行给出同样正确引用；不得据此替换正式模型/提示/Skill。"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "case_id": "C03",
+  "started_at": "2026-11-06T15:14:44.210285+00:00",
+  "completed_at": "2026-11-06T15:14:52.653171+00:00",
+  "question": "A完整卡记录只有失效悦享年卡和有效异业联名卡，能否合并两张卡的条件判为有资格？",
+  "fixture": null,
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-6008532005c44d31a2837c51e8a82c7a/run.json",
+    "run_id": "RUN-6008532005c44d31a2837c51e8a82c7a",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "不能。按本期总部运营月报的付费资格口径，会员账户必须由同一张卡同时满足“产品范围”和“判定日有效”两个条件，不能把一张卡的卡类型与另一张卡的有效期拼接判断。题设中失效的悦享年卡虽属本期自营产品范围，但判定日已失效；有效的异业联名卡虽在判定日有效，但不属本期自营会员产品范围（异业联名卡由合作方经营，不纳入本期月报），因此两张卡各自都不满足完整条件，账户不能因此被判为具有本期付费资格。账户可有多张卡，但多卡不改变“同一张卡同时满足”的规则，也不能用另一张卡补足。依据为《本期统计确认邮件》及 MSG-03848、03854、03870、03886、03888 的说明；正式规则文件尚未取得，上述是本期月报口径，不是所有报表的普遍规则。若换到其他统计范围，需按该范围重新确认产品范围与有效期，但在题设条件下结论是不具备本期付费资格。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "e1cb59bfdbeff290f2d731d91fc4011b5fa14091350a0e47ca9b626bf4a57fa3"
+}

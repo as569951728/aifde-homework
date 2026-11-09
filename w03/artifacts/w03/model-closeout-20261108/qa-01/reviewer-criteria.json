@@ -1,0 +1,79 @@
+{
+  "created_at_utc": "2026-11-08T02:38:31.239360+00:00",
+  "scope": "仅7题一次收尾批次；复用已有独立来源判据，补两项旧对照原题的来源边界，不重审85项。",
+  "status": "criteria_prepared_input_gate_pending",
+  "model_api_calls": 0,
+  "prior_source_reviews": [
+    {
+      "path": "W03/实操工程/artifacts/w03/source-semantics-audit-20261108/reviews/source_context/source-criteria.json",
+      "sha256": "b424a0a72cdff3e6a2c026fb94e88b73f8149ee46e9b143d4a32e99504032d52"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/source-semantics-audit-20261108/reviews/source_context/revision-review.json",
+      "sha256": "031ec5c2ecdb0067c6cc1d61abef2c0a78c1183b4729888d2e5d8c2ef5cab5d3"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/source-semantics-audit-20261108/reviews/model_and_artifact/source-criteria.json",
+      "sha256": "628183cdfc95807e8615dc4050210577423439ef1dc0c87fbb667648088d8b91"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/source-semantics-audit-20261108/reviews/model_and_artifact/revision-review.json",
+      "sha256": "3d37fddee1f474c1548e14dbeb0387e2c7d6f3c0ff99bec82c2217c7ba772730"
+    }
+  ],
+  "cases": [
+    {
+      "id": "U05",
+      "criterion": "复用source_context首审/复审：A本期两类卡规则有角色依据，文件历史缺证并列；B没人用来自问题前提，操作负担是个人感受，非独立全面证实；C未知不等于不存在；D活跃/全量不能直接算率；E核查/认可不等于验收批准。03931审批安排未定只归该事项，具体人/额度不掌握仍待核；03933正式批准未定保留。",
+      "reference_question_sha256": "e18fa359a572fd51766513c863909498bee80c4733cc741dedbedb28ba487663",
+      "expected_input_track": "model_with_source_context"
+    },
+    {
+      "id": "U01",
+      "criterion": "复用model_and_artifact判据：原因验证和岗位减负两个目标分开；沈总优先核复购下降原因，老化是个人假设；范围/期间/定义/来源与实际记录支持判断，不能说已证原因、省时、复购改善。模型中的三个月期望及具体董事会数字/口径未定按相应对象表达。模型题可引用模型转述，不能冒充直接看到访谈。",
+      "reference_question_sha256": "2545c20d5df407e9b5e06ac8e74c20674ed42997f46f8098a147fb155fe91db9",
+      "expected_input_track": "model_only"
+    },
+    {
+      "id": "P01",
+      "criterion": "复用model_and_artifact判据：完整合成卡记录中普通等级账户有一张判定日有效悦享年卡，因此本期付费资格成立。普通等级/金额不能否定或替代范围与有效状态；不以缺生产核验拒绝题设推导。规则来自模型中注明的角色，命名组织选择不能替代规则来源。",
+      "reference_question_sha256": "f1d9c8d7b6a2ab3adffbb710f83baeba8f61d8ecceb6e3c71ccbc36421a01df5",
+      "expected_input_track": "model_only"
+    },
+    {
+      "id": "E01",
+      "criterion": "复用source_context判据：01918先带没人用，01919承接，不独立证明全面采用率或原因；01919新增多三步个人感受，01921限定非精确清单，不能补具体步骤。最早前提、后续限定、角色观察按消息分开归属。",
+      "reference_question_sha256": "ffd47e80c2fda2ae0cafd8b29d9bb10573d564a7549614ebce7115503b176722",
+      "expected_input_track": "model_with_source_context"
+    },
+    {
+      "id": "TRACECTRL01",
+      "criterion": "独立合成对照：SYN-Q1先预设全部晚班空岗，SYN-A1复述非独立全面确认；SYN-A1/A2直接支持本人所见周二东门交接时暂时空岗，约十分钟是估计非计时，其他班次未核。局部观察不得全因问题诱导而丢弃，亦不得扩成所有晚班/确定因果。原引文逐字核消息，准确转述可用，不强制每项逐字引文。",
+      "reference_question_sha256": "1085490b76cead6e9a9efb027b16c1e61f8002bbc162e3803fbdfeec47d762fc",
+      "expected_input_track": "model_with_source_context"
+    },
+    {
+      "id": "CTRL01",
+      "criterion": "复用真实01664/65：01664开放询问工作，并未引入客户确定结论；01665新增接活动后核范围/门店/任务、人员安排、收问题、向运营核对、结束整理及与小林对接的一般做法，可以保留。清楚时顺、模糊时费力及希望少沟通为主观感受/期望，无耗时损失量化或已改善效果；不得把整段都降成问题承接或全部不可采用。",
+      "reference_question_sha256": "0a7374eb474006d45ac87a0a5be81b1931435631c47a9b9e331b1347d2c2431f",
+      "expected_input_track": "model_with_source_context"
+    },
+    {
+      "id": "E03",
+      "criterion": "复用model_and_artifact判据：80万活跃/120万全量是不同对象口径；定义、时间、覆盖、来源、去重待核，不直接得66.7%、40万沉睡或同口径矛盾。已知口径不同，不推所有其他属性也必不同；需核可比性不等于要求来源必须同一。",
+      "reference_question_sha256": "5464feb008cbe5b61e3447991a617e6cc59ebab7bb00f27b637fdfeff31b6f6c",
+      "expected_input_track": "model_only"
+    }
+  ],
+  "common_contract": [
+    "只能引用实际可见输入；模型转述与原访谈分开，连续引文须逐字消息匹配，允许准确标明的转述。",
+    "单一JSON对象、唯一answer字段且非空字符串；解析与语义分别判断，格式通过不等于内容通过。",
+    "原问题、fixture和指定材料完整保留；不得把预期或旧答案喂入模型。",
+    "正文问题、问答提示或引用链问题分别给出，控制题不当青禾业务事实。"
+  ],
+  "not_approved_yet": [
+    "实际冻结输入",
+    "runner/manifest/preflight绑定",
+    "未来模型答案"
+  ]
+}

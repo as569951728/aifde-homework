@@ -1,0 +1,91 @@
+{
+  "status": "approved_design_only",
+  "approved": true,
+  "failed_checks": [],
+  "scope": "38项状态登记与批次测试设计；不是38项数值/构建/查询验收",
+  "reviewed_candidate": "candidate-v2.json",
+  "reviewed_files_sha256": {
+    "docs/w03/指标核对与测试登记.md": "91740edefb63868b22d1ccf96b045b088ad6be3de31be329f5d401a0201dded5",
+    "docs/w03/指标模型测试集设计.md": "3f823386abb5b1627cad217e26ddb3558baedf1eac742b9b8622369d57a638a3",
+    "customer/w03/metric_register.json": "909cf13fe5dafbc47629da403a54cffed60f3bd7e4818aa43c3416cca17d3e81",
+    "customer/w03/test-plans/metric_cases.json": "cf50fbe9390fe3458fb639aa5ab90536b1642e9e0be636e9803837af52b2bd64"
+  },
+  "prior_review": "review-v1.json",
+  "review_method": "先依据原材料独立形成criteria.md；v1完整审核后，本轮只复核v1至v2差异、冻结哈希和状态未变。",
+  "resolved_checks": [
+    {
+      "id": "B5_LOCAL_TEST_DEPENDENCY",
+      "result": "fixed",
+      "evidence": "B5 primary_metric_dependency_closure=5，test_required_dependency_closure=6且含valid_order_count；7批测试所需闭合集均独立递归复核相符。"
+    }
+  ],
+  "checks": {
+    "v2_hashes_match": true,
+    "v1_archive_hashes_match": true,
+    "metric_rows_and_summary_unchanged": true,
+    "case_identity_and_status_unchanged": true,
+    "common_design_unchanged": true,
+    "B1_test_closure_exact": true,
+    "B2_test_closure_exact": true,
+    "B3_test_closure_exact": true,
+    "B4_test_closure_exact": true,
+    "B5_test_closure_exact": true,
+    "B6_test_closure_exact": true,
+    "B7_test_closure_exact": true,
+    "B5_fixed": true,
+    "B7_missing_data_prerequisite_documented": true,
+    "question_and_intent_expansion_documented": true,
+    "md_json_cases_consistent": true
+  },
+  "dependency_closure_counts": {
+    "B1": {
+      "primary": 5,
+      "test_required": 5
+    },
+    "B2": {
+      "primary": 7,
+      "test_required": 7
+    },
+    "B3": {
+      "primary": 4,
+      "test_required": 4
+    },
+    "B4": {
+      "primary": 20,
+      "test_required": 20
+    },
+    "B5": {
+      "primary": 5,
+      "test_required": 6
+    },
+    "B6": {
+      "primary": 3,
+      "test_required": 3
+    },
+    "B7": {
+      "primary": 6,
+      "test_required": 6
+    }
+  },
+  "execution_prerequisites_retained": [
+    "53项新增设计不可执行；按批展开独立问句/fixture子例，核字段及来源，独立核数并冻结完整expected后才能运行。",
+    "B4-D01分店与整体拆intent/子例；B7-Q06依据独立完整性清单或受控故障标记，不从缺行猜现实无卡。",
+    "新库回归全部已通过题，small/scale分开独立期望；结构查询和解释分别审核。"
+  ],
+  "confirmed_state": {
+    "target_metrics": 38,
+    "business_batches": 7,
+    "new_design_entries": 53,
+    "existing_real_cases": 8,
+    "small_passed_metrics": 1,
+    "other_metrics_built_or_queried": 0,
+    "scale_passed_metrics": 0
+  },
+  "conclusion": "候选v2通过本轮登记和设计审核；v1唯一阻断已修复，状态、failed_checks与正文一致。仅净销售额原8题已有通过证据；其他37项与全部新增设计仍待按批冻结和执行。",
+  "review_execution": {
+    "model_api_calls": 0,
+    "builds": 0,
+    "queries": 0,
+    "new_numeric_expectations_computed": 0
+  }
+}

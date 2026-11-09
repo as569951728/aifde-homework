@@ -1,0 +1,33 @@
+{
+  "status": "approved_prompt_change_only",
+  "approved": true,
+  "run_allowed": false,
+  "reviewed_at": "2026-11-07T04:51:18.383828+00:00",
+  "baseline_prompt_sha256": "7d237ed42f4b585cd36e09ae992d917b9bd0907ce6e5c13b3b8f92f748f7c019",
+  "candidate_prompt_sha256": "180b3ff1b301892e3967745913ccb0070a79c0241d5247a9eecbc936106171b9",
+  "checks": [
+    {
+      "id": "only_first_sentence_and_provenance_line_changed",
+      "passed": true,
+      "detail": [
+        0,
+        10
+      ]
+    },
+    {
+      "id": "recorded_diff_exact",
+      "passed": true
+    },
+    {
+      "id": "no_ids_or_business_answers_in_new_lines",
+      "passed": true
+    },
+    {
+      "id": "generic_repair_matches_failure_mechanism",
+      "passed": true,
+      "detail": "首句限制无关泛述，仍要求完整回答；来源段要求沿用原对象/集合/规则名称并区分自拟建议，未植入本题更正答案。"
+    }
+  ],
+  "failed_checks": [],
+  "assessment": "两处通用改动针对已记录的新失败；保持原业务答案和18题输入不变。实际效果须运行后另评。"
+}

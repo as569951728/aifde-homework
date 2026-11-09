@@ -1,0 +1,85 @@
+{
+  "review_version": "model-update-impact-review-v2",
+  "reviewed_at": "2026-11-06T20:15:56.196876+08:00",
+  "reviewer": "independent_agent_w03_model_impact_reviewer",
+  "criteria": "criteria.md",
+  "previous_review": "review-v1.json",
+  "verdict": "pass",
+  "scope": "只审核预整理/模型更新内容与影响评估、输入计划及月度查询测试计划补充；不审核实际模型或数值运行结果",
+  "reviewed_artifacts": {
+    "changes.json": "34159e419f9c59a9d1b6dfb9454677f1f10ea503415a89ce60f14575d71ed756",
+    "checks.json": "2dd9566be791480644a43e66f8a0c02807c62c009c6cafa5e5f543ecafacbc6a",
+    "impact.md": "83a435909d881654ada9715ac0521908641e0ea5f5c05829cda4291469adcc31",
+    "input_plan.json": "87c37b0317e8d3f88c8e3cca2dfa20c365d3ec6e2a3c2ca687e78ec4bdbc78d8",
+    "manifest.json": "b769d4027f1a6e2e86fcca2bdc2cb75baf6404cf67f3cd45b47b0b8d2f982fb0",
+    "metric_plan_addendum.json": "5b910cba13c620d1e866c387b835ed5973140d0b17d5e9c663df2e667b1331c0",
+    "metric_plan_addendum.md": "0ea023283746713bb11014aa9f63148d4572c545ff150577f4acec29f447e80b",
+    "paid_scope.json": "8043a87d2a33affeba992f052e3ce0ed14c947d3b653f2a3ef110b7cd4b24034",
+    "revision_log.json": "947544a261151aa3d9a68a77178742220745db63e69df6474c634dd83793a553",
+    "source_registry.json": "519139ff45338edc2c7d7e0bfa5fefe1f104c5c20d72a19dc32b47dac28de1e6"
+  },
+  "resolved_findings": [
+    {
+      "id": "REV-01",
+      "status": "resolved",
+      "evidence": "UP-07补齐5项direct_metric_ids，合计19项承接金额/件数/退款/零分母等不同子规则；shared_contract_impacts明确11项零分母、38项覆盖与9项月度策略。D3/D4来源在共享规则条目中明确，注册文件可追溯。",
+      "verification": "11项零分母ID无遗漏/重复，均包含于UP-07直接影响；没有将全部38项变成资格过滤。"
+    },
+    {
+      "id": "REV-02",
+      "status": "resolved",
+      "evidence": "UP-09分别表达D3业务边界和当前full_month_only工程边界；UP-10同步区分其他32项中的普通月内3项；ENGINE入来源注册，契约与源码哈希一致。",
+      "verification": "静态代码117–120行在任一full_month_only启用时拒绝所有filters与非month分组，跨月必须month分列；补充准确描述混合请求和后续运行前提。"
+    }
+  ],
+  "findings": [],
+  "human_decisions": [],
+  "plan_addendum_review": {
+    "verdict": "pass_as_plan_only",
+    "planned_case_count": 8,
+    "positive_control_ids": [
+      "MQ-05",
+      "MQ-06"
+    ],
+    "negative_control_ids": [
+      "MQ-01",
+      "MQ-02",
+      "MQ-03",
+      "MQ-04",
+      "MQ-07",
+      "MQ-08"
+    ],
+    "acceptance_basis": "包含渠道/任意筛选、非month分组、跨月未分组、部分月、混合请求的拒绝计划，并包含构建合格/维度可达/覆盖内前提下的正确对照。正例ok是后续预期，不是已观测结果。",
+    "scope_limit": "这8条是查询行为补充，不是完整expected.intent/columns/rows/units数值用例；后续执行仍需独立期望。原85例及旧指标计划保持冻结，补充只修正当前工具边界。"
+  },
+  "integrity_checks": {
+    "source_registry_entries_verified": 16,
+    "method_file_hashes_verified": 4,
+    "protected_file_hashes_verified": 21,
+    "artifact_hashes_verified": 9,
+    "all_hashes_match": true,
+    "v1_artifacts_unchanged": true,
+    "protected_manifest_unchanged_from_v1": true,
+    "only_changed_rows": [
+      "UP-07",
+      "UP-09",
+      "UP-10"
+    ],
+    "other_rows_and_unresolved_unchanged": true,
+    "formal_model_config_tests_sow_unchanged": true
+  },
+  "execution_prerequisites": [
+    {
+      "id": "NEXT-01",
+      "text": "实际启动前仍核MD上下文可达及输入快照；此为已写入input_plan的后续准备，不阻塞本整理稿审核、不需用户裁决。"
+    }
+  ],
+  "does_not_prove": [
+    "正式模型已更新/采纳",
+    "85例模型实际问答通过",
+    "38项实际查询和独立数值校验通过",
+    "8项新增行为计划已执行",
+    "客户验收/预算/签约/上线批准",
+    "课程完成或提交"
+  ]
+}

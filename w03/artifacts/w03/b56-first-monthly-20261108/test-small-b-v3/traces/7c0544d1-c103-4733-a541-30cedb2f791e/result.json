@@ -1,0 +1,50 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "net_sales_cents"
+    ],
+    "start": "2026-07-01",
+    "end": "2026-08-01",
+    "group_by": [
+      "store"
+    ],
+    "filters": []
+  },
+  "sql": "SELECT\n  store\n  , SUM(__net_sales_cents) AS net_sales_cents\nFROM (\n  SELECT\n    store_id AS store\n    , CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END AS __net_sales_cents\n  FROM \"data\".\"main\".\"orders\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-07-01' AND '2026-07-31'\n) subq_5\nGROUP BY\n  store",
+  "columns": [
+    "store",
+    "net_sales_cents"
+  ],
+  "rows": [
+    [
+      "S03",
+      9000
+    ],
+    [
+      "S02",
+      10000
+    ],
+    [
+      "S01",
+      12500
+    ]
+  ],
+  "seconds": 0.02,
+  "units": {
+    "net_sales_cents": "cents"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+  "answer": "统计范围为2026年7月（按下单日期归属），按订单成交门店编号分组；净销售额口径为已支付订单实付金额减退款，取消单不计。结果：S01为125.00元，S02为100.00元，S03为90.00元。",
+  "question": "2026年7月青禾优选净销售额按订单成交门店编号分别列出。",
+  "trace_id": "7c0544d1-c103-4733-a541-30cedb2f791e",
+  "elapsed_seconds": 5.755,
+  "model_usage": {
+    "prompt_tokens": 10996,
+    "completion_tokens": 514,
+    "total_tokens": 11510
+  },
+  "model_calls_with_usage": 2
+}

@@ -1,0 +1,96 @@
+{
+  "contract_version": "w03-0.1.0",
+  "complete": true,
+  "passed": 1,
+  "total": 1,
+  "cases": [
+    {
+      "id": "B6-R01",
+      "question": "请同时列出2026年8月青禾优选全门店、全渠道的月内购买会员数、月内复购会员数和月内复购率。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_buyer_count",
+            "monthly_repeat_buyer_count",
+            "monthly_repeat_rate"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "rows": [
+          [
+            3,
+            1,
+            0.3333333333333333
+          ]
+        ],
+        "units": {
+          "monthly_buyer_count": "count",
+          "monthly_repeat_buyer_count": "count",
+          "monthly_repeat_rate": "ratio"
+        },
+        "data_version": "qinghe-w03-b6-independent-fixture-20261108-v2",
+        "data_sha256": "81f1b173adb1022f1cf6e2ccd7786e06e8ddf2895c064329fc58655f2e551180",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_buyer_count",
+            "monthly_repeat_buyer_count",
+            "monthly_repeat_rate"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "WITH sma_10002_cte AS (\n  SELECT\n    DATE_TRUNC('day', month_start) AS metric_time__day\n    , CASE WHEN valid_order_count >= 1 THEN 1 ELSE 0 END AS __monthly_buyer_count\n    , CASE WHEN valid_order_count >= 2 THEN 1 ELSE 0 END AS __monthly_repeat_buyer_count\n  FROM \"data\".\"main\".\"monthly_member_fact\" monthly_member_fact_src_10000\n)\n\nSELECT\n  MAX(subq_8.monthly_buyer_count) AS monthly_buyer_count\n  , MAX(subq_8.monthly_repeat_buyer_count) AS monthly_repeat_buyer_count\n  , MAX(subq_15.monthly_repeat_rate) AS monthly_repeat_rate\nFROM (\n  SELECT\n    SUM(__monthly_buyer_count) AS monthly_buyer_count\n    , SUM(__monthly_repeat_buyer_count) AS monthly_repeat_buyer_count\n  FROM sma_10002_cte\n  WHERE metric_time__day BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_8\nCROSS JOIN (\n  SELECT\n    CAST(SUM(__monthly_repeat_buyer_count) AS DOUBLE) / CAST(NULLIF(SUM(__monthly_buyer_count), 0) AS DOUBLE) AS monthly_repeat_rate\n  FROM sma_10002_cte\n  WHERE metric_time__day BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_15",
+        "columns": [
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "rows": [
+          [
+            3,
+            1,
+            0.3333333333333333
+          ]
+        ],
+        "seconds": 0.03,
+        "units": {
+          "monthly_buyer_count": "count",
+          "monthly_repeat_buyer_count": "count",
+          "monthly_repeat_rate": "ratio"
+        },
+        "data_version": "qinghe-w03-b6-independent-fixture-20261108-v2",
+        "data_sha256": "81f1b173adb1022f1cf6e2ccd7786e06e8ddf2895c064329fc58655f2e551180",
+        "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+        "answer": "2026年8月（2026-08-01至2026-09-01，整月）全门店、全渠道汇总口径下：月内购买会员数为3个账户；月内复购会员数为1个账户；月内复购率为33.33%（1÷3）。本次未按门店或渠道拆分，结果为一行汇总；分母为3，复购率有定义。",
+        "question": "请同时列出2026年8月青禾优选全门店、全渠道的月内购买会员数、月内复购会员数和月内复购率。",
+        "trace_id": "d7e5582d-0d67-4f80-8b19-88db16057916",
+        "elapsed_seconds": 8.216,
+        "model_usage": {
+          "prompt_tokens": 11473,
+          "completion_tokens": 881,
+          "total_tokens": 12354
+        },
+        "model_calls_with_usage": 2
+      },
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    }
+  ]
+}

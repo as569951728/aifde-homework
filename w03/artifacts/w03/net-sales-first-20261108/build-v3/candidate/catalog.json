@@ -1,0 +1,28 @@
+[
+  {
+    "id": "net_sales_cents",
+    "name": "净销售额",
+    "aliases": [],
+    "unit": "cents",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。"
+      },
+      {
+        "file": "02_财务邮件.md",
+        "quote": "退款按原订单日期归属。金额为整数分，展示元需换算。"
+      }
+    ],
+    "constraints": [
+      "聚合事实对象为 orders 订单行；一行一笔订单，按订单号识别，不因会员、卡或门店关系复制订单金额。",
+      "纳入 status = 'paid' 的订单；status = 'cancelled' 的取消单不计。",
+      "净销售额 = sum(paid_cents - refund_cents)，退款按原订单下单日期归属，不按现金退款发生日重归属。",
+      "全额退款的 paid 订单扣减后为零，仍属于 paid 订单行集合，不额外加净额大于零筛选，也不改称有效购买。",
+      "金额字段为整数分，指标结果单位为 cents；不在 measure 内提前换算为元。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  }
+]

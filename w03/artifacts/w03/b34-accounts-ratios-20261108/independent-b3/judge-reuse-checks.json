@@ -1,0 +1,411 @@
+[
+  {
+    "name": "positive-B3-N01",
+    "passed": true,
+    "expected_judge_passed": true,
+    "judge_result": {
+      "passed": true,
+      "differences": []
+    }
+  },
+  {
+    "name": "positive-B3-D01",
+    "passed": true,
+    "expected_judge_passed": true,
+    "judge_result": {
+      "passed": true,
+      "differences": []
+    }
+  },
+  {
+    "name": "positive-B3-R01",
+    "passed": true,
+    "expected_judge_passed": true,
+    "judge_result": {
+      "passed": true,
+      "differences": []
+    }
+  },
+  {
+    "name": "positive-B3-R02",
+    "passed": true,
+    "expected_judge_passed": true,
+    "judge_result": {
+      "passed": true,
+      "differences": []
+    }
+  },
+  {
+    "name": "positive-B3-U01",
+    "passed": true,
+    "expected_judge_passed": true,
+    "judge_result": {
+      "passed": true,
+      "differences": []
+    }
+  },
+  {
+    "name": "positive-B3-F01",
+    "passed": true,
+    "expected_judge_passed": true,
+    "judge_result": {
+      "passed": true,
+      "differences": []
+    }
+  },
+  {
+    "name": "row-order",
+    "passed": true,
+    "expected_judge_passed": true,
+    "judge_result": {
+      "passed": true,
+      "differences": []
+    }
+  },
+  {
+    "name": "column-order",
+    "passed": true,
+    "expected_judge_passed": true,
+    "judge_result": {
+      "passed": true,
+      "differences": []
+    }
+  },
+  {
+    "name": "wrong-status",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "status",
+          "expected": "ok",
+          "actual": "unsupported",
+          "rule": "exact supported status"
+        }
+      ]
+    }
+  },
+  {
+    "name": "wrong-time",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "intent.end",
+          "expected": "2026-09-01",
+          "actual": "2026-08-31",
+          "rule": "exact intent"
+        }
+      ]
+    }
+  },
+  {
+    "name": "wrong-metric",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "intent.metrics",
+          "expected": [
+            "buyer_count",
+            "refund_buyer_count",
+            "selling_store_count",
+            "valid_order_items"
+          ],
+          "actual": [
+            "buyer_count",
+            "refund_buyer_count",
+            "selling_store_count"
+          ],
+          "rule": "exact intent"
+        }
+      ]
+    }
+  },
+  {
+    "name": "wrong-unit",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "units",
+          "expected": {
+            "buyer_count": "count",
+            "refund_buyer_count": "count",
+            "selling_store_count": "count",
+            "valid_order_items": "count"
+          },
+          "actual": {
+            "buyer_count": "count",
+            "refund_buyer_count": "count",
+            "selling_store_count": "count",
+            "valid_order_items": "cents"
+          },
+          "rule": "exact units, no missing/extra units"
+        }
+      ]
+    }
+  },
+  {
+    "name": "fractional-item",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows.{}.valid_order_items",
+          "expected": 33,
+          "actual": 33.000000001,
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    }
+  },
+  {
+    "name": "numeric-string",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows.{}.valid_order_items",
+          "expected": 33,
+          "actual": "33",
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    }
+  },
+  {
+    "name": "bool-count",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows.{}.buyer_count",
+          "expected": 15,
+          "actual": true,
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    }
+  },
+  {
+    "name": "null-count",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows.{}.valid_order_items",
+          "expected": 33,
+          "actual": null,
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    }
+  },
+  {
+    "name": "wrong-version",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "data_version",
+          "expected": "qinghe-w03-20260923-small",
+          "actual": "other",
+          "rule": "locked version"
+        }
+      ]
+    }
+  },
+  {
+    "name": "wrong-filter",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "intent.filters",
+          "expected": [],
+          "actual": [
+            {
+              "field": "order__channel",
+              "op": "eq",
+              "value": "门店"
+            }
+          ],
+          "rule": "exact intent"
+        }
+      ]
+    }
+  },
+  {
+    "name": "extra-unit",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "units",
+          "expected": {
+            "buyer_count": "count",
+            "refund_buyer_count": "count",
+            "selling_store_count": "count",
+            "valid_order_items": "count"
+          },
+          "actual": {
+            "buyer_count": "count",
+            "refund_buyer_count": "count",
+            "selling_store_count": "count",
+            "valid_order_items": "count",
+            "other": "count"
+          },
+          "rule": "exact units, no missing/extra units"
+        }
+      ]
+    }
+  },
+  {
+    "name": "missing-column",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "actual.columns",
+          "expected": [
+            "buyer_count",
+            "refund_buyer_count",
+            "selling_store_count",
+            "valid_order_items"
+          ],
+          "actual": [
+            "buyer_count",
+            "refund_buyer_count",
+            "selling_store_count"
+          ],
+          "rule": "unique exact columns"
+        }
+      ]
+    }
+  },
+  {
+    "name": "missing-group",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows",
+          "expected": {
+            "store": "S03",
+            "buyer_count": 1,
+            "refund_buyer_count": 1,
+            "selling_store_count": 1,
+            "valid_order_items": 4
+          },
+          "actual": null,
+          "rule": "missing group"
+        }
+      ]
+    }
+  },
+  {
+    "name": "extra-group",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows",
+          "expected": null,
+          "actual": {
+            "store": "S99",
+            "buyer_count": 0,
+            "refund_buyer_count": 0,
+            "selling_store_count": 0,
+            "valid_order_items": 0
+          },
+          "rule": "extra group"
+        }
+      ]
+    }
+  },
+  {
+    "name": "duplicate-group",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "actual.rows[3]",
+          "expected": "unique group",
+          "actual": [
+            "S01",
+            8,
+            0,
+            1,
+            9
+          ],
+          "rule": "duplicate group"
+        }
+      ]
+    }
+  },
+  {
+    "name": "swapped-group-identities",
+    "passed": true,
+    "expected_judge_passed": false,
+    "judge_result": {
+      "passed": false,
+      "differences": [
+        {
+          "path": "rows",
+          "expected": {
+            "store": "S01",
+            "buyer_count": 8,
+            "refund_buyer_count": 0,
+            "selling_store_count": 1,
+            "valid_order_items": 9
+          },
+          "actual": null,
+          "rule": "missing group"
+        },
+        {
+          "path": "rows",
+          "expected": null,
+          "actual": {
+            "store": "S99",
+            "buyer_count": 8,
+            "refund_buyer_count": 0,
+            "selling_store_count": 1,
+            "valid_order_items": 9
+          },
+          "rule": "extra group"
+        }
+      ]
+    }
+  }
+]

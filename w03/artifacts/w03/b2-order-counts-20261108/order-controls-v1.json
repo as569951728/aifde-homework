@@ -1,0 +1,180 @@
+{
+  "status": "passed",
+  "report_sha256": {
+    "artifacts/w03/b2-order-counts-20261108/test-small-v1/metric_test_report.json": "9e1a831607a60715aa3d9c4f30e44a33663c4d2d1aeb7007591fbd4ead9de642",
+    "artifacts/w03/b2-order-counts-20261108/test-fixture-v1/metric_test_report.json": "c43b3d07a9544045c9a65f2b503c40495605c091daf48e725deea7668f614d0b"
+  },
+  "judge_sha256": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3",
+  "B2_A01": {
+    "kind": "auxiliary_after_independent_expected",
+    "rows_checked": 13,
+    "checks": [
+      {
+        "case": "B2-N01",
+        "row": 0,
+        "creation_identity": true,
+        "refund_identity": true
+      },
+      {
+        "case": "B2-R01",
+        "row": 0,
+        "creation_identity": true,
+        "refund_identity": true
+      },
+      {
+        "case": "B2-R02",
+        "row": 0,
+        "creation_identity": true,
+        "refund_identity": true
+      },
+      {
+        "case": "B2-D01",
+        "row": 0,
+        "creation_identity": true,
+        "refund_identity": true
+      },
+      {
+        "case": "B2-D01",
+        "row": 1,
+        "creation_identity": true,
+        "refund_identity": true
+      },
+      {
+        "case": "B2-D02",
+        "row": 0,
+        "creation_identity": true,
+        "refund_identity": true
+      },
+      {
+        "case": "B2-D02",
+        "row": 1,
+        "creation_identity": true,
+        "refund_identity": true
+      },
+      {
+        "case": "B2-E01",
+        "row": 0,
+        "creation_identity": true,
+        "refund_identity": true
+      },
+      {
+        "case": "B2-Z01",
+        "row": 0,
+        "creation_identity": true,
+        "refund_identity": true
+      },
+      {
+        "case": "B2-Z01",
+        "row": 1,
+        "creation_identity": true,
+        "refund_identity": true
+      },
+      {
+        "case": "B2-Z01",
+        "row": 2,
+        "creation_identity": true,
+        "refund_identity": true
+      },
+      {
+        "case": "B2-Z01",
+        "row": 3,
+        "creation_identity": true,
+        "refund_identity": true
+      },
+      {
+        "case": "B2-Z01",
+        "row": 4,
+        "creation_identity": true,
+        "refund_identity": true
+      }
+    ]
+  },
+  "controls": [
+    {
+      "id": "original_counts",
+      "case": "B2-N01",
+      "wanted": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "status_rows_reordered",
+      "case": "B2-D01",
+      "wanted": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "paid_and_valid_swapped",
+      "case": "B2-N01",
+      "wanted": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.paid_order_count",
+            "expected": 30,
+            "actual": 27,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.valid_order_count",
+            "expected": 27,
+            "actual": 30,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cancelled_group_omitted",
+      "case": "B2-D01",
+      "wanted": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows",
+            "expected": {
+              "order__status": "cancelled",
+              "order_count": 2,
+              "paid_order_count": 0,
+              "valid_order_count": 0,
+              "cancelled_order_count": 2,
+              "refund_order_count": 0,
+              "partial_refund_order_count": 0,
+              "full_refund_order_count": 0
+            },
+            "actual": null,
+            "rule": "missing group"
+          }
+        ]
+      }
+    },
+    {
+      "id": "zero_paid_falsely_full_refund",
+      "case": "B2-Z01",
+      "wanted": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{'metric_time__day': '2026-08-21 00:00:00'}.full_refund_order_count",
+            "expected": 0,
+            "actual": 1,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      }
+    }
+  ],
+  "total": 5,
+  "negative": 3,
+  "model_calls": 0,
+  "queries": 0,
+  "original_results_unchanged": true
+}

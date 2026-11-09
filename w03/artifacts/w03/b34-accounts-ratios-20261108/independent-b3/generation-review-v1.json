@@ -1,0 +1,293 @@
+{
+  "status": "approved",
+  "approved_to_load_and_query": true,
+  "reviewed_at": "2026-11-08T09:26:27.861971+00:00",
+  "reviewed_metric_ids": [
+    "order_count",
+    "paid_order_count",
+    "valid_order_count",
+    "cancelled_order_count",
+    "refund_order_count",
+    "partial_refund_order_count",
+    "full_refund_order_count",
+    "payment_cents",
+    "refund_cents",
+    "net_sales_cents",
+    "gross_cents",
+    "discount_cents",
+    "buyer_count",
+    "refund_buyer_count",
+    "selling_store_count",
+    "valid_order_items"
+  ],
+  "scope": "B3 four and B1/B2 old twelve; B4 ratios separately reviewed",
+  "checks": [
+    {
+      "name": "order_count",
+      "passed": true,
+      "detail": {
+        "expr": "1",
+        "agg": "sum",
+        "unit": "count",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "paid_order_count",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' THEN 1 ELSE 0 END",
+        "agg": "sum",
+        "unit": "count",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "valid_order_count",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END",
+        "agg": "sum",
+        "unit": "count",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "cancelled_order_count",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END",
+        "agg": "sum",
+        "unit": "count",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "refund_order_count",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END",
+        "agg": "sum",
+        "unit": "count",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "partial_refund_order_count",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' AND refund_cents > 0 AND refund_cents < paid_cents THEN 1 ELSE 0 END",
+        "agg": "sum",
+        "unit": "count",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "full_refund_order_count",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' AND paid_cents > 0 AND refund_cents = paid_cents THEN 1 ELSE 0 END",
+        "agg": "sum",
+        "unit": "count",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "payment_cents",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END",
+        "agg": "sum",
+        "unit": "cents",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "refund_cents",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END",
+        "agg": "sum",
+        "unit": "cents",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "net_sales_cents",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END",
+        "agg": "sum",
+        "unit": "cents",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "gross_cents",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END",
+        "agg": "sum",
+        "unit": "cents",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "discount_cents",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END",
+        "agg": "sum",
+        "unit": "cents",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "buyer_count",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END",
+        "agg": "count_distinct",
+        "unit": "count",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "refund_buyer_count",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' AND refund_cents > 0 THEN member_id END",
+        "agg": "count_distinct",
+        "unit": "count",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "selling_store_count",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN store_id END",
+        "agg": "count_distinct",
+        "unit": "count",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "valid_order_items",
+      "passed": true,
+      "detail": {
+        "expr": "CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END",
+        "agg": "sum",
+        "unit": "count",
+        "sources_contiguous": true,
+        "semantic_review": "Original source definition, inclusion rows, object key, aggregation, date and constraints manually matched."
+      }
+    },
+    {
+      "name": "no_derived_models_or_card_join",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "order_default_time",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "order_grain_and_roles",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "member_home_store_relationship",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "separate_store_roles",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "business_model_usage_contiguous_and_relevant",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "12_dimensions_reachable_for_each_16_metric",
+      "passed": true,
+      "detail": {
+        "metric_count": 16,
+        "dimension_count": 12
+      }
+    },
+    {
+      "name": "source_check.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "grain_check.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "dimension_check.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "metricflow_check.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "unresolved_empty",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "expected_freeze_unchanged",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "failed_checks": [],
+  "evidence_sha256": {
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/response.json": "3d70616c1c5a2efa8c2ead9fec0e2ea79595e7daf4bcfe3bad2500c3a4a489f1",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/metrics.yml": "ca6afa515fb587ba758280241aca9dbff4268b0aaf78c9de1b68eb41969bcaf7",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/catalog.json": "e2b109a2e0447ce57b1df6b139ad183f1080871401a1d9cf9c4c979970b1339a",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/scope.json": "3c03f74df77702d68cd217e0ccba2ec6095819271a4c44343fc42ee69c36f366",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/source_check.json": "76aa3b58148d89cc797ae408eba304f008308b708476e2db124fcf4e5d1c7a2e",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/grain_contract.json": "a22fa3d70e0741dca0d885c35ed279a03824df0558c78fe7cf17e62eea750a7c",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/grain_check.json": "c7e2710339b23c2444dbf724f431b58efb1737c3d7d23f78888c4d3e7c00b947",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/dimension_check.json": "cb203f754726020ee1cc2ef56bd56f7ded51a94dda9080e6cea9b3d8ea2bc739",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/metricflow_check.json": "ffa428660c9d30c2ea887a3bb0a792de1834ce292d189d767c20b78d0e95caa9",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/unresolved.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/input.json": "89dd24fcb1bcc893a9ad9842779eb2a6986d9228458456d961b49c6ff93ac965",
+    "artifacts/w03/b34-accounts-ratios-20261108/build-v1/skill_used.md": "d40329243c2c60c64ddfee0cb1b0617c4c2745c4b52d2b5d2f4b2b2570ea0fb2"
+  },
+  "expected_freeze_sha256": "e7514aa48914b70a6b8f9be84cbfdec5fe2a9d7f0f8aea312f53eeecd78e2963",
+  "notes": [
+    "sum(1)准确性的前提为原始order_id唯一且非空，48行原CSV与grain_check均已核。",
+    "count_distinct在查询窗口/筛选/分组后的条件member_id/store_id上聚合；未从分组人数再求和。",
+    "refund_buyer使用所有退款paid单，包括全退；valid_order_items保留有效单quantity，不从退款金额倒推件数。",
+    "订单成交门店与账户归属门店分角色，12维度可达只表示结构能力，不冒称12维度均实测。",
+    "本批准后仍需真实查询、完整SQL和解释复核；不是运行通过、规模验证或验收。"
+  ]
+}

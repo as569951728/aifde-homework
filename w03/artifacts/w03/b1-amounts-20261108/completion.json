@@ -1,0 +1,60 @@
+{
+  "status": "B1_completed_small_scope",
+  "metrics": [
+    "payment_cents",
+    "refund_cents",
+    "net_sales_cents",
+    "gross_cents",
+    "discount_cents"
+  ],
+  "small_cases_passed": 15,
+  "small_cases_total": 15,
+  "explanations_passed": 15,
+  "new_multi_metric_questions": 7,
+  "unchanged_net_regression_questions": 8,
+  "auxiliary_identity_rows": 14,
+  "scale_run": false,
+  "v1": {
+    "numeric_passed": 15,
+    "explanation_passed": 11,
+    "failed_explanations": [
+      "B1-R01",
+      "B1-R02",
+      "NS02-july-transaction-store",
+      "NS04-partial-refund-day"
+    ]
+  },
+  "config_scope_fix_adopted": true,
+  "skill_and_judge_changed": false,
+  "evidence": {
+    "report": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json",
+    "review": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+    "expected": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json",
+    "freeze": "artifacts/w03/b1-amounts-20261108/independent/expected-freeze.json",
+    "library": "artifacts/w03/b1-amounts-20261108/library-v2",
+    "project": ".runtime/qinghe-b1-amounts-small-v2"
+  },
+  "versions": {
+    "status": "frozen_before_query",
+    "project": ".runtime/qinghe-b1-amounts-small-v2",
+    "case_count": 15,
+    "data_version": "qinghe-w03-20260923-small",
+    "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+    "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452",
+    "native_tests_sha256": "47be384f52743d89962ba014454f7ba89409f369e9a83efc080e8d5ab4bfb49f",
+    "execution_tests_sha256": "fd7f41e1f0ed724f35f295ceaf67401792a7e30953b50437bbbada28f8bb4eb2",
+    "business_expectations_changed": false,
+    "metadata_from_selected_loaded_project": true
+  },
+  "next_batch": "B2 seven order-count metrics; cumulative build scope 12",
+  "unvalidated": [
+    "scale",
+    "remaining33 metrics",
+    "remaining dimension behaviors",
+    "unseen phrasings",
+    "production",
+    "acceptance",
+    "submission"
+  ],
+  "attribution": "导师执行与独立Agent核查，不登记本人独立作答或客户验收"
+}

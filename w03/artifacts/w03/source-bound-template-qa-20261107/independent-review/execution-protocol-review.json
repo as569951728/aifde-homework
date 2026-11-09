@@ -1,0 +1,432 @@
+{
+  "created_at": "2026-11-06T16:39:57.539056+00:00",
+  "method": "独立逐request/attempt/answer/run核验及原冻结checker；未使用父Agent语义判分。",
+  "case_count": 12,
+  "live_runs": 12,
+  "successful_runs": 12,
+  "total_attempts": 12,
+  "all_http_200": true,
+  "all_finish_stop": true,
+  "expected_leakage_detected": false,
+  "checker_or_oracle_sent_to_model": false,
+  "all_frozen_inputs_unchanged": true,
+  "all_protected_files_unchanged": true,
+  "all_original_sources_unchanged": true,
+  "approved_candidate_model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "approved_candidate_prompt_sha256": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+  "checker_sha256": "f035a2c54a069a6d47f896be1abfaf3f4590d25c510c64623547292469486aee",
+  "input_sha256": {
+    "input/business_model.md": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+    "input/knowledge.json": "dbb6bdb9f0e4d05c796df4ade4b54a4d068a1975124184f39630aa9fb07836fc",
+    "input/knowledge_prompt.txt": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+    "input/original_questions.json": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+    "input/protected.json": "25cd04dd8392eb12803de036ce08c4c890f2fef2a57d0f15e2d86d42f74df980",
+    "input/reviewer_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+    "input/selected_questions.json": "9acfd87adc268202326c83b815e8963bb7fa9e6dcba5a39a82aaa54d914f56fe"
+  },
+  "input_checks": {
+    "input/business_model.md": true,
+    "input/knowledge.json": true,
+    "input/knowledge_prompt.txt": true,
+    "input/original_questions.json": true,
+    "input/protected.json": true,
+    "input/reviewer_expectations.json": true,
+    "input/selected_questions.json": true
+  },
+  "protected_checks": {
+    "docs/w03/business_model.md": true,
+    "docs/w03/interview_notes.md": true,
+    "customer/w02/knowledge.json": true,
+    "customer/w02/knowledge_prompt.txt": true,
+    "customer/w02/workflow.json": true,
+    "customer/w02/extraction.json": true,
+    "customer/w02/skills/extract-business/SKILL.md": true,
+    "artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/session.json": true,
+    "artifacts/w03/model-draft-20261106/draft-03/business_model.md": true,
+    "docs/w03/metric_decisions.md": true,
+    "docs/w03/sow.md": true,
+    "customer/w03/tests.json": true
+  },
+  "source_checks": {
+    "statistics_email": true,
+    "test_dictionary": true,
+    "chen": true,
+    "lin": true,
+    "zhou": true,
+    "questions": true
+  },
+  "cases": [
+    {
+      "id": "DY07",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/source-bound-template-qa-20261107/output/DY07.json",
+      "output_sha256": "e923f48cf5ad5070c6f85e9249f8c4e0c19c9a26d7960f4d89ef677f8302be00",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-55e976a9525d4986aff88fedcbe8838b/run.json",
+      "run_sha256": "496ccf1b695ccf3d195b30a02a0b0e1ea4f3ce304bab89ce17f124a5f0b8bf9f",
+      "request_sha256": "c4638fca6f7ca62dc8829abf6ca3375e4484d038b11cec0d37e9de1801a850ee",
+      "answer_sha256": "3860701da54cf6e5991f4072f807c4be5549abe6a0f75270efcc27943f88f4b1",
+      "attempts_sha256": "14bf35adc7b4dc67cea1a18ff282060667f383bbc261e94427d2710da741894e",
+      "snapshot_manifest_sha256": "e85362639e03a3e769a7a0699bfcef6c0d88eb86759f055c3383263bff1b8818",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY08",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/source-bound-template-qa-20261107/output/DY08.json",
+      "output_sha256": "e7c73d3853f96a9aef515a0eb13ca84c0c64e004cd7e263a5ee051fa7d7cc332",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-78f0572870e449019ebee98c58d14a2c/run.json",
+      "run_sha256": "a2a850c48fe683fbfb7d3256cc06c32546781d38aded87561a16b6a178a01677",
+      "request_sha256": "676fdf569fccfa93474d57ba8763ffa604ecb413efebd549ff53371e1a624b90",
+      "answer_sha256": "7901ada46b5776e5b9040b0ed5631d208b8b0aeeb4d43a18524e9fa7b4c7b6ff",
+      "attempts_sha256": "c5efc2fe987a95cb72e6a3580c7d4fdd9a9341632b64c1a1b2eeb5d87688d91a",
+      "snapshot_manifest_sha256": "465742b8e915c25e5ebe41975c1ab65c0233458e3d1128c965b8cffb85305a7f",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY09",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/source-bound-template-qa-20261107/output/DY09.json",
+      "output_sha256": "5992b7e456fb1151cf1a85e5a38fab28a9705302a6d5ccb577b8fd0f87b67f09",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-efbf92f9c04740feb5723d1d7d4b8f02/run.json",
+      "run_sha256": "c153597f3a5424026ecc4a083df42e47edebbe12f47b9905e7784b83a2b87b1e",
+      "request_sha256": "911279e62e80c496e7462615d82a2bce13c585a69a3d7eb9274204e8890dc8e8",
+      "answer_sha256": "5c3d6d59f0d1f7ec0ca87c6634035781fdaae03e9033de6455af55231da74ec8",
+      "attempts_sha256": "d23f5417b099515dab0c6500187b2c2adc3c43ba6ad9e5780113b7b8652e8a18",
+      "snapshot_manifest_sha256": "0d1152fb88b8d08c182771fa414533f2bd26a6b52e19791654a9e6393d93020f",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY10",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/source-bound-template-qa-20261107/output/DY10.json",
+      "output_sha256": "5f5836661f7affb0b3a71c7c29a47689d7f2f09aa5be0cb2f88604aee33e2e36",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-3f679e75023a4934ae26d2e3025b8ea4/run.json",
+      "run_sha256": "20cc4b678ec75d2f3434c4cf22912dbd27093d633cf0b74340f06b57cfa58f6b",
+      "request_sha256": "82c56468a73a396366b278dd45bad893aa0afea2fbafae0964ec05711f539926",
+      "answer_sha256": "0f031312d6b9fed02780c16e85ee39660767de837936defda9eba6f29d5dfed7",
+      "attempts_sha256": "48920674fc429d332db269904cd70033ea94599515fc0ecfe2766bd35da0d1c3",
+      "snapshot_manifest_sha256": "86afab896a507bffa546334e6b7876fc5451f77a34170db3c0cae4a68deede6a",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY11",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/source-bound-template-qa-20261107/output/DY11.json",
+      "output_sha256": "24bd1b9b4802d7de516f5c203a583418bf59c42e972a711a6578916281e35055",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-9931ac8bc14e41c4b4e4eb5c4aff1fe2/run.json",
+      "run_sha256": "eb998a2fccea1956e05fcbcdc552a95ffb35e9a9a01bedaa7204ed306f6ace4b",
+      "request_sha256": "0714ac13c693e717590a6d3c9ba19a3f101a54793e58dfa97a8cae84297aaac6",
+      "answer_sha256": "0ee098807b452240759513bf30ec5f67d16008931d5a0ce25737951735f5a990",
+      "attempts_sha256": "93c02301b5e02fdb80171b645b1601b2ae7a52eec150c2d9648f005fe0ac62fd",
+      "snapshot_manifest_sha256": "9e5ba1e92932c2d9b8020b4e9eccc4a98ce468f601496bf39def23fef659335a",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY12",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/source-bound-template-qa-20261107/output/DY12.json",
+      "output_sha256": "b608bc0718c35d8d19c5fc573853477cb1dff78aae73cd43048e664390986135",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-2b81617308ec43f0bd942e3a504f31a8/run.json",
+      "run_sha256": "5c0ee0f349fbc6ee3fa6f4026cd07148f3885b0617c92d9837d8e7d633fe8d7e",
+      "request_sha256": "1d7f59f1a2499c5c22001cec783de92b30397b9de3ffcf9c00ac45c31b22a69b",
+      "answer_sha256": "334fdba20bdd95cdcfb351c7ed7418e1c4c3f381f2b96fadd3a3dbaee1e2e5d0",
+      "attempts_sha256": "0cfa8934aaa533d960ea59dbb60ba381c9c3749700054c4fc4c1cc2e2bc244d5",
+      "snapshot_manifest_sha256": "e6da461eb3743494aedf2532a669258a668d6879031f30166befd517903bf266",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ07",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/source-bound-template-qa-20261107/output/DQ07.json",
+      "output_sha256": "12c6396680ec5ece1e712cd00bf00be2d7c68e6f547fee6ee0230c0fc9e2f3bb",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-a2910bd651f54a9fb2cbab023f3e9d86/run.json",
+      "run_sha256": "8d35d502c972abe6eed28e753394edee42a243eae4cdc355f8d80c5706300e32",
+      "request_sha256": "23524f9fc4bdb03438359b4ba4695550878c36f88562b6e9fa04bddca268753e",
+      "answer_sha256": "0eeb6d3cf1b1ff2f3f0a7f99924934341a12d530d307f7133506bbc2629f61d1",
+      "attempts_sha256": "33777de0e124cf59bd1274475d625e6f7824174b2e669da3cb5b3d65c0132ef3",
+      "snapshot_manifest_sha256": "e70bf87951c5aba353bfb89d286c9294b89f8cf719d211963cabcdb58bfde755",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ08",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/source-bound-template-qa-20261107/output/DQ08.json",
+      "output_sha256": "a710fa99b3c2f4c35a9850e3ebd2640fef3e6dfde5879fa9d0252cbc2bc1e500",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-4721211310134837bc15a636da9def70/run.json",
+      "run_sha256": "8176a0e8e858e643c133d565285ead337a582c7b3b4fadbbe9a8c308bb38d3ec",
+      "request_sha256": "701ad62ab7caca9e20536c805f69e34836473253e0a6478f8077d8c75546e960",
+      "answer_sha256": "aec5aeebcfda46fa5f164dab6d70ef2a2a2bfca42de73596152f6b80e210d5a5",
+      "attempts_sha256": "6bc9df6d60039cd3f00447e44d92378f2c3ebb344b665c57e5b973b9bf30916b",
+      "snapshot_manifest_sha256": "b91261a7b0668dbdc7ae288a24e267072349c32021f74f90f615bdacfe9ef44b",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ09",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/source-bound-template-qa-20261107/output/DQ09.json",
+      "output_sha256": "792c6cc5dd051e5bda469a312c6318551435f4e9e73e1c588d270b52591024c8",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-b42cd72df8de4e79b844d15e901dad44/run.json",
+      "run_sha256": "7a161fab71ad89550f654950f20b153ef4c1baae98fee628bb8ce8cfaa1f830d",
+      "request_sha256": "8e2ed29e8f914f01c484f6e3878dce03ee878dc522759d998bb1a45613346395",
+      "answer_sha256": "056549fb057b1132f30a2fb959fac2cdd1913aefd09f4cc1bea9cf6190dda090",
+      "attempts_sha256": "f4a35eb81de6fd97a1ab16c03a8a8ef96793783d360db6df9f811d78935b6589",
+      "snapshot_manifest_sha256": "8de5afe0b976c141bfb31fa76aca568f0ea291b2bf1689471696999ae618f977",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ10",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/source-bound-template-qa-20261107/output/DQ10.json",
+      "output_sha256": "878fbec1f9fe9eec83d4bd8815a353a74edd61df2353f1b5d08deb8820d0e472",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-cec72544a796480f9d37cddae8603a5c/run.json",
+      "run_sha256": "fc9e98dc06db260ce3253dfd49d3e87d7f926fe1a0c16462ff476d0862e41fbd",
+      "request_sha256": "0de8d94f5305867356164cb081959eb762f0c8bf987f477ec70fcfc89f98eda3",
+      "answer_sha256": "ec5061859ceb11ca1fb41b1e8f22a1044a2f5b89f5aa6aa025a7963b99f6f618",
+      "attempts_sha256": "57ecc45496ed477c551d3e0fb43caa81b57796c51a7450f9de8f0201dbee7c3b",
+      "snapshot_manifest_sha256": "17b6bfc290456f047fc709abffbd00adaf7f55987072acdd9b41e2bdd497c6da",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ11",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/source-bound-template-qa-20261107/output/DQ11.json",
+      "output_sha256": "736e6882e6901f56cfd2b500cc635942f6ece8af80cd82419a177399a144ed98",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-1790300be5a244acb32a68b034b9f2dd/run.json",
+      "run_sha256": "81a6b637ac9ceb2bc69d6720fd01cdba870a612c8ea8fb0e72c70a37e69f1427",
+      "request_sha256": "0be6da5a45bb0f510f8f5a5e37e61ef994967818ef1e6f1c117a0e113ab32139",
+      "answer_sha256": "9def34a27b4eea6e73e4d9e97c874b079661f4556011538c8b839648fd4c7416",
+      "attempts_sha256": "ee598bce7106eba9e93cfffc82cffd687e4813a09b1df58cebc7093343f61f73",
+      "snapshot_manifest_sha256": "4f87d0306b1493ade1ecd9fb9282f8f9a3300862781f8850ece61489a6869d2e",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ12",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/source-bound-template-qa-20261107/output/DQ12.json",
+      "output_sha256": "cf0df6b2c9d74337ffff028ff305d3d7272906047ddf7eeed0b28f0fc8d309df",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-ff59687f34074a78ac3e23ac3670423f/run.json",
+      "run_sha256": "a9a8350520180acbaa078f92a414967993de903b7d1671f048e2f07e18c4ec7d",
+      "request_sha256": "41d8b1314141b6530a7bba3d9aa40e25bfcfb3b85db331e8eab3e2c0be2b46cb",
+      "answer_sha256": "5bb1dbeac158016709f9db76f54e25e9d2bca1783a5aca84adfa17bae8947efe",
+      "attempts_sha256": "353265fe977c9bc57d9040eb70f110d56129ad34cecf5dd77811e8ac663aa067",
+      "snapshot_manifest_sha256": "618302213c68eded85b5a3a84ade227f911ee99ad821cb997f4b94167b8ded00",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    }
+  ]
+}

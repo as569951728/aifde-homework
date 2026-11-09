@@ -1,0 +1,391 @@
+[
+  {
+    "case_id": "B5-N01",
+    "dataset_id": "qinghe-w03-20260923-small",
+    "interval": [
+      "2026-08-01",
+      "2026-09-01"
+    ],
+    "registered_ids": [],
+    "first_orders": [
+      {
+        "order_id": "O0000011",
+        "member_id": "M00007",
+        "net_cents": 3000
+      },
+      {
+        "order_id": "O0000019",
+        "member_id": "M00009",
+        "net_cents": 1900
+      },
+      {
+        "order_id": "O0000036",
+        "member_id": "M00015",
+        "net_cents": 2500
+      },
+      {
+        "order_id": "O0000038",
+        "member_id": "M00016",
+        "net_cents": 2600
+      },
+      {
+        "order_id": "O0000041",
+        "member_id": "M00018",
+        "net_cents": 2800
+      }
+    ],
+    "subsequent_ids": [
+      "O0000001",
+      "O0000002",
+      "O0000003",
+      "O0000007",
+      "O0000018",
+      "O0000020",
+      "O0000021",
+      "O0000022",
+      "O0000024",
+      "O0000025",
+      "O0000027",
+      "O0000028",
+      "O0000030",
+      "O0000031",
+      "O0000033",
+      "O0000034",
+      "O0000037",
+      "O0000042",
+      "O0000043",
+      "O0000044",
+      "O0000046",
+      "O0000047"
+    ],
+    "excluded_orders": [
+      {
+        "order_id": "O0000004",
+        "reason": "net_not_positive"
+      },
+      {
+        "order_id": "O0000005",
+        "reason": "cancelled"
+      },
+      {
+        "order_id": "O0000012",
+        "reason": "net_not_positive"
+      },
+      {
+        "order_id": "O0000039",
+        "reason": "cancelled"
+      },
+      {
+        "order_id": "O0000040",
+        "reason": "net_not_positive"
+      }
+    ],
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "new_member_count",
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count",
+          "valid_order_count"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "new_member_count",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count",
+        "valid_order_count"
+      ],
+      "rows": [
+        [
+          0,
+          5,
+          12800,
+          5,
+          22,
+          27
+        ]
+      ],
+      "units": {
+        "new_member_count": "count",
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count",
+        "valid_order_count": "count"
+      }
+    }
+  },
+  {
+    "case_id": "B5-D01",
+    "dataset_id": "qinghe-w03-20260923-small",
+    "interval": [
+      "2026-07-01",
+      "2026-08-01"
+    ],
+    "registered_ids": [
+      "M00009",
+      "M00010",
+      "M00011",
+      "M00012",
+      "M00013",
+      "M00014",
+      "M00015",
+      "M00016",
+      "M00017",
+      "M00018",
+      "M00019",
+      "M00020"
+    ],
+    "first_orders": [
+      {
+        "order_id": "O0000006",
+        "member_id": "M00005",
+        "net_cents": 8000
+      },
+      {
+        "order_id": "O0000008",
+        "member_id": "M00006",
+        "net_cents": 4000
+      },
+      {
+        "order_id": "O0000010",
+        "member_id": "M00002",
+        "net_cents": 2000
+      },
+      {
+        "order_id": "O0000017",
+        "member_id": "M00008",
+        "net_cents": 2000
+      },
+      {
+        "order_id": "O0000023",
+        "member_id": "M00010",
+        "net_cents": 1500
+      },
+      {
+        "order_id": "O0000026",
+        "member_id": "M00011",
+        "net_cents": 1500
+      },
+      {
+        "order_id": "O0000029",
+        "member_id": "M00012",
+        "net_cents": 1500
+      },
+      {
+        "order_id": "O0000032",
+        "member_id": "M00013",
+        "net_cents": 1500
+      },
+      {
+        "order_id": "O0000035",
+        "member_id": "M00014",
+        "net_cents": 1500
+      },
+      {
+        "order_id": "O0000045",
+        "member_id": "M00019",
+        "net_cents": 1500
+      },
+      {
+        "order_id": "O0000048",
+        "member_id": "M00020",
+        "net_cents": 1500
+      }
+    ],
+    "subsequent_ids": [
+      "O0000009"
+    ],
+    "excluded_orders": [
+      {
+        "order_id": "O0000016",
+        "reason": "cancelled"
+      }
+    ],
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "new_member_count"
+        ],
+        "start": "2026-07-01",
+        "end": "2026-08-01",
+        "group_by": [
+          "home_store",
+          "member__tier"
+        ],
+        "filters": []
+      },
+      "columns": [
+        "home_store",
+        "member__tier",
+        "new_member_count"
+      ],
+      "rows": [
+        [
+          "S01",
+          "普通",
+          4
+        ],
+        [
+          "S01",
+          "金卡",
+          2
+        ],
+        [
+          "S02",
+          "普通",
+          4
+        ],
+        [
+          "S02",
+          "金卡",
+          2
+        ]
+      ],
+      "units": {
+        "new_member_count": "count"
+      }
+    }
+  },
+  {
+    "case_id": "B5-Z01",
+    "dataset_id": "qinghe-w03-20260923-small",
+    "interval": [
+      "2026-06-01",
+      "2026-06-30"
+    ],
+    "registered_ids": [],
+    "first_orders": [],
+    "subsequent_ids": [],
+    "excluded_orders": [],
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "new_member_count",
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count"
+        ],
+        "start": "2026-06-01",
+        "end": "2026-06-30",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "new_member_count",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "rows": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "units": {
+        "new_member_count": "count",
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count"
+      }
+    }
+  },
+  {
+    "case_id": "B5-H03",
+    "dataset_id": "qinghe-w03-20260923-small",
+    "interval": [
+      "2026-08-01",
+      "2026-09-01"
+    ],
+    "registered_ids": [],
+    "first_orders": [
+      {
+        "order_id": "O0000011",
+        "member_id": "M00007",
+        "net_cents": 3000
+      }
+    ],
+    "subsequent_ids": [
+      "O0000007"
+    ],
+    "excluded_orders": [],
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count",
+          "valid_order_count"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [
+          "member"
+        ],
+        "filters": [
+          {
+            "field": "member",
+            "op": "in",
+            "value": [
+              "M00005",
+              "M00007"
+            ]
+          }
+        ]
+      },
+      "columns": [
+        "member",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count",
+        "valid_order_count"
+      ],
+      "rows": [
+        [
+          "M00005",
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          "M00007",
+          1,
+          3000,
+          1,
+          0,
+          1
+        ]
+      ],
+      "units": {
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count",
+        "valid_order_count": "count"
+      }
+    }
+  }
+]

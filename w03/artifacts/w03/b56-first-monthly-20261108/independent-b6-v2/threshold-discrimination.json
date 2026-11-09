@@ -1,0 +1,27 @@
+{
+  "kind": "independent_raw_csv_counterexample_not_native_actual",
+  "counts_by_account": {
+    "M00001": 1,
+    "M00002": 3,
+    "M00003": 1
+  },
+  "correct_rule": "effective_order_count >= 2",
+  "correct_repeat_count": 1,
+  "wrong_rule": "effective_order_count == 2",
+  "wrong_repeat_count": 0,
+  "correct_rows": [
+    [
+      3,
+      1,
+      0.3333333333333333
+    ]
+  ],
+  "wrong_rows": [
+    [
+      3,
+      0,
+      0
+    ]
+  ],
+  "control": "原small N01/M01仍含恰好2笔有效订单的复购账户；v2 R01增加3笔有效控制，合起来区分>2、==2与>=2。"
+}

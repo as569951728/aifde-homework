@@ -1,0 +1,341 @@
+{
+  "status": "approved_for_old_metric_regression",
+  "passed": true,
+  "reviewed_at": "2026-11-08T15:06:41.627623+00:00",
+  "scope": "24 old B1-B4 definitions and catalog; 34 frozen expected reuse; does not approve new B5-B6 or claim actual tests passed",
+  "current_actual_seen": false,
+  "checks": [
+    {
+      "check": "order_count",
+      "passed": true,
+      "detail": {
+        "name": "order_count_measure",
+        "expr": "order_id",
+        "agg": "count"
+      }
+    },
+    {
+      "check": "paid_order_count",
+      "passed": true,
+      "detail": {
+        "name": "paid_order_count_measure",
+        "expr": "case when status = 'paid' then order_id else null end",
+        "agg": "count"
+      }
+    },
+    {
+      "check": "valid_order_count",
+      "passed": true,
+      "detail": {
+        "name": "valid_order_count_measure",
+        "expr": "case when status = 'paid' and paid_cents - refund_cents > 0 then order_id else null end",
+        "agg": "count"
+      }
+    },
+    {
+      "check": "cancelled_order_count",
+      "passed": true,
+      "detail": {
+        "name": "cancelled_order_count_measure",
+        "expr": "case when status = 'cancelled' then order_id else null end",
+        "agg": "count"
+      }
+    },
+    {
+      "check": "refund_order_count",
+      "passed": true,
+      "detail": {
+        "name": "refund_order_count_measure",
+        "expr": "case when status = 'paid' and refund_cents > 0 then order_id else null end",
+        "agg": "count"
+      }
+    },
+    {
+      "check": "partial_refund_order_count",
+      "passed": true,
+      "detail": {
+        "name": "partial_refund_order_count_measure",
+        "expr": "case when status = 'paid' and refund_cents > 0 and refund_cents < paid_cents then order_id else null end",
+        "agg": "count"
+      }
+    },
+    {
+      "check": "full_refund_order_count",
+      "passed": true,
+      "detail": {
+        "name": "full_refund_order_count_measure",
+        "expr": "case when status = 'paid' and paid_cents > 0 and refund_cents = paid_cents then order_id else null end",
+        "agg": "count"
+      }
+    },
+    {
+      "check": "payment_cents",
+      "passed": true,
+      "detail": {
+        "name": "payment_cents_measure",
+        "expr": "case when status = 'paid' then paid_cents else 0 end",
+        "agg": "sum"
+      }
+    },
+    {
+      "check": "refund_cents",
+      "passed": true,
+      "detail": {
+        "name": "refund_cents_measure",
+        "expr": "case when status = 'paid' then refund_cents else 0 end",
+        "agg": "sum"
+      }
+    },
+    {
+      "check": "net_sales_cents",
+      "passed": true,
+      "detail": {
+        "name": "net_sales_cents_measure",
+        "expr": "case when status = 'paid' then paid_cents - refund_cents else 0 end",
+        "agg": "sum"
+      }
+    },
+    {
+      "check": "gross_cents",
+      "passed": true,
+      "detail": {
+        "name": "gross_cents_measure",
+        "expr": "case when status = 'paid' then gross_cents else 0 end",
+        "agg": "sum"
+      }
+    },
+    {
+      "check": "discount_cents",
+      "passed": true,
+      "detail": {
+        "name": "discount_cents_measure",
+        "expr": "case when status = 'paid' then gross_cents - paid_cents else 0 end",
+        "agg": "sum"
+      }
+    },
+    {
+      "check": "buyer_count",
+      "passed": true,
+      "detail": {
+        "name": "buyer_count_measure",
+        "expr": "case when status = 'paid' and paid_cents - refund_cents > 0 then member_id else null end",
+        "agg": "count_distinct"
+      }
+    },
+    {
+      "check": "refund_buyer_count",
+      "passed": true,
+      "detail": {
+        "name": "refund_buyer_count_measure",
+        "expr": "case when status = 'paid' and refund_cents > 0 then member_id else null end",
+        "agg": "count_distinct"
+      }
+    },
+    {
+      "check": "selling_store_count",
+      "passed": true,
+      "detail": {
+        "name": "selling_store_count_measure",
+        "expr": "case when status = 'paid' and paid_cents - refund_cents > 0 then store_id else null end",
+        "agg": "count_distinct"
+      }
+    },
+    {
+      "check": "valid_order_items",
+      "passed": true,
+      "detail": {
+        "name": "valid_order_items_measure",
+        "expr": "case when status = 'paid' and paid_cents - refund_cents > 0 then quantity else 0 end",
+        "agg": "sum"
+      }
+    },
+    {
+      "check": "avg_order_value",
+      "passed": true,
+      "detail": {
+        "numerator": "net_sales_cents",
+        "denominator": "valid_order_count"
+      }
+    },
+    {
+      "check": "avg_buyer_value",
+      "passed": true,
+      "detail": {
+        "numerator": "net_sales_cents",
+        "denominator": "buyer_count"
+      }
+    },
+    {
+      "check": "purchase_frequency",
+      "passed": true,
+      "detail": {
+        "numerator": "valid_order_count",
+        "denominator": "buyer_count"
+      }
+    },
+    {
+      "check": "refund_amount_rate",
+      "passed": true,
+      "detail": {
+        "numerator": "refund_cents",
+        "denominator": "payment_cents"
+      }
+    },
+    {
+      "check": "cancel_rate",
+      "passed": true,
+      "detail": {
+        "numerator": "cancelled_order_count",
+        "denominator": "order_count"
+      }
+    },
+    {
+      "check": "refund_order_rate",
+      "passed": true,
+      "detail": {
+        "numerator": "refund_order_count",
+        "denominator": "paid_order_count"
+      }
+    },
+    {
+      "check": "discount_rate",
+      "passed": true,
+      "detail": {
+        "numerator": "discount_cents",
+        "denominator": "gross_cents"
+      }
+    },
+    {
+      "check": "items_per_order",
+      "passed": true,
+      "detail": {
+        "numerator": "valid_order_items",
+        "denominator": "valid_order_count"
+      }
+    },
+    {
+      "check": "order_time_grain",
+      "passed": true,
+      "detail": {
+        "agg_time_dimension": "ordered_at"
+      }
+    },
+    {
+      "check": "24_old_ids_present",
+      "passed": true,
+      "detail": [
+        "payment_cents",
+        "refund_cents",
+        "net_sales_cents",
+        "gross_cents",
+        "discount_cents",
+        "order_count",
+        "paid_order_count",
+        "valid_order_count",
+        "cancelled_order_count",
+        "refund_order_count",
+        "partial_refund_order_count",
+        "full_refund_order_count",
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items",
+        "avg_order_value",
+        "avg_buyer_value",
+        "purchase_frequency",
+        "refund_amount_rate",
+        "cancel_rate",
+        "refund_order_rate",
+        "discount_rate",
+        "items_per_order"
+      ]
+    },
+    {
+      "check": "catalog_units",
+      "passed": true,
+      "detail": {
+        "payment_cents": "cents",
+        "refund_cents": "cents",
+        "net_sales_cents": "cents",
+        "gross_cents": "cents",
+        "discount_cents": "cents",
+        "order_count": "count",
+        "paid_order_count": "count",
+        "valid_order_count": "count",
+        "cancelled_order_count": "count",
+        "refund_order_count": "count",
+        "partial_refund_order_count": "count",
+        "full_refund_order_count": "count",
+        "buyer_count": "count",
+        "refund_buyer_count": "count",
+        "selling_store_count": "count",
+        "valid_order_items": "count",
+        "avg_order_value": "cents_per_order",
+        "avg_buyer_value": "cents_per_member",
+        "purchase_frequency": "orders_per_member",
+        "refund_amount_rate": "ratio",
+        "cancel_rate": "ratio",
+        "refund_order_rate": "ratio",
+        "discount_rate": "ratio",
+        "items_per_order": "items_per_order"
+      }
+    },
+    {
+      "check": "no_new_monthly_limit_on_old_metrics",
+      "passed": true,
+      "detail": "all old 24 full_month_only=false"
+    },
+    {
+      "check": "catalog_constraints_manual_semantic_read",
+      "passed": true,
+      "detail": "Read all 24 constraints and definition descriptions against frozen materials criteria; refund buyers explicitly paid + refund>0; 8 ratio components and null semantics correct; no new restriction."
+    },
+    {
+      "check": "orders_primary_unique",
+      "passed": true,
+      "detail": "order counts use count on non-null unique order_id; checked structural report"
+    },
+    {
+      "check": "frozen_expected_reuse_tests-regression-small.json",
+      "passed": true,
+      "detail": {
+        "count": 33,
+        "baseline_parts": [
+          {
+            "path": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/tests-small-all.json",
+            "count": 27,
+            "sha256": "cf3f105fda21b4e1cb39c95cb01bed2f0e4d3b5c6140774e60f8430d05d93a68"
+          },
+          {
+            "path": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json",
+            "count": 6,
+            "sha256": "573d50edc16c228e68188644fb49f871ccfcbb52d57b9e647a9956cab6d55e66"
+          }
+        ],
+        "comparison": "all IDs/question/expected/source fields identical; order irrelevant",
+        "initial_check_note": "Initial comparison only read B3 combined27 and omitted B4 six; no actual test or semantic failure."
+      }
+    },
+    {
+      "check": "frozen_expected_reuse_tests-regression-b2-fixture.json",
+      "passed": true,
+      "detail": {
+        "count": 1,
+        "current_sha256": "b65f8f044ae7ac2fe151c43ec928417cd958ad26259ba2c6f5796b29d4e48891",
+        "original_sha256": "b65f8f044ae7ac2fe151c43ec928417cd958ad26259ba2c6f5796b29d4e48891"
+      }
+    }
+  ],
+  "failed_checks": [],
+  "evidence_sha256": {
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/metrics.yml": "af1a47cc830c69592b14a10b28ee3911b46a0b9aba426b9699b834734e4d849c",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/catalog.json": "0b2354372b1eece8773de7321a57772d95c718beaab347036b2ed73a1a21f489",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/grain_contract.json": "f880ce91414548ece80d459e950447926fa50a90996505bcfda66a5d02a83239",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/grain_check.json": "cf1a8431fc20d4963a6717d15a201717db83a10b03049ef70727b01b9f6253c6",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/metricflow_check.json": "bfaa876f0025eaa1f2deaa278f6c6c4332a6eda564ee3d97d0a0e0524fd0494a",
+    "artifacts/w03/b56-first-monthly-20261108/tests-regression-small.json": "2a37f79dc67627dd6a25a5872aca3c3f996eae4bec11dd404abfa5cee3a5119a",
+    "artifacts/w03/b56-first-monthly-20261108/tests-regression-b2-fixture.json": "b65f8f044ae7ac2fe151c43ec928417cd958ad26259ba2c6f5796b29d4e48891",
+    "artifacts/w03/b56-first-monthly-20261108/regression-review/review-contract.json": "97e4e789095e7608ae7151409d09318cfbb5a59d795fbe986a4fc30b14a77c5e"
+  },
+  "next": "Wait for current cumulative library binding and real small33 + B2 fixture1 outputs; inspect full answers and SQL independently."
+}

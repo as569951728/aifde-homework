@@ -1,0 +1,170 @@
+{
+  "created_at": "2026-11-08T02:09:46.837193+00:00",
+  "status": "approved_static_mentor_corrections_and_future_expectation",
+  "approved": true,
+  "failed_checks": [],
+  "approval_scope": "仅3份导师修订副本及未来U05预期修订静态审校，不是模型问答重新通过或正式采纳",
+  "checks": [
+    {
+      "name": "U05_original_output_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "U05_revision_file_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "U05_old_clause_unique",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "U05_only_declared_sentence_replacement",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "U05_answer_hashes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "U01_original_output_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "U01_revision_file_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "U01_old_clause_unique",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "U01_only_declared_sentence_replacement",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "U01_answer_hashes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "P01_original_output_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "P01_revision_file_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "P01_original_response_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "P01_public_literal_wrapper",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "P01_valid_single_answer_json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "P01_body_verbatim_unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "P01_body_hashes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "P01_native_failed_unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "expectation_old_clause_matches",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "expectation_only_one_field_changed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "expectation_hashes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frozen_manifest_inputs_unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "original_final_verdicts_unchanged",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "semantic_checks": [
+    {
+      "id": "U05",
+      "passed": true,
+      "basis": "MSG-03931明确王经理无法确认最终验收确认人及授权额度；03933明确正式批准未定。修订句拆开两类状态，未推断公司已指定或未指定。",
+      "scope": "导师人工修订静态通过，原生语义需修评分不变。"
+    },
+    {
+      "id": "U01",
+      "passed": true,
+      "basis": "模型第3节规则1/2/3分别引用小林产品范围与陈姐日期规则；修订恢复已说明业务规则性质，保留正式文件/生产历史核验未得。",
+      "scope": "导师人工修订静态通过，原生无据分类评分不变。"
+    },
+    {
+      "id": "P01",
+      "passed": true,
+      "basis": "人工副本符合唯一非空answer字段的JSON结构，正文与公开原文主体逐字一致；已有资格语义观察仍适用。",
+      "scope": "仅人工格式封装通过，原生JSON_INVALID不改为成功。"
+    },
+    {
+      "id": "future_U05_expectation",
+      "passed": true,
+      "basis": "未来判据显式区分角色无法确认与正式批准尚未定，内容与03931/03933对应，不要求固定原句或逐字作答。",
+      "scope": "批准作为未来独立版本的期望修订；当前冻结输入、过去评分不变，也不据此追加本轮调用。"
+    }
+  ],
+  "reviewed_file_hashes": {
+    "mentor-corrections/manifest.json": "7aeb334f0bc04f8b89d285fb7687c3bb89b0056b50ba7833afbea9ce741e6301",
+    "mentor-corrections/U05-导师修订稿.md": "b6105bb5d0d2ff64c822b52e180843941206de9316dcf20b4b21f60be086336d",
+    "mentor-corrections/U01-导师修订稿.md": "3234bec6b4b8e7f913e25897a0a9a0f83f04053b48bbb0d8f6469cbc5353c4e2",
+    "mentor-corrections/P01-导师格式修订.json": "f66793ba8ae1b55e96feee2485bd696f3b4d575f05ec487d6e9ac04ebc15fb5e",
+    "expected-correction/revision.json": "b31fc0d804a4abc18de3f18ebb3994813c4dc2f520e1557e701e1fd5afb4699d",
+    "expected-correction/reviewer_expectations.json": "151e861e71de7bb6e56da8ae2954b1eabe1db591180afd571256846ce12ddb4d"
+  },
+  "current_native_review_sha256": "ef7f365af9ec8a809b15290f0f8b6912509428a13a256ac1bb94fd2660895abf",
+  "current_batch_summary_unchanged": "3通过、U05/U01语义需修、P01格式失败",
+  "candidate_prompt_adoption_approved": false,
+  "new_model_execution_authorized": false,
+  "current_native_verdict_changed": false,
+  "pending_status_header_note": "受审稿自身保留待静态复审的形成时状态头；本签发报告与后续README给出当前静态结论，避免修改受审hash。",
+  "nonblocking_carryovers": [
+    "U05原有内层引号排版差异未在本次单句修订中处理，仍按原报告保留非阻断说明。",
+    "U01原有非必要扩写仍在；此次只修有据的来源性质错误，不当作重新生成简洁答案。"
+  ],
+  "actual_model_calls": 0,
+  "prose": "三个导师副本与未来预期修订静态审校通过；原生失败、冻结输入和旧评分全部保留。"
+}

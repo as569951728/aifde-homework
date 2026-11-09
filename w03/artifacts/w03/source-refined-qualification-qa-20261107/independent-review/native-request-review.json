@@ -1,0 +1,545 @@
+{
+  "created_at": "2026-11-06T17:12:07.550329+00:00",
+  "reviewer": "/root/w03_qualification_qa_reviewer",
+  "status": "passed",
+  "case_count": 17,
+  "actual_http_attempts": 17,
+  "checks_per_case": 10,
+  "frozen_files": {
+    "input/business_model.md": true,
+    "input/knowledge.json": true,
+    "input/knowledge_prompt.txt": true,
+    "input/original_questions.json": true,
+    "input/protected.json": true,
+    "input/reviewer_expectations.json": true,
+    "input/selected_questions.json": true
+  },
+  "protected_files": {
+    "docs/w03/business_model.md": true,
+    "docs/w03/interview_notes.md": true,
+    "customer/w02/knowledge.json": true,
+    "customer/w02/knowledge_prompt.txt": true,
+    "customer/w02/workflow.json": true,
+    "customer/w02/extraction.json": true,
+    "customer/w02/skills/extract-business/SKILL.md": true,
+    "artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/session.json": true,
+    "artifacts/w03/model-draft-20261106/draft-03/business_model.md": true,
+    "docs/w03/metric_decisions.md": true,
+    "docs/w03/sow.md": true,
+    "customer/w03/tests.json": true
+  },
+  "cases": [
+    {
+      "id": "U02",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "f7e12c3bc64830aaa8a77ffdadd6d14a4693c97c372fbc2d324731e348231264",
+      "actual_answer_sha256": "d789e01d6e5ff1f2132236d5a4ca90a2043e84bf771c70f427a129d5be903c3c",
+      "native_answer_sha256": "47b1c721d6b9d68f69374bf345d027fde78569b562520a81412dec3d3fce7e7f",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-b1b61ddd4129497fa319d408ecb26da4/run.json",
+      "run_sha256": "64581f680b89e31ebb04c99a4c36db3d90e4e81a2410a63ba36950f083817315",
+      "request_sha256": "ee627daf1d213b491e4c8967ee1b822a6e67adabff6857f90ab86955f0fd31de",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "U03",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "998fb98695310df62f23386adbd2c60a4990898b69ce5e020dd5e3ba0995cfca",
+      "actual_answer_sha256": "4fbd08a56bb4d2b967d90e5f878462bede342dd61626b14929932bd55214421d",
+      "native_answer_sha256": "da2f2ff35509c938339389e4b1601eb446e7a0df30a01a9b74c9cb746dd847cc",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-ab9877c53d204bd8ae65acd2928ff38a/run.json",
+      "run_sha256": "3ed6f74c5b3f77e930690d1e80155680f5b1d708236b901ebe7bac8bb80b0684",
+      "request_sha256": "fa57afc8a1f6c22624f5922322070095b22a208bb487e7fb1a436c3231b6ce4d",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "P01",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "2e5fcaa0ec01c65b0e7f096c43f5e3a0c84c11ce82f967e68fab613aa12aeb3c",
+      "actual_answer_sha256": "9cb006cc36f7892dc4c684d6236d46b66510daebbbe3639dae90e063b0646f37",
+      "native_answer_sha256": "94455d67985c199e0fb4c4703c8be6665561a0edd2ab09c97bac40e8062fe005",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-038cd311248b45e4bf621421d6585104/run.json",
+      "run_sha256": "a55143f2232a7a5f477e8b0379a0b2ea923f90c507ce3ea3dee82802829e3161",
+      "request_sha256": "bff07cac9a8ceffdae8f2c071afa48a7f0d566393e1c05a0f228e237b9206f9e",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "P02",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "6ca70cadd800e6954eac34cd3208d3b9650b38995eddaeedfa6a5a709e0e71d7",
+      "actual_answer_sha256": "a5bf6cc4a2003e7ecfa5c0c22670fb27a68747d4ea061ac075e0b27ecb252db5",
+      "native_answer_sha256": "b61528307a82086c060c53f396138edeeca7c7dd41c6fb9deb54c028f7ac3dd7",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-7ff4c67796ed4350a9b6bc45ac0b3577/run.json",
+      "run_sha256": "d899086ce7d0bb79cc87fb32ccab4d84d54305a8bd3e2e23faf183dbf3658073",
+      "request_sha256": "a6d6ab2ab7e038e3affff9c1b5811d5505e234b44fa40764add9a050c84476a6",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "P03",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "fbe2eefb9e215cc9cb3d72f0cb63ed88019a29aba078f9c8e612dd85a7036ffe",
+      "actual_answer_sha256": "f1531eae53ae1dba77d9811a30da0db9e6e5d59ba489e241fed3b68dd8dfa559",
+      "native_answer_sha256": "32be05edc07eb5f6ecdb1fda3ad13001c6ad3e96b8a599dad3f21724f4c6e4a0",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-feae6e8b149546c886dd13f8bfff357e/run.json",
+      "run_sha256": "f0cbcb2b74496a686442b53a2a4a37d00c3e546f30c00a93b2744718141ca5d7",
+      "request_sha256": "8357cc964f6db030e735239a4d19a208f45ca0d9a5c05baa857b13a5a6094337",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "P04",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "b9ef158a4329c8d515168ee8aac29bb71e228cdad5741fa8d00280817f4f5686",
+      "actual_answer_sha256": "17092fcb9c9d46568a220c6f1b4ce2ee38603c13988325cbb49a629f9987655a",
+      "native_answer_sha256": "232d7c6b530da8fa10b18d7b8dd487ae2ed74e0a4cc7587cf2fb47427369232c",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-af05f2fba9434dd7ac2c04c4f6cc6417/run.json",
+      "run_sha256": "91a6379e7d1495e1628078948434ef5ede8aae83907ee10d8ecdcffb40228c7c",
+      "request_sha256": "404467ffe2e8d6d841606442e123e6501aa78bcd47276d572528327738ccacf3",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "P05",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "0d794612412045c2e7cd3796886286bd4767cd6d1af7b2aa945a8aa3f0308bd0",
+      "actual_answer_sha256": "2c51b8c8c8234325e84ac624cc542f52ba6721620bf036ef4f6bd461a2c1b110",
+      "native_answer_sha256": "7726d0c7e9318c9dca21f34bc7a9fd4fcdd74adce911b6341a8bebdb20564692",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-fd48ecd9384f40c791694f8fdc06ac8d/run.json",
+      "run_sha256": "877d72d9b13330231fdcc34a80d2b01bc94bc2eeda60d70aa47aa3a1b50619af",
+      "request_sha256": "e3f2d457d1fb46f3571be2d4d32559e8aa9eba256bdfdfc5486c03b0e8d400c4",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "P06",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "d80c59bd05bac1828c2d75ce5769fe9344c4337d00e29b6091c26d349e920c66",
+      "actual_answer_sha256": "e2e55d3392a320443ca21b6c6d37921bda2a565b67acc9410ebdb7e1563eb60b",
+      "native_answer_sha256": "a1420dd35f6bfc561c50b0075baed987dbbc90b0c0aee4dd3c79c930aad08971",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-86d9ed98b0874241a631ec911d10bca8/run.json",
+      "run_sha256": "1ae2b20a8aeb8cef398e2c53a41e65f68090f197ad28371a3c89982026a1a3ac",
+      "request_sha256": "19b2b650dc023ce8117aa54da2d6a1e3b9490a88b66fec21e4420aa4a73e316e",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "P07",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "7b2a727d1901029146b10f04a0b40ebe5a9689dd5e16c8e127a71880329cef1c",
+      "actual_answer_sha256": "44b32038495d307ddd5eaa31035ff9a716b8c9985b58fd66815b11bc2a3d8d90",
+      "native_answer_sha256": "3de971b8635d89529924f302c7ab62b1c945685c4909c053509a75c6dd28ef08",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-719bb23d84d94eb88b3399227517fa49/run.json",
+      "run_sha256": "b0e0d72274239d90a9c349f43964895ac218a82489ee7b681be7c8b81b044c0b",
+      "request_sha256": "d371b9d0807be88498a6902fc26184db8778f86ff744cca01159d4fe8d427cc9",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "P08",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "3151008598fccf06fccadfbc88dfb96887b9bd8e7a202b0077aa52669d140e8e",
+      "actual_answer_sha256": "54f529b3e54c491f4afcb4c9382235a65605d245d805998a5b92bd06e486c026",
+      "native_answer_sha256": "16a6fdb6beaeb2c37b30c600a0331c8386f972d69d3fdeb395a430afccda1a17",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-4b2648ba48a24f73b6c21c88aa477765/run.json",
+      "run_sha256": "4fd521500a51560101440605461f84f9f3611a26076f2681cce9d6bb139b9a5e",
+      "request_sha256": "9480308b422cef58cac2b92ed20309f48f315ccf03739d0ad0d08db41e459fe8",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "P09",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "8b219272fb7d3d18811e402b53a1b62c73665faee19544053e3fe05096024287",
+      "actual_answer_sha256": "71ac275f502ffee7cc4040a99a3bbb78992bd39d750cd0264ee87e05b9687490",
+      "native_answer_sha256": "a66839135379360144a5f3c86c4dbdd8e30c18d5ee629eb60770fec012dd740f",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-71f5b516b7284b8ba33847d9f2b33edc/run.json",
+      "run_sha256": "e4a0f0b581e6ad3140e1cb44c01c88d832c6ca6d016f2c72a8b17b85f18633b0",
+      "request_sha256": "1aef4a98f58c2d2b91b52c0d37da0485d8e78d4704787c892eeacfa70ff02d20",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "C01",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "a3a1d5d5d5df84b2204a83050c226665ace13a67a8030b36dd95e919402d66fd",
+      "actual_answer_sha256": "569b6aee0151c04cf785aa61980c33bf2377764c289e3b6d09e073594400f376",
+      "native_answer_sha256": "730c788e4ba15efd8b433cd544a1d07c7fb6fb7361201d13fbc388b1174aa53c",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-92760aedf3434e18b54fed97e3952c8d/run.json",
+      "run_sha256": "a56d3ca95b6d42ada95fe0958e1006526ecaf9a95b41f014fe8b5194c1d0ff97",
+      "request_sha256": "33499752d9e62a83eaacc5946a9bf150088602e6c1acf7766b4e7b0515b90e2f",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "C02",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "0d9dc816fe78ffcf353e7e5159b1a0b9bb8b1d8dea42c1aa2ee6ae1d00294f91",
+      "actual_answer_sha256": "e1fc5957c6f2820029ebc45ff112f6fff4b6ec0b193f586aa5bafbecc5fffba8",
+      "native_answer_sha256": "f82b773623c511ff9260c9e7b92c17d657b3b42b4997bad281350a88e6fc85b8",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-99a26378d61d4e40bb23413d76c5576f/run.json",
+      "run_sha256": "273c63417d9bac052d110e8f6e19da295f7a04d3d64b5ec3f70c0ccd805a8c05",
+      "request_sha256": "33e7eba0b524a1095059617882094644e47e9a451c92bb3490c06f99ff563ec3",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "C03",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "6f786322964cb0fd625eb44b693b5fec9708c01425e1a8b2116d4381eca77e68",
+      "actual_answer_sha256": "31cfbca21f5f2df0702b5d9c2447fafd8037cffb9b4d8465101403817903691d",
+      "native_answer_sha256": "d0dde7da7e40b0a82af4c504dc695748d17de224ceeb04097a798429a473cdba",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-db67ffd7b5904c54b272037c86e67b8e/run.json",
+      "run_sha256": "52101ccc7b1ed0deac7c603175873f618dbdf17bddcee25f246db843924f30fb",
+      "request_sha256": "28299b1f86b22b75259128259277d1471cf568f104556fb90895efd3ccc1b898",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "C04",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "c0cfd459d272522f287b7bff402a1dfbe5fc50e367830f552d57a5f937a33ef6",
+      "actual_answer_sha256": "986066ae1b56633e536ca30b8fb7bbffe206cecf387efdb8c9b6f387aa88c03a",
+      "native_answer_sha256": "fffced6b2c85ce6a8fefad952c7b9057b57f2a545f4fb12053ba6b781d3a8cc3",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-56ef874fb1244650a8c5152054f6a1b5/run.json",
+      "run_sha256": "ed795c6b0976a17e4287f5614e0aefc1ba987c523ad8f26a3f4b828817b3080f",
+      "request_sha256": "593bc2524e709e40714bbb5c1be6ec974ae13e442f69131cc83e5e945f30e246",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "C05",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "e0dc5e71a113b57ba5a89c5b298a34e7a777d42b0651e289b97591b1ef55ac3b",
+      "actual_answer_sha256": "b3fe1135420cd9417cc31d5364740e3376a2f31187bfa91c57fb21bec3e0cd56",
+      "native_answer_sha256": "ccbfc7f6f51c8626c1b5887fd162de48d1446ac20d8c6930b623598a2ada0411",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-0a708770190c40b1a755a9b278ba2314/run.json",
+      "run_sha256": "4378bac1f4d955167d061afc5a2643b68b64e12412b1aa3fccd23c306ca19329",
+      "request_sha256": "ae26deff1e9db628492e3373298ec583e48d2171fc8d7b2d2df5ad2661fe6d93",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    },
+    {
+      "id": "C06",
+      "pass": true,
+      "checks": {
+        "native_structure_and_hashes": true,
+        "wrapper_question_and_fixture": true,
+        "request_exact_frozen_model_prompt_single_question": true,
+        "request_no_tools": true,
+        "settings_expected_empty": true,
+        "single_successful_attempt": true,
+        "all_attempts_same_messages_no_tools": true,
+        "wrapper_answer_equals_native": true,
+        "wrapper_native_hash": true,
+        "model_hash": true
+      },
+      "output_sha256": "563ab8d5b042e50b17331d08279f1e92f1ca72aad0c483f8643fce88d2233690",
+      "actual_answer_sha256": "fb893bdf763b8c03e4a54653a9f79e43185a8b074148d0df1a6fb0e46a03d1b8",
+      "native_answer_sha256": "15e0881585128f948ad36450c2bc28146cf2fbf13eaa979db6035ee0c223241e",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-eef59f5406f24fb3a7061e5e8096048c/run.json",
+      "run_sha256": "a203aff2d89b613cb5c1d734910e79f2fa3ebc5c28f92e809b2cae55de2649c3",
+      "request_sha256": "e5cf06a7f308ed1fd15e1bfaf5c15b9745153870476e05acdcc6d99a324527ed",
+      "attempts": [
+        {
+          "http_status": 200,
+          "finish_reason": "stop",
+          "max_tokens": 8192
+        }
+      ],
+      "attempt_count": 1
+    }
+  ],
+  "notes": "仅只读核查原生快照、请求、响应、尝试与包装输出；未额外调用模型。每份实际请求只有冻结业务模型、批准提示/GUARD与原单题/可选fixture，无期望、其他题或原始来源输入，也没有工具。",
+  "run_index_sha256": "c10aec5e6f9e0fe7d8e47ddd86ab913586f4cb6a3c15d301c38aa520c35ae7b1"
+}

@@ -1,0 +1,273 @@
+{
+  "semantic_models": [
+    {
+      "name": "orders",
+      "model": "ref('orders')",
+      "defaults": {
+        "agg_time_dimension": "ordered_at"
+      },
+      "entities": [
+        {
+          "name": "order",
+          "type": "primary",
+          "expr": "order_id"
+        },
+        {
+          "name": "member",
+          "type": "foreign",
+          "expr": "member_id"
+        },
+        {
+          "name": "store",
+          "type": "foreign",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "ordered_at",
+          "type": "time",
+          "type_params": {
+            "time_granularity": "day"
+          }
+        },
+        {
+          "name": "channel",
+          "type": "categorical"
+        },
+        {
+          "name": "status",
+          "type": "categorical"
+        }
+      ],
+      "measures": [
+        {
+          "name": "net_sales_cents_measure",
+          "expr": "CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END",
+          "agg": "sum"
+        }
+      ]
+    },
+    {
+      "name": "members",
+      "model": "ref('members')",
+      "entities": [
+        {
+          "name": "member",
+          "type": "primary",
+          "expr": "member_id"
+        },
+        {
+          "name": "home_store",
+          "type": "foreign",
+          "expr": "home_store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "tier",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "name": "stores",
+      "model": "ref('stores')",
+      "entities": [
+        {
+          "name": "store",
+          "type": "primary",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "region",
+          "type": "categorical"
+        },
+        {
+          "name": "store_name",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "name": "home_stores",
+      "model": "ref('stores')",
+      "entities": [
+        {
+          "name": "home_store",
+          "type": "primary",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "region",
+          "type": "categorical"
+        },
+        {
+          "name": "store_name",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    }
+  ],
+  "metrics": [
+    {
+      "name": "net_sales_cents",
+      "label": "净销售额",
+      "description": "paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。",
+      "type": "simple",
+      "type_params": {
+        "measure": "net_sales_cents_measure"
+      }
+    }
+  ],
+  "catalog": [
+    {
+      "id": "net_sales_cents",
+      "name": "净销售额",
+      "aliases": [],
+      "unit": "分",
+      "sources": [
+        {
+          "file": "01_订单日报说明.md",
+          "quote": "paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。"
+        },
+        {
+          "file": "02_财务邮件.md",
+          "quote": "有效订单是 paid 状态且实付大于累计退款；取消、全额退款不计有效购买。退款按原订单日期归属。金额为整数分，展示元需换算。"
+        }
+      ],
+      "constraints": [
+        "paid 状态订单计入；取消单不计",
+        "退款按原订单下单日期归属",
+        "金额为整数分"
+      ],
+      "query_policy": {
+        "full_month_only": false
+      }
+    }
+  ],
+  "model_sql": {},
+  "grain_keys": {
+    "orders": [
+      "order_id"
+    ],
+    "members": [
+      "member_id"
+    ],
+    "stores": [
+      "store_id"
+    ],
+    "home_stores": [
+      "store_id"
+    ]
+  },
+  "unresolved": [],
+  "business_model_usage": [
+    {
+      "quote": "一行一笔订单。保留订单识别、关联账户、渠道（门店或小程序）、下单日期、支付状态、原价、实付、累计退款、原始购买件数的含义。",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "orders"
+        },
+        {
+          "kind": "dimension",
+          "name": "order__channel"
+        },
+        {
+          "kind": "dimension",
+          "name": "order__status"
+        }
+      ]
+    },
+    {
+      "quote": "本期字典给出：账户—卡为一对多，账户—订单为一对多，卡与订单均关联账户。",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "orders"
+        },
+        {
+          "kind": "semantic_model",
+          "name": "members"
+        }
+      ]
+    },
+    {
+      "quote": "会员归属门店描述账户归属；订单成交门店描述交易发生门店，两者是不同关系，不可互相替代",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "stores"
+        },
+        {
+          "kind": "semantic_model",
+          "name": "home_stores"
+        },
+        {
+          "kind": "dimension",
+          "name": "store"
+        },
+        {
+          "kind": "dimension",
+          "name": "home_store"
+        }
+      ]
+    },
+    {
+      "quote": "普通、银卡、金卡，与付费资格是两回事；资料只给当前等级，当前等级不能还原过去各日的等级",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "members"
+        },
+        {
+          "kind": "dimension",
+          "name": "member__tier"
+        }
+      ]
+    },
+    {
+      "quote": "覆盖2024-09-01（含）至2026-09-01（不含），Asia/Shanghai，日期粒度，退款为截至快照的累计额。",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "orders"
+        },
+        {
+          "kind": "dimension",
+          "name": "metric_time__day"
+        },
+        {
+          "kind": "dimension",
+          "name": "metric_time__month"
+        }
+      ]
+    },
+    {
+      "quote": "已支付且实付减累计退款后大于零；取消与全额退款不计为有效购买。支付状态不等于有效购买；支付订单可以全部退款而仍不是有效购买。",
+      "used_for": [
+        {
+          "kind": "metric",
+          "name": "net_sales_cents"
+        }
+      ]
+    },
+    {
+      "quote": "人数或金额统计需明确会员范围、期间、渠道、有效购买条件与来源；标签字段含义应结合实际填写核实",
+      "used_for": [
+        {
+          "kind": "metric",
+          "name": "net_sales_cents"
+        }
+      ]
+    }
+  ]
+}

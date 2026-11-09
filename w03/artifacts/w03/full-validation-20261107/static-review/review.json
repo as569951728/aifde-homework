@@ -1,0 +1,329 @@
+{
+  "version": "qinghe-source-refined-static-review-20261107-v1",
+  "created_at": "2026-11-07T11:58:11.747409+08:00",
+  "reviewed_candidate": {
+    "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/operations-qa-20261107/input/business_model.md",
+    "sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+    "origin_path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/source-bound-template-qa-20261107/candidate/business_model.md",
+    "origin_identical": true,
+    "native_proposal_aligned": false
+  },
+  "verdict": "pass",
+  "case_results": [
+    {
+      "id": "T01",
+      "verdict": "pass",
+      "criteria": [
+        "C01",
+        "C02"
+      ],
+      "evidence": [
+        "候选3–74行：业务结构",
+        "候选78–83行：必要来源范围表",
+        "正式notes3–9、621–640行：本人取舍/前提纠错",
+        "draft03/notes_update.md:16–30：迁出与指标承接",
+        "candidate/change_record.json：导师局部编辑身份与差异"
+      ],
+      "reason": "业务正文与取舍/测试/纠错过程分离；真实工作保留。修订过程和旧成绩留原记录，来源细化表是业务证据说明，不是重复迁移过程。",
+      "minimal_fix": null
+    },
+    {
+      "id": "T02",
+      "verdict": "pass",
+      "criteria": [
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "evidence": [
+        "claim_audit.json共27组实质断言",
+        "MD00–08、8份W02与4份有效W03完整问答",
+        "57个显式或省略前缀的消息编号均可定位，未以此机械检查代替语义判断",
+        "候选19、36、38、80–83行新增来源细化逐条回源"
+      ],
+      "reason": "规则、字段、范围、问答前提和流程语义均有对应依据或明确的建模区分/未知；合成测试未冒充生产，角色来源未互相替代。",
+      "minimal_fix": null
+    },
+    {
+      "id": "T03",
+      "verdict": "pass",
+      "criteria": [
+        "C08",
+        "C09",
+        "C10"
+      ],
+      "evidence": [
+        "baseline_regression表",
+        "正式v0.4与notes保护hash",
+        "原第三稿、来源细化差异和change_record",
+        "既有失效W04明确排除"
+      ],
+      "reason": "双目标、关键真实工作与动作边界保留；本期新知更新旧未知且保留历史生产缺口；合法迁出不当缺失。当前候选独立审查，不继承旧第三稿通过。",
+      "minimal_fix": null
+    }
+  ],
+  "criteria_results": [
+    {
+      "id": "C01",
+      "test": "T01",
+      "verdict": "pass",
+      "evidence": "case_results, claim_audit.json, field_audit, baseline_regression"
+    },
+    {
+      "id": "C02",
+      "test": "T01",
+      "verdict": "pass",
+      "evidence": "case_results, claim_audit.json, field_audit, baseline_regression"
+    },
+    {
+      "id": "C03",
+      "test": "T02",
+      "verdict": "pass",
+      "evidence": "case_results, claim_audit.json, field_audit, baseline_regression"
+    },
+    {
+      "id": "C04",
+      "test": "T02",
+      "verdict": "pass",
+      "evidence": "case_results, claim_audit.json, field_audit, baseline_regression"
+    },
+    {
+      "id": "C05",
+      "test": "T02",
+      "verdict": "pass",
+      "evidence": "case_results, claim_audit.json, field_audit, baseline_regression"
+    },
+    {
+      "id": "C06",
+      "test": "T02",
+      "verdict": "pass",
+      "evidence": "case_results, claim_audit.json, field_audit, baseline_regression"
+    },
+    {
+      "id": "C07",
+      "test": "T02",
+      "verdict": "pass",
+      "evidence": "case_results, claim_audit.json, field_audit, baseline_regression"
+    },
+    {
+      "id": "C08",
+      "test": "T03",
+      "verdict": "pass",
+      "evidence": "case_results, claim_audit.json, field_audit, baseline_regression"
+    },
+    {
+      "id": "C09",
+      "test": "T03",
+      "verdict": "pass",
+      "evidence": "case_results, claim_audit.json, field_audit, baseline_regression"
+    },
+    {
+      "id": "C10",
+      "test": "T03",
+      "verdict": "pass",
+      "evidence": "case_results, claim_audit.json, field_audit, baseline_regression"
+    }
+  ],
+  "failed_checks": [],
+  "indeterminate_checks": [],
+  "findings": [],
+  "minimal_body_repairs": [],
+  "human_decisions": [],
+  "requires_candidate_change": false,
+  "impact_on_33_question_input": "none; keep frozen dafadf82… input unchanged",
+  "source_first": {
+    "criteria_saved_before_candidate_and_expectations": true,
+    "prior_third_draft_pass_inherited": false,
+    "source_inventory": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/full-validation-20261107/static-review/evidence_inventory.json",
+    "claim_audit": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/full-validation-20261107/static-review/claim_audit.json",
+    "body_claim_groups": 27,
+    "message_id_token_count": 57,
+    "missing_message_ids": [],
+    "w04_invalidated_source_used": false
+  },
+  "field_audit": [
+    {
+      "model_location": "17、20、21",
+      "fields": [
+        "members.member_id",
+        "members.registered_at",
+        "members.home_store_id",
+        "members.tier"
+      ],
+      "source": "MD05 members",
+      "verdict": "pass"
+    },
+    {
+      "model_location": "18、37–39",
+      "fields": [
+        "cards.member_id",
+        "cards.card_type",
+        "cards.valid_from",
+        "cards.valid_until",
+        "cards.ended_at",
+        "cards.card_paid_cents"
+      ],
+      "source": "MD05 cards + Lin03848/54 + Chen03885–90",
+      "verdict": "pass"
+    },
+    {
+      "model_location": "21–23、30",
+      "fields": [
+        "orders.order_id",
+        "orders.member_id",
+        "orders.store_id",
+        "orders.ordered_at",
+        "orders.status",
+        "orders.gross_cents",
+        "orders.paid_cents",
+        "orders.refund_cents",
+        "orders.quantity",
+        "orders.channel"
+      ],
+      "source": "MD05 orders + MD01/02",
+      "verdict": "pass"
+    },
+    {
+      "model_location": "25、27、32",
+      "fields": [
+        "活跃定义/判断",
+        "反馈事项/来源/时间",
+        "优惠/活动追踪关联"
+      ],
+      "source": "概念属性或待核，未声明数据库列存在",
+      "verdict": "pass"
+    }
+  ],
+  "baseline_regression": [
+    {
+      "topic": "双业务目标及因果边界",
+      "baseline": "5–9",
+      "candidate": "5–9、58",
+      "action": "retained",
+      "result": "原因验证与岗位提效分别观察，老化假设与趋势不冒充已核。"
+    },
+    {
+      "topic": "账户/卡/订单与有效购买",
+      "baseline": "17–20、71–72",
+      "candidate": "17–23、30、36–39、66、69–70",
+      "action": "updated_by_scoped_sources",
+      "result": "按本期MD和访谈关闭局部未知；生产身份/历史和旧报表未关闭。"
+    },
+    {
+      "topic": "真实工作/交接/行动条件",
+      "baseline": "36–39、47–51、61–62",
+      "candidate": "40–43、47–60、71–74",
+      "action": "retained_and_organized",
+      "result": "触发、三类工作、局部交接、岗位用途、注册指标、观察条件与确认规则保留。"
+    },
+    {
+      "topic": "购买时点候选与报表选择",
+      "baseline": "26",
+      "candidate": "38、82 + draft03 notes18、26–27",
+      "action": "moved_to_definition_and_history",
+      "result": "旧候选非既定业务规则；MD04月末选择与MD03自身定义留指标承接，不反填通用规则。"
+    },
+    {
+      "topic": "个人载体/FDE/维护设计",
+      "baseline": "11、28、30、41–43、52–53、63、65、75",
+      "candidate": "正文迁出；正式notes3–9、621–640；draft03 notes16–23；change_record.json",
+      "action": "authorized_migration",
+      "result": "按本人取舍迁出，原始来源/历史保留，不判业务回归失败。"
+    },
+    {
+      "topic": "旧结果与新候选版本",
+      "baseline": "正式v0.4",
+      "candidate": "dafadf82…局部来源细化",
+      "action": "preserved",
+      "result": "protected12项均匹配；旧第三稿63e045…未覆盖；新候选未接回原生提案，静态新审。"
+    }
+  ],
+  "process_separation": {
+    "business_body": "current candidate only",
+    "source_selection_and_mentor_changes": "formal notes boundary/old correction; draft03 notes; candidate change_record and diff",
+    "test_results": "existing per-run artifacts kept separate; this reviewer does not rejudge runtime answers or change scores",
+    "question_premise_correction": "formal interview_notes.md:630,640 + raw W2 Lin01918–21",
+    "monthly_statistics": "MD03/04 + draft03 notes25–30; not required inline in business body",
+    "sow_delivery": "raw Wang/Zhou sources + draft03 notes16–23; not required inline in business body"
+  },
+  "expectation_comparison": "T01/T02/T03 expectations agree with source-first criteria; no expectation repair needed; no runtime expected answer used as a business source.",
+  "integrity": {
+    "protected_files": {
+      "docs/w03/business_model.md": {
+        "expected_sha256": "6e48419390810b44cdaa1ba430b01038a54be37c9f8692b58933ac8785592bf0",
+        "actual_sha256": "6e48419390810b44cdaa1ba430b01038a54be37c9f8692b58933ac8785592bf0",
+        "match": true
+      },
+      "docs/w03/interview_notes.md": {
+        "expected_sha256": "79d4565446c27f52e572dee1010647fd3d50eca6cda694d94275370bdda704c3",
+        "actual_sha256": "79d4565446c27f52e572dee1010647fd3d50eca6cda694d94275370bdda704c3",
+        "match": true
+      },
+      "customer/w02/knowledge.json": {
+        "expected_sha256": "a0388b48296714c1a85402bc3d0b327681440ffc177ecd271d636a50ec602f01",
+        "actual_sha256": "a0388b48296714c1a85402bc3d0b327681440ffc177ecd271d636a50ec602f01",
+        "match": true
+      },
+      "customer/w02/knowledge_prompt.txt": {
+        "expected_sha256": "f0447628feb59042278a7ad473d5e4091486a92207fcea3e9d5bd42a33bff6c5",
+        "actual_sha256": "f0447628feb59042278a7ad473d5e4091486a92207fcea3e9d5bd42a33bff6c5",
+        "match": true
+      },
+      "customer/w02/workflow.json": {
+        "expected_sha256": "7e8ca7713feafdd94a7ad39dc1a6e65a3865f4663cab0578930f72fe6e1cea1b",
+        "actual_sha256": "7e8ca7713feafdd94a7ad39dc1a6e65a3865f4663cab0578930f72fe6e1cea1b",
+        "match": true
+      },
+      "customer/w02/extraction.json": {
+        "expected_sha256": "2174cead29aa9b579fbc3fd24f62c221efb92be132917925496539995eaa1002",
+        "actual_sha256": "2174cead29aa9b579fbc3fd24f62c221efb92be132917925496539995eaa1002",
+        "match": true
+      },
+      "customer/w02/skills/extract-business/SKILL.md": {
+        "expected_sha256": "925a9b94ec4cad9afeafea3e214e2de3f677bd56efb32b5ffa9e55721c609e1e",
+        "actual_sha256": "925a9b94ec4cad9afeafea3e214e2de3f677bd56efb32b5ffa9e55721c609e1e",
+        "match": true
+      },
+      "artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/session.json": {
+        "expected_sha256": "e2476369a4821f26094b2fb22628b4ce0da95ee271d565681600b04a95088e26",
+        "actual_sha256": "e2476369a4821f26094b2fb22628b4ce0da95ee271d565681600b04a95088e26",
+        "match": true
+      },
+      "artifacts/w03/model-draft-20261106/draft-03/business_model.md": {
+        "expected_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+        "actual_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+        "match": true
+      },
+      "docs/w03/metric_decisions.md": {
+        "expected_sha256": "58119844b4cc562fd68a7edeb4ad63de558363dc1fc1b3492bf28c7448bfd5bc",
+        "actual_sha256": "58119844b4cc562fd68a7edeb4ad63de558363dc1fc1b3492bf28c7448bfd5bc",
+        "match": true
+      },
+      "docs/w03/sow.md": {
+        "expected_sha256": "23973277b7b7362ca9e942ec32da5c0b905dd797860af23a4f8e62f6ebd1d870",
+        "actual_sha256": "23973277b7b7362ca9e942ec32da5c0b905dd797860af23a4f8e62f6ebd1d870",
+        "match": true
+      },
+      "customer/w03/tests.json": {
+        "expected_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "actual_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "match": true
+      }
+    },
+    "candidate_expected_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+    "candidate_matches_expected": true,
+    "writes_limited_to_static_review_directory": true,
+    "model_api_calls_by_reviewer": 0,
+    "body_or_formal_files_changed": false,
+    "workflow_mutated": false,
+    "skill_or_config_changed": false
+  },
+  "limits": [
+    "只审T01–T03静态业务建模；当前候选的实际问答成绩由其运行证据另判，不引用旧第三稿通过。",
+    "原始资料的正式规则文件、生产/历史凭据、具体活动及完整闭环缺口继续保留。",
+    "静态pass不等于82道模型问答通过、38项指标通过、已apply或客户批准。",
+    "现有来源细化候选是导师局部副本，非已对齐原生提案；这是后续版本操作边界，不是本正文语义缺陷。"
+  ]
+}

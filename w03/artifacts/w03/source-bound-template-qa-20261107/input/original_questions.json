@@ -1,0 +1,1090 @@
+{
+  "version": "w03-model-tests-user-boundary-20261106-v1",
+  "date": "2026-11-06",
+  "status": "prepared_not_run_pending_independent_review",
+  "path_base": "AIFDE项目根",
+  "model_input": "执行时另冻结当前W03候选或旧v0.4快照；本文件不自动加载模型",
+  "input_contract": "仅给单题question、fixture、指定模型快照与该题fixed_materials。禁给预期、coverage、阅读版及其他题答案。model_only仅模型；fixed/source轨道另报，不归功于模型正文；artifact_review由独立审查者审候选+修改记录，不计模型问答得分。固定材料若本就含规则，测的是应用而非规则记忆。 本人新边界见user_decisions.json：个人Excel与FDE交付事项不进入模型正文；相应题已分轨。仅送单题指定材料，不把预期或其他题答案放入实际请求。",
+  "runtime_status": "没有调用被测模型；所有题未执行",
+  "cases": [
+    {
+      "id": "U01",
+      "dimension": "模型用途与业务目标",
+      "question": "请用业务语言说明青禾的经营目标、会员运营工作和当前关键未知。理解复购变化与减少重复整理核对是什么关系？哪些观察能支持业务判断，哪些还不能说明原因或效果已经得到验证？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "U02",
+      "dimension": "概念含义与状态区分",
+      "question": "在当前模型中，会员账户、会员卡、等级、付费资格、活跃、购买记录和复购率分别表示什么？请说明它们的区别，并举一个同一账户同时具有不同属性或状态的例子，指出哪些状态不能相互推出。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "U03",
+      "dimension": "关系、统计粒度与关联路径",
+      "question": "请用“一个对象可以对应几个对象”的方式说明账户、卡、订单和门店之间的关系。假设账户归属A店、订单在B店成交，按成交门店查购买应归哪边？能否从现有关系确定订单使用了该账户的哪张卡？请说明依据及未知。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "U04",
+      "dimension": "工作流程、角色和未知交接",
+      "question": "小林准备一次会员优惠券活动，如果需要门店配合，模型目前能确认哪些工作步骤和交接？哪些仍是我方设计或待核？请选一个缺口，说清需要什么记录、向哪类经手人核对以及它影响什么判断。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "U05",
+      "dimension": "证据性质、来源和纠错",
+      "question": "请审查以下说法，逐条说明可采用、需要修正或尚不能判断，并给依据：A.陈姐已给本期卡日期规则，但具体文件与历史凭据未取得；B.小林独立证实之前项目全面无人使用；C.模型尚未核实反馈怎样返回门店，所以青禾没有这一环节；D.80万活跃与120万全量可直接算出活跃率；E.王经理认可分期思路，所以最终验收已获批准。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+      ],
+      "evaluation_domain": "原文证据/主体/权限审查，不评价正文是否含项目验收"
+    },
+    {
+      "id": "U06",
+      "dimension": "综合应用与模型分工",
+      "question": "以下仅为测试假设：本期38项指标在合成数据内已完成查询和独立核对。小林希望拿结果做优惠券活动。请结合业务模型和给定本期资料，说明结果现在能支持什么判断、还缺哪些条件、下一步由哪些角色参与。并说明卡资格规则、月末统计选择、候选名单和执行安排各应在哪里表达，哪些不能从测试正确直接推出。",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+        "W03/实操工程/materials/w03/07_客户内部沟通.md",
+        "W01/修订记录/20261106-W03新访谈修订/docs/w01/project_assessment.md",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+        "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json"
+      ],
+      "evaluation_domain": "业务知识与交付场景综合应用；合同/个人表事实来自固定材料，不计正文知识增益",
+      "user_constraint_note": "user_decisions.json只作为本人建模约束，不作客户事实或被测答案；固定材料在实际请求中必须读取。"
+    },
+    {
+      "id": "P01",
+      "dimension": "产品与等级",
+      "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "account": "A",
+        "tier": "普通",
+        "cards_complete": true,
+        "cards": [
+          {
+            "card_type": "悦享年卡",
+            "state_on_decision_day": "有效",
+            "card_paid_cents": 10000
+          }
+        ]
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "P02",
+      "dimension": "产品与等级",
+      "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "account": "A",
+        "tier": "普通",
+        "cards_complete": true,
+        "cards": [
+          {
+            "card_type": "家庭季卡",
+            "state_on_decision_day": "有效",
+            "card_paid_cents": 3000
+          }
+        ]
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "P03",
+      "dimension": "产品与等级",
+      "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "account": "A",
+        "tier": "金卡",
+        "cards_complete": true,
+        "cards": [
+          {
+            "card_type": "悦享年卡",
+            "state_on_decision_day": "已失效",
+            "card_paid_cents": 10000
+          }
+        ]
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "P04",
+      "dimension": "产品与等级",
+      "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "account": "A",
+        "tier": "金卡",
+        "cards_complete": true,
+        "cards": [
+          {
+            "card_type": "异业联名卡",
+            "state_on_decision_day": "有效",
+            "card_paid_cents": 10000
+          }
+        ]
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "P05",
+      "dimension": "产品与等级",
+      "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "account": "A",
+        "tier": "普通",
+        "cards_complete": true,
+        "cards": [
+          {
+            "card_type": "体验卡",
+            "state_on_decision_day": "有效",
+            "card_paid_cents": 0
+          }
+        ]
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "P06",
+      "dimension": "产品与等级",
+      "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "account": "A",
+        "tier": "普通",
+        "cards_complete": true,
+        "cards": [
+          {
+            "card_type": "家庭季卡",
+            "state_on_decision_day": "有效",
+            "card_paid_cents": 0
+          }
+        ]
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "P07",
+      "dimension": "信息不足",
+      "question": "只知道账户A等级为金卡，卡记录尚未提供。能否判断其本期付费资格？还需什么信息？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "cards_provided": false,
+        "tier": "金卡"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "P08",
+      "dimension": "规则适用范围",
+      "question": "能否把本期总部月报的纳入产品范围直接推广到所有历史报表和合作方报表？请说明可用范围和下一步。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "P09",
+      "dimension": "系统类别与本期资格",
+      "question": "人工情境：账户A只有有效异业联名卡，因此不在本期总部月报的付费资格范围。能否据此确定A在全系统属于免费注册类别？现有“付费会员卡、免费注册会员两类”的说法能否证明两类在系统绝对互斥？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY01",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-19"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY02",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY03",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-21"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY04",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-19"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY05",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY06",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-21"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY07",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-14"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY08",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-15"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY09",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-16"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY10",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-25",
+        "decision_date": "2026-08-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY11",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-10",
+        "hypothetical_run_date": "2026-08-31"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY12",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2025-08-19"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ01",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-19"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ02",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ03",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-21"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ04",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-19"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ05",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ06",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-21"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ07",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-14"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ08",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-15"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ09",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-16"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ10",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-25",
+        "decision_date": "2026-08-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ11",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-10",
+        "hypothetical_run_date": "2026-08-31"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ12",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-05-19"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "C01",
+      "dimension": "多卡与订单去重",
+      "question": "人工情境：账户A有两张悦享年卡，在判定日均已确认有效，并有两笔不同的有效订单O1、O2。应计几个有资格账户、几笔有效订单？关联时怎样避免错误？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "cards": [
+          "A-C1",
+          "A-C2"
+        ],
+        "orders": [
+          "O1",
+          "O2"
+        ],
+        "records_complete": true
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "C02",
+      "dimension": "多卡混合",
+      "question": "A完整卡记录中有一张已确认有效的家庭季卡、一张失效悦享年卡和一张异业联名卡。A在本期有资格吗？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "C03",
+      "dimension": "同一卡满足条件",
+      "question": "A完整卡记录只有失效悦享年卡和有效异业联名卡，能否合并两张卡的条件判为有资格？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "C04",
+      "dimension": "无卡与未知区分",
+      "question": "已确认本期完整卡表中A没有任何卡记录，是否有本期付费资格？这与卡表未提供有何不同？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "C05",
+      "dimension": "资格与行为分开",
+      "question": "人工情境：账户A在2026年8月月末有一张已确认有效的悦享年卡，该月完整订单记录没有有效购买。分别判断本期月末付费资格、当月有效购买和活跃状态。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "C06",
+      "dimension": "多卡与订单去重",
+      "question": "人工情境：账户A有一张悦享年卡和一张家庭季卡，在判定日均已确认有效，并有两笔不同的有效订单O1、O2。应计几个有资格账户、几笔有效订单？关联时怎样避免错误？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "cards": [
+          "A-C1",
+          "A-C2"
+        ],
+        "orders": [
+          "O1",
+          "O2"
+        ],
+        "records_complete": true
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "R01",
+      "dimension": "月末与购买时点",
+      "question": "人工情境：A的悦享年卡2026-08-31生效、2027-08-31计划结束、无提前终止；A在2026-08-10有一笔有效购买。8月付费购买人数是否纳入A？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "R02",
+      "dimension": "月末反方向",
+      "question": "人工情境：A的家庭季卡2026-06-30生效、2026-08-31计划结束、无提前终止，无其他卡；8月10日有一笔有效购买。8月付费购买人数是否纳入A？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "R03",
+      "dimension": "月末有资格但未购买",
+      "question": "人工情境：A月末已确认有资格，但完整8月订单只有一笔全额退款订单；B月末也有资格但无订单。8月付费购买人数是否纳入A、B？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "R04",
+      "dimension": "整月限制",
+      "question": "要求查2026-08-10至2026-08-31（不含）的付费会员复购率，应直接计算、补问还是说明不支持？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "R05",
+      "dimension": "跨月去重",
+      "question": "人工情境：A在7月、8月各只有一笔有效订单。分别解释两个月的月内购买/复购人数；能否把两个月人数相加当成跨月唯一人数？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/03_会员运营周报.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "R06",
+      "dimension": "分组与范围",
+      "question": "要求按成交门店或渠道拆8月付费会员复购率；另要求7、8月一起查。分别应如何回应？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "R07",
+      "dimension": "当前月内复购分母",
+      "question": "人工情境：测试覆盖内完整8月、全门店；同月已注册账户A没有有效订单，B有1笔有效订单，C有2笔有效订单。按当前会员周报，复购率分子、分母分别选哪些账户？为什么不能使用旧草稿的人群？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/03_会员运营周报.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "B01",
+      "dimension": "订单分类",
+      "question": "人工订单：O1 paid实付1000退款200；O2 paid实付1000退款1000；O3 cancelled实付0退款0；O4 paid实付0退款0。分别判断支付订单与有效购买，并说明退款与优惠的区别。",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "B02",
+      "dimension": "退款归期",
+      "question": "一笔8月下单的paid订单在快照中已记录累计退款，但没有退款发生日期。能否核8月订单口径净销售额？能否据此统计9月退款现金流？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "B03",
+      "dimension": "金额与件数",
+      "question": "人工订单原始quantity=3、paid=1000、refund=200且仍有效。有效订单商品件数计几件？能否从退款金额推出退了几件？购卡金额可否并入商品净额？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "B04",
+      "dimension": "首购与窗口",
+      "question": "人工情境：同一账户全覆盖历史中最早订单取消；随后7月10日有有效订单O100、O101；8月又有有效订单O200。查8月观测期首单时应选哪笔？同日如何排序？这能叫终身首购吗？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/03_会员运营周报.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "B05",
+      "dimension": "零、未定义和越界",
+      "question": "请分别解释：覆盖内筛选无匹配订单的净额、覆盖内无购买账户月份的复购率、覆盖外月份的净额。金额13000分是否等于13000元？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/02_财务邮件.md",
+        "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "B06",
+      "dimension": "维度与物理关系",
+      "question": "四张原始表各一行代表什么？关联键是什么？如果A归属甲店而O1成交乙店，两种门店统计如何区分？能否据此确定O1用了哪张卡？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "F01",
+      "dimension": "Excel用途",
+      "question": "小林的个人Excel能否作为统一口径和交付数据直接使用？还能怎样辅助我们？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+      ],
+      "evaluation_domain": "来源或交付应用，不评价模型正文是否记载相关内容"
+    },
+    {
+      "id": "F02",
+      "dimension": "偏好与授权",
+      "question": "小林更希望先支持优惠券活动，模型应如何记录？这是否改变本期查数阶段范围、授权助手发券或联系会员？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "来源或交付应用，不评价模型正文是否记载相关内容"
+    },
+    {
+      "id": "F03",
+      "dimension": "实际流程与一般做法",
+      "question": "已知小林描述活动的一般步骤，能否认定最近一次活动的名单条件、发放方式、负责同事和结果都已取得？应如何补核？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "F04",
+      "dimension": "门店配合条件",
+      "question": "助手已整理好活动信息，可否直接安排门店执行？还需明确什么，要求不清或影响考核时怎么办？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "F05",
+      "dimension": "局部链与完整闭环",
+      "question": "模型确认小林协调、陈姐落实部分门店安排，是否证明策划—执行—分析—反馈—下一轮决策全链已打通？请给一个可核查的后续动作。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "F06",
+      "dimension": "成效与活动多样性",
+      "question": "小林觉得整理名单费力，是否已测得工时并证明这是复购下降原因？除优惠券活动，是否还有其他工作？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "F07",
+      "dimension": "IT可做与未承诺",
+      "question": "老周目前可配合哪些核查？开始前需说明什么？这是否意味着已获得生产访问、交付时间和真实数据？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+        "W03/实操工程/materials/w03/07_客户内部沟通.md"
+      ],
+      "evaluation_domain": "来源或交付应用，不评价模型正文是否记载相关内容"
+    },
+    {
+      "id": "F08",
+      "dimension": "发放、核销与购买",
+      "question": "若取得某次优惠券发放记录，能否证明会员已核销、发生购买或复购提高？还需怎样核？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/07_客户内部沟通.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "F09",
+      "dimension": "发放对象与使用限制",
+      "question": "人工情境：名单能证明A收到某张优惠券，但未提供该券使用规则。能否判定A一定有使用资格、适用于所有商品和门店？哪些可以确认，哪些需核？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "F10",
+      "dimension": "注册考核与确认责任",
+      "question": "模型对导购会员注册指标已知哪些内容？王经理曾建议找小林核考核规则，能否据此登记“小林已确认完整考核口径，个人Excel可用于计分”？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-33120509-3939-5d6c-81f1-3959fed49789-transcript.json",
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-31e9e8f6-dbdd-5aca-90d0-c92014f1c5f0-transcript.json",
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json"
+      ],
+      "evaluation_domain": "来源或交付应用，不评价模型正文是否记载相关内容"
+    },
+    {
+      "id": "A01",
+      "dimension": "阶段与责任",
+      "question": "请说明本期阶段成果、客户和交付方分别准备什么，以及运营、IT、王经理参与核查的范围。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "A02",
+      "dimension": "核查与拍板",
+      "question": "王经理认可总结且参与统计口径核查，可否写他最终验收、批准预算签约并授权上线？目前谁拍板？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "A03",
+      "dimension": "费用与结算",
+      "question": "本期费用与结算条款现在可写哪些内容，哪些还不能写成约定？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "A04",
+      "dimension": "范围变更",
+      "question": "以后会员筛选出现超出书面支持范围的要求，应准备怎样的变更材料并由谁确认？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "A05",
+      "dimension": "假设客户延期",
+      "question": "以下是假设：客户迟交资料影响里程碑。项目组现在应留什么记录？继续工作、改排期和费用能否直接由王经理决定？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "A06",
+      "dimension": "资料不足后的行动",
+      "question": "范围草稿缺费用依据或责任不清时，王经理的核查流程是什么？是否代表项目整体永久否决？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "E01",
+      "dimension": "提问前提",
+      "question": "阅读给定W02小林二访MSG-01918/01919及01921。“之前项目没人用”“多了三步”分别应如何记录与使用？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "E02",
+      "dimension": "经营假设",
+      "question": "复购连续四季下滑、会员老化、三个月希望看到改善，应分别作为哪类信息？本期月报测试能证明什么？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "E03",
+      "dimension": "不同统计总体",
+      "question": "沈总说80万活跃，老周说120万系统全量，可否直接算活跃率、相减作沉睡人数或认定同口径矛盾？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "E04",
+      "dimension": "新规则与旧未知",
+      "question": "小林、老周先说日期不掌握，陈姐随后在两类卡的提问限定下给出日期规则但没掌握文件/历史凭据。现在可以怎样更新模型，哪些继续待核？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "E05",
+      "dimension": "失效来源拒绝",
+      "question": "某备忘声称每周一从CRM拉60天未购、排除员工并核勿扰名单。经来源核验，该说法只来自已作废W04会议5e112925-9605-5362-b908-1ef8849d9c5f，未获有效W03来源支持。应否加入当前模型？应保留什么状态？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "E06",
+      "dimension": "提问限定与总结认可",
+      "question": "对给定陈姐03885/03886、王经理03910/03911/03932/03933，分别说明提问提供的范围、角色新增答复和总结认可的边界。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "T01",
+      "dimension": "正文与过程分离",
+      "question": "审核候选业务模型及其修订说明：业务对象、关系、规则、流程与待核是否可直接阅读？证据取舍、导师调整、提问前提纠错和测试成绩分别放在哪里？",
+      "input_track": "artifact_review",
+      "fixed_materials": [],
+      "evaluation_domain": "业务模型内容审查"
+    },
+    {
+      "id": "T02",
+      "dimension": "证据与字段审计",
+      "question": "逐条抽查候选模型中所有新增“已确认”语句、引用和字段：能否回到完整问答或本期材料？是否把教师例子、推测字段或测试覆盖变成客户生产事实？",
+      "input_track": "artifact_review",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/02_财务邮件.md",
+        "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+        "W03/实操工程/materials/w03/05_数据字典.md",
+        "W03/实操工程/materials/w03/06_任务清单.md",
+        "W03/实操工程/materials/w03/07_客户内部沟通.md",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "业务模型内容审查"
+    },
+    {
+      "id": "T03",
+      "dimension": "历史回归与版本",
+      "question": "比较W02 v0.4和W03候选：哪些经营目标、关系、流程和权限须保留，哪些旧待核可据本周更新？怎样保存前后结果？",
+      "input_track": "artifact_review",
+      "fixed_materials": [
+        "W03/实操工程/docs/w03/business_model.md",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "evaluation_domain": "业务模型内容审查"
+    },
+    {
+      "id": "REG01",
+      "dimension": "W02原题回归",
+      "question": "青禾准备先给小林和陈姐提供会员运营支持，你会建议第一版交付什么、怎样接到实际工作，以及怎样判断有没有帮助？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "REG02",
+      "dimension": "W02原题回归",
+      "question": "结合青禾目前的情况，你建议第一阶段优先解决什么问题、形成什么阶段交付，供沈总判断下一步怎样推进？请说明理由。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    }
+  ],
+  "fixture_policy": "题干中A/B、O1/O2、给定日期金额和假设活动均为人工构造的隔离测试输入，不是实际CSV记录或客户已发生事件；不改客户事实。指定完整卡/订单记录时可据此作否定判断；未提供不等于不存在。"
+}

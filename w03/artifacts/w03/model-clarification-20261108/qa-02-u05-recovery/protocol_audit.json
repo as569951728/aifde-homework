@@ -1,0 +1,49 @@
+{
+  "status": "all_selected_native_records_and_model_inputs_checked",
+  "cases": [
+    {
+      "id": "U05",
+      "audit_status": "passed",
+      "execution_status": "succeeded",
+      "run": "artifacts/w02/knowledge_runs/RUN-46922bfcf57546619e70f4c94bb0c133/run.json",
+      "native_structure_check": "passed",
+      "output_sha256": "907fb52fd1aa47285e3e867682ad790364de4c81ccc91dc3692ee4f19da4514b",
+      "checks": [
+        "native_file_hashes_match",
+        "actual_request_exactly_matches_frozen_question_model_prompt",
+        "all_http_attempt_inputs_and_policy_match",
+        "native_contract_and_output_record_match"
+      ],
+      "errors": [],
+      "api_attempt_count": 1,
+      "question_sha256": "fb6438091b886eeb79abcd11b4fecf188ebed9e0faf0a9be9e49101e43be3cf7",
+      "messages_sha256": "41db6a748a7be509ad884eed8422e68b0a136d8ee5273a15ffb57f834cc4a655",
+      "request_sha256": "93aa2deba9ff0bcfdf3492a23fb3869e624a6ac702e371ac0f1d5028ad146459",
+      "expected_sent": false,
+      "tools": [],
+      "attempt_outcomes": [
+        {
+          "finish_reason": "stop",
+          "error": null,
+          "seconds": 26.357
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 9143,
+        "completion_tokens": 4220,
+        "total_tokens": 13363,
+        "completion_tokens_details": {
+          "reasoning_tokens": 3491
+        }
+      },
+      "native_error": null
+    }
+  ],
+  "index_errors": [],
+  "audited_cases": 1,
+  "http_attempts": 1,
+  "successful_answers": 1,
+  "semantic_review": "not_performed; independent reviewer required",
+  "auditor_sha256": "cdad134399e370e6d45dab8dee7ee313dffb3dc119deaa40032a8cb4eb358d3e",
+  "actual_model_calls_by_auditor": 0
+}

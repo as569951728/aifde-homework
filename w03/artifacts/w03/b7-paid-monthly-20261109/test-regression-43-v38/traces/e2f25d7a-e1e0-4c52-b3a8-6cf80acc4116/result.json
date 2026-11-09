@@ -1,0 +1,58 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "new_member_count",
+      "first_buyer_count",
+      "first_order_sales_cents",
+      "first_order_count",
+      "repeat_order_count",
+      "valid_order_count"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  MAX(subq_12.new_member_count) AS new_member_count\n  , MAX(subq_19.first_buyer_count) AS first_buyer_count\n  , MAX(subq_19.first_order_sales_cents) AS first_order_sales_cents\n  , MAX(subq_19.first_order_count) AS first_order_count\n  , MAX(subq_19.repeat_order_count) AS repeat_order_count\n  , MAX(subq_19.valid_order_count) AS valid_order_count\nFROM (\n  SELECT\n    SUM(CASE WHEN member_id IS NOT NULL THEN 1 ELSE 0 END) AS new_member_count\n  FROM \"data\".\"main\".\"members\" members_src_10000\n  WHERE DATE_TRUNC('day', registered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_12\nCROSS JOIN (\n  SELECT\n    COUNT(DISTINCT case when is_first_valid_order then member_id end) AS first_buyer_count\n    , SUM(case when is_first_valid_order then net_sales_cents else 0 end) AS first_order_sales_cents\n    , SUM(CASE WHEN case when is_first_valid_order then order_id end IS NOT NULL THEN 1 ELSE 0 END) AS first_order_count\n    , SUM(CASE WHEN case when is_repeat_valid_order then order_id end IS NOT NULL THEN 1 ELSE 0 END) AS repeat_order_count\n    , SUM(CASE WHEN case when status = 'paid' and paid_cents - refund_cents > 0 then order_id end IS NOT NULL THEN 1 ELSE 0 END) AS valid_order_count\n  FROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_19",
+  "columns": [
+    "new_member_count",
+    "first_buyer_count",
+    "first_order_sales_cents",
+    "first_order_count",
+    "repeat_order_count",
+    "valid_order_count"
+  ],
+  "rows": [
+    [
+      0,
+      5,
+      12800,
+      5,
+      22,
+      27
+    ]
+  ],
+  "seconds": 0.06,
+  "units": {
+    "new_member_count": "count",
+    "first_buyer_count": "count",
+    "first_order_sales_cents": "cents",
+    "first_order_count": "count",
+    "repeat_order_count": "count",
+    "valid_order_count": "count"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "在2026年8月（2026-08-01至2026-09-01）的青禾数据范围内：注册会员数为0（统计范围内确为零）；观测期首购会员数为5个会员账户，观测期首单数为5笔，观测期首单净销售额为12800分，即128.00元；观测期后续购买订单数为22笔；有效订单数为27笔。会员数按CRM会员账户计数，不等同于跨系统自然人；首购会员和首单基于全测试覆盖历史排序后确定，不代表终身首购；后续购买订单数按第二笔及以后的有效订单计数，不等同于复购人数。",
+  "question": "请同时列出2026年8月青禾优选的注册会员数、观测期首购会员数、观测期首单净销售额（单位分）、观测期首单数、观测期后续购买订单数和有效订单数。",
+  "trace_id": "e2f25d7a-e1e0-4c52-b3a8-6cf80acc4116",
+  "elapsed_seconds": 28.184,
+  "model_usage": {
+    "prompt_tokens": 13173,
+    "completion_tokens": 863,
+    "total_tokens": 14036
+  },
+  "model_calls_with_usage": 2
+}

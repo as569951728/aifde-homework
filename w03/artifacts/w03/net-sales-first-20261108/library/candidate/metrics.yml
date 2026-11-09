@@ -1,0 +1,73 @@
+version: 2
+semantic_models:
+- name: orders
+  model: ref('orders')
+  defaults:
+    agg_time_dimension: ordered_at
+  entities:
+  - name: order
+    type: primary
+    expr: order_id
+  - name: member
+    type: foreign
+    expr: member_id
+  - name: store
+    type: foreign
+    expr: store_id
+  dimensions:
+  - name: ordered_at
+    type: time
+    type_params:
+      time_granularity: day
+  - name: channel
+    type: categorical
+  - name: status
+    type: categorical
+  measures:
+  - name: net_sales_cents_sum
+    expr: CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END
+    agg: sum
+- name: members
+  model: ref('members')
+  entities:
+  - name: member
+    type: primary
+    expr: member_id
+  - name: home_store
+    type: foreign
+    expr: home_store_id
+  dimensions:
+  - name: tier
+    type: categorical
+  measures: []
+- name: store
+  model: ref('stores')
+  entities:
+  - name: store
+    type: primary
+    expr: store_id
+  dimensions:
+  - name: region
+    type: categorical
+  - name: store_name
+    type: categorical
+  measures: []
+- name: home_store
+  model: ref('stores')
+  entities:
+  - name: home_store
+    type: primary
+    expr: store_id
+  dimensions:
+  - name: region
+    type: categorical
+  - name: store_name
+    type: categorical
+  measures: []
+metrics:
+- name: net_sales_cents
+  label: 净销售额
+  description: paid 订单实付金额减累计退款后的合计；取消单不计；按原订单下单日期归属；单位分。
+  type: simple
+  type_params:
+    measure: net_sales_cents_sum

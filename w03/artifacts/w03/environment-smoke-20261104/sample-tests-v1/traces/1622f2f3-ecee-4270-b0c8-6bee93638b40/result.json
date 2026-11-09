@@ -1,0 +1,38 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "monthly_large_buyer_count"
+    ],
+    "start": "2026-07-01",
+    "end": "2026-08-01",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  SUM(CASE WHEN net_receipts_cents >= 10000 THEN 1 ELSE 0 END) AS monthly_large_buyer_count\nFROM \"data\".\"main\".\"monthly_member_receipts\" monthly_member_receipts_src_10000\nWHERE DATE_TRUNC('month', month_start) BETWEEN '2026-07-01' AND '2026-07-31'",
+  "columns": [
+    "monthly_large_buyer_count"
+  ],
+  "rows": [
+    [
+      1
+    ]
+  ],
+  "seconds": 0.02,
+  "units": {
+    "monthly_large_buyer_count": "count"
+  },
+  "data_version": "wutong-sample-v2",
+  "data_sha256": "6e4f21b3e478cc6fa6b54fe2469267b23f70a7dae3e718db065d6169447ec440",
+  "catalog_sha256": "9b85deabe0f4c035e61f0c48db6ad19033b84c0533652e0e83ef2783e574c788",
+  "answer": "2026 年 7 月，梧桐书店的月内大额会员数为 1 个会员账户。统计范围为 2026-07-01 至 2026-08-01 的整月，按原订单日期归月；仅计已支付订单，按实付减退回累计，取消单不计；同一会员当月扣退后收入累计达到 10000 分（含等于，即 100.00 元）即计入。本次没有额外门店、地区筛选或分组。人数按账户统计，不表示跨系统自然人已去重；该指标仅支持整月查询。结果为覆盖范围内的计数 1。",
+  "question": "2026 年 7 月梧桐书店月内大额会员数是多少？",
+  "trace_id": "1622f2f3-ecee-4270-b0c8-6bee93638b40",
+  "elapsed_seconds": 6.969,
+  "model_usage": {
+    "prompt_tokens": 4259,
+    "completion_tokens": 735,
+    "total_tokens": 4994
+  },
+  "model_calls_with_usage": 2
+}

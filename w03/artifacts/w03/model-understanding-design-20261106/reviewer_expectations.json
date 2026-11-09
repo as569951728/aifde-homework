@@ -1,0 +1,259 @@
+{
+  "version": "w03-model-understanding-v0.1",
+  "status": "mentor_draft_not_frozen_not_run",
+  "audience": "reviewer_only",
+  "path_base": "AIFDE项目根目录",
+  "grading": "逐条核结论、理由、来源和边界；通过／需修订／无法判断分别记录。用词可不同，不用关键词计分。关键错误不能靠其他题得分抵消。",
+  "phase_handling": "U01及W02关键边界用于回归；含W03新增事实的期望用于更新后候选。旧v0.4缺新增事实而保留未知，记录为缺新增覆盖，不倒改旧成绩。执行前冻结题目与预期；发现预期错误则另版记录并对受影响比较同样重跑，不就地改答案使输出通过。",
+  "cases": [
+    {
+      "id": "U01",
+      "required_points": [
+        "区分理解复购变化／支持改善选择与减少小林重复整理核对两个目标；岗位提效不证明复购改善。",
+        "保留沈总优先验证复购下降原因、会员老化是待验证假设；口径和记录核查是前提及当前支持路径，不偷换成全部经营目标。",
+        "本期可核对问数能支持范围、依据、缺口及下一步分析判断；不能从测试正确推出真实原因、三个月改善或投入回报。"
+      ],
+      "unacceptable": [
+        "用“完成38项”替代原因验证目标",
+        "把会员老化写成已证实原因",
+        "把省时或复购提升写成已发生"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-0d5ba288-a623-56f1-84ac-bec076880d43-transcript.json",
+          "locator": "MSG-01731、MSG-01733、MSG-01737、MSG-01739",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+          "locator": "MSG-01925",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03856、MSG-03860",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/before-extension/business_model-v0.4.md",
+          "locator": "§1、§5",
+          "evidence_kind": "已采纳建模认识，非新增客户事实"
+        }
+      ],
+      "related_existing": [
+        "QH-KNOW-02",
+        "QH-KNOW-01"
+      ]
+    },
+    {
+      "id": "U02",
+      "required_points": [
+        "账户是本期统计标识，卡是可多张关联的权益记录，等级不等于付费资格；账户不自动等于跨系统自然人。",
+        "付费资格依业务范围和判定日；活跃依定义、期间、范围，是当前模型的分析属性，不是与付费／免费并列的永久第三身份；活跃定义未核时不能从无购买直接判不活跃。",
+        "购买是行为，由订单记录承载；复购率是有定义与范围的群体指标，定义与某期数值分开，不能当单个会员的固定身份。",
+        "例子中的结论条件一致，例如普通等级可有本期资格，但资格不证明发生购买，也不替代活跃定义。可接受其他有依据的例子，不要求固定措辞或本体术语。"
+      ],
+      "unacceptable": [
+        "把会员、卡、账户、自然人混成一个对象",
+        "把活跃定义为未经确认的固定阈值或第三身份",
+        "把等级、资格、购买和复购任意等同"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/before-extension/business_model-v0.4.md",
+          "locator": "§2：会员、活跃、购买记录／订单、复购率",
+          "evidence_kind": "已采纳的概念划分，非唯一建模形式"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "orders、members、cards",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03848、MSG-03854、MSG-03868、MSG-03870",
+          "evidence_kind": "访谈或指定材料"
+        }
+      ],
+      "related_existing": [
+        "M01",
+        "M03",
+        "M04"
+      ]
+    },
+    {
+      "id": "U03",
+      "required_points": [
+        "本期一账户可多卡、可多订单；订单关联一个CRM账户和一个成交门店，记录粒度分别是账户、卡、订单，不能按卡数重复计人或订单。",
+        "订单成交门店与账户归属门店是不同关系；题设成交统计归B店，不因账户归属A店改为A店。",
+        "仅有订单到账户、卡到账户的关联，不证明订单具体使用哪张卡；不能凭同属一个账户创造订单用卡事实。",
+        "本期测试数据关系可用于建模，不推断生产CRM与旧POS的自然人身份已统一；无需逐字背字段名或给SQL。"
+      ],
+      "unacceptable": [
+        "把归属门店当所有订单的成交门店",
+        "把账户的每张卡都连成订单实际用卡",
+        "多卡关联造成重复对象或重复订单"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "orders.member_id／store_id；members.home_store_id；cards.member_id",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03886、MSG-03890",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/07_客户内部沟通.md",
+          "locator": "IT对接纪要",
+          "evidence_kind": "访谈或指定材料"
+        }
+      ],
+      "related_existing": [
+        "M01",
+        "M03"
+      ]
+    },
+    {
+      "id": "U04",
+      "required_points": [
+        "结合小林先明确面向谁／做什么、确认执行方式与协作人、跟进发放使用反馈、整理结果和未核问题的一般做法；不捏造实际某场活动的名单条件。",
+        "门店准备要明确范围、门店任务、工作量、现场答复和记录；陈姐与门店相关同事确认人员及执行，整理完信息不等于已安排。",
+        "陈姐与小林的局部活动／反馈对接已有陈述；具体后续分析者、答复返回方式和同一实例闭环仍未核，不能说完整经营闭环已运行，也不能说不存在该流程。",
+        "活动、反馈、名单、Excel等可按用途说明输入产出与关联；不强制都建成独立对象／系统。提出可核查的下一步并保留具体责任人未知，不擅自任命。"
+      ],
+      "unacceptable": [
+        "将我方经营框架写成客户实际已运行流程",
+        "把未知交接写成没有交接",
+        "把小林个人Excel直接当统一交付数据或完整活动平台"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03858、MSG-03860、MSG-03862",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+          "locator": "MSG-01945、MSG-01949、MSG-01953",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03888、MSG-03890",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/before-extension/business_model-v0.4.md",
+          "locator": "§2保留设计、§3局部流程与经营框架",
+          "evidence_kind": "已采纳建模选择及已标注我方设计"
+        }
+      ],
+      "related_existing": [
+        "M05",
+        "QH-KNOW-01"
+      ]
+    },
+    {
+      "id": "U05",
+      "required_points": [
+        "A保留为正确W03角色业务规则依据与尚缺凭据的并列状态，不能因文件未得而把已回答规则全部退回未知。",
+        "B需修正：原问题01918先带入“没人用”，01919的回应不构成独立证实；保留操作负担为个人感受，精确步骤与失败原因仍待核。",
+        "C需修正：未核实不代表不存在；D不能直接计算，两个角色数字的口径、来源、时点仍需核实。",
+        "E需修正：王经理提出核查意见，最终验收人、授权和批准仍未定。结论需与相应主体和来源对应，不只列一串无关引用。"
+      ],
+      "unacceptable": [
+        "所有说法一概待核，忽略已有日期规则",
+        "截掉提问前提，把角色顺答升级为独立事实",
+        "用同人复述冒充多源交叉验证或凭核查意见宣布批准"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+          "locator": "MSG-01918、MSG-01919、MSG-01921",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+          "locator": "MSG-01945、MSG-01953",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-0d5ba288-a623-56f1-84ac-bec076880d43-transcript.json",
+          "locator": "MSG-01719",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-c4fe490a-ddae-5bcb-a51b-f44dd796b854-transcript.json",
+          "locator": "MSG-01744",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+          "locator": "MSG-03911、MSG-03931、MSG-03933",
+          "evidence_kind": "访谈或指定材料"
+        }
+      ],
+      "related_existing": [
+        "M06",
+        "M07",
+        "M08"
+      ]
+    },
+    {
+      "id": "U06",
+      "required_points": [
+        "问数可帮助小林核名单和口径、发现遗漏或重复，为后续分析准备基础；没有真实业务归因、节省工时或复购改善证据。",
+        "卡范围、有效期与账户关系进入业务模型；本期月末时点、分子分母与完整自然月等属于指标定义；执行安排和阶段职责在流程／SOW表达，过程取舍留审核记录。可有交叉引用，不强制所有内容复制进模型正文。",
+        "统计人群、待审核候选和最终执行人群不同；需确认具体活动筛选条件、数据及审核／执行责任；不自动发券、联系会员或改记录，个人Excel不是独立真值或直接交付数据。",
+        "结合已知角色分工说明下一步：运营核业务范围与实际任务、门店按明确条件配合、IT核字段覆盖、王经理核统计与验收依据；具体未知负责人继续落实。",
+        "测试正确不等于生产已接通、预算／合同／正式验收批准或收益达成。必须保留“测试假设”性质，不把题设写回项目实际进度。"
+      ],
+      "unacceptable": [
+        "把月末资格写成一切业务的永久规则",
+        "从月报购买人数直接产生已授权营销名单",
+        "以测试通过宣布正式上线、验收或复购改善"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "统计选择与本阶段验收范围",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/07_客户内部沟通.md",
+          "locator": "运营群、IT纪要、范围评审",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03858、MSG-03860、MSG-03862、MSG-03868、MSG-03870",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+          "locator": "MSG-03911、MSG-03919、MSG-03931",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W01/修订记录/20261106-W03新访谈修订/docs/w01/project_assessment.md",
+          "locator": "§1、§5",
+          "evidence_kind": "导师代拟、本人已采纳的阶段判断；非客户批准"
+        }
+      ],
+      "related_existing": [
+        "M04",
+        "M05",
+        "M06",
+        "QH-KNOW-02"
+      ]
+    }
+  ]
+}

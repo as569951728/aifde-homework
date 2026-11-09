@@ -1,0 +1,256 @@
+{
+  "approved_to_build": true,
+  "failed_checks": [],
+  "reviewed_at_utc": "2026-11-08T09:22:47.953309+00:00",
+  "scope": "B4 eight ratios, six concrete questions; U01 answer-only audit",
+  "expected_frozen_before_generated_outputs_read": true,
+  "skill_sha256": "d40329243c2c60c64ddfee0cb1b0617c4c2745c4b52d2b5d2f4b2b2570ea0fb2",
+  "judge_sha256": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3",
+  "skill_support": "v0.1.2 already supports ratio references to batch-defined metrics, complete dependency closure, required units, source quotes and separate row sets. Original finance source defines null denominator, aggregate ratio formulas. No Skill or judge changes required before building this batch. Generated candidate still needs dependency/semantic/SQL review.",
+  "tolerance": {
+    "rel_tol": 1e-09,
+    "abs_tol": 1e-07,
+    "matches_frozen_contract": true
+  },
+  "checks": [
+    {
+      "id": "positive_B4-N01",
+      "source_kind": "frozen_expectation_synthetic_comparator_only",
+      "expected_passed": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "passed": true
+    },
+    {
+      "id": "positive_B4-Z01",
+      "source_kind": "frozen_expectation_synthetic_comparator_only",
+      "expected_passed": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "passed": true
+    },
+    {
+      "id": "positive_B4-R01",
+      "source_kind": "frozen_expectation_synthetic_comparator_only",
+      "expected_passed": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "passed": true
+    },
+    {
+      "id": "positive_B4-D01-store",
+      "source_kind": "frozen_expectation_synthetic_comparator_only",
+      "expected_passed": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "passed": true
+    },
+    {
+      "id": "positive_B4-D01-all",
+      "source_kind": "frozen_expectation_synthetic_comparator_only",
+      "expected_passed": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "passed": true
+    },
+    {
+      "id": "positive_B4-F01",
+      "source_kind": "frozen_expectation_synthetic_comparator_only",
+      "expected_passed": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "passed": true
+    },
+    {
+      "id": "ratio_tolerance_inside",
+      "source_kind": "frozen_expectation_synthetic_comparator_only",
+      "expected_passed": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "passed": true
+    },
+    {
+      "id": "ratio_tolerance_outside",
+      "source_kind": "frozen_expectation_synthetic_comparator_only",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.refund_amount_rate",
+            "expected": 0.15749685006299874,
+            "actual": 0.15750685006299875,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "id": "raw_ratio_replaced_by_percent",
+      "source_kind": "frozen_expectation_synthetic_comparator_only",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.refund_amount_rate",
+            "expected": 0.15749685006299874,
+            "actual": 15.749685006299874,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "id": "items_per_order_wrong_dimensionless_unit",
+      "source_kind": "frozen_expectation_synthetic_comparator_only",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "units",
+            "expected": {
+              "avg_order_value": "cents_per_order",
+              "avg_buyer_value": "cents_per_member",
+              "purchase_frequency": "orders_per_member",
+              "refund_amount_rate": "ratio",
+              "cancel_rate": "ratio",
+              "refund_order_rate": "ratio",
+              "discount_rate": "ratio",
+              "items_per_order": "items_per_order"
+            },
+            "actual": {
+              "avg_order_value": "cents_per_order",
+              "avg_buyer_value": "cents_per_member",
+              "purchase_frequency": "orders_per_member",
+              "refund_amount_rate": "ratio",
+              "cancel_rate": "ratio",
+              "refund_order_rate": "ratio",
+              "discount_rate": "ratio",
+              "items_per_order": "ratio"
+            },
+            "rule": "exact units, no missing/extra units"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "id": "full_refund_null_replaced_with_zero",
+      "source_kind": "frozen_expectation_synthetic_comparator_only",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.avg_order_value",
+            "expected": null,
+            "actual": 0,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "id": "unweighted_store_ratio_mean",
+      "source_kind": "frozen_expectation_synthetic_comparator_only",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.avg_buyer_value",
+            "expected": 2863.6363636363635,
+            "actual": 5187.5,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.avg_order_value",
+            "expected": 2625.0,
+            "actual": 3687.5,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.cancel_rate",
+            "expected": 0.07692307692307693,
+            "actual": 0.037037037037037035,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.items_per_order",
+            "expected": 1.4166666666666667,
+            "actual": 1.7083333333333333,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.purchase_frequency",
+            "expected": 1.0909090909090908,
+            "actual": 1.3333333333333333,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.refund_amount_rate",
+            "expected": 0.045454545454545456,
+            "actual": 0.049206349206349205,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.refund_order_rate",
+            "expected": 0.16666666666666666,
+            "actual": 0.3333333333333333,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "passed": true
+    }
+  ],
+  "checks_total": 12,
+  "checks_passed": 12,
+  "reused_evidence": [
+    {
+      "path": "artifacts/w03/b1-amounts-20261108/independent/judge-multi-metric-selfcheck.json",
+      "sha256": "fc0456dd6e697e15e6b36b8555cfab782b59cbe8f9badf1134d535d952e8b675",
+      "judge_same": true,
+      "scope": "Reuse prior structural, version, row/column, type/integer controls. Prior null check synthetic; B4 real null controls still required after run."
+    },
+    {
+      "path": "artifacts/w03/b2-order-counts-20261108/judge-injections-v1.json",
+      "sha256": "2db7e5940ae6aad483b37caf49724a2621c748ea2d00ea35da5dd8c967ed7aef",
+      "judge_same": true,
+      "scope": "Reuse prior structural, version, row/column, type/integer controls. Prior null check synthetic; B4 real null controls still required after run."
+    }
+  ],
+  "real_result_controls_pending": [
+    "correct original + rows/columns reorder",
+    "zero-denominator real null -> 0",
+    "ratio value -> 100x percent",
+    "whole-window result -> unweighted mean of actual store ratios"
+  ],
+  "coverage_limits": [
+    "July per-store discount rates are all zero; that metric alone cannot distinguish averaging store rates",
+    "July buyer sets are disjoint across stores; D01 alone cannot detect summing cross-store distinct accounts; B3 separately covers account aggregation",
+    "Small data contains no paid zero-amount order; prior B2 isolated fixture is separate evidence, not part of these six expected results"
+  ],
+  "human_decisions": [],
+  "model_calls": 0,
+  "query_calls": 0
+}

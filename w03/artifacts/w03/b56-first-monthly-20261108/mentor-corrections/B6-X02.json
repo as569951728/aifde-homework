@@ -1,0 +1,52 @@
+{
+  "case_id": "B6-X02",
+  "kind": "mentor_answer_copy_not_native_rerun",
+  "prepared_at": "2026-11-09",
+  "original_report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+  "original_trace": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/337712ba-a499-4cf0-b9e7-80397f528e73/result.json",
+  "original_trace_sha256": "3429919f59d17ac5428541f88303098e749a3c25257a8dedd89e1221a2d57521",
+  "question": "请将2026年8月青禾优选的月内购买会员数、月内复购会员数和月内复购率按订单成交门店分别列出。",
+  "original_text_field": "reason",
+  "original_answer": "月内购买会员数、月内复购会员数和月内复购率均为仅整月、全门店口径，不支持按订单成交门店（store）拆分；这些指标可用的门店相关维度仅为会员归属门店，不能替代成交门店。",
+  "corrected_answer": "月内购买会员数、月内复购会员数和月内复购率均为仅整月、全门店口径，不支持按订单成交门店（store）拆分；这三项仅支持全门店汇总，既不按成交门店，也不按会员归属门店拆分。",
+  "original_actual": {
+    "status": "unsupported",
+    "reason": "月内购买会员数、月内复购会员数和月内复购率均为仅整月、全门店口径，不支持按订单成交门店（store）拆分；这些指标可用的门店相关维度仅为会员归属门店，不能替代成交门店。",
+    "intent": {
+      "status": "unsupported",
+      "reason": "月内购买会员数、月内复购会员数和月内复购率均为仅整月、全门店口径，不支持按订单成交门店（store）拆分；这些指标可用的门店相关维度仅为会员归属门店，不能替代成交门店。",
+      "metrics": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "start": "2026-08-01",
+      "end": "2026-09-01",
+      "group_by": [
+        "store"
+      ],
+      "filters": []
+    },
+    "question": "请将2026年8月青禾优选的月内购买会员数、月内复购会员数和月内复购率按订单成交门店分别列出。",
+    "trace_id": "337712ba-a499-4cf0-b9e7-80397f528e73",
+    "elapsed_seconds": 4.475,
+    "model_usage": {
+      "prompt_tokens": 9846,
+      "completion_tokens": 597,
+      "total_tokens": 10443
+    },
+    "model_calls_with_usage": 1
+  },
+  "changed_fields": [
+    "reason"
+  ],
+  "reason": "结构可达维度不等于月度查询政策支持维度",
+  "sources": [
+    "materials/w03/03_会员运营周报.md",
+    "docs/w03/contract.md"
+  ],
+  "model_calls": 0,
+  "queries": 0,
+  "native_score_changed": false,
+  "automatic_product_fix": false
+}

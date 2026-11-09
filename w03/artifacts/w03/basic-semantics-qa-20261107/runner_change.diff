@@ -1,0 +1,11 @@
+--- monthly-runner
++++ basic-semantics-runner
+@@ -87,7 +87,7 @@
+                          model="deepseek-flash", profile="deepseek-json", timeout=180,
+                          max_tokens=8192, retry_max_tokens=16384, retry_timeout=240)
+     model.deadline = time.monotonic() + 420
+-    agent = Agent(ROOT / ".runtime/w03-monthly-application-qa-20261107" / case["id"], model)
++    agent = Agent(ROOT / ".runtime/w03-basic-semantics-qa-20261107" / case["id"], model)
+     try:
+         result = agent.answer_business_model(ROOT, CONFIG, question_for(case),
+                                              include_knowledge=True, expected="", pair_id=None,

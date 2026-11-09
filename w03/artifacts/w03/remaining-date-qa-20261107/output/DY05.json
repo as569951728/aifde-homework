@@ -1,0 +1,27 @@
+{
+  "case_id": "DY05",
+  "started_at": "2026-11-07T03:58:37.284819+00:00",
+  "completed_at": "2026-11-07T03:58:51.204300+00:00",
+  "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "card_type": "悦享年卡",
+    "valid_from": "2025-08-20",
+    "valid_until": "2026-08-20",
+    "ended_at": null,
+    "decision_date": "2026-08-20"
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-5f1b3e2a583c4d25b0f39d5c3bd071e4/run.json",
+    "run_id": "RUN-5f1b3e2a583c4d25b0f39d5c3bd071e4",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "判定日：2026-08-20\n产品范围：纳入\n结论：无效\n\n| 检查项 | 题设日期 | 判定日是否满足本项条件 | 依据 |\n| --- | --- | --- | --- |\n| 生效日 | 2025-08-20 | 是 | 权益自生效日期当天起有效；判定日在其后。 |\n| 计划结束日 | 2026-08-20 | 否 | 计划权益结束日期当天已无效；判定日等于该日。 |\n| 提前终止日 | 空 | 是 | 提前终止为空仅表示无提前终止，不因此失效，但仍受计划结束日限制。 |\n\n| 区间种类 | 起点 | 含起点 | 终点 | 含终点 |\n| --- | --- | --- | --- | --- |\n| 计划区间 | 2025-08-20 | 是 | 2026-08-20 | 否 |\n| 综合有效区间 | 2025-08-20 | 是 | 2026-08-20 | 否 |\n\n来源与范围：产品范围见小林 MSG-03848、03854；日期端点规则见陈姐 MSG-03886、03888、03890；本次为人工构造隔离测试情境下的推导，未查询客户系统，不代表客户实际记录或实际执行。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "6619e3662744dbc0bcac27b67c5da7a623ae114a724562d0f2984928aee0df4f"
+}

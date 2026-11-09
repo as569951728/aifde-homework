@@ -1,0 +1,81 @@
+{
+  "created_at": "2026-11-07T05:18:22.557099+00:00",
+  "status": "approved_for_frozen_input_review",
+  "approved": true,
+  "approval_scope": "candidate_mechanism_only_not_execution",
+  "approved_for_execution": false,
+  "run_allowed": false,
+  "failed_checks": [],
+  "checks": [
+    {
+      "name": "only_one_contiguous_insert_into_stage3_prompt",
+      "passed": true
+    },
+    {
+      "name": "prior_scope_source_math_date_and_json_rules_unchanged",
+      "passed": true
+    },
+    {
+      "name": "source_audit_trigger_and_nontrigger_are_explicit",
+      "passed": true
+    },
+    {
+      "name": "visible_evidence_structure_not_private_reasoning",
+      "passed": true
+    },
+    {
+      "name": "earliest_speaker_and_repeated_vs_new_information",
+      "passed": true
+    },
+    {
+      "name": "result_presupposition_distinct_from_asking_cause",
+      "passed": true
+    },
+    {
+      "name": "actual_qualifier_scope_and_prose_consistency",
+      "passed": true
+    },
+    {
+      "name": "valid_independent_observation_not_blanket_rejected",
+      "passed": true
+    },
+    {
+      "name": "missing_original_qa_does_not_invite_fabrication",
+      "passed": true
+    },
+    {
+      "name": "no_case_ids_or_customer_answers_in_new_text",
+      "passed": true
+    },
+    {
+      "name": "source_first_design_frozen_before_prompt_review",
+      "passed": true
+    }
+  ],
+  "previous_prompt_sha256": "784ca33d9f2987261e27127bcbf7fa5abb92cb2af470a27071464ecae9fc73a2",
+  "candidate_prompt_sha256": "f30959d4c19c0324f76ad11d642e0842d3d7e6c5e7694a4505c7585caf531065",
+  "source_first_criteria_sha256": "3e1894c7d6693d3f67e26c481814b81ec2b46693cb1c7e7562ebac760c5798cd",
+  "controls_sha256": "ab9b9cc644734f711da910f947c6ec37e35b1882bfebee458624f51cfc9bb528",
+  "control_design_approval_sha256": "28b6b4ae2f8fc9999a31f855650c72b3a718051a3bb3d65d38637a8f5f69bf9a",
+  "change": {
+    "operation": "single contiguous insertion between source and numeric rules",
+    "inserted_characters": 492,
+    "no_business_model_or_question_or_expected_edit_in_this_review": true
+  },
+  "conclusion": "有区分力的通用可核查证据摘要机制，未嵌入题号或业务答案；可以进入实际输入冻结审核。此审查不证明模型将正确填写表格或与结论保持一致，必须按全部原期望逐断言复审。",
+  "expected_controls": [
+    "E01及U05检查前提来源与角色观察不混淆",
+    "CTRL01检查非诱导角色新增观察不会被一律否定",
+    "CTRL03检查有效W02来源不会被整周剔除",
+    "TRACECTRL01检查不同情境中的结果前提/局部新观察/估计限定迁移",
+    "CTRL02/CTRL04/FMTCTRL01及原业务题检查其他既有能力与输出协议不退化"
+  ],
+  "scoring_constraints": [
+    "不因多了证据表就通过；表格与后续正文都需正确，关键断言相互矛盾即失败。",
+    "不继承stage3或更早通过分；Stage3 E01失败保留。",
+    "仅见模型转述时明确可见范围，不能要求答复编造原问答。",
+    "新增合成控制不增加青禾事实覆盖或生产效果证据。"
+  ],
+  "human_decisions": [],
+  "api_calls": 0
+}

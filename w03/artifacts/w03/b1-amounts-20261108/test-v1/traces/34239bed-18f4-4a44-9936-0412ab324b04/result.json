@@ -1,0 +1,74 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "payment_cents",
+      "refund_cents",
+      "net_sales_cents",
+      "gross_cents",
+      "discount_cents"
+    ],
+    "start": "2026-07-01",
+    "end": "2026-08-01",
+    "group_by": [
+      "store"
+    ],
+    "filters": []
+  },
+  "sql": "SELECT\n  store\n  , SUM(__payment_cents) AS payment_cents\n  , SUM(__refund_cents) AS refund_cents\n  , SUM(__net_sales_cents) AS net_sales_cents\n  , SUM(__gross_cents) AS gross_cents\n  , SUM(__discount_cents) AS discount_cents\nFROM (\n  SELECT\n    store_id AS store\n    , CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END AS __payment_cents\n    , CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END AS __refund_cents\n    , CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END AS __net_sales_cents\n    , CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END AS __gross_cents\n    , CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END AS __discount_cents\n  FROM \"data\".\"main\".\"orders\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-07-01' AND '2026-07-31'\n) subq_9\nGROUP BY\n  store",
+  "columns": [
+    "store",
+    "payment_cents",
+    "refund_cents",
+    "net_sales_cents",
+    "gross_cents",
+    "discount_cents"
+  ],
+  "rows": [
+    [
+      "S02",
+      10500,
+      500,
+      10000,
+      10500,
+      0
+    ],
+    [
+      "S01",
+      12500,
+      0,
+      12500,
+      12500,
+      0
+    ],
+    [
+      "S03",
+      10000,
+      1000,
+      9000,
+      10000,
+      0
+    ]
+  ],
+  "seconds": 0.029,
+  "units": {
+    "payment_cents": "cents",
+    "refund_cents": "cents",
+    "net_sales_cents": "cents",
+    "gross_cents": "cents",
+    "discount_cents": "cents"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "2986c2cd0242eb44b0742e7b7daa3913c50c887605cbe50762548ff10594adbd",
+  "answer": "统计范围为青禾客户数据中 2026 年 7 月（2026-07-01 至 2026-08-01 区间），按订单成交门店编号汇总已支付订单；退款按原订单下单日期归属，优惠金额为原价减实付且退款不冲减优惠。金额单位为元。结果：S01 实付金额 125.00、退款金额 0.00、净销售额 125.00、支付订单原价金额 125.00、优惠金额 0.00；S02 实付金额 105.00、退款金额 5.00、净销售额 100.00、支付订单原价金额 105.00、优惠金额 0.00；S03 实付金额 100.00、退款金额 10.00、净销售额 90.00、支付订单原价金额 100.00、优惠金额 0.00。各门店优惠金额为 0 表示覆盖范围内该指标合计为零。",
+  "question": "请将2026年7月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额按订单成交门店编号分别列出。",
+  "trace_id": "34239bed-18f4-4a44-9936-0412ab324b04",
+  "elapsed_seconds": 9.3,
+  "model_usage": {
+    "prompt_tokens": 5462,
+    "completion_tokens": 1167,
+    "total_tokens": 6629
+  },
+  "model_calls_with_usage": 2
+}

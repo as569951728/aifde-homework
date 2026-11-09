@@ -1,0 +1,438 @@
+{
+  "reviewer": "导师人工语义复核；非独立盲评",
+  "records": [
+    {
+      "run": "gap-qh-unmapped-old",
+      "case": "gap-current",
+      "criterion": "G1",
+      "critical": true,
+      "passed": true,
+      "output_quote": "公式与金额口径",
+      "reason": "paid/扣退/归原订单日期/单位均正确"
+    },
+    {
+      "run": "gap-qh-unmapped-old",
+      "case": "gap-current",
+      "criterion": "G2",
+      "critical": true,
+      "passed": false,
+      "output_quote": "未确认 net_sales_cents 的对象、人群、时间和用途",
+      "reason": "重复将给定当前目标名称变成待选范围"
+    },
+    {
+      "run": "gap-qh-unmapped-old",
+      "case": "gap-current",
+      "criterion": "G3",
+      "critical": true,
+      "passed": true,
+      "output_quote": "覆盖之外不是零",
+      "reason": "合成范围、未得CSV及覆盖外边界保留"
+    },
+    {
+      "run": "gap-qh-unmapped-old",
+      "case": "gap-current",
+      "criterion": "G4",
+      "critical": false,
+      "passed": false,
+      "output_quote": "并在王经理访谈中确认",
+      "reason": "继续让相邻目标决定当前下一步"
+    },
+    {
+      "run": "gap-qh-mapped-old",
+      "case": "gap-current",
+      "criterion": "G1",
+      "critical": true,
+      "passed": true,
+      "output_quote": "净销售额为 paid 订单实付减退款后合计",
+      "reason": "原公式正确"
+    },
+    {
+      "run": "gap-qh-mapped-old",
+      "case": "gap-current",
+      "criterion": "G2",
+      "critical": true,
+      "passed": false,
+      "output_quote": "适用订单范围/人群未明确",
+      "reason": "仍把普通paid定义扩成待选择人群"
+    },
+    {
+      "run": "gap-qh-mapped-old",
+      "case": "gap-current",
+      "criterion": "G3",
+      "critical": true,
+      "passed": true,
+      "output_quote": "数据覆盖之外不是零",
+      "reason": "数据未核和覆盖外/合成范围清楚"
+    },
+    {
+      "run": "gap-qh-mapped-old",
+      "case": "gap-current",
+      "criterion": "G4",
+      "critical": false,
+      "passed": false,
+      "output_quote": "退款快照重述规则",
+      "reason": "固定测试准备扩成生产出报制度核查"
+    },
+    {
+      "run": "gap-qh-new",
+      "case": "gap-current",
+      "criterion": "G1",
+      "critical": true,
+      "passed": true,
+      "output_quote": "金额计算规则没有新的业务定义缺口",
+      "reason": "已定位当期公式和单位"
+    },
+    {
+      "run": "gap-qh-new",
+      "case": "gap-current",
+      "criterion": "G2",
+      "critical": true,
+      "passed": true,
+      "output_quote": "不把月末付费会员资格移入本目标",
+      "reason": "不再重问通用公式或迁入卡资格"
+    },
+    {
+      "run": "gap-qh-new",
+      "case": "gap-current",
+      "criterion": "G3",
+      "critical": true,
+      "passed": true,
+      "output_quote": "为干净合成测试集",
+      "reason": "未得CSV与覆盖/单位已说明；原文含覆盖范围，引用财务说明"
+    },
+    {
+      "run": "gap-qh-new",
+      "case": "gap-current",
+      "criterion": "G4",
+      "critical": false,
+      "passed": false,
+      "output_quote": "本期交付/验收清单是否包含通用净销售额",
+      "reason": "新增验收清单和生产历史重算等阻塞，没有收敛到当前定义与数据核对"
+    },
+    {
+      "run": "gap-transfer-old",
+      "case": "gap-transfer",
+      "criterion": "J1",
+      "critical": true,
+      "passed": true,
+      "output_quote": "只属于 `warranty_monthly_closed_count`",
+      "reason": "未串子指标"
+    },
+    {
+      "run": "gap-transfer-old",
+      "case": "gap-transfer",
+      "criterion": "J2",
+      "critical": true,
+      "passed": true,
+      "output_quote": "覆盖外不是零",
+      "reason": "状态/粒度/日期/单位齐全"
+    },
+    {
+      "run": "gap-transfer-old",
+      "case": "gap-transfer",
+      "criterion": "J3",
+      "critical": true,
+      "passed": true,
+      "output_quote": "不再作为本目标规则缺口",
+      "reason": "旧未知已由适用材料关闭，未声称CSV核验"
+    },
+    {
+      "run": "gap-transfer-old",
+      "case": "gap-transfer",
+      "criterion": "J4",
+      "critical": false,
+      "passed": true,
+      "output_quote": "索取固定快照小样本",
+      "reason": "下一步是本项数据核对"
+    },
+    {
+      "run": "gap-transfer-new",
+      "case": "gap-transfer",
+      "criterion": "J1",
+      "critical": true,
+      "passed": true,
+      "output_quote": "不纳入本目标",
+      "reason": "保内子指标排除"
+    },
+    {
+      "run": "gap-transfer-new",
+      "case": "gap-transfer",
+      "criterion": "J2",
+      "critical": true,
+      "passed": true,
+      "output_quote": "每个工单号只计一次",
+      "reason": "状态/日期/单位/覆盖边界齐全"
+    },
+    {
+      "run": "gap-transfer-new",
+      "case": "gap-transfer",
+      "criterion": "J3",
+      "critical": true,
+      "passed": true,
+      "output_quote": "本目标没有新的业务定义缺口",
+      "reason": "不盖过R1、实际数据仍未核"
+    },
+    {
+      "run": "gap-transfer-new",
+      "case": "gap-transfer",
+      "criterion": "J4",
+      "critical": false,
+      "passed": true,
+      "output_quote": "按R1、R3核验",
+      "reason": "下一步具体对应本项"
+    },
+    {
+      "run": "gap-positive-new",
+      "case": "gap-positive",
+      "criterion": "P1",
+      "critical": true,
+      "passed": true,
+      "output_quote": "保修卡种类、失效端点未明",
+      "reason": "保留真实资格缺口"
+    },
+    {
+      "run": "gap-positive-new",
+      "case": "gap-positive",
+      "criterion": "P2",
+      "critical": true,
+      "passed": true,
+      "output_quote": "先按月末保内设备筛选",
+      "reason": "未猜卡种和端点"
+    },
+    {
+      "run": "gap-positive-new",
+      "case": "gap-positive",
+      "criterion": "P3",
+      "critical": true,
+      "passed": null,
+      "output_quote": "R2未引用",
+      "reason": "原合成输入未明确R2继承R1，P3期望过强；不能判模型拒绝继承错误，另存显式依赖版本验证"
+    },
+    {
+      "run": "gap-positive-new",
+      "case": "gap-positive",
+      "criterion": "P4",
+      "critical": false,
+      "passed": true,
+      "output_quote": "先请服务主管",
+      "reason": "有具体取证与数据核查区分"
+    },
+    {
+      "run": "maintain-qinghe-before",
+      "case": "maintain-qinghe",
+      "criterion": "M1",
+      "critical": true,
+      "passed": false,
+      "output_quote": "上一个项目“没人用”的已知线索",
+      "reason": "遗漏01918前提来源，且产生原因串联风险"
+    },
+    {
+      "run": "maintain-qinghe-before",
+      "case": "maintain-qinghe",
+      "criterion": "M2",
+      "critical": true,
+      "passed": true,
+      "output_quote": "小林明确未授权助手自动发券",
+      "reason": "直接诉求和授权边界保留"
+    },
+    {
+      "run": "maintain-qinghe-before",
+      "case": "maintain-qinghe",
+      "criterion": "M3",
+      "critical": true,
+      "passed": true,
+      "output_quote": "GAP-003：维持待核清单",
+      "reason": "ID迁移与非新交付保留"
+    },
+    {
+      "run": "maintain-qinghe-before",
+      "case": "maintain-qinghe",
+      "criterion": "M4",
+      "critical": false,
+      "passed": true,
+      "output_quote": "GAP-001：维持“系统适配”",
+      "reason": "新增依据/不变理由/下一步逐项复核"
+    },
+    {
+      "run": "maintain-qinghe-before",
+      "case": "maintain-qinghe",
+      "criterion": "M5",
+      "critical": false,
+      "passed": true,
+      "output_quote": "对应模型位置或后续去向",
+      "reason": "独立字段和实际取舍有效；格式标题不是评分依据"
+    },
+    {
+      "run": "maintain-qinghe-before",
+      "case": "maintain-qinghe",
+      "criterion": "M6",
+      "critical": true,
+      "passed": true,
+      "output_quote": "新增候选尚未获FDE反馈",
+      "reason": "来源及待审状态清楚"
+    },
+    {
+      "run": "maintain-qinghe-after",
+      "case": "maintain-qinghe",
+      "criterion": "M1",
+      "critical": true,
+      "passed": false,
+      "output_quote": "上一个项目最后没人用”是个人使用经历陈述",
+      "reason": "未核问题01918，仍收窄为个人经历掩盖全员断言"
+    },
+    {
+      "run": "maintain-qinghe-after",
+      "case": "maintain-qinghe",
+      "criterion": "M2",
+      "critical": true,
+      "passed": true,
+      "output_quote": "人群和执行方案仍须业务人员确认",
+      "reason": "正确诉求和权限边界保留"
+    },
+    {
+      "run": "maintain-qinghe-after",
+      "case": "maintain-qinghe",
+      "criterion": "M3",
+      "critical": true,
+      "passed": true,
+      "output_quote": "保留原ID和含义",
+      "reason": "迁移未丢号"
+    },
+    {
+      "run": "maintain-qinghe-after",
+      "case": "maintain-qinghe",
+      "criterion": "M4",
+      "critical": false,
+      "passed": true,
+      "output_quote": "补充证据 MSG-01919、MSG-01925",
+      "reason": "逐项补依据和待核"
+    },
+    {
+      "run": "maintain-qinghe-after",
+      "case": "maintain-qinghe",
+      "criterion": "M5",
+      "critical": false,
+      "passed": true,
+      "output_quote": "暂不将“多了三步”写成精确事实",
+      "reason": "纠错处在核查字段；正文保留业务未知"
+    },
+    {
+      "run": "maintain-qinghe-after",
+      "case": "maintain-qinghe",
+      "criterion": "M6",
+      "critical": true,
+      "passed": false,
+      "output_quote": "来源：MSG-01919、MSG-01925（CLM-001-0009",
+      "reason": "把诉求01925归到未含该证据的CLM0009，原候选覆盖不匹配"
+    },
+    {
+      "run": "maintain-transfer-before",
+      "case": "maintain-transfer",
+      "criterion": "H1",
+      "critical": true,
+      "passed": true,
+      "output_quote": "“所有接单员都不用”未被A-1证实",
+      "reason": "前提和个人范围区别保留"
+    },
+    {
+      "run": "maintain-transfer-before",
+      "case": "maintain-transfer",
+      "criterion": "H2",
+      "critical": true,
+      "passed": true,
+      "output_quote": "统计口径已明确",
+      "reason": "本期统计与业务合并未知区分"
+    },
+    {
+      "run": "maintain-transfer-before",
+      "case": "maintain-transfer",
+      "criterion": "H3",
+      "critical": false,
+      "passed": false,
+      "output_quote": "处理时长：单位小时",
+      "reason": "报表选择仍在核心对象全文，未交指标定义"
+    },
+    {
+      "run": "maintain-transfer-before",
+      "case": "maintain-transfer",
+      "criterion": "H4",
+      "critical": true,
+      "passed": true,
+      "output_quote": "FIT-8",
+      "reason": "历史ID及关联同步保留"
+    },
+    {
+      "run": "maintain-transfer-before",
+      "case": "maintain-transfer",
+      "criterion": "H5",
+      "critical": false,
+      "passed": true,
+      "output_quote": "新增材料的使用位置",
+      "reason": "列表已填发现/用途/取舍/位置，不以表格式扣分"
+    },
+    {
+      "run": "maintain-transfer-before",
+      "case": "maintain-transfer",
+      "criterion": "H6",
+      "critical": true,
+      "passed": true,
+      "output_quote": "本轮新增材料尚未人工审阅",
+      "reason": "权限与作者状态正确"
+    },
+    {
+      "run": "maintain-transfer-after",
+      "case": "maintain-transfer",
+      "criterion": "H2",
+      "critical": true,
+      "passed": true,
+      "output_quote": "通用规则待核；本期口径见核查记录",
+      "reason": "没有组织不存在断言"
+    },
+    {
+      "run": "maintain-transfer-after",
+      "case": "maintain-transfer",
+      "criterion": "H3",
+      "critical": false,
+      "passed": true,
+      "output_quote": "采用为“本期报表指标定义”",
+      "reason": "正文只摘要边界，报表进入定义去向，便签非核心输入"
+    },
+    {
+      "run": "maintain-transfer-after",
+      "case": "maintain-transfer",
+      "criterion": "H4",
+      "critical": true,
+      "passed": true,
+      "output_quote": "保留原ID和“核实重复报修合并规则”含义",
+      "reason": "迁移/关联/IT条件保留"
+    },
+    {
+      "run": "maintain-transfer-after",
+      "case": "maintain-transfer",
+      "criterion": "H6",
+      "critical": true,
+      "passed": true,
+      "output_quote": "本轮新增内容尚未审阅",
+      "reason": "不冒称反馈，派工和接口边界保留"
+    },
+    {
+      "run": "maintain-transfer-after",
+      "case": "maintain-transfer",
+      "criterion": "H1",
+      "critical": true,
+      "passed": true,
+      "output_quote": "提问者先引入",
+      "reason": "前提与个人范围明确"
+    },
+    {
+      "run": "maintain-transfer-after",
+      "case": "maintain-transfer",
+      "criterion": "H5",
+      "critical": false,
+      "passed": true,
+      "output_quote": "模型位置：接单员使用边界/必要未知",
+      "reason": "取舍列表已含来源、发现、理由及位置"
+    }
+  ],
+  "fixture_issue": "gap-positive-new/P3不可判定：没有显式继承依据，另存修订例；其余标准保持。"
+}

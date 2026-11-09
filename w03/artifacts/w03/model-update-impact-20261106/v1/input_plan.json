@@ -1,0 +1,44 @@
+{
+  "status": "plan_not_written_to_active_config",
+  "workflow": "tools/w02_workflow.py（内含提取，不另启动旧分步提取链；已有工程不init、不resume旧任务）",
+  "sources_for_extraction": [
+    "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+    "artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+    "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+    "artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+  ],
+  "materials_reviewed_separately": [
+    "W03/实操工程/materials/w03/01_订单日报说明.md",
+    "W03/实操工程/materials/w03/02_财务邮件.md",
+    "W03/实操工程/materials/w03/03_会员运营周报.md",
+    "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+    "W03/实操工程/materials/w03/05_数据字典.md",
+    "W03/实操工程/materials/w03/06_任务清单.md",
+    "W03/实操工程/materials/w03/07_客户内部沟通.md",
+    "W03/实操工程/materials/w03/08_业务目标与工作清单.md"
+  ],
+  "material_boundary": "指定MD原资料用于核查口径/影响；sources只按课程支持的正式导出JSON登记，不把MD伪装访谈或把本清单/测试答案列为客户来源。运行前需核实际上下文能看到所需口径；由原始MD引用补上下文，不能靠本清单冒作原文。",
+  "goal_draft": "承接已采纳W02 v0.4，按本期八份材料和四份有效W03访谈，核账户/卡/等级/资格、日期与多卡、购买语义、局部运营流程及岗位/授权边界；区分本体规则、报表选择、SOW条款、过程取舍与仍未知。保留原目标/历史，先候选审核，不由偏好自动扩交付。",
+  "focus_questions_draft": [
+    "本期总部月报哪些卡产品纳入/排除，等级和购卡金额与资格怎样区分？",
+    "两类卡在指定日怎样按开始/计划结束/提前终止判有效，空值含义及规则证据层级是什么？",
+    "多卡账户资格怎样归并，怎样避免重复人数/订单？",
+    "小林所问的人数经过后续追问限定为何种人群与时点，不能擅自多出哪类指标？",
+    "Excel与优惠券活动有哪些一般步骤、偏好、未知，助手权限和业务确认怎样区分？",
+    "门店和IT可配合什么、前置条件是什么，未承诺什么？",
+    "王经理的阶段范围/责任/费用/变更核查要求有哪些，哪些必须去SOW而非模型正文？",
+    "哪些旧未知已在本期得到回答，哪些仍是生产/商业/因果待核？提问前提与角色独立事实怎样区分？"
+  ],
+  "versions_retained": {
+    "extract_prompt": "qinghe-extraction-v2",
+    "maintain_skill": "scope-first-v3",
+    "gap_review": "v0.3"
+  },
+  "current_active_state": {
+    "extraction_sources_count": 0,
+    "workflow_goal_contains_stale_no_interview": true,
+    "formal_model": "W02 v0.4",
+    "formal_metric_test_count": 0
+  },
+  "next_action": "清单审核后登记本轮四份来源和提取重点，更新过时goal；先离线inspect，再按工作流形成实际候选及审核记录。"
+}

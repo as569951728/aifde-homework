@@ -1,0 +1,181 @@
+{
+  "date": "2026-11-07",
+  "cases": [
+    {
+      "id": "U05",
+      "dimension": "证据性质、来源和纠错",
+      "question": "请审查以下说法，逐条说明可采用、需要修正或尚不能判断，并给依据：A.陈姐已给本期卡日期规则，但具体文件与历史凭据未取得；B.小林独立证实之前项目全面无人使用；C.模型尚未核实反馈怎样返回门店，所以青禾没有这一环节；D.80万活跃与120万全量可直接算出活跃率；E.王经理认可分期思路，所以最终验收已获批准。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+      ],
+      "evaluation_domain": "原文证据/主体/权限审查，不评价正文是否含项目验收"
+    },
+    {
+      "id": "U06",
+      "dimension": "综合应用与模型分工",
+      "question": "以下仅为测试假设：本期38项指标在合成数据内已完成查询和独立核对。小林希望拿结果做优惠券活动。请结合业务模型和给定本期资料，说明结果现在能支持什么判断、还缺哪些条件、下一步由哪些角色参与。并说明卡资格规则、月末统计选择、候选名单和执行安排各应在哪里表达，哪些不能从测试正确直接推出。",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+        "W03/实操工程/materials/w03/07_客户内部沟通.md",
+        "W01/修订记录/20261106-W03新访谈修订/docs/w01/project_assessment.md",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+        "W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json"
+      ],
+      "evaluation_domain": "业务知识与交付场景综合应用；合同/个人表事实来自固定材料，不计正文知识增益",
+      "user_constraint_note": "user_decisions.json只作为本人建模约束，不作客户事实或被测答案；固定材料在实际请求中必须读取。"
+    },
+    {
+      "id": "F01",
+      "dimension": "Excel用途",
+      "question": "小林的个人Excel能否作为统一口径和交付数据直接使用？还能怎样辅助我们？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+      ],
+      "evaluation_domain": "来源或交付应用，不评价模型正文是否记载相关内容"
+    },
+    {
+      "id": "F02",
+      "dimension": "偏好与授权",
+      "question": "小林更希望先支持优惠券活动，模型应如何记录？这是否改变本期查数阶段范围、授权助手发券或联系会员？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "来源或交付应用，不评价模型正文是否记载相关内容"
+    },
+    {
+      "id": "F07",
+      "dimension": "IT可做与未承诺",
+      "question": "老周目前可配合哪些核查？开始前需说明什么？这是否意味着已获得生产访问、交付时间和真实数据？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+        "W03/实操工程/materials/w03/07_客户内部沟通.md"
+      ],
+      "evaluation_domain": "来源或交付应用，不评价模型正文是否记载相关内容"
+    },
+    {
+      "id": "F08",
+      "dimension": "发放、核销与购买",
+      "question": "若取得某次优惠券发放记录，能否证明会员已核销、发生购买或复购提高？还需怎样核？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/07_客户内部沟通.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "F10",
+      "dimension": "注册考核与确认责任",
+      "question": "模型对导购会员注册指标已知哪些内容？王经理曾建议找小林核考核规则，能否据此登记“小林已确认完整考核口径，个人Excel可用于计分”？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-33120509-3939-5d6c-81f1-3959fed49789-transcript.json",
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-31e9e8f6-dbdd-5aca-90d0-c92014f1c5f0-transcript.json",
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json"
+      ],
+      "evaluation_domain": "来源或交付应用，不评价模型正文是否记载相关内容"
+    },
+    {
+      "id": "A01",
+      "dimension": "阶段与责任",
+      "question": "请说明本期阶段成果、客户和交付方分别准备什么，以及运营、IT、王经理参与核查的范围。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "A02",
+      "dimension": "核查与拍板",
+      "question": "王经理认可总结且参与统计口径核查，可否写他最终验收、批准预算签约并授权上线？目前谁拍板？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "A03",
+      "dimension": "费用与结算",
+      "question": "本期费用与结算条款现在可写哪些内容，哪些还不能写成约定？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "A04",
+      "dimension": "范围变更",
+      "question": "以后会员筛选出现超出书面支持范围的要求，应准备怎样的变更材料并由谁确认？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "A05",
+      "dimension": "假设客户延期",
+      "question": "以下是假设：客户迟交资料影响里程碑。项目组现在应留什么记录？继续工作、改排期和费用能否直接由王经理决定？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "A06",
+      "dimension": "资料不足后的行动",
+      "question": "范围草稿缺费用依据或责任不清时，王经理的核查流程是什么？是否代表项目整体永久否决？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "E01",
+      "dimension": "提问前提",
+      "question": "阅读给定W02小林二访MSG-01918/01919及01921。“之前项目没人用”“多了三步”分别应如何记录与使用？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "E04",
+      "dimension": "新规则与旧未知",
+      "question": "小林、老周先说日期不掌握，陈姐随后在两类卡的提问限定下给出日期规则但没掌握文件/历史凭据。现在可以怎样更新模型，哪些继续待核？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "E06",
+      "dimension": "提问限定与总结认可",
+      "question": "对给定陈姐03885/03886、王经理03910/03911/03932/03933，分别说明提问提供的范围、角色新增答复和总结认可的边界。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    }
+  ],
+  "source": "input/original_questions.json"
+}

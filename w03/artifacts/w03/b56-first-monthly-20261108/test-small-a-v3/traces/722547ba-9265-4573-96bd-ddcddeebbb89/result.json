@@ -1,0 +1,26 @@
+{
+  "status": "unsupported",
+  "reason": "月内购买会员数、月内复购会员数和月内复购率均为 full_month_only 指标，仅支持完整自然月、全门店口径，不支持 2026-08-01 至 2026-08-15 这种半月区间；客户名称“青禾优选”不自动作为门店筛选。如需这些指标，可改为查询 2026-08-01 至 2026-09-01 的完整 8 月；若坚持 8 月 1 日至 15 日，可改用非整月限制的购买会员数（buyer_count），但它不是月内复购口径。",
+  "intent": {
+    "status": "unsupported",
+    "reason": "月内购买会员数、月内复购会员数和月内复购率均为 full_month_only 指标，仅支持完整自然月、全门店口径，不支持 2026-08-01 至 2026-08-15 这种半月区间；客户名称“青禾优选”不自动作为门店筛选。如需这些指标，可改为查询 2026-08-01 至 2026-09-01 的完整 8 月；若坚持 8 月 1 日至 15 日，可改用非整月限制的购买会员数（buyer_count），但它不是月内复购口径。",
+    "metrics": [
+      "monthly_buyer_count",
+      "monthly_repeat_buyer_count",
+      "monthly_repeat_rate"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-08-16",
+    "group_by": [],
+    "filters": []
+  },
+  "question": "请列出2026年8月1日至8月15日（含15日）青禾优选的月内购买会员数、月内复购会员数和月内复购率。",
+  "trace_id": "722547ba-9265-4573-96bd-ddcddeebbb89",
+  "elapsed_seconds": 2.327,
+  "model_usage": {
+    "prompt_tokens": 9851,
+    "completion_tokens": 309,
+    "total_tokens": 10160
+  },
+  "model_calls_with_usage": 1
+}

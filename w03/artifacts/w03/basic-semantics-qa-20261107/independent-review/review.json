@@ -1,0 +1,503 @@
+{
+  "created_at": "2026-11-07T02:45:18.917353+00:00",
+  "reviewer": "/root/w03_qualification_qa_reviewer",
+  "scope": "B01–B06 fixed-material application",
+  "review_status": "complete_with_one_semantic_failure",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "prompt_sha256": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+  "question_file_sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+  "expectation_file_sha256": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+  "source_first_criteria_sha256": "22bcf1a1234c65c16af18e868b96413bb49ae1799151151c5505f465419dc79d",
+  "original_run_index_sha256": "235e8f111b38c38c4c8bf3c1a9dac166cbaf6de6ddf8f3ef53f4b60ed3024050",
+  "recovery_run_index_sha256": "16c1ebeba564f229e71ff571db1b5bcde4d0d9eae153390e2e71e976bc46c725",
+  "initial_batch_results": {
+    "pass": 4,
+    "needs_revision": 1,
+    "indeterminate": 1,
+    "pass_ids": [
+      "B01",
+      "B02",
+      "B03",
+      "B06"
+    ],
+    "needs_revision_ids": [
+      "B05"
+    ],
+    "indeterminate_ids": [
+      "B04"
+    ]
+  },
+  "after_single_technical_recovery_case_results": {
+    "pass": 5,
+    "needs_revision": 1,
+    "indeterminate": 0,
+    "pass_ids": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B06"
+    ],
+    "needs_revision_ids": [
+      "B05"
+    ],
+    "recovered_answer_does_not_overwrite_initial_failure": true
+  },
+  "execution_accounting": {
+    "initial_requests": 6,
+    "initial_responses": 5,
+    "initial_network_failures": 1,
+    "technical_recovery_requests": 1,
+    "technical_recovery_responses": 1,
+    "total_http_attempts": 7,
+    "semantic_retries": 0,
+    "reviewer_model_calls": 0
+  },
+  "native_audit": "native-request-review.json",
+  "native_audit_sha256": "e93ba9f95fd4c0c2aebbbbeca6f7c80aea1e9664b61f7442695221f7f699ea2e",
+  "gate_correction": "recovery-input-review-v2.json",
+  "gate_process_limit": "恢复首次门禁JSON为needs_revision而正文批准；主Agent按正文启动，独立复核后确认两false是检查误报且实际request字节相同。保留首版及时序，不称启动前门禁全通过。",
+  "cases": [
+    {
+      "id": "B01",
+      "question": "人工订单：O1 paid实付1000退款200；O2 paid实付1000退款1000；O3 cancelled实付0退款0；O4 paid实付0退款0。分别判断支付订单与有效购买，并说明退款与优惠的区别。",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "source_first_expected_conclusion": "支付订单O1/O2/O4为是、O3为否；有效购买只有O1。退款和优惠是不同金额口径。",
+      "required_point_review": [
+        {
+          "criterion": "支付订单只看status=paid，包含全退及实付0的paid单；不另加实付>0门槛。",
+          "status": "satisfied",
+          "finding": "O1/O2/O4支付为是，O3为否；paid状态未加实付>0门槛。"
+        },
+        {
+          "criterion": "有效购买要求paid且实付减退款>0：O1净800有效，O2净0无效，O3cancelled无效，O4paid净0无效。",
+          "status": "satisfied",
+          "finding": "O1净800>0有效；O2净0、O3取消、O4净0均无效。"
+        },
+        {
+          "criterion": "退款是paid订单累计退款；优惠是原价减实付，退款不冲减原优惠，不能互相替代。",
+          "status": "satisfied",
+          "finding": "优惠=原价-实付且不受退款冲减，退款为累计退款，按原订单日期归属。"
+        },
+        {
+          "criterion": "若额外判退款类型：O1部分退款，O2全额退款，O4退款为0且实付为0，不是全额退款单；未给gross不能算具体优惠。",
+          "status": "satisfied",
+          "finding": "只称O2全退，未误称O4全退，也未编造gross或优惠值。"
+        }
+      ],
+      "verdict": "pass",
+      "reason": "四笔支付/有效判断及金额理由正确；退款、优惠、净额分开，引用对应原文。",
+      "actual_answer": "在题设人工订单字段成立的前提下（仅按给定状态、实付和累计退款判断，未查询客户系统）：O1：支付订单为是；有效购买为是。依据：《订单日报说明》支付订单数按 status=paid 计，包括后来全部退款的订单；有效订单数为 paid 且实付减退款大于零。O1 实付1000减退款200=800>0。O2：支付订单为是；有效购买为否（1000-1000=0，全退不计）。O3：支付订单为否；有效购买为否（cancelled，取消单不计）。O4：支付订单为是（status=paid）；有效购买为否（实付0减退款0=0，不满足大于零）。退款与优惠的区别：按《订单日报说明》，优惠金额是 paid 订单原价减实付的金额，退款不冲减原优惠金额；退款金额是 paid 订单的累计退款，按原订单下单日期归属，不按现金退款发生日。退款影响净销售额和有效购买判断，优惠是购买时的价格折让，二者不是同一事实，不能用退款冲减优惠，也不能把优惠当作退款或净销售额。依据范围为《订单日报说明》相关项目及《数据字典》orders 的 status、paid_cents、refund_cents、gross_cents 字段；题设未要求判断其他指标。",
+      "actual_answer_sha256": "7c658671c31fd3bc90bda10c4bafa6c2f2443fd65abf4ea414405c8bca2bee8f",
+      "output_path": "artifacts/w03/basic-semantics-qa-20261107/output/B01.json",
+      "output_sha256": "1ab689ec5a2104209badd101b6b2f32659aa70a420f1b042e88321516db098eb",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-2960bd2bbd54489b902f0944d6d3e3e0/run.json",
+      "native_run_sha256": "7a342a5c70fea580f8abb2825051bf87a65fe42bccbe7c2fbf9b10a2fd68b322",
+      "request_sha256": "fb5e0a240f39620db6bb116f310170eb0c07f02a095fb9a28404faf58a37b7cc",
+      "selected_raw_phase": "initial",
+      "answer_evidence": [
+        "O4：支付订单为是（status=paid）；有效购买为否",
+        "退款不冲减原优惠金额"
+      ],
+      "source_refs": [
+        "materials/w03/01_订单日报说明.md:11",
+        "materials/w03/01_订单日报说明.md:15",
+        "materials/w03/01_订单日报说明.md:31",
+        "materials/w03/01_订单日报说明.md:51",
+        "materials/w03/05_数据字典.md:15"
+      ],
+      "counterexample_review": {
+        "predeclared_failure_modes": [
+          "O2/O4排除支付订单；O4当有效购买或全退单；把退款当优惠、退款冲减原优惠；编造gross/优惠值。"
+        ],
+        "observed": false,
+        "explanation": "逐题完整原答未出现所列反例。"
+      },
+      "premise_object_role_citation_review": "四笔支付/有效判断及金额理由正确；退款、优惠、净额分开，引用对应原文。",
+      "nonblocking_observations": []
+    },
+    {
+      "id": "B02",
+      "question": "一笔8月下单的paid订单在快照中已记录累计退款，但没有退款发生日期。能否核8月订单口径净销售额？能否据此统计9月退款现金流？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "source_first_expected_conclusion": "可按快照累计退款核8月下单订单口径净额；不能据此统计9月退款现金流。",
+      "required_point_review": [
+        {
+          "criterion": "订单口径净额按paid订单实付减快照累计退款，按原订单下单日期归属；无退款发生日不阻止这一口径。",
+          "status": "satisfied",
+          "finding": "按实付减累计退款核该单贡献，并归原订单日期；无退款日期不阻止订单口径。"
+        },
+        {
+          "criterion": "缺少退款发生日期及退款流水不能按9月现金发生归期；累计退款不能拆出各月发生额。",
+          "status": "satisfied",
+          "finding": "明确累计退款不能拆出9月发生额，需要退款事件日期/流水。"
+        },
+        {
+          "criterion": "只提供一单时可说明/核该单对8月净额贡献；不编出整月净额或实际现金流水结果。",
+          "status": "satisfied",
+          "finding": "明确全量8月须全部paid订单、同一快照，不能由此一单代替。"
+        },
+        {
+          "criterion": "订单归期与退款事件时间分开，不能将累计退款都当8月或9月现金流。",
+          "status": "satisfied",
+          "finding": "快照早于/晚于9月均为条件分析，未声称已知实际退款月份或快照日期。"
+        }
+      ],
+      "verdict": "pass",
+      "reason": "正确限定为该笔订单在当前快照的8月订单口径净额，不据累计值推9月现金流，未将一单当全月。",
+      "actual_answer": "结论：可以核该笔8月下单paid订单的“8月订单口径”净销售额，但只能得到截至该数据快照的订单口径净额；它不等于8月现金净额，也不能据此统计9月退款现金流。\n\n客户与对象关系：本题的“客户”按业务模型中的CRM会员账户理解，账户不等于跨系统自然人；订单一行一笔，通过member_id关联会员账户。退款在本期数据中是订单上的累计退款字段，不是独立退款事件。依据：业务模型第2节“会员账户”“购买记录／订单”及《数据字典》members、orders。\n\n净销售额规则：按《订单日报说明》，“净销售额”为paid订单实付减退款后合计，取消单不计，按原订单下单日期归属；“退款金额”也按原订单下单日期归属，不是现金退款发生日。因此，对该笔8月订单，可用其实付减累计退款核算截至快照的8月订单口径净额；若退款等于实付，则净额为零。若问8月全量净销售额，还需8月全部paid订单及同一快照的累计退款，题目只给一笔，不能代表全量。另需注意：支付订单不等于有效购买；有效购买要求paid且实付减累计退款后大于零，但净销售额是金额指标。依据：《订单日报说明》“净销售额”“退款金额”“支付订单数”“有效订单数”；业务模型第2节“有效购买”、第3节统计口径要求。\n\n9月退款现金流：不能据此统计。原因有三：一是《数据字典》orders.refund_cents是“截至数据快照的累计退款”，没有退款发生日期；二是《订单日报说明》明确退款金额按原订单下单日期归属，不是现金退款发生日；三是题设未给快照日期，无法判断累计退款是否跨入9月，更无法拆出9月实际退款金额。即使快照晚于9月，累计退款中可能含9月及以后退款，但无法识别为9月现金流；若快照早于9月，则9月退款尚未反映。依据：《数据字典》orders.refund_cents、ordered_at及日期覆盖说明；《订单日报说明》“退款金额”；业务模型第1节适用边界及第2节购买记录。\n\n建模选择与未知：本期把退款归到原订单日期、用累计退款字段支持订单口径净额，是报表口径与字段建模选择，不是现金流水口径；材料未提供退款发生日期、退款流水或可拆分的退款事件，快照日期也未明确，均属缺失信息。无直接规则冲突，但不能把订单口径净销售额与9月退款现金流混同。新增建议：若要统计9月退款现金流，需补充退款发生日期或退款流水，并明确快照时点、统计范围和退款事件口径，与订单口径净销售额分开报告；这是建议，不是既有规则或已完成事项。",
+      "actual_answer_sha256": "01dd61a8ab8c67326446e49b7efe5d18d589a0aac505da46788c502f004e92d2",
+      "output_path": "artifacts/w03/basic-semantics-qa-20261107/output/B02.json",
+      "output_sha256": "03ed0484cc938d884bd7bcb89f0199ea3835db9ea6871614968f3a551c3fc7c2",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-d70af4a2b4bb4aceb67a225a199a3381/run.json",
+      "native_run_sha256": "94d165faa4b32ebfe0d2c8693f0e976bd1342d6844acab48ac6a78f4d6174e5c",
+      "request_sha256": "ddb46cf4ec088b1d25293cf6a446a39d6e75077ffe36c93df234bac3f86e2009",
+      "selected_raw_phase": "initial",
+      "answer_evidence": [
+        "但只能得到截至该数据快照的订单口径净额",
+        "题目只给一笔，不能代表全量",
+        "不能据此统计9月退款现金流"
+      ],
+      "source_refs": [
+        "materials/w03/01_订单日报说明.md:39",
+        "materials/w03/01_订单日报说明.md:43",
+        "materials/w03/05_数据字典.md:14",
+        "materials/w03/05_数据字典.md:18"
+      ],
+      "counterexample_review": {
+        "predeclared_failure_modes": [
+          "因无退款时间而说订单净额不能核；把8月订单退款排除8月订单净额；凭累计值推9月现金流；编造退款发生日期/月份/年份。"
+        ],
+        "observed": false,
+        "explanation": "逐题完整原答未出现所列反例。"
+      },
+      "premise_object_role_citation_review": "正确限定为该笔订单在当前快照的8月订单口径净额，不据累计值推9月现金流，未将一单当全月。",
+      "nonblocking_observations": [
+        "账户身份段与本题关联较弱；“报表口径与字段建模选择”段仍明确引用现有材料定义，未把已有规则变成未知，不构成实质失败。"
+      ]
+    },
+    {
+      "id": "B03",
+      "question": "人工订单原始quantity=3、paid=1000、refund=200且仍有效。有效订单商品件数计几件？能否从退款金额推出退了几件？购卡金额可否并入商品净额？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "source_first_expected_conclusion": "有效订单商品件数计3件；不能从退款金额推退货件数；购卡金额不可并入商品订单净额。",
+      "required_point_review": [
+        {
+          "criterion": "题设订单仍有效，quantity是原始购买件数，故该指标贡献3，不因部分退款折减。",
+          "status": "satisfied",
+          "finding": "有效订单计原始quantity=3，明确不是净销量。"
+        },
+        {
+          "criterion": "退款金额不是退货明细，不能推出退几件或净销量；不能按200/1000估0.6件。",
+          "status": "satisfied",
+          "finding": "不按退款比例或金额推退货件数。"
+        },
+        {
+          "criterion": "card_paid_cents是购卡实付，与商品订单收入不同；商品订单净额若计算为1000-200=800分，不加购卡款。",
+          "status": "satisfied",
+          "finding": "购卡实付不是商品收入；未补造购卡金额。"
+        }
+      ],
+      "verdict": "pass",
+      "reason": "三子问齐全：原始件数3、退款不能推退货件数、购卡款不并入商品净额；无编造金额或数量。",
+      "actual_answer": "按题设，该订单为 paid、实付 1000、累计退款 200，扣退款后仍大于零，因此属于有效订单。材料规定“有效订单商品件数”按有效订单中的原始购买件数合计，quantity=3，所以计 3 件；它不是扣退货后的净销量。退款金额不能推算退货件数，材料明确“退款金额不能推算退货件数”。购卡金额也不可并入商品净额：数据字典说明购卡实付不等于商品订单收入，商品净销售额按 paid 订单实付减退款后合计，取消单不计。依据为《订单日报说明》中“有效订单”“有效订单商品件数”“净销售额”的定义，以及《数据字典》orders.quantity、orders.refund_cents、cards.card_paid_cents 的字段说明；上述 3 件与不能并入购卡金额的结论是基于本题给定条件作出的情境推导。",
+      "actual_answer_sha256": "7fa4d1b53912789ae99e1574577661b02f8b73274f3ae520c286b240be3bb837",
+      "output_path": "artifacts/w03/basic-semantics-qa-20261107/output/B03.json",
+      "output_sha256": "6851cd7402ebc5333548101af7559466f942087dd82631c0217a9ea74a9999e2",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-cb31de1ec6a54cd0b8b1ac9cffcb6ff8/run.json",
+      "native_run_sha256": "690668f3fd143436588daa20a16fb6b388adc1468a51bc3d8b5e96eed7438d4f",
+      "request_sha256": "769b0f6cc159a467d7177229c784f8f1c035555635f417c46400e53e9f53f59e",
+      "selected_raw_phase": "initial",
+      "answer_evidence": [
+        "所以计 3 件；它不是扣退货后的净销量",
+        "退款金额不能推算退货件数",
+        "购卡金额也不可并入商品净额"
+      ],
+      "source_refs": [
+        "materials/w03/01_订单日报说明.md:15",
+        "materials/w03/01_订单日报说明.md:43",
+        "materials/w03/01_订单日报说明.md:67",
+        "materials/w03/05_数据字典.md:19",
+        "materials/w03/05_数据字典.md:55"
+      ],
+      "counterexample_review": {
+        "predeclared_failure_modes": [
+          "将3扣成2或比例折成2.4；用退款额推件数；购卡款并入商品净销售额；把原始件数叫净商品销量。"
+        ],
+        "observed": false,
+        "explanation": "逐题完整原答未出现所列反例。"
+      },
+      "premise_object_role_citation_review": "三子问齐全：原始件数3、退款不能推退货件数、购卡款不并入商品净额；无编造金额或数量。",
+      "nonblocking_observations": [
+        "paid状态由题设“仍有效”和有效订单定义推出，未改变题设。"
+      ]
+    },
+    {
+      "id": "B04",
+      "question": "人工情境：同一账户全覆盖历史中最早订单取消；随后7月10日有有效订单O100、O101；8月又有有效订单O200。查8月观测期首单时应选哪笔？同日如何排序？这能叫终身首购吗？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/03_会员运营周报.md"
+      ],
+      "source_first_expected_conclusion": "全覆盖期首笔有效订单是7月10日O100；查8月观测期首单时该账户没有符合项，不选O200；不能称终身首购。",
+      "required_point_review": [
+        {
+          "criterion": "先剔除取消等非有效订单，再在全测试覆盖历史按日期、同日订单号排序取第一笔有效单。",
+          "status": "satisfied",
+          "finding": "先排除取消订单，再从全覆盖历史确定首个有效单。"
+        },
+        {
+          "criterion": "O100先于同日O101；应明确日期与订单号的稳定排序作用。",
+          "status": "satisfied",
+          "finding": "同日按订单号排序，O100先于O101。"
+        },
+        {
+          "criterion": "全覆盖首次在7月，之后按查询窗口筛选，8月无观测期首单；不能先筛8月再把O200重排为首单。",
+          "status": "satisfied",
+          "finding": "先确定首单再筛8月窗口，O100归7月，O200后续，8月不计首单。"
+        },
+        {
+          "criterion": "观测期首购只在测试覆盖内，不代表终身/系统历史外无购买。",
+          "status": "satisfied",
+          "finding": "观测期不代表终身历史；未补年份或卡资格。"
+        }
+      ],
+      "verdict": "pass",
+      "reason": "唯一技术恢复答复正确：取消单排除，全覆盖首单O100在7月，8月无该账户观测期首单；不将O200重排为首单，不称终身首购。",
+      "actual_answer": "在题设情境成立的前提下：最早订单已取消，按有效购买定义不计（已支付且实付减累计退款后大于零；取消与全额退款不计），不能作为首笔。全覆盖历史中该账户第一笔有效订单为7月10日的两笔中按同日订单号排序在先的一笔；题设编号下O100先于O101，故首笔应选O100。8月O200是后续有效订单，不是覆盖期首笔。\n\n按《会员运营周报》的“观测期首购会员数”“观测期首单数”“观测期首单净销售额”，应先用全覆盖历史确定每个账户的首次有效订单，再按查询窗口筛选；相同日期按订单号排序。因此查8月窗口时，该账户首笔在7月10日，不落入8月，该账户不计入8月观测期首购／首单，不能把O200当作首单；若统计首单净销售额，也取覆盖期首笔O100并按该单日期归属，不归8月。同日排序规则为按订单号排序，题设O100、O101中O100在前。\n\n不能叫终身首购。周报明确“观测期首购”不代表终身首购，只基于测试覆盖期全覆盖历史确定首次；终身首购需要终身历史覆盖及相应正式口径，当前材料未提供。以上是人工情境下的推导，不是客户真实记录或已执行查询；订单号实际排序规则若系统另有定义，需以系统规则为准，但本题题设编号下结论为O100在前。",
+      "actual_answer_sha256": "93677adb7b8a8b3459a6b3374bae0a1bf1b3c3c0b0fdc90038a15318ca3752d8",
+      "output_path": "artifacts/w03/basic-semantics-qa-20261107-network-recovery/output/B04.json",
+      "output_sha256": "2c165214007e261cbe6a713055cf60a179d28a3fa37baa97992597f95b15499a",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-f38d1f7e93ff41ec86d63cf1dc8896b2/run.json",
+      "native_run_sha256": "e50f22238a646f394da2285f1fe24b8eaae3486c4f243120fa588c7592365366",
+      "request_sha256": "1771d4c6c8adb17e6214bddf34b2c0c4f5af4233b23b78c58e6fef2bdd80f54b",
+      "selected_raw_phase": "network_recovery",
+      "answer_evidence": [
+        "题设编号下O100先于O101，故首笔应选O100",
+        "该账户不计入8月观测期首购／首单，不能把O200当作首单",
+        "不能叫终身首购"
+      ],
+      "source_refs": [
+        "materials/w03/03_会员运营周报.md:13",
+        "materials/w03/03_会员运营周报.md:17",
+        "materials/w03/03_会员运营周报.md:21",
+        "materials/w03/03_会员运营周报.md:25"
+      ],
+      "counterexample_review": {
+        "predeclared_failure_modes": [
+          "取消单当首单；先筛窗口选O200；同日随机/同时两个首单；把观测期首购叫终身首购；加月末付费资格。"
+        ],
+        "observed": false,
+        "explanation": "逐题完整原答未出现所列反例。"
+      },
+      "premise_object_role_citation_review": "唯一技术恢复答复正确：取消单排除，全覆盖首单O100在7月，8月无该账户观测期首单；不将O200重排为首单，不称终身首购。",
+      "nonblocking_observations": [
+        "末句关于系统若另有排序定义属无必要的条件提醒，但未改本题排序或结论，非阻塞。此pass仅对应恢复原答，初次无答仍为indeterminate。"
+      ],
+      "initial_attempt": {
+        "id": "B04",
+        "phase": "initial",
+        "status": "failed",
+        "checks": {
+          "native_check_run": true,
+          "exact_expected_messages": true,
+          "settings_question_exact": true,
+          "expected_empty": true,
+          "no_tools": true,
+          "each_attempt_exact_messages": true,
+          "one_http_attempt": true,
+          "answer_exact": true,
+          "output_native_hash": true,
+          "original_output_unchanged": true,
+          "wrapper_original_question_and_materials": true
+        },
+        "output_path": "artifacts/w03/basic-semantics-qa-20261107/output/B04.json",
+        "output_sha256": "ba20476fb58056f43b343b581831122f86b2174c72568665ab14c722dcb1bb58",
+        "native_run": "artifacts/w02/knowledge_runs/RUN-c3f847196e184ba094e712bd2567b185/run.json",
+        "native_run_sha256": "a3e53e9124f533e43f4081b1b43007726bb02520fa74a3fe613fced60ea7feb8",
+        "request_sha256": "1771d4c6c8adb17e6214bddf34b2c0c4f5af4233b23b78c58e6fef2bdd80f54b",
+        "answer_text_sha256": null,
+        "answer_json_sha256": null,
+        "native_answer_exists": false,
+        "native_response_exists": false,
+        "attempts": [
+          {
+            "http_status": null,
+            "finish_reason": null,
+            "error": "MODEL_NETWORK_ERROR",
+            "seconds": 15.204,
+            "response_present": false
+          }
+        ],
+        "attempt_count": 1,
+        "verdict": "indeterminate",
+        "actual_answer": null,
+        "reason": "单次MODEL_NETWORK_ERROR，没有公开answer/response；不作语义失败或通过。"
+      }
+    },
+    {
+      "id": "B05",
+      "question": "请分别解释：覆盖内筛选无匹配订单的净额、覆盖内无购买账户月份的复购率、覆盖外月份的净额。金额13000分是否等于13000元？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/02_财务邮件.md",
+        "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "source_first_expected_conclusion": "覆盖内无匹配订单净额为0；覆盖内无购买账户月份复购率未定义；覆盖外净额未知/不支持而非0；13000分=130元。",
+      "required_point_review": [
+        {
+          "criterion": "覆盖内且完整可用、筛选无订单，净额合计空集合为0；此为合计口径推导，不是用零填补缺数据。",
+          "status": "satisfied",
+          "finding": "覆盖内完整筛选空集净额0，并明确是定义推导。"
+        },
+        {
+          "criterion": "当前普通周报分母为月内有效购买账户；无购买账户则分母0，复购率未定义，不能显示为0%。",
+          "status": "satisfied",
+          "finding": "同月无购买账户导致分母0，复购率未定义，未加付费资格。"
+        },
+        {
+          "criterion": "覆盖外没有该范围完整数据依据，不得将缺覆盖当0；保留未知或不支持。",
+          "status": "satisfied",
+          "finding": "覆盖外不报0，区分数据不可得。"
+        },
+        {
+          "criterion": "金额单位整数分，展示元除100，13000分≠13000元。",
+          "status": "satisfied",
+          "finding": "13000分=130元。"
+        }
+      ],
+      "verdict": "needs_revision",
+      "reason": "四个核心结论正确，但整份原答新增一条错误解释：净销售额在人均消费、有效订单均额中应为分子，却被写成分母并援引财务邮件。主结论正确不能抵消该指标语义错误。",
+      "actual_answer": "1. 覆盖内筛选无匹配订单的净额：按《订单日报说明》，净销售额是满足条件的 paid 订单实付减退款后的合计，取消单不计，按原订单下单日期归属，单位分。因此在数据覆盖内筛选后没有任何匹配订单时，该订单集合的净销售额合计应按空集求和为 0 分，即 0 元；这是由净销售额定义推导出的结果，材料未单列“无匹配订单”情形。若该净额被用作人均消费、有效订单均额等比率的分母，则分母为 0 时按《财务邮件》仍为未定义，不能把“金额合计为 0”和“比率分母为 0 未定义”混为一谈。\n\n2. 覆盖内无购买账户月份的复购率：按《会员运营周报》，月内复购率等于同一自然月内月内复购会员数除以月内购买会员数，仅整月、全门店口径，分母为零时未定义，跨多月必须按月展示。某月虽在数据覆盖内但没有购买账户，则该月月内购买会员数为 0，复购率分母为 0，因此复购率未定义，不能报为 0，也不能用相邻月份或跨月合并替代。\n\n3. 覆盖外月份的净额：按《数据字典》，本期数据覆盖为 2024-09-01（含）至 2026-09-01（不含）；《财务邮件》明确“数据覆盖之外不是零”。因此覆盖外月份没有本期数据覆盖，净额不能按 0 计算或展示为 0，应作为覆盖不足或无数据待核处理，不能与覆盖内无匹配订单的 0 元合计混同。\n\n4. 金额单位：不是。13000 分等于 130 元，不等于 13000 元。依据《财务邮件》“金额为整数分，展示元需换算”，以及《订单日报说明》和《数据字典》中金额字段单位为分；按 100 分等于 1 元换算，13000÷100=130 元。\n\n以上依据来自本期测试数据覆盖内的《订单日报说明》《财务邮件》《会员运营周报》《数据字典》中的定义；其中无匹配订单净额为 0 元是按净销售额合计定义作出的推导，材料未单列该情形，覆盖外与零分母则按材料明确规则保留为无覆盖或未定义。",
+      "actual_answer_sha256": "0b283c8a45bf14a8e8a51b9de6f3e60441c7c673ee40bc27724f3613becc4970",
+      "output_path": "artifacts/w03/basic-semantics-qa-20261107/output/B05.json",
+      "output_sha256": "7a734c4bab8b4a734ebafed5b31748a276e9cdb2137685b236f32811b6882abd",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-a0b156bba21841c6834827e8a23876e4/run.json",
+      "native_run_sha256": "ffc6ddba441dd376e9f8a560693c0520741fb5b76632d41bc30d252c14656b4a",
+      "request_sha256": "a10ad2d5851f52f3a10862c8cd3402feb8b2071f8117cfcb8742d7b6c4309ad1",
+      "selected_raw_phase": "initial",
+      "answer_evidence": [
+        "若该净额被用作人均消费、有效订单均额等比率的分母，则分母为 0 时按《财务邮件》仍为未定义"
+      ],
+      "source_refs": [
+        "materials/w03/01_订单日报说明.md:43",
+        "materials/w03/02_财务邮件.md:5",
+        "materials/w03/02_财务邮件.md:9",
+        "materials/w03/02_财务邮件.md:13",
+        "materials/w03/03_会员运营周报.md:37",
+        "materials/w03/05_数据字典.md:3"
+      ],
+      "counterexample_review": {
+        "predeclared_failure_modes": [
+          "把三种情况都回0；分母0给0%或100%；覆盖外回零；13000分当13000元；普通复购引入付费过滤。"
+        ],
+        "observed": false,
+        "explanation": "预列反例未出现；B05另有整份答案新增公式错误。"
+      },
+      "premise_object_role_citation_review": "四个核心结论正确，但整份原答新增一条错误解释：净销售额在人均消费、有效订单均额中应为分子，却被写成分母并援引财务邮件。主结论正确不能抵消该指标语义错误。",
+      "nonblocking_observations": [
+        "作者预期提及contract，但该题未指定contract；没有要求或据此扣接口状态码。错误由实际给定02即可裁定，无需客户取舍。"
+      ],
+      "blocking_issue": {
+        "type": "unsupported_and_contradictory_metric_roles",
+        "raw_quote": "若该净额被用作人均消费、有效订单均额等比率的分母",
+        "source_contradiction": "02第9行：净销售额除以有效订单数；第13行：净销售额除以购买会员数。两式净额均为分子。",
+        "minimal_fix": "另存导师核对稿纠正整个额外解释句，明确分子/对应分母和零分母条件；不改原答、不调用模型重试。"
+      }
+    },
+    {
+      "id": "B06",
+      "question": "四张原始表各一行代表什么？关联键是什么？如果A归属甲店而O1成交乙店，两种门店统计如何区分？能否据此确定O1用了哪张卡？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "source_first_expected_conclusion": "orders一行一订单、members一行一CRM账户、stores一行一门店、cards一行一卡；归属店甲和成交店乙分别统计；不能确定O1使用具体卡。",
+      "required_point_review": [
+        {
+          "criterion": "主键orders.order_id、members.member_id、stores.store_id、cards.card_id；不能混同账户与自然人。",
+          "status": "partially_explicit_nonblocking",
+          "finding": "四表粒度、账户非自然人正确，members.member_id/stores.store_id作为关联目标已列；未单列order_id/card_id主键名。原题问“关联键”，不要求抄全表主键。保留来源判据该条而如实记述未显式部分，不把无关字段遗漏视为关系错误。"
+        },
+        {
+          "criterion": "orders.member_id及cards.member_id关联members.member_id；orders.store_id及members.home_store_id分别关联stores.store_id。",
+          "status": "satisfied",
+          "finding": "orders.member_id/cards.member_id→members.member_id；orders.store_id/members.home_store_id→stores.store_id四项齐全。"
+        },
+        {
+          "criterion": "账户可多卡/多订单；卡和订单各归账户，卡×订单直接展开会重复，现有关系无订单到card_id。",
+          "status": "satisfied",
+          "finding": "账户可多卡，卡/订单分别关联账户；明确无直接订单—具体卡键，不能按卡复制订单。"
+        },
+        {
+          "criterion": "按归属门店看账户归甲；按成交门店看O1归乙，不用home_store_id覆盖成交店。",
+          "status": "satisfied",
+          "finding": "A按home_store_id归甲；O1按store_id成交归乙，不替换。"
+        },
+        {
+          "criterion": "仅有共同账户关系不证明用哪卡，需实际订单—卡对应数据，不能按卡数复制订单。",
+          "status": "satisfied",
+          "finding": "共同账户不能证明O1用了哪卡，需实际对应关系。"
+        }
+      ],
+      "verdict": "pass",
+      "reason": "逐表粒度、四项实际关联、甲归属店与乙成交店和无订单到卡的边界均正确，已完整回应题目核心要求。",
+      "actual_answer": "依据指定《数据字典》：四张原始表的一行含义分别是——members 一行一份 CRM 会员账户（账户不等于跨系统自然人）；stores 一行一间门店；cards 一行一张会员卡（一个账户可对应多张卡）；orders 一行一笔订单。关联键为：orders.member_id 关联 members.member_id；orders.store_id 关联 stores.store_id；cards.member_id 关联 members.member_id；members.home_store_id 关联 stores.store_id。订单与具体卡之间没有给出直接关联键。\n\n若账户 A 归属甲店，而订单 O1 的成交门店是乙店，两种门店统计要分开：按会员归属门店统计时，A 归甲店，使用 members.home_store_id；按订单成交门店统计时，O1 归乙店，使用 orders.store_id。两者是不同关系，不可互相替代。\n\n不能据此确定 O1 用了哪张卡。现有材料只提供卡关联账户、订单关联账户，未提供订单与实际使用卡的对应关系；也不能按账户多卡复制订单，或从订单反推具体卡。依据为《数据字典》members、stores、cards、orders 各表说明，以及业务模型第 2 节关于账户—卡、账户—订单关系和“不提供订单与具体卡对应”的边界说明。",
+      "actual_answer_sha256": "d220e78beda3a2122a6f1f769aea930fd3cc0d8c04f479661edfef7df53381c6",
+      "output_path": "artifacts/w03/basic-semantics-qa-20261107/output/B06.json",
+      "output_sha256": "bea0d20e42dd26c827a4f1057d52987dd4539341ee1db94c1af2603a708585e9",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-2a5220d1a5844004b7e54b33ea974d10/run.json",
+      "native_run_sha256": "553916b403ffb35d65717bb749cf07ccd0d887a93b51b4668efb0f58ccc69316",
+      "request_sha256": "ce90ae4db6afe79a60626958a0de0e4f70455feba53448a914a7c18c02d67428",
+      "selected_raw_phase": "initial",
+      "answer_evidence": [
+        "订单与具体卡之间没有给出直接关联键",
+        "按订单成交门店统计时，O1 归乙店",
+        "不能按账户多卡复制订单，或从订单反推具体卡"
+      ],
+      "source_refs": [
+        "materials/w03/05_数据字典.md:7",
+        "materials/w03/05_数据字典.md:12",
+        "materials/w03/05_数据字典.md:13",
+        "materials/w03/05_数据字典.md:24",
+        "materials/w03/05_数据字典.md:28",
+        "materials/w03/05_数据字典.md:30",
+        "materials/w03/05_数据字典.md:35",
+        "materials/w03/05_数据字典.md:45",
+        "materials/w03/05_数据字典.md:50"
+      ],
+      "counterexample_review": {
+        "predeclared_failure_modes": [
+          "混淆四表粒度或键；订单关联用home_store；把O1归甲作成交；凭同账户反推卡；一账户一卡或自然人去重；凭物理字段推生产身份已统一。"
+        ],
+        "observed": false,
+        "explanation": "逐题完整原答未出现所列反例。"
+      },
+      "premise_object_role_citation_review": "逐表粒度、四项实际关联、甲归属店与乙成交店和无订单到卡的边界均正确，已完整回应题目核心要求。",
+      "nonblocking_observations": [
+        "未逐项抄orders.order_id/cards.card_id属于非阻塞显式程度观察；完整原题和原判据保留，未改期望。"
+      ]
+    }
+  ],
+  "limits": [
+    "只证明冻结候选结合每题指定原文的六题表现，不计正文独立记忆、不计真实数据查询或SQL数值验证。",
+    "DQ10/P09原始语义失败及本批B05原失败保留；导师核对稿不改变模型成绩。",
+    "无正式模型、原生proposal3、现用prompt、Skill或配置替换；未apply。",
+    "评审由独立Agent按来源先行判据进行，仍属Agent判断，非客户确认、用户独立作答或正式验收。"
+  ],
+  "next_step_assessment": "未见必须先改正文才能继续覆盖的证据；B05错误直接违背已给02，属于回答错误。无需新增客户裁决。保留原失分、另评核对稿，不追加调提示或重抽样。"
+}

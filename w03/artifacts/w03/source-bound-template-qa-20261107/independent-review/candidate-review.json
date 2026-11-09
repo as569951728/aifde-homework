@@ -1,0 +1,154 @@
+{
+  "created_at": "2026-11-06T16:37:09.049731+00:00",
+  "reviewer": "same independent test review Agent",
+  "status": "approved_for_one_isolated_12_case_regression",
+  "actual_outputs_read": false,
+  "model_calls_by_reviewer": 0,
+  "basis": "沿用冻结原材料判据；重新核其6个来源/题设哈希；检查实际候选全文差分而非采纳作者自述；空白模板用原冻结解析器仅做离线结构检查。",
+  "prior_criteria_sha256": "056f489082f3a33f05c19822eda426c933bca538264a2eccddc2ce82432c2078",
+  "source_hash_verification": [
+    {
+      "id": "statistics_email",
+      "path": "materials/w03/04_本期统计确认邮件.md",
+      "sha256": "c4f847fd90fd0765d37ad22f20d4a4eb0bab90f8543ae0f05d7a3cbee104c4be",
+      "actual_sha256": "c4f847fd90fd0765d37ad22f20d4a4eb0bab90f8543ae0f05d7a3cbee104c4be",
+      "unchanged": true
+    },
+    {
+      "id": "test_dictionary",
+      "path": "materials/w03/05_数据字典.md",
+      "sha256": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16",
+      "actual_sha256": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16",
+      "unchanged": true
+    },
+    {
+      "id": "chen",
+      "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+      "sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308",
+      "actual_sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308",
+      "unchanged": true
+    },
+    {
+      "id": "lin",
+      "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+      "sha256": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71",
+      "actual_sha256": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71",
+      "unchanged": true
+    },
+    {
+      "id": "zhou",
+      "path": "artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+      "sha256": "4d60b0499cfff1ce466183fa32c6c593956abe0513d1336ded239e4e53f3211c",
+      "actual_sha256": "4d60b0499cfff1ce466183fa32c6c593956abe0513d1336ded239e4e53f3211c",
+      "unchanged": true
+    },
+    {
+      "id": "questions",
+      "path": "artifacts/w03/model-input-preflight-20261106/effective_tests/model_questions.json",
+      "sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+      "actual_sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+      "unchanged": true
+    }
+  ],
+  "approved_files": {
+    "artifacts/w03/source-bound-template-qa-20261107/candidate/business_model.md": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+    "artifacts/w03/source-bound-template-qa-20261107/candidate/knowledge_prompt.txt": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+    "artifacts/w03/source-bound-template-qa-20261107/candidate/business_model.diff": "48bc6e50c64647171191a3648a38188b98dcea497acdcdd849e9bf678df319a7",
+    "artifacts/w03/source-bound-template-qa-20261107/candidate/prompt.diff": "3d548eab5357dd0719833e0ff9df3f15548c1b28c6e7baba68d0e6d8ee9e8e99",
+    "artifacts/w03/source-bound-template-qa-20261107/candidate/change_record.json": "11717bf06c45f2a52745210fa6c79f7ee73c4f72800e214da523c8c20a82adca",
+    "artifacts/w03/source-bound-template-qa-20261107/protocol/blank_answer.md": "1a9b429da4f5c6304e721d7c29bc7e25d16acd359fb9fa71c83176c57031dd38",
+    "artifacts/w03/source-bound-template-qa-20261107/protocol/answer_protocol.json": "f5aba361f229431215179aea2d0c95c396c02de89f37243924eabefed2dc8755"
+  },
+  "model_review": {
+    "business_semantics_preserved": true,
+    "actual_changes": [
+      "标题标明来源细化候选/未写入",
+      "派生资格行仅替换来源单元；概念正文未改",
+      "规则1/3只在既有消息前补小林/陈姐姓名；业务规则内容未改",
+      "来源索引增加4行事实与证据范围映射"
+    ],
+    "direct_source_checks": [
+      {
+        "candidate_part": "小林产品范围/账户资格/去重",
+        "sources": [
+          "lin:MSG-03848",
+          "lin:MSG-03854"
+        ],
+        "judgment": "支持；没有把小林未确认的日期端点写给她"
+      },
+      {
+        "candidate_part": "陈姐生效/计划结束/提前终止/空值/判定日/归并",
+        "sources": [
+          "chen:MSG-03886",
+          "chen:MSG-03888",
+          "chen:MSG-03890"
+        ],
+        "judgment": "支持；正式文件和历史凭据待补保留"
+      },
+      {
+        "candidate_part": "04统计选择及不提供具体卡范围/日期端点",
+        "sources": [
+          "statistics_email"
+        ],
+        "judgment": "支持；原文将产品范围和有效状态交运营门店确认；此处日期端点指卡权益端点，未否认邮件给月末统计时点"
+      },
+      {
+        "candidate_part": "05物理字段/合成数据，枚举不裁定纳入、字段名不裁定端点",
+        "sources": [
+          "test_dictionary"
+        ],
+        "judgment": "支持"
+      }
+    ],
+    "business_model_body_boundary": "没有把月末资格统计选择或具体月报窗口新增为正文通用业务规则；仅在来源索引描述04的支持范围。",
+    "title_and_authorship": "候选标题及change_record保留导师局部编辑、非原生proposal/本人独立完成/正式采纳的边界。"
+  },
+  "prompt_and_template_review": {
+    "r2_general_rules_retained": true,
+    "answer_protocol_byte_identical_to_previous": true,
+    "outer_course_answer_string_only": true,
+    "condition_table_columns": 4,
+    "condition_table_rows": 3,
+    "interval_table_columns": 5,
+    "interval_table_rows": 2,
+    "separator_column_counts_match": true,
+    "blank_structure_parse_errors": [],
+    "unfilled_blank_is_not_machine_pass": true,
+    "ascii_pipe_template": true,
+    "no_concrete_dates_or_test_ids_or_message_ids_in_template": true,
+    "no_business_formula_or_prefilled_boolean_or_interval_answer": true,
+    "template_exactly_embedded_in_prompt": true,
+    "schema_unchanged": "是/否/待核枚举与原契约相同；待核依旧不能自动通过。",
+    "no_expected_leakage": "业务模型中的来源澄清直接来自原材料；未嵌入独立checker、逐题oracle、期待结论、失败题号或既有运行答案。"
+  },
+  "frozen_checker": {
+    "path": "artifacts/w03/date-consistency-qa-20261107/independent-review/check_date_answer.py",
+    "sha256": "f035a2c54a069a6d47f896be1abfaf3f4590d25c510c64623547292469486aee",
+    "unchanged": true
+  },
+  "blocking_issues": [],
+  "nonblocking_notes": [],
+  "approved_run_boundary": {
+    "case_ids": [
+      "DY07",
+      "DY08",
+      "DY09",
+      "DY10",
+      "DY11",
+      "DY12",
+      "DQ07",
+      "DQ08",
+      "DQ09",
+      "DQ10",
+      "DQ11",
+      "DQ12"
+    ],
+    "calls_per_case": 1,
+    "no_second_candidate_or_semantic_rerun_this_step": true,
+    "must_preserve_failures": true,
+    "old_scores_not_replaced_or_combined": true,
+    "formal_model_prompt_skill_config_workflow_unchanged": true
+  },
+  "execution_gate": "冻结时须核题目/fixture/预期、运行器与原checker未变，实际request只含本候选+已审提示+单题fixture+课程GUARD。模型输出后仍分开机器、日期语义、来源及完整回答，不从本次候选审核推定通过。",
+  "interpretation_limit": "候选来源呈现和回答模板同时变化，单次12题结果不能拆分归因或证明稳定效果，也不能代表新版本全日期套件。"
+}

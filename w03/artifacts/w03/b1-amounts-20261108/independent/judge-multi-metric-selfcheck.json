@@ -1,0 +1,550 @@
+{
+  "kind": "deterministic_synthetic_comparison_only",
+  "model_calls": 0,
+  "query_calls": 0,
+  "judge_sha256": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3",
+  "total": 27,
+  "passed": 27,
+  "results": [
+    {
+      "id": "positive_B1-N01",
+      "synthetic": true,
+      "expected_passed": true,
+      "observed": {
+        "passed": true,
+        "differences": []
+      },
+      "check_passed": true
+    },
+    {
+      "id": "positive_B1-R01",
+      "synthetic": true,
+      "expected_passed": true,
+      "observed": {
+        "passed": true,
+        "differences": []
+      },
+      "check_passed": true
+    },
+    {
+      "id": "positive_B1-R02",
+      "synthetic": true,
+      "expected_passed": true,
+      "observed": {
+        "passed": true,
+        "differences": []
+      },
+      "check_passed": true
+    },
+    {
+      "id": "positive_B1-D01",
+      "synthetic": true,
+      "expected_passed": true,
+      "observed": {
+        "passed": true,
+        "differences": []
+      },
+      "check_passed": true
+    },
+    {
+      "id": "positive_B1-F01",
+      "synthetic": true,
+      "expected_passed": true,
+      "observed": {
+        "passed": true,
+        "differences": []
+      },
+      "check_passed": true
+    },
+    {
+      "id": "positive_B1-Z01",
+      "synthetic": true,
+      "expected_passed": true,
+      "observed": {
+        "passed": true,
+        "differences": []
+      },
+      "check_passed": true
+    },
+    {
+      "id": "positive_B1-D02",
+      "synthetic": true,
+      "expected_passed": true,
+      "observed": {
+        "passed": true,
+        "differences": []
+      },
+      "check_passed": true
+    },
+    {
+      "id": "wrong_column_name",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "actual.columns",
+            "expected": [
+              "discount_cents",
+              "gross_cents",
+              "net_sales_cents",
+              "payment_cents",
+              "refund_cents"
+            ],
+            "actual": [
+              "wrong_payment",
+              "refund_cents",
+              "net_sales_cents",
+              "gross_cents",
+              "discount_cents"
+            ],
+            "rule": "unique exact columns"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "missing_metric_column",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "actual.columns",
+            "expected": [
+              "discount_cents",
+              "gross_cents",
+              "net_sales_cents",
+              "payment_cents",
+              "refund_cents"
+            ],
+            "actual": [
+              "payment_cents",
+              "refund_cents",
+              "net_sales_cents",
+              "gross_cents"
+            ],
+            "rule": "unique exact columns"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "wrong_unit_one_metric",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "units",
+            "expected": {
+              "payment_cents": "cents",
+              "refund_cents": "cents",
+              "net_sales_cents": "cents",
+              "gross_cents": "cents",
+              "discount_cents": "cents"
+            },
+            "actual": {
+              "payment_cents": "cents",
+              "refund_cents": "yuan",
+              "net_sales_cents": "cents",
+              "gross_cents": "cents",
+              "discount_cents": "cents"
+            },
+            "rule": "exact units, no missing/extra units"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "swap_values_keep_columns",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.payment_cents",
+            "expected": 119050,
+            "actual": 18750,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.refund_cents",
+            "expected": 18750,
+            "actual": 119050,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "swap_columns_keep_values",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.payment_cents",
+            "expected": 119050,
+            "actual": 18750,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.refund_cents",
+            "expected": 18750,
+            "actual": 119050,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "correct_column_value_reordering",
+      "synthetic": true,
+      "expected_passed": true,
+      "observed": {
+        "passed": true,
+        "differences": []
+      },
+      "check_passed": true
+    },
+    {
+      "id": "correct_group_row_reordering",
+      "synthetic": true,
+      "expected_passed": true,
+      "observed": {
+        "passed": true,
+        "differences": []
+      },
+      "check_passed": true
+    },
+    {
+      "id": "missing_store",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows",
+            "expected": {
+              "store": "S03",
+              "payment_cents": 10000,
+              "refund_cents": 1000,
+              "net_sales_cents": 9000,
+              "gross_cents": 10000,
+              "discount_cents": 0
+            },
+            "actual": null,
+            "rule": "missing group"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "duplicate_store",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "actual.rows[3]",
+            "expected": "unique group",
+            "actual": [
+              "S01",
+              12500,
+              0,
+              12500,
+              12500,
+              0
+            ],
+            "rule": "duplicate group"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "swapped_store_identities",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{'store': 'S01'}.gross_cents",
+            "expected": 12500,
+            "actual": 10500,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{'store': 'S01'}.net_sales_cents",
+            "expected": 12500,
+            "actual": 10000,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{'store': 'S01'}.payment_cents",
+            "expected": 12500,
+            "actual": 10500,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{'store': 'S01'}.refund_cents",
+            "expected": 0,
+            "actual": 500,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{'store': 'S02'}.gross_cents",
+            "expected": 10500,
+            "actual": 12500,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{'store': 'S02'}.net_sales_cents",
+            "expected": 10000,
+            "actual": 12500,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{'store': 'S02'}.payment_cents",
+            "expected": 10500,
+            "actual": 12500,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{'store': 'S02'}.refund_cents",
+            "expected": 500,
+            "actual": 0,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "wrong_day_identity",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows",
+            "expected": {
+              "metric_time__day": "2026-08-01 00:00:00",
+              "payment_cents": 19000,
+              "refund_cents": 9000,
+              "net_sales_cents": 10000,
+              "gross_cents": 19000,
+              "discount_cents": 0
+            },
+            "actual": null,
+            "rule": "missing group"
+          },
+          {
+            "path": "rows",
+            "expected": null,
+            "actual": {
+              "metric_time__day": "2026-08-02 00:00:00",
+              "payment_cents": 19000,
+              "refund_cents": 9000,
+              "net_sales_cents": 10000,
+              "gross_cents": 19000,
+              "discount_cents": 0
+            },
+            "rule": "extra group"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "missing_and_filter",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "intent.filters",
+            "expected": [
+              {
+                "field": "order__channel",
+                "op": "eq",
+                "value": "小程序"
+              },
+              {
+                "field": "store__region",
+                "op": "eq",
+                "value": "华东"
+              }
+            ],
+            "actual": [
+              {
+                "field": "order__channel",
+                "op": "eq",
+                "value": "小程序"
+              }
+            ],
+            "rule": "exact intent"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "equivalent_and_order",
+      "synthetic": true,
+      "expected_passed": true,
+      "observed": {
+        "passed": true,
+        "differences": []
+      },
+      "check_passed": true
+    },
+    {
+      "id": "one_cent_difference",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.payment_cents",
+            "expected": 119050,
+            "actual": 119051,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "yuan_value_with_cents_unit",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.payment_cents",
+            "expected": 119050,
+            "actual": 1190.5,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "wrong_end_same_numbers",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "intent.end",
+            "expected": "2026-09-01",
+            "actual": "2026-08-31",
+            "rule": "exact intent"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "wrong_data_version",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "data_version",
+            "expected": "qinghe-w03-20260923-small",
+            "actual": "wrong-data",
+            "rule": "locked version"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "missing_unit",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "units",
+            "expected": {
+              "payment_cents": "cents",
+              "refund_cents": "cents",
+              "net_sales_cents": "cents",
+              "gross_cents": "cents",
+              "discount_cents": "cents"
+            },
+            "actual": {
+              "payment_cents": "cents",
+              "refund_cents": "cents",
+              "net_sales_cents": "cents",
+              "gross_cents": "cents"
+            },
+            "rule": "exact units, no missing/extra units"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "numeric_string",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.payment_cents",
+            "expected": 119050,
+            "actual": "119050",
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "check_passed": true
+    },
+    {
+      "id": "error_with_correct_rows",
+      "synthetic": true,
+      "expected_passed": false,
+      "observed": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "status",
+            "expected": "ok",
+            "actual": "error",
+            "rule": "exact supported status"
+          }
+        ]
+      },
+      "check_passed": true
+    }
+  ]
+}

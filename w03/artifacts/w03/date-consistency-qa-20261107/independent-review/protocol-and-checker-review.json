@@ -1,0 +1,96 @@
+{
+  "created_at": "2026-11-06T16:15:00.006681+00:00",
+  "status": "protocol_approved_and_offline_checker_validated_pending_live_outputs",
+  "reviewer": "same independent test review Agent; checker implementer for this isolated batch",
+  "scope": "date-answer-table-1 for the selected12 cases; no paid model calls by reviewer",
+  "protocol_review": {
+    "outer_course_answer_only_unchanged": true,
+    "old_r2_prompt_preserved_as_prefix": true,
+    "new_structure_only": true,
+    "no_dates_rules_formula_source_ids_or_expected_results_inserted": true,
+    "model_must_fill_all_business_values": true,
+    "prompt_sha256": "f803ecc68db3e6205d08fbfaec63d4aa0b34736201475f2e3607393fd9eeb811",
+    "protocol_sha256": "f5aba361f229431215179aea2d0c95c396c02de89f37243924eabefed2dc8755",
+    "frozen_prompt_matches_reviewed_protocol": true,
+    "all_manifest_files_match": true,
+    "selected_case_ids": [
+      "DY07",
+      "DY08",
+      "DY09",
+      "DY10",
+      "DY11",
+      "DY12",
+      "DQ07",
+      "DQ08",
+      "DQ09",
+      "DQ10",
+      "DQ11",
+      "DQ12"
+    ],
+    "limitations": [
+      "Markdown中是/否是精确枚举；不是原生JSON布尔。不得按前缀或数字猜值。",
+      "不要求回写card_type。当前对象绑定靠原生request与冻结fixture，检查器只核该fixture对应的产品范围值；未声称校验不存在的回写卡型。",
+      "依据/来源与范围中的自然语言仍人工全文审核。"
+    ]
+  },
+  "checker_review": {
+    "path": "artifacts/w03/date-consistency-qa-20261107/independent-review/check_date_answer.py",
+    "sha256": "f035a2c54a069a6d47f896be1abfaf3f4590d25c510c64623547292469486aee",
+    "stdlib_only": true,
+    "writes_original_answer": false,
+    "uses_model_tools_or_network": false,
+    "independent_oracle_location": "reviewer-only checker independent_expected；函数按冻结来源C01-C05实现，绝不送给模型",
+    "matching": "严格字段/条件/计划区间/综合区间/端点/结论对独立期望；另核模型自身合取与区间成员关系；所有字段都核，不因最终结论对而短路",
+    "parser_scope": "精确两表与列/行标签，允许纯展示空白、平衡Markdown强调/反引号及全角竖线；漏/重/未知/未解析均非通过。来源末尾续行只保留为待语义审核文本，机器不宣称判正文。",
+    "machine_result_not_semantic_result": "machine_pass仅结构与日期一致性；semantic_review_required恒True，full_answer_pass恒null。",
+    "unsupported_fixture_scope": "只支持本期两类卡、合法日期、非空综合区间；其他fixture明确unsupported_fixture，不自动猜规则。"
+  },
+  "offline_validation": {
+    "total": 70,
+    "passed": 70,
+    "failed": 0,
+    "category_counts": {
+      "synthetic_positive": 29,
+      "deliberate_negative": 39,
+      "semantic_gate": 2
+    },
+    "test_script_sha256": "8fff9f883c7743e9fe4ead65c4f518c18bb394ea513a33edb10a1eb6b81f9760",
+    "reference_independence": "24合成正例使用先前冻结独立判据布尔+手列12种综合截止常量，不调用待测oracle生成答案；另有DQ12、DY02两个逐字段手列常量锚点。",
+    "original24_cases_covered": true,
+    "critical_negatives": [
+      "原R2 DQ12保持最终无效但综合截止写错",
+      "计划与综合混用",
+      "开始/结束含否",
+      "每项条件翻转",
+      "null被伪造日期",
+      "历史判定日被运行日替换",
+      "多个字段自洽但相对fixture/规则错",
+      "漏/重行、错误列名、待核、数字/前缀伪布尔、无效日期",
+      "旧自然语言答复unparseable而非通过"
+    ],
+    "semantic_boundary": "2个故意写错依据/正文区间的样本会machine-pass，但full_answer_pass仍null并明确需要语义失败，证明机器能力界限而非隐藏误通过。",
+    "not_live_model_evidence": true,
+    "current_selftest_report_sha256": "dfebe6bcd6fbbbd7b541bf9d97683b35453ef1fe4703f11d9250bf590cbd3cd0",
+    "offline_cases_sha256": "126c4dda04ce725bbfa393fef68eff3aefb25f8a7b501e28949fcd23da39ee37"
+  },
+  "interface": {
+    "import": "from check_date_answer import check_answer; result = check_answer(actual_answer, fixture)",
+    "record_cli": ".venv/bin/python artifacts/w03/date-consistency-qa-20261107/independent-review/check_date_answer.py OUTPUT_RECORD.json",
+    "selftest_cli": ".venv/bin/python artifacts/w03/date-consistency-qa-20261107/independent-review/test_date_answer_checker.py",
+    "exit_codes": "CLI 0=machine_pass; 1=fail/unparseable/unsupported_fixture. All still require semantic review."
+  },
+  "required_at_execution": [
+    "每题一次，记录全部HTTP attempts；不按语义失败重抽样",
+    "逐request核实际模型输入没有checker/预期/独立参考或其他题",
+    "原始answer保留，checker结果另存",
+    "完整语义与来源独立审核后才给最终结论",
+    "原R1/R2失败及本批失败不改判，不外推未跑分支"
+  ],
+  "blocking_issues": [],
+  "not_claimed": [
+    "12次模型调用已运行",
+    "本批模型回答已通过",
+    "正式模型或提示替换",
+    "模型全日期覆盖或指标校验通过"
+  ]
+}

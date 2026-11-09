@@ -1,0 +1,54 @@
+{
+  "status": "approved_for_supervised_closeout",
+  "approved_for_supervised_closeout": true,
+  "approved_for_native_end_to_end_pass": false,
+  "failed_checks": [],
+  "corrected_case_ids": [
+    "B3-U01",
+    "B1-Z01"
+  ],
+  "corrections_passed": 2,
+  "corrections_total": 2,
+  "original_machine_contract_passed": 28,
+  "original_explanation_passed": 26,
+  "original_explanation_total": 28,
+  "new_model_calls": 0,
+  "new_queries": 0,
+  "automatic_explanation_fixed": false,
+  "native_scores_unchanged": true,
+  "reviews": [
+    {
+      "id": "B3-U01",
+      "passed": true,
+      "full_corrected_answer_read": true,
+      "original_trace_preserved": true,
+      "source_and_sql_review": "移除退款账户的有效单限制并明确包含全退账户；17/5/3/50、日期、账户/成交门店角色、原始件数与未筛选范围均保持正确。"
+    },
+    {
+      "id": "B1-Z01",
+      "passed": true,
+      "full_corrected_answer_read": true,
+      "original_trace_preserved": true,
+      "source_and_sql_review": "准确说明6月1–29日含首尾、排除6月30日；窗口无订单由原CSV独立支持；五项零分/0.00元、paid范围及退款日期归属正确。"
+    }
+  ],
+  "evidence_sha256": {
+    "artifacts/w03/b34-accounts-ratios-20261108/mentor-corrections/B3-U01.json": "8906c1d1391b7efa66f60d578f83507a87a3a02950f2ffef4e449270c7fb914d",
+    "artifacts/w03/b34-accounts-ratios-20261108/mentor-corrections/B3-U01.md": "d6de4aa00b7c9c37c45bd20fdb48bb0c9412ce06f6cd06cdea9a963908c30c41",
+    "artifacts/w03/b34-accounts-ratios-20261108/mentor-corrections/B3-U01.diff": "3e86d1ac89f5d61543f22c3d1003804a130d9f7478edae5ff189e5767877cfff",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/85c41645-6294-4fa6-b013-b3472df0fe3e/result.json": "e90a6a76e3e4ffc796f6d754fe9d28dd3faefcc98ff2a4e6e9270cb419739382",
+    "artifacts/w03/b34-accounts-ratios-20261108/mentor-corrections/B1-Z01.json": "971f8ba99cf903f1b542b8aca18d3269013e1e3e2b8014f7fca3b01491b6745a",
+    "artifacts/w03/b34-accounts-ratios-20261108/mentor-corrections/B1-Z01.md": "ea21fdd4a23259929ae9cc537caae33cacc624ce292125c094ee5c70d29dc929",
+    "artifacts/w03/b34-accounts-ratios-20261108/mentor-corrections/B1-Z01.diff": "4c5f75b141795b1723e92d3b40fcf3e73e0558df61e06e233a84b52cbde04daf",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/a65eed7f-8c6b-4dfb-9d9c-4bcc028b36c4/result.json": "4048e230980643e52e384282626d930240f08f3a97da99b7d8654bb3641e4b78",
+    "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/query-review-v1.json": "8786b62badb351f162c7c3c852320d2ac2c2fd559128dad6bef4b05f90529ca9",
+    "artifacts/w03/b34-accounts-ratios-20261108/mentor-corrections/manifest.json": "84883232f336ee2635238df0c7dda710eb7d7a36ec5faaae1295b92b1c4ff5b2",
+    "materials/w03/01_订单日报说明.md": "976fa129493e6bd2861a58d74df2ba3ad4448ea01a2d25651124222a61cebb67",
+    "docs/w03/contract.md": "76df027ee419a5c02a92459641e7a126ab3e8db713cdf3bc63c4ffd42bf62042",
+    "materials/data/small/orders.csv": "c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1"
+  },
+  "limitations": [
+    "仅允许本批监督审校方式收束和使用已复审副本；原生自动解释2处失败仍留档。",
+    "后续B5+B6继续回归原题，自动解释可靠性待解决；本结论不是客户验收/提交/生产许可。"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "reviewed_at_utc": "2026-11-08T08:50:54.036277+00:00",
+  "reviewer": "b2_orders_independent_review",
+  "stage": "preflight_only",
+  "approved_to_build": true,
+  "approved_to_execute": false,
+  "failed_checks": [],
+  "decision": "可用未改Skill v0.1.2与未改judge累计构建B1五项+B2七项共12项；生成物仍须独立语义/来源/粒度审核后方可运行。",
+  "expected_freeze_sha256": "07066e52d656a9bc5cb07f00bb296592ad758f8fc83658842ba87ef2f90d46ce",
+  "reviewed_files": {
+    "customer/w03/build-metrics/SKILL.md": "d40329243c2c60c64ddfee0cb1b0617c4c2745c4b52d2b5d2f4b2b2570ea0fb2",
+    "customer/w03/judge.py": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3",
+    "customer/w03/build.json": "30dc33eb01fd060488d1253001db2e2b418f5695d7aaa134e28f1b52e62bca8d"
+  },
+  "checks": {
+    "independent_expectations_frozen_before_skill_judge_review": true,
+    "original_input_and_artifact_hashes_match": true,
+    "raw_csv_and_fixture_validated": true,
+    "six_small_new_plus_fifteen_unchanged_regressions": true,
+    "one_five_row_daily_fixture": true,
+    "B1_recomputed_expected_15_of_15": true,
+    "skill_source_and_grain_method_sufficient_for_B2": true,
+    "skill_no_fact_invention_and_preserve_rows": true,
+    "skill_count_unit_and_scope_distinction": true,
+    "pure_comparator_reusable_for_counts": true,
+    "targeted_compare_checks_passed": 111,
+    "targeted_compare_checks_total": 111
+  },
+  "scope_limits": [
+    "离线judge注入111项不是111道新问数；真实问题仍为small21+fixture1。",
+    "12项目标须累计同次构建，避免同名模型不一致merge。",
+    "以正式small构建；同一library另load独立fixture项目；不将fixture写入课程原数据或业务模型。",
+    "冻结期望不因实际输出更改；加载后仅可在另存文件锁已核版本哈希。",
+    "B2-A01为辅助恒等式，不计真实查询题。",
+    "尚未评审任何本批生成物或实际问数，未批准执行。"
+  ],
+  "next_gate": [
+    "核12项及原5项表达式、来源连续引用、ordered_at、订单事实粒度、状态分组不丢取消行",
+    "核三项原生报告、sources、business_model_usage、维度可达与唯一关系",
+    "确认加载数据/库版本后再批准21+1真实测试"
+  ]
+}

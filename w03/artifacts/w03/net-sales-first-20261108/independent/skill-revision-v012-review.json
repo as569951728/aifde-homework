@@ -1,0 +1,18 @@
+{
+  "status": "approved",
+  "approved": true,
+  "failed_checks": [],
+  "approve_to_regenerate": true,
+  "approved_to_regenerate": true,
+  "skill_version": "v0.1.2",
+  "new_skill_sha256": "d40329243c2c60c64ddfee0cb1b0617c4c2745c4b52d2b5d2f4b2b2570ea0fb2",
+  "diff_sha256": "1a19d9e24c58c7c59a3099067b8cc99f07d03575b0c5e8c2ea05eca1847b1f14",
+  "basis": [
+    "Change narrows catalog sources to continuous text supporting the current metric; it preserves source fidelity and does not change business definitions.",
+    "Change requires explicit fact grain, paid inclusion versus zero contribution, and amount/count/account distinction, addressing observed explanation defects without embedding expected numbers.",
+    "No expected, judge, build config or standard answer prompt change. Regeneration and same-case regression remain required."
+  ],
+  "linked_failure_review": "independent/query-review-v1.json",
+  "current_structured_result": "8/8 passed, prior explanation defects remain recorded",
+  "trial_boundary": "One regenerated build and same eight real cases; if explanations still fail, retain the boundary rather than sampling until a pass."
+}

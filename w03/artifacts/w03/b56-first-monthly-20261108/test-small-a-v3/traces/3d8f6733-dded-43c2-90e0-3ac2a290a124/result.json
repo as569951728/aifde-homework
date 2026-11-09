@@ -1,0 +1,68 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "buyer_count",
+      "refund_buyer_count",
+      "selling_store_count",
+      "valid_order_items"
+    ],
+    "start": "2026-07-01",
+    "end": "2026-08-01",
+    "group_by": [
+      "store"
+    ],
+    "filters": []
+  },
+  "sql": "SELECT\n  store\n  , COUNT(DISTINCT __buyer_count) AS buyer_count\n  , COUNT(DISTINCT __refund_buyer_count) AS refund_buyer_count\n  , COUNT(DISTINCT __selling_store_count) AS selling_store_count\n  , SUM(__valid_order_items) AS valid_order_items\nFROM (\n  SELECT\n    store_id AS store\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END AS __buyer_count\n    , CASE WHEN status = 'paid' AND refund_cents > 0 THEN member_id END AS __refund_buyer_count\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN store_id END AS __selling_store_count\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END AS __valid_order_items\n  FROM \"data\".\"main\".\"orders\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-07-01' AND '2026-07-31'\n) subq_8\nGROUP BY\n  store",
+  "columns": [
+    "store",
+    "buyer_count",
+    "refund_buyer_count",
+    "selling_store_count",
+    "valid_order_items"
+  ],
+  "rows": [
+    [
+      "S03",
+      1,
+      1,
+      1,
+      4
+    ],
+    [
+      "S02",
+      2,
+      1,
+      1,
+      4
+    ],
+    [
+      "S01",
+      8,
+      0,
+      1,
+      9
+    ]
+  ],
+  "seconds": 0.035,
+  "units": {
+    "buyer_count": "count",
+    "refund_buyer_count": "count",
+    "selling_store_count": "count",
+    "valid_order_items": "count"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+  "answer": "统计范围为2026年7月（2026-07-01至2026-08-01，按当前客户范围），按订单成交门店编号分组。购买会员数按有效订单中的不同CRM会员账户去重；退款会员数按窗口内发生退款的有效订单关联的不同CRM会员账户去重；成交门店数按至少有一笔有效订单的订单成交门店去重，分组内均为1；有效订单商品件数为有效订单原始购买件数合计，不是扣退货后的净销量。结果：S01：购买会员数8，退款会员数0，成交门店数1，有效订单商品件数9；S02：购买会员数2，退款会员数1，成交门店数1，有效订单商品件数4；S03：购买会员数1，退款会员数1，成交门店数1，有效订单商品件数4。S01退款会员数为覆盖范围内的零；未列出的门店不在此结果中，不能据此推断其指标。",
+  "question": "请将2026年7月青禾优选的购买会员数、退款会员数、成交门店数和有效订单商品件数按订单成交门店编号分别列出。",
+  "trace_id": "3d8f6733-dded-43c2-90e0-3ac2a290a124",
+  "elapsed_seconds": 11.199,
+  "model_usage": {
+    "prompt_tokens": 11425,
+    "completion_tokens": 1328,
+    "total_tokens": 12753
+  },
+  "model_calls_with_usage": 2
+}

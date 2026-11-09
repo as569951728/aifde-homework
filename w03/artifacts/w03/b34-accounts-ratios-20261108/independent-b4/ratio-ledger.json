@@ -1,0 +1,1161 @@
+{
+  "B4-N01": {
+    "overall": {
+      "components": {
+        "net_sales_cents": 100300,
+        "valid_order_count": 27,
+        "buyer_count": 15,
+        "refund_cents": 18750,
+        "payment_cents": 119050,
+        "cancelled_order_count": 2,
+        "order_count": 32,
+        "refund_order_count": 4,
+        "paid_order_count": 30,
+        "discount_cents": 5200,
+        "gross_cents": 124250,
+        "valid_order_items": 33
+      },
+      "sets": {
+        "all_orders": [
+          "O0000001",
+          "O0000002",
+          "O0000003",
+          "O0000004",
+          "O0000005",
+          "O0000007",
+          "O0000011",
+          "O0000012",
+          "O0000018",
+          "O0000019",
+          "O0000020",
+          "O0000021",
+          "O0000022",
+          "O0000024",
+          "O0000025",
+          "O0000027",
+          "O0000028",
+          "O0000030",
+          "O0000031",
+          "O0000033",
+          "O0000034",
+          "O0000036",
+          "O0000037",
+          "O0000038",
+          "O0000039",
+          "O0000040",
+          "O0000041",
+          "O0000042",
+          "O0000043",
+          "O0000044",
+          "O0000046",
+          "O0000047"
+        ],
+        "paid_orders": [
+          "O0000001",
+          "O0000002",
+          "O0000003",
+          "O0000004",
+          "O0000007",
+          "O0000011",
+          "O0000012",
+          "O0000018",
+          "O0000019",
+          "O0000020",
+          "O0000021",
+          "O0000022",
+          "O0000024",
+          "O0000025",
+          "O0000027",
+          "O0000028",
+          "O0000030",
+          "O0000031",
+          "O0000033",
+          "O0000034",
+          "O0000036",
+          "O0000037",
+          "O0000038",
+          "O0000040",
+          "O0000041",
+          "O0000042",
+          "O0000043",
+          "O0000044",
+          "O0000046",
+          "O0000047"
+        ],
+        "valid_orders": [
+          "O0000001",
+          "O0000002",
+          "O0000003",
+          "O0000007",
+          "O0000011",
+          "O0000018",
+          "O0000019",
+          "O0000020",
+          "O0000021",
+          "O0000022",
+          "O0000024",
+          "O0000025",
+          "O0000027",
+          "O0000028",
+          "O0000030",
+          "O0000031",
+          "O0000033",
+          "O0000034",
+          "O0000036",
+          "O0000037",
+          "O0000038",
+          "O0000041",
+          "O0000042",
+          "O0000043",
+          "O0000044",
+          "O0000046",
+          "O0000047"
+        ],
+        "refund_orders": [
+          "O0000003",
+          "O0000004",
+          "O0000012",
+          "O0000040"
+        ],
+        "cancelled_orders": [
+          "O0000005",
+          "O0000039"
+        ],
+        "buyer_accounts": [
+          "M00001",
+          "M00002",
+          "M00005",
+          "M00007",
+          "M00009",
+          "M00010",
+          "M00011",
+          "M00012",
+          "M00013",
+          "M00014",
+          "M00015",
+          "M00016",
+          "M00018",
+          "M00019",
+          "M00020"
+        ],
+        "refund_accounts": [
+          "M00002",
+          "M00003",
+          "M00008",
+          "M00017"
+        ],
+        "valid_stores": [
+          "S01",
+          "S02"
+        ]
+      },
+      "ratios": {
+        "avg_order_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "valid_order_count",
+          "numerator": 100300,
+          "denominator": 27,
+          "exact_fraction": "100300/27",
+          "value": 3714.814814814815,
+          "unit": "cents_per_order"
+        },
+        "avg_buyer_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "buyer_count",
+          "numerator": 100300,
+          "denominator": 15,
+          "exact_fraction": "20060/3",
+          "value": 6686.666666666667,
+          "unit": "cents_per_member"
+        },
+        "purchase_frequency": {
+          "numerator_id": "valid_order_count",
+          "denominator_id": "buyer_count",
+          "numerator": 27,
+          "denominator": 15,
+          "exact_fraction": "9/5",
+          "value": 1.8,
+          "unit": "orders_per_member"
+        },
+        "refund_amount_rate": {
+          "numerator_id": "refund_cents",
+          "denominator_id": "payment_cents",
+          "numerator": 18750,
+          "denominator": 119050,
+          "exact_fraction": "375/2381",
+          "value": 0.15749685006299874,
+          "unit": "ratio"
+        },
+        "cancel_rate": {
+          "numerator_id": "cancelled_order_count",
+          "denominator_id": "order_count",
+          "numerator": 2,
+          "denominator": 32,
+          "exact_fraction": "1/16",
+          "value": 0.0625,
+          "unit": "ratio"
+        },
+        "refund_order_rate": {
+          "numerator_id": "refund_order_count",
+          "denominator_id": "paid_order_count",
+          "numerator": 4,
+          "denominator": 30,
+          "exact_fraction": "2/15",
+          "value": 0.13333333333333333,
+          "unit": "ratio"
+        },
+        "discount_rate": {
+          "numerator_id": "discount_cents",
+          "denominator_id": "gross_cents",
+          "numerator": 5200,
+          "denominator": 124250,
+          "exact_fraction": "104/2485",
+          "value": 0.041851106639839035,
+          "unit": "ratio"
+        },
+        "items_per_order": {
+          "numerator_id": "valid_order_items",
+          "denominator_id": "valid_order_count",
+          "numerator": 33,
+          "denominator": 27,
+          "exact_fraction": "11/9",
+          "value": 1.2222222222222223,
+          "unit": "items_per_order"
+        }
+      }
+    }
+  },
+  "B4-Z01": {
+    "overall": {
+      "components": {
+        "net_sales_cents": 0,
+        "valid_order_count": 0,
+        "buyer_count": 0,
+        "refund_cents": 0,
+        "payment_cents": 0,
+        "cancelled_order_count": 0,
+        "order_count": 0,
+        "refund_order_count": 0,
+        "paid_order_count": 0,
+        "discount_cents": 0,
+        "gross_cents": 0,
+        "valid_order_items": 0
+      },
+      "sets": {
+        "all_orders": [],
+        "paid_orders": [],
+        "valid_orders": [],
+        "refund_orders": [],
+        "cancelled_orders": [],
+        "buyer_accounts": [],
+        "refund_accounts": [],
+        "valid_stores": []
+      },
+      "ratios": {
+        "avg_order_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "valid_order_count",
+          "numerator": 0,
+          "denominator": 0,
+          "exact_fraction": null,
+          "value": null,
+          "unit": "cents_per_order"
+        },
+        "avg_buyer_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "buyer_count",
+          "numerator": 0,
+          "denominator": 0,
+          "exact_fraction": null,
+          "value": null,
+          "unit": "cents_per_member"
+        },
+        "purchase_frequency": {
+          "numerator_id": "valid_order_count",
+          "denominator_id": "buyer_count",
+          "numerator": 0,
+          "denominator": 0,
+          "exact_fraction": null,
+          "value": null,
+          "unit": "orders_per_member"
+        },
+        "refund_amount_rate": {
+          "numerator_id": "refund_cents",
+          "denominator_id": "payment_cents",
+          "numerator": 0,
+          "denominator": 0,
+          "exact_fraction": null,
+          "value": null,
+          "unit": "ratio"
+        },
+        "cancel_rate": {
+          "numerator_id": "cancelled_order_count",
+          "denominator_id": "order_count",
+          "numerator": 0,
+          "denominator": 0,
+          "exact_fraction": null,
+          "value": null,
+          "unit": "ratio"
+        },
+        "refund_order_rate": {
+          "numerator_id": "refund_order_count",
+          "denominator_id": "paid_order_count",
+          "numerator": 0,
+          "denominator": 0,
+          "exact_fraction": null,
+          "value": null,
+          "unit": "ratio"
+        },
+        "discount_rate": {
+          "numerator_id": "discount_cents",
+          "denominator_id": "gross_cents",
+          "numerator": 0,
+          "denominator": 0,
+          "exact_fraction": null,
+          "value": null,
+          "unit": "ratio"
+        },
+        "items_per_order": {
+          "numerator_id": "valid_order_items",
+          "denominator_id": "valid_order_count",
+          "numerator": 0,
+          "denominator": 0,
+          "exact_fraction": null,
+          "value": null,
+          "unit": "items_per_order"
+        }
+      }
+    }
+  },
+  "B4-R01": {
+    "overall": {
+      "components": {
+        "net_sales_cents": 0,
+        "valid_order_count": 0,
+        "buyer_count": 0,
+        "refund_cents": 5000,
+        "payment_cents": 5000,
+        "cancelled_order_count": 1,
+        "order_count": 2,
+        "refund_order_count": 1,
+        "paid_order_count": 1,
+        "discount_cents": 0,
+        "gross_cents": 5000,
+        "valid_order_items": 0
+      },
+      "sets": {
+        "all_orders": [
+          "O0000004",
+          "O0000005"
+        ],
+        "paid_orders": [
+          "O0000004"
+        ],
+        "valid_orders": [],
+        "refund_orders": [
+          "O0000004"
+        ],
+        "cancelled_orders": [
+          "O0000005"
+        ],
+        "buyer_accounts": [],
+        "refund_accounts": [
+          "M00003"
+        ],
+        "valid_stores": []
+      },
+      "ratios": {
+        "avg_order_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "valid_order_count",
+          "numerator": 0,
+          "denominator": 0,
+          "exact_fraction": null,
+          "value": null,
+          "unit": "cents_per_order"
+        },
+        "avg_buyer_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "buyer_count",
+          "numerator": 0,
+          "denominator": 0,
+          "exact_fraction": null,
+          "value": null,
+          "unit": "cents_per_member"
+        },
+        "purchase_frequency": {
+          "numerator_id": "valid_order_count",
+          "denominator_id": "buyer_count",
+          "numerator": 0,
+          "denominator": 0,
+          "exact_fraction": null,
+          "value": null,
+          "unit": "orders_per_member"
+        },
+        "refund_amount_rate": {
+          "numerator_id": "refund_cents",
+          "denominator_id": "payment_cents",
+          "numerator": 5000,
+          "denominator": 5000,
+          "exact_fraction": "1",
+          "value": 1.0,
+          "unit": "ratio"
+        },
+        "cancel_rate": {
+          "numerator_id": "cancelled_order_count",
+          "denominator_id": "order_count",
+          "numerator": 1,
+          "denominator": 2,
+          "exact_fraction": "1/2",
+          "value": 0.5,
+          "unit": "ratio"
+        },
+        "refund_order_rate": {
+          "numerator_id": "refund_order_count",
+          "denominator_id": "paid_order_count",
+          "numerator": 1,
+          "denominator": 1,
+          "exact_fraction": "1",
+          "value": 1.0,
+          "unit": "ratio"
+        },
+        "discount_rate": {
+          "numerator_id": "discount_cents",
+          "denominator_id": "gross_cents",
+          "numerator": 0,
+          "denominator": 5000,
+          "exact_fraction": "0",
+          "value": 0.0,
+          "unit": "ratio"
+        },
+        "items_per_order": {
+          "numerator_id": "valid_order_items",
+          "denominator_id": "valid_order_count",
+          "numerator": 0,
+          "denominator": 0,
+          "exact_fraction": null,
+          "value": null,
+          "unit": "items_per_order"
+        }
+      }
+    }
+  },
+  "B4-D01-store": {
+    "S01": {
+      "components": {
+        "net_sales_cents": 12500,
+        "valid_order_count": 8,
+        "buyer_count": 8,
+        "refund_cents": 0,
+        "payment_cents": 12500,
+        "cancelled_order_count": 1,
+        "order_count": 9,
+        "refund_order_count": 0,
+        "paid_order_count": 8,
+        "discount_cents": 0,
+        "gross_cents": 12500,
+        "valid_order_items": 9
+      },
+      "sets": {
+        "all_orders": [
+          "O0000010",
+          "O0000016",
+          "O0000023",
+          "O0000026",
+          "O0000029",
+          "O0000032",
+          "O0000035",
+          "O0000045",
+          "O0000048"
+        ],
+        "paid_orders": [
+          "O0000010",
+          "O0000023",
+          "O0000026",
+          "O0000029",
+          "O0000032",
+          "O0000035",
+          "O0000045",
+          "O0000048"
+        ],
+        "valid_orders": [
+          "O0000010",
+          "O0000023",
+          "O0000026",
+          "O0000029",
+          "O0000032",
+          "O0000035",
+          "O0000045",
+          "O0000048"
+        ],
+        "refund_orders": [],
+        "cancelled_orders": [
+          "O0000016"
+        ],
+        "buyer_accounts": [
+          "M00002",
+          "M00010",
+          "M00011",
+          "M00012",
+          "M00013",
+          "M00014",
+          "M00019",
+          "M00020"
+        ],
+        "refund_accounts": [],
+        "valid_stores": [
+          "S01"
+        ]
+      },
+      "ratios": {
+        "avg_order_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "valid_order_count",
+          "numerator": 12500,
+          "denominator": 8,
+          "exact_fraction": "3125/2",
+          "value": 1562.5,
+          "unit": "cents_per_order"
+        },
+        "avg_buyer_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "buyer_count",
+          "numerator": 12500,
+          "denominator": 8,
+          "exact_fraction": "3125/2",
+          "value": 1562.5,
+          "unit": "cents_per_member"
+        },
+        "purchase_frequency": {
+          "numerator_id": "valid_order_count",
+          "denominator_id": "buyer_count",
+          "numerator": 8,
+          "denominator": 8,
+          "exact_fraction": "1",
+          "value": 1.0,
+          "unit": "orders_per_member"
+        },
+        "refund_amount_rate": {
+          "numerator_id": "refund_cents",
+          "denominator_id": "payment_cents",
+          "numerator": 0,
+          "denominator": 12500,
+          "exact_fraction": "0",
+          "value": 0.0,
+          "unit": "ratio"
+        },
+        "cancel_rate": {
+          "numerator_id": "cancelled_order_count",
+          "denominator_id": "order_count",
+          "numerator": 1,
+          "denominator": 9,
+          "exact_fraction": "1/9",
+          "value": 0.1111111111111111,
+          "unit": "ratio"
+        },
+        "refund_order_rate": {
+          "numerator_id": "refund_order_count",
+          "denominator_id": "paid_order_count",
+          "numerator": 0,
+          "denominator": 8,
+          "exact_fraction": "0",
+          "value": 0.0,
+          "unit": "ratio"
+        },
+        "discount_rate": {
+          "numerator_id": "discount_cents",
+          "denominator_id": "gross_cents",
+          "numerator": 0,
+          "denominator": 12500,
+          "exact_fraction": "0",
+          "value": 0.0,
+          "unit": "ratio"
+        },
+        "items_per_order": {
+          "numerator_id": "valid_order_items",
+          "denominator_id": "valid_order_count",
+          "numerator": 9,
+          "denominator": 8,
+          "exact_fraction": "9/8",
+          "value": 1.125,
+          "unit": "items_per_order"
+        }
+      }
+    },
+    "S02": {
+      "components": {
+        "net_sales_cents": 10000,
+        "valid_order_count": 2,
+        "buyer_count": 2,
+        "refund_cents": 500,
+        "payment_cents": 10500,
+        "cancelled_order_count": 0,
+        "order_count": 2,
+        "refund_order_count": 1,
+        "paid_order_count": 2,
+        "discount_cents": 0,
+        "gross_cents": 10500,
+        "valid_order_items": 4
+      },
+      "sets": {
+        "all_orders": [
+          "O0000006",
+          "O0000017"
+        ],
+        "paid_orders": [
+          "O0000006",
+          "O0000017"
+        ],
+        "valid_orders": [
+          "O0000006",
+          "O0000017"
+        ],
+        "refund_orders": [
+          "O0000017"
+        ],
+        "cancelled_orders": [],
+        "buyer_accounts": [
+          "M00005",
+          "M00008"
+        ],
+        "refund_accounts": [
+          "M00008"
+        ],
+        "valid_stores": [
+          "S02"
+        ]
+      },
+      "ratios": {
+        "avg_order_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "valid_order_count",
+          "numerator": 10000,
+          "denominator": 2,
+          "exact_fraction": "5000",
+          "value": 5000.0,
+          "unit": "cents_per_order"
+        },
+        "avg_buyer_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "buyer_count",
+          "numerator": 10000,
+          "denominator": 2,
+          "exact_fraction": "5000",
+          "value": 5000.0,
+          "unit": "cents_per_member"
+        },
+        "purchase_frequency": {
+          "numerator_id": "valid_order_count",
+          "denominator_id": "buyer_count",
+          "numerator": 2,
+          "denominator": 2,
+          "exact_fraction": "1",
+          "value": 1.0,
+          "unit": "orders_per_member"
+        },
+        "refund_amount_rate": {
+          "numerator_id": "refund_cents",
+          "denominator_id": "payment_cents",
+          "numerator": 500,
+          "denominator": 10500,
+          "exact_fraction": "1/21",
+          "value": 0.047619047619047616,
+          "unit": "ratio"
+        },
+        "cancel_rate": {
+          "numerator_id": "cancelled_order_count",
+          "denominator_id": "order_count",
+          "numerator": 0,
+          "denominator": 2,
+          "exact_fraction": "0",
+          "value": 0.0,
+          "unit": "ratio"
+        },
+        "refund_order_rate": {
+          "numerator_id": "refund_order_count",
+          "denominator_id": "paid_order_count",
+          "numerator": 1,
+          "denominator": 2,
+          "exact_fraction": "1/2",
+          "value": 0.5,
+          "unit": "ratio"
+        },
+        "discount_rate": {
+          "numerator_id": "discount_cents",
+          "denominator_id": "gross_cents",
+          "numerator": 0,
+          "denominator": 10500,
+          "exact_fraction": "0",
+          "value": 0.0,
+          "unit": "ratio"
+        },
+        "items_per_order": {
+          "numerator_id": "valid_order_items",
+          "denominator_id": "valid_order_count",
+          "numerator": 4,
+          "denominator": 2,
+          "exact_fraction": "2",
+          "value": 2.0,
+          "unit": "items_per_order"
+        }
+      }
+    },
+    "S03": {
+      "components": {
+        "net_sales_cents": 9000,
+        "valid_order_count": 2,
+        "buyer_count": 1,
+        "refund_cents": 1000,
+        "payment_cents": 10000,
+        "cancelled_order_count": 0,
+        "order_count": 2,
+        "refund_order_count": 1,
+        "paid_order_count": 2,
+        "discount_cents": 0,
+        "gross_cents": 10000,
+        "valid_order_items": 4
+      },
+      "sets": {
+        "all_orders": [
+          "O0000008",
+          "O0000009"
+        ],
+        "paid_orders": [
+          "O0000008",
+          "O0000009"
+        ],
+        "valid_orders": [
+          "O0000008",
+          "O0000009"
+        ],
+        "refund_orders": [
+          "O0000009"
+        ],
+        "cancelled_orders": [],
+        "buyer_accounts": [
+          "M00006"
+        ],
+        "refund_accounts": [
+          "M00006"
+        ],
+        "valid_stores": [
+          "S03"
+        ]
+      },
+      "ratios": {
+        "avg_order_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "valid_order_count",
+          "numerator": 9000,
+          "denominator": 2,
+          "exact_fraction": "4500",
+          "value": 4500.0,
+          "unit": "cents_per_order"
+        },
+        "avg_buyer_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "buyer_count",
+          "numerator": 9000,
+          "denominator": 1,
+          "exact_fraction": "9000",
+          "value": 9000.0,
+          "unit": "cents_per_member"
+        },
+        "purchase_frequency": {
+          "numerator_id": "valid_order_count",
+          "denominator_id": "buyer_count",
+          "numerator": 2,
+          "denominator": 1,
+          "exact_fraction": "2",
+          "value": 2.0,
+          "unit": "orders_per_member"
+        },
+        "refund_amount_rate": {
+          "numerator_id": "refund_cents",
+          "denominator_id": "payment_cents",
+          "numerator": 1000,
+          "denominator": 10000,
+          "exact_fraction": "1/10",
+          "value": 0.1,
+          "unit": "ratio"
+        },
+        "cancel_rate": {
+          "numerator_id": "cancelled_order_count",
+          "denominator_id": "order_count",
+          "numerator": 0,
+          "denominator": 2,
+          "exact_fraction": "0",
+          "value": 0.0,
+          "unit": "ratio"
+        },
+        "refund_order_rate": {
+          "numerator_id": "refund_order_count",
+          "denominator_id": "paid_order_count",
+          "numerator": 1,
+          "denominator": 2,
+          "exact_fraction": "1/2",
+          "value": 0.5,
+          "unit": "ratio"
+        },
+        "discount_rate": {
+          "numerator_id": "discount_cents",
+          "denominator_id": "gross_cents",
+          "numerator": 0,
+          "denominator": 10000,
+          "exact_fraction": "0",
+          "value": 0.0,
+          "unit": "ratio"
+        },
+        "items_per_order": {
+          "numerator_id": "valid_order_items",
+          "denominator_id": "valid_order_count",
+          "numerator": 4,
+          "denominator": 2,
+          "exact_fraction": "2",
+          "value": 2.0,
+          "unit": "items_per_order"
+        }
+      }
+    }
+  },
+  "B4-D01-all": {
+    "overall": {
+      "components": {
+        "net_sales_cents": 31500,
+        "valid_order_count": 12,
+        "buyer_count": 11,
+        "refund_cents": 1500,
+        "payment_cents": 33000,
+        "cancelled_order_count": 1,
+        "order_count": 13,
+        "refund_order_count": 2,
+        "paid_order_count": 12,
+        "discount_cents": 0,
+        "gross_cents": 33000,
+        "valid_order_items": 17
+      },
+      "sets": {
+        "all_orders": [
+          "O0000006",
+          "O0000008",
+          "O0000009",
+          "O0000010",
+          "O0000016",
+          "O0000017",
+          "O0000023",
+          "O0000026",
+          "O0000029",
+          "O0000032",
+          "O0000035",
+          "O0000045",
+          "O0000048"
+        ],
+        "paid_orders": [
+          "O0000006",
+          "O0000008",
+          "O0000009",
+          "O0000010",
+          "O0000017",
+          "O0000023",
+          "O0000026",
+          "O0000029",
+          "O0000032",
+          "O0000035",
+          "O0000045",
+          "O0000048"
+        ],
+        "valid_orders": [
+          "O0000006",
+          "O0000008",
+          "O0000009",
+          "O0000010",
+          "O0000017",
+          "O0000023",
+          "O0000026",
+          "O0000029",
+          "O0000032",
+          "O0000035",
+          "O0000045",
+          "O0000048"
+        ],
+        "refund_orders": [
+          "O0000009",
+          "O0000017"
+        ],
+        "cancelled_orders": [
+          "O0000016"
+        ],
+        "buyer_accounts": [
+          "M00002",
+          "M00005",
+          "M00006",
+          "M00008",
+          "M00010",
+          "M00011",
+          "M00012",
+          "M00013",
+          "M00014",
+          "M00019",
+          "M00020"
+        ],
+        "refund_accounts": [
+          "M00006",
+          "M00008"
+        ],
+        "valid_stores": [
+          "S01",
+          "S02",
+          "S03"
+        ]
+      },
+      "ratios": {
+        "avg_order_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "valid_order_count",
+          "numerator": 31500,
+          "denominator": 12,
+          "exact_fraction": "2625",
+          "value": 2625.0,
+          "unit": "cents_per_order"
+        },
+        "avg_buyer_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "buyer_count",
+          "numerator": 31500,
+          "denominator": 11,
+          "exact_fraction": "31500/11",
+          "value": 2863.6363636363635,
+          "unit": "cents_per_member"
+        },
+        "purchase_frequency": {
+          "numerator_id": "valid_order_count",
+          "denominator_id": "buyer_count",
+          "numerator": 12,
+          "denominator": 11,
+          "exact_fraction": "12/11",
+          "value": 1.0909090909090908,
+          "unit": "orders_per_member"
+        },
+        "refund_amount_rate": {
+          "numerator_id": "refund_cents",
+          "denominator_id": "payment_cents",
+          "numerator": 1500,
+          "denominator": 33000,
+          "exact_fraction": "1/22",
+          "value": 0.045454545454545456,
+          "unit": "ratio"
+        },
+        "cancel_rate": {
+          "numerator_id": "cancelled_order_count",
+          "denominator_id": "order_count",
+          "numerator": 1,
+          "denominator": 13,
+          "exact_fraction": "1/13",
+          "value": 0.07692307692307693,
+          "unit": "ratio"
+        },
+        "refund_order_rate": {
+          "numerator_id": "refund_order_count",
+          "denominator_id": "paid_order_count",
+          "numerator": 2,
+          "denominator": 12,
+          "exact_fraction": "1/6",
+          "value": 0.16666666666666666,
+          "unit": "ratio"
+        },
+        "discount_rate": {
+          "numerator_id": "discount_cents",
+          "denominator_id": "gross_cents",
+          "numerator": 0,
+          "denominator": 33000,
+          "exact_fraction": "0",
+          "value": 0.0,
+          "unit": "ratio"
+        },
+        "items_per_order": {
+          "numerator_id": "valid_order_items",
+          "denominator_id": "valid_order_count",
+          "numerator": 17,
+          "denominator": 12,
+          "exact_fraction": "17/12",
+          "value": 1.4166666666666667,
+          "unit": "items_per_order"
+        }
+      }
+    }
+  },
+  "B4-F01": {
+    "overall": {
+      "components": {
+        "net_sales_cents": 48700,
+        "valid_order_count": 13,
+        "buyer_count": 13,
+        "refund_cents": 14000,
+        "payment_cents": 62700,
+        "cancelled_order_count": 1,
+        "order_count": 16,
+        "refund_order_count": 2,
+        "paid_order_count": 15,
+        "discount_cents": 3100,
+        "gross_cents": 65800,
+        "valid_order_items": 15
+      },
+      "sets": {
+        "all_orders": [
+          "O0000002",
+          "O0000004",
+          "O0000012",
+          "O0000018",
+          "O0000019",
+          "O0000021",
+          "O0000024",
+          "O0000027",
+          "O0000030",
+          "O0000033",
+          "O0000036",
+          "O0000038",
+          "O0000039",
+          "O0000041",
+          "O0000043",
+          "O0000046"
+        ],
+        "paid_orders": [
+          "O0000002",
+          "O0000004",
+          "O0000012",
+          "O0000018",
+          "O0000019",
+          "O0000021",
+          "O0000024",
+          "O0000027",
+          "O0000030",
+          "O0000033",
+          "O0000036",
+          "O0000038",
+          "O0000041",
+          "O0000043",
+          "O0000046"
+        ],
+        "valid_orders": [
+          "O0000002",
+          "O0000018",
+          "O0000019",
+          "O0000021",
+          "O0000024",
+          "O0000027",
+          "O0000030",
+          "O0000033",
+          "O0000036",
+          "O0000038",
+          "O0000041",
+          "O0000043",
+          "O0000046"
+        ],
+        "refund_orders": [
+          "O0000004",
+          "O0000012"
+        ],
+        "cancelled_orders": [
+          "O0000039"
+        ],
+        "buyer_accounts": [
+          "M00001",
+          "M00002",
+          "M00009",
+          "M00010",
+          "M00011",
+          "M00012",
+          "M00013",
+          "M00014",
+          "M00015",
+          "M00016",
+          "M00018",
+          "M00019",
+          "M00020"
+        ],
+        "refund_accounts": [
+          "M00003",
+          "M00008"
+        ],
+        "valid_stores": [
+          "S01",
+          "S02"
+        ]
+      },
+      "ratios": {
+        "avg_order_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "valid_order_count",
+          "numerator": 48700,
+          "denominator": 13,
+          "exact_fraction": "48700/13",
+          "value": 3746.153846153846,
+          "unit": "cents_per_order"
+        },
+        "avg_buyer_value": {
+          "numerator_id": "net_sales_cents",
+          "denominator_id": "buyer_count",
+          "numerator": 48700,
+          "denominator": 13,
+          "exact_fraction": "48700/13",
+          "value": 3746.153846153846,
+          "unit": "cents_per_member"
+        },
+        "purchase_frequency": {
+          "numerator_id": "valid_order_count",
+          "denominator_id": "buyer_count",
+          "numerator": 13,
+          "denominator": 13,
+          "exact_fraction": "1",
+          "value": 1.0,
+          "unit": "orders_per_member"
+        },
+        "refund_amount_rate": {
+          "numerator_id": "refund_cents",
+          "denominator_id": "payment_cents",
+          "numerator": 14000,
+          "denominator": 62700,
+          "exact_fraction": "140/627",
+          "value": 0.22328548644338117,
+          "unit": "ratio"
+        },
+        "cancel_rate": {
+          "numerator_id": "cancelled_order_count",
+          "denominator_id": "order_count",
+          "numerator": 1,
+          "denominator": 16,
+          "exact_fraction": "1/16",
+          "value": 0.0625,
+          "unit": "ratio"
+        },
+        "refund_order_rate": {
+          "numerator_id": "refund_order_count",
+          "denominator_id": "paid_order_count",
+          "numerator": 2,
+          "denominator": 15,
+          "exact_fraction": "2/15",
+          "value": 0.13333333333333333,
+          "unit": "ratio"
+        },
+        "discount_rate": {
+          "numerator_id": "discount_cents",
+          "denominator_id": "gross_cents",
+          "numerator": 3100,
+          "denominator": 65800,
+          "exact_fraction": "31/658",
+          "value": 0.04711246200607903,
+          "unit": "ratio"
+        },
+        "items_per_order": {
+          "numerator_id": "valid_order_items",
+          "denominator_id": "valid_order_count",
+          "numerator": 15,
+          "denominator": 13,
+          "exact_fraction": "15/13",
+          "value": 1.1538461538461537,
+          "unit": "items_per_order"
+        }
+      }
+    }
+  }
+}

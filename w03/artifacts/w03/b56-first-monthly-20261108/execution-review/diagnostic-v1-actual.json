@@ -1,0 +1,65 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "first_buyer_count",
+      "first_order_sales_cents",
+      "first_order_count",
+      "repeat_order_count",
+      "valid_order_count"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [
+      "member"
+    ],
+    "filters": [
+      {
+        "field": "member",
+        "op": "in",
+        "value": [
+          "M00005",
+          "M00007"
+        ]
+      }
+    ]
+  },
+  "sql": "SELECT\n  COALESCE(subq_12.member, subq_20.member, subq_28.member) AS member\n  , MAX(subq_12.first_buyer_count) AS first_buyer_count\n  , MAX(subq_12.first_order_sales_cents) AS first_order_sales_cents\n  , MAX(subq_12.first_order_count) AS first_order_count\n  , MAX(subq_20.repeat_order_count) AS repeat_order_count\n  , MAX(subq_28.valid_order_count) AS valid_order_count\nFROM (\n  SELECT\n    member\n    , COUNT(DISTINCT first_buyer_count) AS first_buyer_count\n    , SUM(first_order_sales_cents) AS first_order_sales_cents\n    , SUM(first_order_count) AS first_order_count\n  FROM (\n    SELECT\n      member_id AS member\n      , member_id AS first_buyer_count\n      , net_sales_cents AS first_order_sales_cents\n      , CASE WHEN order_id IS NOT NULL THEN 1 ELSE 0 END AS first_order_count\n    FROM \"data\".\"main\".\"first_valid_orders\" first_valid_orders_src_10000\n    WHERE DATE_TRUNC('day', first_order_date) BETWEEN '2026-08-01' AND '2026-08-31'\n  ) subq_8\n  WHERE member in ('M00005','M00007')\n  GROUP BY\n    member\n) subq_12\nFULL OUTER JOIN (\n  SELECT\n    member\n    , SUM(repeat_order_count) AS repeat_order_count\n  FROM (\n    SELECT\n      member_id AS member\n      , CASE WHEN order_id IS NOT NULL THEN 1 ELSE 0 END AS repeat_order_count\n    FROM \"data\".\"main\".\"repeat_valid_orders\" repeat_valid_orders_src_10000\n    WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n  ) subq_16\n  WHERE member in ('M00005','M00007')\n  GROUP BY\n    member\n) subq_20\nON\n  subq_12.member = subq_20.member\nFULL OUTER JOIN (\n  SELECT\n    member\n    , SUM(valid_order_count) AS valid_order_count\n  FROM (\n    SELECT\n      member_id AS member\n      , CASE WHEN case when status = 'paid' and paid_cents - refund_cents > 0 then order_id else null end IS NOT NULL THEN 1 ELSE 0 END AS valid_order_count\n    FROM \"data\".\"main\".\"orders\" orders_src_10000\n    WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n  ) subq_24\n  WHERE member in ('M00005','M00007')\n  GROUP BY\n    member\n) subq_28\nON\n  COALESCE(subq_12.member, subq_20.member) = subq_28.member\nGROUP BY\n  COALESCE(subq_12.member, subq_20.member, subq_28.member)",
+  "columns": [
+    "member",
+    "first_buyer_count",
+    "first_order_sales_cents",
+    "first_order_count",
+    "repeat_order_count",
+    "valid_order_count"
+  ],
+  "rows": [
+    [
+      "M00007",
+      1,
+      3000,
+      1,
+      null,
+      1
+    ],
+    [
+      "M00005",
+      null,
+      null,
+      null,
+      1,
+      1
+    ]
+  ],
+  "seconds": 0.076,
+  "units": {
+    "first_buyer_count": "count",
+    "first_order_sales_cents": "cents",
+    "first_order_count": "count",
+    "repeat_order_count": "count",
+    "valid_order_count": "count"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "a529b27e019500f06fe2b4fe10d95c15886032168cd1fa94e4ff3fea0bbfca6b"
+}

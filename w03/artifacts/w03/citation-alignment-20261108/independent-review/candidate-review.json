@@ -1,0 +1,45 @@
+{
+  "created_at": "2026-11-08T02:02:09.608614+00:00",
+  "status": "approved_candidate_for_bounded_test",
+  "approved": true,
+  "failed_checks": [],
+  "candidate_prompt_sha256": "74af26664273fe70d85cd0f84d13dc07bc7850614fb8368c2f822c74742ec40d",
+  "baseline_prompt_sha256": "703da892e1c284843f499b60efad2e95d60849bd5d22595f71270382df607bfe",
+  "criteria_sha256": "13e8dbc9b7bfaf796b9e6b8d35f6a739785e07b17600aa91a723fc7320b1a03d",
+  "checks": [
+    {
+      "name": "single_paragraph_only",
+      "passed": true,
+      "detail": "仅第19行直接依据与缺口字段替换，其他提示逐行相同。"
+    },
+    {
+      "name": "not_fixed_answer_memorization",
+      "passed": true,
+      "detail": "新增要求针对直接引文逐字/连续/消息对齐；另明许标为转述的概括。无题号、原题特解或期望答案。"
+    },
+    {
+      "name": "model_only_path_preserved",
+      "passed": true,
+      "detail": "只见模型汇总可用章节及该处来源；未提供原问答不得编造。末段明确一般资格或计算仍依已知题设推导，U01/P01不强套证据三字段。"
+    },
+    {
+      "name": "supports_adjacent_message_attribution_detection",
+      "passed": true,
+      "detail": "每消息一条记录并分别列跨消息依据，禁止相邻后续限定拼入当前消息，可覆盖SYN-A1/A2与03911/03919等错挂。"
+    },
+    {
+      "name": "supports_quote_vs_paraphrase_distinction",
+      "passed": true,
+      "detail": "直接引文需与对应消息连续逐字一致；概括明标转述且不用原话引号。不强迫全答案逐字复制。"
+    },
+    {
+      "name": "no_scope_growth",
+      "passed": true,
+      "detail": "限问答提示及六题隔离验证；无模型正文新事实、通用维护Skill变更或生产授权。"
+    }
+  ],
+  "limitations": [
+    "提示约束有明确针对性，但未证明模型实际遵守；须对实际答复逐条核原文与语义。",
+    "直接引文子串通过仅能说明字面存在，不能代替主体、前提、支持关系与限定审查。"
+  ]
+}

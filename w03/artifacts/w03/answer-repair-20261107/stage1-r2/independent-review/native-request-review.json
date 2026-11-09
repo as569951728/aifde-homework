@@ -1,0 +1,3545 @@
+{
+  "status": "passed",
+  "reviewed_at": "2026-11-07T04:58:13.381636+00:00",
+  "summary": {
+    "total_cases": 18,
+    "semantic_passed": 18,
+    "semantic_failed": 0,
+    "semantic_not_assessable": 0,
+    "by_group": {
+      "original_failure": {
+        "total": 8,
+        "passed": 8,
+        "failed": 0
+      },
+      "positive_regression": {
+        "total": 6,
+        "passed": 6,
+        "failed": 0
+      },
+      "independent_control": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0
+      }
+    },
+    "native_runs": 18,
+    "native_structure_passed": 18,
+    "native_execution_succeeded": 18,
+    "http_attempts": 19,
+    "course_builtin_truncation_expansions": 1,
+    "network_recovery_calls": 0,
+    "semantic_retries": 0,
+    "runner_level_retries": 0
+  },
+  "truncation_expansion_details": [
+    {
+      "case_id": "REG01",
+      "run": "artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/run.json",
+      "first": {
+        "http_status": 200,
+        "finish_reason": "length",
+        "error": "MODEL_OUTPUT_TRUNCATED",
+        "max_tokens": 8192,
+        "timeout_seconds": 180.0
+      },
+      "second": {
+        "http_status": 200,
+        "finish_reason": "stop",
+        "max_tokens": 16384,
+        "timeout_seconds": 240.0
+      },
+      "same_messages": true,
+      "classification": "course_builtin_truncation_token_expansion_not_semantic_retry",
+      "attempts_sha256": "2a5ffca4b33b4171ee21b1f18b7ae066f20198797ab5f643f658f8a2235ed518"
+    }
+  ],
+  "checks": [
+    {
+      "id": "gate_review_hash",
+      "passed": true
+    },
+    {
+      "id": "gate_review_states",
+      "passed": true
+    },
+    {
+      "id": "gate:runner_sha256",
+      "passed": true
+    },
+    {
+      "id": "gate:manifest_sha256",
+      "passed": true
+    },
+    {
+      "id": "gate:preflight_sha256",
+      "passed": true
+    },
+    {
+      "id": "U01:native_contract",
+      "passed": true
+    },
+    {
+      "id": "U01:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "U01:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "U01:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "U01:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "U01:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "U01:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "U01:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/answer.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/request.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/response.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/run.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/settings.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-cd1a008a4b14467fb9a69513247ad1df/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "U01:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "U05:native_contract",
+      "passed": true
+    },
+    {
+      "id": "U05:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "U05:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "U05:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "U05:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "U05:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "U05:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "U05:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/answer.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/request.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/response.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/run.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/settings.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-eaeca7822b7e4e4380d8237f61cd6ce8/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "U05:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "P09:native_contract",
+      "passed": true
+    },
+    {
+      "id": "P09:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "P09:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "P09:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "P09:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "P09:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "P09:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "P09:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/answer.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/request.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/response.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/run.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/settings.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-b0ada7b3fe1c4319aa37f4ae4ccf680a/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "P09:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "A03:native_contract",
+      "passed": true
+    },
+    {
+      "id": "A03:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "A03:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "A03:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "A03:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "A03:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "A03:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "A03:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/answer.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/request.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/response.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/run.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/settings.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-03a6207aa1ca4ef08030c076f91e6c13/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "A03:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "E01:native_contract",
+      "passed": true
+    },
+    {
+      "id": "E01:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "E01:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "E01:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "E01:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "E01:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "E01:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "E01:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/answer.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/request.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/response.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/run.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-d328af73fe5a4d7c80419bab6c7438ca/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "E01:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "E03:native_contract",
+      "passed": true
+    },
+    {
+      "id": "E03:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "E03:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "E03:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "E03:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "E03:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "E03:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "E03:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/answer.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/request.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/response.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/run.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-64587712fed942d8b1fcf90a4ae19d2b/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "E03:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "E05:native_contract",
+      "passed": true
+    },
+    {
+      "id": "E05:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "E05:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "E05:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "E05:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "E05:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "E05:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "E05:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/answer.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/request.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/response.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/run.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-e0abce74153b448aae7b6581841fd7e6/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "E05:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "REG01:native_contract",
+      "passed": true
+    },
+    {
+      "id": "REG01:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "REG01:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "REG01:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "REG01:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "REG01:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "REG01:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "REG01:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/answer.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/request.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/response.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/run.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/settings.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-6dd23375a79043b1a06fecf3940c04d5/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:documented_truncation_expansion",
+      "passed": true
+    },
+    {
+      "id": "U04:native_contract",
+      "passed": true
+    },
+    {
+      "id": "U04:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "U04:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "U04:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "U04:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "U04:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "U04:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "U04:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/answer.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/request.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/response.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/run.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/settings.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-c305e56ea3894824848ea7a9e413b0a7/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "U04:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "P01:native_contract",
+      "passed": true
+    },
+    {
+      "id": "P01:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "P01:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "P01:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "P01:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "P01:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "P01:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "P01:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/answer.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/request.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/response.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/run.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/settings.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-dd8373e6b9874efd840a58c1b97f702b/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "P01:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "P05:native_contract",
+      "passed": true
+    },
+    {
+      "id": "P05:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "P05:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "P05:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "P05:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "P05:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "P05:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "P05:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/answer.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/request.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/response.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/run.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/settings.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "P05:preserved:artifacts/w02/knowledge_runs/RUN-151bcff02f9d494c98fc83d64f1460b8/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "P05:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "E02:native_contract",
+      "passed": true
+    },
+    {
+      "id": "E02:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "E02:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "E02:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "E02:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "E02:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "E02:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "E02:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/answer.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/request.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/response.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/run.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-b34383b8edbc4f6087a02ce3621219dc/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "E02:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "A02:native_contract",
+      "passed": true
+    },
+    {
+      "id": "A02:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "A02:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "A02:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "A02:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "A02:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "A02:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "A02:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/answer.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/request.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/response.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/run.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/settings.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "A02:preserved:artifacts/w02/knowledge_runs/RUN-09330bda526e4029a24e8bba6a0226ea/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "A02:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "F05:native_contract",
+      "passed": true
+    },
+    {
+      "id": "F05:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "F05:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "F05:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "F05:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "F05:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "F05:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "F05:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/answer.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/request.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/response.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/run.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/settings.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-ae3b37dba4e1479c8330dcbf0caae8a8/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "F05:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:native_contract",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/answer.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/request.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/response.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/run.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/settings.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:preserved:artifacts/w02/knowledge_runs/RUN-ed2677d490904fe39199ea7feec7b99a/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL01:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:native_contract",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/answer.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/request.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/response.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/run.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/settings.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:preserved:artifacts/w02/knowledge_runs/RUN-0abeaebaf395487d909b635d77395cb6/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:native_contract",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/answer.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/request.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/response.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/run.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/settings.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:preserved:artifacts/w02/knowledge_runs/RUN-4c86e954c65d445fa1179c5b7ee0be49/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL03:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:native_contract",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:native_status_succeeded",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:actual_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:settings_exact",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:output_answer_native_exact",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:output_gate_hash",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/answer.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/request.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/response.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/run.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/settings.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/snapshot/artifacts/w03/answer-repair-20261107/stage1-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:preserved:artifacts/w02/knowledge_runs/RUN-e2e2c731728046d99476666ca0e475ec/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "CTRL04:single_attempt",
+      "passed": true
+    },
+    {
+      "id": "cancelled_recovery_not_executed",
+      "passed": true
+    },
+    {
+      "id": "stage1_scores_preserved",
+      "passed": true
+    }
+  ],
+  "failed_checks": [],
+  "reviewer_model_calls": 0
+}

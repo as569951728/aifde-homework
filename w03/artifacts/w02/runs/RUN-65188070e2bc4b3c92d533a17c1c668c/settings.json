@@ -1,0 +1,36 @@
+{
+  "config": {
+    "version": "w02-extractor-0.1.0",
+    "scope_id": "qinghe",
+    "sources": [
+      "artifacts/w02/workflows/WF-0667765bc063466fa034a51e68a3228c/sources/0.json",
+      "artifacts/w02/workflows/WF-0667765bc063466fa034a51e68a3228c/sources/1.json",
+      "artifacts/w02/workflows/WF-0667765bc063466fa034a51e68a3228c/sources/2.json",
+      "artifacts/w02/workflows/WF-0667765bc063466fa034a51e68a3228c/sources/3.json"
+    ],
+    "prompt": "artifacts/w02/workflows/WF-0667765bc063466fa034a51e68a3228c/inputs/prompt.md",
+    "focus_questions": [
+      "围绕复购改善，角色分别陈述了哪些会员类别、统计范围、时间和渠道？哪些定义已有说法，哪些仍未知？不要补造活跃或复购公式。",
+      "从运营准备、门店承接到执行反馈，各环节谁参与、做什么、接收什么、形成或交给谁什么信息？哪些是一般做法，哪些有具体实例？分析、决策和效果观察的衔接缺口在哪里？",
+      "会员、活动、名单、订单、优惠券发放与核销、执行记录和反馈涉及哪些有依据的含义、属性、关系与条件？不要把名称直接推成字段语义、关联规则或已存在的系统功能。",
+      "各角色的经营目标、原因假设、困难、候选需求、协作意愿和实际权限分别是什么？哪些依据、责任、材料与时点尚待确认？与本轮判断有关的不同解释保留各自范围，不把共同未知或口径不同直接写成冲突。"
+    ],
+    "batch_chars": 4000,
+    "max_batches": 24,
+    "reconcile_chars": 96000,
+    "profile": "deepseek-json"
+  },
+  "adapter": "w02-extractor-0.1.0",
+  "timeout_seconds": 180.0,
+  "model_policy": {
+    "gateway_cache_bypass": true,
+    "wire_format": "gateway-extra-body-v1",
+    "request_profile": "deepseek-json",
+    "max_tokens": 32768,
+    "retry_max_tokens": 65536,
+    "timeout": 180.0,
+    "retry_timeout": 360.0,
+    "token_limit_field": "max_tokens",
+    "extraction_thinking": "enabled"
+  }
+}

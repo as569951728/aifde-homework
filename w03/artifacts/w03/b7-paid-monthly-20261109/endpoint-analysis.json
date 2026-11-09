@@ -1,0 +1,377 @@
+{
+  "base_rule": {
+    "type_ok": true,
+    "from_le": true,
+    "until_lt": true,
+    "ended_lt": true
+  },
+  "months": {
+    "2026-06-01": [
+      1,
+      1,
+      2000,
+      0,
+      0.0,
+      2000.0
+    ],
+    "2026-07-01": [
+      6,
+      6,
+      15500,
+      0,
+      0.0,
+      2583.333333
+    ],
+    "2026-08-01": [
+      6,
+      10,
+      47550,
+      4,
+      0.666666666667,
+      4755.0
+    ]
+  },
+  "sensitivity": {
+    "valid_from 改为不含当天（<）": {
+      "changed_months": [
+        "2026-08-01"
+      ],
+      "detail": {
+        "2026-08-01": {
+          "base": [
+            6,
+            10,
+            47550,
+            4,
+            0.666666666667,
+            4755.0
+          ],
+          "flipped": [
+            4,
+            7,
+            39900,
+            3,
+            0.75,
+            5700.0
+          ]
+        }
+      }
+    },
+    "valid_until 改为含当天（<=）": {
+      "changed_months": [
+        "2026-08-01"
+      ],
+      "detail": {
+        "2026-08-01": {
+          "base": [
+            6,
+            10,
+            47550,
+            4,
+            0.666666666667,
+            4755.0
+          ],
+          "flipped": [
+            7,
+            12,
+            51600,
+            5,
+            0.714285714286,
+            4300.0
+          ]
+        }
+      }
+    },
+    "ended_at 改为含当天（<=）": {
+      "changed_months": [
+        "2026-08-01"
+      ],
+      "detail": {
+        "2026-08-01": {
+          "base": [
+            6,
+            10,
+            47550,
+            4,
+            0.666666666667,
+            4755.0
+          ],
+          "flipped": [
+            8,
+            13,
+            58800,
+            5,
+            0.625,
+            4523.076923
+          ]
+        }
+      }
+    },
+    "卡产品不限（含联名卡/体验卡）": {
+      "changed_months": [
+        "2026-07-01",
+        "2026-08-01"
+      ],
+      "detail": {
+        "2026-07-01": {
+          "base": [
+            6,
+            6,
+            15500,
+            0,
+            0.0,
+            2583.333333
+          ],
+          "flipped": [
+            9,
+            9,
+            21000,
+            0,
+            0.0,
+            2333.333333
+          ]
+        },
+        "2026-08-01": {
+          "base": [
+            6,
+            10,
+            47550,
+            4,
+            0.666666666667,
+            4755.0
+          ],
+          "flipped": [
+            9,
+            16,
+            70250,
+            7,
+            0.777777777778,
+            4390.625
+          ]
+        }
+      }
+    }
+  },
+  "cards": [
+    {
+      "card": "C0000001",
+      "member": "M00001",
+      "type": "悦享年卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000002",
+      "member": "M00001",
+      "type": "家庭季卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000003",
+      "member": "M00002",
+      "type": "异业联名卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": false,
+      "note": ""
+    },
+    {
+      "card": "C0000004",
+      "member": "M00003",
+      "type": "悦享年卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000005",
+      "member": "M00004",
+      "type": "悦享年卡",
+      "from": "2026-01-01",
+      "until": "2026-08-31",
+      "ended": null,
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000006",
+      "member": "M00005",
+      "type": "家庭季卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": "2026-08-31",
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000007",
+      "member": "M00006",
+      "type": "悦享年卡",
+      "from": "2026-09-01",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000008",
+      "member": "M00007",
+      "type": "家庭季卡",
+      "from": "2026-08-31",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": true,
+      "note": "月末当天生效"
+    },
+    {
+      "card": "C0000009",
+      "member": "M00008",
+      "type": "体验卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": false,
+      "note": ""
+    },
+    {
+      "card": "C0000010",
+      "member": "M00009",
+      "type": "悦享年卡",
+      "from": "2026-09-01",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000011",
+      "member": "M00010",
+      "type": "悦享年卡",
+      "from": "2026-01-01",
+      "until": "2026-08-31",
+      "ended": null,
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000012",
+      "member": "M00011",
+      "type": "悦享年卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": "2026-08-31",
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000013",
+      "member": "M00012",
+      "type": "悦享年卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": "2026-09-01",
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000014",
+      "member": "M00013",
+      "type": "家庭季卡",
+      "from": "2026-08-31",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": true,
+      "note": "月末当天生效"
+    },
+    {
+      "card": "C0000015",
+      "member": "M00014",
+      "type": "悦享年卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": "2026-08-15",
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000016",
+      "member": "M00014",
+      "type": "家庭季卡",
+      "from": "2026-08-20",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000017",
+      "member": "M00016",
+      "type": "悦享年卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000018",
+      "member": "M00017",
+      "type": "悦享年卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000019",
+      "member": "M00018",
+      "type": "异业联名卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": false,
+      "note": ""
+    },
+    {
+      "card": "C0000020",
+      "member": "M00018",
+      "type": "体验卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": false,
+      "note": ""
+    },
+    {
+      "card": "C0000021",
+      "member": "M00019",
+      "type": "悦享年卡",
+      "from": "2026-01-01",
+      "until": "2026-08-30",
+      "ended": null,
+      "type_in_scope": true,
+      "note": ""
+    },
+    {
+      "card": "C0000022",
+      "member": "M00020",
+      "type": "体验卡",
+      "from": "2026-01-01",
+      "until": "2027-01-01",
+      "ended": null,
+      "type_in_scope": false,
+      "note": ""
+    }
+  ]
+}

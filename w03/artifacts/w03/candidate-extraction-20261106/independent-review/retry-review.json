@@ -1,0 +1,2892 @@
+{
+  "title": "W03 有界重试原生候选独立审核",
+  "version": "retry-review-v1",
+  "date": "2026-11-06",
+  "original_run": "RUN-c3e03eb3b9ca4555835f07361c425e80",
+  "original_artifact_id": "FACTS-RUN-c3e03eb3b9ca4555835f07361c425e80",
+  "original_revision": 1,
+  "status": "native_extraction_succeeded_semantic_repairs_required",
+  "criteria_file": "independent-review/source-first-criteria.json",
+  "inputs": [
+    {
+      "path": "artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "sha256": "74e9f31a939d73c5e1b39a230069e332a01b60d1f827d36243dd1ac8cc0ec121"
+    },
+    {
+      "path": "artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "sha256": "d14054e7522c11b619d6cd48033942ea74a70438668fc0f431b1f6bdc50ab6ff"
+    },
+    {
+      "path": "artifacts/w03/candidate-extraction-20261106/independent-review/source-first-criteria.json",
+      "sha256": "afc9b8aee1c588d847de7510893ee001ff1aef5391972d8c3dc20d5687dd3451"
+    }
+  ],
+  "summary": {
+    "native_claim_count": 61,
+    "native_conflict_count": 2,
+    "original_quote_count": 72,
+    "invalid_quotes": 0,
+    "claim_verdict_counts": {
+      "source_supported": 35,
+      "repair_required": 26
+    },
+    "false_conflicts": 2,
+    "affected_conflict_claims": [
+      "CLM-001-0005",
+      "CLM-001-0023",
+      "CLM-001-0025",
+      "CLM-001-0029",
+      "CLM-001-0033",
+      "CLM-001-0034",
+      "CLM-001-0040"
+    ],
+    "additions": 3,
+    "human_decisions": 0
+  },
+  "claims": [
+    {
+      "claim_id": "CLM-001-0001",
+      "route": "business_body",
+      "criteria": [
+        "B01",
+        "B02"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0001",
+        "statement": "小林称本期总部运营月报的付费会员只纳入悦享年卡和家庭季卡的持有人，该口径只约束本期总部运营月报，不改其他报表。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；范围限定为本期总部运营月报，不推及其他报表。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03848",
+            "quote": "这次总部运营月报的付费会员，只纳入悦享年卡和家庭季卡的持有人。"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03848",
+            "quote": "这个口径只约束本期总部运营月报，不改其他报表。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0002",
+      "route": "business_body",
+      "criteria": [
+        "B02"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0002",
+        "statement": "小林称异业联名卡即使收费也由合作方经营，不进本次自营会员范围；体验卡也不进。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；仅针对本次自营会员范围。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03848",
+            "quote": "异业联名卡即使收费，也由合作方经营，不进这次自营会员范围；体验卡也不进。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0003",
+      "route": "business_body",
+      "criteria": [
+        "B03"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。 正文只保留等级/支付金额不替代卡类型与有效状态；不另建“购卡金额门槛”缺口。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0003",
+        "statement": "小林称普通、银卡、金卡是会员等级，与有无付费资格是两回事；不能拿卡的支付金额代替卡类型和有效状态判断付费资格。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；原文未给出具体购卡金额门槛，只有支付金额不参与判断的表述。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03848",
+            "quote": "普通、银卡、金卡是会员等级，跟有没有付费资格是两回事，不能拿卡的支付金额代替卡类型和有效状态来判断。"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03866",
+            "quote": "等级和支付金额也不参与判断。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0004",
+      "route": "business_body",
+      "criteria": [
+        "B04"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。 本条仅账户计数来源；订单不重复累计由0037独立支持。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0004",
+        "statement": "小林称同一账户就算有两张有效悦享年卡，也只算一个有资格账户。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；针对账户去重计数，不扩展到订单累计。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03848",
+            "quote": "同一账户就算有两张有效悦享年卡，也只算一个有资格账户。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0005",
+      "route": "source_or_investigation_notes",
+      "criteria": [
+        "N02"
+      ],
+      "verdict": "repair_required",
+      "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。；去掉“不裁定冲突”措辞，保留小林当时不能确认的来源边界。",
+      "issues": [
+        {
+          "code": "FALSE_CONFLICT",
+          "severity": "semantic",
+          "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。"
+        },
+        {
+          "code": "ROLE_KNOWLEDGE_BOUNDARY",
+          "severity": "semantic",
+          "reason": "去掉“不裁定冲突”措辞，保留小林当时不能确认的来源边界。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0005",
+        "statement": "小林表示权益开始当天和计划结束当天是否有效，她没有能直接确认的日期边界规则，需按实际记录核实。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "本条仅记录小林在本场访谈时不能确认日期边界，不表示规则不存在，也未提出与陈姐相反的日期规则。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03850",
+            "quote": "权益开始当天和计划结束当天算不算有效，我这边没有能直接确认的日期边界规则，得按实际记录核实。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。；去掉“不裁定冲突”措辞，保留小林当时不能确认的来源边界。；去向：source_or_investigation_notes。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0006",
+      "route": "source_or_investigation_notes",
+      "criteria": [
+        "N02"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0006",
+        "statement": "小林表示悦享年卡和家庭季卡在本期口径都纳入，但两类卡的日期规则是否一致，她不能凭卡类型下结论。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林自述不能凭卡类型确认；需按实际记录核实。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03850",
+            "quote": "悦享年卡和家庭季卡在本期口径里都纳入，但这两类卡的日期规则是否一致，我也不能凭卡类型就下结论。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：source_or_investigation_notes。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0007",
+      "route": "source_or_investigation_notes",
+      "criteria": [
+        "N04"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0007",
+        "statement": "小林建议系统或数据上的问题找IT负责人老周核实。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；未指定具体核查材料或交付记录。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03852",
+            "quote": "系统或数据上的问题，找 IT 负责人老周核实。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：source_or_investigation_notes。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0008",
+      "route": "business_body",
+      "criteria": [
+        "B04"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0008",
+        "statement": "小林称按本期口径，账户只要持有一张已确认有效的悦享年卡或家庭季卡就算有付费资格；账户另有失效卡或联名卡、体验卡等不纳入范围的卡，不影响该判断。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；限定本期口径；不把其他卡或失效卡计入资格。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03854",
+            "quote": "按本期口径，账户只要持有一张已确认有效的悦享年卡或家庭季卡，就算有付费资格；同一账户里另有失效卡，或联名卡、体验卡这类不纳入范围的卡，都不影响这个判断。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0009",
+      "route": "business_body",
+      "criteria": [
+        "B14"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0009",
+        "statement": "小林称复购率确实连续四个季度在下滑，但具体计算口径还得项目组核实；先比较哪类会员、哪两个时期她还没定，需跟项目组和业务一起确认。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；复购下滑为其陈述，计算口径未核实；不据此确认原因。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03856",
+            "quote": "复购率确实连续四个季度在下滑，但具体计算口径还得项目组核实，所以先比较哪类会员、哪两个时期，我这边还没定，得跟项目组和业务一起确认。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0010",
+      "route": "business_body",
+      "criteria": [
+        "B14"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0010",
+        "statement": "小林个人想法是先看已有月报口径里能对上的那部分会员，把名单和依据整理成可核对问数，以减少反复整理名单、核对执行记录和跟进进度；但她没量过工时，也不能说这就是复购下滑的原因。",
+        "kind": "opinion",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林明确称为个人想法；未量化工时；原因判断仅为其不能确认的事项，不作为原因假设。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03856",
+            "quote": "我个人的想法是，先看已有月报口径里能对上的那部分会员，把名单和依据整理成可核对的问数，减少反复整理名单、核对执行记录和跟进进度这些事。不过这只是我觉得费力的地方，我没量过工时，也不能说它就是复购下滑的原因。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0011",
+      "route": "business_body",
+      "criteria": [
+        "B12"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0011",
+        "statement": "小林称人群和执行方案仍要业务人员确认，她不会自动发券或联系会员。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；涉及协作边界，不是业务人员已确认。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03856",
+            "quote": "人群和执行方案还是要业务人员确认，我不会自动发券或联系会员。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0012",
+      "route": "source_or_investigation_notes",
+      "criteria": [
+        "N01"
+      ],
+      "verdict": "repair_required",
+      "reason": "个人工作记录/非公司统一口径的限定真实，但现有摘录未覆盖；补同消息原句，仍仅notes。",
+      "issues": [
+        {
+          "code": "QUOTE_COVERAGE",
+          "severity": "evidence",
+          "reason": "个人工作记录/非公司统一口径的限定真实，但现有摘录未覆盖；补同消息原句，仍仅notes。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0012",
+        "statement": "小林手头实际在用的是自己维护的Excel名单，主要用于会员优惠券活动，也用于回访一段时间没购买的会员。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；仅指其个人工作记录，不是公司统一口径。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03858",
+            "quote": "我手头实际在用的，是那份自己维护的 Excel 名单，主要用来做会员优惠券活动，也用来回访一段时间没购买的会员。"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03858",
+            "quote": "这份表是我个人的工作记录，不是公司统一口径，不能直接当交付数据用。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：个人工作记录/非公司统一口径的限定真实，但现有摘录未覆盖；补同消息原句，仍仅notes。；去向：source_or_investigation_notes。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0013",
+      "route": "business_body",
+      "criteria": [
+        "B11"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。 直接保留实际业务交接；无需个人Excel载体入模。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0013",
+        "statement": "小林整理名单后会找相关同事确认线上或门店的执行安排，再按记录跟进进度。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；交接对象仅表述为相关同事，未指明具体负责人。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03858",
+            "quote": "整理好后，我会找相关同事确认线上或门店的执行安排，再按记录跟进进度。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0014",
+      "route": "source_or_investigation_notes",
+      "criteria": [
+        "N01"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0014",
+        "statement": "小林称该Excel表是她个人的工作记录，不是公司统一口径，不能直接当交付数据用。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；仅作来源与待核记录，不进入业务模型正文。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03858",
+            "quote": "这份表是我个人的工作记录，不是公司统一口径，不能直接当交付数据用。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：source_or_investigation_notes。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0015",
+      "route": "business_body",
+      "criteria": [
+        "B11",
+        "B12"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0015",
+        "statement": "小林称其经手会员优惠券活动、会员权益说明和对一段时间没购买会员的回访；若要选一个先支持，她更希望先放在优惠券活动。",
+        "kind": "opinion",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；偏好仅代表其个人选择，未确定执行方案。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03860",
+            "quote": "这两类我都经手：会员优惠券活动、会员权益说明，还有对一段时间没购买的会员做回访。要选一个先支持，我更希望先放在优惠券活动这边。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0016",
+      "route": "business_body",
+      "criteria": [
+        "B12"
+      ],
+      "verdict": "repair_required",
+      "reason": "“这项”对应优惠券活动；主张应保留活动范围，避免泛化为所有工作。",
+      "issues": [
+        {
+          "code": "ACTIVITY_CONTEXT",
+          "severity": "semantic",
+          "reason": "“这项”对应优惠券活动；主张应保留活动范围，避免泛化为所有工作。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0016",
+        "statement": "小林称在优惠券活动中最想少花力气的是整理名单和执行记录、找同事核对不一致的信息，以及反复跟进进度。",
+        "kind": "opinion",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "该辅助诉求针对小林优先希望支持的优惠券活动；是个人工作体验，未量化工时，不证明复购下降原因。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03860",
+            "quote": "这项里最想少花力气的是整理名单和执行记录、找同事核对不一致的信息，还有反复跟进进度。"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03860",
+            "quote": "要选一个先支持，我更希望先放在优惠券活动这边。"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03856",
+            "quote": "不过这只是我觉得费力的地方，我没量过工时，也不能说它就是复购下滑的原因。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：“这项”对应优惠券活动；主张应保留活动范围，避免泛化为所有工作。；去向：business_body。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0017",
+      "route": "business_body",
+      "criteria": [
+        "B13"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0017",
+        "statement": "小林称具体哪次优惠券活动、哪些会员进入候选名单、按什么条件筛，她不能确认，得查对应实际记录；候选条件也不是她一个人能定，需要找相应负责人确认；她不会单独定人群、自动发券或联系会员。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林自述不能确认具体活动与候选条件；未提供实际案例；负责人和记录待核。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03862",
+            "quote": "具体哪次活动、哪些会员进了候选名单、按什么条件筛的，我这边不能确认，得查对应的实际记录。候选条件也不是我一个人能定，需要找相应负责人确认；我不会单独定人群，也不会自动发券或联系会员。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0018",
+      "route": "source_or_investigation_notes",
+      "criteria": [
+        "B05"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。 初始问法已明确被后续收窄，仅留来源演变记录，不建第二个全体资格账户数需求。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0018",
+        "statement": "小林最初表示最想问系统的是：本期月报按悦享年卡和家庭季卡有效状态筛出持有人，再按账户去重后，有多少个有付费资格的账户。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "此问法由小林在MSG-03866提出；随后MSG-03867由访谈者追问，MSG-03868将其收窄为‘有资格且当月有有效购买’。不得把该初始问法当作全体有资格账户数。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03866",
+            "quote": "我最想直接问系统的是：本期月报里，按悦享年卡和家庭季卡的有效状态筛出持有人，再按账户去重后，到底有多少个有付费资格的账户？"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03867",
+            "quote": "确认一下，您这次要数的是月末有付费资格的全部账户，包括当月没有有效购买的；还是只数其中当月有有效购买的账户？"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03868",
+            "quote": "这次数的是有付费资格、并且当月有有效购买的账户，不是把所有有资格的账户都算进来。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：source_or_investigation_notes。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0019",
+      "route": "business_body",
+      "criteria": [
+        "B05",
+        "B06"
+      ],
+      "verdict": "repair_required",
+      "reason": "已保留后续收窄，但本条明确声称回应03867，应补该提问证据，并在主张直接写明月末资格。",
+      "issues": [
+        {
+          "code": "QUESTION_PREMISE",
+          "severity": "evidence",
+          "reason": "已保留后续收窄，但本条明确声称回应03867，应补该提问证据，并在主张直接写明月末资格。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0019",
+        "statement": "经MSG-03867追问后，小林明确本次要数的是月末有付费资格且当月有有效购买的去重账户，不是所有有资格账户；资格只看悦享年卡和家庭季卡有效状态，联名卡和体验卡不进本期口径；月末才生效但当月此前有有效购买的账户，按月底资格纳入。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "回应MSG-03867追问后的收窄口径；保留‘当月有有效购买’和‘月末才生效但此前有购买’两个时点条件；不另添全体资格账户数。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03868",
+            "quote": "这次数的是有付费资格、并且当月有有效购买的账户，不是把所有有资格的账户都算进来。资格还是只看悦享年卡和家庭季卡的有效状态，联名卡和体验卡不进本期口径；月末才生效、但当月此前有购买的账户，按月底资格口径纳入当月有效购买。"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03867",
+            "quote": "确认一下，您这次要数的是月末有付费资格的全部账户，包括当月没有有效购买的；还是只数其中当月有有效购买的账户？"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03870",
+            "quote": "二是按账户去重，同一账户多张有效悦享年卡也只算一个有资格账户；"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：已保留后续收窄，但本条明确声称回应03867，应补该提问证据，并在主张直接写明月末资格。；去向：business_body。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0020",
+      "route": "business_body",
+      "criteria": [
+        "B10"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0020",
+        "statement": "小林称核对人数时除了总数会看四项：卡类型和有效状态只认悦享年卡和家庭季卡；按账户去重，同一账户多张有效悦享年卡也只算一个有资格账户；等级和付费资格分开，金卡不一定有资格、普通等级也可能有；月末资格和当月有效购买分开，数有资格且当月有有效购买的账户，月末才生效但此前有购买的按月底资格纳入。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；四项为其核对依据，不证明具体数量已核实。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03870",
+            "quote": "核对人数时，除了总数，我会看四样：一是卡类型和有效状态，只认悦享年卡和家庭季卡，联名卡、体验卡不进本期口径；二是按账户去重，同一账户多张有效悦享年卡也只算一个有资格账户；三是等级和付费资格分开，金卡不一定有资格，普通等级也可能有；四是月末资格和当月有效购买要分开，这次数的是有资格且当月有有效购买的账户，月末才生效但此前有购买的按月底资格纳入。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0021",
+      "route": "source_or_investigation_notes",
+      "criteria": [
+        "N01"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0021",
+        "statement": "小林称核对材料上会对照本期总部运营月报口径，再拿其个人Excel名单做交叉核对；该Excel是个人工作记录，不是公司统一口径，不能直接当交付数据。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "小林所述；个人Excel仅作来源与待核记录，不进入业务模型正文。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03870",
+            "quote": "材料上，我会对照本期总部运营月报的口径，再拿我自己那份 Excel 名单做交叉核对；那份是我个人的工作记录，不是公司统一口径，不能直接当交付数据。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：source_or_investigation_notes。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0022",
+      "route": "source_or_investigation_notes",
+      "criteria": [
+        "B10",
+        "B14"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。 未知统计结果与原因留notes，不写成零或已得原因。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0022",
+        "statement": "小林称具体数量和复购下滑的原因，她还没有能确认的统计。",
+        "kind": "fact",
+        "evidence_status": "unknown",
+        "qualifiers": [
+          "小林自述未知；不能改写为数量为零或确定未发生；原因未确认。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03866",
+            "quote": "具体数量和复购下滑的原因，我这边还没有能确认的统计。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：source_or_investigation_notes。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0023",
+      "route": "source_or_investigation_notes",
+      "criteria": [
+        "N02"
+      ],
+      "verdict": "repair_required",
+      "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。",
+      "issues": [
+        {
+          "code": "FALSE_CONFLICT",
+          "severity": "semantic",
+          "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0023",
+        "statement": "老周表示ended_at为空具体代表什么没有可确认解释，不能直接当成“未终止”或“已终止”，要结合实际填写方式和统计说明核实。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "老周自述不能确认；不等于字段没有业务含义；需结合实际填写方式和统计说明。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03873",
+            "quote": "ended_at 为空具体代表什么，我这边没有可确认的解释，不能直接当成“未终止”或“已终止”；要结合实际填写方式和统计说明来核实。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。；去向：source_or_investigation_notes。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0024",
+      "route": "delivery_dependency_or_review_record",
+      "criteria": [
+        "N04"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0024",
+        "statement": "老周称具体能对照哪份数据说明或实际记录，要看来访者手头实际提供哪些材料，他不能凭空指定；需先说明核查对象和用途，再按配合核查步骤确认需要看什么、还有哪些责任待确认。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "老周所述；材料名称和责任人未定。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03873",
+            "quote": "具体能对照哪份数据说明或实际记录，要看你手头实际提供哪些材料，我这边不能凭空指定；你先说明核查对象和用途，我再按配合核查的步骤确认需要看什么、还有哪些责任待确认。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：delivery_dependency_or_review_record。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0025",
+      "route": "source_or_investigation_notes",
+      "criteria": [
+        "N02"
+      ],
+      "verdict": "repair_required",
+      "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。；去掉把未掌握与门店说明并列成冲突的限定。",
+      "issues": [
+        {
+          "code": "FALSE_CONFLICT",
+          "severity": "semantic",
+          "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。"
+        },
+        {
+          "code": "ROLE_KNOWLEDGE_BOUNDARY",
+          "severity": "semantic",
+          "reason": "去掉把未掌握与门店说明并列成冲突的限定。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0025",
+        "statement": "老周表示权益开始当天、计划结束当天是否有效，这类具体规则说明和可对照系统记录他没有可确认的，不能凭卡表字段或测试库结构下结论。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "本条记录老周当时没有可确认的具体日期规则说明/系统记录；不表示规则不存在或门店执行说明为假。正式文件和历史凭据仍需另核。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03875",
+            "quote": "权益开始当天、计划结束当天是否有效，这类具体规则说明和可对照的系统记录，我这边没有可确认的，不能凭卡表字段或测试库结构下结论。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。；去掉把未掌握与门店说明并列成冲突的限定。；去向：source_or_investigation_notes。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0026",
+      "route": "delivery_dependency_or_review_record",
+      "criteria": [
+        "N03"
+      ],
+      "verdict": "repair_required",
+      "reason": "不等于验收结论的限定来自03881/03883，补确切引文。",
+      "issues": [
+        {
+          "code": "QUOTE_COVERAGE",
+          "severity": "evidence",
+          "reason": "不等于验收结论的限定来自03881/03883，补确切引文。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0026",
+        "statement": "老周称本期字典和干净合成库只用于测试开发，核对的是结构、覆盖和关联边界，不等于生产规则或真实数据已经接通。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "老周所述；测试库结论不能当作生产规则或验收结论。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03875",
+            "quote": "本期字典和干净合成库只用于测试开发，核对的是结构、覆盖和关联边界，不等于生产规则或真实数据已经接通。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03883",
+            "quote": "第三，测试库的核对结果只用于结构、覆盖和关联边界，不能当作生产规则或验收结论。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：不等于验收结论的限定来自03881/03883，补确切引文。；去向：delivery_dependency_or_review_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0027",
+      "route": "delivery_dependency_or_review_record",
+      "criteria": [
+        "N04"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0027",
+        "statement": "老周称要核实需先说明核查对象和用途，他会和运营一起确认会员范围，再核对系统统计所用的范围、时间和统计说明，并把需补充的记录逐项列出。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "老周所述；具体记录名称和责任人待核。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03875",
+            "quote": "要核实的话，先说明核查对象和用途，我和运营一起确认会员范围，再核对系统统计所用的范围、时间和统计说明，把需要补充的记录逐项列出来。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：delivery_dependency_or_review_record。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0028",
+      "route": "business_body",
+      "criteria": [
+        "B09"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。 本次已明确提取完整自然月、全渠道全门店范围，保留本次测试数据边界。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0028",
+        "statement": "老周复述确认核查范围是本周测试数据覆盖内的完整自然月、全渠道全门店、按账户去重，并纳入悦享年卡和家庭季卡。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "该范围前提由访谈者在MSG-03876引入，老周在MSG-03877复述确认；不是老周独立提出；范围仍限于测试数据覆盖。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03876",
+            "quote": "范围是本周测试数据覆盖内的完整自然月、全渠道和全门店，按账户去重；小林已确认纳入悦享年卡和家庭季卡。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03877",
+            "quote": "核查对象、用途和范围这次说清楚了：本周测试数据覆盖内的完整自然月、全渠道全门店、按账户去重，纳入悦享年卡和家庭季卡。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0029",
+      "route": "source_or_investigation_notes",
+      "criteria": [
+        "N02"
+      ],
+      "verdict": "repair_required",
+      "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。；本条是老周列出的补证需求，不否定陈姐另有门店执行说明。",
+      "issues": [
+        {
+          "code": "FALSE_CONFLICT",
+          "severity": "semantic",
+          "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。"
+        },
+        {
+          "code": "EVIDENCE_UNKNOWN_NOT_RULE_CONFLICT",
+          "severity": "semantic",
+          "reason": "本条是老周列出的补证需求，不否定陈姐另有门店执行说明。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0029",
+        "statement": "老周称启动这项核查最需要补的是日期端点（权益开始当天、计划结束当天是否有效）和提前终止空值含义的业务规则说明及可对照实际记录；这两项他没有可确认解释，不能凭卡表字段或测试库结构下结论。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "老周列出的待补材料和其个人不能确认状态；本条未给出与陈姐相反的日期/空值规则。",
+          "正式规则文件和历史执行凭据本轮仍需核实，保留为来源/核查记录，不把补证需求建成规则冲突。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03877",
+            "quote": "要启动这项核查，最需要补的是日期端点（权益开始当天、计划结束当天是否有效）和提前终止空值含义的业务规则说明，以及能对照的实际记录。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03877",
+            "quote": "这两项我这边没有可确认的解释，不能凭卡表字段或测试库结构下结论。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。；本条是老周列出的补证需求，不否定陈姐另有门店执行说明。；去向：source_or_investigation_notes。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0030",
+      "route": "delivery_dependency_or_review_record",
+      "criteria": [
+        "N04"
+      ],
+      "verdict": "repair_required",
+      "reason": "“未指定具体岗位”过宽，应限定为日期规则的具体确认人，避免抹掉已明确的运营/IT分工与小林对接。",
+      "issues": [
+        {
+          "code": "OWNER_SCOPE",
+          "severity": "semantic",
+          "reason": "“未指定具体岗位”过宽，应限定为日期规则的具体确认人，避免抹掉已明确的运营/IT分工与小林对接。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0030",
+        "statement": "老周称应由运营和业务规则负责人确认口径，他配合核对取数条件和系统统计所用的范围、时间、统计说明，并列出需补充记录。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "已明确运营/业务规则侧确认业务口径、IT配合取数核查；具体日期规则确认人仍未指出，小林是运营工作对接入口，不因对接身份成为已确认日期规则的权威负责人。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03877",
+            "quote": "应由运营和业务规则负责人确认口径，我配合核对取数条件和系统统计所用的范围、时间、统计说明，并把需要补充的记录逐项列出来。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03879",
+            "quote": "业务规则这块，运营工作找小林对接确认，我配合核对取数条件和系统统计所用的范围、时间、统计说明。日期端点和提前终止空值的含义，我这边没有可确认的解释，不能替小林确认，也不指定具体岗位。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：“未指定具体岗位”过宽，应限定为日期规则的具体确认人，避免抹掉已明确的运营/IT分工与小林对接。；去向：delivery_dependency_or_review_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0031",
+      "route": "delivery_dependency_or_review_record",
+      "criteria": [
+        "N02",
+        "N04"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。 小林是运营对接入口；具体日期规则确认人仍待核。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0031",
+        "statement": "老周称业务规则这块运营工作找小林对接确认；日期端点和提前终止空值含义他没有可确认解释，不能替小林确认，也不指定具体岗位。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "老周所述；具体确认责任仍待业务侧核实。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03879",
+            "quote": "业务规则这块，运营工作找小林对接确认，我配合核对取数条件和系统统计所用的范围、时间、统计说明。日期端点和提前终止空值的含义，我这边没有可确认的解释，不能替小林确认，也不指定具体岗位。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：delivery_dependency_or_review_record。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0032",
+      "route": "delivery_dependency_or_review_record",
+      "criteria": [
+        "N04",
+        "N03"
+      ],
+      "verdict": "repair_required",
+      "reason": "记录的条件承诺保留正确；补“结构/覆盖/关联边界”限定的直接证据。",
+      "issues": [
+        {
+          "code": "QUOTE_COVERAGE",
+          "severity": "evidence",
+          "reason": "记录的条件承诺保留正确；补“结构/覆盖/关联边界”限定的直接证据。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0032",
+        "statement": "老周称核查完成后可提供配合核查过程形成的记录，包括核查对象和用途、系统统计范围、时间和统计说明、需补充记录清单和待确认责任项；具体名称和内容看实际材料，现在不能预先承诺交付，也不能把测试库核对结果当成生产规则或验收结论。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "老周所述；非交付承诺；测试库结论限于结构、覆盖和关联边界。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03881",
+            "quote": "核查完成后，我能提供的是配合核查过程中形成的记录：核查对象和用途、系统统计所用的范围、时间和统计说明，以及需要补充的记录清单和待确认的责任项。具体记录名称和内容要看实际核查材料，我现在不能预先承诺交付，也不能把测试库的核对结果当成生产规则或验收结论。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03883",
+            "quote": "第三，测试库的核对结果只用于结构、覆盖和关联边界，不能当作生产规则或验收结论。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：记录的条件承诺保留正确；补“结构/覆盖/关联边界”限定的直接证据。；去向：delivery_dependency_or_review_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0033",
+      "route": "business_body",
+      "criteria": [
+        "B07"
+      ],
+      "verdict": "repair_required",
+      "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。；“这两类卡”必须回接03885本期两卡/月末账户前提；不能因伪冲突抹掉已取得门店说明，也不能升级为正式制度已验证。",
+      "issues": [
+        {
+          "code": "FALSE_CONFLICT",
+          "severity": "semantic",
+          "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。"
+        },
+        {
+          "code": "TWO_CARD_AND_MONTH_END_PREMISE",
+          "severity": "semantic",
+          "reason": "“这两类卡”必须回接03885本期两卡/月末账户前提；不能因伪冲突抹掉已取得门店说明，也不能升级为正式制度已验证。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0033",
+        "statement": "陈姐称门店判断悦享年卡和家庭季卡权益是否有效，依据卡的有效期规则：卡在生效日期当天开始有效，到有效期结束日期当天已无效；有提前终止日期的，从提前终止当天起无效。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "本期总部运营月报、悦享年卡和家庭季卡、按月末状态及账户统计由访谈者MSG-03885明确带入；陈姐按其门店经手规则回答。",
+          "规则表述来源是陈姐门店说明；具体规则说明/办理记录及历史执行凭据她不掌握，仍需运营核对。其他角色未掌握不构成相反规则。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "门店判断这两类卡权益是否有效，依据的是卡的有效期规则：卡在生效日期当天开始有效，到有效期结束日期当天已无效；有提前终止日期的，从提前终止当天起无效。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03885",
+            "quote": "陈姐，我们在核本期总部运营月报的付费资格，按月末状态、按账户统计；小林已确认纳入悦享年卡和家庭季卡。这次先核这两类卡的有效期规则，供月报计算使用。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "至于具体是哪份规则说明或办理记录、历史执行凭据，这项具体细节我不掌握，需要向运营小林核对。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。；“这两类卡”必须回接03885本期两卡/月末账户前提；不能因伪冲突抹掉已取得门店说明，也不能升级为正式制度已验证。；去向：business_body。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0034",
+      "route": "business_body",
+      "criteria": [
+        "B08"
+      ],
+      "verdict": "repair_required",
+      "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。；空值解释可按陈姐门店说明保留，不应被老周的不掌握否定；补本期两卡前提及正式依据限制。",
+      "issues": [
+        {
+          "code": "FALSE_CONFLICT",
+          "severity": "semantic",
+          "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。"
+        },
+        {
+          "code": "NULL_RULE_SCOPE",
+          "severity": "semantic",
+          "reason": "空值解释可按陈姐门店说明保留，不应被老周的不掌握否定；补本期两卡前提及正式依据限制。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0034",
+        "statement": "陈姐称提前终止字段为空只表示该记录没有提前终止，不代表有效期无限；有效期结束日仍要照常看，不能当成无限期。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "本期两类卡/月末账户资格的前提来自MSG-03885；陈姐给出的是门店执行解释，空值不代表无限期或当前必有效。",
+          "老周没有确认解释不构成相反解释；正式规则文件与历史填写/执行凭据未核实，保留待核。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "提前终止字段为空，只表示这条记录没有提前终止，不代表有效期无限。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03890",
+            "quote": "提前终止为空只说明这条记录没有提前终止，有效期结束日仍要照常看，不能当成无限期。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03885",
+            "quote": "陈姐，我们在核本期总部运营月报的付费资格，按月末状态、按账户统计；小林已确认纳入悦享年卡和家庭季卡。这次先核这两类卡的有效期规则，供月报计算使用。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "至于具体是哪份规则说明或办理记录、历史执行凭据，这项具体细节我不掌握，需要向运营小林核对。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。；空值解释可按陈姐门店说明保留，不应被老周的不掌握否定；补本期两卡前提及正式依据限制。；去向：business_body。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0035",
+      "route": "business_body",
+      "criteria": [
+        "B07"
+      ],
+      "verdict": "repair_required",
+      "reason": "“未指定具体日期”容易抹去已给出的月末判定口径；需区分已知判定时点规则与未指定具体日历月。",
+      "issues": [
+        {
+          "code": "DATE_PREMISE_LOST",
+          "severity": "semantic",
+          "reason": "“未指定具体日期”容易抹去已给出的月末判定口径；需区分已知判定时点规则与未指定具体日历月。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0035",
+        "statement": "陈姐称资格要按要求的判定日期检查，不能只看当前状态；本次总部运营月报的问题前提为按月末状态判断。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "月末状态由访谈者MSG-03885带入；未指定某一具体日历月不等于没有判定时点口径。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "资格要按要求的判定日期检查，不能只看当前状态。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03885",
+            "quote": "陈姐，我们在核本期总部运营月报的付费资格，按月末状态、按账户统计；小林已确认纳入悦享年卡和家庭季卡。这次先核这两类卡的有效期规则，供月报计算使用。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：“未指定具体日期”容易抹去已给出的月末判定口径；需区分已知判定时点规则与未指定具体日历月。；去向：business_body。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0036",
+      "route": "business_body",
+      "criteria": [
+        "B04",
+        "B07"
+      ],
+      "verdict": "repair_required",
+      "reason": "本次范围及判定时点已有提问前提，不能仅留泛称“未指定判定日”。",
+      "issues": [
+        {
+          "code": "CARD_AND_DATE_PREMISE",
+          "severity": "semantic",
+          "reason": "本次范围及判定时点已有提问前提，不能仅留泛称“未指定判定日”。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0036",
+        "statement": "在本期总部运营月报纳入悦享年卡和家庭季卡、按月末状态和账户统计的前提下，陈姐称账户只要有一张符合本次范围且在判定日有效的卡就具有资格。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "本期两卡/月末账户前提来自访谈者MSG-03885；陈姐回答存在一张有效范围内卡即可。不能泛化为其他产品/报表。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "按账户判断，只要有一张符合本次业务范围且在判定日有效的卡就具有资格；"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03885",
+            "quote": "陈姐，我们在核本期总部运营月报的付费资格，按月末状态、按账户统计；小林已确认纳入悦享年卡和家庭季卡。这次先核这两类卡的有效期规则，供月报计算使用。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：本次范围及判定时点已有提问前提，不能仅留泛称“未指定判定日”。；去向：business_body。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0037",
+      "route": "business_body",
+      "criteria": [
+        "B04"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0037",
+        "statement": "陈姐称多张有效卡不能把同一账户重复算人，也不能重复累计订单。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "陈姐所述；针对账户去重与订单累计，不证明订单表已接通。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "多张有效卡不能把同一账户重复算人或重复累计订单。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03888",
+            "quote": "多张有效卡不能重复算人、重复累计订单。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0038",
+      "route": "source_or_investigation_notes",
+      "criteria": [
+        "N02"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。 保留正式文件/历史凭据未知，不把未知登记为规则冲突。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0038",
+        "statement": "陈姐称具体哪份规则说明或办理记录、历史执行凭据，她不掌握，需要向运营小林核对。",
+        "kind": "fact",
+        "evidence_status": "unknown",
+        "qualifiers": [
+          "陈姐自述不掌握；不等于文件不存在；需向小林核对。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "至于具体是哪份规则说明或办理记录、历史执行凭据，这项具体细节我不掌握，需要向运营小林核对。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：source_or_investigation_notes。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0039",
+      "route": "business_body",
+      "criteria": [
+        "B15"
+      ],
+      "verdict": "repair_required",
+      "reason": "原文说明配合前应明确事项，不能据此断言这些事项在现实中均尚未明确。",
+      "issues": [
+        {
+          "code": "CONDITION_NOT_PROVEN_UNMET",
+          "severity": "semantic",
+          "reason": "原文说明配合前应明确事项，不能据此断言这些事项在现实中均尚未明确。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0039",
+        "statement": "陈姐称门店配合前要先明确活动适用范围、具体工作量、现场问题由谁处理，以及门店付出的工作如何记录。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "这是配合前置条件；本条没有提供具体工作量/责任人/记录方式，也不足以判定这些条件在现实中已经全部满足或确定尚未满足。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "门店配合前，也要先明确活动适用范围、具体工作量、现场问题由谁处理，以及门店付出的工作如何记录。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：原文说明配合前应明确事项，不能据此断言这些事项在现实中均尚未明确。；去向：business_body。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0040",
+      "route": "delivery_dependency_or_review_record",
+      "criteria": [
+        "B15"
+      ],
+      "verdict": "repair_required",
+      "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。；保留门店协助的范围、工作量、现场问题处理、工作记录以及不清或影响考核须澄清条件；去掉未经证明的实际排期未定断言。",
+      "issues": [
+        {
+          "code": "FALSE_CONFLICT",
+          "severity": "semantic",
+          "reason": "“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。"
+        },
+        {
+          "code": "STORE_CONDITIONS",
+          "severity": "semantic",
+          "reason": "保留门店协助的范围、工作量、现场问题处理、工作记录以及不清或影响考核须澄清条件；去掉未经证明的实际排期未定断言。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0040",
+        "statement": "陈姐称门店能协助按判定日逐张卡看有效期，再按账户归并：只要有一张符合本次范围且在判定日有效的卡就算有资格，多张有效卡不能重复算人、重复累计订单。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "门店协助前须明确活动适用范围、具体工作量、现场问题处理者、门店工作记录方式；要求不清或影响门店考核，先澄清再安排。",
+          "这是可协助内容，不代表已排定或已执行；具体历史执行凭据陈姐不掌握，需向运营小林核对。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03888",
+            "quote": "门店能协助核对的是：按判定日逐张卡看有效期，生效当天算有效、有效期结束当天已无效，有提前终止的从提前终止当天起无效；再按账户归并，只要有一张符合本次范围且在判定日有效的卡就算有资格，多张有效卡不能重复算人、重复累计订单。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03888",
+            "quote": "另外要先把活动适用范围、具体工作量、现场问题由谁处理、门店付出的工作怎么记录讲清楚，我才好安排门店配合；要求不清或影响门店考核的，得先澄清再安排。具体历史执行凭据我不掌握，需要向运营小林核对。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：“不能确认/需补材料”不是另一条相反规则；不满足同范围两条正面断言互不兼容的冲突标准。恢复reported并去掉冲突关联，保留正式依据未知。；保留门店协助的范围、工作量、现场问题处理、工作记录以及不清或影响考核须澄清条件；去掉未经证明的实际排期未定断言。；去向：delivery_dependency_or_review_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0041",
+      "route": "business_body",
+      "criteria": [
+        "B15"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。 日常门店协作条件可留业务正文；本次FDE测试安排仍去交付记录。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0041",
+        "statement": "陈姐称要求不清或影响门店考核的，得先澄清再安排。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "陈姐所述；未说明具体考核指标或澄清流程。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03888",
+            "quote": "要求不清或影响门店考核的，得先澄清再安排。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：business_body。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0042",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S01"
+      ],
+      "verdict": "repair_required",
+      "reason": "答复认可的是访谈者提出的阶段划分，补03910“本周合成测试数据/38项/尚未完成”的上下文，不把意见当批准。",
+      "issues": [
+        {
+          "code": "PROPOSED_STAGE_PREMISE",
+          "severity": "semantic",
+          "reason": "答复认可的是访谈者提出的阶段划分，补03910“本周合成测试数据/38项/尚未完成”的上下文，不把意见当批准。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0042",
+        "statement": "王经理认为访谈者提出的阶段划分思路可以：在测试数据内完成已列明38项指标查询与独立核对，会员筛选和运营执行另列后续，预算、合同与正式上线分别确认。",
+        "kind": "opinion",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "拟议范围由访谈者MSG-03910提出：本周提供的合成测试数据内完成38项查询及独立核对，当时业务模型更新和查询验证尚未完成。",
+          "王经理认可划分思路是核查/合同职责意见，非公司批准、验收或上线承诺；仅SOW/阶段记录，不进业务正文。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03911",
+            "quote": "这个划分思路可以：测试数据内完成已列明的 38 项指标查询与独立核对，会员筛选和运营执行另列后续，预算、合同与正式上线分别确认，这几条边界是清楚的。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03910",
+            "quote": "王经理，我们在准备本期青禾报表查数的阶段范围。初步考虑先在本周提供的合成测试数据内，完成已列明的 38 项指标查询与独立核对，为运营核对口径和后续分析提供依据；会员筛选和运营执行另列后续，预算、合同与正式上线分别确认。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03910",
+            "quote": "目前已取得小林、老周和陈姐的本周访谈，业务模型更新和查询验证尚未完成。针对这份初步阶段划分，从您参与范围及合同核查的职责看，还缺哪些说明，才能把本期交付边界写清楚？"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：答复认可的是访谈者提出的阶段划分，补03910“本周合成测试数据/38项/尚未完成”的上下文，不把意见当批准。；去向：SOW_or_stage_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0043",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S02"
+      ],
+      "verdict": "repair_required",
+      "reason": "本条是需补四类材料要求，“记录形式未定”宜用明确的后续来源支持，避免直接从缺说明推断实际协定状态。",
+      "issues": [
+        {
+          "code": "UNSUPPORTED_RECORD_STATUS",
+          "severity": "evidence",
+          "reason": "本条是需补四类材料要求，“记录形式未定”宜用明确的后续来源支持，避免直接从缺说明推断实际协定状态。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0043",
+        "statement": "王经理称还缺四类说明：试点范围说明（38项指标清单、测试数据范围、独立核对方式）；费用构成及依据（金额没谈妥列待确认，不先写成承诺）；双方工作与责任草案（客户提供材料、交付方负责什么）；效果留证方式（记录证明定义可追溯、查询和校验正确）。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "仅作为SOW/交付记录候选；金额和记录形式未定；不进入业务模型正文。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03911",
+            "quote": "还缺四类说明：一是试点范围说明，把 38 项指标清单、测试数据范围和独立核对方式写清；二是费用构成及依据，金额没谈妥的列为待确认，不用先写成承诺；三是双方工作与责任草案，客户要提供什么材料、交付方负责什么；四是效果留证方式，说明用什么记录证明定义可追溯、查询和校验正确。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03927",
+            "quote": "具体节点怎么切、对应哪份确认记录，要等双方把阶段成果和记录形式谈定。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：本条是需补四类材料要求，“记录形式未定”宜用明确的后续来源支持，避免直接从缺说明推断实际协定状态。；去向：SOW_or_stage_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0044",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S03"
+      ],
+      "verdict": "repair_required",
+      "reason": "“未指定具体人”过宽，原句我指王经理；分工明确不等于最终验收权限明确。",
+      "issues": [
+        {
+          "code": "ROLE_AND_AUTHORITY_SCOPE",
+          "severity": "semantic",
+          "reason": "“未指定具体人”过宽，原句我指王经理；分工明确不等于最终验收权限明确。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0044",
+        "statement": "王经理称运营核对业务范围，他参与统计口径与验收依据核查，IT核对字段和数据覆盖。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "王经理说明本次核查分工：运营核业务范围、王经理参与口径及验收依据核查、IT核字段/覆盖；这不是最终验收、预算或签约授权。",
+          "项目分工仅SOW/交付记录；具体审批人和授权额度仍须另核。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03911",
+            "quote": "运营核对业务范围，我参与统计口径与验收依据核查，IT 核对字段和数据覆盖。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03911",
+            "quote": "我只能对预算和合同材料提核查意见，依据不足或费用范围不清会要求补充、暂缓财务确认；预算额度、签约、验收和正式上线我不能替公司承诺，具体审批人和授权额度要另行核实。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：“未指定具体人”过宽，原句我指王经理；分工明确不等于最终验收权限明确。；去向：SOW_or_stage_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0045",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S03"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0045",
+        "statement": "王经理称他只能对预算和合同材料提核查意见；依据不足或费用范围不清会要求补充、暂缓财务确认；预算额度、签约、验收和正式上线他不能替公司承诺，具体审批人和授权额度要另行核实。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "仅作为SOW/交付记录候选；权限限定明确，非审批或承诺。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03911",
+            "quote": "我只能对预算和合同材料提核查意见，依据不足或费用范围不清会要求补充、暂缓财务确认；预算额度、签约、验收和正式上线我不能替公司承诺，具体审批人和授权额度要另行核实。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：SOW_or_stage_record。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0046",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S08"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0046",
+        "statement": "王经理称收益目标、预算金额和正式批准都还没定，要双方再谈。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "仅作为SOW/交付记录候选；未定事项，不得写成已承诺。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03911",
+            "quote": "收益目标、预算金额和正式批准都还没定，要双方再谈。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：SOW_or_stage_record。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0047",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S02"
+      ],
+      "verdict": "repair_required",
+      "reason": "“客户确认范围未实际完成”是未经来源支持的确定否定；原文只规定应提供/确认什么。",
+      "issues": [
+        {
+          "code": "UNKNOWN_TO_UNCOMPLETED",
+          "severity": "semantic",
+          "reason": "“客户确认范围未实际完成”是未经来源支持的确定否定；原文只规定应提供/确认什么。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0047",
+        "statement": "王经理称客户这边要提供或确认38项指标清单、测试数据范围、统计口径与验收依据的确认，以及打算用什么记录说明定义可追溯、查询和校验正确。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "仅SOW/交付记录候选；本条说明客户应提供/确认的内容，不能仅凭此条认定实际已经完成或确定尚未完成。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03919",
+            "quote": "客户这边要提供或确认的是：38 项指标清单、测试数据范围、统计口径与验收依据的确认，以及打算用什么记录说明定义可追溯、查询和校验正确。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：“客户确认范围未实际完成”是未经来源支持的确定否定；原文只规定应提供/确认什么。；去向：SOW_or_stage_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0048",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S02"
+      ],
+      "verdict": "repair_required",
+      "reason": "分工说明不能直接推出真实合同承诺必然不存在；应表达这段答复本身不构成交付方已承诺或已交付的证据。",
+      "issues": [
+        {
+          "code": "UNKNOWN_TO_NO_COMMITMENT",
+          "severity": "semantic",
+          "reason": "分工说明不能直接推出真实合同承诺必然不存在；应表达这段答复本身不构成交付方已承诺或已交付的证据。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0048",
+        "statement": "王经理称交付方负责准备查询与独立核对结果、定义可追溯和校验说明，以及双方工作与责任的草案。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "仅SOW/交付记录候选；这是王经理对双方工作分工草案的说明，不等于交付方已签约承诺或成果已交付；实际承诺状态不能仅凭此条确认。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03919",
+            "quote": "交付方负责准备查询与独立核对的结果、定义可追溯和校验说明，以及双方工作与责任的草案。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：分工说明不能直接推出真实合同承诺必然不存在；应表达这段答复本身不构成交付方已承诺或已交付的证据。；去向：SOW_or_stage_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0049",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S03"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0049",
+        "statement": "王经理称测试查询正确不等于验收、收益达成或批准签约。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "仅作为SOW/交付记录候选；明确否认测试查询与验收/收益/签约的等同关系。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03919",
+            "quote": "测试查询正确不等于验收、收益达成或批准签约。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：SOW_or_stage_record。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0050",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S04"
+      ],
+      "verdict": "repair_required",
+      "reason": "非审批限定真实，补同消息最后一句直接证据。",
+      "issues": [
+        {
+          "code": "QUOTE_COVERAGE",
+          "severity": "evidence",
+          "reason": "非审批限定真实，补同消息最后一句直接证据。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0050",
+        "statement": "王经理称核查时按业务范围、费用构成、效果留证逐项看，记录依据是否充分、责任是否明确；缺依据或责任不清的列待确认，请业务方补充后再复核；依据不足或费用范围没说清会暂缓财务确认。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "仅作为SOW/交付记录候选；属核查意见，非财务审批。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03923",
+            "quote": "我核查时按业务范围、费用构成、效果留证逐项看，记录依据是否充分、责任是否明确。缺依据或责任不清的列为待确认，请业务方补充后再复核；依据不足或费用范围没说清，我会暂缓财务确认。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03923",
+            "quote": "这只是我的核查意见，不构成审批或承诺，审批人和授权额度要另行核实。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：非审批限定真实，补同消息最后一句直接证据。；去向：SOW_or_stage_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0051",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S03"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0051",
+        "statement": "王经理称他的核查只是核查意见，不构成审批或承诺，审批人和授权额度要另行核实。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "仅作为SOW/交付记录候选；权限限定。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03923",
+            "quote": "这只是我的核查意见，不构成审批或承诺，审批人和授权额度要另行核实。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：SOW_or_stage_record。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0052",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S05"
+      ],
+      "verdict": "repair_required",
+      "reason": "丢失03924的“具体筛选条件尚未确定、拟在能力交付时以书面确认支持范围为准”前提；现有“已确认支持范围”不能写成当前已签事实。也不能凭未描述事件断言变更从未发生或未确认。",
+      "issues": [
+        {
+          "code": "FUTURE_SUPPORT_SCOPE_PREMISE",
+          "severity": "semantic",
+          "reason": "丢失03924的“具体筛选条件尚未确定、拟在能力交付时以书面确认支持范围为准”前提；现有“已确认支持范围”不能写成当前已签事实。也不能凭未描述事件断言变更从未发生或未确认。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0052",
+        "statement": "王经理称范围变更请书面提出，写清变更内容、对费用和责任的影响，以及是否超出已确认的支持范围。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "访谈者MSG-03924提出：后续会员筛选条件尚未确定，拟在该能力交付时以书面确认的支持范围为准，超出按变更处理；这是拟议安排，不是已经存在的书面合同范围。",
+          "王经理回应变更提出和核查方式，没有确认具体筛选条件或支持范围；本条不证明实际变更已发生、未发生或已确认。",
+          "仅SOW/交付记录；核查意见不构成审批或承诺。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03925",
+            "quote": "范围变更请书面提出，写清变更内容、对费用和责任的影响，以及是否超出已确认的支持范围。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03924",
+            "quote": "再核后续会员筛选的范围约定。这项能力的具体筛选条件尚未确定，我们拟在该能力交付时以书面确认的支持范围为准，超出范围的要求按变更处理。范围变更应怎样提出和确认，您核查时需要哪些依据？"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03925",
+            "quote": "我只能提核查意见，不构成审批或承诺；预算额度、签约、验收和正式上线仍要另行确认。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：丢失03924的“具体筛选条件尚未确定、拟在能力交付时以书面确认支持范围为准”前提；现有“已确认支持范围”不能写成当前已签事实。也不能凭未描述事件断言变更从未发生或未确认。；去向：SOW_or_stage_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0053",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S05"
+      ],
+      "verdict": "repair_required",
+      "reason": "丢失03924的“具体筛选条件尚未确定、拟在能力交付时以书面确认支持范围为准”前提；现有“已确认支持范围”不能写成当前已签事实。也不能凭未描述事件断言变更从未发生或未确认。",
+      "issues": [
+        {
+          "code": "FUTURE_SUPPORT_SCOPE_PREMISE",
+          "severity": "semantic",
+          "reason": "丢失03924的“具体筛选条件尚未确定、拟在能力交付时以书面确认支持范围为准”前提；现有“已确认支持范围”不能写成当前已签事实。也不能凭未描述事件断言变更从未发生或未确认。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0053",
+        "statement": "王经理称核查变更时先看书面支持范围，再看费用构成及依据、双方责任草案和效果留证方式；依据不足或费用范围没说清的列待确认，请业务方补充后再复核。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "访谈者MSG-03924提出：后续会员筛选条件尚未确定，拟在该能力交付时以书面确认的支持范围为准，超出按变更处理；这是拟议安排，不是已经存在的书面合同范围。",
+          "王经理回应变更提出和核查方式，没有确认具体筛选条件或支持范围；本条不证明实际变更已发生、未发生或已确认。",
+          "仅SOW/交付记录；核查意见不构成审批或承诺。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03925",
+            "quote": "我核查时先看书面支持范围，再看费用构成及依据、双方责任草案和效果留证方式；依据不足或费用范围没说清的，列为待确认，请业务方补充后再复核。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03924",
+            "quote": "再核后续会员筛选的范围约定。这项能力的具体筛选条件尚未确定，我们拟在该能力交付时以书面确认的支持范围为准，超出范围的要求按变更处理。范围变更应怎样提出和确认，您核查时需要哪些依据？"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03925",
+            "quote": "我只能提核查意见，不构成审批或承诺；预算额度、签约、验收和正式上线仍要另行确认。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：丢失03924的“具体筛选条件尚未确定、拟在能力交付时以书面确认支持范围为准”前提；现有“已确认支持范围”不能写成当前已签事实。也不能凭未描述事件断言变更从未发生或未确认。；去向：SOW_or_stage_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0054",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S03"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0054",
+        "statement": "王经理称他只能提核查意见，不构成审批或承诺；预算额度、签约、验收和正式上线仍要另行确认。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "仅作为SOW/交付记录候选；权限限定。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03925",
+            "quote": "我只能提核查意见，不构成审批或承诺；预算额度、签约、验收和正式上线仍要另行确认。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：SOW_or_stage_record。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0055",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S06"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0055",
+        "statement": "王经理称费用测算先按费用构成和计价依据列，金额没谈妥的明确写待确认，不先写成承诺。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "仅作为SOW/交付记录候选；金额待确认。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03927",
+            "quote": "费用测算先按费用构成和计价依据列，金额没谈妥的明确写待确认，不用先写成承诺。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：SOW_or_stage_record。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0056",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S06"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0056",
+        "statement": "王经理称结算节点要对应约定的阶段成果和确认记录，比如38项指标清单、测试数据范围、统计口径与验收依据的确认，以及定义可追溯、查询和校验正确的记录；具体节点怎么切、对应哪份确认记录要等双方把阶段成果和记录形式谈定。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "仅作为SOW/交付记录候选；结算节点和记录形式未定。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03927",
+            "quote": "结算节点要对应到约定的阶段成果和确认记录，比如38项指标清单、测试数据范围、统计口径与验收依据的确认，以及定义可追溯、查询和校验正确的记录；具体节点怎么切、对应哪份确认记录，要等双方把阶段成果和记录形式谈定。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：SOW_or_stage_record。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0057",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S03"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0057",
+        "statement": "王经理称他只能提核查意见，不替公司承诺预算额度、签约、验收或续约，审批人和授权额度要另行核实。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "仅作为SOW/交付记录候选；权限限定。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03927",
+            "quote": "我只能提核查意见，不替公司承诺预算额度、签约、验收或续约，审批人和授权额度要另行核实。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：SOW_or_stage_record。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0058",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S07"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。 假设前提正确保留；不将访谈者拟议继续工作当王经理已批准。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0058",
+        "statement": "在访谈者提出的‘客户未按约提供资料或确认口径、影响约定里程碑’假设情形下，王经理称核查时先看书面材料：缺项清单、通知时间、实际影响，以及哪些工作受影响、哪些不受影响。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "假设情形由访谈者MSG-03928引入，王经理未称已发生；仅作为SOW/交付记录候选。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03928",
+            "quote": "如果客户未按约提供资料或确认口径，影响了约定的里程碑，我们拟及时书面记录缺项、通知和实际影响，继续不受影响的工作，再讨论受影响部分的排期及必要费用变化。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03929",
+            "quote": "这类调整我核查时先看书面材料：缺项清单、通知时间、实际影响，以及哪些工作受影响、哪些不受影响。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：SOW_or_stage_record。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0059",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S07"
+      ],
+      "verdict": "repair_required",
+      "reason": "本条应直接关联3928假设，执行安排方/权限是本轮未确认或王经理不掌握，不推成公司事实上尚无安排。",
+      "issues": [
+        {
+          "code": "HYPOTHETICAL_CONTEXT_AND_OWNER_UNKNOWN",
+          "severity": "semantic",
+          "reason": "本条应直接关联3928假设，执行安排方/权限是本轮未确认或王经理不掌握，不推成公司事实上尚无安排。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0059",
+        "statement": "王经理称工作能否继续、怎么排期属于执行安排，不由他确认，要找负责执行安排的一方定；受影响部分的排期和费用变化要双方书面确认后再复核，金额没谈妥的列待确认；他只就费用和合同材料提核查意见，预算金额、审批和签约仍要另行确认。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "假设延期由访谈者MSG-03928引入，不表示延期已经发生；执行能否继续和排期应找执行安排负责方，不由王经理决定。",
+          "具体执行安排责任方及审批权限本轮未确认，王经理称不掌握；仅SOW/交付记录。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03929",
+            "quote": "工作能不能继续、怎么排期属于执行安排，不由我确认，要找负责执行安排的一方定；受影响部分的排期和费用变化，要双方书面确认后再复核，金额没谈妥的列为待确认。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03929",
+            "quote": "我只能就费用和合同材料提核查意见，预算金额、审批和签约仍要另行确认。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03928",
+            "quote": "再讨论一个可能的情况：如果客户未按约提供资料或确认口径，影响了约定的里程碑，我们拟及时书面记录缺项、通知和实际影响，继续不受影响的工作，再讨论受影响部分的排期及必要费用变化。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03933",
+            "quote": "最终验收确认人、执行安排责任方和审批权限我这边不掌握，要另行核实，收益目标、预算金额和正式批准都还没定，要双方再谈。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：本条应直接关联3928假设，执行安排方/权限是本轮未确认或王经理不掌握，不推成公司事实上尚无安排。；去向：SOW_or_stage_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0060",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S08"
+      ],
+      "verdict": "repair_required",
+      "reason": "原文说“由公司内部按审批流程定”和“审批安排没定”，不能改成“审批流程均未定”；不得把当前无权确认写成安排一旦确定就自动有权。",
+      "issues": [
+        {
+          "code": "PROCESS_NOT_UNKNOWN_ARRANGEMENT",
+          "severity": "semantic",
+          "reason": "原文说“由公司内部按审批流程定”和“审批安排没定”，不能改成“审批流程均未定”；不得把当前无权确认写成安排一旦确定就自动有权。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "CLM-001-0060",
+        "statement": "王经理称最终验收确认人和授权额度不在其职责内，自己无法确认，需另行核实；具体找谁、依据哪份授权材料他不掌握，需由公司内部按审批流程确定。他能对统计口径与验收依据提核查意见；本轮审批安排尚未定，他不能替公司确认谁有权签验收或结算。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "仅SOW/交付记录；最终验收确认人、授权额度及具体授权材料尚需核实。原文已提公司内部审批流程，不断言该流程不存在或尚未制定。",
+          "王经理提供核查意见，不据此取得最终验收或结算批准权。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03931",
+            "quote": "最终验收确认人和授权额度不在我的职责内，我无法确认，需要另行核实；具体找谁、依据哪份授权材料，我这边不掌握，得由公司内部按审批流程定。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03931",
+            "quote": "我能做的是对统计口径与验收依据提核查意见：可以拿书面阶段成果、确认记录和双方责任草案来核对，运营核对业务范围，IT 核对字段和数据覆盖。但审批安排还没定，我不能替公司确认谁有权签验收或结算。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent依据原访谈修正：原文说“由公司内部按审批流程定”和“审批安排没定”，不能改成“审批流程均未定”；不得把当前无权确认写成安排一旦确定就自动有权。；去向：SOW_or_stage_record。保留原始候选，本条不是用户独立作答或客户批准。"
+        }
+      }
+    },
+    {
+      "claim_id": "CLM-001-0061",
+      "route": "SOW_or_stage_record",
+      "criteria": [
+        "S08"
+      ],
+      "verdict": "source_supported",
+      "reason": "主张及限定可据所引原访谈支持；按指定去向使用。 明确回复已重述权限未知与非批准限制；不是多次重复即独立交叉验证。",
+      "issues": [],
+      "proposed_replacement": {
+        "id": "CLM-001-0061",
+        "statement": "王经理确认其提供的是核查意见，不等于公司批准或验收，也不能据此承诺收益；最终验收确认人、执行安排责任方和审批权限他不掌握，要另行核实；收益目标、预算金额和正式批准都还没定，要双方再谈。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "对访谈者总结的确认，不构成新增独立事实；仅作为SOW/交付记录候选。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03933",
+            "quote": "第6条说得对：我提供的是核查意见，不等于公司批准或验收，也不能据此承诺收益；最终验收确认人、执行安排责任方和审批权限我这边不掌握，要另行核实，收益目标、预算金额和正式批准都还没定，要双方再谈。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "accepted",
+          "note": "独立审核Agent按四份原访谈核对，原主张在所述范围内有来源支持；去向：SOW_or_stage_record。这是来源审核，不是用户独立作答、客户批准、模型更新或数值测试通过。"
+        }
+      }
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "CONFLICT-001",
+      "original": {
+        "id": "CONFLICT-001",
+        "claim_ids": [
+          "CLM-001-0005",
+          "CLM-001-0025",
+          "CLM-001-0033",
+          "CLM-001-0040"
+        ],
+        "question": "权益开始当天和计划结束当天是否有效：陈姐以门店经手规则称生效日当天有效、有效期结束日当天已无效、有提前终止的从提前终止当天起无效（CLM-001-0033、CLM-001-0040）；小林称其没有能直接确认的日期边界规则（CLM-001-0005），老周称没有可确认的规则说明和可对照系统记录，不能凭卡表字段或测试库结构下结论（CLM-001-0025）。需核实陈姐所述门店规则是否就是本期总部月报及系统取数所应采用的权威日期口径，并区分门店办理规则、月报统计口径和测试库结构核对三种范围。",
+        "next_step": "取得日期端点的业务规则说明及可对照实际记录/历史凭据；由运营和业务规则负责人确认本期月报口径，由IT核对系统统计所用的范围、时间和统计说明。确认前并列保留门店规则陈述与未确认状态，不将任一方直接当作最终规则。"
+      },
+      "verdict": "false_conflict",
+      "action": "remove_from_reviewed_copy_only",
+      "reason": "小林/老周没有给出相反规则，只说明自己不能确认或需补材料。陈姐提供门店执行解释，且仍不掌握正式文件/历史凭据。这些表述可同时成立。",
+      "retain_as_notes": {
+        "topic": "正式日期/空值规则说明及历史凭据待核",
+        "text": "已取得陈姐针对本期两卡和月末账户问题的门店执行说明；小林、老周的不能确认陈述仍留来源。具体规则文件、办理记录和历史执行凭据未在本轮取得，运营小林为对接入口，具体规则确认人仍待核。该缺口不抹掉已有门店说明，也不能当作正式制度或生产历史已验证。",
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03885",
+            "quote": "陈姐，我们在核本期总部运营月报的付费资格，按月末状态、按账户统计；小林已确认纳入悦享年卡和家庭季卡。这次先核这两类卡的有效期规则，供月报计算使用。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "至于具体是哪份规则说明或办理记录、历史执行凭据，这项具体细节我不掌握，需要向运营小林核对。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03879",
+            "quote": "业务规则这块，运营工作找小林对接确认，我配合核对取数条件和系统统计所用的范围、时间、统计说明。日期端点和提前终止空值的含义，我这边没有可确认的解释，不能替小林确认，也不指定具体岗位。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CONFLICT-002",
+      "original": {
+        "id": "CONFLICT-002",
+        "claim_ids": [
+          "CLM-001-0023",
+          "CLM-001-0029",
+          "CLM-001-0034"
+        ],
+        "question": "提前终止字段（ended_at）为空应如何解释：老周称没有可确认解释，不能直接当成“未终止”或“已终止”，要结合实际填写方式和统计说明核实（CLM-001-0023），并将提前终止空值含义列为需补的业务规则说明（CLM-001-0029）；陈姐称空值只表示该记录没有提前终止，不代表有效期无限，有效期结束日仍要照常看（CLM-001-0034）。需核实空值在门店办理规则、系统字段和月报统计中是否同一含义，以及是否存在历史填写差异。",
+        "next_step": "调取字段填写说明、统计说明及实际记录/历史凭据，分别核对门店办理记录与系统取值；在确认前保留两种表述，不把空值直接认定为未终止、已终止或无限期。"
+      },
+      "verdict": "false_conflict",
+      "action": "remove_from_reviewed_copy_only",
+      "reason": "小林/老周没有给出相反规则，只说明自己不能确认或需补材料。陈姐提供门店执行解释，且仍不掌握正式文件/历史凭据。这些表述可同时成立。",
+      "retain_as_notes": {
+        "topic": "正式日期/空值规则说明及历史凭据待核",
+        "text": "已取得陈姐针对本期两卡和月末账户问题的门店执行说明；小林、老周的不能确认陈述仍留来源。具体规则文件、办理记录和历史执行凭据未在本轮取得，运营小林为对接入口，具体规则确认人仍待核。该缺口不抹掉已有门店说明，也不能当作正式制度或生产历史已验证。",
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03885",
+            "quote": "陈姐，我们在核本期总部运营月报的付费资格，按月末状态、按账户统计；小林已确认纳入悦享年卡和家庭季卡。这次先核这两类卡的有效期规则，供月报计算使用。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "至于具体是哪份规则说明或办理记录、历史执行凭据，这项具体细节我不掌握，需要向运营小林核对。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03879",
+            "quote": "业务规则这块，运营工作找小林对接确认，我配合核对取数条件和系统统计所用的范围、时间、统计说明。日期端点和提前终止空值的含义，我这边没有可确认的解释，不能替小林确认，也不指定具体岗位。"
+          }
+        ]
+      }
+    }
+  ],
+  "proposed_conflicts": [],
+  "additions": [
+    {
+      "id": "CLM-AGENT-20261106-0001",
+      "origin": "independent_reviewer_source_addition_not_native_model_extraction",
+      "route": "business_body",
+      "criteria": [
+        "B11"
+      ],
+      "reason": "原61条只有部分交接和未知，遗漏03862完整一般流程。",
+      "proposed_replacement": {
+        "id": "CLM-AGENT-20261106-0001",
+        "statement": "小林称会员优惠券活动的一般做法是先明确面向哪些会员及准备做什么，再确认执行方式和协作人，之后跟进发放和使用反馈，最后整理结果和仍未核实的问题。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "这是一般做法，不代表某次活动的实际完成；具体活动、候选会员和筛选条件仍未知，需对应实际记录与相应负责人确认。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03862",
+            "quote": "拿我经手的会员优惠券活动来说，做法是先明确面向哪些会员、准备做什么，再确认执行方式和协作人，之后跟进发放和使用反馈，最后整理结果和还没核实的问题。"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03862",
+            "quote": "具体哪次活动、哪些会员进了候选名单、按什么条件筛的，我这边不能确认，得查对应的实际记录。候选条件也不是我一个人能定，需要找相应负责人确认；我不会单独定人群，也不会自动发券或联系会员。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent从原文补提；非本次模型原始提取，不冒称用户独立作答。原61条只有部分交接和未知，遗漏03862完整一般流程。"
+        }
+      }
+    },
+    {
+      "id": "CLM-AGENT-20261106-0002",
+      "origin": "independent_reviewer_source_addition_not_native_model_extraction",
+      "route": "business_body",
+      "criteria": [
+        "B12"
+      ],
+      "reason": "原61条遗漏“不让助手改记录”，且不能只用“小林自己不会”替代助手边界。",
+      "proposed_replacement": {
+        "id": "CLM-AGENT-20261106-0002",
+        "statement": "小林说明优惠券活动的人群和执行方案仍由业务人员确认，不让助手自动发券、联系会员或改记录。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "这是明确的助手动作限制；业务人员具体身份尚未明确，不表示人群/方案已经批准。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03860",
+            "quote": "人群和执行方案仍要业务人员确认，我不会让助手自动发券、联系会员或改记录。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent从原文补提；非本次模型原始提取，不冒称用户独立作答。原61条遗漏“不让助手改记录”，且不能只用“小林自己不会”替代助手边界。"
+        }
+      }
+    },
+    {
+      "id": "CLM-AGENT-20261106-0003",
+      "origin": "independent_reviewer_source_addition_not_native_model_extraction",
+      "route": "business_body",
+      "criteria": [
+        "B10",
+        "B05"
+      ],
+      "reason": "原61条提了问数和核对依据，遗漏拿到答案后的具体查漏/去重用途。",
+      "proposed_replacement": {
+        "id": "CLM-AGENT-20261106-0003",
+        "statement": "小林希望拿到本期月报人数和判断依据后，核对名单及口径，检查哪些账户该进、哪些遗漏或重复，以减少反复整理和找同事核对。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "当前人数定义按后续澄清，为月末有付费资格且当月有有效购买的账户数；不新增全体资格账户数要求。",
+          "这是期望用途，未取得具体统计，不表示已完成核对或已执行发券/联系会员。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03866",
+            "quote": "拿到答案后，我会拿它核对名单和口径，看哪些账户该进、哪些漏了或重复了，减少反复整理和找同事核对。"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03867",
+            "quote": "确认一下，您这次要数的是月末有付费资格的全部账户，包括当月没有有效购买的；还是只数其中当月有有效购买的账户？"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03868",
+            "quote": "这次数的是有付费资格、并且当月有有效购买的账户，不是把所有有资格的账户都算进来。资格还是只看悦享年卡和家庭季卡的有效状态，联名卡和体验卡不进本期口径；月末才生效、但当月此前有购买的账户，按月底资格口径纳入当月有效购买。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "revised",
+          "note": "独立审核Agent从原文补提；非本次模型原始提取，不冒称用户独立作答。原61条提了问数和核对依据，遗漏拿到答案后的具体查漏/去重用途。"
+        }
+      }
+    }
+  ],
+  "coverage": [
+    {
+      "criterion": "B01",
+      "original_claims": [
+        "CLM-001-0001"
+      ],
+      "reviewer_additions": [],
+      "status": "covered"
+    },
+    {
+      "criterion": "B02",
+      "original_claims": [
+        "CLM-001-0001",
+        "CLM-001-0002"
+      ],
+      "reviewer_additions": [],
+      "status": "covered"
+    },
+    {
+      "criterion": "B03",
+      "original_claims": [
+        "CLM-001-0003"
+      ],
+      "reviewer_additions": [],
+      "status": "covered"
+    },
+    {
+      "criterion": "B04",
+      "original_claims": [
+        "CLM-001-0004",
+        "CLM-001-0008",
+        "CLM-001-0036",
+        "CLM-001-0037"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "B05",
+      "original_claims": [
+        "CLM-001-0018",
+        "CLM-001-0019"
+      ],
+      "reviewer_additions": [
+        "CLM-AGENT-20261106-0003"
+      ],
+      "status": "requires_reviewer_addition"
+    },
+    {
+      "criterion": "B06",
+      "original_claims": [
+        "CLM-001-0019"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "B07",
+      "original_claims": [
+        "CLM-001-0033",
+        "CLM-001-0035",
+        "CLM-001-0036"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "B08",
+      "original_claims": [
+        "CLM-001-0034"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "B09",
+      "original_claims": [
+        "CLM-001-0028"
+      ],
+      "reviewer_additions": [],
+      "status": "covered"
+    },
+    {
+      "criterion": "B10",
+      "original_claims": [
+        "CLM-001-0020",
+        "CLM-001-0022"
+      ],
+      "reviewer_additions": [
+        "CLM-AGENT-20261106-0003"
+      ],
+      "status": "requires_reviewer_addition"
+    },
+    {
+      "criterion": "B11",
+      "original_claims": [
+        "CLM-001-0013",
+        "CLM-001-0015"
+      ],
+      "reviewer_additions": [
+        "CLM-AGENT-20261106-0001"
+      ],
+      "status": "requires_reviewer_addition"
+    },
+    {
+      "criterion": "B12",
+      "original_claims": [
+        "CLM-001-0011",
+        "CLM-001-0015",
+        "CLM-001-0016"
+      ],
+      "reviewer_additions": [
+        "CLM-AGENT-20261106-0002"
+      ],
+      "status": "requires_reviewer_addition"
+    },
+    {
+      "criterion": "B13",
+      "original_claims": [
+        "CLM-001-0017"
+      ],
+      "reviewer_additions": [],
+      "status": "covered"
+    },
+    {
+      "criterion": "B14",
+      "original_claims": [
+        "CLM-001-0009",
+        "CLM-001-0010",
+        "CLM-001-0022"
+      ],
+      "reviewer_additions": [],
+      "status": "covered"
+    },
+    {
+      "criterion": "B15",
+      "original_claims": [
+        "CLM-001-0039",
+        "CLM-001-0040",
+        "CLM-001-0041"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "N01",
+      "original_claims": [
+        "CLM-001-0012",
+        "CLM-001-0014",
+        "CLM-001-0021"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "N02",
+      "original_claims": [
+        "CLM-001-0005",
+        "CLM-001-0006",
+        "CLM-001-0023",
+        "CLM-001-0025",
+        "CLM-001-0029",
+        "CLM-001-0031",
+        "CLM-001-0038"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "N03",
+      "original_claims": [
+        "CLM-001-0026",
+        "CLM-001-0032"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "N04",
+      "original_claims": [
+        "CLM-001-0007",
+        "CLM-001-0024",
+        "CLM-001-0027",
+        "CLM-001-0030",
+        "CLM-001-0031",
+        "CLM-001-0032"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "S01",
+      "original_claims": [
+        "CLM-001-0042"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "S02",
+      "original_claims": [
+        "CLM-001-0043",
+        "CLM-001-0047",
+        "CLM-001-0048"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "S03",
+      "original_claims": [
+        "CLM-001-0044",
+        "CLM-001-0045",
+        "CLM-001-0049",
+        "CLM-001-0051",
+        "CLM-001-0054",
+        "CLM-001-0057"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "S04",
+      "original_claims": [
+        "CLM-001-0050"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "S05",
+      "original_claims": [
+        "CLM-001-0052",
+        "CLM-001-0053"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "S06",
+      "original_claims": [
+        "CLM-001-0055",
+        "CLM-001-0056"
+      ],
+      "reviewer_additions": [],
+      "status": "covered"
+    },
+    {
+      "criterion": "S07",
+      "original_claims": [
+        "CLM-001-0058",
+        "CLM-001-0059"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    },
+    {
+      "criterion": "S08",
+      "original_claims": [
+        "CLM-001-0046",
+        "CLM-001-0060",
+        "CLM-001-0061"
+      ],
+      "reviewer_additions": [],
+      "status": "covered_with_repairs"
+    }
+  ],
+  "pending_review_assessment": {
+    "A": "原文已有合作方经营解释，按小林来源和本期范围保留即可，无需用户二选一。",
+    "B": "单一角色来源可以作为带来源的业务口径，不冒充独立交叉验证；无需用户反复确认已有内容。",
+    "C": "等级与付费资格分离明确支持作业务规则，字段名实现细节不入正文；不能无端追加金额门槛调查。",
+    "other_issue": "多卡计人数需0004、订单不重复需0037，不应把0008当作全部子句来源。未查看其他MD，本报告不对六项付费指标数量或旧v0.4结构作独立验证。",
+    "recommended_feedback": "独立审核反馈（Agent按用户既有分工核对原文，非用户独立作答）：本组采用并作来源/范围限定。A：保留“小林说明异业联名卡即使收费也由合作方经营，故不纳入本期自营月报范围”，不把角色说明升级成已核正式公司制度，也不无依据删为“经营归属未知”。B：可作为有角色来源的本期业务口径采用，不需要用户重新确认；单一角色来源不等于没有证据，正式文件/生产历史另留待核，不冒充多源交叉验证。C：保留等级与付费资格分离、不得以支付金额替代卡类型和有效状态的业务规则；不将数据库字段名带入正文，也不新增“购卡金额门槛（如有）”作为待核。账户资格与报告人数分开：存在一张本期有效卡即可有资格，但本期所数人数还要求月末资格且当月有效购买。多卡不重复计人应引CLM-001-0004，重复订单约束引CLM-001-0037，不能仅用0008覆盖未摘录子句。两项原生conflict为不掌握与门店说明的误判，按独立审核副本删除冲突并保留正式依据缺口；其他普通来源修正由Agent处理，不再逐题返问。后续维护以外部复审通过的审核副本为准；本反馈不等于正式模型已完成或指标测试通过。"
+  },
+  "human_decisions": [],
+  "retained_unknowns": [
+    {
+      "id": "U01",
+      "topic": "正式有效期规则文件及历史执行凭据",
+      "current_evidence": "陈姐门店解释已取得；正式文件/历史证据未取得",
+      "followup": "运营小林为核对入口，具体权威规则确认人仍未知",
+      "destination": "notes"
+    },
+    {
+      "id": "U02",
+      "topic": "有效购买完整业务定义及统计数值",
+      "current_evidence": "四访谈只有有效购买泛称和时间关系，没有订单/退货规则全定义或结果",
+      "followup": "对照另有原始材料与实际记录；本轮提取不自行补造",
+      "destination": "notes"
+    },
+    {
+      "id": "U03",
+      "topic": "复购具体口径、比较人群和两个时期",
+      "current_evidence": "四季度下降为访谈陈述，未提供复算统计",
+      "followup": "项目组和业务共同确认，未测工时、未证因果",
+      "destination": "notes"
+    },
+    {
+      "id": "U04",
+      "topic": "优惠券具体活动及候选条件、确认负责人",
+      "current_evidence": "只有通用业务流程与偏好",
+      "followup": "对应实际活动记录和相应负责人，不能默认就是小林单独决定",
+      "destination": "notes"
+    },
+    {
+      "id": "U05",
+      "topic": "生产历史状态及真实系统接通",
+      "current_evidence": "测试资料只支持结构/覆盖/关联边界",
+      "followup": "另行核实际生产数据与历史证据",
+      "destination": "delivery_dependency"
+    },
+    {
+      "id": "U06",
+      "topic": "IT具体核查记录名称、内容、实际交付",
+      "current_evidence": "依实际核查材料形成，当前无预先承诺",
+      "followup": "核查时保留，不预造文档名",
+      "destination": "delivery_record"
+    },
+    {
+      "id": "U07",
+      "topic": "最终验收人、授权额度、执行安排责任方",
+      "current_evidence": "王经理明确不能确认，具体授权材料也未掌握",
+      "followup": "公司内部按流程落实",
+      "destination": "SOW"
+    },
+    {
+      "id": "U08",
+      "topic": "费用金额、结算节点/记录形式、收益目标和正式批准",
+      "current_evidence": "均尚未谈定或另待确认",
+      "followup": "双方另行谈定与有权人确认",
+      "destination": "SOW"
+    }
+  ],
+  "recheck_requirements": [
+    "原生candidates/run/来源不改；用review-start产生revision+1审核副本，保留原ID和origin。",
+    "按proposed_replacement应用完整内容；原样支持项accepted、修正项revised。这些是Agent来源审查，不登记为用户亲自作答。",
+    "新增CLM-AGENT项明确标独立审核补提，不能算模型原提取；若原生schema不接受此ID形式，保留AGENT标识选兼容新ID并记录映射，不覆盖旧ID。",
+    "删除的conflicts仅从审核副本移出，原始两项及误判原因永久保留在本报告。",
+    "正式规则文件/历史凭据缺口保留notes；不得借伪冲突抹去陈姐门店说明，也不得升级为正式制度或生产历史验证。",
+    "审核副本经check-facts并由独立Agent复审后，才标记可供维护；原生格式通过不是语义通过，当前formal body仍v0.4。"
+  ],
+  "state_preservation": "没有修改原生candidates、run、workflow状态、formal body或notes；没有API调用；首轮失败结论未改。",
+  "source_snapshot_verification": [
+    {
+      "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+      "snapshot_hash_valid": true,
+      "content_equal_to_frozen_original": true
+    },
+    {
+      "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+      "snapshot_hash_valid": true,
+      "content_equal_to_frozen_original": true
+    },
+    {
+      "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+      "snapshot_hash_valid": true,
+      "content_equal_to_frozen_original": true
+    },
+    {
+      "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+      "snapshot_hash_valid": true,
+      "content_equal_to_frozen_original": true
+    }
+  ],
+  "proposed_replacements_are_recommendations_not_native_review_state": true,
+  "current_group_feedback": {
+    "claim_ids": [
+      "CLM-001-0001",
+      "CLM-001-0002",
+      "CLM-001-0003",
+      "CLM-001-0008"
+    ],
+    "actor": "用户授权的独立测试Agent来源审核，由导师执行记录；非用户本人作答",
+    "native_scope_limit": "仅将本组四项记录为本次原生反馈；其余57项全量审核是外部报告，不自动等于native reviewed。本轮不resume。",
+    "text": "依据用户既有授权，由独立测试Agent完成原文审核、导师执行记录；不是用户本人作答。采用0001/0002/0003/0008并限定本期总部运营月报：悦享年卡和家庭季卡纳入；按小林说明，收费的合作方联名卡及体验卡不纳入；等级及支付金额不能替代卡类型和有效状态；至少一张有效范围内卡即可取得账户资格，其他失效/范围外卡不抵销。A/B/C无需本人重复确认：保留角色来源与证据层级即可；不新增购卡金额门槛待核，不将字段实现名写入业务正文。多卡人数去重另由0004原文支持，不能把0008当成去重引文。正式文件和生产历史仍为另行补证事项。仅记录当前四项反馈，不代表其余57条已进入原生review，不resume、不生成正式模型。"
+  }
+}

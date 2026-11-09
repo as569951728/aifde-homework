@@ -1,0 +1,461 @@
+{
+  "created_at": "2026-11-06T17:38:34.514507+00:00",
+  "reviewer": "/root/w03_qualification_qa_reviewer",
+  "status": "passed_for_this_fixed_material_batch_only",
+  "counts": {
+    "pass": 7,
+    "needs_revision": 0,
+    "indeterminate": 0
+  },
+  "input_track": "model_with_fixed_materials",
+  "cases": [
+    {
+      "id": "R01",
+      "verdict": "pass",
+      "input_track": "model_with_fixed_materials",
+      "original_question": "人工情境：A的悦享年卡2026-08-31生效、2027-08-31计划结束、无提前终止；A在2026-08-10有一笔有效购买。8月付费购买人数是否纳入A？",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "required_point_review": [
+        {
+          "point": "月底时点和有效期",
+          "status": "pass",
+          "actual": "判定日2026-08-31；生效当天包含，计划结束2027-08-31不含，空终止仍受计划结束限制；计划/综合区间均正确。"
+        },
+        {
+          "point": "最终纳入判断",
+          "status": "pass",
+          "actual": "来源与范围末段明确A月末有资格且8月10日有有效购买，因此应纳入，不要求购买当天有资格。"
+        },
+        {
+          "point": "来源",
+          "status": "pass",
+          "actual": "产品归小林，日期归陈姐，月末资格及整月购买选择归实际给定04。"
+        }
+      ],
+      "actual_evidence_quotes": [
+        "判定日：2026-08-31",
+        "| 计划区间 | 2026-08-31 | 是 | 2027-08-31 | 否 |",
+        "8月10日又有有效购买，故应纳入"
+      ],
+      "source_refs": [
+        "04首段及月末付费会员购买人数",
+        "小林03848/03854产品和存在条件，03867–03870月底资格与此前购买",
+        "陈姐03885–03890生效日包含、计划结束不含及空终止"
+      ],
+      "negative_case_review": {
+        "status": "pass",
+        "checks": [
+          "把资格按购买日判而排除；只给日期表不回答人数是否纳入；改动日期；把04说成卡端点或产品的直接来源。"
+        ],
+        "assessment": "逐项查看完整实际答复，未发生所列实质错误；具体判定见required_point_review，不仅比较主结论或数值。"
+      },
+      "dimensions": {
+        "对象身份与粒度": "pass",
+        "关系与时点": "pass",
+        "最终结论": "pass",
+        "理由与反例": "pass",
+        "题设与范围": "pass",
+        "引用与角色": "pass"
+      },
+      "issues": [],
+      "nonblocking_notes": [
+        "回答采用了单卡日期模板，但末段完整回答本题账户纳入且来源匹配，按预先判据通过；不能仅因展示形式多余判失败。当前只证明本题实际应用正确，不补回此前日期DQ10成绩。"
+      ],
+      "actual_answer": "判定日：2026-08-31\n产品范围：纳入\n结论：有效\n\n| 检查项 | 题设日期 | 判定日是否满足本项条件 | 依据 |\n| --- | --- | --- | --- |\n| 生效日 | 2026-08-31 | 是 | 权益自生效日期当天起有效，判定日等于生效日，故已生效（陈姐 MSG-03886、03888、03890）。 |\n| 计划结束日 | 2027-08-31 | 是 | 判定日早于计划结束日；计划权益结束日期当天已无效，故2026-08-31仍在计划有效期内（陈姐 MSG-03886、03888、03890）。 |\n| 提前终止日 | 空 | 是 | 提前终止为空表示该记录没有提前终止，不另设提前终止限制，但仍受计划结束日限制（陈姐 MSG-03886、03888、03890）。 |\n\n| 区间种类 | 起点 | 含起点 | 终点 | 含终点 |\n| --- | --- | --- | --- | --- |\n| 计划区间 | 2026-08-31 | 是 | 2027-08-31 | 否 |\n| 综合有效区间 | 2026-08-31 | 是 | 2027-08-31 | 否 |\n\n来源与范围：产品范围依据小林 MSG-03848、03854，悦享年卡纳入本期总部运营月报；日期端点依据陈姐 MSG-03886、03888、03890。按《本期统计确认邮件》04，8月付费购买人数应先选8月31日有资格的账户，再统计其8月全渠道有效订单，且不要求订单发生当天已具有资格；本次人工情境下A于8月31日资格有效，8月10日又有有效购买，故应纳入。该结论仅为题设情境推导，不冒充客户真实记录或已执行查询。",
+      "answer_text_sha256": "a850382394d04c749128340946eb83b0a9e1aed40dd8a676c5c469a7219be214",
+      "output_path": "artifacts/w03/monthly-application-qa-20261107/output/R01.json",
+      "output_sha256": "a2924d0d5c777660af38045ea24d585aefa4f274e421255d2a17156243e16418",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-1abaed0561184262be05713aecc65616/run.json",
+      "native_run_sha256": "b2811a8a4fb7b9abbd1eab6eff1f4cd04f21f42bd171fe5982e1e6a9a9d55a02",
+      "request_sha256": "2c3d0433be9d65db6f821de1d91c2cd238da464fa6ba1bf5709006ea3d802071"
+    },
+    {
+      "id": "R02",
+      "verdict": "pass",
+      "input_track": "model_with_fixed_materials",
+      "original_question": "人工情境：A的家庭季卡2026-06-30生效、2026-08-31计划结束、无提前终止，无其他卡；8月10日有一笔有效购买。8月付费购买人数是否纳入A？",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "required_point_review": [
+        {
+          "point": "结论",
+          "status": "pass",
+          "actual": "直接“不纳入”；月末2026-08-31为计划结束当天，卡已无效且无其他卡。"
+        },
+        {
+          "point": "前提与反例",
+          "status": "pass",
+          "actual": "8月10日有效购买不替代月末资格，无其他卡条件保持。"
+        },
+        {
+          "point": "来源",
+          "status": "pass",
+          "actual": "04统计时点/购买人数，陈姐计划结束端点，小林产品范围分开引用。"
+        }
+      ],
+      "actual_evidence_quotes": [
+        "不纳入",
+        "计划权益结束日为2026-08-31",
+        "该笔购买不使A进入8月付费购买人数"
+      ],
+      "source_refs": [
+        "04首段及月末付费会员购买人数",
+        "小林03848/03854",
+        "陈姐03886/03888/03890"
+      ],
+      "negative_case_review": {
+        "status": "pass",
+        "checks": [
+          "将结束日算有效；因月内买过就纳入；把无其他卡改未知；终止为空当无限期；因模型日期模板只答卡状态不答纳入。"
+        ],
+        "assessment": "逐项查看完整实际答复，未发生所列实质错误；具体判定见required_point_review，不仅比较主结论或数值。"
+      },
+      "dimensions": {
+        "对象身份与粒度": "pass",
+        "关系与时点": "pass",
+        "最终结论": "pass",
+        "理由与反例": "pass",
+        "题设与范围": "pass",
+        "引用与角色": "pass"
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "actual_answer": "不纳入。本题为人工情境推导：8月付费购买人数按2026-08-31（8月最后一天）的付费资格筛选账户；A的家庭季卡虽属本期月报纳入产品范围，但其计划权益结束日为2026-08-31，按端点规则该日当天已无效，且A无其他卡可补足资格，因此A在月末不符合付费资格。A在8月10日的有效购买不要求当天已具资格，但统计上须先通过月末资格筛选，故该笔购买不使A进入8月付费购买人数。依据：本期统计确认邮件04的月末资格判断与“月末付费会员购买人数”定义；陈姐MSG-03886、03888、03890的计划结束日当天无效及空提前终止解释；小林MSG-03848、03854的家庭季卡纳入范围及单卡同时满足产品范围与有效期要求。",
+      "answer_text_sha256": "b77784fef8b5904eeb564ce1c33d3d34b07af369fa341476f0a2e902e3ca307a",
+      "output_path": "artifacts/w03/monthly-application-qa-20261107/output/R02.json",
+      "output_sha256": "7893df5d729bf6fd6b1630978853dfac760854968a9550c79bd3d554f2c039c1",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-fde71ed4796543ab85f093b2862d7557/run.json",
+      "native_run_sha256": "75a2525ef8b4743876136f2c8445495d10acbdc6ed3e6e49325185b700c3096d",
+      "request_sha256": "e87358236235dc767a584d91f80f6d722beed7d848994028dac71693c0b49929"
+    },
+    {
+      "id": "R03",
+      "verdict": "pass",
+      "input_track": "model_with_fixed_materials",
+      "original_question": "人工情境：A月末已确认有资格，但完整8月订单只有一笔全额退款订单；B月末也有资格但无订单。8月付费购买人数是否纳入A、B？",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "required_point_review": [
+        {
+          "point": "A",
+          "status": "pass",
+          "actual": "全额退款净额为0，不是有效订单；有月末资格仍不纳入。"
+        },
+        {
+          "point": "B",
+          "status": "pass",
+          "actual": "月末有资格但无订单，无有效购买不纳入。"
+        },
+        {
+          "point": "条件与来源",
+          "status": "pass",
+          "actual": "明确两个必要条件，不把资格撤销；04购买人数+01有效订单直接支持。"
+        }
+      ],
+      "actual_evidence_quotes": [
+        "A、B均不纳入",
+        "月末资格条件对A、B均满足，但不替代有效订单条件"
+      ],
+      "source_refs": [
+        "01有效订单数、全额退款订单数、购买会员数",
+        "04月末付费会员购买人数",
+        "小林03867–03870"
+      ],
+      "negative_case_review": {
+        "status": "pass",
+        "checks": [
+          "将paid/曾支付/有退款当有效购买；A或B纳入；只判断资格为有而漏购买条件；编造订单数量/购买事实。"
+        ],
+        "assessment": "逐项查看完整实际答复，未发生所列实质错误；具体判定见required_point_review，不仅比较主结论或数值。"
+      },
+      "dimensions": {
+        "对象身份与粒度": "pass",
+        "关系与时点": "pass",
+        "最终结论": "pass",
+        "理由与反例": "pass",
+        "题设与范围": "pass",
+        "引用与角色": "pass"
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "actual_answer": "结论：A、B均不纳入8月“月末付费会员购买人数”。这是按题设人工情境推导。该指标要求账户在自然月内至少有一笔有效订单，且月末符合本期付费资格（《本期统计确认邮件》“月末付费会员购买人数”）。有效订单须为 paid 且实付减退款后大于零；取消和全额退款不计（《订单日报说明》“有效订单数”；业务模型第2节“有效购买”）。A虽月末有资格，但8月只有一笔全额退款订单，不构成有效订单；B虽月末有资格但8月无订单。二者均不满足“至少一笔有效订单”，因此不纳入。月末资格条件对A、B均满足，但不替代有效订单条件；本题不能据此将他们纳入购买人数。",
+      "answer_text_sha256": "ed1f8786e0b569776ce689c4080eb4b8cd6ff9766af93b752aac46c8792b60f8",
+      "output_path": "artifacts/w03/monthly-application-qa-20261107/output/R03.json",
+      "output_sha256": "2159870c294ebd577008180a2888643855daabd7962fec8201edc348220465e0",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-79854d63429945899cc4fa35a915f34b/run.json",
+      "native_run_sha256": "2d8ebd867316655603924e902d02c0d0467d140265b4d4cd44f2fe87d6146c35",
+      "request_sha256": "00bfd41998145f803ba96289e18f851fea41cf95b43f082a0152c16bf4307ba1"
+    },
+    {
+      "id": "R04",
+      "verdict": "pass",
+      "input_track": "model_with_fixed_materials",
+      "original_question": "要求查2026-08-10至2026-08-31（不含）的付费会员复购率，应直接计算、补问还是说明不支持？",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "required_point_review": [
+        {
+          "point": "主回应",
+          "status": "pass",
+          "actual": "说明现有口径不支持部分自然月直接计算，不把定义限制当单纯缺筛选条件。"
+        },
+        {
+          "point": "日期保持",
+          "status": "pass",
+          "actual": "准确解释给定半开区间只覆盖8月10至30日；没有静默改请求。"
+        },
+        {
+          "point": "后续",
+          "status": "pass",
+          "actual": "仅建议经补问改为[2026-08-01,2026-09-01)，月底8月31判资格；未声称实际计算。"
+        },
+        {
+          "point": "来源范围",
+          "status": "pass",
+          "actual": "04完整月/全门店全渠道；补充产品时明确邮件本身未定具体产品，未错归04。"
+        }
+      ],
+      "actual_evidence_quotes": [
+        "应说明不支持按该区间直接计算",
+        "只覆盖8月10日至8月30日",
+        "可补问并调整为完整自然月窗口2026-08-01至2026-09-01（不含）"
+      ],
+      "source_refs": [
+        "04六指标支持范围、月末付费会员复购率"
+      ],
+      "negative_case_review": {
+        "status": "pass",
+        "checks": [
+          "直接按部分窗口算；静默改整月；仅说补问但没有明确当前不支持；用月末资格规则创造任意窗复购。"
+        ],
+        "assessment": "逐项查看完整实际答复，未发生所列实质错误；具体判定见required_point_review，不仅比较主结论或数值。"
+      },
+      "dimensions": {
+        "对象身份与粒度": "pass",
+        "关系与时点": "pass",
+        "最终结论": "pass",
+        "理由与反例": "pass",
+        "题设与范围": "pass",
+        "引用与角色": "pass"
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "actual_answer": "结论：应说明不支持按该区间直接计算；这不是缺一个可补问的筛选条件，而是该指标在现有口径下不能对非完整自然月出数。\n\n依据：指定《本期统计确认邮件》的“月末付费会员复购率”定义是完整自然月指标：先按自然月月底最后一天判断付费资格，取这些账户在该自然月内全渠道、全门店的有效订单；复购人数为同一自然月至少两笔有效订单的月末资格账户数，分母为月末付费会员购买人数；六项指标只支持完整自然月，多月须按月分别列出，不按门店或渠道拆分。请求区间2026-08-10至2026-08-31（不含）只覆盖8月10日至8月30日，既缺8月1日至9日，也缺8月31日，且终点不是自然月完整边界，无法套用“月末资格加整月订单”定义，因此不能直接计算，也不能把该片段拼成8月整月结果。\n\n补充口径：付费资格按同一张卡同时满足本期产品范围与有效期判断；现有业务说明的本期产品范围为悦享年卡与家庭季卡，异业联名卡和体验卡不纳入，但正式规则文件尚未取得，指定邮件本身也把卡产品范围交由运营和门店确认。有效购买为已支付且实付减累计退款大于零，取消与全额退款不算；会员等级或购卡实付不能替代卡类型和有效状态。\n\n处理建议：若业务实际要2026年8月月报，可补问并调整为完整自然月窗口2026-08-01至2026-09-01（不含），按2026-08-31判定月末付费资格后再计算；但在当前请求区间上，结论是说明不支持。以上仅为口径判断，本次未查询、未计算。",
+      "answer_text_sha256": "8c3874b8b2ab0f1ebb9767d73efe9bfd7ed12a4215b9211a7e43d983e9046111",
+      "output_path": "artifacts/w03/monthly-application-qa-20261107/output/R04.json",
+      "output_sha256": "0cfa79e8f141c29df8057f20d946e907ef5aece94b9f8fe68ae9e6545b1d422b",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-b435de8039914d9399596ec195ac4561/run.json",
+      "native_run_sha256": "ad5ad4b96b48dc090a6ccd354ea3efe2634da3d2b6fd8d5253686bbc60c669b5",
+      "request_sha256": "7622d27becb1e918eb110016269891d3f22586cafdbca3dc0a11f8ce65c28e64"
+    },
+    {
+      "id": "R05",
+      "verdict": "pass",
+      "input_track": "model_with_fixed_materials",
+      "original_question": "人工情境：A在7月、8月各只有一笔有效订单。分别解释两个月的月内购买/复购人数；能否把两个月人数相加当成跨月唯一人数？",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/03_会员运营周报.md"
+      ],
+      "required_point_review": [
+        {
+          "point": "分月",
+          "status": "pass",
+          "actual": "7/8各购买账户1、复购0；不跨月凑两单为月内复购。"
+        },
+        {
+          "point": "跨月唯一",
+          "status": "pass",
+          "actual": "1+1是月度累计而非唯一人数，给定A跨两月唯一账户为1；仍以按月展示为材料支持范围。"
+        },
+        {
+          "point": "普通周报",
+          "status": "pass",
+          "actual": "使用03整月全门店月内口径，没有新增付费卡/资格过滤或年份。"
+        }
+      ],
+      "actual_evidence_quotes": [
+        "7月月内购买会员数为1，月内复购会员数为0",
+        "8月月内购买会员数也为1，月内复购会员数也为0",
+        "相加得到2只是两个月各自人数的合计，不是跨月去重人数"
+      ],
+      "source_refs": [
+        "03首段、月内购买会员数、月内复购会员数、月内复购率"
+      ],
+      "negative_case_review": {
+        "status": "pass",
+        "checks": [
+          "跨月拼两单为月内复购；加为跨月2个唯一账户；强加付费资格/要求卡信息；把仅A的情境贡献冒称实际全量统计。"
+        ],
+        "assessment": "逐项查看完整实际答复，未发生所列实质错误；具体判定见required_point_review，不仅比较主结论或数值。"
+      },
+      "dimensions": {
+        "对象身份与粒度": "pass",
+        "关系与时点": "pass",
+        "最终结论": "pass",
+        "理由与反例": "pass",
+        "题设与范围": "pass",
+        "引用与角色": "pass"
+      },
+      "issues": [],
+      "nonblocking_notes": [
+        "“A只有一人”宜改成“A只有一个账户”。本句紧接“跨月唯一账户”，全文按账户定义计数，未跨系统合并自然人；沿既有完整语义标准作为非阻塞措辞观察，不把该措辞等同自然人映射已验证。"
+      ],
+      "actual_answer": "按题设人工情境，A在7月、8月各只有一笔有效订单。依《会员运营周报》的月内购买会员数定义（同一自然月至少一笔有效订单）和月内复购会员数定义（同一自然月至少两笔有效订单），并限整月、全门店口径：7月月内购买会员数为1，月内复购会员数为0；8月月内购买会员数也为1，月内复购会员数也为0。不能把两个月人数相加当成跨月唯一人数：相加得到2只是两个月各自人数的合计，不是跨月去重人数；周报明确多月分别列出、不将每月去重人数相加为跨月人数，月内购买会员数也不能跨月直接加总当人数。若按题设完整记录推导跨月唯一账户，A只有一人，应为1，但这属于在题设条件下的推导；材料只明确禁止把月内人数相加，未提供现成的跨月唯一人数报表项目。依据为指定材料《会员运营周报》中月内购买会员数、月内复购会员数及多月展示规则；其适用范围是测试数据覆盖内、仅整月、全门店口径。",
+      "answer_text_sha256": "940d3a8e9ce677fdc887f504257669b3fdd9d86b5f04544741a6a91c9de2385f",
+      "output_path": "artifacts/w03/monthly-application-qa-20261107/output/R05.json",
+      "output_sha256": "2e185607f834074927b6279b8f57a60d4aa9f1d8f2026087ce46e45a9b410e5b",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-f17e9ba4e040433d928862c89d6f67a9/run.json",
+      "native_run_sha256": "034e7f631050f5e82bc8961405a66d229981233def91a4b298654f4ba2181eba",
+      "request_sha256": "49af38b16fe4e24c23194c7dbb53191827e9c7b27d638f345174a1081df538ab"
+    },
+    {
+      "id": "R06",
+      "verdict": "pass",
+      "input_track": "model_with_fixed_materials",
+      "original_question": "要求按成交门店或渠道拆8月付费会员复购率；另要求7、8月一起查。分别应如何回应？",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+      ],
+      "required_point_review": [
+        {
+          "point": "维度限制",
+          "status": "pass",
+          "actual": "04不支持按成交门店或渠道拆8月付费复购率；字段存在不等于支持。"
+        },
+        {
+          "point": "多月支持",
+          "status": "pass",
+          "actual": "7、8可以一起请求但逐月给出；各用当月月末资格及整月订单，不合成跨月率。"
+        },
+        {
+          "point": "未知与建议",
+          "status": "pass",
+          "actual": "新的拆分口径仅列待确认建议，不宣称既有能力或已执行。"
+        }
+      ],
+      "actual_evidence_quotes": [
+        "现有口径下不能直接给出按成交门店或渠道拆分的8月复购率",
+        "分别给出7月和8月各自的月度复购率",
+        "不能把7、8月合并成一个跨月复购率"
+      ],
+      "source_refs": [
+        "04首段、六指标支持范围及复购率定义"
+      ],
+      "negative_case_review": {
+        "status": "pass",
+        "checks": [
+          "有成交店/channel字段所以可直接拆；把多月视为完全不支持；两个不同月合成单一复购率；月率简单平均。"
+        ],
+        "assessment": "逐项查看完整实际答复，未发生所列实质错误；具体判定见required_point_review，不仅比较主结论或数值。"
+      },
+      "dimensions": {
+        "对象身份与粒度": "pass",
+        "关系与时点": "pass",
+        "最终结论": "pass",
+        "理由与反例": "pass",
+        "题设与范围": "pass",
+        "引用与角色": "pass"
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "actual_answer": "对“8月按成交门店或渠道拆付费会员复购率”：按本期《本期统计确认邮件》04 的统计选择，本期六项付费会员月报只支持完整自然月、全渠道、全门店，且明确“暂不按门店或渠道拆付费会员月报”。因此现有口径下不能直接给出按成交门店或渠道拆分的8月复购率，也不能把全门店全渠道复购率事后拆解后当作已确认结果。8月复购率本身应这样定义：先取8月月末最后一天符合本期付费资格的账户，再统计这些账户在8月全渠道、全门店的有效订单；复购人数为其中同一自然月至少有两笔有效订单的不同账户数，复购率=复购人数÷月末付费会员购买人数，分母为零时未定义。若业务确需按成交门店或渠道拆分，这是新增口径需求，需先由运营与业务规则负责人确认拆分后的分母、成交门店/渠道归属、跨门店或跨渠道订单如何处理、是否仍按账户去重及验收依据，并由IT核对字段覆盖；在确认前应标为待核，不能宣称已查询或计算。\n\n对“7、8月一起查”：本期口径支持完整自然月，且多月须按月分别列出。因此可以回应为分别给出7月和8月各自的月度复购率，7月按7月月末最后一天判断资格并统计7月全渠道全门店有效订单，8月按8月月末最后一天判断资格并统计8月全渠道全门店有效订单；不能把7、8月合并成一个跨月复购率，也不能把两个月订单合并计算而不确认新口径。依据为《本期统计确认邮件》04 关于月末资格判断、全渠道全门店、多月按月分别列出及暂不按门店或渠道拆分的规定；业务模型中复购率为群体指标、需明确人群与期间等口径的要求仅作补充说明。当前未执行查询或计算，以上为口径回应。",
+      "answer_text_sha256": "d8ba255c77f730fba93b0b22453ddbd1230b7ee2cf97af3efe8d500d77a9b3aa",
+      "output_path": "artifacts/w03/monthly-application-qa-20261107/output/R06.json",
+      "output_sha256": "4102d0831f9538b35b4469b001ba59786eb6435435e6b55d018757bcbf618c24",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-0592cb730b2d43aa900430b1252397ce/run.json",
+      "native_run_sha256": "3b255826d16049c78cbe791709cdd4bad044931044ebd2aac0e53b9074a871b8",
+      "request_sha256": "c6b17ae9cb67d4a79e6aab454a860486855574b5f7a6b7aa0e8e0b4dd31fed8a"
+    },
+    {
+      "id": "R07",
+      "verdict": "pass",
+      "input_track": "model_with_fixed_materials",
+      "original_question": "人工情境：测试覆盖内完整8月、全门店；同月已注册账户A没有有效订单，B有1笔有效订单，C有2笔有效订单。按当前会员周报，复购率分子、分母分别选哪些账户？为什么不能使用旧草稿的人群？",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/03_会员运营周报.md"
+      ],
+      "required_point_review": [
+        {
+          "point": "分母账户",
+          "status": "pass",
+          "actual": "B/C；A无有效订单不进，B一笔/C两笔均进。"
+        },
+        {
+          "point": "分子账户",
+          "status": "pass",
+          "actual": "仅C；B一笔不进入分子；没有把C的2笔当2人。"
+        },
+        {
+          "point": "旧稿修订",
+          "status": "pass",
+          "actual": "03首段明确已从全部注册改为同月有效购买，当前不得纳入A。"
+        },
+        {
+          "point": "普通周报",
+          "status": "pass",
+          "actual": "仅用03指定口径，未追加付费筛选；人工条件和完整月/全门店保持。"
+        }
+      ],
+      "actual_evidence_quotes": [
+        "分母“月内购买会员数”选B、C；分子“月内复购会员数”选C",
+        "现改为同月有效购买账户"
+      ],
+      "source_refs": [
+        "03首段统计调整依据、月内购买/复购会员数、月内复购率"
+      ],
+      "negative_case_review": {
+        "status": "pass",
+        "checks": [
+          "分母{A,B,C}或3；分子按订单数2代替账户{C}；强加付费资格导致待核；引用04付费月报代替03修订依据；把旧草稿当仍有效冲突。"
+        ],
+        "assessment": "逐项查看完整实际答复，未发生所列实质错误；具体判定见required_point_review，不仅比较主结论或数值。"
+      },
+      "dimensions": {
+        "对象身份与粒度": "pass",
+        "关系与时点": "pass",
+        "最终结论": "pass",
+        "理由与反例": "pass",
+        "题设与范围": "pass",
+        "引用与角色": "pass"
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "actual_answer": "在题设“测试覆盖内完整8月、全门店”条件成立的前提下，按当前《会员运营周报》口径：分母“月内购买会员数”选B、C；分子“月内复购会员数”选C。A没有有效订单，不进入分母；B只有1笔有效订单，进入分母但不进入分子；C有2笔有效订单，同时进入分母和分子。\n\n依据是《会员运营周报》中“月内购买会员数”定义为同一自然月至少一笔有效订单的账户数，“月内复购会员数”定义为同一自然月至少两笔有效订单的账户数，“月内复购率”为二者相除，且限整月、全门店口径。\n\n不能使用旧草稿的人群，是因为该文件明确说明：原周报草稿曾以全部注册会员作为复购率分母，现改为同月有效购买账户；本文件是该项统计调整的当前依据。旧草稿的“全部注册会员”会纳入A这类同月已注册但没有有效订单的账户，与当前分母口径不一致，因此不能作为当前复购率的人群口径。上述为情境推导，不代表已查询客户系统或客户真实记录。",
+      "answer_text_sha256": "77d1a9bb037876e37bffe77b0ae2fd9f427db4d7636ce02683f6dc76fec8f6c2",
+      "output_path": "artifacts/w03/monthly-application-qa-20261107/output/R07.json",
+      "output_sha256": "df63a82836f821c07674133dc004d3dda2ddb5a09e1877b0c3a09869d839eed9",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-fb0579be8cb64d0fafaf429dcfec6588/run.json",
+      "native_run_sha256": "06e8b5c1c1d23e3c2fc867b3706dd1bc486bccf49d3e8028ecc796f2fa43c02c",
+      "request_sha256": "f9ab36d0a06bcc1de2cfa365ba5683017a4057e02ecc6449446312c2e3b5c7e2"
+    }
+  ],
+  "source_first_criteria_sha256": "f911ab5f4400c992c451123d6f74e071893188a71ec06a828906d80531075e98",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "prompt_sha256": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+  "run_index_sha256": "de09a082d98bb3c2b32b75d6d7feb9042e54051adbf90a10fb02e7235a7a8f33",
+  "protocol": {
+    "case_answers": 7,
+    "http_attempts": 7,
+    "http_successes": 7,
+    "length_retries": 0,
+    "semantic_retries": 0,
+    "independent_review_model_calls": 0,
+    "native_request_exact_designated_materials": "passed",
+    "protected_hashes": "passed"
+  },
+  "conclusion": "R01–R07七题一次实际材料应用均通过；R01保留日期模板但完整回答纳入，R05/R07普通复购未附加付费条件，范围题没有静默改窗口或维度。",
+  "limitations": [
+    "本组必须单列为7题指定材料应用；不能加到此前model_only成绩并宣称正文独立记忆通过。",
+    "已逐题核真实request只带该题指定材料，原文在question/settings/request保存；并非原生source_manifest独立资料节点。",
+    "本次成功不回改此前DQ10和P09模型原答失败，导师核对稿不计模型得分。",
+    "七题一次结果不代表其他未测题、SQL/指标数值独立对账、生产接入、客户验收或正式采用。",
+    "模型正文、现用提示/Skill、正式v0.4和原生proposal3未替换；无apply。"
+  ],
+  "next_scope_assessment": "未发现必须先修的正文或本组业务语义缺陷；继续其他冻结题覆盖时仍按材料轨道分别准备，不能将当前来源应用正确等同完整模型通过。"
+}

@@ -1,0 +1,74 @@
+{
+  "metrics": {
+    "avg_order_value": [
+      "有效订单均额",
+      "net_sales_cents",
+      "valid_order_count",
+      "cents_per_order"
+    ],
+    "avg_buyer_value": [
+      "购买会员人均消费",
+      "net_sales_cents",
+      "buyer_count",
+      "cents_per_member"
+    ],
+    "purchase_frequency": [
+      "购买频次",
+      "valid_order_count",
+      "buyer_count",
+      "orders_per_member"
+    ],
+    "refund_amount_rate": [
+      "退款金额占比",
+      "refund_cents",
+      "payment_cents",
+      "ratio"
+    ],
+    "cancel_rate": [
+      "取消率",
+      "cancelled_order_count",
+      "order_count",
+      "ratio"
+    ],
+    "refund_order_rate": [
+      "退款订单率",
+      "refund_order_count",
+      "paid_order_count",
+      "ratio"
+    ],
+    "discount_rate": [
+      "优惠率",
+      "discount_cents",
+      "gross_cents",
+      "ratio"
+    ],
+    "items_per_order": [
+      "单均商品件数",
+      "valid_order_items",
+      "valid_order_count",
+      "items_per_order"
+    ]
+  },
+  "query_count": 6,
+  "answer_review": "B4-U01 applies to all six actual answers; no extra query",
+  "comparison": {
+    "float_rel_tol": 1e-09,
+    "float_abs_tol": 1e-07,
+    "null": "only equal to JSON null; not 0, string or unsupported",
+    "float": "all eight ratios are JSON floats when defined, including 0.0 and 1.0; values never multiplied by 100 in rows",
+    "integer_components": "exact; source amounts in integer cents"
+  },
+  "display_units": {
+    "cents_per_order": "分/单; 若展示元/单除以100",
+    "cents_per_member": "分/CRM账户; 若展示元/账户除以100",
+    "orders_per_member": "单/CRM账户，不是自然人",
+    "ratio": "无量纲原始比率；文字展示百分数才乘100",
+    "items_per_order": "件/单，有效订单的原始件数，不是净商品销量"
+  },
+  "coverage_limits": [
+    "July per-store discount rates are all zero; that metric alone cannot distinguish averaging store rates",
+    "July buyer sets are disjoint across stores; D01 alone cannot detect summing cross-store distinct accounts; B3 separately covers account aggregation",
+    "Small data contains no paid zero-amount order; prior B2 isolated fixture is separate evidence, not part of these six expected results"
+  ],
+  "source_boundary": "Only original CSVs, original business material, targets, case design and interface/test contract read before freezing. No generated library, SQL, actual result or B3 agent oracle used."
+}

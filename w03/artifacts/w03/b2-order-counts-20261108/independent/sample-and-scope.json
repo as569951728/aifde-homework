@@ -1,0 +1,32 @@
+{
+  "small_order_count": 48,
+  "paid_zero_order_ids": [],
+  "status_counts": {
+    "paid": 45,
+    "cancelled": 3
+  },
+  "rules": {
+    "order_count": "窗口内每个唯一订单号一次，包含取消单",
+    "paid_order_count": "status=paid，包含全退与零实付paid",
+    "valid_order_count": "status=paid 且 paid_cents-refund_cents>0",
+    "cancelled_order_count": "status=cancelled",
+    "refund_order_count": "status=paid 且 refund_cents>0",
+    "partial_refund_order_count": "status=paid 且 0<refund_cents<paid_cents",
+    "full_refund_order_count": "status=paid 且 paid_cents>0 且 refund_cents=paid_cents"
+  },
+  "fixture_required": true,
+  "small_new_queries": 6,
+  "b1_regression_queries": 15,
+  "fixture_queries": 1,
+  "scope": "课程small干净合成数据及另列人工fixture；不证明生产、规模、B3或客户验收",
+  "august_repeated_paid_amounts": {
+    "3000": [
+      "O0000011",
+      "O0000046"
+    ],
+    "9000": [
+      "O0000003",
+      "O0000012"
+    ]
+  }
+}

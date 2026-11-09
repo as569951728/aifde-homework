@@ -1,0 +1,270 @@
+{
+  "reviewer": "b56_execution_review",
+  "reviewed_at": "2026-11-08T15:25:32.891403+00:00",
+  "stage": "incremental_immutable_trace_review",
+  "complete": false,
+  "reviewed_case_ids": [
+    "B5-N01",
+    "B5-D01",
+    "B5-Z01",
+    "B5-H03",
+    "B6-N01",
+    "B6-M01",
+    "B6-Z01",
+    "B6-X01",
+    "B6-X02",
+    "B6-X03"
+  ],
+  "new_tests_numeric_passed": 10,
+  "new_tests_numeric_total": 10,
+  "explanations_passed": 9,
+  "explanations_total": 10,
+  "failed_checks": [
+    {
+      "case_id": "B6-X02",
+      "id": "B6-X02-home-store-policy",
+      "kind": "explanation",
+      "quote": "这些指标可用的门店相关维度仅为会员归属门店，不能替代成交门店。",
+      "finding": "将语义图可达当成用户可用；全门店政策同样禁止按会员归属门店拆分。前半句拒绝正确，后半句给出误导性能力边界。",
+      "minimal_correction": "这三项仅支持全门店汇总，既不按成交门店，也不按会员归属门店拆分。",
+      "source": "docs/w03/contract.md full_month_only; platform/fde_product/metrics/engine.py non-month group rejection; library-v3 catalog query_policy"
+    }
+  ],
+  "cases": [
+    {
+      "id": "B5-N01",
+      "numeric_passed": true,
+      "sql_passed": true,
+      "explanation_passed": true,
+      "issues": [],
+      "sql_executed": true,
+      "sql_review_kind": "actual_sql_review",
+      "review_note": "独立注册日期、全覆盖首/后有效单、首单净额分、8月窗口及5+22=27一致；解释保留账户、观测期非终身与有效购买条件。",
+      "trace_id": "f025e3f2-d18d-45a2-a1f9-b7a330b957f2",
+      "actual_path": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/f025e3f2-d18d-45a2-a1f9-b7a330b957f2/result.json",
+      "actual_sha256": "dc2a4c83293598c847cd10ed67868e52f310c86ef71645fab642b1b147079a34",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B5-D01",
+      "numeric_passed": true,
+      "sql_passed": true,
+      "explanation_passed": true,
+      "issues": [],
+      "sql_executed": true,
+      "sql_review_kind": "actual_sql_review",
+      "review_note": "registered_at七月窗，home_store_id与tier分组，四组身份和值及合计12正确；解释明确会员归属店，未凭缺组推零。",
+      "trace_id": "09294ca3-b94f-4ec7-a9d0-d7c06164dee6",
+      "actual_path": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/09294ca3-b94f-4ec7-a9d0-d7c06164dee6/result.json",
+      "actual_sha256": "182a5c275dc6ac03a1647b61fb6f4ab91fd7d8dd04befd9a67d3d9a3ecf5f1fd",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B5-Z01",
+      "numeric_passed": true,
+      "sql_passed": true,
+      "explanation_passed": true,
+      "issues": [],
+      "sql_executed": true,
+      "sql_review_kind": "actual_sql_review",
+      "review_note": "SQL截止6月29日且含当天，半开end6月30日；无分组空加总被Engine按simple转0；解释明确所问1至29日与覆盖内0。",
+      "trace_id": "7eace03b-fcfd-4cde-a2f7-93c9c1eb6a2f",
+      "actual_path": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/7eace03b-fcfd-4cde-a2f7-93c9c1eb6a2f/result.json",
+      "actual_sha256": "c807c9fec66172fa1ca09cb3903362857ed8e200516cb09c14764450aee21c05",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B5-H03",
+      "numeric_passed": true,
+      "sql_passed": true,
+      "explanation_passed": true,
+      "issues": [],
+      "sql_executed": true,
+      "sql_review_kind": "actual_sql_review",
+      "review_note": "全覆盖共同有效单序列条件聚合，账户in与8月窗口在排名后；两账户身份/全部值/零均正确，无NULL改0判定。",
+      "trace_id": "34bb8f5d-b416-4a08-bbfb-ab3ca514a4a7",
+      "actual_path": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/34bb8f5d-b416-4a08-bbfb-ab3ca514a4a7/result.json",
+      "actual_sha256": "4a94e198bf5dc7e59a9893029cd4823fe627315676cd768ee00a039f3eb13697",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B6-N01",
+      "numeric_passed": true,
+      "sql_passed": true,
+      "explanation_passed": true,
+      "issues": [],
+      "sql_executed": true,
+      "sql_review_kind": "actual_sql_review",
+      "review_note": "账户月valid>=1与>=2标志求和，分子分母12/15，NULLIF保护；解释整月全店全渠道、账户非自然人、1笔与2笔阈值正确。",
+      "trace_id": "7735cb44-7aa2-45d9-97de-13d94daf4950",
+      "actual_path": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/7735cb44-7aa2-45d9-97de-13d94daf4950/result.json",
+      "actual_sha256": "6de14a215c994a8aeeb2453eb9489c78f0e6d19220905781d426860fc4534e59",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B6-M01",
+      "numeric_passed": true,
+      "sql_passed": true,
+      "explanation_passed": true,
+      "issues": [],
+      "sql_executed": true,
+      "sql_review_kind": "actual_sql_review",
+      "review_note": "按month_start月份分组，先加总分子分母再除；两月键、11/1与15/12、9.09%与80%正确，无跨月总和或均值。",
+      "trace_id": "22680182-85a4-447f-be44-8175710f4dec",
+      "actual_path": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/22680182-85a4-447f-be44-8175710f4dec/result.json",
+      "actual_sha256": "04da6845594f666abdff8ba9f5f2606e23ea9878528540e4e2d0d583adae5091",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B6-Z01",
+      "numeric_passed": true,
+      "sql_passed": true,
+      "explanation_passed": true,
+      "issues": [],
+      "sql_executed": true,
+      "sql_review_kind": "actual_sql_review",
+      "review_note": "覆盖内5月无有效订单；SQLNULLIF与Engine仅simple补零得到0/0/null；解释分母零未定义，不冒充0%。",
+      "trace_id": "9c61dde0-434e-4452-ae53-5842a7ef4416",
+      "actual_path": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/9c61dde0-434e-4452-ae53-5842a7ef4416/result.json",
+      "actual_sha256": "723b7aa2080415b06d583b15a55e4ce8cb187d7a7d60eccca97c51e205bec381",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B6-X01",
+      "numeric_passed": true,
+      "sql_passed": true,
+      "explanation_passed": true,
+      "issues": [],
+      "sql_executed": false,
+      "sql_review_kind": "unsupported_without_sql",
+      "review_note": "明确非完整月，unsupported且无SQL/业务值；intent保留end8月16日含15日，没有静默扩月；建议另问全月没有实际执行。",
+      "trace_id": "722547ba-9265-4573-96bd-ddcddeebbb89",
+      "actual_path": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/722547ba-9265-4573-96bd-ddcddeebbb89/result.json",
+      "actual_sha256": "72f8ce9386bf0c3954f36838919e8da18918c7ce8be5ae04171ad428f5964576",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B6-X02",
+      "numeric_passed": true,
+      "sql_passed": true,
+      "explanation_passed": false,
+      "issues": [
+        {
+          "id": "B6-X02-home-store-policy",
+          "kind": "explanation",
+          "quote": "这些指标可用的门店相关维度仅为会员归属门店，不能替代成交门店。",
+          "finding": "将语义图可达当成用户可用；全门店政策同样禁止按会员归属门店拆分。前半句拒绝正确，后半句给出误导性能力边界。",
+          "minimal_correction": "这三项仅支持全门店汇总，既不按成交门店，也不按会员归属门店拆分。",
+          "source": "docs/w03/contract.md full_month_only; platform/fde_product/metrics/engine.py non-month group rejection; library-v3 catalog query_policy"
+        }
+      ],
+      "sql_executed": false,
+      "sql_review_kind": "unsupported_without_sql",
+      "review_note": "成交门店拆分被正确拒绝，无SQL/业务值；解释第二句错误地把结构可达的会员归属门店说成可用，未说明全门店政策也禁止该维度。",
+      "trace_id": "337712ba-a499-4cf0-b9e7-80397f528e73",
+      "actual_path": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/337712ba-a499-4cf0-b9e7-80397f528e73/result.json",
+      "actual_sha256": "3429919f59d17ac5428541f88303098e749a3c25257a8dedd89e1221a2d57521",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B6-X03",
+      "numeric_passed": true,
+      "sql_passed": true,
+      "explanation_passed": true,
+      "issues": [],
+      "sql_executed": false,
+      "sql_review_kind": "unsupported_without_sql",
+      "review_note": "明确不支持小程序筛选，unsupported且无SQL/业务值；没有静默移除条件后返回全渠道数，未声称客户原文长期禁止渠道。",
+      "trace_id": "fb3add28-02c6-4f29-827f-85fd15654123",
+      "actual_path": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/fb3add28-02c6-4f29-827f-85fd15654123/result.json",
+      "actual_sha256": "9a5de7c48068b1930ef58601c3915e775d5424484751652f86ec72f8fd1dba7d",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      }
+    }
+  ],
+  "evidence_sha256": {
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/f025e3f2-d18d-45a2-a1f9-b7a330b957f2/result.json": "dc2a4c83293598c847cd10ed67868e52f310c86ef71645fab642b1b147079a34",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/f025e3f2-d18d-45a2-a1f9-b7a330b957f2/intent-trace.json": "be3df23139b90051a26c89c620154ccda8f6bf5f891849936f17e06d4716c9b0",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/f025e3f2-d18d-45a2-a1f9-b7a330b957f2/answer-trace.json": "6e74b80f30068934baae19f78ce2fb6a54138205fc5c72d43283927b14fdd091",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/09294ca3-b94f-4ec7-a9d0-d7c06164dee6/result.json": "182a5c275dc6ac03a1647b61fb6f4ab91fd7d8dd04befd9a67d3d9a3ecf5f1fd",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/09294ca3-b94f-4ec7-a9d0-d7c06164dee6/intent-trace.json": "f3caf4d33145aac413b858bc64246eb0219027a0b6ba4d5cbb642ee961b5bdf4",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/09294ca3-b94f-4ec7-a9d0-d7c06164dee6/answer-trace.json": "e2706cc4dba9a5543d5991f5b85f6544e4f97f3ad0932d799646fa751565a461",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/7eace03b-fcfd-4cde-a2f7-93c9c1eb6a2f/result.json": "c807c9fec66172fa1ca09cb3903362857ed8e200516cb09c14764450aee21c05",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/7eace03b-fcfd-4cde-a2f7-93c9c1eb6a2f/intent-trace.json": "ee0d06d7b5a192003f0ef125c2ea27d989696f7dfdd5536eab0275d40d7c5c71",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/7eace03b-fcfd-4cde-a2f7-93c9c1eb6a2f/answer-trace.json": "b725516ee278e3801f7c1979e577078fd798589674b6bf53a5c46dd0b309a453",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/34bb8f5d-b416-4a08-bbfb-ab3ca514a4a7/result.json": "4a94e198bf5dc7e59a9893029cd4823fe627315676cd768ee00a039f3eb13697",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/34bb8f5d-b416-4a08-bbfb-ab3ca514a4a7/intent-trace.json": "a11a20afc0911d694f56c09d62cd53e5425c5c8764ebe5033ecb70a380ca8233",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/34bb8f5d-b416-4a08-bbfb-ab3ca514a4a7/answer-trace.json": "7c98300d2f1963c09b1da1e851c65dbd563afdd512d4364edb6293ba8adb6571",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/7735cb44-7aa2-45d9-97de-13d94daf4950/result.json": "6de14a215c994a8aeeb2453eb9489c78f0e6d19220905781d426860fc4534e59",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/7735cb44-7aa2-45d9-97de-13d94daf4950/intent-trace.json": "7048016fe49fc417a8507653a66f697afc3919849c8a8c843f9f29cc014be5c7",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/7735cb44-7aa2-45d9-97de-13d94daf4950/answer-trace.json": "573f42c9885f9f3a970676eab2c727e950cd17cb935d45e90182386da4ab7be7",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/22680182-85a4-447f-be44-8175710f4dec/result.json": "04da6845594f666abdff8ba9f5f2606e23ea9878528540e4e2d0d583adae5091",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/22680182-85a4-447f-be44-8175710f4dec/intent-trace.json": "845d2d6e38c98f0afd725994926fa4f00ce59684ba2c86780fdda34d49a5cb01",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/22680182-85a4-447f-be44-8175710f4dec/answer-trace.json": "20b6d037253d5f97b5d68ba81d8379c5f20d5ab22ac11bb746bdbc9e599883a4",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/9c61dde0-434e-4452-ae53-5842a7ef4416/result.json": "723b7aa2080415b06d583b15a55e4ce8cb187d7a7d60eccca97c51e205bec381",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/9c61dde0-434e-4452-ae53-5842a7ef4416/intent-trace.json": "779a02c0ba92a3d6e56db3c458ab982cad677d8d8324431181e151591add6b22",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/9c61dde0-434e-4452-ae53-5842a7ef4416/answer-trace.json": "771a9df6acf870e99fa7e556a90a103bc66f752f3b8ab609d375c6d0fcb38bad",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/722547ba-9265-4573-96bd-ddcddeebbb89/result.json": "72f8ce9386bf0c3954f36838919e8da18918c7ce8be5ae04171ad428f5964576",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/722547ba-9265-4573-96bd-ddcddeebbb89/intent-trace.json": "a0e2380c85311eb9389665a2a46ce2f1abd132eead6522abd4c50259cacfe3ca",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/337712ba-a499-4cf0-b9e7-80397f528e73/result.json": "3429919f59d17ac5428541f88303098e749a3c25257a8dedd89e1221a2d57521",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/337712ba-a499-4cf0-b9e7-80397f528e73/intent-trace.json": "8672c68ae6ddbcdb2bafbfe3b976b3a6f7fbf5732d2d05a500ab0d818341fe44",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/fb3add28-02c6-4f29-827f-85fd15654123/result.json": "9a5de7c48068b1930ef58601c3915e775d5424484751652f86ec72f8fd1dba7d",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/fb3add28-02c6-4f29-827f-85fd15654123/intent-trace.json": "de3b23fe2dcb6cb557d8439315d557ae76244ea9774c6edb1fde367021974677",
+    "artifacts/w03/b56-first-monthly-20261108/tests-new-small-v2.json": "744dbad170cce146caf9d3abb2ef8c2ffb011dc8969faad62d266eca8c4a4f5e",
+    "artifacts/w03/b56-first-monthly-20261108/execution-small-a-v3.json": "29012d48a79f3a2b6cb684d429518fb88c0be3ace3b82ca8d54d372564884174",
+    "artifacts/w03/b56-first-monthly-20261108/version-binding-small-a-v3.json": "5d0e4968d60dceb658f191a422fc72dbd9d3f881331d895e462a36d361443e6a",
+    "artifacts/w03/b56-first-monthly-20261108/library-v3/catalog.json": "5807a7995c0daa630d99c0f19007cc6b07f62c40f3272b370bd2c84a1500bd3a",
+    "artifacts/w03/b56-first-monthly-20261108/library-v3/metrics.yml": "8b4792bad4befa2ffb4d68bfdb06c18bd2caad1263dbe74a46222f69ffa6fd6c",
+    "artifacts/w03/b56-first-monthly-20261108/library-v3/order_sequence.sql": "647db79aa8596a85b6c9309e43386a5c142e141a3b0f1dc258a479b908ee9101",
+    "artifacts/w03/b56-first-monthly-20261108/library-v3/monthly_member_fact.sql": "d53a4cc0716abbeb878da972c4f6e50293067655476810d2bec53b94a0124539",
+    "platform/fde_product/metrics/engine.py": "e8b39da2517a65f6406da4d261173291c795248ea6c62638137e09ce750a98f3",
+    "customer/w03/judge.py": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/review-contract.json": "ffdf5e69885f9a5c8a50df395f64f65d979dd904d5dd2b6746aed691039d7670",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/build-review-v3.json": "849ba22244977d05b5d0f9e1a3d13aea675a4ecb18d092bf5424e9c07bb4edf2"
+  },
+  "not_bound_yet": "metric_test_report.json still appends original regression; final report hash only after complete. All reviewed trace result and model-call files bound now.",
+  "pending_case_ids": [
+    "B5-H02-F",
+    "B5-Z01-F",
+    "B6-R01"
+  ],
+  "execution_counts": {
+    "successful_sql_reviewed": 7,
+    "unsupported_no_sql_reviewed": 3,
+    "reviewer_model_api_calls": 0
+  },
+  "boundaries": [
+    "Numeric/status10/10 includes3 correct unsupported cases, not10 executed SQL queries.",
+    "Original B6-X02 explanation remains failed; no teacher-reviewed copy scored as native pass.",
+    "Only additional13 in scope; historical regression handled by separate reviewer."
+  ]
+}

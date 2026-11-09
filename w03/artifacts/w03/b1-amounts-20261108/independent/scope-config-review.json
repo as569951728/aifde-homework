@@ -1,0 +1,68 @@
+{
+  "status": "approved_to_regenerate",
+  "approved_to_regenerate": true,
+  "failed_checks": [],
+  "checks": [
+    {
+      "id": "one_semantic_config_change",
+      "passed": true,
+      "evidence": "Only scope.statistics_unit differs; future-adoption relative refs preserved"
+    },
+    {
+      "id": "same_path_skill",
+      "passed": true,
+      "evidence": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/customer/w03/build-metrics/SKILL.md"
+    },
+    {
+      "id": "same_path_business_model",
+      "passed": true,
+      "evidence": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/docs/w03/business_model.md"
+    },
+    {
+      "id": "same_path_targets",
+      "passed": true,
+      "evidence": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/customer/w03/targets.json"
+    },
+    {
+      "id": "same_path_data",
+      "passed": true,
+      "evidence": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/materials/data/small"
+    },
+    {
+      "id": "same_material_paths",
+      "passed": true,
+      "evidence": "Original materials directory"
+    },
+    {
+      "id": "scope_only_conditional_units",
+      "passed": true,
+      "evidence": "Conditioning on chosen metric corrects unconditional account-unit label, not formulas or business scope"
+    },
+    {
+      "id": "all_source_supported",
+      "passed": true,
+      "evidence": "01 order counts/account counts/amount definitions; 02 integer cents and display conversion; 05 accounts not natural persons; contract per-metric units"
+    },
+    {
+      "id": "frozen_15_preserved",
+      "passed": true,
+      "evidence": "Questions and expected unchanged"
+    },
+    {
+      "id": "oracle_frozen",
+      "passed": true,
+      "evidence": "No expectations regenerated"
+    },
+    {
+      "id": "skill_judge_unmodified",
+      "passed": true,
+      "evidence": "Reuses v0.1.2 and deterministic judge"
+    }
+  ],
+  "created_at": "2026-11-08T05:42:12.959986+00:00",
+  "candidate_sha256": "5ffd7f40c5830eaae1fb068d5aa262e0ba54e96505d081d90a67227667c38e78",
+  "adoption_candidate_sha256": "30dc33eb01fd060488d1253001db2e2b418f5695d7aaa134e28f1b52e62bca8d",
+  "attribution": "Direct evidence: unconditional scope.statistics_unit enters answer-trace customer_context; result units and catalog are correct. Configuration is an evidence-based repair candidate, not proof of unique model-error causality.",
+  "review_omission": "Earlier generation-review-v1 did not reject global scope.statistics_unit generalization; original approval record and subsequent failures remain unchanged.",
+  "next_gate": "Rebuild candidate once, review generated artifacts before load and same15 regression; no manual edit of generated library."
+}

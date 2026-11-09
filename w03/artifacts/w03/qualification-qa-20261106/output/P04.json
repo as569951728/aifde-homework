@@ -1,0 +1,32 @@
+{
+  "case_id": "P04",
+  "started_at": "2026-11-06T15:04:33.140591+00:00",
+  "completed_at": "2026-11-06T15:04:37.640186+00:00",
+  "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "account": "A",
+    "tier": "金卡",
+    "cards_complete": true,
+    "cards": [
+      {
+        "card_type": "异业联名卡",
+        "state_on_decision_day": "有效",
+        "card_paid_cents": 10000
+      }
+    ]
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-80d71afc6b2042d88fbbc2126d5553c2/run.json",
+    "run_id": "RUN-80d71afc6b2042d88fbbc2126d5553c2",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "仅据本期总部月报口径，账户A在判定日不具有付费资格。理由是该口径只纳入悦享年卡与家庭季卡持有人；异业联名卡即使有效并收费，也由合作方经营，不属本期自营会员范围。完整卡记录显示A仅有一张异业联名卡，虽然其在判定日有效，但产品范围不满足，且不能用金卡等级或购卡实付金额替代卡类型判断。该结论仅适用于本题人工构造的隔离测试情境和本期月报口径，不延伸为其他报表、永久身份或生产系统事实。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "27a1422f0dface5573c7a9fe74fd121b2994a90962877d3692206d5931a16a20"
+}

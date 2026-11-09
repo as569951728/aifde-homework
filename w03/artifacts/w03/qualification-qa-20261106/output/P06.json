@@ -1,0 +1,32 @@
+{
+  "case_id": "P06",
+  "started_at": "2026-11-06T15:04:41.274603+00:00",
+  "completed_at": "2026-11-06T15:04:47.614212+00:00",
+  "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "account": "A",
+    "tier": "普通",
+    "cards_complete": true,
+    "cards": [
+      {
+        "card_type": "家庭季卡",
+        "state_on_decision_day": "有效",
+        "card_paid_cents": 0
+      }
+    ]
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-92c36f2feda04ab6ab46a57bfefc0eb6/run.json",
+    "run_id": "RUN-92c36f2feda04ab6ab46a57bfefc0eb6",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "在本题给定的人工构造情境和“本期总部运营月报”口径下，账户A在判定日有付费资格。理由：账户A持有一张“家庭季卡”，属于本期月报只纳入的悦享年卡、家庭季卡范围；该卡在判定日的状态为“有效”，且输入声明卡记录完整。按当前建模稿的资格规则，只要账户存在一张同时满足产品范围与判定日有效性的卡，即具有付费资格，不因多卡重复计算，也不要求拼接不同卡的条件。卡实付金额为0、会员等级为普通，均不能替代卡类型和有效状态的判断，因此不改变该结论。需说明：以上依据是当前待确认的第三稿模型及本期月报口径，正式规则文件尚未取得；本题又是隔离测试情境，不是客户生产记录或实际活动核验结果。结论仅适用于该口径和该输入，不代表已查询客户系统或已核实生产历史资格。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "e6eba6e1cab25ba4415a329b4f5e0d9a1fd57ac90b9f889824771ccd40bb45d0"
+}

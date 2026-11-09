@@ -1,0 +1,80 @@
+{
+  "case_id": "B3-F01",
+  "kind": "mentor_answer_copy_not_native_rerun",
+  "prepared_at": "2026-11-09",
+  "original_report": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json",
+  "original_trace": "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/traces/08860cf1-8ae7-49c5-bb82-e3359acd5f90/result.json",
+  "original_trace_sha256": "8afa0a21ae5c612035d9a36f39f8c5b0794d89fc2b760f6f05848c7a17bd52c2",
+  "question": "请同时列出2026年8月青禾优选小程序渠道的购买会员数、退款会员数、成交门店数和有效订单商品件数。",
+  "original_text_field": "answer",
+  "original_answer": "2026年8月（2026-08-01至2026-09-01）青禾优选小程序渠道的统计结果为：购买会员数13个账户，退款会员数2个账户，成交门店数2家，有效订单商品件数15件。口径说明：购买会员数按有效订单中的不同CRM会员账户计数，不做跨系统自然人去重；退款会员数按发生退款的有效支付订单关联会员账户去重；成交门店数按订单成交门店去重，不是会员归属门店；有效订单商品件数为有效订单中的原始购买件数合计，不是扣除退款后的净销量。",
+  "corrected_answer": "2026年8月（2026-08-01至2026-09-01）青禾优选小程序渠道的统计结果为：购买会员数13个账户，退款会员数2个账户，成交门店数2家，有效订单商品件数15件。口径说明：购买会员数按有效订单中的不同CRM会员账户计数，不做跨系统自然人去重；退款会员数按发生退款的已支付订单关联会员账户去重，包含全额退款订单关联的账户；成交门店数按订单成交门店去重，不是会员归属门店；有效订单商品件数为有效订单中的原始购买件数合计，不是扣除退款后的净销量。",
+  "original_actual": {
+    "status": "ok",
+    "intent": {
+      "metrics": [
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "start": "2026-08-01",
+      "end": "2026-09-01",
+      "group_by": [],
+      "filters": [
+        {
+          "field": "order__channel",
+          "op": "eq",
+          "value": "小程序"
+        }
+      ]
+    },
+    "sql": "SELECT\n  COUNT(DISTINCT buyer_count) AS buyer_count\n  , COUNT(DISTINCT refund_buyer_count) AS refund_buyer_count\n  , COUNT(DISTINCT selling_store_count) AS selling_store_count\n  , SUM(valid_order_items) AS valid_order_items\nFROM (\n  SELECT\n    channel AS order__channel\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END AS buyer_count\n    , CASE WHEN status = 'paid' AND refund_cents > 0 THEN member_id END AS refund_buyer_count\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN store_id END AS selling_store_count\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END AS valid_order_items\n  FROM \"data\".\"main\".\"orders\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_7\nWHERE order__channel in ('小程序')",
+    "columns": [
+      "buyer_count",
+      "refund_buyer_count",
+      "selling_store_count",
+      "valid_order_items"
+    ],
+    "rows": [
+      [
+        13,
+        2,
+        2,
+        15
+      ]
+    ],
+    "seconds": 0.037,
+    "units": {
+      "buyer_count": "count",
+      "refund_buyer_count": "count",
+      "selling_store_count": "count",
+      "valid_order_items": "count"
+    },
+    "data_version": "qinghe-w03-20260923-small",
+    "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+    "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+    "answer": "2026年8月（2026-08-01至2026-09-01）青禾优选小程序渠道的统计结果为：购买会员数13个账户，退款会员数2个账户，成交门店数2家，有效订单商品件数15件。口径说明：购买会员数按有效订单中的不同CRM会员账户计数，不做跨系统自然人去重；退款会员数按发生退款的有效支付订单关联会员账户去重；成交门店数按订单成交门店去重，不是会员归属门店；有效订单商品件数为有效订单中的原始购买件数合计，不是扣除退款后的净销量。",
+    "question": "请同时列出2026年8月青禾优选小程序渠道的购买会员数、退款会员数、成交门店数和有效订单商品件数。",
+    "trace_id": "08860cf1-8ae7-49c5-bb82-e3359acd5f90",
+    "elapsed_seconds": 6.378,
+    "model_usage": {
+      "prompt_tokens": 11396,
+      "completion_tokens": 611,
+      "total_tokens": 12007
+    },
+    "model_calls_with_usage": 2
+  },
+  "changed_fields": [
+    "answer"
+  ],
+  "reason": "退款账户含全退，不能限定有效订单",
+  "sources": [
+    "materials/w03/01_订单日报说明.md",
+    "docs/w03/contract.md"
+  ],
+  "model_calls": 0,
+  "queries": 0,
+  "native_score_changed": false,
+  "automatic_product_fix": false
+}

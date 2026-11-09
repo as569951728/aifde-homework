@@ -1,0 +1,41 @@
+{
+  "apply_status": "not_applied",
+  "mandatory_patches": [],
+  "optional_patches": [
+    {
+      "target": "reviewer_expectations.json",
+      "kind": "optional_nonblocking",
+      "op": "replace",
+      "path": "/grading",
+      "old_value": "逐例逐断言核结论、理由、范围、来源；全部必要点成立且无关键错误才通过。可等价表达，不用关键词/总分抵消关键错误。证据缺失记需补证，不自动判不存在。",
+      "value": "逐例逐断言核结论、理由、范围、来源；全部必要点成立且无关键错误才通过。可等价表达，不用关键词/总分抵消关键错误。证据缺失记需补证，不自动判不存在。 来源判读还须区分：角色不掌握/资料未取得不等于事项不存在或尚未决定；原文明说未定的，保留其明确未定的对象。角色已说明的业务规则与客户材料中的统计选择，不得降为学员建模选择；正式文件未取得不抹去已获规则。学员候选分析规则、表达组织设计和业务角色确认分别标注。",
+      "finding": "MA-N02"
+    },
+    {
+      "target": "reviewer_expectations.json",
+      "kind": "optional_nonblocking",
+      "op": "add",
+      "path": "/cases/43/sources/-",
+      "value": {
+        "source": "H-c4fe490a",
+        "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-c4fe490a-ddae-5bcb-a51b-f44dd796b854-transcript.json",
+        "locator": "MSG-01754",
+        "evidence_kind": "活跃定义未提供的直接访谈依据"
+      },
+      "finding": "MA-N03"
+    },
+    {
+      "target": "reviewer_expectations.json",
+      "kind": "optional_nonblocking",
+      "op": "add",
+      "path": "/cases/75/sources/-",
+      "value": {
+        "source": "D4",
+        "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+        "locator": "本阶段验收与复购率提升/投资回报边界",
+        "evidence_kind": "本期查数与校验范围；不扩大客户批准状态"
+      },
+      "finding": "MA-N04"
+    }
+  ]
+}

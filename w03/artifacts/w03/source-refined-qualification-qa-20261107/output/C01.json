@@ -1,0 +1,31 @@
+{
+  "case_id": "C01",
+  "started_at": "2026-11-06T17:08:46.308992+00:00",
+  "completed_at": "2026-11-06T17:08:56.352707+00:00",
+  "question": "人工情境：账户A有两张悦享年卡，在判定日均已确认有效，并有两笔不同的有效订单O1、O2。应计几个有资格账户、几笔有效订单？关联时怎样避免错误？",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "cards": [
+      "A-C1",
+      "A-C2"
+    ],
+    "orders": [
+      "O1",
+      "O2"
+    ],
+    "records_complete": true
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-92760aedf3434e18b54fed97e3952c8d/run.json",
+    "run_id": "RUN-92760aedf3434e18b54fed97e3952c8d",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "按题设情境推导：应计 1 个有资格账户、2 笔有效订单。账户A虽有两张悦享年卡且判定日均有效，但资格按账户去重，多张有效卡不重复计账户；O1、O2是两笔不同的有效订单，应分别各计一笔，不因两张卡而重复累计。关联时建议：先按账户判断并标记资格（须同一张卡同时满足本期产品范围与判定日有效期），再按订单唯一标识关联账户；卡与订单均只通过账户关联，不把卡作为订单计数键，不据卡数复制订单，也不反推订单具体使用哪张卡。依据为模型第3节规则2—4（小林 MSG-03848、03854；陈姐 MSG-03886、03888、03890）及第2节关系边界（本期账户—卡、账户—订单均为一对多，订单与具体卡对应未提供）。这是人工构造且记录完整的隔离情境结论，不是客户真实记录或已执行查询；若后续需按具体卡归因，订单对应卡信息仍缺依据。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "a56d3ca95b6d42ada95fe0958e1006526ecaf9a95b41f014fe8b5194c1d0ff97"
+}

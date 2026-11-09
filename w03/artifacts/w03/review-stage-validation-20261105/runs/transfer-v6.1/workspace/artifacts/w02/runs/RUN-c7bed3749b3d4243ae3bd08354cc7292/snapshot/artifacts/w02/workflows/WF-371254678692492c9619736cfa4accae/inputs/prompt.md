@@ -1,0 +1,1 @@
+Fixed extraction fixture; not a live extraction.

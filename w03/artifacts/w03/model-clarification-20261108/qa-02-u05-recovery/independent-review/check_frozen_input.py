@@ -1,0 +1,56 @@
+"""Read-only single-run recovery gate audit; no model/credential access."""
+from pathlib import Path
+import json,hashlib,datetime,importlib.util,sys
+sys.dont_write_bytecode=True
+ROOT=Path.cwd();B=ROOT/'artifacts/w03/model-clarification-20261108';P=B/'qa-02-u05-recovery';OLD=B/'qa-01';R=P/'independent-review';load=lambda p:json.loads(p.read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();ts=lambda s:hashlib.sha256(s.encode()).hexdigest();jsha=lambda v:ts(json.dumps(v,ensure_ascii=False,sort_keys=True,separators=(',',':')))
+checks=[]
+def ck(i,v):checks.append({'id':i,'passed':bool(v)})
+runner=B/'support/run_batch.py';spec=importlib.util.spec_from_file_location('recovery_read_only_runner',runner);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+def forbidden(*a,**k):raise AssertionError('No model or credentials allowed')
+m.Agent=m.ContextModel=m.read_key=forbidden
+ct=m.prepare(P);pre=load(P/'preflight.json');man=load(P/'input/manifest.json');basis=load(P/'recovery_basis.json');prior=load(OLD/'independent-review/review.json');pr=load(OLD/'input/manifest.json')
+ck('exact_single_U05',list(ct['cases'])==list(ct['requests'])==man['case_ids']==['U05'])
+ck('read_only_prepare_exact_preflight',ct['preflight']==pre)
+ck('input_inventory_complete',set(man['files'])=={f.relative_to(P).as_posix() for f in (P/'input').rglob('*') if f.is_file() and f.name!='manifest.json'})
+for name,h in man['files'].items():ck('frozen:'+name,sha(P/name)==h)
+for name in ['business_model.md','knowledge_prompt.txt','controls.json','new_control_approval.json','original_questions.json','reviewer_expectations.json','protected.json']:ck('exact_qa01:'+name,(P/'input'/name).read_bytes()==(OLD/'input'/name).read_bytes())
+for name,h in pr['files'].items():ck('old_frozen_preserved:'+name,sha(OLD/name)==h)
+for name,h in load(P/'input/protected.json').items():ck('formal_protected:'+name,sha(ROOT/name)==h)
+ck('prior_report_fixed',sha(OLD/'independent-review/review.json')=='0c5eb2fa773b6cc21c3c969ac7d33c5ae7d88cbc785ace50a9f6a8ad838d7a2b')
+ck('five_semantics_pass_one_unassessable',prior['summary']['semantic_passed']==5 and prior['summary']['semantic_failed']==0 and prior['summary']['not_assessable_ids']==['U05'])
+f=ROOT/basis['original_failure'];o=load(f);rp=ROOT/basis['original_native_run'];atp=rp.parent/'attempts.json';ats=load(atp)['attempts'];rawreq=load(rp.parent/'request.json')
+ck('failed_output_unchanged',sha(f)==basis['original_failure_sha256'])
+ck('failed_run_unchanged',sha(rp)==basis['original_native_run_sha256'])
+ck('failed_attempts_and_partial_unchanged',sha(atp)==basis['original_attempts_sha256'] and ts(ats[0]['response']['content'])==next(c for c in prior['cases'] if c['id']=='U05')['partial_public_response_sha256'])
+ck('original_mixed_not_pure_network',len(ats)==2 and ats[0]['finish_reason']=='length' and ats[0]['error']=='MODEL_OUTPUT_TRUNCATED' and ats[1]['error']=='MODEL_NETWORK_ERROR' and bool(ats[0]['response']['content']) and not ats[1].get('response'))
+ck('no_valid_old_answer',o['actual_answer'] is None and not (rp.parent/'answer.json').exists() and not (rp.parent/'response.json').exists())
+q=ct['requests']['U05']['question'];messages=m.messages_for(ct['document'],ct['prompt'],q,True);body=json.loads(messages[1]['content']);c=ct['cases']['U05'];oldcase=next(c for c in load(OLD/'input/selected_questions.json')['cases'] if c['id']=='U05')
+ck('complete_case_fixture_materials_same',c==oldcase)
+ck('question_exact_old_failed_request',q==load(rp.parent/'settings.json')['question']==json.loads(rawreq['messages'][1]['content'])['question'])
+ck('messages_exact_original_initial_request',messages==rawreq['messages'])
+ck('messages_exact_failed_expansion_request',messages==ats[1]['request']['messages'])
+ck('no_partial_correction_or_expected_added',set(body)=={'business_model','question'} and body==json.loads(rawreq['messages'][1]['content']) and len(messages)==2)
+pc=pre['cases'][0]
+ck('message_hash',jsha(messages)==pc['messages_sha256'])
+ck('question_hash',ts(q)==pc['question_sha256']==o['actual_question_sha256'])
+ck('no_tools_or_expected',pc['expected_sent'] is False and pc['tools']==[] and pre['reviewer_expectations_sent'] is False)
+ck('original_complete_control_registry_no_selected_control',len(load(P/'input/controls.json')['cases'])==6 and not set(ct['cases'])&{x['id'] for x in load(P/'input/controls.json')['cases']})
+ap=load(P/'input/new_control_approval.json');ck('control_design_metadata_hash_unchanged',sha(ROOT/ap['reviewer_approval'])==ap['reviewer_approval_sha256'] and sha(P/'input/controls.json')==ap['controls_sha256'])
+config=load(P/'input/knowledge.json');expected=load(OLD/'input/knowledge.json').copy()
+for field,name in [('business_model','business_model.md'),('prompt','knowledge_prompt.txt')]:expected[field]=(P/'input'/name).relative_to(ROOT).as_posix()
+ck('new_isolated_config_only_paths_changed',config==expected and ct['config_path']!=load(rp.parent/'settings.json')['config_path'])
+ck('same_runner_no_workflow_resume',sha(runner)=='a594b197a85587c26b0686d21c93d9e7bfb421edc13c12827930176d223040d8')
+ck('runtime_policy_explicitly_unchanged',m.POLICY==man['runtime_plan']==pre['runtime_policy']==load(OLD/'preflight.json')['runtime_policy'])
+ck('one_new_run_max_two_attempts',basis['maximum_new_runs']==1 and basis['maximum_http_attempts']==2 and basis['stop_after_this_new_run_even_if_failed'] is True)
+ck('all_limits_unchanged',pre['max_concurrency']==2 and pc['context_chars']<=config['max_context_chars'] and m.POLICY['max_tokens']==8192 and m.POLICY['retry_max_tokens']==16384 and m.POLICY['timeout']==180 and m.POLICY['retry_timeout']==240)
+for key in ['native_source_hashes','implementation_hashes']:
+ for name,h in pre[key].items():ck(key+':'+name,sha(ROOT/name)==h)
+ck('source_candidate_approval_same',sha(B/'independent-review/candidate-review.json')=='279b11cf32fbb7bd22963ab2238a190aafd8a5a607c156ddbbf45c45d3683c8b')
+ck('reused_criteria_same',sha(OLD/'independent-review/source-first-criteria.json')==prior['criteria_sha256'])
+ck('zero_new_calls',pre['actual_model_calls']==0 and not list((P/'output').glob('*')) and not any(load(f).get('config_path')==ct['config_path'] for f in (ROOT/'artifacts/w02/knowledge_runs').glob('*/settings.json')))
+ck('gate_not_yet_signed',not (P/'gate_acceptance.json').exists())
+failed=[x['id'] for x in checks if not x['passed']];assert not failed,failed
+report={'status':'approved_for_execution','reviewed_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'client_date':'2026-11-08','approved':True,'approved_for_execution':True,'run_allowed':True,'status_checks_prose_consistent':True,'checks':checks,'failed_checks':[],'summary':{'selected_cases':1,'selected_controls':0,'registered_control_metadata':6,'checks_passed':len(checks),'checks_failed':0,'reviewer_api_calls':0},'model_sha256':sha(P/'input/business_model.md'),'candidate_prompt_sha256':sha(P/'input/knowledge_prompt.txt'),'runner_sha256':sha(runner),'manifest_sha256':sha(P/'input/manifest.json'),'preflight_sha256':sha(P/'preflight.json'),'requests_sha256':sha(P/'input/requests.json'),'candidate_review_sha256':sha(B/'independent-review/candidate-review.json'),'source_criteria_sha256':sha(OLD/'independent-review/source-first-criteria.json'),'prior_result_sha256':sha(OLD/'independent-review/review.json'),'recovery_basis_sha256':sha(P/'recovery_basis.json'),'cases':[{'id':'U05','input_track':c['input_track'],'question_sha256':ts(q)}],'why_allowed':'原run终态为网络中断，没有完整可评分答复；首个已截断部分JSON完整留存且不用于新请求或语义选样。新隔离完整问答不是对截断workflow套resume，也不是重抽已有可评分语义/格式失败答案。独立新门禁明确允许一次，不追改原门禁。','why_keep_original_parameters':'原生初始化要求max_tokens<retry_max_tokens，直接16384需更改既定扩容条件；本轮保持原8192→16384/180→240策略，不改框架或解析器。新run如再次截断，仅原有一次确认length扩容可用。','prose':'批准新隔离U05完整原生运行最多一次，按冻结原策略最多两次HTTP尝试；不workflow resume，不发送部分答案/预期/纠错。无论本次成功、语义失败、格式失败、再截断或网络失败，均不得追加第三批恢复或语义重抽。原QA01 mixed失败及成绩不变，新结果与计数另记。','human_decisions':[]}
+(R/'input-review.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+(R/'input-review.md').write_text('# QA-02 U05独立技术补测门禁\n\n**批准一个新的隔离U05原生运行，最多1run、按既定策略最多2次HTTP尝试。** `status=approved_for_execution`，`approved/approved_for_execution/run_allowed=true`；'+str(len(checks))+'项检查全部通过，`failed_checks=[]`。签前0调用。\n\nQA01已固定5pass、U05因length后network无完整答案不可判。首个公开部分JSON和两attempt完整保留；本次不是workflow resume，不对可评分语义/格式失败挑样。完整messages与原失败run逐字相同，不发送部分答案、纠错、期望或其他control。model/prompt/问题/材料/预期/严格JSON解析器及运行策略保持。\n\n原生要求初始max_tokens小于retry_max_tokens；直接16384会引入更大的扩容策略，所以本轮保持8192→16384、180→240，不修改框架。即使再次失败也停止，不追加其他恢复。本批准独立于旧门禁，不回写旧失败；新增run/HTTP单列计数，结果全量留存。\n')
+print(json.dumps({'status':report['status'],'checks':len(checks),'failed_checks':[],'review_sha256':sha(R/'input-review.json'),'md_sha256':sha(R/'input-review.md'),'manifest_sha256':report['manifest_sha256'],'preflight_sha256':report['preflight_sha256']},ensure_ascii=False))

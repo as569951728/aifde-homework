@@ -1,0 +1,51 @@
+{
+  "reviewer": "b56_execution_review",
+  "reviewed_at": "2026-11-08T15:14:03.107092+00:00",
+  "stage": "candidate_method_review_before_rebuild",
+  "candidate": "artifacts/w03/b56-first-monthly-20261108/candidate-v014",
+  "status": "approved_for_isolated_rebuild",
+  "approved_for_rebuild": true,
+  "failed_checks": [],
+  "passed_checks": [
+    {
+      "id": "only_quote_method_delta",
+      "passed": true,
+      "finding": "Version heading plus one paragraph: copy original Markdown continuous snippets, preserve format markers, do not concatenate heading+body, use directly relevant business-model spans."
+    },
+    {
+      "id": "source_failure_targeted",
+      "passed": true,
+      "finding": "Directly targets observed formatting transformation; neither changes business rule nor bypasses SOURCE_QUOTE_NOT_EXACT."
+    },
+    {
+      "id": "no_case_or_SQL_leak",
+      "passed": true,
+      "finding": "No expected results, sample identities, query cases, or generated SQL included."
+    },
+    {
+      "id": "same_build_config",
+      "passed": true,
+      "finding": "Same relative Skill filename and identical source/data/target configuration; resolves to new isolated candidate."
+    },
+    {
+      "id": "preserves_v013",
+      "passed": true,
+      "finding": "Shared fact conditional aggregation, registration independence, null distinctions, source and grain constraints remain intact."
+    }
+  ],
+  "boundaries": [
+    "Only permits separate new32 build with current candidate bytes.",
+    "Formal Skill remains v0.1.2; no adoption or merge/load approval.",
+    "Keep v1/v2 failures and independent expectations/judge unchanged. Source checks, structural gates, full32 semantic review and original H03 deterministic replay still required."
+  ],
+  "evidence_sha256": {
+    "artifacts/w03/b56-first-monthly-20261108/candidate-v014/SKILL.md": "e0af34b7f8da18a15030df93d2672a88ef662a6c526ec2d4c0492b57faf55bcd",
+    "artifacts/w03/b56-first-monthly-20261108/candidate-v014/build.json": "fc613dab568b16ffd358514bc3d139d86369502c59e0314e1c66f2c2f9c8f219",
+    "artifacts/w03/b56-first-monthly-20261108/candidate-v013/SKILL.md": "95b5155c97e480469a0735e27cd1cc8cd08907963bf7f93678d90604c6126a5a",
+    "artifacts/w03/b56-first-monthly-20261108/candidate-v013/build.json": "fc613dab568b16ffd358514bc3d139d86369502c59e0314e1c66f2c2f9c8f219",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/candidate-method-v014.diff": "9922a47eff99c2db6190bad274910c60c73b673a31d6797a3f414acd9ef0336b",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/build-review-v2.json": "758533c941ca064c83dbfe5a36d2ce4a051701c2cdb71e1806ee0a2891e72aea",
+    "customer/w03/build-metrics/SKILL.md": "d40329243c2c60c64ddfee0cb1b0617c4c2745c4b52d2b5d2f4b2b2570ea0fb2",
+    "docs/w03/business_model.md": "4e3187d124adc0856163b74a2cdd5edba064cf4ed39a698c553c9fe196ec00fb"
+  }
+}

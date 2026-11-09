@@ -1,0 +1,157 @@
+{
+  "created_at": "2026-11-07T05:15:50.012063+00:00",
+  "status": "rejected_control_design",
+  "approved": false,
+  "approval_scope": "control_design_only_not_execution",
+  "approved_for_execution": false,
+  "run_allowed": false,
+  "failed_checks": [
+    "CTRL04_query_contract_verbatim"
+  ],
+  "checks": [
+    {
+      "name": "six_unique_control_ids",
+      "passed": true
+    },
+    {
+      "name": "existing_five_case_objects_exactly_reused",
+      "passed": true
+    },
+    {
+      "name": "existing_five_expectation_objects_exactly_reused",
+      "passed": true
+    },
+    {
+      "name": "case_schema_preserved",
+      "passed": true
+    },
+    {
+      "name": "CTRL01_complete_messages_verbatim",
+      "passed": true
+    },
+    {
+      "name": "CTRL01_source_metadata_exact",
+      "passed": true
+    },
+    {
+      "name": "CTRL03_complete_messages_verbatim",
+      "passed": true
+    },
+    {
+      "name": "CTRL03_source_metadata_exact",
+      "passed": true
+    },
+    {
+      "name": "CTRL04_query_contract_verbatim",
+      "passed": false
+    },
+    {
+      "name": "CTRL02_comparability_is_explicit_synthetic",
+      "passed": true
+    },
+    {
+      "name": "FMTCTRL01_decoded_target_exactly_question_payload",
+      "passed": true
+    },
+    {
+      "name": "TRACECTRL01_explicit_synthetic_non_Qinghe",
+      "passed": true
+    },
+    {
+      "name": "TRACECTRL01_complete_question_answer_followup_context",
+      "passed": true
+    },
+    {
+      "name": "TRACECTRL01_result_first_in_question_and_local_detail_new_in_answer",
+      "passed": true
+    },
+    {
+      "name": "TRACECTRL01_expected_labels_not_in_question",
+      "passed": true
+    },
+    {
+      "name": "TRACECTRL01_no_case_answer_or_expected_in_prompt",
+      "passed": true,
+      "detail": "未读取或改写新stage4候选prompt；仅题干包含显式合成原文，不含判定标签或答案。"
+    },
+    {
+      "name": "control_questions_within_course_8000_chars",
+      "passed": true,
+      "detail": {
+        "CTRL01": 553,
+        "CTRL02": 261,
+        "CTRL03": 444,
+        "CTRL04": 453,
+        "FMTCTRL01": 89,
+        "TRACECTRL01": 356
+      }
+    },
+    {
+      "name": "expectations_separate_from_model_questions",
+      "passed": true
+    },
+    {
+      "name": "stage3_original_failure_report_unchanged",
+      "passed": true
+    },
+    {
+      "name": "new_prompt_not_read_no_api_no_formal_edits",
+      "passed": true,
+      "detail": "本次只读既有控制、原文和旧报告；只写stage4 independent-review。"
+    }
+  ],
+  "controls_sha256": "ab9b9cc644734f711da910f947c6ec37e35b1882bfebee458624f51cfc9bb528",
+  "controls_expectations_sha256": "0ffec813232510aeb658bc9986d352f4bdce1408f127328c8242895e8ecb1b32",
+  "source_first_criteria_sha256": "3e1894c7d6693d3f67e26c481814b81ec2b46693cb1c7e7562ebac760c5798cd",
+  "reused_inputs": [
+    {
+      "path": "artifacts/w03/answer-repair-20261107/stage1/independent-review/controls.json",
+      "sha256": "cc2edb5c3f890038747ec55ed9692c391efb9c47e02f8b8459f03805375ba2e7"
+    },
+    {
+      "path": "artifacts/w03/answer-repair-20261107/stage3-r2/input/controls.json",
+      "sha256": "db922a5dda33ba0b7b4bf6123f81b8530c8cc0fb257b67bba9517510a3d91d4a"
+    },
+    {
+      "path": "artifacts/w03/answer-repair-20261107/stage1/independent-review/controls_expectations.json",
+      "sha256": "138007d3f14b71d4e917802086d4ab86a76af3b8cc60bae7b55ed9865f894c26"
+    },
+    {
+      "path": "artifacts/w03/answer-repair-20261107/stage3/independent-review/controls_expectations.json",
+      "sha256": "4fc003dc7ebe1806fe2a975010a61eb81950e0b8ad79104e211365b90c7ccbd8"
+    }
+  ],
+  "case_object_hashes": {
+    "CTRL01": "e758382421c09310ce91c30432d9d1fd09514f37892641379bb73815d2c3a6ce",
+    "CTRL02": "ea92dd785209893b3a50d5756356e5df44dcaee804d426e906a1c4bdd5b7a960",
+    "CTRL03": "cd627aee90fa6aee49830b9a2e3804eeced581deabd51b31d86e7b073083eaaa",
+    "CTRL04": "d7644f60cdc8f8a835d4654208f6ca9d22e3e7762e6f689202373701107d1d6f",
+    "FMTCTRL01": "3f5267f41c9dc2166476a25b1ad944f838ce06a5284a75e37cf60bb5bcd53736",
+    "TRACECTRL01": "b25fc7e6a6edb44ed7a1039557d46698d527d2234d8db9ff18324783108306a5"
+  },
+  "verified_source_files": [
+    {
+      "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-33120509-3939-5d6c-81f1-3959fed49789-transcript.json",
+      "sha256": "f582e55b0468ca02a84b35c9f668a6dcef21adf6748a43e9bed528981f6c6059",
+      "message_ids": [
+        "MSG-01664",
+        "MSG-01665"
+      ]
+    },
+    {
+      "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+      "sha256": "eef0d4127f42f96a0fc5219749c3355cfe8252d028b2e8e495117d1ea3821f07",
+      "message_ids": [
+        "MSG-01924",
+        "MSG-01925"
+      ]
+    },
+    {
+      "path": "materials/w03/04_本期统计确认邮件.md",
+      "sha256": "c4f847fd90fd0765d37ad22f20d4a4eb0bab90f8543ae0f05d7a3cbee104c4be"
+    }
+  ],
+  "prose": "控制设计尚未通过，禁止执行。",
+  "human_decisions": [],
+  "api_calls": 0
+}

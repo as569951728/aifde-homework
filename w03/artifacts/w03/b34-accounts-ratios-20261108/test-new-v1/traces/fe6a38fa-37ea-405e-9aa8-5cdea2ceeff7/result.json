@@ -1,0 +1,56 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "buyer_count",
+      "refund_buyer_count",
+      "selling_store_count",
+      "valid_order_items"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": [
+      {
+        "field": "order__channel",
+        "op": "eq",
+        "value": "小程序"
+      }
+    ]
+  },
+  "sql": "SELECT\n  COUNT(DISTINCT buyer_count) AS buyer_count\n  , COUNT(DISTINCT refund_buyer_count) AS refund_buyer_count\n  , COUNT(DISTINCT selling_store_count) AS selling_store_count\n  , SUM(valid_order_items) AS valid_order_items\nFROM (\n  SELECT\n    channel AS order__channel\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END AS buyer_count\n    , CASE WHEN status = 'paid' AND refund_cents > 0 THEN member_id END AS refund_buyer_count\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN store_id END AS selling_store_count\n    , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END AS valid_order_items\n  FROM \"data\".\"main\".\"orders\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_7\nWHERE order__channel in ('小程序')",
+  "columns": [
+    "buyer_count",
+    "refund_buyer_count",
+    "selling_store_count",
+    "valid_order_items"
+  ],
+  "rows": [
+    [
+      13,
+      2,
+      2,
+      15
+    ]
+  ],
+  "seconds": 0.03,
+  "units": {
+    "buyer_count": "count",
+    "refund_buyer_count": "count",
+    "selling_store_count": "count",
+    "valid_order_items": "count"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+  "answer": "统计范围为2026年8月的小程序渠道订单，已按当前客户青禾的数据范围统计，未按门店等维度分组。购买会员数13个CRM会员账户；退款会员数2个CRM会员账户；成交门店数2家，按订单成交门店计数，不是会员归属门店；有效订单商品件数15件，为有效订单中的原始购买件数合计，不是退款后的净销量。会员数按CRM会员账户计数，不做跨系统自然人去重。",
+  "question": "请同时列出2026年8月青禾优选小程序渠道的购买会员数、退款会员数、成交门店数和有效订单商品件数。",
+  "trace_id": "fe6a38fa-37ea-405e-9aa8-5cdea2ceeff7",
+  "elapsed_seconds": 8.09,
+  "model_usage": {
+    "prompt_tokens": 9746,
+    "completion_tokens": 842,
+    "total_tokens": 10588
+  },
+  "model_calls_with_usage": 2
+}

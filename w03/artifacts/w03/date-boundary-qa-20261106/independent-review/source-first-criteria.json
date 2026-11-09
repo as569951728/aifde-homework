@@ -1,0 +1,775 @@
+{
+  "created_at": "2026-11-06T15:35:24.216231+00:00",
+  "reviewer": "independent test review Agent",
+  "phase": "source-first frozen criteria before candidate/author expectations/actual answers",
+  "independence": {
+    "read_author_expectations": false,
+    "read_candidate_model": false,
+    "read_actual_answers": false,
+    "read_main_agent_judgment": false,
+    "question_selection": "只读取 model_questions.json 中 DY/DQ 对象，未读取 model_expectations",
+    "memory_boundary": "按会话要求作过 MEMORY.md 索引定位；记忆不作为判据或本轮事实证据。全部业务判据直接来自下列已读取原件。"
+  },
+  "sources": [
+    {
+      "id": "statistics_email",
+      "path": "materials/w03/04_本期统计确认邮件.md",
+      "sha256": "c4f847fd90fd0765d37ad22f20d4a4eb0bab90f8543ae0f05d7a3cbee104c4be"
+    },
+    {
+      "id": "test_dictionary",
+      "path": "materials/w03/05_数据字典.md",
+      "sha256": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16"
+    },
+    {
+      "id": "chen",
+      "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+      "sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308"
+    },
+    {
+      "id": "lin",
+      "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+      "sha256": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71"
+    },
+    {
+      "id": "zhou",
+      "path": "artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+      "sha256": "4d60b0499cfff1ce466183fa32c6c593956abe0513d1336ded239e4e53f3211c"
+    },
+    {
+      "id": "questions",
+      "path": "artifacts/w03/model-input-preflight-20261106/effective_tests/model_questions.json",
+      "sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "C01",
+      "rule": "只就本期总部运营月报纳入悦享年卡、家庭季卡；等级和购卡支付金额不能替代卡类型及有效状态。",
+      "sources": [
+        "lin:MSG-03848",
+        "lin:MSG-03854"
+      ]
+    },
+    {
+      "id": "C02",
+      "rule": "指定判定日 d 的卡日期有效性要求 valid_from <= d < valid_until，且 ended_at 为空或 d < ended_at。生效当天有效，计划结束当天无效，提前终止当天起无效。所有条件是合取；任一不满足即无效。",
+      "sources": [
+        "chen:MSG-03886",
+        "chen:MSG-03888",
+        "chen:MSG-03890"
+      ]
+    },
+    {
+      "id": "C03",
+      "rule": "ended_at 为空仅表示该记录没有提前终止，仍须检查生效及计划结束日期，不表示无限有效。",
+      "sources": [
+        "chen:MSG-03886",
+        "chen:MSG-03890"
+      ]
+    },
+    {
+      "id": "C04",
+      "rule": "按题设 decision_date 检查历史状态，不能使用运行日、当前状态或自行替换为月底；本组是单卡日期情境问答。涉及真正月报资格时才按自然月月末筛账户。",
+      "sources": [
+        "chen:MSG-03886",
+        "statistics_email",
+        "questions"
+      ]
+    },
+    {
+      "id": "C05",
+      "rule": "晚于计划结束的 ended_at 不延长计划有效期；有未来提前终止日期也不能使尚未生效的卡提前有效。可以提示数据质量，但不得借异常拒绝题设可确定的日期判断。",
+      "sources": [
+        "chen:MSG-03886",
+        "test_dictionary",
+        "questions"
+      ],
+      "nature": "由并列日期条件推导，不是新增业务规则"
+    },
+    {
+      "id": "C06",
+      "rule": "日期边界和空值口述来源是陈姐门店执行；小林确认卡范围和账户规则，但未确认日期端点；老周未确认日期与空值，不得写成 IT 已验证。",
+      "sources": [
+        "chen:MSG-03886",
+        "chen:MSG-03890",
+        "lin:MSG-03850",
+        "zhou:MSG-03873",
+        "zhou:MSG-03875",
+        "zhou:MSG-03877"
+      ]
+    },
+    {
+      "id": "C07",
+      "rule": "测试字典定义字段、日期粒度、时区和覆盖，不能独立确认业务日期端点。测试集为干净合成数据，不等于真实 CRM 或生产核验。",
+      "sources": [
+        "test_dictionary",
+        "zhou:MSG-03875",
+        "zhou:MSG-03877",
+        "zhou:MSG-03883"
+      ]
+    },
+    {
+      "id": "C08",
+      "rule": "正式规则说明、办理记录和历史执行凭据仍待向运营小林核对；这不抹除已有陈姐口述规则在本题人工构造情境中的推导能力。回答可下情境结论，同时不能冒称正式材料或生产规则已确认。",
+      "sources": [
+        "chen:MSG-03886",
+        "chen:MSG-03890",
+        "zhou:MSG-03883"
+      ]
+    },
+    {
+      "id": "C09",
+      "rule": "本题不能把单卡有效自动升级成账户当月购买人数、月报数值、生产交付或验收通过。若扩展到账户，有一张范围内有效卡即合资格且按账户去重；购买人数另需当月有效购买。",
+      "sources": [
+        "lin:MSG-03854",
+        "lin:MSG-03868",
+        "statistics_email"
+      ]
+    },
+    {
+      "id": "C10",
+      "rule": "完整阅读回答：检查结论、每个题设日期条件及其合取逻辑、历史日、不新增规则和来源范围。符号公式与准确自然语言等价；不按固定关键词机械判分。未重复非必要背景但无错误外推可列非阻断建议；核心条件遗漏、归因升级、错误拒答或实质自相矛盾是问题。",
+      "sources": [
+        "questions",
+        "chen:MSG-03886",
+        "test_dictionary"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "DY01",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-19"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": false,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2025-08-20 <= 2025-08-19: False; 2025-08-19 < 2026-08-20: True; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DY02",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-20"
+      },
+      "expected_valid_independently_derived": true,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2025-08-20 <= 2025-08-20: True; 2025-08-20 < 2026-08-20: True; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DY03",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-21"
+      },
+      "expected_valid_independently_derived": true,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2025-08-20 <= 2025-08-21: True; 2025-08-21 < 2026-08-20: True; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DY04",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-19"
+      },
+      "expected_valid_independently_derived": true,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2025-08-20 <= 2026-08-19: True; 2026-08-19 < 2026-08-20: True; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DY05",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-20"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": false,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2025-08-20 <= 2026-08-20: True; 2026-08-20 < 2026-08-20: False; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DY06",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-21"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": false,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2025-08-20 <= 2026-08-21: True; 2026-08-21 < 2026-08-20: False; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DY07",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-14"
+      },
+      "expected_valid_independently_derived": true,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2025-08-20 <= 2026-08-14: True; 2026-08-14 < 2026-08-20: True; 2026-08-14 < 2026-08-15: True",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DY08",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-15"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": false
+      },
+      "derivation": "2025-08-20 <= 2026-08-15: True; 2026-08-15 < 2026-08-20: True; 2026-08-15 < 2026-08-15: False",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DY09",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-16"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": false
+      },
+      "derivation": "2025-08-20 <= 2026-08-16: True; 2026-08-16 < 2026-08-20: True; 2026-08-16 < 2026-08-15: False",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DY10",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-25",
+        "decision_date": "2026-08-20"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": false,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2025-08-20 <= 2026-08-20: True; 2026-08-20 < 2026-08-20: False; 2026-08-20 < 2026-08-25: True",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DY11",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-10",
+        "hypothetical_run_date": "2026-08-31"
+      },
+      "expected_valid_independently_derived": true,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2025-08-20 <= 2026-08-10: True; 2026-08-10 < 2026-08-20: True; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DY12",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2025-08-19"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": false,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2025-08-20 <= 2025-08-19: False; 2025-08-19 < 2026-08-20: True; 2025-08-19 < 2026-08-15: True",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DQ01",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-19"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": false,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2026-05-20 <= 2026-05-19: False; 2026-05-19 < 2026-08-20: True; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DQ02",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-20"
+      },
+      "expected_valid_independently_derived": true,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2026-05-20 <= 2026-05-20: True; 2026-05-20 < 2026-08-20: True; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DQ03",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-21"
+      },
+      "expected_valid_independently_derived": true,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2026-05-20 <= 2026-05-21: True; 2026-05-21 < 2026-08-20: True; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DQ04",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-19"
+      },
+      "expected_valid_independently_derived": true,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2026-05-20 <= 2026-08-19: True; 2026-08-19 < 2026-08-20: True; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DQ05",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-20"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": false,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2026-05-20 <= 2026-08-20: True; 2026-08-20 < 2026-08-20: False; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DQ06",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-21"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": false,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2026-05-20 <= 2026-08-21: True; 2026-08-21 < 2026-08-20: False; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DQ07",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-14"
+      },
+      "expected_valid_independently_derived": true,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2026-05-20 <= 2026-08-14: True; 2026-08-14 < 2026-08-20: True; 2026-08-14 < 2026-08-15: True",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DQ08",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-15"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": false
+      },
+      "derivation": "2026-05-20 <= 2026-08-15: True; 2026-08-15 < 2026-08-20: True; 2026-08-15 < 2026-08-15: False",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DQ09",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-16"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": false
+      },
+      "derivation": "2026-05-20 <= 2026-08-16: True; 2026-08-16 < 2026-08-20: True; 2026-08-16 < 2026-08-15: False",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DQ10",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-25",
+        "decision_date": "2026-08-20"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": false,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2026-05-20 <= 2026-08-20: True; 2026-08-20 < 2026-08-20: False; 2026-08-20 < 2026-08-25: True",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DQ11",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-10",
+        "hypothetical_run_date": "2026-08-31"
+      },
+      "expected_valid_independently_derived": true,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": true,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2026-05-20 <= 2026-08-10: True; 2026-08-10 < 2026-08-20: True; ended_at 空，仅无提前终止，不能免除计划截止",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    },
+    {
+      "id": "DQ12",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-05-19"
+      },
+      "expected_valid_independently_derived": false,
+      "required_conditions": {
+        "product_in_scope": true,
+        "start_inclusive": false,
+        "planned_end_exclusive": true,
+        "early_end_exclusive_or_absent": true
+      },
+      "derivation": "2026-05-20 <= 2026-05-19: False; 2026-05-19 < 2026-08-20: True; 2026-05-19 < 2026-08-15: True",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05"
+      ]
+    }
+  ],
+  "judgment_levels": {
+    "pass": "结论与完整条件正确，证据及情境范围无实质错误",
+    "pass_with_nonblocking_suggestion": "核心正确，仅可读性、冗余或非必要背景表达可改进，不需要本人业务确认",
+    "fail": "日期或合取条件错误/关键条件遗漏/用当前日替历史日/新增无依据规则/来源权限升级/以材料待补为由拒绝可推导情境",
+    "needs_business_decision": "仅限原件无法解决的真实事实冲突或需真实业务取舍，本组题设本身没有发现此类事项"
+  },
+  "scope_limit": "本组 24 题为人工构造单卡日期知识问答；不构成查询执行、生产数据核验、38 指标通过、正式模型采纳或客户验收。"
+}

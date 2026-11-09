@@ -1,0 +1,50 @@
+{
+  "created_at": "2026-11-06T15:47:23.200791+00:00",
+  "status": "approved_for_isolated_bounded_regression",
+  "candidate_sha256": "dd555f4d004aeac3141e37bfc43528b7880e00cf29429fd7b3d9f045183bd7f4",
+  "previous_sha256": "c2947d4bb17dcd5faf3a4da8740983c4ade6b91310d570ce18e228bfc4beaa63",
+  "checks": {
+    "original_exact_prefix_retained": true,
+    "previous_sha_matches": true,
+    "candidate_sha_matches": true,
+    "no_case_ids_or_message_ids_in_added_instruction": true,
+    "no_fixture_dates_in_added_instruction": true,
+    "no_card_names_or_expected_date_formula": true,
+    "exact_8_unique_cases": true,
+    "all_4_failure_cases_included": true,
+    "controls_match_declared": true
+  },
+  "semantic_assessment": "追加内容只约束断言与来源的匹配和多断言分拆，针对首轮04来源错挂；不告诉模型哪些题应有效、不添加业务规则、不插入任何特定角色或消息编号。保留原提示的已知规则情境推导要求，并优先让模型引用实际可见的模型位置，因此不因未看到原文件而必然拒绝原模型已有依据的规则。",
+  "blocking_issues": [],
+  "nonblocking_notes": [
+    "只看模型不能逐字验证原文件，候选要求准确注明当前可见位置是合适的；回归仍需检查是否出现过度回避、来源遗漏或日期推导退化。"
+  ],
+  "approved_plan": {
+    "one_candidate_only": true,
+    "case_ids": [
+      "DY01",
+      "DY11",
+      "DY12",
+      "DQ12",
+      "DQ11",
+      "DY02",
+      "DY10",
+      "DQ08"
+    ],
+    "answers_per_case": 1,
+    "no_semantic_retry_or_cherry_pick": true,
+    "keep_first_round_unchanged": true,
+    "no_third_prompt_version_this_round": true,
+    "if_any_failure": "保留全部结果并停止本轮调参，不把编辑后的解释计作模型通过",
+    "if_all_pass": "只说明该候选在这8题的有界结果，不外推其余16题或整套验证"
+  },
+  "regression_judgment": "继续按 source-first-criteria.json 与 review.json 完整语义判据：日期各约束、指定历史日、来源到断言的准确匹配、角色与范围、无新增规则。来源措辞可用准确模型章节，不强制某一关键词/编号组合。",
+  "not_authorized_by_this_review": [
+    "替换正式模型",
+    "替换正式Skill或提示",
+    "改原题与预期",
+    "改判R1",
+    "重跑24题全批"
+  ],
+  "model_calls_made_by_reviewer": 0
+}

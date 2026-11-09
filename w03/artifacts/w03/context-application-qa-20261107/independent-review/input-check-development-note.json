@@ -1,0 +1,16 @@
+{
+  "event": "offline_audit_assertion_corrected_before_any_approval",
+  "first_check": "U06_assessment_exact_blocks",
+  "cause": "审核脚本误预期两段原始行块间额外插入换行；实际渲染是原始块直接拼接，原块已有完整空行。",
+  "evidence": {
+    "original_block_lengths": [
+      912,
+      1124
+    ],
+    "rendered_length": 2036,
+    "exact_concat": true
+  },
+  "action": "仅修正独立审核脚本为逐字原块直接拼接比较，未改输入/判据/预期。",
+  "model_calls": 0,
+  "approved_report_existed_at_failure": false
+}

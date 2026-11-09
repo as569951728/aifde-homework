@@ -1,0 +1,511 @@
+{
+  "selected_target": {
+    "id": "net_sales_cents",
+    "name": "净销售额"
+  },
+  "catalog": [
+    {
+      "id": "order_count",
+      "name": "创建订单数"
+    },
+    {
+      "id": "paid_order_count",
+      "name": "支付订单数"
+    },
+    {
+      "id": "valid_order_count",
+      "name": "有效订单数"
+    },
+    {
+      "id": "cancelled_order_count",
+      "name": "取消订单数"
+    },
+    {
+      "id": "refund_order_count",
+      "name": "退款订单数"
+    },
+    {
+      "id": "partial_refund_order_count",
+      "name": "部分退款订单数"
+    },
+    {
+      "id": "full_refund_order_count",
+      "name": "全额退款订单数"
+    },
+    {
+      "id": "payment_cents",
+      "name": "实付金额"
+    },
+    {
+      "id": "refund_cents",
+      "name": "退款金额"
+    },
+    {
+      "id": "net_sales_cents",
+      "name": "净销售额"
+    },
+    {
+      "id": "gross_cents",
+      "name": "支付订单原价金额"
+    },
+    {
+      "id": "discount_cents",
+      "name": "优惠金额"
+    },
+    {
+      "id": "buyer_count",
+      "name": "购买会员数"
+    },
+    {
+      "id": "refund_buyer_count",
+      "name": "退款会员数"
+    },
+    {
+      "id": "selling_store_count",
+      "name": "成交门店数"
+    },
+    {
+      "id": "valid_order_items",
+      "name": "有效订单商品件数"
+    },
+    {
+      "id": "avg_order_value",
+      "name": "有效订单均额"
+    },
+    {
+      "id": "avg_buyer_value",
+      "name": "购买会员人均消费"
+    },
+    {
+      "id": "purchase_frequency",
+      "name": "购买频次"
+    },
+    {
+      "id": "refund_amount_rate",
+      "name": "退款金额占比"
+    },
+    {
+      "id": "cancel_rate",
+      "name": "取消率"
+    },
+    {
+      "id": "refund_order_rate",
+      "name": "退款订单率"
+    },
+    {
+      "id": "discount_rate",
+      "name": "优惠率"
+    },
+    {
+      "id": "items_per_order",
+      "name": "单均商品件数"
+    },
+    {
+      "id": "new_member_count",
+      "name": "注册会员数"
+    },
+    {
+      "id": "first_buyer_count",
+      "name": "观测期首购会员数"
+    },
+    {
+      "id": "first_order_sales_cents",
+      "name": "观测期首单净销售额"
+    },
+    {
+      "id": "first_order_count",
+      "name": "观测期首单数"
+    },
+    {
+      "id": "repeat_order_count",
+      "name": "观测期后续购买订单数"
+    },
+    {
+      "id": "monthly_buyer_count",
+      "name": "月内购买会员数"
+    },
+    {
+      "id": "monthly_repeat_buyer_count",
+      "name": "月内复购会员数"
+    },
+    {
+      "id": "monthly_repeat_rate",
+      "name": "月内复购率"
+    },
+    {
+      "id": "monthly_paid_buyer_count",
+      "name": "月末付费会员购买人数"
+    },
+    {
+      "id": "monthly_paid_order_count",
+      "name": "月末付费会员有效订单数"
+    },
+    {
+      "id": "monthly_paid_sales_cents",
+      "name": "月末付费会员净销售额"
+    },
+    {
+      "id": "monthly_paid_repeat_buyer_count",
+      "name": "月末付费会员复购人数"
+    },
+    {
+      "id": "monthly_paid_repeat_rate",
+      "name": "月末付费会员复购率"
+    },
+    {
+      "id": "monthly_paid_avg_order_value",
+      "name": "月末付费会员订单均额"
+    }
+  ],
+  "source_sha256": {
+    "materials/w03/01_订单日报说明.md": "976fa129493e6bd2861a58d74df2ba3ad4448ea01a2d25651124222a61cebb67",
+    "materials/w03/02_财务邮件.md": "f81e0ddb5c03dd4eb2d01094816716d8375d03fe883b947ec8297edf8d525557",
+    "materials/w03/04_本期统计确认邮件.md": "c4f847fd90fd0765d37ad22f20d4a4eb0bab90f8543ae0f05d7a3cbee104c4be",
+    "materials/w03/05_数据字典.md": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16"
+  },
+  "heading_index": [
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "创建订单数",
+      "line": 5,
+      "catalog_ids": [
+        "order_count"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 创建订单数\n\n按下单日期统计全部订单，每个订单号一次，包含取消单。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "支付订单数",
+      "line": 9,
+      "catalog_ids": [
+        "paid_order_count"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 支付订单数\n\n状态为 paid 的订单数，包括后来全部退款的订单。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "有效订单数",
+      "line": 13,
+      "catalog_ids": [
+        "valid_order_count"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 有效订单数\n\n状态为 paid 且实付金额减退款金额大于零的订单数；取消和全退不计。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "取消订单数",
+      "line": 17,
+      "catalog_ids": [
+        "cancelled_order_count"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 取消订单数\n\n状态为 cancelled 的订单数。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "退款订单数",
+      "line": 21,
+      "catalog_ids": [
+        "refund_order_count"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 退款订单数\n\npaid 状态且退款金额大于零的订单数，包括部分退款与全部退款。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "部分退款订单数",
+      "line": 25,
+      "catalog_ids": [
+        "partial_refund_order_count"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 部分退款订单数\n\npaid 状态且退款大于零、小于实付金额的订单数。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "全额退款订单数",
+      "line": 29,
+      "catalog_ids": [
+        "full_refund_order_count"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 全额退款订单数\n\npaid 状态且实付大于零、退款等于实付的订单数。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "实付金额",
+      "line": 33,
+      "catalog_ids": [
+        "payment_cents"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 实付金额\n\npaid 订单实付金额合计，尚未扣退款；单位分。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "退款金额",
+      "line": 37,
+      "catalog_ids": [
+        "refund_cents"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 退款金额\n\npaid 订单退款金额合计，按原订单下单日期归属，不是现金退款发生日；单位分。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "净销售额",
+      "line": 41,
+      "catalog_ids": [
+        "net_sales_cents"
+      ],
+      "relation": "selected_title",
+      "verbatim_section": "## 净销售额\n\npaid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "支付订单原价金额",
+      "line": 45,
+      "catalog_ids": [
+        "gross_cents"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 支付订单原价金额\n\npaid 订单折扣前原价金额合计；单位分。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "优惠金额",
+      "line": 49,
+      "catalog_ids": [
+        "discount_cents"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 优惠金额\n\npaid 订单原价减实付的金额合计；退款不冲减原优惠金额；单位分。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "购买会员数",
+      "line": 53,
+      "catalog_ids": [
+        "buyer_count"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 购买会员数\n\n统计窗口及筛选条件内有有效订单的不同 CRM 会员账户数，不做跨系统自然人去重。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "退款会员数",
+      "line": 57,
+      "catalog_ids": [
+        "refund_buyer_count"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 退款会员数\n\n统计窗口内发生退款的 paid 订单关联的不同 CRM 会员账户数。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "成交门店数",
+      "line": 61,
+      "catalog_ids": [
+        "selling_store_count"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 成交门店数\n\n窗口内至少有一笔有效订单的不同订单归属门店数。\n"
+    },
+    {
+      "source": "materials/w03/01_订单日报说明.md",
+      "heading": "有效订单商品件数",
+      "line": 65,
+      "catalog_ids": [
+        "valid_order_items"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 有效订单商品件数\n\n有效订单中的原始购买件数合计；退款金额不能推算退货件数，此项不是净商品销量。"
+    },
+    {
+      "source": "materials/w03/02_财务邮件.md",
+      "heading": "有效订单均额",
+      "line": 7,
+      "catalog_ids": [
+        "avg_order_value"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 有效订单均额\n\n净销售额除以有效订单数，单位分／单；分母零时未定义。\n"
+    },
+    {
+      "source": "materials/w03/02_财务邮件.md",
+      "heading": "购买会员人均消费",
+      "line": 11,
+      "catalog_ids": [
+        "avg_buyer_value"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 购买会员人均消费\n\n净销售额除以购买会员数，单位分／账户；分母零时未定义。\n"
+    },
+    {
+      "source": "materials/w03/02_财务邮件.md",
+      "heading": "购买频次",
+      "line": 15,
+      "catalog_ids": [
+        "purchase_frequency"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 购买频次\n\n有效订单数除以购买会员数，单位单／账户；分母零时未定义。\n"
+    },
+    {
+      "source": "materials/w03/02_财务邮件.md",
+      "heading": "退款金额占比",
+      "line": 19,
+      "catalog_ids": [
+        "refund_amount_rate"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 退款金额占比\n\n退款金额除以实付金额；分母零时未定义。\n"
+    },
+    {
+      "source": "materials/w03/02_财务邮件.md",
+      "heading": "取消率",
+      "line": 23,
+      "catalog_ids": [
+        "cancel_rate"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 取消率\n\n取消订单数除以创建订单数；分母零时未定义。\n"
+    },
+    {
+      "source": "materials/w03/02_财务邮件.md",
+      "heading": "退款订单率",
+      "line": 27,
+      "catalog_ids": [
+        "refund_order_rate"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 退款订单率\n\n退款订单数除以支付订单数；分母零时未定义。\n"
+    },
+    {
+      "source": "materials/w03/02_财务邮件.md",
+      "heading": "优惠率",
+      "line": 31,
+      "catalog_ids": [
+        "discount_rate"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 优惠率\n\n优惠金额除以支付订单原价金额；分母零时未定义。\n"
+    },
+    {
+      "source": "materials/w03/02_财务邮件.md",
+      "heading": "单均商品件数",
+      "line": 35,
+      "catalog_ids": [
+        "items_per_order"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 单均商品件数\n\n有效订单商品件数除以有效订单数；分母零时未定义。"
+    },
+    {
+      "source": "materials/w03/04_本期统计确认邮件.md",
+      "heading": "月末付费会员购买人数",
+      "line": 11,
+      "catalog_ids": [
+        "monthly_paid_buyer_count"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 月末付费会员购买人数\n\n自然月内有至少一笔有效订单、且月末符合总部运营月报付费资格的不同账户数。\n"
+    },
+    {
+      "source": "materials/w03/04_本期统计确认邮件.md",
+      "heading": "月末付费会员有效订单数",
+      "line": 15,
+      "catalog_ids": [
+        "monthly_paid_order_count"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 月末付费会员有效订单数\n\n月末符合付费资格的账户在该自然月的全部有效订单数，按账户资格筛选，不按卡重复。\n"
+    },
+    {
+      "source": "materials/w03/04_本期统计确认邮件.md",
+      "heading": "月末付费会员净销售额",
+      "line": 19,
+      "catalog_ids": [
+        "monthly_paid_sales_cents"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 月末付费会员净销售额\n\n月末符合付费资格的账户在该自然月的有效订单净销售额合计，单位分。\n"
+    },
+    {
+      "source": "materials/w03/04_本期统计确认邮件.md",
+      "heading": "月末付费会员复购人数",
+      "line": 23,
+      "catalog_ids": [
+        "monthly_paid_repeat_buyer_count"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 月末付费会员复购人数\n\n月末符合付费资格，且同一自然月至少有两笔有效订单的不同账户数。\n"
+    },
+    {
+      "source": "materials/w03/04_本期统计确认邮件.md",
+      "heading": "月末付费会员复购率",
+      "line": 27,
+      "catalog_ids": [
+        "monthly_paid_repeat_rate"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 月末付费会员复购率\n\n月末付费会员复购人数除以月末付费会员购买人数；分母为零时未定义。\n"
+    },
+    {
+      "source": "materials/w03/04_本期统计确认邮件.md",
+      "heading": "月末付费会员订单均额",
+      "line": 31,
+      "catalog_ids": [
+        "monthly_paid_avg_order_value"
+      ],
+      "relation": "other_target_title",
+      "verbatim_section": "## 月末付费会员订单均额\n\n月末付费会员净销售额除以月末付费会员有效订单数；单位分／单，分母零时未定义。"
+    },
+    {
+      "source": "materials/w03/05_数据字典.md",
+      "heading": "orders",
+      "line": 5,
+      "catalog_ids": [],
+      "relation": "unmatched_title",
+      "verbatim_section": "## orders\n\n一行一笔订单\n\n| 字段 | 含义 |\n| --- | --- |\n| order_id | 唯一订单号 |\n| member_id | CRM 会员账户 ID，关联 members.member_id |\n| store_id | 订单成交门店 ID，关联 stores.store_id；不等于会员归属门店 |\n| ordered_at | 下单本地日期，Asia/Shanghai；date |\n| status | paid 或 cancelled |\n| gross_cents | 原价金额，整数分 |\n| paid_cents | 实付金额，整数分；取消为零 |\n| refund_cents | 截至数据快照的累计退款，整数分，不能大于实付 |\n| quantity | 该订单原始购买件数，正整数 |\n| channel | 门店或小程序 |\n"
+    },
+    {
+      "source": "materials/w03/05_数据字典.md",
+      "heading": "members",
+      "line": 22,
+      "catalog_ids": [],
+      "relation": "unmatched_title",
+      "verbatim_section": "## members\n\n一行一份 CRM 会员账户\n\n| 字段 | 含义 |\n| --- | --- |\n| member_id | 账户主键，不视为跨系统自然人 ID |\n| registered_at | 账户注册本地日期 |\n| home_store_id | 会员归属门店，关联 stores.store_id |\n| tier | 普通、银卡或金卡 |\n"
+    },
+    {
+      "source": "materials/w03/05_数据字典.md",
+      "heading": "stores",
+      "line": 33,
+      "catalog_ids": [],
+      "relation": "unmatched_title",
+      "verbatim_section": "## stores\n\n一行一间门店\n\n| 字段 | 含义 |\n| --- | --- |\n| store_id | 门店主键 |\n| region | 华东、华南或华北 |\n| store_name | 门店名称 |\n"
+    },
+    {
+      "source": "materials/w03/05_数据字典.md",
+      "heading": "cards",
+      "line": 43,
+      "catalog_ids": [],
+      "relation": "unmatched_title",
+      "verbatim_section": "## cards\n\n一行一张会员卡，账户可对应多张卡。这里只解释物理字段，不裁定本期业务口径纳入哪些卡。\n\n| 字段 | 含义 |\n| --- | --- |\n| card_id | 卡主键 |\n| member_id | CRM 账户外键，关联 members.member_id |\n| card_type | 产品名称枚举：悦享年卡、家庭季卡、异业联名卡、体验卡；业务纳入范围见客户确认 |\n| valid_from | 权益开始日期，date |\n| valid_until | 计划权益结束日期，date；端点如何解释见业务规则 |\n| ended_at | 提前终止日期，date，可为空 |\n| card_paid_cents | 购卡实付分；此值不等于商品订单收入，也不直接裁定资格 |\n"
+    },
+    {
+      "source": "materials/w03/05_数据字典.md",
+      "heading": "课程方提供的数据接入层",
+      "line": 57,
+      "catalog_ids": [],
+      "relation": "unmatched_title",
+      "verbatim_section": "## 课程方提供的数据接入层\n\nmembers、stores、cards、orders 原样接入上述 CSV，不附加业务规则或派生列。time_spine 按 manifest 的覆盖起止日生成，结束日不含。语义模型、带业务规则的排序和汇总、资格判定由学员 Skill 根据业务模型、客户资料和本字典生成；内部模型名称由学员选择。"
+    }
+  ],
+  "exact_title_match_found": true,
+  "mapping_kind": "exact_catalog_name_to_heading_only",
+  "limitation": "目录与标题用于定位，不裁定规则优先级或依赖。未匹配/一名多ID须核；正文、跨章节依赖及共同边界仍读原文。原资料未裁剪。"
+}

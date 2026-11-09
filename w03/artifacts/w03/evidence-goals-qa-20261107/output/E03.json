@@ -1,0 +1,20 @@
+{
+  "case_id": "E03",
+  "started_at": "2026-11-07T03:56:42.309255+00:00",
+  "completed_at": "2026-11-07T03:56:51.256577+00:00",
+  "question": "沈总说80万活跃，老周说120万系统全量，可否直接算活跃率、相减作沉睡人数或认定同口径矛盾？",
+  "fixture": null,
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-1697cf035e07422084b7b197faa6e916/run.json",
+    "run_id": "RUN-1697cf035e07422084b7b197faa6e916",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "不能直接算活跃率、相减得出沉睡人数，也不能据此认定同口径矛盾。材料中，沈总的80万指其所说的“活跃会员”，老周的120万指“系统全量会员”；模型明确这两项是不同主体、不同所指的角色陈述，定义、范围、时点与来源需分别核查，现有依据不支持相减、计算活跃率或断言同口径矛盾（MSG-01719、01744；第1节、第5节未决事项）。同时，“活跃”是按业务规则、期间与范围判断的分析属性，定义仍未知，不是第三类会员身份，未知不能判为不活跃（MSG-01719、01754；第2节）。因此，在未取得同一统计范围、同一时点、同一来源及“活跃”定义前，不能把120万当作全量基数、把80万当作活跃分子，也不能把差额当作沉睡人数。若后续需要计算，应先分别核实两项数字的统计来源、会员范围、时点和活跃定义，再确认是否同口径；这是待核与新增建议，不是本次已执行的查询或计算。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "4188bdf1deddf25b432fd5c5f0a29b832ab42bfc3d724343c9dccbc693db0af0"
+}

@@ -1,0 +1,54 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "payment_cents",
+      "refund_cents",
+      "net_sales_cents",
+      "gross_cents",
+      "discount_cents"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  SUM(case when status = 'paid' then paid_cents else 0 end) AS payment_cents\n  , SUM(case when status = 'paid' then refund_cents else 0 end) AS refund_cents\n  , SUM(case when status = 'paid' then paid_cents - refund_cents else 0 end) AS net_sales_cents\n  , SUM(case when status = 'paid' then gross_cents else 0 end) AS gross_cents\n  , SUM(case when status = 'paid' then gross_cents - paid_cents else 0 end) AS discount_cents\nFROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+  "columns": [
+    "payment_cents",
+    "refund_cents",
+    "net_sales_cents",
+    "gross_cents",
+    "discount_cents"
+  ],
+  "rows": [
+    [
+      119050,
+      18750,
+      100300,
+      124250,
+      5200
+    ]
+  ],
+  "seconds": 0.037,
+  "units": {
+    "payment_cents": "cents",
+    "refund_cents": "cents",
+    "net_sales_cents": "cents",
+    "gross_cents": "cents",
+    "discount_cents": "cents"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "统计范围：当前客户青禾在2026年8月内（按下单日期归属）的已支付订单汇总，未按门店分组，也未额外增加门店筛选。金额口径：实付金额为已支付订单实付合计、尚未扣退款；退款金额按原订单下单日期归属；净销售额为实付金额减退款金额；支付订单原价金额为折扣前原价合计；优惠金额为原价减实付，退款不冲减原优惠。结果：实付金额1190.50元，退款金额187.50元，净销售额1003.00元，支付订单原价金额1242.50元，优惠金额52.00元。限制：以上为当前测试数据版本及该客户范围内的汇总结果，未拆分门店。",
+  "question": "请同时列出2026年8月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+  "trace_id": "bb4b3e0d-6af6-47be-995c-db1484477fb9",
+  "elapsed_seconds": 31.003,
+  "model_usage": {
+    "prompt_tokens": 12964,
+    "completion_tokens": 950,
+    "total_tokens": 13914
+  },
+  "model_calls_with_usage": 2
+}

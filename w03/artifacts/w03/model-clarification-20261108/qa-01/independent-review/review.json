@@ -1,0 +1,493 @@
+{
+  "status": "completed_with_mixed_technical_failure",
+  "reviewed_at": "2026-11-07T16:50:03.976243+00:00",
+  "client_date": "2026-11-08",
+  "candidate_passed": false,
+  "model_sha256": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9",
+  "candidate_prompt_sha256": "703da892e1c284843f499b60efad2e95d60849bd5d22595f71270382df607bfe",
+  "criteria_sha256": "a7c368cd6b42f3828f4fcbb3ebde8343c5ab03424897a9aeda151d365902201f",
+  "candidate_source_review_sha256": "279b11cf32fbb7bd22963ab2238a190aafd8a5a607c156ddbbf45c45d3683c8b",
+  "input_gate_review_sha256": "7fbbb9d06da7610e4d21e88bbbf970b3eb1a26cc69799efc88ea5304379ef731",
+  "summary": {
+    "total_cases": 6,
+    "original_cases": 5,
+    "controls": 1,
+    "semantic_passed": 5,
+    "semantic_failed": 0,
+    "semantic_not_assessable": 1,
+    "not_assessable_ids": [
+      "U05"
+    ],
+    "original_cases_passed": 4,
+    "controls_passed": 1,
+    "model_only": {
+      "cases": 4,
+      "passed": 4
+    },
+    "source_context_original": {
+      "cases": 1,
+      "not_assessable": 1
+    },
+    "native_runs": 6,
+    "http_attempts": 7,
+    "native_successes": 5,
+    "format_failures": 0,
+    "no_public_response": 0,
+    "no_final_public_response": 1,
+    "partial_public_response_only": 1,
+    "framework_length_expansions": 1,
+    "semantic_retries": 0,
+    "checks_passed": 331,
+    "checks_failed": 0
+  },
+  "cases": [
+    {
+      "id": "U01",
+      "verdict": "passed",
+      "input_track": "model_only",
+      "reason": "经营原因验证与岗位提效分开，角色判断/期望/未验证效果保持；80万/120万的具体定义范围时点来源明确待核。统计、候选和实际执行集合分开，简写与重排未改变三者含义，前文保留业务负责人确认。",
+      "required_point_review": [
+        {
+          "criterion": "经营方向为复购止跌回升；连续四季下滑为角色报告，会员老化为沈总待验证判断，三个月是期望而非承诺。",
+          "result": "passed"
+        },
+        {
+          "criterion": "减少重复整理、核对、跟进是小林岗位负担及使用诉求，未量化工时，不是已证实复购下滑原因，也非公司优先级或已实现效果。",
+          "result": "passed"
+        },
+        {
+          "criterion": "描述已知运营一般流程与小林/陈姐交接，保留具体人群选择、活跃定义、历史复购统计、实际结果与反馈分析交接等未知。",
+          "result": "passed"
+        },
+        {
+          "criterion": "80万活跃与120万全量应区分统计概念，范围、时点、定义/来源尚未齐；不能断言所有条件已不同或已可比较。",
+          "result": "passed"
+        }
+      ],
+      "full_answer_review": [
+        "“定义、范围、时点与来源需分别核查”保留原未知，未重现Stage5均已不同。",
+        "“候选人群、统计人群与实际执行名单不可等同”仍有三种不同集合；前文具体候选名单/筛选条件须实际记录和负责人确认，未拆成两个候选集合或称自动执行。",
+        "券活动/权益说明/未购回访三类工作，陈姐门店承接与反馈、数据口径协作有依据；闭环/历史资格/效果继续待核。"
+      ],
+      "findings": [],
+      "advisories": [
+        {
+          "code": "AGGREGATED_SOURCE_LOCATORS_COULD_BE_MORE_PRECISE",
+          "severity": "nonblocking",
+          "detail": "未决项汇总集中引第5节/03862；统一业务口径确认人和分析牵头人实际位于第4节数据与口径协作。列表中各状态在本次可见模型均有依据，没有把特定客户原话移给另一主体，建议后续逐项对应章节；本次不按关键事实或证据性质错误扣分。"
+        }
+      ],
+      "question": "请用业务语言说明青禾的经营目标、会员运营工作和当前关键未知。理解复购变化与减少重复整理核对是什么关系？哪些观察能支持业务判断，哪些还不能说明原因或效果已经得到验证？",
+      "fixture": null,
+      "actual_answer": "经营目标：模型把目标分成两个分别观察的目标：一是理解复购变化，支持选择并验证改善措施；二是减少运营在日常名单与执行信息上的重复整理和核对。模型明确岗位提效不能直接证明复购改善（第1节）。沈总希望第一阶段先验证复购下降原因，并先检验“会员老化”是否主因，这是其个人判断；三个月见效是客户期望，改善幅度与效果定义尚未核实；多位角色称复购连续四季度下降，但尚未取得原报表重算（第1节，MSG-01719、01731、01733、01737、01739）。\n\n会员运营工作：小林日常经手优惠券活动、会员权益说明、对一段时间未购买会员的回访（MSG-03860）。券活动的一般做法是明确面向谁、做什么，确认执行方式与协作人，跟进发放与使用反馈，整理结果与待核问题；具体活动、候选名单与筛选条件小林不能确认，须查实际记录并由相应负责人确认（MSG-03862）。运营还包括准备协调、门店承接执行、反馈整理和数据口径协作：陈姐核对会员范围、参与门店和具体任务并向门店说明确认；现场反馈由陈姐对接小林整理；小林说明运营用途，老周核对系统统计范围、时间与说明，运营与业务规则负责人确认口径（第4节；MSG-01665、01949、01945、01953、01923、01929、01938、01942）。沈总定业务优先级（MSG-01725）。\n\n关系：二者是两个分别观察的目标，不是同一件事，也不是因果替代。减少重复整理核对属于运营提效和工作方式目标；岗位提效不能直接证明复购改善。它可能支持运营准备或减少核对，但材料没有实际活动试验或效果记录，不能据此说复购变化原因已找到或改善已见效。\n\n关键未知：复购下降的原报表重算与原因证据；会员老化是否主因仍待检验；活跃定义未知；沈总所说80万活跃会员与老周所说120万系统全量会员的定义、范围、时点与来源需分别核查，现有依据不支持相减、算活跃率或断言同口径矛盾（第5节；MSG-01719、01744、01754）。本期月报的卡产品范围和权益端点已有具体口径说明，但正式规则文件、办理记录及生产或历史执行凭据仍未取得；本期字典是干净合成测试数据，不是原始CRM，生产身份关系与历史资格能否还原仍缺依据（第1、3、5节；MSG-03848、03854、03886、03888、03890）。此外，优惠活动追踪与订单、反馈的实际关联，券活动选人条件与实际记录及业务确认人，门店考核的完整构成及其与活动的关系，反馈闭环，名单数据来源、筛选规则、线上实际经手岗位与具体业务确认人，统一业务口径确认人和分析牵头人，均仍待核（第5节；MSG-03862）。\n\n能支持业务判断的观察：角色关于复购连续下降的陈述可作为待核业务输入；沈总的业务优先级和个人假设可用于确定先验证什么，但不能当作原因结论；小林关于名单整理核对负担和希望看到每条建议依据的描述，是岗位偏好与期望用途，不是公司优先级或已实现效果（MSG-03856、03860、01925）；陈姐提出的门店侧观察条件——开始时是否讲清、执行中是否减少来回确认、结束后相同问题是否减少——可作为后续实际活动试验的观察方向，但尚未试验，不能称已见效（MSG-01951、01953）；现场问题与执行反馈可作为经营输入（第2节；MSG-01665、01945、01953）。\n\n不能说明原因或效果已验证的：没有原报表重算、没有实际活动试验、岗位负担未量化、没有名单或执行实例记录；本期字典是合成测试数据；未取得生产身份与历史资格依据、优惠活动追踪与订单反馈关联、正式规则文件及历史执行凭据；券发放、核销、购买、复购改善须分别取证，发放对象不等于允许使用对象，候选人群、统计人群与实际执行名单不可等同（第2、3、5节；MSG-01623、01648、01752、01917；MSG-03848、03854、03862、03886、03888、03890）。因此现有材料可支持提出和排序待验证事项、设计观察，但不能支持复购下降原因已确认或改善效果已验证。",
+      "output_path": "artifacts/w03/model-clarification-20261108/qa-01/output/U01.json",
+      "output_sha256": "67e221568f83afb57c387d8afd0d14bb7fb5a841901ce35517d62697ceb3213d",
+      "actual_answer_sha256": "9458dff232595f5ee9abe3b6efd4d96828ffc20e25cd9b47be06526babfefd56",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-f7ace08ec82a4acdb1505503a7fcad3a/run.json",
+      "native_run_sha256": "f4d0953213046ee894376ceb00e4ad381f7a663d409d3c3800d3322b7f3f605b",
+      "native_answer_sha256": "5ad8b100b2833b0685c7f79eec60008432baf16c3568be158f3618f215d837eb",
+      "native_response_sha256": "315ba61e2c19f7e410fb2d13aa752a880873089966cda63377da4b0031612ae9",
+      "native_request_sha256": "6e48f0161c859261b8dd6bbcd1e1124cc23201599921e27886dddf194825c274",
+      "native_attempts_sha256": "a16fe04999ef6c704fcf1e3d13d4444b1bb526bfd4a0b204ba0753416a6d09d9",
+      "http_attempts": 1,
+      "native_status": "succeeded",
+      "strict_format_passed": true
+    },
+    {
+      "id": "U05",
+      "verdict": "not_assessable_technical_failure",
+      "input_track": "model_with_source_context",
+      "reason": "首个8192响应confirmed length截断，公开部分文本只至B开头；固定扩容16384后发生MODEL_NETWORK_ERROR。最终无有效answer，不评整题语义，不按纯网络无公开响应处理。",
+      "required_point_review": [
+        {
+          "criterion": "逐条评A—E；A可采用陈姐本期两卡日期解释，同时保留正式规则文件与历史凭据未掌握。",
+          "result": "not_assessable_no_complete_answer"
+        },
+        {
+          "criterion": "B须归01918提问者先带入没人用、01919沿用；01921三步是个人感受而非精确步骤，不能视为独立证实全项目无人使用。",
+          "result": "not_assessable_no_complete_answer"
+        },
+        {
+          "criterion": "C未知反馈回店不等于不存在；D不能直接由80万/120万计算被核实活跃率。",
+          "result": "not_assessable_no_complete_answer"
+        },
+        {
+          "criterion": "E阶段认可只支持核查意见，不能推定最终验收批准；最终确认人/权限仍待核。",
+          "result": "not_assessable_no_complete_answer"
+        }
+      ],
+      "full_answer_review": [
+        "未截取A段或修复JSON来制造整题成绩；无完整A—E答复。"
+      ],
+      "findings": [
+        {
+          "code": "LENGTH_THEN_NETWORK_FAILURE",
+          "classification": "mixed_technical_failure",
+          "semantic_grade": null
+        }
+      ],
+      "advisories": [],
+      "question": "请审查以下说法，逐条说明可采用、需要修正或尚不能判断，并给依据：A.陈姐已给本期卡日期规则，但具体文件与历史凭据未取得；B.小林独立证实之前项目全面无人使用；C.模型尚未核实反馈怎样返回门店，所以青禾没有这一环节；D.80万活跃与120万全量可直接算出活跃率；E.王经理认可分期思路，所以最终验收已获批准。",
+      "fixture": null,
+      "actual_answer": null,
+      "output_path": "artifacts/w03/model-clarification-20261108/qa-01/output/U05.json",
+      "output_sha256": "99b0979c34ccfe81e2af3278d8d65d066555ac101b68ea02959a2412a7cc650e",
+      "actual_answer_sha256": null,
+      "native_run": "artifacts/w02/knowledge_runs/RUN-cbbfb3342c3545e5ab32cd2c9ad48daf/run.json",
+      "native_run_sha256": "0ac0ab9bc7d4ff0be99e249a43710417faead4a03a64cedac7303780fe44e98a",
+      "native_answer_sha256": null,
+      "native_response_sha256": null,
+      "native_request_sha256": "93aa2deba9ff0bcfdf3492a23fb3869e624a6ac702e371ac0f1d5028ad146459",
+      "native_attempts_sha256": "d2502e04f0418d56c85265154f322de1581ee2f1ed5741caba163e747ff76e09",
+      "http_attempts": 2,
+      "native_status": "failed",
+      "strict_format_passed": false,
+      "partial_public_response_sha256": "a03279b0cf3b5378b09ee92d3f5e245042b55ae919cb937e5d849bb6a4ef125a",
+      "failure_details": {
+        "attempt1": {
+          "http_status": 200,
+          "finish_reason": "length",
+          "error": "MODEL_OUTPUT_TRUNCATED",
+          "max_tokens": 8192,
+          "timeout_seconds": 180,
+          "seconds": 51.245,
+          "public_partial_content": "{\"answer\":\"A. 判定：可采用，但应把“本期卡”限定为提问所述悦享年卡和家庭季卡两类卡，并说明这是陈姐的角色陈述，不是正式规则文件。\\n- 可记录内容：陈姐在 W3 访谈中就提问所述的两类卡说明：权益在生效日期当天起有效，有效期结束日期当天已无效；有提前终止日期的，从提前终止当天起无效；提前终止为空只表示该记录没有提前终止，仍受有效期结束限制；资格按要求的判定日期检查。她同时表示具体规则说明或办理记录、历史执行凭据不掌握，需向运营小林核对。\\n- 直接依据与缺口：W3 陈姐访谈 MSG-03885 提问带入本期两类卡，MSG-03886、03888、03890 以“这两类卡”承接并给出上述端点，且称“具体规则文件和历史执行凭据我不掌握，得找运营小林核实”。这支持日期规则和凭据缺口；正式规则文件、办理记录、历史执行凭据仍未取得，角色陈述不等于正式制度或生产核验。\\n\\nB. 判定：需要修正。提问者先带入“上一个项目为什么没人用”，小林回答“上一个项目最后没人用”是承接该前提的角色陈述；她说“界面让我们的操作又多了三步”是使用感受，随后明确",
+          "public_partial_content_sha256": "a03279b0cf3b5378b09ee92d3f5e245042b55ae919cb937e5d849bb6a4ef125a"
+        },
+        "attempt2": {
+          "error": "MODEL_NETWORK_ERROR",
+          "max_tokens": 16384,
+          "timeout_seconds": 240,
+          "seconds": 15.062,
+          "public_response": false
+        },
+        "no_final_response_file": true,
+        "no_answer_file": true,
+        "workflow_resume_authorized": false,
+        "additional_run_approved_by_this_report": false
+      }
+    },
+    {
+      "id": "E03",
+      "verdict": "passed",
+      "input_track": "model_only",
+      "reason": "分别拒绝直接活跃率、差值沉睡和同口径矛盾；正确区分活跃/系统全量，保留分子分母范围时点可比性待核，没有追加必须同一来源。",
+      "required_point_review": [
+        {
+          "criterion": "80万活跃/120万全量是不同统计概念，活跃定义、对象集合、时点、范围与来源未齐，不能直接算已核活跃率或沉睡人数。",
+          "result": "passed"
+        },
+        {
+          "criterion": "不能认定同口径矛盾；也不能把未齐写成时点/范围/来源均已证明不同。",
+          "result": "passed"
+        },
+        {
+          "criterion": "比较须核可比范围、口径、时间、标识去重和子集关系；来源可以不同，不能擅加必须同一报表/同一来源的门槛。",
+          "result": "passed"
+        }
+      ],
+      "full_answer_review": [
+        "明确分子活跃口径未确认，分母与分子是否同范围同时点未确认；沉睡未定义。",
+        "结尾要求分别核统计定义、会员范围、时点、来源，未算66.7%或40万沉睡，未把未知一概写成已不兼容。"
+      ],
+      "findings": [],
+      "advisories": [
+        {
+          "code": "ROLE_STATEMENT_COULD_BE_EXPLICIT",
+          "severity": "nonblocking",
+          "detail": "“两个说法可能不是同一口径”可更准确写成老周明确这样表述而具体统计条件仍待核。全文已区分活跃/全量并保留可比性缺口，未否认老周原话或新增已核差异，按原语义标准通过，不设逐字复述门槛。"
+        }
+      ],
+      "question": "沈总说80万活跃，老周说120万系统全量，可否直接算活跃率、相减作沉睡人数或认定同口径矛盾？",
+      "fixture": null,
+      "actual_answer": "不可以直接这样用。按现有材料：沈总所称“80万”指其所说的活跃会员，老周所称“120万”指系统全量会员；两者的定义、范围、时点和来源都需分别核查（MSG-01719、01744）。同时，“活跃”是需按业务规则、期间和范围判断的分析属性，当前定义未知，未知不能判为不活跃（MSG-01719、01754）。因此：\n1. 不能直接计算活跃率：分子“活跃”的口径未确认，分母“系统全量会员”与分子是否同范围、同时点也未确认。\n2. 不能直接相减作为“沉睡人数”：材料未定义“沉睡”，且两个数字口径未核实，相减没有可比性依据。\n3. 不能认定“同口径矛盾”：现有依据只说明两个说法可能不是同一口径，尚不足以判定其相互矛盾或一致。\n可做的是分别核对两个数字的统计定义、会员范围、时点与来源，再判断能否比较；在此之前应保留为待核，不据此计算或下结论。",
+      "output_path": "artifacts/w03/model-clarification-20261108/qa-01/output/E03.json",
+      "output_sha256": "7be13fa79610f85dfff6700b8fa87a911ae8615808126a5a112e5442948fd94c",
+      "actual_answer_sha256": "b643cf558162e6db23185fea170b777ae27bbadc409aeefe37a1a447073b020f",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-07ce186edd0041ed810df565767f8cd4/run.json",
+      "native_run_sha256": "736fbbc7bb115cbf9aff019623d451ee2e00782aea88e90084e570eeaa2ea72e",
+      "native_answer_sha256": "5a71db717ec88b205405852a597c7434daaa15db6dbe683468d279aeec1bab2e",
+      "native_response_sha256": "1ef416df9d92682a4bb2c215b0dcc0b6325c6c19abacbef81ecdf55034a7d517",
+      "native_request_sha256": "af04315abf8c5a9d80c9035e7459d598da4d3c7bfe83321ca4546601d2ec23e9",
+      "native_attempts_sha256": "ff45ed597fee0301fdd8e71ac86c191e5fdf79b426326bb5acef36bf17862c0b",
+      "http_attempts": 1,
+      "native_status": "succeeded",
+      "strict_format_passed": true
+    },
+    {
+      "id": "REG01",
+      "verdict": "passed",
+      "input_track": "model_only",
+      "reason": "交付包、工作接入和评估均标建议；三集合分开，月报资格不外推券活动，人群/执行需业务确认且无自动动作；过程提效与复购结果分别验证。",
+      "required_point_review": [
+        {
+          "criterion": "可提出先帮小林整理需关注会员及依据、优惠券活动工作和执行记录/待核信息；门店材料讲清适用范围、参与店、任务、工作量、答复责任与工作记录。",
+          "result": "passed"
+        },
+        {
+          "criterion": "所有第一版交付细节标建议，具体人群条件/数据范围/接入权限需核；不自动发券联系或改记录。",
+          "result": "passed"
+        },
+        {
+          "criterion": "承接既有业务确认与门店安排，未知分析反馈闭环不伪称已打通。",
+          "result": "passed"
+        },
+        {
+          "criterion": "评估要观察减少整理核对/反复问询、实际采纳执行、工作负担等过程；业务复购另需可比依据，不保证改善。",
+          "result": "passed"
+        },
+        {
+          "criterion": "不得把未知会员标签称为已确认“活跃标签”，也不得新增筛选阈值、人数或已验证收益。",
+          "result": "passed"
+        }
+      ],
+      "full_answer_review": [
+        "待审清单/执行模板/核对表是新增建议，具体筛选字段仍待确认，不宣称已有营销名单。",
+        "若选月报与若选券活动两种用途各保留范围，未把本期月报产品限制强加所有活动。",
+        "小林/陈姐/业务/老周责任与未核反馈闭环保留；验收建议用过程记录和分开结果，不承诺复购改善。"
+      ],
+      "findings": [],
+      "advisories": [],
+      "question": "青禾准备先给小林和陈姐提供会员运营支持，你会建议第一版交付什么、怎样接到实际工作，以及怎样判断有没有帮助？",
+      "fixture": null,
+      "actual_answer": "以下交付与接入方式均为本次新增建议，不是客户已确认规则，也不是已执行动作。\n\n一、第一版交付建议\n建议先做“单事项的待审会员清单＋执行记录模板＋核对表”最小包，不直接交付最终营销名单。清单至少保留账户、建议关注理由及逐条依据、所用筛选或资格字段、数据来源、待确认标记；并把统计人群、待审候选人群、实际执行名单三者分开（模型第3节规则5）。这样可承接小林希望看到关注哪些会员及每条建议依据、查数后核对该进、漏掉或重复的期望（MSG-01925、MSG-03866、03870），但这些仍是期望用途，不是已获得名单或已实现结果。\n若首事项选本期总部运营月报名单，资格应按同一张卡同时满足本期产品范围与判定日有效期，账户去重；该产品范围只约束本期月报，不能自动外推到券活动（小林 MSG-03848、03854；陈姐 MSG-03886、03888、03890）。若首事项选券活动，具体活动和候选条件须由业务负责人确认，小林不能单独确认，也不能把月报口径直接套用（MSG-03856、03862）。正式规则文件仍未取得。\n执行记录模板应记录面向谁、做什么、线上或门店安排、门店适用范围与工作量、现场问题由谁处理、门店工作如何记录及待确认项。门店承接前须先说明这些内容，要求不清或影响考核的先澄清（MSG-03886、03888）。助手只生成待审材料和记录模板，不自动发券、联系会员或改记录（MSG-03860）。\n\n二、怎样接到实际工作\n建议按现有分工接入：小林说明运营用途并整理待审清单与执行信息；找相关同事确认线上或门店安排；陈姐核对会员范围、参与门店和具体任务，并向门店说明人员与执行安排；业务负责人确认人群和执行方案；老周核对系统统计的范围、时间与统计说明，运营与业务规则负责人确认口径，IT配合字段与覆盖（MSG-03856、03862、MSG-03886、MSG-03888、MSG-01923、01929、01938、01942）。反馈由陈姐对接小林，但分析接收者、答复返店方式和下一轮衔接仍待核。\n\n三、怎样判断有没有帮助\n建议分两层验收。工作过程层：看小林整理名单与执行记录、找同事核对不一致、反复跟进进度的负担是否下降；看她能否核对该进、漏掉、重复并追溯每条建议依据；看陈姐提出的开始是否讲清、执行中来回确认是否减少、结束后相同问题是否减少（MSG-03856、03860、MSG-01925、MSG-03866、03870、MSG-01951、01953）。个人负担尚未量化，需用试点前后同一事项的记录比较。业务结果层：券发放、核销、购买、复购改善应分别取证，不能由岗位提效推出复购改善（模型第3节规则6，MSG-01623、01648、01752、01917）。会员老化是否主因、复购连续下降原因仍未见原报表重算，第一版不应承诺复购效果。上述门店观察条件尚未经实际活动试验，不能先称已经见效。",
+      "output_path": "artifacts/w03/model-clarification-20261108/qa-01/output/REG01.json",
+      "output_sha256": "3a4637d253cdc9e0d725e4035a97557c668204184dcfd2a08b901e0f19f1325b",
+      "actual_answer_sha256": "0f5b994b7796ceef69b6bf0a25b4354c0b0ac6df25a2eb3044fe9e9f16dbddfd",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-cb407857183a4e6f8845f4a717722b76/run.json",
+      "native_run_sha256": "5469aa36809046af477fb9d00ea9c97965528f852395ea968dddff3224b7c28d",
+      "native_answer_sha256": "b324ecbd54ca2bdf527c2a15dbf248ed3f9734ad0cb3354c13aaaf6e86d14ad7",
+      "native_response_sha256": "f6a170e59103650b8bbd4654f07d660ce1141d71508f0cced820e4a3d215979f",
+      "native_request_sha256": "be4436e0026298bb07082611523885ea0eaf66d849863bd4327b13367956d31a",
+      "native_attempts_sha256": "b46056380fee7b52aadf5f5ccaf7fa2751366f1a47f75a158a54ec6239257f33",
+      "http_attempts": 1,
+      "native_status": "succeeded",
+      "strict_format_passed": true
+    },
+    {
+      "id": "P01",
+      "verdict": "passed",
+      "input_track": "model_only",
+      "reason": "题设完整有效悦享年卡足以使账户A在本期月报判定日有资格；普通等级和购卡金额不改变判断。产品与日期出处准确，明确人工推导非客户真实查询。",
+      "required_point_review": [
+        {
+          "criterion": "完整记录下，普通等级的一张有效悦享年卡已足以具备本期资格。",
+          "result": "passed"
+        },
+        {
+          "criterion": "资格按产品/有效状态，等级和支付金额不能替代，不加金额门槛。",
+          "result": "passed"
+        }
+      ],
+      "full_answer_review": [
+        "一张同卡同时满足本期产品范围及判定日有效，未加金额、多卡或等级门槛。",
+        "产品范围/资格引用小林03848/03854，按日检查引用陈姐03886/03888。"
+      ],
+      "findings": [],
+      "advisories": [],
+      "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "account": "A",
+        "tier": "普通",
+        "cards_complete": true,
+        "cards": [
+          {
+            "card_type": "悦享年卡",
+            "state_on_decision_day": "有效",
+            "card_paid_cents": 10000
+          }
+        ]
+      },
+      "actual_answer": "结论：账户A在判定日具有本期总部月报口径下的付费资格。理由：题设给出完整卡记录，账户A持有悦享年卡，且该卡在判定日的状态为有效；本期月报只纳入悦享年卡与家庭季卡持有人，账户只要有一张符合范围且在判定日有效的卡即具备付费资格。会员等级为普通、购卡实付金额字段均不改变该判断。依据：产品范围及“一张范围内有效卡即有资格”见小林MSG-03848、03854；按判定日检查卡有效状态见陈姐MSG-03886、03888。本判断仅为该人工构造情境下的推导，不是客户真实记录或生产查询结果。",
+      "output_path": "artifacts/w03/model-clarification-20261108/qa-01/output/P01.json",
+      "output_sha256": "29b381fe47418d743b4f6e00df8811bde536d5dafb891fd5b9d614bac08d3357",
+      "actual_answer_sha256": "90f0feb18ebab789179a69f2fe2e72300734886e6323cc45aea2c1b3bd478f7f",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-89f0e0b0a4254f4b9ada9eb4044afb81/run.json",
+      "native_run_sha256": "151d72ee8d55b58428787433e10338abf721162e5cdff712c201423b2f6d602a",
+      "native_answer_sha256": "178096db89c04c532ba05b76774c19c138200320ebeed85e3e918ada1aaeefda",
+      "native_response_sha256": "f193213d7389adc2e8cf6e3df89bf53ffe78a3d97513d8bf4cff5229c91a26cd",
+      "native_request_sha256": "1c54610c4853e26bf795b2af1c6b1c3ccd57d8923603b4e42122c4dd99a4f6b5",
+      "native_attempts_sha256": "327f02eb0df6829659489a8b32fe003f55fd6899b7036f128b878f76de50bed8",
+      "http_attempts": 1,
+      "native_status": "succeeded",
+      "strict_format_passed": true
+    },
+    {
+      "id": "CTRL02",
+      "verdict": "passed",
+      "input_track": "model_with_source_context",
+      "reason": "题设已核同集合/标识/去重/月份/范围及子集，允许不同来源相除60/240=25%；180仅为本定义下未购账户，不推流失沉睡/原因/资格或自然人数。",
+      "required_point_review": [
+        {
+          "criterion": "在题设已核同集合、时间、范围、账户去重和子集条件下，不同资料来源不妨碍本题计算。",
+          "result": "passed"
+        },
+        {
+          "criterion": "本题购买活跃率60/240=25%；其余180只可称本题定义下当月没有有效购买，不可直接命名沉睡/流失或原因。",
+          "result": "passed"
+        },
+        {
+          "criterion": "明确结论仅适用于合成测试；不迁入青禾80万/120万或否认该题已给可比条件。",
+          "result": "passed"
+        }
+      ],
+      "full_answer_review": [
+        "保留人工合成、账户粒度与冻结范围，不迁入青禾80万/120万或实际活跃率。",
+        "未要求同来源，未拒绝完整已知条件；额外不能推出事项均为适用边界，没有新增客户事实。"
+      ],
+      "findings": [],
+      "advisories": [],
+      "question": "以下是独立构造的口径判断测试，数字与条件都不是青禾事实，不得写入青禾模型。\n测试资料A由注册台账组提供：2026年9月同一指定范围内的CRM账户总数为240。测试资料B由订单分析组独立提供：这240个账户中，当月至少有一笔有效购买的账户数为60。独立核对已确认两份资料使用同一冻结账户集合、同一CRM账户标识与去重规则、同一月份和渠道/门店范围，B是A的子集，无缺漏和重复。本题将“购买活跃”定义为该月至少有一笔有效购买。\n请判断这两份资料能否一起计算本题的购买活跃率；给出可成立的结论和仍不能推出的业务含义，并说明依据。",
+      "fixture": null,
+      "actual_answer": "结论：可以按本题定义一起计算账户层“当月购买活跃率”。分母为资料A的240个冻结CRM账户，分子为资料B中当月至少有一笔有效购买的60个账户；B是A子集且同月、同渠道/门店范围、同账户标识与去重规则，无缺漏重复，因此60÷240=25%。按本题定义，其余180个账户在该月该范围内没有有效购买，不属于“购买活跃”账户。\n\n依据：题设A、B的范围、账户集合、标识、去重和月份/渠道条件一致；B的定义恰为“该月至少有一笔有效购买”，本题又将“购买活跃”定义为该条件，故分子分母可直接对应。\n\n仍不能推出：这是独立构造的测试口径结果，不是青禾实际活跃率或客户事实；不能把它等同于青禾模型中定义未知的“活跃”，也不能推出复购率、复购下降、留存/流失、会员老化或原因、措施效果。它仅适用于该冻结账户集合、该月份及该渠道/门店范围，不能外推到其他月份、范围、生产环境或全量会员；它是CRM账户口径，不能推出自然人数或跨系统身份；也不能据此判断付费资格、会员等级、权益状态、单个账户未来行为或形成营销执行名单。",
+      "output_path": "artifacts/w03/model-clarification-20261108/qa-01/output/CTRL02.json",
+      "output_sha256": "04dc1e12831fed1e29b6b5908854aa7c76396b99e5a932f595c2fde874bab0b0",
+      "actual_answer_sha256": "c54fb59d1a6b668c201389fd6dcbc6110b45047d2e995ae22993a9363dd7702a",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-99b04a81be02478f8a4ee35418422e9e/run.json",
+      "native_run_sha256": "14e9674bfe471a39681f908e07f7a54505140e4c43c7668e87b79ed16e83d684",
+      "native_answer_sha256": "646d7bcb92be40e7bd597e7d214ee98d0cd280d99ed9c2e07f8e9acc22bee9a0",
+      "native_response_sha256": "3d8293609c27617c642871ea4ed2feedf9d97a8c0c164dc92de51117d17289fd",
+      "native_request_sha256": "ac6efb5d858d26da13e3adc86537d6bacab6540432d51d167d495644dac1b707",
+      "native_attempts_sha256": "2517a65cdfea8379e5b7b8d720a908b4d134bccc4af0b5b0fc2c6b360bb97ff4",
+      "http_attempts": 1,
+      "native_status": "succeeded",
+      "strict_format_passed": true
+    }
+  ],
+  "native_review_sha256": "16b59666ecc23460b1d73c5e05eaf81efac6f34caaff604854ba13b0f681165a",
+  "run_index_sha256": "03921e7fe683bd2dfb75bc65c5ff628cdd3df6a388b7abd5c7e39b61270d5bc0",
+  "answer_evidence_checks": [
+    {
+      "id": "U01:output_in_native_audit",
+      "passed": true
+    },
+    {
+      "id": "U01:run_in_native_audit",
+      "passed": true
+    },
+    {
+      "id": "U01:attempt_count",
+      "passed": true
+    },
+    {
+      "id": "U01:actual_question",
+      "passed": true
+    },
+    {
+      "id": "U01:valid_original_answer",
+      "passed": true
+    },
+    {
+      "id": "U05:output_in_native_audit",
+      "passed": true
+    },
+    {
+      "id": "U05:run_in_native_audit",
+      "passed": true
+    },
+    {
+      "id": "U05:attempt_count",
+      "passed": true
+    },
+    {
+      "id": "U05:actual_question",
+      "passed": true
+    },
+    {
+      "id": "U05:mixed_error_sequence",
+      "passed": true
+    },
+    {
+      "id": "E03:output_in_native_audit",
+      "passed": true
+    },
+    {
+      "id": "E03:run_in_native_audit",
+      "passed": true
+    },
+    {
+      "id": "E03:attempt_count",
+      "passed": true
+    },
+    {
+      "id": "E03:actual_question",
+      "passed": true
+    },
+    {
+      "id": "E03:valid_original_answer",
+      "passed": true
+    },
+    {
+      "id": "REG01:output_in_native_audit",
+      "passed": true
+    },
+    {
+      "id": "REG01:run_in_native_audit",
+      "passed": true
+    },
+    {
+      "id": "REG01:attempt_count",
+      "passed": true
+    },
+    {
+      "id": "REG01:actual_question",
+      "passed": true
+    },
+    {
+      "id": "REG01:valid_original_answer",
+      "passed": true
+    },
+    {
+      "id": "P01:output_in_native_audit",
+      "passed": true
+    },
+    {
+      "id": "P01:run_in_native_audit",
+      "passed": true
+    },
+    {
+      "id": "P01:attempt_count",
+      "passed": true
+    },
+    {
+      "id": "P01:actual_question",
+      "passed": true
+    },
+    {
+      "id": "P01:valid_original_answer",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:output_in_native_audit",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:run_in_native_audit",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:attempt_count",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:actual_question",
+      "passed": true
+    },
+    {
+      "id": "CTRL02:valid_original_answer",
+      "passed": true
+    }
+  ],
+  "answer_evidence_failed_checks": [],
+  "grading_boundary": "按原判据审完整语义及新增断言；不把三集合同义简写/重排当原名错误，不要求一般问题逐字重复全部角色说法。已知角色非同口径陈述与具体统计属性待核仍分开。部分答复不可替完整整题评分。",
+  "technical_disposition": "原U05混合失败留存，当前6题门禁不追授权resume/恢复。若另行技术补测，须另冻结新隔离输入与一致门禁，独立计新run/HTTP；本报告本身不批准。",
+  "limits": [
+    "只验证本轮5原题+1控制；U05未获得完整答复，本组六题未全部完成有效语义验证。",
+    "U01本次新答通过不回改Stage5原失败，也不证明稳定改善或将改善归因于正文澄清。",
+    "不把旧正文其他题通过继承为新正文通过；指定原文/合成对照不计正文独立记忆或真实业务数据。",
+    "正式v0.4、现用prompt/Skill、旧原答及评分均未修改。"
+  ],
+  "reviewer_api_calls": 0,
+  "human_decisions": []
+}

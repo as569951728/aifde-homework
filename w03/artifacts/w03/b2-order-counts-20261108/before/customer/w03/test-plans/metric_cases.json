@@ -1,0 +1,3722 @@
+{
+  "version": "w03-metric-test-plan-v4",
+  "status": "B1_frozen_executed_and_reviewed_remaining_design_only",
+  "not_native_tests_json": true,
+  "source_plan": "artifacts/w03/full-test-design-20261106/v2",
+  "rule": "B1七题及净额原八题已有独立冻结期望和本批结果；B1-A01是已核辅助关系，非查询。其余45条新增设计仍不可直接运行，不填假0/null。参数化设计不冒充多个已执行子例。",
+  "promotion": "核定义/字段/支持范围→展开每条独立问句和fixture子例→核原样本并独立算期望→独立审核→冻结原生tests及数据/库版本→真实运行→解释复核；按批升级",
+  "expansion_before_freeze": [
+    "运行问句必须独立完整，将上述/五项/七项等设计简写替换成明确指标名称，不依赖上一题上下文",
+    "B4-D01的门店分组与全店整体拆成独立intent/子例，分别核算期望，再辅助对照，不塞进一个不支持的双意图",
+    "B7-Q02按产品和端点落实唯一子例ID；Q06记录独立完整性依据或受控故障标记"
+  ],
+  "cases": [
+    {
+      "id": "B1-N01",
+      "batch": "B1",
+      "metric_ids": [
+        "payment_cents",
+        "refund_cents",
+        "net_sales_cents",
+        "gross_cents",
+        "discount_cents"
+      ],
+      "kind": "normal_multi_metric",
+      "question_or_fixture": "请同时列出2026年8月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected_behavior": "逐项按其来源定义独立核算；统一窗口不等于各指标使用同一日期字段、分母或行集合；核每列值与单位。",
+      "fault_to_detect": "漏指标、交换列、套用同一口径、金额/人数/比率单位混用",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "data_state": "原small CSV，逐单台账已核；适用限制见本批结果，不声称所有错误均可由数值区分",
+      "expected_method": "逐行累加paid订单paid_cents；按ordered_at筛选后累计原始refund_cents；逐单从原始CSV算paid-refund后汇总，列order_id归属；筛paid独立累加gross_cents；逐单算gross-paid，绝不减refund",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "实付金额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "净销售额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单原价金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "优惠金额"
+        }
+      ],
+      "previous_evidence": {
+        "state": "design_pending_definition_and_expected",
+        "execution_state": "not_run"
+      },
+      "execution_question": "请同时列出2026年8月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#B1-N01",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#B1-N01",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452"
+    },
+    {
+      "id": "B2-N01",
+      "batch": "B2",
+      "metric_ids": [
+        "order_count",
+        "paid_order_count",
+        "valid_order_count",
+        "cancelled_order_count",
+        "refund_order_count",
+        "partial_refund_order_count",
+        "full_refund_order_count"
+      ],
+      "kind": "normal_multi_metric",
+      "question_or_fixture": "请同时列出2026年8月青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数。",
+      "expected_behavior": "逐项按其来源定义独立核算；统一窗口不等于各指标使用同一日期字段、分母或行集合；核每列值与单位。",
+      "fault_to_detect": "漏指标、交换列、套用同一口径、金额/人数/比率单位混用",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐行按ordered_at与条件筛后数唯一order_id；独立筛status=paid后按窗口计订单；独立逐单计算净值并标有效，再计数；独立筛cancelled后计订单；独立标记退款正值的paid订单；逐单比较三个整数条件，计入选订单；独立比较正支付与退款相等",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "创建订单数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "取消订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "部分退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "全额退款订单数"
+        }
+      ]
+    },
+    {
+      "id": "B3-N01",
+      "batch": "B3",
+      "metric_ids": [
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "kind": "normal_multi_metric",
+      "question_or_fixture": "请同时列出2026年8月青禾优选的购买会员数、退款会员数、成交门店数、有效订单商品件数。",
+      "expected_behavior": "逐项按其来源定义独立核算；统一窗口不等于各指标使用同一日期字段、分母或行集合；核每列值与单位。",
+      "fault_to_detect": "漏指标、交换列、套用同一口径、金额/人数/比率单位混用",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "有效订单按查询窗口过滤，再集合member_id；退款paid订单形成member_id集合；有效订单形成store_id集合；按有效单独立累加quantity",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "购买会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款会员数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "成交门店数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单商品件数"
+        }
+      ]
+    },
+    {
+      "id": "B4-N01",
+      "batch": "B4",
+      "metric_ids": [
+        "avg_order_value",
+        "avg_buyer_value",
+        "purchase_frequency",
+        "refund_amount_rate",
+        "cancel_rate",
+        "refund_order_rate",
+        "discount_rate",
+        "items_per_order"
+      ],
+      "kind": "normal_multi_metric",
+      "question_or_fixture": "请同时列出2026年8月青禾优选的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+      "expected_behavior": "逐项按其来源定义独立核算；统一窗口不等于各指标使用同一日期字段、分母或行集合；核每列值与单位。",
+      "fault_to_detect": "漏指标、交换列、套用同一口径、金额/人数/比率单位混用",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "从原始记录独立算分子net_sales_cents、分母valid_order_count，保留两值再除；从原始记录独立算分子net_sales_cents、分母buyer_count，保留两值再除；从原始记录独立算分子valid_order_count、分母buyer_count，保留两值再除；从原始记录独立算分子refund_cents、分母payment_cents，保留两值再除；从原始记录独立算分子cancelled_order_count、分母order_count，保留两值再除；从原始记录独立算分子refund_order_count、分母paid_order_count，保留两值再除；从原始记录独立算分子discount_cents、分母gross_cents，保留两值再除；从原始记录独立算分子valid_order_items、分母valid_order_count，保留两值再除",
+      "source_refs": [
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "有效订单均额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "购买会员人均消费"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "购买频次"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "退款金额占比"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "取消率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "退款订单率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "优惠率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "单均商品件数"
+        }
+      ]
+    },
+    {
+      "id": "B5-N01",
+      "batch": "B5",
+      "metric_ids": [
+        "new_member_count",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "kind": "normal_multi_metric",
+      "question_or_fixture": "请同时列出2026年8月青禾优选的注册会员数、观测期首购会员数、观测期首单净销售额、观测期首单数、观测期后续购买订单数。",
+      "expected_behavior": "逐项按其来源定义独立核算；统一窗口不等于各指标使用同一日期字段、分母或行集合；核每列值与单位。",
+      "fault_to_detect": "漏指标、交换列、套用同一口径、金额/人数/比率单位混用",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "独立读members按registered_at筛选、核member_id；全覆盖orders先筛有效，按member/date/id排序，再筛首单日期；独立全历史排序取首单，窗口筛选再累计净额；独立取全覆盖有效单首位并数窗口内order_id；独立全覆盖排序rank>=2后按订单日筛",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "注册会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首购会员数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首单净销售额"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首单数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期后续购买订单数"
+        }
+      ]
+    },
+    {
+      "id": "B6-N01",
+      "batch": "B6",
+      "metric_ids": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "kind": "normal_multi_metric",
+      "question_or_fixture": "请同时列出2026年8月青禾优选的月内购买会员数、月内复购会员数、月内复购率。",
+      "expected_behavior": "逐项按其来源定义独立核算；统一窗口不等于各指标使用同一日期字段、分母或行集合；核每列值与单位。",
+      "fault_to_detect": "漏指标、交换列、套用同一口径、金额/人数/比率单位混用",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "独立逐月有效订单归并member_id；独立按月账户数有效order_id，再数>=2账户；独立形成两个人群集合计数后相除",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内购买会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购会员数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购率"
+        }
+      ]
+    },
+    {
+      "id": "B7-N01",
+      "batch": "B7",
+      "metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "kind": "normal_multi_metric",
+      "question_or_fixture": "请同时列出2026年8月青禾优选的月末付费会员购买人数、月末付费会员有效订单数、月末付费会员净销售额、月末付费会员复购人数、月末付费会员复购率、月末付费会员订单均额。",
+      "expected_behavior": "逐项按其来源定义独立核算；统一窗口不等于各指标使用同一日期字段、分母或行集合；核每列值与单位。",
+      "fault_to_detect": "漏指标、交换列、套用同一口径、金额/人数/比率单位混用",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐月按末日逐卡判并归账户，再与当月有效订单账户相交；独立资格账户集合筛当月有效order_id；独立按合格账户集合筛有效单后逐单累计净额；独立资格集合与月有效订单计数>=2账户相交；独立资格下两个人群计数相除；独立资格订单集合净额总和除订单数",
+      "source_refs": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员购买人数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员有效订单数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员净销售额"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购人数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购率"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员订单均额"
+        }
+      ]
+    },
+    {
+      "id": "B1-R01",
+      "batch": "B1",
+      "metric_ids": [
+        "payment_cents",
+        "refund_cents",
+        "net_sales_cents",
+        "gross_cents",
+        "discount_cents"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "请同时列出2026年8月10日青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected_behavior": "全退paid仍计原实付/原价/原优惠，退款扣入净额；取消不计；按原订单日。",
+      "fault_to_detect": "把所有金额均过滤为有效单，或退款冲减优惠",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "data_state": "原small CSV，逐单台账已核；适用限制见本批结果，不声称所有错误均可由数值区分",
+      "expected_method": "逐行累加paid订单paid_cents；按ordered_at筛选后累计原始refund_cents；逐单从原始CSV算paid-refund后汇总，列order_id归属；筛paid独立累加gross_cents；逐单算gross-paid，绝不减refund",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "实付金额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "净销售额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单原价金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "优惠金额"
+        }
+      ],
+      "previous_evidence": {
+        "state": "design_pending_definition_and_expected",
+        "execution_state": "not_run"
+      },
+      "execution_question": "请同时列出2026年8月10日青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#B1-R01",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#B1-R01",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452"
+    },
+    {
+      "id": "B1-R02",
+      "batch": "B1",
+      "metric_ids": [
+        "payment_cents",
+        "refund_cents",
+        "net_sales_cents",
+        "gross_cents",
+        "discount_cents"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "请同时列出2026年8月15日青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected_behavior": "部分退款仅按相应指标扣减；逐单列gross、paid、refund及净额。",
+      "fault_to_detect": "实付提前扣退款、净额重复扣退、分元混用",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "data_state": "原small CSV，逐单台账已核；适用限制见本批结果，不声称所有错误均可由数值区分",
+      "expected_method": "逐行累加paid订单paid_cents；按ordered_at筛选后累计原始refund_cents；逐单从原始CSV算paid-refund后汇总，列order_id归属；筛paid独立累加gross_cents；逐单算gross-paid，绝不减refund",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "实付金额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "净销售额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单原价金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "优惠金额"
+        }
+      ],
+      "previous_evidence": {
+        "state": "design_pending_definition_and_expected",
+        "execution_state": "not_run"
+      },
+      "execution_question": "请同时列出2026年8月15日青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#B1-R02",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#B1-R02",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452"
+    },
+    {
+      "id": "B1-D01",
+      "batch": "B1",
+      "metric_ids": [
+        "payment_cents",
+        "refund_cents",
+        "net_sales_cents",
+        "gross_cents",
+        "discount_cents"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "请将2026年7月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额按订单成交门店编号分别列出。",
+      "expected_behavior": "各组独立核算；成交店不得换成归属店，不能只核总额。",
+      "fault_to_detect": "门店角色错、缺组、多组、重复组",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "data_state": "原small CSV，逐单台账已核；适用限制见本批结果，不声称所有错误均可由数值区分",
+      "expected_method": "逐行累加paid订单paid_cents；按ordered_at筛选后累计原始refund_cents；逐单从原始CSV算paid-refund后汇总，列order_id归属；筛paid独立累加gross_cents；逐单算gross-paid，绝不减refund",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "实付金额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "净销售额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单原价金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "优惠金额"
+        }
+      ],
+      "previous_evidence": {
+        "state": "design_pending_definition_and_expected",
+        "execution_state": "not_run"
+      },
+      "execution_question": "请将2026年7月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额按订单成交门店编号分别列出。",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#B1-D01",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#B1-D01",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452"
+    },
+    {
+      "id": "B1-F01",
+      "batch": "B1",
+      "metric_ids": [
+        "payment_cents",
+        "refund_cents",
+        "net_sales_cents",
+        "gross_cents",
+        "discount_cents"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "请同时列出2026年8月青禾优选小程序渠道且订单成交地区为华东的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected_behavior": "按原始订单及门店关系做AND过滤；冻结实际地区/渠道值。",
+      "fault_to_detect": "漏一项筛选、把AND当OR、错误归属地区",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "data_state": "原small CSV，逐单台账已核；适用限制见本批结果，不声称所有错误均可由数值区分",
+      "expected_method": "逐行累加paid订单paid_cents；按ordered_at筛选后累计原始refund_cents；逐单从原始CSV算paid-refund后汇总，列order_id归属；筛paid独立累加gross_cents；逐单算gross-paid，绝不减refund",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "实付金额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "净销售额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单原价金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "优惠金额"
+        }
+      ],
+      "previous_evidence": {
+        "state": "design_pending_definition_and_expected",
+        "execution_state": "not_run"
+      },
+      "execution_question": "请同时列出2026年8月青禾优选小程序渠道且订单成交地区为华东的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#B1-F01",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#B1-F01",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452"
+    },
+    {
+      "id": "B1-Z01",
+      "batch": "B1",
+      "metric_ids": [
+        "payment_cents",
+        "refund_cents",
+        "net_sales_cents",
+        "gross_cents",
+        "discount_cents"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "请同时列出2026年6月1日至6月29日（含首尾）青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected_behavior": "覆盖内空窗的金额加总为0；不含6月30日，不把空窗当无覆盖。",
+      "fault_to_detect": "零/未知混用、结束日偏移",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "data_state": "原small CSV，逐单台账已核；适用限制见本批结果，不声称所有错误均可由数值区分",
+      "expected_method": "逐行累加paid订单paid_cents；按ordered_at筛选后累计原始refund_cents；逐单从原始CSV算paid-refund后汇总，列order_id归属；筛paid独立累加gross_cents；逐单算gross-paid，绝不减refund",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "实付金额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "净销售额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单原价金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "优惠金额"
+        }
+      ],
+      "previous_evidence": {
+        "state": "design_pending_definition_and_expected",
+        "execution_state": "not_run"
+      },
+      "execution_question": "请同时列出2026年6月1日至6月29日（含首尾）青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#B1-Z01",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#B1-Z01",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452"
+    },
+    {
+      "id": "B1-D02",
+      "batch": "B1",
+      "metric_ids": [
+        "payment_cents",
+        "refund_cents",
+        "net_sales_cents",
+        "gross_cents",
+        "discount_cents"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "请将2026年8月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额按订单下单日期逐日列出。",
+      "expected_behavior": "按ordered_at归日；先核实际返回日集合及每项值，不凭空补无返回的分组。",
+      "fault_to_detect": "按退款发生日归属、日期组错位",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "data_state": "原small CSV，逐单台账已核；适用限制见本批结果，不声称所有错误均可由数值区分",
+      "expected_method": "逐行累加paid订单paid_cents；按ordered_at筛选后累计原始refund_cents；逐单从原始CSV算paid-refund后汇总，列order_id归属；筛paid独立累加gross_cents；逐单算gross-paid，绝不减refund",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "实付金额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "净销售额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单原价金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "优惠金额"
+        }
+      ],
+      "previous_evidence": {
+        "state": "design_pending_definition_and_expected",
+        "execution_state": "not_run"
+      },
+      "execution_question": "请将2026年8月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额按订单下单日期逐日列出。",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#B1-D02",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#B1-D02",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452"
+    },
+    {
+      "id": "B1-A01",
+      "batch": "B1",
+      "metric_ids": [
+        "payment_cents",
+        "refund_cents",
+        "net_sales_cents",
+        "gross_cents",
+        "discount_cents"
+      ],
+      "kind": "cross_metric_assertion",
+      "question_or_fixture": "辅助交叉检查：同窗口/筛选/分组比较实付－退款＝净额，原价－实付＝优惠。",
+      "expected_behavior": "每项先有独立原CSV期望，再做恒等式辅助检查；恒等式不是独立期望的替代。",
+      "fault_to_detect": "多指标整体算错却仍满足关系",
+      "state": "auxiliary_checked",
+      "executable": false,
+      "expected_state": "identities_not_a_replacement_for_independent_expected",
+      "execution_state": "checked_14_rows_after_independent_values",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐行累加paid订单paid_cents；按ordered_at筛选后累计原始refund_cents；逐单从原始CSV算paid-refund后汇总，列order_id归属；筛paid独立累加gross_cents；逐单算gross-paid，绝不减refund",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "实付金额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "净销售额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单原价金额"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "优惠金额"
+        }
+      ],
+      "result_reference": "artifacts/w03/b1-amounts-20261108/batch-controls-v2.json#B1_A01"
+    },
+    {
+      "id": "B2-R01",
+      "batch": "B2",
+      "metric_ids": [
+        "order_count",
+        "paid_order_count",
+        "valid_order_count",
+        "cancelled_order_count",
+        "refund_order_count",
+        "partial_refund_order_count",
+        "full_refund_order_count"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年8月10日的七项订单数量分别是多少？",
+      "expected_behavior": "全退paid仍是支付单，不是有效单；正实付且全退才计全退；取消与退款分开。",
+      "fault_to_detect": "全退当取消或漏支付单",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐行按ordered_at与条件筛后数唯一order_id；独立筛status=paid后按窗口计订单；独立逐单计算净值并标有效，再计数；独立筛cancelled后计订单；独立标记退款正值的paid订单；逐单比较三个整数条件，计入选订单；独立比较正支付与退款相等",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "创建订单数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "取消订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "部分退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "全额退款订单数"
+        }
+      ]
+    },
+    {
+      "id": "B2-R02",
+      "batch": "B2",
+      "metric_ids": [
+        "order_count",
+        "paid_order_count",
+        "valid_order_count",
+        "cancelled_order_count",
+        "refund_order_count",
+        "partial_refund_order_count",
+        "full_refund_order_count"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年8月15日的七项订单数量分别是多少？",
+      "expected_behavior": "部分退保留有效性，同时计退款/部分退款；边界均按整数比较。",
+      "fault_to_detect": "部分退款当无效、两端误含",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐行按ordered_at与条件筛后数唯一order_id；独立筛status=paid后按窗口计订单；独立逐单计算净值并标有效，再计数；独立筛cancelled后计订单；独立标记退款正值的paid订单；逐单比较三个整数条件，计入选订单；独立比较正支付与退款相等",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "创建订单数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "取消订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "部分退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "全额退款订单数"
+        }
+      ]
+    },
+    {
+      "id": "B2-D01",
+      "batch": "B2",
+      "metric_ids": [
+        "order_count",
+        "paid_order_count",
+        "valid_order_count",
+        "cancelled_order_count",
+        "refund_order_count",
+        "partial_refund_order_count",
+        "full_refund_order_count"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年8月按订单状态分别列七项订单数量。",
+      "expected_behavior": "创建单包含取消；其他指标按各自状态与金额条件，保留分组身份。",
+      "fault_to_detect": "对全部指标预先筛paid，或取消金额0导致漏计订单",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐行按ordered_at与条件筛后数唯一order_id；独立筛status=paid后按窗口计订单；独立逐单计算净值并标有效，再计数；独立筛cancelled后计订单；独立标记退款正值的paid订单；逐单比较三个整数条件，计入选订单；独立比较正支付与退款相等",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "创建订单数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "取消订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "部分退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "全额退款订单数"
+        }
+      ]
+    },
+    {
+      "id": "B2-Z01",
+      "batch": "B2",
+      "metric_ids": [
+        "order_count",
+        "paid_order_count",
+        "valid_order_count",
+        "cancelled_order_count",
+        "refund_order_count",
+        "partial_refund_order_count",
+        "full_refund_order_count"
+      ],
+      "kind": "fixture_design",
+      "question_or_fixture": "隔离边界例：paid记录分别为0实付0退款、正实付0退款、部分退、全退，并有取消单。",
+      "expected_behavior": "零实付paid计支付不计有效/退款/全退；其余条件逐条核；先找原样本，缺例另建fixture。",
+      "fault_to_detect": "0=0被误认全退；边界<=和<错误",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐行按ordered_at与条件筛后数唯一order_id；独立筛status=paid后按窗口计订单；独立逐单计算净值并标有效，再计数；独立筛cancelled后计订单；独立标记退款正值的paid订单；逐单比较三个整数条件，计入选订单；独立比较正支付与退款相等",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "创建订单数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "取消订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "部分退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "全额退款订单数"
+        }
+      ]
+    },
+    {
+      "id": "B2-D02",
+      "batch": "B2",
+      "metric_ids": [
+        "order_count",
+        "paid_order_count",
+        "valid_order_count",
+        "cancelled_order_count",
+        "refund_order_count",
+        "partial_refund_order_count",
+        "full_refund_order_count"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "查询2026年6月30日至7月1日（含首尾）的七项订单数量，按日列出。",
+      "expected_behavior": "查询协议[6月30日,7月2日)，逐日计唯一order_id；同额订单不能合并。",
+      "fault_to_detect": "少一天、重复订单或sum distinct金额误当订单数",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐行按ordered_at与条件筛后数唯一order_id；独立筛status=paid后按窗口计订单；独立逐单计算净值并标有效，再计数；独立筛cancelled后计订单；独立标记退款正值的paid订单；逐单比较三个整数条件，计入选订单；独立比较正支付与退款相等",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "创建订单数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "取消订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "部分退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "全额退款订单数"
+        }
+      ]
+    },
+    {
+      "id": "B2-A01",
+      "batch": "B2",
+      "metric_ids": [
+        "order_count",
+        "paid_order_count",
+        "valid_order_count",
+        "cancelled_order_count",
+        "refund_order_count",
+        "partial_refund_order_count",
+        "full_refund_order_count"
+      ],
+      "kind": "cross_metric_assertion",
+      "question_or_fixture": "辅助检查：创建单＝支付单＋取消单；退款单＝部分退单＋全退单。",
+      "expected_behavior": "先独立核所有分量；关系适用当前字典paid/cancelled及退款边界，不能替代各值校验。",
+      "fault_to_detect": "分支遗漏及重复计数",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐行按ordered_at与条件筛后数唯一order_id；独立筛status=paid后按窗口计订单；独立逐单计算净值并标有效，再计数；独立筛cancelled后计订单；独立标记退款正值的paid订单；逐单比较三个整数条件，计入选订单；独立比较正支付与退款相等",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "创建订单数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "支付订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "取消订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "部分退款订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "全额退款订单数"
+        }
+      ]
+    },
+    {
+      "id": "B3-D01",
+      "batch": "B3",
+      "metric_ids": [
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年7月购买会员、退款会员、成交门店和有效订单件数按成交门店分别列出。",
+      "expected_behavior": "按组建立账户/门店集合；同账户可出现在不同组，整体去重不能简单加组人数。",
+      "fault_to_detect": "把去重数当可加指标、成交与归属角色混用",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "有效订单按查询窗口过滤，再集合member_id；退款paid订单形成member_id集合；有效订单形成store_id集合；按有效单独立累加quantity",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "购买会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款会员数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "成交门店数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单商品件数"
+        }
+      ]
+    },
+    {
+      "id": "B3-R01",
+      "batch": "B3",
+      "metric_ids": [
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年8月15日购买会员数、退款会员数、成交门店数和有效订单商品件数是多少？",
+      "expected_behavior": "部分退款有效单使用原quantity，不能从金额推退货件数。",
+      "fault_to_detect": "净件数猜测、退款账户遗漏",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "有效订单按查询窗口过滤，再集合member_id；退款paid订单形成member_id集合；有效订单形成store_id集合；按有效单独立累加quantity",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "购买会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款会员数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "成交门店数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单商品件数"
+        }
+      ]
+    },
+    {
+      "id": "B3-R02",
+      "batch": "B3",
+      "metric_ids": [
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年8月10日上述四项指标是多少？",
+      "expected_behavior": "全退单不产生购买账户/有效件数/有效成交店，但可产生退款账户。",
+      "fault_to_detect": "四项共用同一个成员集合",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "有效订单按查询窗口过滤，再集合member_id；退款paid订单形成member_id集合；有效订单形成store_id集合；按有效单独立累加quantity",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "购买会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款会员数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "成交门店数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单商品件数"
+        }
+      ]
+    },
+    {
+      "id": "B3-U01",
+      "batch": "B3",
+      "metric_ids": [
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "kind": "fixture_design",
+      "question_or_fixture": "隔离边界例：一个账户多次有效购买、多次退款并持多卡；另一个账户的订单金额相同。",
+      "expected_behavior": "账户按member_id去重，订单金额相同不合并；卡不参与这些四项的筛选或放大。",
+      "fault_to_detect": "多卡/多单重复计人，误作跨系统自然人去重",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "有效订单按查询窗口过滤，再集合member_id；退款paid订单形成member_id集合；有效订单形成store_id集合；按有效单独立累加quantity",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "购买会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款会员数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "成交门店数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单商品件数"
+        }
+      ]
+    },
+    {
+      "id": "B3-F01",
+      "batch": "B3",
+      "metric_ids": [
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年8月小程序渠道上述四项指标是多少？",
+      "expected_behavior": "先按允许的订单筛选，再分别去重和加件；不是全库账户数。",
+      "fault_to_detect": "去重先于窗口/筛选导致群体错误",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "有效订单按查询窗口过滤，再集合member_id；退款paid订单形成member_id集合；有效订单形成store_id集合；按有效单独立累加quantity",
+      "source_refs": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "购买会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款会员数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "成交门店数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单商品件数"
+        }
+      ]
+    },
+    {
+      "id": "B4-Z01",
+      "batch": "B4",
+      "metric_ids": [
+        "avg_order_value",
+        "avg_buyer_value",
+        "purchase_frequency",
+        "refund_amount_rate",
+        "cancel_rate",
+        "refund_order_rate",
+        "discount_rate",
+        "items_per_order"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年6月1日至29日（含首尾）的八项均值和比率是多少？",
+      "expected_behavior": "逐项独立分子分母；分母0为null，不是0，不是unsupported。",
+      "fault_to_detect": "除零给0、整数除法截断",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "从原始记录独立算分子net_sales_cents、分母valid_order_count，保留两值再除；从原始记录独立算分子net_sales_cents、分母buyer_count，保留两值再除；从原始记录独立算分子valid_order_count、分母buyer_count，保留两值再除；从原始记录独立算分子refund_cents、分母payment_cents，保留两值再除；从原始记录独立算分子cancelled_order_count、分母order_count，保留两值再除；从原始记录独立算分子refund_order_count、分母paid_order_count，保留两值再除；从原始记录独立算分子discount_cents、分母gross_cents，保留两值再除；从原始记录独立算分子valid_order_items、分母valid_order_count，保留两值再除",
+      "source_refs": [
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "有效订单均额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "购买会员人均消费"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "购买频次"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "退款金额占比"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "取消率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "退款订单率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "优惠率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "单均商品件数"
+        }
+      ]
+    },
+    {
+      "id": "B4-R01",
+      "batch": "B4",
+      "metric_ids": [
+        "avg_order_value",
+        "avg_buyer_value",
+        "purchase_frequency",
+        "refund_amount_rate",
+        "cancel_rate",
+        "refund_order_rate",
+        "discount_rate",
+        "items_per_order"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年8月10日的八项均值和比率是多少？",
+      "expected_behavior": "全退日各分母不同，不能一律给null或一律给0；保存每个分子分母。",
+      "fault_to_detect": "统一分母、支付单和有效单混用",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "从原始记录独立算分子net_sales_cents、分母valid_order_count，保留两值再除；从原始记录独立算分子net_sales_cents、分母buyer_count，保留两值再除；从原始记录独立算分子valid_order_count、分母buyer_count，保留两值再除；从原始记录独立算分子refund_cents、分母payment_cents，保留两值再除；从原始记录独立算分子cancelled_order_count、分母order_count，保留两值再除；从原始记录独立算分子refund_order_count、分母paid_order_count，保留两值再除；从原始记录独立算分子discount_cents、分母gross_cents，保留两值再除；从原始记录独立算分子valid_order_items、分母valid_order_count，保留两值再除",
+      "source_refs": [
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "有效订单均额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "购买会员人均消费"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "购买频次"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "退款金额占比"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "取消率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "退款订单率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "优惠率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "单均商品件数"
+        }
+      ]
+    },
+    {
+      "id": "B4-D01",
+      "batch": "B4",
+      "metric_ids": [
+        "avg_order_value",
+        "avg_buyer_value",
+        "purchase_frequency",
+        "refund_amount_rate",
+        "cancel_rate",
+        "refund_order_rate",
+        "discount_rate",
+        "items_per_order"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年7月八项均值和比率按成交门店列出，同时核全店整体。",
+      "expected_behavior": "各组和整体均先聚合分子分母再除；整体不平均门店比率。",
+      "fault_to_detect": "平均平均数、平均比率、去重分母相加",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "从原始记录独立算分子net_sales_cents、分母valid_order_count，保留两值再除；从原始记录独立算分子net_sales_cents、分母buyer_count，保留两值再除；从原始记录独立算分子valid_order_count、分母buyer_count，保留两值再除；从原始记录独立算分子refund_cents、分母payment_cents，保留两值再除；从原始记录独立算分子cancelled_order_count、分母order_count，保留两值再除；从原始记录独立算分子refund_order_count、分母paid_order_count，保留两值再除；从原始记录独立算分子discount_cents、分母gross_cents，保留两值再除；从原始记录独立算分子valid_order_items、分母valid_order_count，保留两值再除",
+      "source_refs": [
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "有效订单均额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "购买会员人均消费"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "购买频次"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "退款金额占比"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "取消率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "退款订单率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "优惠率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "单均商品件数"
+        }
+      ]
+    },
+    {
+      "id": "B4-F01",
+      "batch": "B4",
+      "metric_ids": [
+        "avg_order_value",
+        "avg_buyer_value",
+        "purchase_frequency",
+        "refund_amount_rate",
+        "cancel_rate",
+        "refund_order_rate",
+        "discount_rate",
+        "items_per_order"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年8月小程序渠道八项均值和比率是多少？",
+      "expected_behavior": "分子分母使用一致窗口及筛选，但分别遵守其行集合规则。",
+      "fault_to_detect": "只过滤分子，或把有效订单过滤套到paid分母",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "从原始记录独立算分子net_sales_cents、分母valid_order_count，保留两值再除；从原始记录独立算分子net_sales_cents、分母buyer_count，保留两值再除；从原始记录独立算分子valid_order_count、分母buyer_count，保留两值再除；从原始记录独立算分子refund_cents、分母payment_cents，保留两值再除；从原始记录独立算分子cancelled_order_count、分母order_count，保留两值再除；从原始记录独立算分子refund_order_count、分母paid_order_count，保留两值再除；从原始记录独立算分子discount_cents、分母gross_cents，保留两值再除；从原始记录独立算分子valid_order_items、分母valid_order_count，保留两值再除",
+      "source_refs": [
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "有效订单均额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "购买会员人均消费"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "购买频次"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "退款金额占比"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "取消率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "退款订单率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "优惠率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "单均商品件数"
+        }
+      ]
+    },
+    {
+      "id": "B4-U01",
+      "batch": "B4",
+      "metric_ids": [
+        "avg_order_value",
+        "avg_buyer_value",
+        "purchase_frequency",
+        "refund_amount_rate",
+        "cancel_rate",
+        "refund_order_rate",
+        "discount_rate",
+        "items_per_order"
+      ],
+      "kind": "answer_and_numeric_review",
+      "question_or_fixture": "核正常八指标回答：金额均值、单/账户、件/单与无量纲比率的展示。",
+      "expected_behavior": "按契约单位逐项核；金额分转元，比例展示百分数只影响文字；浮点容差在运行前固定。",
+      "fault_to_detect": "比例乘100后冒充原值、单位列互换",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "从原始记录独立算分子net_sales_cents、分母valid_order_count，保留两值再除；从原始记录独立算分子net_sales_cents、分母buyer_count，保留两值再除；从原始记录独立算分子valid_order_count、分母buyer_count，保留两值再除；从原始记录独立算分子refund_cents、分母payment_cents，保留两值再除；从原始记录独立算分子cancelled_order_count、分母order_count，保留两值再除；从原始记录独立算分子refund_order_count、分母paid_order_count，保留两值再除；从原始记录独立算分子discount_cents、分母gross_cents，保留两值再除；从原始记录独立算分子valid_order_items、分母valid_order_count，保留两值再除",
+      "source_refs": [
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "有效订单均额"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "购买会员人均消费"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "购买频次"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "退款金额占比"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "取消率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "退款订单率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "优惠率"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "单均商品件数"
+        }
+      ]
+    },
+    {
+      "id": "B5-D01",
+      "batch": "B5",
+      "metric_ids": [
+        "new_member_count"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年8月注册会员数按会员归属门店、会员等级列出。",
+      "expected_behavior": "按registered_at计账户，未购买的注册账户仍计，不用ordered_at或成交店。",
+      "fault_to_detect": "把注册人数当购买人数，错误日期或门店角色",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "独立读members按registered_at筛选、核member_id",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "注册会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        }
+      ]
+    },
+    {
+      "id": "B5-H01",
+      "batch": "B5",
+      "metric_ids": [
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年8月观测期首购人数、首单金额、首单数和后续购买单数是多少？",
+      "expected_behavior": "先在全覆盖有效订单中按账户排序，再筛8月；不能在8月重新找第一笔。",
+      "fault_to_detect": "窗口首单冒充观测期首单",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "全覆盖orders先筛有效，按member/date/id排序，再筛首单日期；独立全历史排序取首单，窗口筛选再累计净额；独立取全覆盖有效单首位并数窗口内order_id；独立全覆盖排序rank>=2后按订单日筛",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首购会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首单净销售额"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首单数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期后续购买订单数"
+        }
+      ]
+    },
+    {
+      "id": "B5-H02",
+      "batch": "B5",
+      "metric_ids": [
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "kind": "fixture_design",
+      "question_or_fixture": "隔离排序例：同账户首条记录取消或全退，其后同一天有两笔有效订单。",
+      "expected_behavior": "跳过无效单；有效单同日按order_id排序；首单1笔，其余进入后续。",
+      "fault_to_detect": "取创建首单、时间并列不稳定、重复首单",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "全覆盖orders先筛有效，按member/date/id排序，再筛首单日期；独立全历史排序取首单，窗口筛选再累计净额；独立取全覆盖有效单首位并数窗口内order_id；独立全覆盖排序rank>=2后按订单日筛",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首购会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首单净销售额"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首单数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期后续购买订单数"
+        }
+      ]
+    },
+    {
+      "id": "B5-H03",
+      "batch": "B5",
+      "metric_ids": [
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "kind": "fixture_design",
+      "question_or_fixture": "隔离历史例：账户7月已有有效首单，8月又买；另一账户8月第一次有效买。",
+      "expected_behavior": "前一账户8月计后续不计首购；后一账户计首购；仅为观测期，不推终身。",
+      "fault_to_detect": "按查询窗口重新排名、冒称终身新客",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "全覆盖orders先筛有效，按member/date/id排序，再筛首单日期；独立全历史排序取首单，窗口筛选再累计净额；独立取全覆盖有效单首位并数窗口内order_id；独立全覆盖排序rank>=2后按订单日筛",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首购会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首单净销售额"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首单数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期后续购买订单数"
+        }
+      ]
+    },
+    {
+      "id": "B5-Z01",
+      "batch": "B5",
+      "metric_ids": [
+        "new_member_count",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "2026年6月1日至29日分别列注册数及四项观测期指标。",
+      "expected_behavior": "不同日期字段各自选记录，不能因没有订单就断定注册为0；期望由两张原表独立求出。",
+      "fault_to_detect": "跨事实表共享空结果",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "独立读members按registered_at筛选、核member_id；全覆盖orders先筛有效，按member/date/id排序，再筛首单日期；独立全历史排序取首单，窗口筛选再累计净额；独立取全覆盖有效单首位并数窗口内order_id；独立全覆盖排序rank>=2后按订单日筛",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "注册会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首购会员数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首单净销售额"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首单数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期后续购买订单数"
+        }
+      ]
+    },
+    {
+      "id": "B5-A01",
+      "batch": "B5",
+      "metric_ids": [
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count",
+        "valid_order_count"
+      ],
+      "kind": "cross_metric_assertion",
+      "question_or_fixture": "辅助检查：同窗首购账户数＝首单数；首单数＋后续单数＝有效订单数。",
+      "expected_behavior": "全覆盖排序口径一致且字段核定后使用；每项仍保留独立期望和首单身份。",
+      "fault_to_detect": "集合错但合计凑对",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "全覆盖orders先筛有效，按member/date/id排序，再筛首单日期；独立全历史排序取首单，窗口筛选再累计净额；独立取全覆盖有效单首位并数窗口内order_id；独立全覆盖排序rank>=2后按订单日筛；独立逐单计算净值并标有效，再计数",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首购会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首单净销售额"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首单数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期后续购买订单数"
+        },
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "有效订单数"
+        }
+      ]
+    },
+    {
+      "id": "B6-M01",
+      "batch": "B6",
+      "metric_ids": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "分别列出2026年7月和8月的月内购买会员数、月内复购会员数和复购率。",
+      "expected_behavior": "按月展示；每月账户去重和>=2有效订单；不跨月加总人数或平均比率。",
+      "fault_to_detect": "跨月两单当同月复购、用全部注册会员作分母",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "独立逐月有效订单归并member_id；独立按月账户数有效order_id，再数>=2账户；独立形成两个人群集合计数后相除",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内购买会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购会员数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购率"
+        }
+      ]
+    },
+    {
+      "id": "B6-R01",
+      "batch": "B6",
+      "metric_ids": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "kind": "fixture_design",
+      "question_or_fixture": "隔离月内例：一账户当月1有效单、一账户2有效单、一账户1有效单加1全退单。",
+      "expected_behavior": "只有2有效单者为复购；分别保留当月购买/复购集合。",
+      "fault_to_detect": "全退凑复购、用全量订单行简单条件代替账户月汇总",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "独立逐月有效订单归并member_id；独立按月账户数有效order_id，再数>=2账户；独立形成两个人群集合计数后相除",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内购买会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购会员数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购率"
+        }
+      ]
+    },
+    {
+      "id": "B6-Z01",
+      "batch": "B6",
+      "metric_ids": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "kind": "window_selection_required",
+      "question_or_fixture": "选择经核对无有效购买的完整自然月，查月内人数及复购率。",
+      "expected_behavior": "购买/复购人数为0，比率null；该月须在覆盖内；若原样本无例另用隔离fixture。",
+      "fault_to_detect": "零分母给0或误称无覆盖",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "独立逐月有效订单归并member_id；独立按月账户数有效order_id，再数>=2账户；独立形成两个人群集合计数后相除",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内购买会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购会员数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购率"
+        }
+      ]
+    },
+    {
+      "id": "B6-X01",
+      "batch": "B6",
+      "metric_ids": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "kind": "unsupported_design",
+      "question_or_fixture": "查询2026年8月1日至15日的月内购买人数、复购人数和复购率。",
+      "expected_behavior": "不支持部分月，不能偷偷扩成整月。",
+      "fault_to_detect": "静默改时间",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "独立逐月有效订单归并member_id；独立按月账户数有效order_id，再数>=2账户；独立形成两个人群集合计数后相除",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内购买会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购会员数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购率"
+        }
+      ]
+    },
+    {
+      "id": "B6-X02",
+      "batch": "B6",
+      "metric_ids": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "kind": "unsupported_design",
+      "question_or_fixture": "2026年8月普通月内三项指标按成交门店分别列出。",
+      "expected_behavior": "当前材料只支持全门店；拒绝拆店，不以结构可达代替业务支持。",
+      "fault_to_detect": "把普通订单维度能力扩散到受限月报",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "独立逐月有效订单归并member_id；独立按月账户数有效order_id，再数>=2账户；独立形成两个人群集合计数后相除",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内购买会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购会员数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购率"
+        }
+      ]
+    },
+    {
+      "id": "B6-X03",
+      "batch": "B6",
+      "metric_ids": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "kind": "engine_limit_design",
+      "question_or_fixture": "2026年8月小程序渠道的普通月内购买人数、复购人数和复购率是多少？",
+      "expected_behavior": "03原文未明确渠道；当前full_month_only契约统一限制全渠道。登记为当前引擎不支持，不冒称客户原文禁止；批前记录支持边界依据。",
+      "fault_to_detect": "把实现限制冒称客户事实，或计划成当前可执行ok",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "独立逐月有效订单归并member_id；独立按月账户数有效order_id，再数>=2账户；独立形成两个人群集合计数后相除",
+      "source_refs": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内购买会员数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购会员数"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "月内复购率"
+        }
+      ]
+    },
+    {
+      "id": "B7-M01",
+      "batch": "B7",
+      "metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "kind": "query_scenario",
+      "question_or_fixture": "分别列出2026年7月与8月的六项月末付费会员月报指标。",
+      "expected_behavior": "每月月底重判卡资格，再选当月有效订单；多月分行，资格、账户和订单不跨月串用。",
+      "fault_to_detect": "按当前日或购买日判资格、跨月加总人数",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐月按末日逐卡判并归账户，再与当月有效订单账户相交；独立资格账户集合筛当月有效order_id；独立按合格账户集合筛有效单后逐单累计净额；独立资格集合与月有效订单计数>=2账户相交；独立资格下两个人群计数相除；独立资格订单集合净额总和除订单数",
+      "source_refs": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员购买人数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员有效订单数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员净销售额"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购人数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购率"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员订单均额"
+        }
+      ]
+    },
+    {
+      "id": "B7-Q01",
+      "batch": "B7",
+      "metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "kind": "fixture_design",
+      "question_or_fixture": "资格人工边界：两种纳入产品分别有效；收费联名卡、体验卡；普通等级配合格卡、金卡配不合格卡。",
+      "expected_behavior": "按已获小林规则判断产品，金额和等级不代替资格；六指标分别看入选账户及订单。",
+      "fault_to_detect": "按付款>0或等级判断付费",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐月按末日逐卡判并归账户，再与当月有效订单账户相交；独立资格账户集合筛当月有效order_id；独立按合格账户集合筛有效单后逐单累计净额；独立资格集合与月有效订单计数>=2账户相交；独立资格下两个人群计数相除；独立资格订单集合净额总和除订单数",
+      "source_refs": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员购买人数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员有效订单数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员净销售额"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购人数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购率"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员订单均额"
+        }
+      ]
+    },
+    {
+      "id": "B7-Q02",
+      "batch": "B7",
+      "metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "kind": "parameterized_fixture_design",
+      "question_or_fixture": "对悦享年卡和家庭季卡分别构造：判定日在生效日前/当天/后、计划结束日前/当天/后、提前终止日前/当天/后。",
+      "expected_behavior": "生效含、结束与终止不含；按历史月末；每个产品和端点分支落实子例ID与期望后才能执行。",
+      "fault_to_detect": "端点闭开错误、只测一种卡、看当前状态",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐月按末日逐卡判并归账户，再与当月有效订单账户相交；独立资格账户集合筛当月有效order_id；独立按合格账户集合筛有效单后逐单累计净额；独立资格集合与月有效订单计数>=2账户相交；独立资格下两个人群计数相除；独立资格订单集合净额总和除订单数",
+      "source_refs": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员购买人数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员有效订单数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员净销售额"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购人数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购率"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员订单均额"
+        }
+      ]
+    },
+    {
+      "id": "B7-Q03",
+      "batch": "B7",
+      "metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "kind": "fixture_design",
+      "question_or_fixture": "资格人工边界：终止空值、计划结束早于终止、终止早于计划结束、尚未生效但已有未来终止。",
+      "expected_behavior": "空终止只表示没有提前终止，仍看计划结束；开始和两种结束条件同卡同时满足。",
+      "fault_to_detect": "空值当无限期、只看某一个日期",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐月按末日逐卡判并归账户，再与当月有效订单账户相交；独立资格账户集合筛当月有效order_id；独立按合格账户集合筛有效单后逐单累计净额；独立资格集合与月有效订单计数>=2账户相交；独立资格下两个人群计数相除；独立资格订单集合净额总和除订单数",
+      "source_refs": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员购买人数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员有效订单数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员净销售额"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购人数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购率"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员订单均额"
+        }
+      ]
+    },
+    {
+      "id": "B7-Q04",
+      "batch": "B7",
+      "metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "kind": "fixture_design",
+      "question_or_fixture": "资格人工边界：有效纳入卡混失效/排除卡；双年卡；年卡加季卡；一张在范围却失效、另一张范围外却有效。",
+      "expected_behavior": "至少一张同卡同时满足范围与日期即可；不能跨卡拼条件；多卡不重复账户和订单金额。",
+      "fault_to_detect": "多卡扇出、全卡都要有效、跨卡拼资格",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐月按末日逐卡判并归账户，再与当月有效订单账户相交；独立资格账户集合筛当月有效order_id；独立按合格账户集合筛有效单后逐单累计净额；独立资格集合与月有效订单计数>=2账户相交；独立资格下两个人群计数相除；独立资格订单集合净额总和除订单数",
+      "source_refs": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员购买人数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员有效订单数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员净销售额"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购人数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购率"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员订单均额"
+        }
+      ]
+    },
+    {
+      "id": "B7-Q05",
+      "batch": "B7",
+      "metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "kind": "fixture_design",
+      "question_or_fixture": "月末生效但月中已购买；购买当天有效但月底失效；月末有资格但无购买/仅全退；一单与两笔有效单。",
+      "expected_behavior": "资格按月末；购买用当月全部有效单；无购买资格账户不进入付费购买人数；复购需>=2有效单。",
+      "fault_to_detect": "资格人数代购买人数、按购买日截单、全退凑单",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐月按末日逐卡判并归账户，再与当月有效订单账户相交；独立资格账户集合筛当月有效order_id；独立按合格账户集合筛有效单后逐单累计净额；独立资格集合与月有效订单计数>=2账户相交；独立资格下两个人群计数相除；独立资格订单集合净额总和除订单数",
+      "source_refs": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员购买人数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员有效订单数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员净销售额"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购人数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购率"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员订单均额"
+        }
+      ]
+    },
+    {
+      "id": "B7-Q06",
+      "batch": "B7",
+      "metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "kind": "data_integrity_design",
+      "question_or_fixture": "原数据完整时无卡账户；另设卡数据缺失的受控测试输入。",
+      "expected_behavior": "先有独立完整性清单或明确受控故障标记才可判记录缺失；不能仅凭卡表无行猜现实无卡。完整无卡可判不合格；异常输入不改正式CSV。",
+      "fault_to_detect": "缺失与不具资格混为一谈",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐月按末日逐卡判并归账户，再与当月有效订单账户相交；独立资格账户集合筛当月有效order_id；独立按合格账户集合筛有效单后逐单累计净额；独立资格集合与月有效订单计数>=2账户相交；独立资格下两个人群计数相除；独立资格订单集合净额总和除订单数",
+      "source_refs": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员购买人数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员有效订单数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员净销售额"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购人数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购率"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员订单均额"
+        }
+      ]
+    },
+    {
+      "id": "B7-Z01",
+      "batch": "B7",
+      "metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "kind": "window_selection_required",
+      "question_or_fixture": "选择覆盖内无付费有效购买的完整月，查六项付费月报指标。",
+      "expected_behavior": "四项人数/单数/金额加总为0，两项率/均额分母0为null；原样本缺例用独立fixture。",
+      "fault_to_detect": "有资格无购买算买家、null当0",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐月按末日逐卡判并归账户，再与当月有效订单账户相交；独立资格账户集合筛当月有效order_id；独立按合格账户集合筛有效单后逐单累计净额；独立资格集合与月有效订单计数>=2账户相交；独立资格下两个人群计数相除；独立资格订单集合净额总和除订单数",
+      "source_refs": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员购买人数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员有效订单数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员净销售额"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购人数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购率"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员订单均额"
+        }
+      ]
+    },
+    {
+      "id": "B7-X01",
+      "batch": "B7",
+      "metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "kind": "unsupported_design",
+      "question_or_fixture": "查询2026年8月1日至15日的六项付费月报指标。",
+      "expected_behavior": "不支持部分月，不扩月、不报0。",
+      "fault_to_detect": "静默改问法",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐月按末日逐卡判并归账户，再与当月有效订单账户相交；独立资格账户集合筛当月有效order_id；独立按合格账户集合筛有效单后逐单累计净额；独立资格集合与月有效订单计数>=2账户相交；独立资格下两个人群计数相除；独立资格订单集合净额总和除订单数",
+      "source_refs": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员购买人数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员有效订单数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员净销售额"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购人数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购率"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员订单均额"
+        }
+      ]
+    },
+    {
+      "id": "B7-X02",
+      "batch": "B7",
+      "metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "kind": "unsupported_design",
+      "question_or_fixture": "2026年8月六项付费月报按成交门店分别列出。",
+      "expected_behavior": "业务原文和当前引擎均限制全店，拒绝拆店。",
+      "fault_to_detect": "可达维度冒充支持范围",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐月按末日逐卡判并归账户，再与当月有效订单账户相交；独立资格账户集合筛当月有效order_id；独立按合格账户集合筛有效单后逐单累计净额；独立资格集合与月有效订单计数>=2账户相交；独立资格下两个人群计数相除；独立资格订单集合净额总和除订单数",
+      "source_refs": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员购买人数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员有效订单数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员净销售额"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购人数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购率"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员订单均额"
+        }
+      ]
+    },
+    {
+      "id": "B7-X03",
+      "batch": "B7",
+      "metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "kind": "unsupported_design",
+      "question_or_fixture": "2026年8月小程序渠道六项付费月报指标是多少？",
+      "expected_behavior": "业务原文与当前引擎均要求全渠道；不支持渠道过滤。",
+      "fault_to_detect": "只对每卡局部做汇总、范围外查询报正常值",
+      "state": "design_pending_definition_and_expected",
+      "executable": false,
+      "expected_state": "not_computed",
+      "execution_state": "not_run",
+      "data_state": "待检查原CSV是否能区分错误；不足另建标明人工构造的隔离fixture，不改课程数据",
+      "expected_method": "逐月按末日逐卡判并归账户，再与当月有效订单账户相交；独立资格账户集合筛当月有效order_id；独立按合格账户集合筛有效单后逐单累计净额；独立资格集合与月有效订单计数>=2账户相交；独立资格下两个人群计数相除；独立资格订单集合净额总和除订单数",
+      "source_refs": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员购买人数"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、表字段"
+        },
+        {
+          "source": "L",
+          "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+        },
+        {
+          "source": "C",
+          "locator": "MSG-03885、MSG-03886、MSG-03890",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员有效订单数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员净销售额"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购人数"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购率"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员订单均额"
+        }
+      ]
+    },
+    {
+      "id": "NS01-aug-total",
+      "batch": "B1",
+      "metric_ids": [
+        "net_sales_cents"
+      ],
+      "kind": "existing_real_case",
+      "question_or_fixture": "2026年8月青禾优选净销售额是多少？",
+      "expected_behavior": "沿用原8题冻结期望，在B1新库完成回归；旧库原证据保留。",
+      "fault_to_detect": "见原用例来源、意图、判定及解释审查",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#NS01-aug-total",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#NS01-aug-total",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452",
+      "previous_evidence": {
+        "state": "passed_on_recorded_library",
+        "execution_state": "passed",
+        "expected_reference": "artifacts/w03/net-sales-first-20261108/independent/tests.json#NS01-aug-total",
+        "result_reference": "artifacts/w03/net-sales-first-20261108/test-v2/metric_test_report.json#NS01-aug-total",
+        "review_reference": "artifacts/w03/net-sales-first-20261108/independent/final-review.json",
+        "catalog_sha256": "587271f8e3ee11d468a34125903b086fcb6cdd01306f37806ea8cd1ddb925694"
+      },
+      "execution_question": "2026年8月青禾优选净销售额是多少？"
+    },
+    {
+      "id": "NS02-july-transaction-store",
+      "batch": "B1",
+      "metric_ids": [
+        "net_sales_cents"
+      ],
+      "kind": "existing_real_case",
+      "question_or_fixture": "2026年7月青禾优选净销售额按订单成交门店编号分别列出。",
+      "expected_behavior": "沿用原8题冻结期望，在B1新库完成回归；旧库原证据保留。",
+      "fault_to_detect": "见原用例来源、意图、判定及解释审查",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#NS02-july-transaction-store",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#NS02-july-transaction-store",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452",
+      "previous_evidence": {
+        "state": "passed_on_recorded_library",
+        "execution_state": "passed",
+        "expected_reference": "artifacts/w03/net-sales-first-20261108/independent/tests.json#NS02-july-transaction-store",
+        "result_reference": "artifacts/w03/net-sales-first-20261108/test-v2/metric_test_report.json#NS02-july-transaction-store",
+        "review_reference": "artifacts/w03/net-sales-first-20261108/independent/final-review.json",
+        "catalog_sha256": "587271f8e3ee11d468a34125903b086fcb6cdd01306f37806ea8cd1ddb925694"
+      },
+      "execution_question": "2026年7月青禾优选净销售额按订单成交门店编号分别列出。"
+    },
+    {
+      "id": "NS03-aug-mini-program",
+      "batch": "B1",
+      "metric_ids": [
+        "net_sales_cents"
+      ],
+      "kind": "existing_real_case",
+      "question_or_fixture": "2026年8月青禾优选小程序渠道的净销售额是多少？",
+      "expected_behavior": "沿用原8题冻结期望，在B1新库完成回归；旧库原证据保留。",
+      "fault_to_detect": "见原用例来源、意图、判定及解释审查",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#NS03-aug-mini-program",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#NS03-aug-mini-program",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452",
+      "previous_evidence": {
+        "state": "passed_on_recorded_library",
+        "execution_state": "passed",
+        "expected_reference": "artifacts/w03/net-sales-first-20261108/independent/tests.json#NS03-aug-mini-program",
+        "result_reference": "artifacts/w03/net-sales-first-20261108/test-v2/metric_test_report.json#NS03-aug-mini-program",
+        "review_reference": "artifacts/w03/net-sales-first-20261108/independent/final-review.json",
+        "catalog_sha256": "587271f8e3ee11d468a34125903b086fcb6cdd01306f37806ea8cd1ddb925694"
+      },
+      "execution_question": "2026年8月青禾优选小程序渠道的净销售额是多少？"
+    },
+    {
+      "id": "NS04-partial-refund-day",
+      "batch": "B1",
+      "metric_ids": [
+        "net_sales_cents"
+      ],
+      "kind": "existing_real_case",
+      "question_or_fixture": "2026年8月15日当天青禾优选净销售额是多少？",
+      "expected_behavior": "沿用原8题冻结期望，在B1新库完成回归；旧库原证据保留。",
+      "fault_to_detect": "见原用例来源、意图、判定及解释审查",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#NS04-partial-refund-day",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#NS04-partial-refund-day",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452",
+      "previous_evidence": {
+        "state": "passed_on_recorded_library",
+        "execution_state": "passed",
+        "expected_reference": "artifacts/w03/net-sales-first-20261108/independent/tests.json#NS04-partial-refund-day",
+        "result_reference": "artifacts/w03/net-sales-first-20261108/test-v2/metric_test_report.json#NS04-partial-refund-day",
+        "review_reference": "artifacts/w03/net-sales-first-20261108/independent/final-review.json",
+        "catalog_sha256": "587271f8e3ee11d468a34125903b086fcb6cdd01306f37806ea8cd1ddb925694"
+      },
+      "execution_question": "2026年8月15日当天青禾优选净销售额是多少？"
+    },
+    {
+      "id": "NS05-full-refund-day",
+      "batch": "B1",
+      "metric_ids": [
+        "net_sales_cents"
+      ],
+      "kind": "existing_real_case",
+      "question_or_fixture": "2026年8月10日当天青禾优选净销售额是多少？",
+      "expected_behavior": "沿用原8题冻结期望，在B1新库完成回归；旧库原证据保留。",
+      "fault_to_detect": "见原用例来源、意图、判定及解释审查",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#NS05-full-refund-day",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#NS05-full-refund-day",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452",
+      "previous_evidence": {
+        "state": "passed_on_recorded_library",
+        "execution_state": "passed",
+        "expected_reference": "artifacts/w03/net-sales-first-20261108/independent/tests.json#NS05-full-refund-day",
+        "result_reference": "artifacts/w03/net-sales-first-20261108/test-v2/metric_test_report.json#NS05-full-refund-day",
+        "review_reference": "artifacts/w03/net-sales-first-20261108/independent/final-review.json",
+        "catalog_sha256": "587271f8e3ee11d468a34125903b086fcb6cdd01306f37806ea8cd1ddb925694"
+      },
+      "execution_question": "2026年8月10日当天青禾优选净销售额是多少？"
+    },
+    {
+      "id": "NS06-covered-empty",
+      "batch": "B1",
+      "metric_ids": [
+        "net_sales_cents"
+      ],
+      "kind": "existing_real_case",
+      "question_or_fixture": "2026年6月1日至6月29日（含首尾两天）青禾优选净销售额是多少？",
+      "expected_behavior": "沿用原8题冻结期望，在B1新库完成回归；旧库原证据保留。",
+      "fault_to_detect": "见原用例来源、意图、判定及解释审查",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#NS06-covered-empty",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#NS06-covered-empty",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452",
+      "previous_evidence": {
+        "state": "passed_on_recorded_library",
+        "execution_state": "passed",
+        "expected_reference": "artifacts/w03/net-sales-first-20261108/independent/tests.json#NS06-covered-empty",
+        "result_reference": "artifacts/w03/net-sales-first-20261108/test-v2/metric_test_report.json#NS06-covered-empty",
+        "review_reference": "artifacts/w03/net-sales-first-20261108/independent/final-review.json",
+        "catalog_sha256": "587271f8e3ee11d468a34125903b086fcb6cdd01306f37806ea8cd1ddb925694"
+      },
+      "execution_question": "2026年6月1日至6月29日（含首尾两天）青禾优选净销售额是多少？"
+    },
+    {
+      "id": "NS07-missing-time",
+      "batch": "B1",
+      "metric_ids": [
+        "net_sales_cents"
+      ],
+      "kind": "existing_real_case",
+      "question_or_fixture": "青禾优选净销售额是多少？",
+      "expected_behavior": "沿用原8题冻结期望，在B1新库完成回归；旧库原证据保留。",
+      "fault_to_detect": "见原用例来源、意图、判定及解释审查",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#NS07-missing-time",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#NS07-missing-time",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452",
+      "previous_evidence": {
+        "state": "passed_on_recorded_library",
+        "execution_state": "passed",
+        "expected_reference": "artifacts/w03/net-sales-first-20261108/independent/tests.json#NS07-missing-time",
+        "result_reference": "artifacts/w03/net-sales-first-20261108/test-v2/metric_test_report.json#NS07-missing-time",
+        "review_reference": "artifacts/w03/net-sales-first-20261108/independent/final-review.json",
+        "catalog_sha256": "587271f8e3ee11d468a34125903b086fcb6cdd01306f37806ea8cd1ddb925694"
+      },
+      "execution_question": "青禾优选净销售额是多少？"
+    },
+    {
+      "id": "NS08-outside-coverage",
+      "batch": "B1",
+      "metric_ids": [
+        "net_sales_cents"
+      ],
+      "kind": "existing_real_case",
+      "question_or_fixture": "2026年9月青禾优选净销售额是多少？",
+      "expected_behavior": "沿用原8题冻结期望，在B1新库完成回归；旧库原证据保留。",
+      "fault_to_detect": "见原用例来源、意图、判定及解释审查",
+      "state": "passed_on_B1_library_v2",
+      "executable": true,
+      "expected_state": "independently_frozen_before_build_and_query",
+      "execution_state": "passed_and_explanation_reviewed",
+      "expected_reference": "artifacts/w03/b1-amounts-20261108/independent/tests-all.json#NS08-outside-coverage",
+      "result_reference": "artifacts/w03/b1-amounts-20261108/test-v2/metric_test_report.json#NS08-outside-coverage",
+      "review_reference": "artifacts/w03/b1-amounts-20261108/independent/final-review-v2.json",
+      "data_version": "qinghe-w03-20260923-small",
+      "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452",
+      "previous_evidence": {
+        "state": "passed_on_recorded_library",
+        "execution_state": "passed",
+        "expected_reference": "artifacts/w03/net-sales-first-20261108/independent/tests.json#NS08-outside-coverage",
+        "result_reference": "artifacts/w03/net-sales-first-20261108/test-v2/metric_test_report.json#NS08-outside-coverage",
+        "review_reference": "artifacts/w03/net-sales-first-20261108/independent/final-review.json",
+        "catalog_sha256": "587271f8e3ee11d468a34125903b086fcb6cdd01306f37806ea8cd1ddb925694"
+      },
+      "execution_question": "2026年9月青禾优选净销售额是多少？"
+    }
+  ],
+  "common_design": {
+    "version": "w03-metric-common-plan-v2",
+    "status": "inherited_design_with_current_evidence_links",
+    "dimensions": [
+      {
+        "id": "store",
+        "name": "成交门店",
+        "meaning": "订单发生的门店编号",
+        "candidate_metrics": [
+          "net_sales_cents"
+        ],
+        "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+        "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+        "status": "B1_multi_metric_grouping_passed",
+        "evidence": "B1-D01; NS02-july-transaction-store"
+      },
+      {
+        "id": "home_store",
+        "name": "会员归属门店",
+        "meaning": "会员账户归属的门店编号",
+        "candidate_metrics": [
+          "new_member_count"
+        ],
+        "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+        "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+        "status": "planned_not_run"
+      },
+      {
+        "id": "member",
+        "name": "会员账户",
+        "meaning": "本次测试范围的 CRM 会员账户编号",
+        "candidate_metrics": [
+          "net_sales_cents"
+        ],
+        "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+        "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+        "status": "planned_not_run"
+      },
+      {
+        "id": "store__region",
+        "name": "成交地区",
+        "meaning": "订单成交门店所在地区",
+        "candidate_metrics": [
+          "net_sales_cents"
+        ],
+        "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+        "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+        "status": "B1_eq_filter_only_passed_grouping_not_run",
+        "evidence": "B1-F01"
+      },
+      {
+        "id": "store__store_name",
+        "name": "成交门店名称",
+        "meaning": "订单成交门店的名称",
+        "candidate_metrics": [
+          "net_sales_cents"
+        ],
+        "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+        "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+        "status": "planned_not_run"
+      },
+      {
+        "id": "home_store__region",
+        "name": "会员归属地区",
+        "meaning": "会员归属门店所在地区",
+        "candidate_metrics": [
+          "new_member_count"
+        ],
+        "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+        "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+        "status": "planned_not_run"
+      },
+      {
+        "id": "home_store__store_name",
+        "name": "会员归属门店名称",
+        "meaning": "会员归属门店的名称",
+        "candidate_metrics": [
+          "new_member_count"
+        ],
+        "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+        "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+        "status": "planned_not_run"
+      },
+      {
+        "id": "order__channel",
+        "name": "订单渠道",
+        "meaning": "订单发生的渠道",
+        "candidate_metrics": [
+          "net_sales_cents"
+        ],
+        "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+        "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+        "status": "B1_eq_filter_and_AND_passed",
+        "evidence": "B1-F01; NS03-aug-mini-program"
+      },
+      {
+        "id": "order__status",
+        "name": "订单状态",
+        "meaning": "订单记录的状态",
+        "candidate_metrics": [
+          "order_count"
+        ],
+        "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+        "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+        "status": "planned_not_run"
+      },
+      {
+        "id": "member__tier",
+        "name": "会员等级",
+        "meaning": "会员账户登记的等级",
+        "candidate_metrics": [
+          "new_member_count"
+        ],
+        "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+        "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+        "status": "planned_not_run"
+      },
+      {
+        "id": "metric_time__day",
+        "name": "统计日",
+        "meaning": "按所选指标定义的统计时间逐日展示",
+        "candidate_metrics": [
+          "net_sales_cents"
+        ],
+        "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+        "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+        "status": "B1_grouping_passed",
+        "evidence": "B1-D02"
+      },
+      {
+        "id": "metric_time__month",
+        "name": "统计月",
+        "meaning": "按所选指标定义的统计时间逐自然月展示",
+        "candidate_metrics": [
+          "net_sales_cents"
+        ],
+        "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+        "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+        "status": "planned_not_run"
+      }
+    ],
+    "response_statuses": [
+      {
+        "status": "ok",
+        "scenario": "定义完整、窗口覆盖内、维度支持的真实查询"
+      },
+      {
+        "status": "clarify",
+        "scenario": "缺必要时间范围/有歧义，不猜日期"
+      },
+      {
+        "status": "unsupported",
+        "scenario": "覆盖外或付费月报部分月、门店/渠道拆分；不得静默改问法"
+      },
+      {
+        "status": "error",
+        "scenario": "受控故障注入，如离线副本缺库/执行失败，保留错误；不对正常业务问题伪造异常"
+      }
+    ],
+    "judge_controls": [
+      {
+        "id": "J01",
+        "change": "改起止日期，保留数值",
+        "expected_judge": "reject",
+        "status": "passed_real_copy",
+        "evidence": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json#wrong_date"
+      },
+      {
+        "id": "J02",
+        "change": "换指标ID，保留数值",
+        "expected_judge": "reject",
+        "status": "passed_real_copy",
+        "evidence": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json#wrong_metric"
+      },
+      {
+        "id": "J03",
+        "change": "额外加入限制过滤，保留数值",
+        "expected_judge": "reject",
+        "status": "passed_real_copy",
+        "evidence": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json#extra_filter"
+      },
+      {
+        "id": "J04",
+        "change": "错单位，数值不变",
+        "expected_judge": "reject",
+        "status": "passed_real_copy",
+        "evidence": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json#wrong_unit"
+      },
+      {
+        "id": "J05",
+        "change": "改单元数值，含大整数10^9加1",
+        "expected_judge": "reject",
+        "status": "partial_one_cent_checked_large_integer_not_rerun",
+        "evidence": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json#wrong_value_one_cent"
+      },
+      {
+        "id": "J06",
+        "change": "status改error但保留正确rows",
+        "expected_judge": "reject",
+        "status": "passed_real_copy",
+        "evidence": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json#error_with_original_number"
+      },
+      {
+        "id": "J07",
+        "change": "换已冻结数据版本",
+        "expected_judge": "reject",
+        "status": "passed_real_copy",
+        "evidence": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json#wrong_data_version"
+      },
+      {
+        "id": "J08",
+        "change": "删一个分组行",
+        "expected_judge": "reject",
+        "status": "passed_real_copy",
+        "evidence": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json#missing_group"
+      },
+      {
+        "id": "J09",
+        "change": "复制一个分组行",
+        "expected_judge": "reject",
+        "status": "passed_real_copy",
+        "evidence": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json#duplicate_group"
+      },
+      {
+        "id": "J10",
+        "change": "把未定义null改0",
+        "expected_judge": "reject",
+        "status": "passed_explicit_synthetic_null_control_not_real_null_query",
+        "evidence": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json#null_replaced_by_zero"
+      },
+      {
+        "id": "J11",
+        "change": "添加额外分组",
+        "expected_judge": "reject",
+        "status": "not_run"
+      },
+      {
+        "id": "J12",
+        "change": "交换分组身份保持总数",
+        "expected_judge": "reject",
+        "status": "passed_synthetic_swapped_identities",
+        "evidence": "artifacts/w03/b1-amounts-20261108/independent/judge-multi-metric-selfcheck.json"
+      },
+      {
+        "id": "J13",
+        "change": "字符串/布尔/NaN/Infinity伪装数值",
+        "expected_judge": "reject",
+        "status": "partial_numeric_string_checked_other_types_not_rerun",
+        "evidence": "artifacts/w03/b1-amounts-20261108/independent/judge-multi-metric-selfcheck.json"
+      },
+      {
+        "id": "J14",
+        "change": "改group_by或把成交店换归属店",
+        "expected_judge": "reject",
+        "status": "not_run"
+      },
+      {
+        "id": "J15",
+        "change": "合法正确结果原样",
+        "expected_judge": "accept",
+        "status": "passed_real_copy",
+        "evidence": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json#correct_original"
+      },
+      {
+        "id": "J16",
+        "change": "只变行顺序",
+        "expected_judge": "accept",
+        "status": "passed_real_copy",
+        "evidence": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json#row_order_only"
+      },
+      {
+        "id": "J17",
+        "change": "列顺序变但按列名重排值，语义一致",
+        "expected_judge": "accept",
+        "status": "passed_real_copy",
+        "evidence": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json#column_order_only"
+      },
+      {
+        "id": "J18",
+        "change": "等价AND过滤顺序、in集合顺序变化",
+        "expected_judge": "accept",
+        "status": "partial_AND_order_checked_in_set_not_rerun",
+        "evidence": "artifacts/w03/b1-amounts-20261108/independent/judge-multi-metric-selfcheck.json"
+      },
+      {
+        "id": "J19",
+        "change": "合法整数13000与13000.0等值",
+        "expected_judge": "accept",
+        "status": "not_run"
+      },
+      {
+        "id": "J20",
+        "change": "把13000改13001，即便在相对容差下接近",
+        "expected_judge": "reject",
+        "status": "not_run"
+      }
+    ],
+    "judge_contract": "纯比较，不发模型或查数请求。比较expected/actual完整status、intent、columns/rows、keys、units及冻结版本。分组先检查重复，不能dict覆盖；整型精确；浮点固定容差，null不等0。不用只比合计或答案文本替代。",
+    "answer_review": [
+      "说明客户/数据范围、时间、过滤分组、定义来源、单位与null",
+      "拒绝或澄清说明原因，不能给另一问题结果",
+      "解释正确不能代替SQL/独立数值验证；数值正确不能豁免解释越权",
+      "不从净额/复购率变化推出因果、收益、验收或自动营销授权"
+    ],
+    "construction_regression": [
+      "构建Skill经更新须在新库/项目重建并核依赖来源，不手工只改生成SQL",
+      "原始问题+未见同义变式复跑；查询已有库通过不等于构建可重复",
+      "small/scale分别版本与期望；保存失败、修复、重跑全套记录"
+    ],
+    "release_gates": [
+      "当前W03 v0.5正文已审，按批核指标来源/字段/依赖/范围",
+      "独立CSV期望先于实际查询冻结",
+      "构建/加载检查、完整结构结果、解释分别审",
+      "变更Skill或重建库后回归全部已通过用例",
+      "最终38项完整库、规模与多问法、聊天入口证据、交付与SOW另行完成"
+    ],
+    "shared_qualification_family": {
+      "id": "PAID-QUAL-COMMON",
+      "applies_to": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "status": "planned_not_run",
+      "purpose": "六项各自数值验证都引用资格规则的成员与订单归属；模型理解题答对不能替代构建/数值验证。",
+      "families": [
+        "两种纳入产品分别正例；联名卡即使收费与体验卡均负例；普通等级+合格卡、金卡+不合格卡；购卡金额零不替代范围/有效状态。",
+        "两种纳入产品分别覆盖开始前/当天/后，计划结束前/当天/后，提前终止前/当天/后；开始含，结束和终止不含。",
+        "非空ended_at但判定日在开始前仍无效；planned end先到与termination先到分别检查；空终止仍受计划有效期限制；按历史月末而非当前运行日。",
+        "完整无卡与卡记录缺失区分；任一合范围且有效卡可使账户合格；有效卡混失效/排除卡不否定；范围与有效条件不能从两张不同卡拼接。",
+        "双年卡及年卡+季卡分别验证账户只计一次，订单ID不复制，净额不翻倍；资格人数与有购买人数区分。",
+        "月末刚生效但此前已购买纳入；购买时有效月底失效排除；月末有资格但无购买/仅全退不进买家或复购群体；月内有效一单与两单分别验证。",
+        "同账户跨月资格变化逐月重判；完整自然月、全门店全渠道；部分月/门店渠道拆分应拒绝；无购买月份率/均额为null。"
+      ],
+      "source_refs": [
+        {
+          "source": "L",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868"
+        },
+        {
+          "source": "C",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03885、MSG-03886、MSG-03890"
+        },
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "本期统计确认邮件"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "cards、orders"
+        }
+      ],
+      "independent_expected": "从冻结原始卡记录逐卡判断月末并集合到账户，再独立筛当月有效订单；保留逐卡理由、入选/排除账户、订单ID、分子分母及最终值，不用被测SQL。",
+      "fixture_strategy": "先检查small/scale实际是否含各边界；缺例再单建标明人工构造的隔离小fixture与manifest，不改课程原CSV；每个数据版本重新独立算期望。"
+    },
+    "qualification_note": "共享资格设计不是已跑用例；B7参数化设计必须落实子例和独立资格/订单明细，不以单题或模型理解题代替六指标覆盖。",
+    "judge_current_evidence": "artifacts/w03/net-sales-first-20261108/judge-injections-v2.json：13检查，10反例全拒；旧J01-J20不一律改passed，具体检查见原报告。",
+    "normal_month_channel_note": "03仅明确整月全店；contract full_month_only目前一并限制全渠道，业务原文与运行限制分别登记（B6-X03）。",
+    "B1_current_evidence": {
+      "batch_controls": "artifacts/w03/b1-amounts-20261108/batch-controls-v2.json",
+      "real_copy_controls": "artifacts/w03/b1-amounts-20261108/judge-injections-v2.json",
+      "independent_preflight_synthetic_judge_checks": "artifacts/w03/b1-amounts-20261108/independent/judge-multi-metric-selfcheck.json",
+      "note": "判定器合成正反对照、真实结果副本注入、真实业务问数三类分开；不泛化为后续比率/月报已通过。"
+    }
+  },
+  "design_review_reference": "artifacts/w03/metric-batch-plan-20261108/independent/review-v2.json"
+}

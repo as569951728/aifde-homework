@@ -1,0 +1,112 @@
+{
+  "review_version": "model-update-impact-review-v1",
+  "reviewed_at": "2026-11-06T20:12:44.256671+08:00",
+  "reviewer": "independent_agent_w03_model_impact_reviewer",
+  "criteria": "criteria.md",
+  "verdict": "needs_revision",
+  "scope": "18组材料整理、更新去向、影响及输入计划；不是正式模型或指标运行审核",
+  "reviewed_artifacts": {
+    "impact.md": "fbd36e6216e39e0490922ddbfa8121c05bb1bae993a81019012aaca4ad58b89e",
+    "changes.json": "4375fdfd5a551ebab17cba7406cf953918e3280414c8ddf0172f312b22cd007b",
+    "source_registry.json": "94562b5f8c9d1096f0c3cfac9142441438bc0a801414e550a4f93c0a72bf1f3d",
+    "input_plan.json": "87c37b0317e8d3f88c8e3cca2dfa20c365d3ec6e2a3c2ca687e78ec4bdbc78d8",
+    "manifest.json": "7a34c8975b92fd5b0dbaba251d2c7ac959168b90263411604e5bb42536eeda1f",
+    "paid_scope.json": "8043a87d2a33affeba992f052e3ce0ed14c947d3b653f2a3ef110b7cd4b24034"
+  },
+  "integrity_checks": {
+    "source_registry_entries_verified": 15,
+    "method_file_hashes_verified": 4,
+    "protected_file_hashes_verified": 21,
+    "artifact_hashes_verified": 6,
+    "all_hashes_match": true,
+    "all_row_source_paths_and_message_ids_resolve": true,
+    "formal_model_still_w02_v0_4": true,
+    "active_extraction_sources_count": 0,
+    "formal_metric_test_count": 0
+  },
+  "supplementary_read_only_evidence": {
+    "platform/fde_product/metrics/engine.py": "e8b39da2517a65f6406da4d261173291c795248ea6c62638137e09ce750a98f3"
+  },
+  "findings": [
+    {
+      "id": "REV-01",
+      "severity": "P2",
+      "status": "open",
+      "change_id": "UP-07",
+      "location": "v1/impact.md:131-132; v1/changes.json rows[6].direct_metric_ids / conditional_impact",
+      "title": "零分母规则的确定依赖被留在笼统关联项",
+      "problem": "UP-07候选已纳入零分母未定义，但直接影响列只含部分比率。purchase_frequency、cancel_rate、refund_order_rate、monthly_repeat_rate、monthly_paid_repeat_rate都确定受该规则约束，并非仅在共享实现改动时才关联；当前结构会漏掉从UP-07追踪这些指标的必检契约。",
+      "evidence": [
+        {
+          "path": "materials/w03/02_财务邮件.md",
+          "locator": "购买频次、取消率、退款订单率均明确分母零时未定义"
+        },
+        {
+          "path": "materials/w03/03_会员运营周报.md",
+          "locator": "月内复购率"
+        },
+        {
+          "path": "materials/w03/04_本期统计确认邮件.md",
+          "locator": "月末付费会员复购率"
+        },
+        {
+          "path": "docs/w03/contract.md",
+          "locator": "43行：零分母比率未定义为null"
+        }
+      ],
+      "minimal_fix": "在UP-07 direct_metric_ids加入上述5项，并同步impact.md；将conditional_impact中“其余含零分母的比率、频次”改为这些项已属直接公共输出契约影响，强调没有改变分子分母或为其他32项加付费过滤。也可另列explicit common_contract_metric_ids但必须可枚举且明确确定性，不留作条件性风险。补D3、D4来源。覆盖外响应为所有查询共用边界，可另外保留，不因此把38项均列为资格规则直接影响。",
+      "human_decision_required": false
+    },
+    {
+      "id": "REV-02",
+      "severity": "P2",
+      "status": "open",
+      "change_id": "UP-09",
+      "location": "v1/impact.md:155-158,162; v1/changes.json rows[8].applicable_scope / conditional_impact / evidence",
+      "title": "普通月内三指标未区分业务定义与当前工程支持限制",
+      "problem": "D3确实只写整月、全门店，不能将D4的全渠道选择追认成这三项的客户业务规则；但当前工程已明确full_month_only拒绝所有filters和除metric_time__month以外的group_by。“渠道/其他维度按材料及可达关系核”遗漏已知的查询契约限制，容易误导为只要语义图可达就能支持。",
+      "evidence": [
+        {
+          "path": "materials/w03/03_会员运营周报.md",
+          "locator": "月内三项：整月、全门店"
+        },
+        {
+          "path": "docs/w03/contract.md",
+          "locator": "29行：月度定义必须full_month_only，落实全门店全渠道与跨月按月展示"
+        },
+        {
+          "path": "platform/fde_product/metrics/engine.py",
+          "locator": "117-120行：full_month_only分支在维度可达检查之前拒绝filters及非month分组"
+        }
+      ],
+      "minimal_fix": "保持D3业务边界原判，不伪造客户限制；另补“当前标准框架支持边界：这三项采用full_month_only时，仅完整月、全门店全渠道、无筛选，可按月分列，其他分组即使可达也不受支持；若未来确需放宽，要另核业务定义与工程范围，不自动修改框架”。在工程/指标影响去向中列这项约束，追加CONTRACT来源；如引用源码则为其补来源注册和哈希。无需新增业务规则或修改85例。",
+      "human_decision_required": false
+    }
+  ],
+  "human_decisions": [],
+  "notable_passes": [
+    "18组候选的主要业务认识有源材料支持，未发现有效来源冲突。",
+    "W02双目标、旧趋势/因果未知、权限与局部流程边界保留。",
+    "两类卡与同卡有效条件、起止端点、空值、多卡和月末选择直接追踪六指标。",
+    "03866随03867/03868澄清，不新增全体资格账户数。",
+    "03885前提支撑两类卡规则，未因林/周不掌握而退回全未知。",
+    "03928延期为假设，王经理核查不替代执行安排或公司审批。",
+    "模型、指标定义、SOW及过程记录分工清楚；偏好未扩成交付。",
+    "未决已按本期整理、实现验证、生产、运营和商业门槛分类。",
+    "paid_scope.json只作为材料标题索引，UP不是原生claim_id。"
+  ],
+  "execution_prerequisites": [
+    {
+      "id": "NEXT-01",
+      "blocking_this_review": false,
+      "text": "input_plan已诚实说明MD上下文仍待核；实际启动前需以inspect/输入快照证明原始MD可达。不得只登记4份访谈后声称模型已见01–08；这是下一步技术准备，不需用户裁决。"
+    }
+  ],
+  "not_proven": [
+    "正式业务模型已更新或被用户采纳",
+    "85例模型问答已通过",
+    "38项指标查询与独立数值校验已通过",
+    "客户验收/预算/合同/生产上线批准",
+    "课程作业完成或提交"
+  ]
+}

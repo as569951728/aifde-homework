@@ -1,0 +1,106 @@
+{
+  "checked_on": "2026-11-05",
+  "actor": "导师执行的本地数据核查",
+  "target": "net_sales_cents",
+  "data_id": "qinghe-w03-20260923-small",
+  "declared_coverage": [
+    "2024-09-01",
+    "2026-09-01"
+  ],
+  "timezone": "Asia/Shanghai",
+  "columns": [
+    "member_id",
+    "store_id",
+    "ordered_at",
+    "status",
+    "gross_cents",
+    "paid_cents",
+    "refund_cents",
+    "order_id",
+    "quantity",
+    "channel"
+  ],
+  "rows": 48,
+  "distinct_order_ids": 48,
+  "status_counts": {
+    "paid": 45,
+    "cancelled": 3
+  },
+  "observed_order_dates": [
+    "2024-09-01",
+    "2026-08-31"
+  ],
+  "checks": {
+    "required_columns_present": true,
+    "row_count_matches_manifest": true,
+    "order_id_unique_nonempty": true,
+    "required_values_nonempty": true,
+    "dates_within_declared_coverage": true,
+    "status_values_match_dictionary": true,
+    "amounts_integer_nonnegative_refund_not_above_paid": true,
+    "cancelled_paid_zero": true,
+    "four_csv_hashes_match_manifest": true
+  },
+  "source_sha256": {
+    "materials/data/small/orders.csv": "c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1",
+    "materials/data/small/cards.csv": "d27bdabd508d7881a1bea84cb79400c2a770fc1ad42fdb81877163cc018bb8d5",
+    "materials/data/small/members.csv": "e99b7e82389722b1ae2e4fd267c74dd84bd61dfeabaa161221d7ae44ae955b2f",
+    "materials/data/small/stores.csv": "e8160804fd485853f6c75d9a095b1ee6f05bbbd40ba851cac84def35488aa41d"
+  },
+  "example_rows": [
+    {
+      "member_id": "M00002",
+      "store_id": "S02",
+      "ordered_at": "2026-08-15",
+      "status": "paid",
+      "gross_cents": "10000",
+      "paid_cents": "9000",
+      "refund_cents": "2000",
+      "order_id": "O0000003",
+      "quantity": "1",
+      "channel": "门店"
+    },
+    {
+      "member_id": "M00003",
+      "store_id": "S02",
+      "ordered_at": "2026-08-10",
+      "status": "paid",
+      "gross_cents": "5000",
+      "paid_cents": "5000",
+      "refund_cents": "5000",
+      "order_id": "O0000004",
+      "quantity": "2",
+      "channel": "小程序"
+    },
+    {
+      "member_id": "M00004",
+      "store_id": "S01",
+      "ordered_at": "2026-08-10",
+      "status": "cancelled",
+      "gross_cents": "9000",
+      "paid_cents": "0",
+      "refund_cents": "0",
+      "order_id": "O0000005",
+      "quantity": "3",
+      "channel": "门店"
+    },
+    {
+      "member_id": "M00006",
+      "store_id": "S03",
+      "ordered_at": "2026-07-31",
+      "status": "paid",
+      "gross_cents": "6000",
+      "paid_cents": "6000",
+      "refund_cents": "1000",
+      "order_id": "O0000009",
+      "quantity": "1",
+      "channel": "门店"
+    }
+  ],
+  "limits": [
+    "只核本项所需字段、订单粒度、值约束及小样本文件完整性。",
+    "未构建指标库、未运行Agent查询、未计算指标期望或验证规模数据。",
+    "样本行不能证明退款实际发生日、历史月结快照或真实经营数据覆盖。",
+    "业务解释为导师初核，尚无本轮本人审核结论或新访谈。"
+  ]
+}

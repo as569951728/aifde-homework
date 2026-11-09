@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-05",
+  "kind": "input_contract_diagnostic",
+  "reason": "首轮候选未通过，不晋升。实际缺少任务范围/查询契约；课程show_evidence仅回候选引用消息、不含前置问题。此次只补有来源的任务文档/原文邻接索引；方法不再改。",
+  "calls": [
+    {
+      "id": "gap-context-before",
+      "mode": "gap",
+      "input": "inputs/gap-current-complete.json",
+      "method": "inputs/gap-before.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-context-before",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe-context.json",
+      "method": "inputs/maintain-before.md",
+      "stage": "initial"
+    },
+    {
+      "id": "gap-context-after",
+      "mode": "gap",
+      "input": "inputs/gap-current-complete.json",
+      "method": "inputs/gap-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-context-after",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe-context.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "gap-positive-explicit",
+      "mode": "gap",
+      "input": "inputs/gap-positive-explicit.json",
+      "method": "inputs/gap-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "gap-context-confirm",
+      "mode": "gap",
+      "input": "inputs/gap-current-complete.json",
+      "method": "inputs/gap-after.md",
+      "stage": "confirm"
+    },
+    {
+      "id": "maintain-context-confirm",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe-context.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "confirm"
+    }
+  ],
+  "max_initial_calls": 5,
+  "max_confirm_calls": 2,
+  "criteria": "原G/M/H/J/P不改；P3原合成例缺继承依据标为fixture问题，R4显式补充另作v2，不将v1改判通过。",
+  "stop": "本诊断后停止，无新的候选方法改动；两类新结果全部适用项通过才确认重复；未过的仍候选。",
+  "limits": "与首轮差异属补输入，不能归因提示。无正式workflow运行或业务模型应用。"
+}

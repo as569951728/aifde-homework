@@ -1,0 +1,1004 @@
+{
+  "version": "model-update-impact-v2",
+  "date": "2026-11-06",
+  "status": "mentor_preparation_pending_independent_review",
+  "basis": "原材料、完整原问答与当前模型；测试题仅用于影响/回归映射",
+  "analysis_ids_note": "UP编号仅本次整理编号，不是extract_candidates返回的claim_id，不可直接拿去review/apply",
+  "rows": [
+    {
+      "id": "UP-01",
+      "title": "保留两个业务目标，补本期查数的作用",
+      "change_type": "保留并补充",
+      "old_model_anchor": "v0.4 §1、§5：原因验证与岗位提效分别观察",
+      "candidate_content": "保留理解复购变化和减少重复整理核对两个目标。本期先形成定义可追溯、可独立核对的查数，支持核范围、名单和后续分析；不能据此写原因已查明、工时已节省或复购改善。",
+      "evidence": [
+        {
+          "source": "BASE",
+          "path": "W03/实操工程/docs/w03/business_model.md",
+          "locator": "§1、§5",
+          "nature": "已采纳W02 v0.4工作副本，既有建模认识，不是新增原话"
+        },
+        {
+          "source": "D7",
+          "path": "W03/实操工程/materials/w03/07_客户内部沟通.md",
+          "locator": "运营群、范围评审安排",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "D8",
+          "path": "W03/实操工程/materials/w03/08_业务目标与工作清单.md",
+          "locator": "角色工作清单",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "L",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03855、MSG-03856、MSG-03865、MSG-03866",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "W",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+          "locator": "MSG-03910、MSG-03911",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        }
+      ],
+      "applicable_scope": "青禾整体目标与本期合成测试阶段分开",
+      "destination": "模型§1/§5：目标与候选用途；阶段成果细节进入SOW",
+      "direct_metric_ids": [],
+      "conditional_impact": "影响38项的结果解释和阶段价值说明，不改变38项计算公式；解释审查需保留因果边界。",
+      "model_test_ids": [
+        "U01",
+        "U06",
+        "E02",
+        "REG02"
+      ],
+      "still_open": "旧四季度报表复算、原因、岗位工时基线、收益目标仍未取得。",
+      "delivery_scope_effect": "澄清既有阶段价值，不增加原因分析完成/效果承诺。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-02",
+      "title": "账户、卡、订单、门店关系",
+      "change_type": "本期新增，限定旧未知",
+      "old_model_anchor": "v0.4 §2会员行、购买行、保留设计：账号/卡/人对应及字段关联待核",
+      "candidate_content": "本期测试数据中，一份members记录是一CRM账户，一账户可有多张卡和订单；订单成交门店不同于会员归属门店。账户不等于跨系统自然人，现有关系不指明某订单实际使用哪张卡。物理字段映射在字典/指标核定中展开。",
+      "evidence": [
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "orders、members、stores、cards、课程方提供的数据接入层",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "D7",
+          "path": "W03/实操工程/materials/w03/07_客户内部沟通.md",
+          "locator": "IT对接纪要",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "Z",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+          "locator": "MSG-03874、MSG-03875、MSG-03876、MSG-03877",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        }
+      ],
+      "applicable_scope": "仅本期四表测试覆盖；不推定生产身份统一或活动关联接通",
+      "destination": "模型§2：对象/关系；字段和粒度→指标核定与构建输入",
+      "direct_metric_ids": [],
+      "conditional_impact": "38项目标可能共享表关系；具体连表/维度按各指标依赖判断。成交店与归属店相关维度、会员/等级及多卡连接重点复核，不能说每项都需连卡。",
+      "model_test_ids": [
+        "U02",
+        "U03",
+        "B06",
+        "T02"
+      ],
+      "still_open": "旧POS自然人对齐、订单到卡/券/活动链路、生产关联质量仍未核。",
+      "delivery_scope_effect": "补必要语义，不增加身份治理或生产接入交付。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-03",
+      "title": "纳入产品与等级/购卡金额区分",
+      "change_type": "新增规则",
+      "old_model_anchor": "v0.4 §2会员/活跃、§4.1：范围未定，标签不能代定义",
+      "candidate_content": "本期总部月报纳入悦享年卡和家庭季卡，排除异业联名卡及体验卡。等级与付费资格不同，购卡实付不能代替卡类型和有效状态；不具本期资格不自动归为全系统免费类别。",
+      "evidence": [
+        {
+          "source": "L",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03847、MSG-03848、MSG-03853、MSG-03854",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "members、cards",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "BASE",
+          "path": "W03/实操工程/docs/w03/business_model.md",
+          "locator": "§2会员行",
+          "nature": "已采纳W02 v0.4工作副本，既有建模认识，不是新增原话"
+        }
+      ],
+      "applicable_scope": "本期总部运营月报，不改其他报表或全系统分类",
+      "destination": "模型§2/§4：范围及资格规则；六指标引用",
+      "direct_metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "conditional_impact": "其他32项不自动添加付费过滤；仅在共享连接实现改动时查无意过滤或行膨胀。",
+      "model_test_ids": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "U02"
+      ],
+      "still_open": "其他报表产品范围及全系统类别互斥仍未核。",
+      "delivery_scope_effect": "六项既定月报定义补齐，不新增筛选名单或“全部资格账户数”指标。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-04",
+      "title": "两类卡的日期端点与提前终止",
+      "change_type": "新增规则，旧未知在本期收窄",
+      "old_model_anchor": "v0.4 §2候选资格、§6历史资格待核；小林/老周初次不掌握",
+      "candidate_content": "在提问限定的两类卡范围，指定判定日须不早于生效日，早于计划结束日；有提前终止时还须早于终止日。空提前终止仅表示本记录没有提前终止，计划有效期仍限制；不能拿当前状态代历史日。",
+      "evidence": [
+        {
+          "source": "C",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03885、MSG-03886、MSG-03889、MSG-03890",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "L",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03849、MSG-03850",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "Z",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+          "locator": "MSG-03874、MSG-03875",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "cards",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        }
+      ],
+      "applicable_scope": "两类纳入卡、本期测试月报；角色确认与生产凭据分层",
+      "destination": "模型§4：资格判定；字段表达→指标核定与构建",
+      "direct_metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "conditional_impact": "日期模型若共享，按依赖检查；不向其他产品或全部报表推广。",
+      "model_test_ids": [
+        "DY01",
+        "DY02",
+        "DY03",
+        "DY04",
+        "DY05",
+        "DY06",
+        "DY07",
+        "DY08",
+        "DY09",
+        "DY10",
+        "DY11",
+        "DY12",
+        "DQ01",
+        "DQ02",
+        "DQ03",
+        "DQ04",
+        "DQ05",
+        "DQ06",
+        "DQ07",
+        "DQ08",
+        "DQ09",
+        "DQ10",
+        "DQ11",
+        "DQ12",
+        "E04"
+      ],
+      "still_open": "具体规则文件、历史执行记录及生产普适性仍缺；不阻塞本期据角色答复更新/验证。",
+      "delivery_scope_effect": "明确计算依据，不意味着生产规则/历史执行已验收。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-05",
+      "title": "账户资格与多卡去重",
+      "change_type": "新增规则",
+      "old_model_anchor": "v0.4 §2账户/卡关系及重复关联风险尚未具体化",
+      "candidate_content": "同一账户存在一张同时合范围且有效的卡即可有资格；其他失效或排除卡不否定。两张卡不能拼出不同条件；多张有效卡不重复计账户，也不重复累计同一订单。",
+      "evidence": [
+        {
+          "source": "L",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03853、MSG-03854",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "C",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03885、MSG-03886、MSG-03890",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "cards、orders",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        }
+      ],
+      "applicable_scope": "本期资格账户与其订单关联",
+      "destination": "模型§2/§4；构建的账户资格派生层及连表粒度",
+      "direct_metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "conditional_impact": "六项必须核账户/订单身份；其他32项只有受共享连接实现改动时才有间接风险，不应被迫连接卡表。",
+      "model_test_ids": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "U03"
+      ],
+      "still_open": "实际SQL连接、样本行归属和数值仍未验证。",
+      "delivery_scope_effect": "防止既定指标重复计数，未增加新业务能力。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-06",
+      "title": "有效购买与订单状态",
+      "change_type": "本期新增定义，收窄旧未知",
+      "old_model_anchor": "v0.4 §2购买记录、§6：有效购买、退款取消待核",
+      "candidate_content": "本期有效购买为paid且实付大于累计退款；取消、全退和零净额不计有效购买，部分退仍可有效。创建订单、paid订单和有效订单是不同集合，不能互相替代。",
+      "evidence": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "创建订单数、支付订单数、有效订单数、退款订单数",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "开头财务确认",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "orders",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        }
+      ],
+      "applicable_scope": "本期测试覆盖内订单定义，不追认旧四季度统计",
+      "destination": "模型§2/§4：购买语义；各统计集合/字段→指标核定",
+      "direct_metric_ids": [
+        "valid_order_count",
+        "buyer_count",
+        "selling_store_count",
+        "valid_order_items",
+        "avg_order_value",
+        "avg_buyer_value",
+        "purchase_frequency",
+        "items_per_order",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count",
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate",
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "conditional_impact": "创建/支付/退款/取消及相关比例需检查没有误套有效过滤；不把所有paid基量都改成有效单。",
+      "model_test_ids": [
+        "B01",
+        "R03",
+        "R05",
+        "C05"
+      ],
+      "still_open": "实现、原始数据独立期望及生产状态差异仍需后续核。",
+      "delivery_scope_effect": "完善既定38项的依赖，未新增订单系统功能。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-07",
+      "title": "退款归期、金额、件数与未定义",
+      "change_type": "本期定义/解释边界补充",
+      "old_model_anchor": "v0.4 §2购买/复购、§6：退款取消与计时待核",
+      "candidate_content": "本期退款按原订单下单日归属；商品订单收入与购卡实付分开。金额是整数分，展示元须换算；退款不冲减原优惠，原始购买件数不是净销量。零分母未定义，覆盖外不是零。模型保留业务区别，具体公式和输出契约分置。",
+      "evidence": [
+        {
+          "source": "D1",
+          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "locator": "退款金额、净销售额、优惠金额、有效订单商品件数",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "D2",
+          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "开头与八项比例定义",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "orders、cards、覆盖",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "CONTRACT",
+          "path": "W03/实操工程/docs/w03/contract.md",
+          "locator": "catalog单位、查询契约",
+          "nature": "工程查询契约，不是新增客户事实"
+        }
+      ],
+      "applicable_scope": "本期订单快照统计与测试覆盖",
+      "destination": "模型概念/使用边界；完整公式、时间、单位、null→指标核定/查询契约",
+      "direct_metric_ids": [
+        "payment_cents",
+        "refund_cents",
+        "net_sales_cents",
+        "gross_cents",
+        "discount_cents",
+        "valid_order_items",
+        "avg_order_value",
+        "avg_buyer_value",
+        "refund_amount_rate",
+        "discount_rate",
+        "items_per_order",
+        "first_order_sales_cents",
+        "monthly_paid_sales_cents",
+        "monthly_paid_avg_order_value",
+        "purchase_frequency",
+        "cancel_rate",
+        "refund_order_rate",
+        "monthly_repeat_rate",
+        "monthly_paid_repeat_rate"
+      ],
+      "conditional_impact": "零分母是11项比率/均值/频次的确定共同约束，均已列直接影响；覆盖外不能返回零是全部38项的共同查询约束，单列shared_contract_impacts。购买/退款人数的日期归属仍按各自订单集合核，不追加退款现金流指标。",
+      "model_test_ids": [
+        "B01",
+        "B02",
+        "B03",
+        "B05"
+      ],
+      "still_open": "退款发生日现金流、退货件数及生产制度不从现有字段推算。",
+      "delivery_scope_effect": "补既有定义与拒绝边界，不扩成现金流或净退货分析。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-08",
+      "title": "观测期首购与后续购买",
+      "change_type": "本期新增分析语义",
+      "old_model_anchor": "v0.4 §2购买/复购尚无具体观测期排序定义",
+      "candidate_content": "观测期首购是全测试历史内首笔有效订单；先按账户的日期、订单号排全历史，再筛查询窗口，非终身首购。第二笔及以后订单与月内复购人数分开。",
+      "evidence": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "观测期首购会员数、观测期首单净销售额、观测期首单数、观测期后续购买订单数",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "覆盖、orders",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        }
+      ],
+      "applicable_scope": "全测试覆盖2024-09-01至2026-09-01不含止日",
+      "destination": "模型§2：首购/后续语义；排序和窗口→指标定义/派生模型",
+      "direct_metric_ids": [
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "conditional_impact": "与注册日期、月内复购分开；用相同排序派生层的四项都需回归，不能只测首单数。",
+      "model_test_ids": [
+        "B04",
+        "T02"
+      ],
+      "still_open": "覆盖前真实购买历史未知，不能升级为终身首购。",
+      "delivery_scope_effect": "落实既定四项，不增加终身客户分析。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-09",
+      "title": "月内复购与当前分母",
+      "change_type": "报表定义新增，替换旧稿口径的适用范围",
+      "old_model_anchor": "v0.4 §2复购定义仍待核；03所述旧周报草稿曾用注册人群",
+      "candidate_content": "本期月内复购在同一自然月有效购买账户中计算：至少两笔有效订单的账户为复购群体。当前分母是当月有效购买账户，非全部注册账户；多月逐月，不把月度去重人数相加成跨月人数。",
+      "evidence": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "开头统计调整、月内购买会员数、月内复购会员数、月内复购率",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "CONTRACT",
+          "path": "W03/实操工程/docs/w03/contract.md",
+          "locator": "第29行：月度定义full_month_only",
+          "nature": "工程查询契约，不是新增客户事实"
+        },
+        {
+          "source": "ENGINE",
+          "path": "W03/实操工程/platform/fde_product/metrics/engine.py",
+          "locator": "第117–120行：full_month_only查询分支",
+          "nature": "当前本地查询引擎的静态代码限制，非客户业务禁令、非实际查询已运行"
+        }
+      ],
+      "applicable_scope": "业务材料D3限定完整自然月、全门店，未单独规定全渠道；当前工程要求月度定义设置full_month_only，其实现还禁止任何filter及除metric_time__month外的分组。技术限制不能冒称客户永久规则。",
+      "destination": "模型§2：定义需范围；三项报表特定分子分母/窗口→指标核定",
+      "direct_metric_ids": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate"
+      ],
+      "conditional_impact": "按当前工程实现，普通月内三项也不能筛渠道/会员/等级等任意条件，或按非月份维度分组；多月必须逐月展示。目录未生成前这是已知静态支持边界，后续还要真实拒绝/支持测试。旧四季度趋势不能据此重认。",
+      "model_test_ids": [
+        "R05",
+        "R07",
+        "B05",
+        "E02"
+      ],
+      "still_open": "具体各月数值、旧报表口径和历史趋势可比性仍待核。",
+      "delivery_scope_effect": "修正本期定义，不承诺解释复购下降原因。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-10",
+      "title": "月末资格选择与整月购买",
+      "change_type": "本期修正旧候选的应用",
+      "old_model_anchor": "v0.4 §2候选归类：按购买发生时资格，由学员提出且待核",
+      "candidate_content": "六项付费月报采用月末资格先选账户，再计整月有效购买。月底才生效但此前有购买仍纳入；购买时有资格月底失效则排除。本期购买人数只数合格且有有效购买账户，不能另增全体资格人数。旧购买时点方案保留历史，不用于本期六项。",
+      "evidence": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "统计选择与六项定义",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "L",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03865、MSG-03866、MSG-03867、MSG-03868、MSG-03869、MSG-03870",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "BASE",
+          "path": "W03/实操工程/docs/w03/business_model.md",
+          "locator": "§2候选归类规则",
+          "nature": "已采纳W02 v0.4工作副本，既有建模认识，不是新增原话"
+        }
+      ],
+      "applicable_scope": "六项、完整自然月、全渠道全门店；多月分列，暂不按门店/渠道拆",
+      "destination": "模型引用本期报表选择，避免与旧候选冲突；详细选择及范围→指标核定",
+      "direct_metric_ids": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "conditional_impact": "六项一起核入选账户、订单与分子分母。除D4业务范围外，当前full_month_only还禁止任何filter及除month外分组，见补充计划；其他32项不套付费资格，其中普通月内三项受相同引擎策略限制，其余按各自定义。",
+      "model_test_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "U06"
+      ],
+      "still_open": "实际查询、独立计算和输出使用仍未完成。",
+      "delivery_scope_effect": "符合既定六项；无新增第39项、任意筛选或自动触达。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-11",
+      "title": "注册统计与维度归属",
+      "change_type": "本期新增/明确",
+      "old_model_anchor": "v0.4 §2会员与购买、§4注册考核边界",
+      "candidate_content": "本期注册统计按CRM账户注册日期；归属门店及等级可用于该项分组。注册账户不是购买者或自然人；注册统计也不等于导购考核口径。12个目标维度按各指标语义和可达关系分别核。",
+      "evidence": [
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "注册会员数",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "D5",
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "members、stores、orders",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "BASE",
+          "path": "W03/实操工程/docs/w03/business_model.md",
+          "locator": "§4.5",
+          "nature": "已采纳W02 v0.4工作副本，既有建模认识，不是新增原话"
+        },
+        {
+          "source": "CONTRACT",
+          "path": "W03/实操工程/docs/w03/contract.md",
+          "locator": "维度目标与可达性",
+          "nature": "工程查询契约，不是新增客户事实"
+        }
+      ],
+      "applicable_scope": "测试注册指标及允许维度；不裁定业务考核",
+      "destination": "模型§2关系与§4使用边界；具体维度可达→构建/核定",
+      "direct_metric_ids": [
+        "new_member_count"
+      ],
+      "conditional_impact": "维度审核覆盖12项目标但不是每项指标都支持12维度；成交店/归属店分组的实际路径须核。",
+      "model_test_ids": [
+        "B06",
+        "F10",
+        "T02"
+      ],
+      "still_open": "注册计入导购考核的方法与最终确认人仍未核。",
+      "delivery_scope_effect": "完成既定注册/维度目标，不建设考核模块。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-12",
+      "title": "Excel用途与运营一般流程",
+      "change_type": "补充已有流程，不建新系统事实",
+      "old_model_anchor": "v0.4 §3运营准备、§4.7个人Excel、§6名单来源待核",
+      "candidate_content": "小林个人Excel用于优惠券活动及未购会员回访，协调相关同事确认线上/门店安排并跟进。可辅助核对，不能直接当公司统一口径或交付数据。一般步骤包括明确对象/工作、确认执行协作、跟进反馈、整理结果与未核项；具体实例、条件和完整闭环仍未知。",
+      "evidence": [
+        {
+          "source": "L",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03857、MSG-03858、MSG-03861、MSG-03862、MSG-03869、MSG-03870",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "BASE",
+          "path": "W03/实操工程/docs/w03/business_model.md",
+          "locator": "§3、§4.7、§6",
+          "nature": "已采纳W02 v0.4工作副本，既有建模认识，不是新增原话"
+        }
+      ],
+      "applicable_scope": "角色实际经手的一般做法/个人工作记录，不是统一SOP或生产数据表",
+      "destination": "模型§3/§4：局部流程和来源边界；具体Excel字段→调查待办",
+      "direct_metric_ids": [],
+      "conditional_impact": "影响问数结果解释、可核对依据展示和后续场景调查；不据此生成名单表/触达字段。",
+      "model_test_ids": [
+        "U04",
+        "F01",
+        "F03",
+        "F05",
+        "F08",
+        "F09",
+        "E05"
+      ],
+      "still_open": "具体名单来源/筛选阈值、活动实例、表字段、反馈返回及下轮决策仍未知；作废W04的60天/周一等不采用。",
+      "delivery_scope_effect": "后续工作线索，不把个人表直接接入或新建会员筛选功能。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-13",
+      "title": "优惠券支持偏好与助手权限",
+      "change_type": "补充偏好，保留原权限边界",
+      "old_model_anchor": "v0.4 §5候选支持、§4.3业务人员确认",
+      "candidate_content": "小林偏好先辅助优惠券活动的名单/执行记录整理核对与跟进；这是岗位偏好和痛点，未测工时。人群/执行方案由业务人员确认，助手不自动发券、联系或改记录；不能改写成小林本人无权限。",
+      "evidence": [
+        {
+          "source": "L",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03855、MSG-03856、MSG-03859、MSG-03860、MSG-03861、MSG-03862",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "D8",
+          "path": "W03/实操工程/materials/w03/08_业务目标与工作清单.md",
+          "locator": "小林工作清单",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "BASE",
+          "path": "W03/实操工程/docs/w03/business_model.md",
+          "locator": "§4.3、§5",
+          "nature": "已采纳W02 v0.4工作副本，既有建模认识，不是新增原话"
+        }
+      ],
+      "applicable_scope": "岗位偏好/候选支持，不是已获批交付",
+      "destination": "模型§5：候选支持及前提；后续支持范围→SOW",
+      "direct_metric_ids": [],
+      "conditional_impact": "需回归解释与权限边界；对38计算定义无直接变化。未来真做筛选才评字段、授权、人员和验证。",
+      "model_test_ids": [
+        "F02",
+        "F06",
+        "U06",
+        "REG01"
+      ],
+      "still_open": "筛选条件、负责人、替代哪些工作及效率效果基线仍待实际任务核。",
+      "delivery_scope_effect": "若纳入本期或自动触达，将是实际范围变化，不能随模型更新自动加入。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-14",
+      "title": "门店配合与核对条件",
+      "change_type": "补充既有协作条件",
+      "old_model_anchor": "v0.4 §3门店流程、§4.4/5工作量与考核",
+      "candidate_content": "门店可按判定日逐卡核并归账户；配合前说明适用范围、工作量、现场问题处理责任和工作记录。要求不清或影响考核时先澄清再安排；仍未指定具体人手/工时/时间。",
+      "evidence": [
+        {
+          "source": "C",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03885、MSG-03886、MSG-03887、MSG-03888、MSG-03889、MSG-03890",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "D8",
+          "path": "W03/实操工程/materials/w03/08_业务目标与工作清单.md",
+          "locator": "陈姐工作清单",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "BASE",
+          "path": "W03/实操工程/docs/w03/business_model.md",
+          "locator": "§3、§4.4/5",
+          "nature": "已采纳W02 v0.4工作副本，既有建模认识，不是新增原话"
+        }
+      ],
+      "applicable_scope": "角色配合条件，不是门店已接受测试任务或正式验收",
+      "destination": "模型§3/§4；具体责任/工作量/排期→SOW待定",
+      "direct_metric_ids": [],
+      "conditional_impact": "业务核对可帮助六项资格解释；计算独立验证仍由交付方准备，不能因规则可核就强派门店承担测试。",
+      "model_test_ids": [
+        "F04",
+        "F10",
+        "C01",
+        "C06"
+      ],
+      "still_open": "实际参与门店、人手工时、现场负责人、工作记录和考核确认仍待定。",
+      "delivery_scope_effect": "补协作条件，不自动增加门店执行工作或改变考核。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-15",
+      "title": "IT核查边界",
+      "change_type": "补充范围/继续保留未知",
+      "old_model_anchor": "v0.4 §3数据核查协作、§4.6接入条件",
+      "candidate_content": "说明核查对象、用途和范围后，老周配合核取数条件、统计范围/时间/说明，列待补记录与责任。具体记录名称和交付内容看实际材料；合成测试结构/覆盖/关联核对不等于生产已接通。",
+      "evidence": [
+        {
+          "source": "Z",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+          "locator": "MSG-03872、MSG-03873、MSG-03876、MSG-03877、MSG-03880、MSG-03881、MSG-03882、MSG-03883",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "D7",
+          "path": "W03/实操工程/materials/w03/07_客户内部沟通.md",
+          "locator": "IT对接纪要",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "BASE",
+          "path": "W03/实操工程/docs/w03/business_model.md",
+          "locator": "§3、§4.6",
+          "nature": "已采纳W02 v0.4工作副本，既有建模认识，不是新增原话"
+        }
+      ],
+      "applicable_scope": "本期测试与协作条件，非生产访问授权",
+      "destination": "模型§3/§4；实际接口、材料责任与依赖→SOW",
+      "direct_metric_ids": [],
+      "conditional_impact": "影响字段/覆盖检查与来源解释；工程输入只能列已有材料，不能假造生产交付。",
+      "model_test_ids": [
+        "F07",
+        "E04",
+        "U06"
+      ],
+      "still_open": "生产权限、清洗接入联调、确切材料名称/交付日期仍未定。",
+      "delivery_scope_effect": "不增加生产导入或联调承诺。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-16",
+      "title": "角色核查职责与阶段成果",
+      "change_type": "补充职责，阶段方案性质保留",
+      "old_model_anchor": "v0.4 §3数据协作及§5阶段讨论；本周新增王经理具体反馈",
+      "candidate_content": "运营核业务范围，IT核字段覆盖，王经理参与统计口径与验收依据及财务合同材料核查；交付方准备实际查询、独立核对、追溯与责任草案，客户提供/确认相应范围材料。王经理认可学员阶段提案及提出要求，不等于公司批准。",
+      "evidence": [
+        {
+          "source": "D4",
+          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "阶段验收范围与职责",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "D7",
+          "path": "W03/实操工程/materials/w03/07_客户内部沟通.md",
+          "locator": "范围评审安排",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "W",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+          "locator": "MSG-03910、MSG-03911、MSG-03918、MSG-03919、MSG-03930、MSG-03931、MSG-03932、MSG-03933",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        }
+      ],
+      "applicable_scope": "课程要求38项与客户阶段核查意见分开；本期合成测试",
+      "destination": "模型保留角色职责/权限；详细双方成果责任及阶段范围→SOW",
+      "direct_metric_ids": [],
+      "conditional_impact": "影响38项证据包与验收依据表达；测试目标不因角色支持而自动完成，核查意见不是验收签字。",
+      "model_test_ids": [
+        "A01",
+        "A02",
+        "U06",
+        "E06"
+      ],
+      "still_open": "最终验收人、审批权限/额度、执行安排责任方与正式预算合同上线仍未定。",
+      "delivery_scope_effect": "既定38项测试阶段的材料要求；会员筛选/运营执行另列后续。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-17",
+      "title": "费用、变更与延期核查要求",
+      "change_type": "新增SOW待补条目，正文只保留权限边界",
+      "old_model_anchor": "v0.4不含本期具体商业条款；sow.md仍模板",
+      "candidate_content": "费用列构成与计价依据，未定金额待确认；结算对应约定成果与记录，节点/付款尚待谈。变更书面列内容及费用责任影响；假设客户延期需记缺项/通知/影响，执行安排由执行方决定，受影响排期费用双方书面确认再复核。",
+      "evidence": [
+        {
+          "source": "W",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+          "locator": "MSG-03922、MSG-03923、MSG-03924、MSG-03925、MSG-03926、MSG-03927、MSG-03928、MSG-03929、MSG-03930、MSG-03931",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "TASK",
+          "path": "W03/W03 材料包/05_作业任务书.md",
+          "locator": "第12步SOW反馈与修订",
+          "nature": "课程要求，不是客户授权"
+        }
+      ],
+      "applicable_scope": "拟议交付条款和王经理核查要求；03928为假设，不是实际延期",
+      "destination": "SOW范围/责任/依赖/变更/未决；来源与取舍→过程记录",
+      "direct_metric_ids": [],
+      "conditional_impact": "影响交付材料，不改变指标公式或85题预期；未来出现真实范围/费用变更才履行确认。",
+      "model_test_ids": [
+        "A03",
+        "A04",
+        "A05",
+        "A06"
+      ],
+      "still_open": "费用项细算、金额/节点/比例/期限、具体执行方及批准权限均未定。",
+      "delivery_scope_effect": "不自动顺延、加费或视作已约定合同；仍需带SOW草稿/查询证据取得后续反馈。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    },
+    {
+      "id": "UP-18",
+      "title": "重分待核项与证据边界",
+      "change_type": "保留并迁移旧待核状态",
+      "old_model_anchor": "v0.4 §6全部待核清单；本周部分已获答，生产/商业仍未知",
+      "candidate_content": "本期产品、端点、多卡及月报选择已有依据，转为待模型整合/实现验证；原文件和生产历史仍待取证。旧趋势/原因、活跃定义、名单条件、优惠限制、完整闭环、考核责任及授权继续未知；不把新测试定义覆盖所有旧问题。",
+      "evidence": [
+        {
+          "source": "BASE",
+          "path": "W03/实操工程/docs/w03/business_model.md",
+          "locator": "§1、§2、§4、§6",
+          "nature": "已采纳W02 v0.4工作副本，既有建模认识，不是新增原话"
+        },
+        {
+          "source": "D3",
+          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "locator": "本期统计调整",
+          "nature": "课程指定青禾沙盘材料，非真实生产验证"
+        },
+        {
+          "source": "L",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03849、MSG-03850、MSG-03855、MSG-03856、MSG-03861、MSG-03862",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "C",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03885、MSG-03886",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "Z",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+          "locator": "MSG-03883",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        },
+        {
+          "source": "W",
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+          "locator": "MSG-03931、MSG-03933",
+          "nature": "本人有效W03角色访谈，保留提问前提和回应范围"
+        }
+      ],
+      "applicable_scope": "按事项和用途标未决，非整体全开/全关",
+      "destination": "模型对应位置保留核心未知；缺口进度→interview_notes/model_changes；商业→SOW",
+      "direct_metric_ids": [],
+      "conditional_impact": "回归85例的证据/权限/旧目标；测试预期仅作检查，不能当原始事实输入。",
+      "model_test_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06",
+        "T01",
+        "T02",
+        "T03",
+        "REG01",
+        "REG02"
+      ],
+      "still_open": "具体待核分级见unresolved列表；无已知共性规则缺口迫使暂停本次清单。",
+      "delivery_scope_effect": "不以全部未知清零作为本期建模前提；进入生产/执行/验收时相应未决会约束推进。",
+      "state": "mentor_preparation_not_native_extracted_not_adopted_not_applied"
+    }
+  ],
+  "unresolved": [
+    {
+      "id": "OPEN-01",
+      "item": "两类卡具体规则文件/历史执行凭据",
+      "current_effect": "不阻塞本期按角色确认梳理/测试；不得据此声明生产已验证",
+      "later_gate": "生产历史核验时需材料",
+      "followup": "已有记录指向运营核实，带具体记录请求，不循环索取已答规则"
+    },
+    {
+      "id": "OPEN-02",
+      "item": "各指标字段转换、查询维度可达、账户/订单入选及数值",
+      "current_effect": "不阻塞本轮材料清单；是实现/验证必做",
+      "later_gate": "不完成不得说指标正确",
+      "followup": "沿38项独立覆盖计划从原始CSV形成期望并真实运行"
+    },
+    {
+      "id": "OPEN-03",
+      "item": "优惠券筛选条件、真实活动实例、Excel字段、完整反馈链",
+      "current_effect": "保留未知；不用于六项资格/38指标计算，不追加作废W04条件",
+      "later_gate": "进入会员筛选或运营执行前需确认",
+      "followup": "具体场景/候选或查询形成后找小林及实际经手人核"
+    },
+    {
+      "id": "OPEN-04",
+      "item": "生产数据、权限、清洗接入联调",
+      "current_effect": "合成测试可继续，不声称生产可用",
+      "later_gate": "生产接入前需技术/权限确认",
+      "followup": "老周对具体对象用途与接口条件核查"
+    },
+    {
+      "id": "OPEN-05",
+      "item": "验收确认人、审批额度、执行安排责任、金额结算与付款",
+      "current_effect": "不阻塞本期模型/计算练习；SOW明确未决",
+      "later_gate": "正式签约、结算、验收、上线不可当已获批",
+      "followup": "带阶段成果与SOW定位公司实际授权/执行责任方，不让王经理代签"
+    },
+    {
+      "id": "OPEN-06",
+      "item": "复购下降原因/旧四季可比性、活跃定义、工时收益",
+      "current_effect": "目标与假设保留；本期正确查数不能证明原因或效果",
+      "later_gate": "开展原因归因或收益承诺前另需验证",
+      "followup": "核原报表人群时间、记录及效果观察设计，按已有证据讨论下一阶段"
+    }
+  ],
+  "shared_contract_impacts": [
+    {
+      "id": "ZERO-DENOMINATOR",
+      "metric_ids": [
+        "avg_order_value",
+        "avg_buyer_value",
+        "purchase_frequency",
+        "refund_amount_rate",
+        "cancel_rate",
+        "refund_order_rate",
+        "discount_rate",
+        "items_per_order",
+        "monthly_repeat_rate",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "scope": "11项分母为零返回未定义null，不是零；确定影响",
+      "source": "D2、D3、D4"
+    },
+    {
+      "id": "COVERAGE",
+      "metric_ids": [
+        "order_count",
+        "paid_order_count",
+        "valid_order_count",
+        "cancelled_order_count",
+        "refund_order_count",
+        "partial_refund_order_count",
+        "full_refund_order_count",
+        "payment_cents",
+        "refund_cents",
+        "net_sales_cents",
+        "gross_cents",
+        "discount_cents",
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items",
+        "avg_order_value",
+        "avg_buyer_value",
+        "purchase_frequency",
+        "refund_amount_rate",
+        "cancel_rate",
+        "refund_order_rate",
+        "discount_rate",
+        "items_per_order",
+        "new_member_count",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count",
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate",
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "scope": "全38项范围在数据覆盖外不得伪返回零；通用查询契约，不是38项统一过滤",
+      "source": "D2、D5、CONTRACT"
+    },
+    {
+      "id": "MONTHLY-ENGINE",
+      "metric_ids": [
+        "monthly_buyer_count",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate",
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "scope": "9项月度定义须full_month_only；无filters，仅month分组或单月无分组，多月逐月；混合查询只要含启用该策略的指标就触发",
+      "source": "CONTRACT、ENGINE；不得冒称D3业务限制新增"
+    }
+  ]
+}

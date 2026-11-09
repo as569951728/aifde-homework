@@ -1,0 +1,463 @@
+{
+  "batch": "B6",
+  "stage": "design_only",
+  "metrics": [
+    "monthly_buyer_count",
+    "monthly_repeat_buyer_count",
+    "monthly_repeat_rate"
+  ],
+  "design_count": 7,
+  "native_candidate_count": 7,
+  "original_small_cases": 6,
+  "isolated_fixture_cases": 1,
+  "rule_origin": "口径数值来自原业务材料与CSV；公开engine及已安装MetricFlow代码只用于接口限制/序列化，未据其业务实现取值。",
+  "version_policy": "成功期望锁manifest已知id；原数据及全部输入文件哈希另冻结。不锁尚未加载的catalog_sha256；未将任何候选当作实际加载库。",
+  "execution": "未构建、未真实问数、未改Skill/正式tests/judge/model/W02；只有独立CSV核算与纯比较自检。",
+  "judge_contract": {
+    "integer": "exact",
+    "ratio_rel_tol": 1e-09,
+    "ratio_abs_tol": 1e-07,
+    "null": "not equal zero",
+    "group_identity": "month key exact; allow row reorder, reject missing/extra/duplicate/mislabeled groups"
+  },
+  "metric_coverage": {
+    "monthly_buyer_count": [
+      "B6-N01",
+      "B6-M01",
+      "B6-R01",
+      "B6-Z01",
+      "B6-X01",
+      "B6-X02",
+      "B6-X03"
+    ],
+    "monthly_repeat_buyer_count": [
+      "B6-N01",
+      "B6-M01",
+      "B6-R01",
+      "B6-Z01",
+      "B6-X01",
+      "B6-X02",
+      "B6-X03"
+    ],
+    "monthly_repeat_rate": [
+      "B6-N01",
+      "B6-M01",
+      "B6-R01",
+      "B6-Z01",
+      "B6-X01",
+      "B6-X02",
+      "B6-X03"
+    ]
+  },
+  "cases": [
+    {
+      "id": "B6-N01",
+      "file": "tests-small.json",
+      "rules": [
+        "账户月订单集合>=1/>=2",
+        "零退款/部分退有效、全退取消排除",
+        "购买账户分母",
+        "普通/付费分离",
+        "等级与多卡不改变人数"
+      ],
+      "sources": [
+        "materials/w03/01_订单日报说明.md#有效订单数",
+        "materials/w03/03_会员运营周报.md#月内购买会员数/月内复购会员数/月内复购率及开头调整说明",
+        "materials/w03/05_数据字典.md#orders/members/cards及覆盖",
+        "docs/w03/business_model.md#2.核心对象、属性与关系（账户、卡、等级、有效购买）"
+      ],
+      "target_errors": [
+        "用paid行数或订单数替账户数",
+        "用所有20注册账户作为分母",
+        "取消/全退计买家",
+        "添加付费卡或等级筛选"
+      ],
+      "discrimination": [
+        "正确15买家/12复购买家=0.8；全注册分母错误为12/20=0.6。",
+        "M00002部分退款O0000003净7000分有效，加O0000018构成当月复购。",
+        "M00003 O0000004、M00008 O0000012全退；M00017取消039+全退040；M00004取消005，均不是8月买家。",
+        "M00015无卡仍有036/037两有效单；M00020仅体验卡仍有046/047两有效单；M00001普通等级有两有效单。"
+      ],
+      "gaps": [
+        "单凭N01不能区分多卡连接将单有效单放大为两单（M00001原small已经复购）；由R01补齐。"
+      ],
+      "explanation_review": [
+        "人数单位为CRM账户count，不是卡数或自然人数；复购率ratio转百分数时乘100。",
+        "有效订单须paid且实付减累计退款大于0；全退取消不凑购买或复购，部分退净额正仍有效。",
+        "这是普通月内指标；不添加会员等级、购卡金额或月末付费资格条件，不借用B7六项范围。",
+        "声明全门店全渠道，时间为Asia/Shanghai完整自然月；不因卡一对多重复订单。",
+        "查询数值与解释单独审核；本文件只规定解释审查标准，尚无真实解释可评分。",
+        "8月15、12、0.8=80%，不能解释成12/20、80原始比率或终身复购。"
+      ],
+      "native_case_ids": [
+        "B6-N01"
+      ],
+      "question": "请同时列出2026年8月青禾优选全门店、全渠道的月内购买会员数、月内复购会员数和月内复购率。",
+      "independent_expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_buyer_count",
+            "monthly_repeat_buyer_count",
+            "monthly_repeat_rate"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "rows": [
+          [
+            15,
+            12,
+            0.8
+          ]
+        ],
+        "units": {
+          "monthly_buyer_count": "count",
+          "monthly_repeat_buyer_count": "count",
+          "monthly_repeat_rate": "ratio"
+        },
+        "data_version": "qinghe-w03-20260923-small"
+      },
+      "status": "independent_expected_frozen_pending_separate_review_not_run"
+    },
+    {
+      "id": "B6-M01",
+      "file": "tests-small.json",
+      "rules": [
+        "跨连续完整月按月输出",
+        "自然月内复购",
+        "半开边界",
+        "月组身份",
+        "不可跨月合计人数或平均率"
+      ],
+      "sources": [
+        "materials/w03/01_订单日报说明.md#有效订单数",
+        "materials/w03/03_会员运营周报.md#月内购买会员数/月内复购会员数/月内复购率及开头调整说明",
+        "materials/w03/05_数据字典.md#orders/members/cards及覆盖",
+        "docs/w03/contract.md#构建输出/查询与结果"
+      ],
+      "target_errors": [
+        "M00005跨月各一单误判月内复购",
+        "合并或平均两月",
+        "交换月份标签/漏月/重复月/多月",
+        "按订单窗口总数代替账户月集合"
+      ],
+      "discrimination": [
+        "7月=11/1/1÷11，8月=15/12/12÷15；两月不同，可识别月组标签交换。",
+        "M00005 O0000006在7月31日、O0000007在8月20日，各月仅1单，均非复购；月内复购不可等于观测期后续购买。",
+        "7月复购只有M00006的O0000008/O0000009；8月1日和31日属于8月，不能丢月末或串入7月。",
+        "即使跨月26人次与13复购人次能相加，也不得冒充跨月账户数；(1/11+12/15)/2不是任一月率。"
+      ],
+      "gaps": [
+        "本题保证按月查询的分组和值；不单独测试用户主动索要跨月合计的拒绝措辞。当前7设计不追加第8题。",
+        "零业务月份按月分组是否补行不是本题覆盖范围；Z01仅不分组的单月零值合同。"
+      ],
+      "explanation_review": [
+        "人数单位为CRM账户count，不是卡数或自然人数；复购率ratio转百分数时乘100。",
+        "有效订单须paid且实付减累计退款大于0；全退取消不凑购买或复购，部分退净额正仍有效。",
+        "这是普通月内指标；不添加会员等级、购卡金额或月末付费资格条件，不借用B7六项范围。",
+        "声明全门店全渠道，时间为Asia/Shanghai完整自然月；不因卡一对多重复订单。",
+        "查询数值与解释单独审核；本文件只规定解释审查标准，尚无真实解释可评分。",
+        "必须分别说明7月约9.090909%、8月80%；不得给跨月平均代替两行，不称26个不同账户。"
+      ],
+      "native_case_ids": [
+        "B6-M01"
+      ],
+      "question": "请按自然月分别列出2026年7月和8月青禾优选全门店、全渠道的月内购买会员数、月内复购会员数和月内复购率；保留各月，不给跨月合计或平均率。",
+      "independent_expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_buyer_count",
+            "monthly_repeat_buyer_count",
+            "monthly_repeat_rate"
+          ],
+          "start": "2026-07-01",
+          "end": "2026-09-01",
+          "group_by": [
+            "metric_time__month"
+          ],
+          "filters": []
+        },
+        "columns": [
+          "metric_time__month",
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "rows": [
+          [
+            "2026-07-01 00:00:00",
+            11,
+            1,
+            0.09090909090909091
+          ],
+          [
+            "2026-08-01 00:00:00",
+            15,
+            12,
+            0.8
+          ]
+        ],
+        "units": {
+          "monthly_buyer_count": "count",
+          "monthly_repeat_buyer_count": "count",
+          "monthly_repeat_rate": "ratio"
+        },
+        "data_version": "qinghe-w03-20260923-small"
+      },
+      "status": "independent_expected_frozen_pending_separate_review_not_run"
+    },
+    {
+      "id": "B6-R01",
+      "file": "tests-fixture.json",
+      "rules": [
+        "1单与2单门槛",
+        "1有效+1全退不凑2单",
+        "取消不凑购买/复购",
+        "部分退仍有效",
+        "多卡不复制订单",
+        "跨门店跨渠道仍同账户月累计"
+      ],
+      "sources": [
+        "materials/w03/01_订单日报说明.md#有效订单数",
+        "materials/w03/03_会员运营周报.md#月内购买会员数/月内复购会员数/月内复购率及开头调整说明",
+        "materials/w03/05_数据字典.md#orders/members/cards及覆盖",
+        "docs/w03/business_model.md#2.核心对象、属性与关系（账户、卡、等级、有效购买）"
+      ],
+      "target_errors": [
+        "paid未扣全退判断",
+        "全量订单行直接算复购",
+        "卡表一对多放大单数",
+        "门店/渠道先拆分导致漏账户月复购",
+        "只算0退款订单"
+      ],
+      "discrimination": [
+        "人工M00001仅FXB6-001有效，002全退、003取消；M00002的004和005部分退净1500为两单，分属S01门店/S02小程序也应合并为该账户当月2单；M00003仅006有效，M00004仅007取消。",
+        "正确买家3、复购买家1、率1/3；paid两单算法会把M00001计复购变2/3；取消也计买家会变4人。",
+        "M00001保留原两张卡，单有效订单错误按两卡复制会将复购1变2；卡不能参与普通月内门槛。"
+      ],
+      "gaps": [
+        "原small无同账户同月一有效加一全退，故7条人工orders为专用边界；不能计作课程small或真实客户数据。",
+        "不含paid实付为0单；B2既有人工边界承接该通用有效订单规则，本批不声称独立新增覆盖。"
+      ],
+      "explanation_review": [
+        "人数单位为CRM账户count，不是卡数或自然人数；复购率ratio转百分数时乘100。",
+        "有效订单须paid且实付减累计退款大于0；全退取消不凑购买或复购，部分退净额正仍有效。",
+        "这是普通月内指标；不添加会员等级、购卡金额或月末付费资格条件，不借用B7六项范围。",
+        "声明全门店全渠道，时间为Asia/Shanghai完整自然月；不因卡一对多重复订单。",
+        "查询数值与解释单独审核；本文件只规定解释审查标准，尚无真实解释可评分。",
+        "只能说本人工隔离样本3、1、约33.333333%，不能拿来替代原small8月15、12、80%。"
+      ],
+      "native_case_ids": [
+        "B6-R01"
+      ],
+      "question": "请同时列出2026年8月青禾优选全门店、全渠道的月内购买会员数、月内复购会员数和月内复购率。",
+      "independent_expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_buyer_count",
+            "monthly_repeat_buyer_count",
+            "monthly_repeat_rate"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "rows": [
+          [
+            3,
+            1,
+            0.3333333333333333
+          ]
+        ],
+        "units": {
+          "monthly_buyer_count": "count",
+          "monthly_repeat_buyer_count": "count",
+          "monthly_repeat_rate": "ratio"
+        },
+        "data_version": "qinghe-w03-b6-independent-fixture-20261108-v1"
+      },
+      "status": "independent_expected_frozen_pending_separate_review_not_run"
+    },
+    {
+      "id": "B6-Z01",
+      "file": "tests-small.json",
+      "rules": [
+        "覆盖内完整零购买月",
+        "人数0与零分母null区分"
+      ],
+      "sources": [
+        "materials/w03/01_订单日报说明.md#有效订单数",
+        "materials/w03/03_会员运营周报.md#月内购买会员数/月内复购会员数/月内复购率及开头调整说明",
+        "materials/w03/05_数据字典.md#orders/members/cards及覆盖",
+        "docs/w03/contract.md#构建输出/查询与结果",
+        "materials/data/small/manifest.json"
+      ],
+      "target_errors": [
+        "0/0给0或100%",
+        "无行当覆盖外",
+        "把注册/持卡但不购买账户算买家",
+        "用空数组或缺字段替代确定0"
+      ],
+      "discrimination": [
+        "2026年5月在覆盖内，原orders全月0行；购买集合与复购集合为空；人数0、0，率null。members中20条账户记录仍在（其中部分注册日晚于5月）；不能用这些记录或卡表代替当月购买分母。"
+      ],
+      "gaps": [
+        "本题无订单；不能单独证明一个只有全退/取消订单月份的零购买行为，相关排除规则由N01与R01另覆盖。"
+      ],
+      "explanation_review": [
+        "人数单位为CRM账户count，不是卡数或自然人数；复购率ratio转百分数时乘100。",
+        "有效订单须paid且实付减累计退款大于0；全退取消不凑购买或复购，部分退净额正仍有效。",
+        "这是普通月内指标；不添加会员等级、购卡金额或月末付费资格条件，不借用B7六项范围。",
+        "声明全门店全渠道，时间为Asia/Shanghai完整自然月；不因卡一对多重复订单。",
+        "查询数值与解释单独审核；本文件只规定解释审查标准，尚无真实解释可评分。",
+        "说明有数据覆盖且无有效购买，复购率分母0所以未定义，不可称0%、查询失败或覆盖外。"
+      ],
+      "native_case_ids": [
+        "B6-Z01"
+      ],
+      "question": "2026年5月青禾优选全门店、全渠道的月内购买会员数、月内复购会员数和月内复购率分别是多少？",
+      "independent_expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_buyer_count",
+            "monthly_repeat_buyer_count",
+            "monthly_repeat_rate"
+          ],
+          "start": "2026-05-01",
+          "end": "2026-06-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "rows": [
+          [
+            0,
+            0,
+            null
+          ]
+        ],
+        "units": {
+          "monthly_buyer_count": "count",
+          "monthly_repeat_buyer_count": "count",
+          "monthly_repeat_rate": "ratio"
+        },
+        "data_version": "qinghe-w03-20260923-small"
+      },
+      "status": "independent_expected_frozen_pending_separate_review_not_run"
+    },
+    {
+      "id": "B6-X01",
+      "file": "tests-small.json",
+      "rules": [
+        "仅完整自然月"
+      ],
+      "sources": [
+        "materials/w03/03_会员运营周报.md#月内购买会员数/月内复购会员数/月内复购率及开头调整说明",
+        "docs/w03/contract.md#构建输出/查询与结果"
+      ],
+      "target_errors": [
+        "静默扩月或算半月"
+      ],
+      "discrimination": [
+        "8月1日至15日含15日，对应[08-01,08-16)，不是完整自然月，必须unsupported。"
+      ],
+      "gaps": [],
+      "explanation_review": [
+        "拒绝原因是月度指标仅支持完整自然月；不说无数据覆盖，不自动改为全月，不返回业务数值。"
+      ],
+      "native_case_ids": [
+        "B6-X01"
+      ],
+      "question": "请列出2026年8月1日至8月15日（含15日）青禾优选的月内购买会员数、月内复购会员数和月内复购率。",
+      "independent_expected": {
+        "status": "unsupported"
+      },
+      "status": "independent_expected_frozen_pending_separate_review_not_run"
+    },
+    {
+      "id": "B6-X02",
+      "file": "tests-small.json",
+      "rules": [
+        "仅全门店口径"
+      ],
+      "sources": [
+        "materials/w03/03_会员运营周报.md#月内购买会员数/月内复购会员数/月内复购率及开头调整说明",
+        "docs/w03/contract.md#构建输出/查询与结果"
+      ],
+      "target_errors": [
+        "把可达成交店维度等同业务支持",
+        "换成归属店分组",
+        "去掉分组返回全店"
+      ],
+      "discrimination": [
+        "问题明确成交门店分组，与全门店口径冲突；unsupported有业务材料依据。"
+      ],
+      "gaps": [],
+      "explanation_review": [
+        "应说明当前普通月内三项仅全门店，不能分店；不能声称所有指标都不支持门店。"
+      ],
+      "native_case_ids": [
+        "B6-X02"
+      ],
+      "question": "请将2026年8月青禾优选的月内购买会员数、月内复购会员数和月内复购率按订单成交门店分别列出。",
+      "independent_expected": {
+        "status": "unsupported"
+      },
+      "status": "independent_expected_frozen_pending_separate_review_not_run"
+    },
+    {
+      "id": "B6-X03",
+      "file": "tests-small.json",
+      "rules": [
+        "full_month_only当前全渠道实现边界"
+      ],
+      "sources": [
+        "docs/w03/contract.md#构建输出/查询与结果",
+        "platform/fde_product/metrics/engine.py:117-120"
+      ],
+      "target_errors": [
+        "静默删掉渠道筛选",
+        "把业务原文未说的话补成禁止",
+        "当前约束不支持却预期ok"
+      ],
+      "discrimination": [
+        "问题明确小程序筛选；当前full_month_only在filters非空时拒绝，故unsupported。"
+      ],
+      "gaps": [
+        "03原文未明确渠道禁止；这一项是当前契约/实现边界，不是业务方长期禁止的事实。"
+      ],
+      "explanation_review": [
+        "应说明当前月度查询只提供全渠道，暂不支持小程序筛选；不得说客户原文/青禾政策禁止按渠道。"
+      ],
+      "native_case_ids": [
+        "B6-X03"
+      ],
+      "question": "2026年8月青禾优选仅小程序渠道的月内购买会员数、月内复购会员数和月内复购率是多少？",
+      "independent_expected": {
+        "status": "unsupported"
+      },
+      "status": "independent_expected_frozen_pending_separate_review_not_run"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "case_id": "DQ08",
+  "started_at": "2026-11-06T15:36:20.039886+00:00",
+  "completed_at": "2026-11-06T15:36:30.134031+00:00",
+  "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "card_type": "家庭季卡",
+    "valid_from": "2026-05-20",
+    "valid_until": "2026-08-20",
+    "ended_at": "2026-08-15",
+    "decision_date": "2026-08-15"
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-7315188afb024aabbd8dbf24b1d867ba/run.json",
+    "run_id": "RUN-7315188afb024aabbd8dbf24b1d867ba",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "这是人工构造的隔离测试情境，不是客户真实卡记录或已执行查询；以下仅在题设条件成立时推导。该卡为家庭季卡，属于本期总部运营月报纳入的悦享年卡、家庭季卡产品范围，因此产品类型本身不排除其本期适用性。日期依据逐项为：1）valid_from 2026-05-20：权益自生效日期当天起有效，故2026-05-20当天已进入有效期；2）valid_until 2026-08-20：按本期已说明的端点，计划权益结束日期当天已无效，若无提前终止，该卡最晚应到2026-08-19有效；3）ended_at 2026-08-15：存在提前终止日期时，从提前终止当天起无效，故2026-08-15当天已不再有效；4）decision_date 2026-08-15：与提前终止日同日，适用“当天起无效”，因此该卡在指定判定日无效，不能作为该日有效权益卡的依据。依据为《青禾会员经营业务模型（W03第三稿草稿，待确认，未写入）》第3节产品范围与权益有效期端点规则（来源标注MSG-03886、03890、03888）及其中陈姐对两类卡端点的说明；正式规则文件和生产或历史记录核验仍未取得，本结论限于本题人工构造条件。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "1585578b213e11bf09a83894cd3b91f0ab473b95b943beeeeb064a671e526c66"
+}

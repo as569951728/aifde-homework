@@ -1,0 +1,875 @@
+{
+  "created_at": "2026-11-07T03:55:05.757120+00:00",
+  "reviewer": "/root/w03_qualification_qa_reviewer",
+  "stage": "source_first_before_batch_expectations",
+  "question_path": "artifacts/w03/operations-qa-20261107/input/original_questions.json",
+  "question_file_sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+  "sources": [
+    {
+      "key": "shen",
+      "path": "artifacts/w02/sources/W2-interview-0d5ba288-a623-56f1-84ac-bec076880d43-transcript.json",
+      "sha256": "9227f13032f2ef354d1d207b7ea99b4865f7158e521eef68fad72ee004a40001",
+      "week": 2,
+      "role_id": "ROLE-SHEN",
+      "meeting_id": "0d5ba288-a623-56f1-84ac-bec076880d43"
+    },
+    {
+      "key": "zhou",
+      "path": "artifacts/w02/sources/W2-interview-c4fe490a-ddae-5bcb-a51b-f44dd796b854-transcript.json",
+      "sha256": "3cda76145150cd3f01b51307972d081784cf86d351cb4ec1bb5c8f89663feea4",
+      "week": 2,
+      "role_id": "ROLE-ZHOU",
+      "meeting_id": "c4fe490a-ddae-5bcb-a51b-f44dd796b854"
+    },
+    {
+      "key": "lin2",
+      "path": "artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+      "sha256": "eef0d4127f42f96a0fc5219749c3355cfe8252d028b2e8e495117d1ea3821f07",
+      "week": 2,
+      "role_id": "ROLE-LIN",
+      "meeting_id": "4abeb711-5ac6-500b-a2e7-ad7a131a85d7"
+    },
+    {
+      "key": "chen2",
+      "path": "artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+      "sha256": "8c16cefc6005cd21914dc2219208e8819ca490787cb6f677347a269b62ca9920",
+      "week": 2,
+      "role_id": "ROLE-CHEN",
+      "meeting_id": "d260d7d2-47a6-5778-9d7c-47fac88a497f"
+    },
+    {
+      "key": "lin3",
+      "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+      "sha256": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71",
+      "week": 3,
+      "role_id": "ROLE-LIN",
+      "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab"
+    },
+    {
+      "key": "chen3",
+      "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+      "sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308",
+      "week": 3,
+      "role_id": "ROLE-CHEN",
+      "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51"
+    },
+    {
+      "key": "04",
+      "path": "materials/w03/04_本期统计确认邮件.md",
+      "sha256": "c4f847fd90fd0765d37ad22f20d4a4eb0bab90f8543ae0f05d7a3cbee104c4be"
+    },
+    {
+      "key": "05",
+      "path": "materials/w03/05_数据字典.md",
+      "sha256": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16"
+    },
+    {
+      "key": "08",
+      "path": "materials/w03/08_业务目标与工作清单.md",
+      "sha256": "de9d737c423cc31b2f9d60c9ba8693b9d4257a3aa69b9efedb52674aeb2efe97"
+    },
+    {
+      "key": "instructions",
+      "path": "AGENTS.md",
+      "sha256": "c93e5ea632e01662cf563ce83de2b638c74611bc2df1d3b33e04a3ebe47ad51f"
+    }
+  ],
+  "independence": "本轮先读对应原题、有效W02/W03原始问答与材料，再保存判据；保存前未读取本批作者预期或新输出。以前已读同一候选，承认项目上下文非完全盲审。",
+  "grading": {
+    "pass": "整份答案核心子问、前提、对象、结论与来源均正确；新增建议标清性质。",
+    "needs_revision": "语义错误/来源误归/编造事实/遗漏核心子问，或输出格式不满足原生协议；分开标注失败类型。",
+    "indeterminate": "无公开可判答复或真实来源冲突；不得据此计通过。"
+  },
+  "global_limits": [
+    "原始访谈仅供独立评审，模型只收冻结候选/提示/单题及题设fixture；不要求模型假称已读原始材料。",
+    "个人Excel/FDE费用与交付管理不作为业务正文必答项。",
+    "仅本题验证范围，不等于正式采纳、生产正确或经营成效。",
+    "既有DQ10/P09/B05/U01/F06原失败不关闭；不重抽样，不改正式文件/题/预期。"
+  ],
+  "selected_questions": [
+    {
+      "id": "DY01",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-19"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY02",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY03",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-21"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY04",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-19"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY05",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DY06",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-21"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ01",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-19"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ02",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ03",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-21"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ04",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-19"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ05",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ06",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-21"
+      },
+      "evaluation_domain": "业务知识问答"
+    }
+  ],
+  "cases": [
+    {
+      "id": "DY01",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-19"
+      },
+      "conclusion": "无效",
+      "expected_by_source_derivation": {
+        "product_in_scope": true,
+        "decision_date": "2025-08-19",
+        "start_condition": false,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": false
+      },
+      "required_points": [
+        "产品悦享年卡在本期纳入范围；不按等级或购卡款代替，也不扩大其他产品日期规则。",
+        "题设判定日2025-08-19，逐项比较生效日（当日起含）和计划结束日（当日起无效），结论无效；即使总结果为无效，各单独条件也必须分别正确。",
+        "ended_at为空表示题内没有提前终止，不是永远有效、不替换计划结束日，也不把判定日补成终止日。",
+        "计划与综合有效区间均为[2025-08-20, 2026-08-20)；这是卡权益区间，不随当前判定日切短，也不计端点当天。",
+        "产品范围归小林03848/03854，日期端点和空终止归陈姐03886/03888/03890；小林03850没有确认端点，04/05不定义该业务端点。",
+        "判断只在题设成立的人工情境及本期产品范围内，不因缺生产核验拒答/弱化，也不声称真实卡历史已核或执行了查询。"
+      ],
+      "unknown": "正式规则文件、生产或历史办理/执行凭据仍待核；这些缺口不妨碍对完整合成题设作判断。",
+      "failure_modes": [
+        "生效当天判无效、结束当天判有效；只核总标签不逐条件；空终止当无限期或全部日期条件通过；改题设日期；把不同角色出处混引；将完整题设降为待核。"
+      ],
+      "source_refs": [
+        "lin3:MSG-03847—03854",
+        "chen3:MSG-03885—03890",
+        "05:字段/date/空值及合成范围"
+      ]
+    },
+    {
+      "id": "DY02",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-20"
+      },
+      "conclusion": "有效",
+      "expected_by_source_derivation": {
+        "product_in_scope": true,
+        "decision_date": "2025-08-20",
+        "start_condition": true,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": true
+      },
+      "required_points": [
+        "产品悦享年卡在本期纳入范围；不按等级或购卡款代替，也不扩大其他产品日期规则。",
+        "题设判定日2025-08-20，逐项比较生效日（当日起含）和计划结束日（当日起无效），结论有效；即使总结果为无效，各单独条件也必须分别正确。",
+        "ended_at为空表示题内没有提前终止，不是永远有效、不替换计划结束日，也不把判定日补成终止日。",
+        "计划与综合有效区间均为[2025-08-20, 2026-08-20)；这是卡权益区间，不随当前判定日切短，也不计端点当天。",
+        "产品范围归小林03848/03854，日期端点和空终止归陈姐03886/03888/03890；小林03850没有确认端点，04/05不定义该业务端点。",
+        "判断只在题设成立的人工情境及本期产品范围内，不因缺生产核验拒答/弱化，也不声称真实卡历史已核或执行了查询。"
+      ],
+      "unknown": "正式规则文件、生产或历史办理/执行凭据仍待核；这些缺口不妨碍对完整合成题设作判断。",
+      "failure_modes": [
+        "生效当天判无效、结束当天判有效；只核总标签不逐条件；空终止当无限期或全部日期条件通过；改题设日期；把不同角色出处混引；将完整题设降为待核。"
+      ],
+      "source_refs": [
+        "lin3:MSG-03847—03854",
+        "chen3:MSG-03885—03890",
+        "05:字段/date/空值及合成范围"
+      ]
+    },
+    {
+      "id": "DY03",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-21"
+      },
+      "conclusion": "有效",
+      "expected_by_source_derivation": {
+        "product_in_scope": true,
+        "decision_date": "2025-08-21",
+        "start_condition": true,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": true
+      },
+      "required_points": [
+        "产品悦享年卡在本期纳入范围；不按等级或购卡款代替，也不扩大其他产品日期规则。",
+        "题设判定日2025-08-21，逐项比较生效日（当日起含）和计划结束日（当日起无效），结论有效；即使总结果为无效，各单独条件也必须分别正确。",
+        "ended_at为空表示题内没有提前终止，不是永远有效、不替换计划结束日，也不把判定日补成终止日。",
+        "计划与综合有效区间均为[2025-08-20, 2026-08-20)；这是卡权益区间，不随当前判定日切短，也不计端点当天。",
+        "产品范围归小林03848/03854，日期端点和空终止归陈姐03886/03888/03890；小林03850没有确认端点，04/05不定义该业务端点。",
+        "判断只在题设成立的人工情境及本期产品范围内，不因缺生产核验拒答/弱化，也不声称真实卡历史已核或执行了查询。"
+      ],
+      "unknown": "正式规则文件、生产或历史办理/执行凭据仍待核；这些缺口不妨碍对完整合成题设作判断。",
+      "failure_modes": [
+        "生效当天判无效、结束当天判有效；只核总标签不逐条件；空终止当无限期或全部日期条件通过；改题设日期；把不同角色出处混引；将完整题设降为待核。"
+      ],
+      "source_refs": [
+        "lin3:MSG-03847—03854",
+        "chen3:MSG-03885—03890",
+        "05:字段/date/空值及合成范围"
+      ]
+    },
+    {
+      "id": "DY04",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-19"
+      },
+      "conclusion": "有效",
+      "expected_by_source_derivation": {
+        "product_in_scope": true,
+        "decision_date": "2026-08-19",
+        "start_condition": true,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": true
+      },
+      "required_points": [
+        "产品悦享年卡在本期纳入范围；不按等级或购卡款代替，也不扩大其他产品日期规则。",
+        "题设判定日2026-08-19，逐项比较生效日（当日起含）和计划结束日（当日起无效），结论有效；即使总结果为无效，各单独条件也必须分别正确。",
+        "ended_at为空表示题内没有提前终止，不是永远有效、不替换计划结束日，也不把判定日补成终止日。",
+        "计划与综合有效区间均为[2025-08-20, 2026-08-20)；这是卡权益区间，不随当前判定日切短，也不计端点当天。",
+        "产品范围归小林03848/03854，日期端点和空终止归陈姐03886/03888/03890；小林03850没有确认端点，04/05不定义该业务端点。",
+        "判断只在题设成立的人工情境及本期产品范围内，不因缺生产核验拒答/弱化，也不声称真实卡历史已核或执行了查询。"
+      ],
+      "unknown": "正式规则文件、生产或历史办理/执行凭据仍待核；这些缺口不妨碍对完整合成题设作判断。",
+      "failure_modes": [
+        "生效当天判无效、结束当天判有效；只核总标签不逐条件；空终止当无限期或全部日期条件通过；改题设日期；把不同角色出处混引；将完整题设降为待核。"
+      ],
+      "source_refs": [
+        "lin3:MSG-03847—03854",
+        "chen3:MSG-03885—03890",
+        "05:字段/date/空值及合成范围"
+      ]
+    },
+    {
+      "id": "DY05",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-20"
+      },
+      "conclusion": "无效",
+      "expected_by_source_derivation": {
+        "product_in_scope": true,
+        "decision_date": "2026-08-20",
+        "start_condition": true,
+        "planned_end_condition": false,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": false
+      },
+      "required_points": [
+        "产品悦享年卡在本期纳入范围；不按等级或购卡款代替，也不扩大其他产品日期规则。",
+        "题设判定日2026-08-20，逐项比较生效日（当日起含）和计划结束日（当日起无效），结论无效；即使总结果为无效，各单独条件也必须分别正确。",
+        "ended_at为空表示题内没有提前终止，不是永远有效、不替换计划结束日，也不把判定日补成终止日。",
+        "计划与综合有效区间均为[2025-08-20, 2026-08-20)；这是卡权益区间，不随当前判定日切短，也不计端点当天。",
+        "产品范围归小林03848/03854，日期端点和空终止归陈姐03886/03888/03890；小林03850没有确认端点，04/05不定义该业务端点。",
+        "判断只在题设成立的人工情境及本期产品范围内，不因缺生产核验拒答/弱化，也不声称真实卡历史已核或执行了查询。"
+      ],
+      "unknown": "正式规则文件、生产或历史办理/执行凭据仍待核；这些缺口不妨碍对完整合成题设作判断。",
+      "failure_modes": [
+        "生效当天判无效、结束当天判有效；只核总标签不逐条件；空终止当无限期或全部日期条件通过；改题设日期；把不同角色出处混引；将完整题设降为待核。"
+      ],
+      "source_refs": [
+        "lin3:MSG-03847—03854",
+        "chen3:MSG-03885—03890",
+        "05:字段/date/空值及合成范围"
+      ]
+    },
+    {
+      "id": "DY06",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-21"
+      },
+      "conclusion": "无效",
+      "expected_by_source_derivation": {
+        "product_in_scope": true,
+        "decision_date": "2026-08-21",
+        "start_condition": true,
+        "planned_end_condition": false,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": false
+      },
+      "required_points": [
+        "产品悦享年卡在本期纳入范围；不按等级或购卡款代替，也不扩大其他产品日期规则。",
+        "题设判定日2026-08-21，逐项比较生效日（当日起含）和计划结束日（当日起无效），结论无效；即使总结果为无效，各单独条件也必须分别正确。",
+        "ended_at为空表示题内没有提前终止，不是永远有效、不替换计划结束日，也不把判定日补成终止日。",
+        "计划与综合有效区间均为[2025-08-20, 2026-08-20)；这是卡权益区间，不随当前判定日切短，也不计端点当天。",
+        "产品范围归小林03848/03854，日期端点和空终止归陈姐03886/03888/03890；小林03850没有确认端点，04/05不定义该业务端点。",
+        "判断只在题设成立的人工情境及本期产品范围内，不因缺生产核验拒答/弱化，也不声称真实卡历史已核或执行了查询。"
+      ],
+      "unknown": "正式规则文件、生产或历史办理/执行凭据仍待核；这些缺口不妨碍对完整合成题设作判断。",
+      "failure_modes": [
+        "生效当天判无效、结束当天判有效；只核总标签不逐条件；空终止当无限期或全部日期条件通过；改题设日期；把不同角色出处混引；将完整题设降为待核。"
+      ],
+      "source_refs": [
+        "lin3:MSG-03847—03854",
+        "chen3:MSG-03885—03890",
+        "05:字段/date/空值及合成范围"
+      ]
+    },
+    {
+      "id": "DQ01",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-19"
+      },
+      "conclusion": "无效",
+      "expected_by_source_derivation": {
+        "product_in_scope": true,
+        "decision_date": "2026-05-19",
+        "start_condition": false,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": false
+      },
+      "required_points": [
+        "产品家庭季卡在本期纳入范围；不按等级或购卡款代替，也不扩大其他产品日期规则。",
+        "题设判定日2026-05-19，逐项比较生效日（当日起含）和计划结束日（当日起无效），结论无效；即使总结果为无效，各单独条件也必须分别正确。",
+        "ended_at为空表示题内没有提前终止，不是永远有效、不替换计划结束日，也不把判定日补成终止日。",
+        "计划与综合有效区间均为[2026-05-20, 2026-08-20)；这是卡权益区间，不随当前判定日切短，也不计端点当天。",
+        "产品范围归小林03848/03854，日期端点和空终止归陈姐03886/03888/03890；小林03850没有确认端点，04/05不定义该业务端点。",
+        "判断只在题设成立的人工情境及本期产品范围内，不因缺生产核验拒答/弱化，也不声称真实卡历史已核或执行了查询。"
+      ],
+      "unknown": "正式规则文件、生产或历史办理/执行凭据仍待核；这些缺口不妨碍对完整合成题设作判断。",
+      "failure_modes": [
+        "生效当天判无效、结束当天判有效；只核总标签不逐条件；空终止当无限期或全部日期条件通过；改题设日期；把不同角色出处混引；将完整题设降为待核。"
+      ],
+      "source_refs": [
+        "lin3:MSG-03847—03854",
+        "chen3:MSG-03885—03890",
+        "05:字段/date/空值及合成范围"
+      ]
+    },
+    {
+      "id": "DQ02",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-20"
+      },
+      "conclusion": "有效",
+      "expected_by_source_derivation": {
+        "product_in_scope": true,
+        "decision_date": "2026-05-20",
+        "start_condition": true,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": true
+      },
+      "required_points": [
+        "产品家庭季卡在本期纳入范围；不按等级或购卡款代替，也不扩大其他产品日期规则。",
+        "题设判定日2026-05-20，逐项比较生效日（当日起含）和计划结束日（当日起无效），结论有效；即使总结果为无效，各单独条件也必须分别正确。",
+        "ended_at为空表示题内没有提前终止，不是永远有效、不替换计划结束日，也不把判定日补成终止日。",
+        "计划与综合有效区间均为[2026-05-20, 2026-08-20)；这是卡权益区间，不随当前判定日切短，也不计端点当天。",
+        "产品范围归小林03848/03854，日期端点和空终止归陈姐03886/03888/03890；小林03850没有确认端点，04/05不定义该业务端点。",
+        "判断只在题设成立的人工情境及本期产品范围内，不因缺生产核验拒答/弱化，也不声称真实卡历史已核或执行了查询。"
+      ],
+      "unknown": "正式规则文件、生产或历史办理/执行凭据仍待核；这些缺口不妨碍对完整合成题设作判断。",
+      "failure_modes": [
+        "生效当天判无效、结束当天判有效；只核总标签不逐条件；空终止当无限期或全部日期条件通过；改题设日期；把不同角色出处混引；将完整题设降为待核。"
+      ],
+      "source_refs": [
+        "lin3:MSG-03847—03854",
+        "chen3:MSG-03885—03890",
+        "05:字段/date/空值及合成范围"
+      ]
+    },
+    {
+      "id": "DQ03",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-21"
+      },
+      "conclusion": "有效",
+      "expected_by_source_derivation": {
+        "product_in_scope": true,
+        "decision_date": "2026-05-21",
+        "start_condition": true,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": true
+      },
+      "required_points": [
+        "产品家庭季卡在本期纳入范围；不按等级或购卡款代替，也不扩大其他产品日期规则。",
+        "题设判定日2026-05-21，逐项比较生效日（当日起含）和计划结束日（当日起无效），结论有效；即使总结果为无效，各单独条件也必须分别正确。",
+        "ended_at为空表示题内没有提前终止，不是永远有效、不替换计划结束日，也不把判定日补成终止日。",
+        "计划与综合有效区间均为[2026-05-20, 2026-08-20)；这是卡权益区间，不随当前判定日切短，也不计端点当天。",
+        "产品范围归小林03848/03854，日期端点和空终止归陈姐03886/03888/03890；小林03850没有确认端点，04/05不定义该业务端点。",
+        "判断只在题设成立的人工情境及本期产品范围内，不因缺生产核验拒答/弱化，也不声称真实卡历史已核或执行了查询。"
+      ],
+      "unknown": "正式规则文件、生产或历史办理/执行凭据仍待核；这些缺口不妨碍对完整合成题设作判断。",
+      "failure_modes": [
+        "生效当天判无效、结束当天判有效；只核总标签不逐条件；空终止当无限期或全部日期条件通过；改题设日期；把不同角色出处混引；将完整题设降为待核。"
+      ],
+      "source_refs": [
+        "lin3:MSG-03847—03854",
+        "chen3:MSG-03885—03890",
+        "05:字段/date/空值及合成范围"
+      ]
+    },
+    {
+      "id": "DQ04",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-19"
+      },
+      "conclusion": "有效",
+      "expected_by_source_derivation": {
+        "product_in_scope": true,
+        "decision_date": "2026-08-19",
+        "start_condition": true,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": true
+      },
+      "required_points": [
+        "产品家庭季卡在本期纳入范围；不按等级或购卡款代替，也不扩大其他产品日期规则。",
+        "题设判定日2026-08-19，逐项比较生效日（当日起含）和计划结束日（当日起无效），结论有效；即使总结果为无效，各单独条件也必须分别正确。",
+        "ended_at为空表示题内没有提前终止，不是永远有效、不替换计划结束日，也不把判定日补成终止日。",
+        "计划与综合有效区间均为[2026-05-20, 2026-08-20)；这是卡权益区间，不随当前判定日切短，也不计端点当天。",
+        "产品范围归小林03848/03854，日期端点和空终止归陈姐03886/03888/03890；小林03850没有确认端点，04/05不定义该业务端点。",
+        "判断只在题设成立的人工情境及本期产品范围内，不因缺生产核验拒答/弱化，也不声称真实卡历史已核或执行了查询。"
+      ],
+      "unknown": "正式规则文件、生产或历史办理/执行凭据仍待核；这些缺口不妨碍对完整合成题设作判断。",
+      "failure_modes": [
+        "生效当天判无效、结束当天判有效；只核总标签不逐条件；空终止当无限期或全部日期条件通过；改题设日期；把不同角色出处混引；将完整题设降为待核。"
+      ],
+      "source_refs": [
+        "lin3:MSG-03847—03854",
+        "chen3:MSG-03885—03890",
+        "05:字段/date/空值及合成范围"
+      ]
+    },
+    {
+      "id": "DQ05",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-20"
+      },
+      "conclusion": "无效",
+      "expected_by_source_derivation": {
+        "product_in_scope": true,
+        "decision_date": "2026-08-20",
+        "start_condition": true,
+        "planned_end_condition": false,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": false
+      },
+      "required_points": [
+        "产品家庭季卡在本期纳入范围；不按等级或购卡款代替，也不扩大其他产品日期规则。",
+        "题设判定日2026-08-20，逐项比较生效日（当日起含）和计划结束日（当日起无效），结论无效；即使总结果为无效，各单独条件也必须分别正确。",
+        "ended_at为空表示题内没有提前终止，不是永远有效、不替换计划结束日，也不把判定日补成终止日。",
+        "计划与综合有效区间均为[2026-05-20, 2026-08-20)；这是卡权益区间，不随当前判定日切短，也不计端点当天。",
+        "产品范围归小林03848/03854，日期端点和空终止归陈姐03886/03888/03890；小林03850没有确认端点，04/05不定义该业务端点。",
+        "判断只在题设成立的人工情境及本期产品范围内，不因缺生产核验拒答/弱化，也不声称真实卡历史已核或执行了查询。"
+      ],
+      "unknown": "正式规则文件、生产或历史办理/执行凭据仍待核；这些缺口不妨碍对完整合成题设作判断。",
+      "failure_modes": [
+        "生效当天判无效、结束当天判有效；只核总标签不逐条件；空终止当无限期或全部日期条件通过；改题设日期；把不同角色出处混引；将完整题设降为待核。"
+      ],
+      "source_refs": [
+        "lin3:MSG-03847—03854",
+        "chen3:MSG-03885—03890",
+        "05:字段/date/空值及合成范围"
+      ]
+    },
+    {
+      "id": "DQ06",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-21"
+      },
+      "conclusion": "无效",
+      "expected_by_source_derivation": {
+        "product_in_scope": true,
+        "decision_date": "2026-08-21",
+        "start_condition": true,
+        "planned_end_condition": false,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": false
+      },
+      "required_points": [
+        "产品家庭季卡在本期纳入范围；不按等级或购卡款代替，也不扩大其他产品日期规则。",
+        "题设判定日2026-08-21，逐项比较生效日（当日起含）和计划结束日（当日起无效），结论无效；即使总结果为无效，各单独条件也必须分别正确。",
+        "ended_at为空表示题内没有提前终止，不是永远有效、不替换计划结束日，也不把判定日补成终止日。",
+        "计划与综合有效区间均为[2026-05-20, 2026-08-20)；这是卡权益区间，不随当前判定日切短，也不计端点当天。",
+        "产品范围归小林03848/03854，日期端点和空终止归陈姐03886/03888/03890；小林03850没有确认端点，04/05不定义该业务端点。",
+        "判断只在题设成立的人工情境及本期产品范围内，不因缺生产核验拒答/弱化，也不声称真实卡历史已核或执行了查询。"
+      ],
+      "unknown": "正式规则文件、生产或历史办理/执行凭据仍待核；这些缺口不妨碍对完整合成题设作判断。",
+      "failure_modes": [
+        "生效当天判无效、结束当天判有效；只核总标签不逐条件；空终止当无限期或全部日期条件通过；改题设日期；把不同角色出处混引；将完整题设降为待核。"
+      ],
+      "source_refs": [
+        "lin3:MSG-03847—03854",
+        "chen3:MSG-03885—03890",
+        "05:字段/date/空值及合成范围"
+      ]
+    }
+  ],
+  "derivation": "产品在范围内且valid_from<=decision_date<valid_until；ended_at为null不加提前截止。所有比较及区间从原始陈姐规则与题设独立计算，保存前未读作者预期。",
+  "source_scope": "本批12题均ended_at=null，只覆盖两产品计划日期端点邻域；不关闭已测DQ10提前终止失败。"
+}

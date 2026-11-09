@@ -1,0 +1,73 @@
+{
+  "passed": true,
+  "items": [
+    {
+      "model": "orders",
+      "check": "primary_key",
+      "columns": [
+        "order_id"
+      ],
+      "rows": 48,
+      "null_rows": 0,
+      "duplicate_rows": 0,
+      "passed": true
+    },
+    {
+      "model": "orders",
+      "entity": "member",
+      "target": "members",
+      "check": "foreign_key",
+      "unmatched_rows": 0,
+      "passed": true
+    },
+    {
+      "model": "orders",
+      "entity": "store",
+      "target": "store",
+      "check": "foreign_key",
+      "unmatched_rows": 0,
+      "passed": true
+    },
+    {
+      "model": "members",
+      "check": "primary_key",
+      "columns": [
+        "member_id"
+      ],
+      "rows": 20,
+      "null_rows": 0,
+      "duplicate_rows": 0,
+      "passed": true
+    },
+    {
+      "model": "members",
+      "entity": "home_store",
+      "target": "home_store",
+      "check": "foreign_key",
+      "unmatched_rows": 0,
+      "passed": true
+    },
+    {
+      "model": "store",
+      "check": "primary_key",
+      "columns": [
+        "store_id"
+      ],
+      "rows": 3,
+      "null_rows": 0,
+      "duplicate_rows": 0,
+      "passed": true
+    },
+    {
+      "model": "home_store",
+      "check": "primary_key",
+      "columns": [
+        "store_id"
+      ],
+      "rows": 3,
+      "null_rows": 0,
+      "duplicate_rows": 0,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "case_id": "DY02",
+  "started_at": "2026-11-07T03:58:16.752955+00:00",
+  "completed_at": "2026-11-07T03:58:30.652388+00:00",
+  "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "card_type": "悦享年卡",
+    "valid_from": "2025-08-20",
+    "valid_until": "2026-08-20",
+    "ended_at": null,
+    "decision_date": "2025-08-20"
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-87ae7faaa84245898a1f83228be08e9f/run.json",
+    "run_id": "RUN-87ae7faaa84245898a1f83228be08e9f",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "判定日：2025-08-20\n产品范围：纳入\n结论：有效\n\n| 检查项 | 题设日期 | 判定日是否满足本项条件 | 依据 |\n| --- | --- | --- | --- |\n| 生效日 | 2025-08-20 | 是 | 陈姐 MSG-03886、03888：权益在生效日期当天起有效；判定日等于生效日，含起点。 |\n| 计划结束日 | 2026-08-20 | 是 | 陈姐 MSG-03886、03888：计划权益结束日期当天已无效；判定日早于该日。 |\n| 提前终止日 | 空 | 是 | 题设提前终止为空；陈姐 MSG-03886、03890：空表示无提前终止，仍受计划结束日限制，本项不构成提前失效。 |\n\n| 区间种类 | 起点 | 含起点 | 终点 | 含终点 |\n| --- | --- | --- | --- | --- |\n| 计划区间 | 2025-08-20 | 是 | 2026-08-20 | 否 |\n| 综合有效区间 | 2025-08-20 | 是 | 2026-08-20 | 否 |\n\n来源与范围：产品范围依据小林 MSG-03848、03854（本期月报纳入悦享年卡与家庭季卡，本题为悦享年卡）。日期规则依据陈姐 MSG-03886、03888、03890。本次结论仅为基于题设人工构造字段的隔离情境推导，不是客户真实记录、生产核验或已执行查询；正式规则文件与生产历史凭据仍未取得。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "423bf1e29fadb4ae38d01b0aa135a985ec7dc064cbf1137a2e1b83fe16e51ad8"
+}

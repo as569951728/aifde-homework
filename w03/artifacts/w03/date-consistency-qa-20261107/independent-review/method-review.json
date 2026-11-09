@@ -1,0 +1,281 @@
+{
+  "created_at": "2026-11-06T16:05:01.244895+00:00",
+  "reviewer": "same independent test review Agent",
+  "status": "method_acceptable_pending_concrete_implementation_and_input_review",
+  "reviewer_only": true,
+  "no_future_actual_answers_read": true,
+  "no_model_calls": true,
+  "prior_criteria_path": "artifacts/w03/date-boundary-qa-20261106/independent-review/source-first-criteria.json",
+  "prior_criteria_sha256": "056f489082f3a33f05c19822eda426c933bca538264a2eccddc2ce82432c2078",
+  "source_hash_verification": [
+    {
+      "id": "statistics_email",
+      "path": "materials/w03/04_本期统计确认邮件.md",
+      "sha256": "c4f847fd90fd0765d37ad22f20d4a4eb0bab90f8543ae0f05d7a3cbee104c4be",
+      "actual_sha256": "c4f847fd90fd0765d37ad22f20d4a4eb0bab90f8543ae0f05d7a3cbee104c4be",
+      "unchanged": true
+    },
+    {
+      "id": "test_dictionary",
+      "path": "materials/w03/05_数据字典.md",
+      "sha256": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16",
+      "actual_sha256": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16",
+      "unchanged": true
+    },
+    {
+      "id": "chen",
+      "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+      "sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308",
+      "actual_sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308",
+      "unchanged": true
+    },
+    {
+      "id": "lin",
+      "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+      "sha256": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71",
+      "actual_sha256": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71",
+      "unchanged": true
+    },
+    {
+      "id": "zhou",
+      "path": "artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+      "sha256": "4d60b0499cfff1ce466183fa32c6c593956abe0513d1336ded239e4e53f3211c",
+      "actual_sha256": "4d60b0499cfff1ce466183fa32c6c593956abe0513d1336ded239e4e53f3211c",
+      "unchanged": true
+    },
+    {
+      "id": "questions",
+      "path": "artifacts/w03/model-input-preflight-20261106/effective_tests/model_questions.json",
+      "sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+      "actual_sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+      "unchanged": true
+    }
+  ],
+  "assessment": "方法可行。结构化回答增加可检查的中间业务判据，离线检查独立裁定输出是否正确，并不替模型回答；成立前提是原始输出保留、独立oracle不入模型、语义和来源仍单独审核。此结论不是实现通过或真实12题通过。",
+  "necessary_checks": [
+    {
+      "id": "M01",
+      "area": "frozen_input_and_isolation",
+      "required": "第三稿、原题/fixture/预期、原来源与正式文件均冻结；模型只收到原第三稿、当前单题/fixture及中性输出结构要求，不收到独立计算结果、检查器、失败详解、期待布尔、目标区间或其他题。",
+      "verification": "逐真实request和attempt比较精确输入；保存manifest与保护文件哈希；旧R2失败保留。"
+    },
+    {
+      "id": "M02",
+      "area": "neutral_structure",
+      "required": "输出结构应分别容纳：题设字段回写或引用、指定判定日、每项日期条件及结果、计划区间、综合有效区间、各端点是否包含、最终单卡结论、逐断言依据与简短解释。条件边界/布尔/日期由被测模型填写，不在格式示例或schema const中给出正确值。",
+      "verification": "审schema/提示及完整模型请求；结构固定不等于填入业务答案。"
+    },
+    {
+      "id": "M03",
+      "area": "strict_types_and_preserved_raw",
+      "required": "原始回答全文不可覆写；解析结果另存。检查真正布尔而非字符串/整数，严格有效ISO日期，必填字段及完整单题对象，无漏字段、重复键或尾随数据。若使用课程唯一answer字符串，需明确兼容解析方式并保留外层原生结构；不得修改课程执行契约以假装成功。",
+      "verification": "结构错误单列，失败不通过清理/补值/自动改答案后改判。"
+    },
+    {
+      "id": "M04",
+      "area": "fixture_identity",
+      "required": "检查输出所用card_type、valid_from、valid_until、ended_at及decision_date与当前fixture相符；空值与非空不得混用；hypothetical_run_date不能替换decision_date。",
+      "verification": "每字段与冻结题设对照；禁止仅核模型输出彼此一致。"
+    },
+    {
+      "id": "M05",
+      "area": "condition_values",
+      "required": "在评审/检查器侧，依据冻结原材料独立核 valid_from <= d、d < valid_until，以及 ended_at为空或d<ended_at。三条件合取；本期产品范围独立核实，不加等级/支付金额/订单前提。",
+      "verification": "模型列出的条件、布尔与题设实际比较均一致；空终止不是跳过计划截止；不得按第一个失败条件短路而不核其他模型声明。"
+    },
+    {
+      "id": "M06",
+      "area": "intervals_and_endpoint_flags",
+      "required": "计划区间为[valid_from,valid_until)；综合区间上界取计划截止与非空终止的较早日，下界仍valid_from且包含，上界不含。两区间及端点标记分别核对，不能由模型声称的区间反向自证。",
+      "verification": "尤其抓住R2 DQ12：最终无效虽对，综合窗口仍不能写到8月20日。较晚ended_at不延长计划截止；null不产生无穷上界。"
+    },
+    {
+      "id": "M07",
+      "area": "cross_consistency_and_independent_truth",
+      "required": "最终结论须同时等于独立原材料规则判定、模型各项布尔合取、判定日对综合区间的成员判断。模型条件/区间/结论即使全部互相一致，只要相对题设和规则错，仍失败。",
+      "verification": "另设“同步改错布尔+区间+结论但内部自洽”的负例，防止只做自洽检查。"
+    },
+    {
+      "id": "M08",
+      "area": "full_semantics_and_sources",
+      "required": "机器检查后仍独立全文审核：结构外/解释文字与结构不矛盾，依据和断言匹配，卡有效性不偷换账户整体资格，角色陈述不升级制度/IT核验；已有规则可做情境推导，正式材料待补不等于拒答。",
+      "verification": "自动检查通过只叫结构/日期一致性通过；来源错挂、叙述冲突等单独失败。可准确引用模型章节，不强制关键词或某个消息ID组合。"
+    },
+    {
+      "id": "M09",
+      "area": "failure_recording_and_metrics",
+      "required": "保留schema、字段/条件、区间、最终结论、完整语义各层结果及原文；一次一答，不按检查失败自动重试。实际HTTP attempts另计，语义失败不挑样。",
+      "verification": "12题只报告本批本条件；旧R1/R2不改判；检查器离线正负例通过不当真实模型问答通过。"
+    },
+    {
+      "id": "M10",
+      "area": "checker_test_independence",
+      "required": "离线正例预期来自已冻结原材料判据及人工可复核fixture，不使用待测checker本身生成所有期望。负例在有效样本上逐项破坏并预先指定预期失败类别；至少有一个原R2 DQ12同类冲突负例。",
+      "verification": "检查器对原始错误不能先替换成自身计算结果再判通过；保存变异前后、预期失败项和实得检测结果。"
+    }
+  ],
+  "proposed_live_scope": {
+    "case_ids": [
+      "DY07",
+      "DY08",
+      "DY09",
+      "DY10",
+      "DY11",
+      "DY12",
+      "DQ07",
+      "DQ08",
+      "DQ09",
+      "DQ10",
+      "DQ11",
+      "DQ12"
+    ],
+    "count": 12,
+    "decision": "作为本次提前终止/综合区间缺陷的有界回归足够，不必为已有规则再问本人；不等于全24日期覆盖。",
+    "coverage": [
+      {
+        "case_ids": [
+          "DY07",
+          "DQ07"
+        ],
+        "branch": "提前终止前一天，三日期条件均满足；有效正例"
+      },
+      {
+        "case_ids": [
+          "DY08",
+          "DQ08"
+        ],
+        "branch": "提前终止当天不含；无效"
+      },
+      {
+        "case_ids": [
+          "DY09",
+          "DQ09"
+        ],
+        "branch": "提前终止之后但计划结束之前；无效"
+      },
+      {
+        "case_ids": [
+          "DY10",
+          "DQ10"
+        ],
+        "branch": "终止日期晚于计划截止，判定日等于计划结束；不能延长"
+      },
+      {
+        "case_ids": [
+          "DY11",
+          "DQ11"
+        ],
+        "branch": "空终止的历史判定日处于有效区间，假定运行日已过期；有效"
+      },
+      {
+        "case_ids": [
+          "DY12",
+          "DQ12"
+        ],
+        "branch": "未生效且非空未来终止；无效结论不能掩盖综合区间错误"
+      }
+    ],
+    "missing_from_live_batch": [
+      "生效当天端点",
+      "空终止情况下计划结束前一天/当天/后一天",
+      "提前终止恰等于计划截止的相等分支（若实现显式区分上界来源）"
+    ],
+    "handling": "生效当天与空终止截止边界至少进入检查器离线正负例。相等分支若实现需要区分也加离线例；不要把这些离线结果说成模型已执行该分支。原题集不改。"
+  },
+  "offline_checker_test_requirements": [
+    {
+      "id": "T01",
+      "type": "positive",
+      "scenario": "提前终止早于计划截止，判定日在开始与提前终止之间；完整字段及两个区间正确。",
+      "expectation": "通过"
+    },
+    {
+      "id": "T02",
+      "type": "positive",
+      "scenario": "空终止且判定日为生效当天；下界包含、计划截止仍约束。",
+      "expectation": "通过"
+    },
+    {
+      "id": "T03",
+      "type": "positive",
+      "scenario": "空终止，计划结束前一天/当天/后一天；正确结论及端点。",
+      "expectation": "分别有效/无效/无效，均为正确答复应通过"
+    },
+    {
+      "id": "T04",
+      "type": "positive",
+      "scenario": "提前终止晚于计划截止；综合截止取计划截止。",
+      "expectation": "通过"
+    },
+    {
+      "id": "T05",
+      "type": "positive",
+      "scenario": "指定历史判定日与运行日不同，使用历史日。",
+      "expectation": "通过"
+    },
+    {
+      "id": "T06",
+      "type": "negative",
+      "scenario": "仿R2 DQ12：保留正确未生效结论/各条件，把综合截止错写计划截止。",
+      "expectation": "综合区间不符合原材料与题设，必须失败"
+    },
+    {
+      "id": "T07",
+      "type": "negative",
+      "scenario": "正确有效结论不变，只把综合下界改一天；或只把计划区间改错。",
+      "expectation": "相应区间失败，不能只看最终结论"
+    },
+    {
+      "id": "T08",
+      "type": "negative",
+      "scenario": "将开始端不含或结束端包含；使用端点当天fixture以暴露边界。",
+      "expectation": "端点标记/规则失败"
+    },
+    {
+      "id": "T09",
+      "type": "negative",
+      "scenario": "分别翻转每个日期条件布尔；null分支误作有终止；只检查一个失败条件而忽略其余。",
+      "expectation": "条件对题设不符，失败"
+    },
+    {
+      "id": "T10",
+      "type": "negative",
+      "scenario": "保持条件/区间正确，仅翻转最终结论，正例反转与负例反转都覆盖。",
+      "expectation": "结论合取/区间成员关系不符，失败"
+    },
+    {
+      "id": "T11",
+      "type": "negative",
+      "scenario": "把条件、综合区间与最终结论一起改成互相自洽但相对真实题设错误。",
+      "expectation": "独立规则核对失败，不能被内部一致性放过"
+    },
+    {
+      "id": "T12",
+      "type": "negative",
+      "scenario": "用运行日替换指定判定日，或更换输入卡类型/起止/终止字段后给内部自洽结果。",
+      "expectation": "fixture身份核对失败"
+    },
+    {
+      "id": "T13",
+      "type": "negative",
+      "scenario": "缺字段、布尔字符串/整数、无效日期、重复键、尾随额外对象。",
+      "expectation": "明确结构失败，不自动修复通过"
+    },
+    {
+      "id": "T14",
+      "type": "semantic_gate",
+      "scenario": "结构完全正确，解释却给错误有效窗口/错误来源/生产已核验。",
+      "expectation": "若检查器不覆盖自然语言，机器项可过但独立完整语义必须失败；不得报告整体通过"
+    }
+  ],
+  "out_of_scope_input_handling": "本12题fixture均有合法日期且起点早于综合截止；缺失/无效日期等作为契约拒绝测试。若扩展到提前终止早于生效等未选情境，先明确支持范围或拒绝，不补造生产异常规则。",
+  "remaining_before_live_execution": [
+    "审核具体提示/输出结构没有预填规则答案",
+    "审核checker实现、独立离线正负例与错误分类",
+    "审核runner逐请求输入隔离和原始答案保留",
+    "冻结候选和12题输入哈希后再运行，每题一次"
+  ],
+  "business_decisions_needed": [],
+  "preserved_history": "R1日期24/24但来源4项失败、R2完整7/8且DQ12综合区间失败，均原样保留；新批成绩不能与旧提示成绩拼接冒称新版本全套通过。",
+  "formal_artifact_policy": "不替换正式模型/notes/prompt/Skill/config或工作流。"
+}

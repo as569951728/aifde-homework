@@ -1,0 +1,86 @@
+{
+  "case_id": "B2-E01",
+  "kind": "mentor_answer_copy_not_native_rerun",
+  "prepared_at": "2026-11-09",
+  "original_report": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json",
+  "original_trace": "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/traces/65f48e99-b4bb-4b6d-baba-056d1bb5a8b8/result.json",
+  "original_trace_sha256": "b20f49a1a7f32a8996c9c5fb429301814df530f06670bc54a56f0b9d2680587a",
+  "question": "请同时列出2026年6月1日至6月29日（含首尾）青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数。",
+  "original_text_field": "answer",
+  "original_answer": "本次在青禾客户数据范围内统计订单笔数。实际执行日期为2026-06-01至2026-06-30（含首尾），比所问截止6月29日多包含6月30日一天。该区间内：创建订单数0、支付订单数0、有效订单数0、取消订单数0、退款订单数0、部分退款订单数0、全额退款订单数0。以上均为覆盖范围内的计数零，不是未定义；由于整段七项计数均为0，所问6月1日至6月29日同样为0。口径：创建订单按订单号计全部订单并含取消单；支付订单为已支付订单（含后续退款）；有效订单为已支付且实付减退款大于0；取消订单为取消状态；退款订单含部分与全额退款，部分退款为退款大于0且小于实付，全额退款为实付大于0且退款等于实付。限制：结果为合成测试数据，未按门店或会员分组；本答案只反映订单计数，不涉及金额或人数。",
+  "corrected_answer": "本次在青禾客户数据范围内统计订单笔数。实际执行日期为2026年6月1日至6月29日（含首尾），对应半开区间[2026-06-01,2026-06-30)，不包含6月30日，与所问范围一致。该区间内：创建订单数0、支付订单数0、有效订单数0、取消订单数0、退款订单数0、部分退款订单数0、全额退款订单数0。以上均为覆盖范围内的计数零，不是未定义；七项零值对应的就是所问6月1日至6月29日范围。口径：创建订单按订单号计全部订单并含取消单；支付订单为已支付订单（含后续退款）；有效订单为已支付且实付减退款大于0；取消订单为取消状态；退款订单含部分与全额退款，部分退款为退款大于0且小于实付，全额退款为实付大于0且退款等于实付。限制：结果为合成测试数据，未按门店或会员分组；本答案只反映订单计数，不涉及金额或人数。",
+  "original_actual": {
+    "status": "ok",
+    "intent": {
+      "metrics": [
+        "order_count",
+        "paid_order_count",
+        "valid_order_count",
+        "cancelled_order_count",
+        "refund_order_count",
+        "partial_refund_order_count",
+        "full_refund_order_count"
+      ],
+      "start": "2026-06-01",
+      "end": "2026-06-30",
+      "group_by": [],
+      "filters": []
+    },
+    "sql": "SELECT\n  SUM(1) AS order_count\n  , SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END) AS paid_order_count\n  , SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS valid_order_count\n  , SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled_order_count\n  , SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS refund_order_count\n  , SUM(CASE WHEN status = 'paid' AND refund_cents > 0 AND refund_cents < paid_cents THEN 1 ELSE 0 END) AS partial_refund_order_count\n  , SUM(CASE WHEN status = 'paid' AND paid_cents > 0 AND refund_cents = paid_cents THEN 1 ELSE 0 END) AS full_refund_order_count\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-06-01' AND '2026-06-29'",
+    "columns": [
+      "order_count",
+      "paid_order_count",
+      "valid_order_count",
+      "cancelled_order_count",
+      "refund_order_count",
+      "partial_refund_order_count",
+      "full_refund_order_count"
+    ],
+    "rows": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "seconds": 0.043,
+    "units": {
+      "order_count": "count",
+      "paid_order_count": "count",
+      "valid_order_count": "count",
+      "cancelled_order_count": "count",
+      "refund_order_count": "count",
+      "partial_refund_order_count": "count",
+      "full_refund_order_count": "count"
+    },
+    "data_version": "qinghe-w03-20260923-small",
+    "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+    "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+    "answer": "本次在青禾客户数据范围内统计订单笔数。实际执行日期为2026-06-01至2026-06-30（含首尾），比所问截止6月29日多包含6月30日一天。该区间内：创建订单数0、支付订单数0、有效订单数0、取消订单数0、退款订单数0、部分退款订单数0、全额退款订单数0。以上均为覆盖范围内的计数零，不是未定义；由于整段七项计数均为0，所问6月1日至6月29日同样为0。口径：创建订单按订单号计全部订单并含取消单；支付订单为已支付订单（含后续退款）；有效订单为已支付且实付减退款大于0；取消订单为取消状态；退款订单含部分与全额退款，部分退款为退款大于0且小于实付，全额退款为实付大于0且退款等于实付。限制：结果为合成测试数据，未按门店或会员分组；本答案只反映订单计数，不涉及金额或人数。",
+    "question": "请同时列出2026年6月1日至6月29日（含首尾）青禾优选的创建订单数、支付订单数、有效订单数、取消订单数、退款订单数、部分退款订单数、全额退款订单数。",
+    "trace_id": "65f48e99-b4bb-4b6d-baba-056d1bb5a8b8",
+    "elapsed_seconds": 15.563,
+    "model_usage": {
+      "prompt_tokens": 11823,
+      "completion_tokens": 1835,
+      "total_tokens": 13658
+    },
+    "model_calls_with_usage": 2
+  },
+  "changed_fields": [
+    "answer"
+  ],
+  "reason": "查询日期为半开区间，不包含结束日",
+  "sources": [
+    "materials/w03/01_订单日报说明.md",
+    "docs/w03/contract.md"
+  ],
+  "model_calls": 0,
+  "queries": 0,
+  "native_score_changed": false,
+  "automatic_product_fix": false
+}

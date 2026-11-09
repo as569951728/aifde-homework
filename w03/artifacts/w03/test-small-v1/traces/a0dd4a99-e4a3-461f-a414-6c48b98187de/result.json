@@ -1,0 +1,50 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "buyer_count",
+      "refund_buyer_count",
+      "selling_store_count",
+      "valid_order_items"
+    ],
+    "start": "2026-08-15",
+    "end": "2026-08-16",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then member_id end) AS buyer_count\n  , COUNT(DISTINCT case when status = 'paid' and refund_cents > 0 then member_id end) AS refund_buyer_count\n  , COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then store_id end) AS selling_store_count\n  , SUM(case when status = 'paid' and paid_cents - refund_cents > 0 then quantity else 0 end) AS valid_order_items\nFROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-15' AND '2026-08-15'",
+  "columns": [
+    "buyer_count",
+    "refund_buyer_count",
+    "selling_store_count",
+    "valid_order_items"
+  ],
+  "rows": [
+    [
+      1,
+      1,
+      1,
+      1
+    ]
+  ],
+  "seconds": 0.037,
+  "units": {
+    "buyer_count": "count",
+    "refund_buyer_count": "count",
+    "selling_store_count": "count",
+    "valid_order_items": "count"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "基于本周合成测试库，青禾优选在2026年8月15日（系统时间窗口以2026-08-15至2026-08-16为边界）的汇总结果为：购买会员数1个CRM会员账户，退款会员数1个CRM会员账户，成交门店数1个门店，有效订单商品件数1件。人数按CRM会员账户计数，不跨系统自然人；退款会员数按已支付且退款金额大于0的订单关联会员去重；成交门店数按有效订单的订单成交门店去重，不是会员归属门店；有效订单商品件数为有效订单原始购买件数合计，不是扣退货后的净销量。结果为该客户范围内的汇总值，未按门店分组。",
+  "question": "请同时列出2026年8月15日青禾优选的购买会员数、退款会员数、成交门店数和有效订单商品件数。",
+  "trace_id": "a0dd4a99-e4a3-461f-a414-6c48b98187de",
+  "elapsed_seconds": 59.572,
+  "model_usage": {
+    "prompt_tokens": 12779,
+    "completion_tokens": 1264,
+    "total_tokens": 14043
+  },
+  "model_calls_with_usage": 2
+}

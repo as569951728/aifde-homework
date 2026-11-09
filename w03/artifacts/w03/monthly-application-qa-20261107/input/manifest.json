@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-07",
+  "frozen_at": "2026-11-06T17:33:21.248467+00:00",
+  "frozen_before_execution": true,
+  "case_ids": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07"
+  ],
+  "files": {
+    "input/business_model.md": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+    "input/knowledge.json": "cdc7a4980451485681db674eb3ae2aae1d08b19e74497b20cb822da9d3b52613",
+    "input/knowledge_prompt.txt": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+    "input/materials/01_订单日报说明.md": "976fa129493e6bd2861a58d74df2ba3ad4448ea01a2d25651124222a61cebb67",
+    "input/materials/03_会员运营周报.md": "25ab933556bf34bef21b528d4c7838c9baad33ae289d59f09501e765080bb492",
+    "input/materials/04_本期统计确认邮件.md": "c4f847fd90fd0765d37ad22f20d4a4eb0bab90f8543ae0f05d7a3cbee104c4be",
+    "input/materials_index.json": "49439fc9fafa735834a8e3e60fcdb7afb6bb8a232fa1b9267b3dc1f0ba38da4b",
+    "input/original_questions.json": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+    "input/protected.json": "25cd04dd8392eb12803de036ce08c4c890f2fef2a57d0f15e2d86d42f74df980",
+    "input/reviewer_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+    "input/selected_questions.json": "93c9e46ed944e7f50ebea3c894611f8733fad91d3cb435c323f9c0aed5e9dc87"
+  },
+  "source_question_sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+  "source_expectation_sha256": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+  "condition": "Same candidate body and prompt as previous29QA; seven new predesigned fixed-material cases, no altered questions or expected answers.",
+  "tested_input": "Course GUARD + unchanged candidate/prompt + original single question and its exact designated source text only. Material wrapper is inside course question field; native settings/request preserve it. No expected/other questions/tools.",
+  "runtime_plan": {
+    "model": "deepseek-flash",
+    "profile": "deepseek-json",
+    "max_tokens": 8192,
+    "retry_max_tokens": 16384,
+    "timeout_seconds": 180,
+    "retry_timeout_seconds": 240,
+    "max_concurrency": 2,
+    "answers_per_case": 1,
+    "automatic_semantic_retry": false
+  },
+  "stop_rule": "One answer per seven cases; no semantic retry or prompt/body changes this step. Preserve any failures. PriorDQ10/P09 not closed by this batch."
+}

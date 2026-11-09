@@ -1,0 +1,25 @@
+{
+  "case_id": "U05",
+  "started_at": "2026-11-07T03:59:43.370599+00:00",
+  "completed_at": "2026-11-07T03:59:54.815551+00:00",
+  "question": "请审查以下说法，逐条说明可采用、需要修正或尚不能判断，并给依据：A.陈姐已给本期卡日期规则，但具体文件与历史凭据未取得；B.小林独立证实之前项目全面无人使用；C.模型尚未核实反馈怎样返回门店，所以青禾没有这一环节；D.80万活跃与120万全量可直接算出活跃率；E.王经理认可分期思路，所以最终验收已获批准。",
+  "fixture": null,
+  "input_track": "model_with_source_context",
+  "fixed_materials": [
+    "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+    "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+    "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+  ],
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-cab6f8f9baff47b4834eda6619e59208/run.json",
+    "run_id": "RUN-cab6f8f9baff47b4834eda6619e59208",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "逐条审查如下：\n\nA. 可采用。陈姐已说明本期悦享年卡、家庭季卡的有效期端点：生效日当天有效，计划结束日当天无效，存在提前终止日时从该日当天起无效；提前终止为空仅表示无提前终止，仍受计划结束日限制。她也明确具体规则文件和历史执行凭据不掌握、需向运营小林核实；业务模型第5节同样保留正式规则文件、办理记录及生产/历史凭据未取得。依据：陈姐 MSG-03886、03888、03890；业务模型第3节规则3、第5节。\n\nB. 需要修正。材料中小林只说“上一个项目最后没人用”，并称“多了三步”是个人感受、不是精确操作清单，具体页面和步骤不掌握。这不足以构成“独立证实”，也不能扩大为“全面无人使用”；应改为小林基于个人使用的有限陈述，实际范围与证据待核。依据：小林 MSG-01919、01921。\n\nC. 需要修正，结论应为尚不能判断。业务模型将“反馈的分析接收者、答复返回门店的方式及进入下一轮决策的衔接”列为待核，只表示该环节如何运作未核实，不能推出青禾没有这一环节。依据：业务模型第4节“反馈整理与后续”、第5节未决事项。\n\nD. 需要修正。80万是沈总所说的活跃会员，120万是老周所说的系统全量会员，两者定义、范围、时点与来源需分别核查；现有依据不支持直接相减、计算活跃率或断言同口径矛盾。依据：业务模型第1节及来源索引 MSG-01719、01744。\n\nE. 需要修正。王经理仅表示阶段划分思路可以，并明确最终验收确认人和授权额度不在其职责内，自己只能提核查意见，不构成审批或承诺；最终验收尚未获批准。依据：王经理 MSG-03911、03931、03933。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "f3afd0b974a01311ef19b5e1be6519c4b34ddbd91bac7341a66b690598ef7a7b"
+}

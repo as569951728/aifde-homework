@@ -1,0 +1,161 @@
+{
+  "case_id": "REG01",
+  "started_at": "2026-11-07T05:38:18.589261+00:00",
+  "question": "青禾准备先给小林和陈姐提供会员运营支持，你会建议第一版交付什么、怎样接到实际工作，以及怎样判断有没有帮助？",
+  "fixture": null,
+  "input_track": "model_only",
+  "fixed_materials": [],
+  "actual_question_sha256": "78b2dddedef23d183c0f4a222aa53235a85ddacf9ead5ea451a0b60daf0f9be2",
+  "requests_sha256": "6f34694e823bc77648102a74c52492534b430527d1ef1548c45def286bd0b3b5",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "gate_sha256": "c885620679f8229ada2ed526db4e46353fa6de34ad3c90042738e7dbe23f85d0",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/run.json",
+    "run_id": "RUN-4a19041bd0ca4c7a85853c9c804580dd",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "本题要判断的是第一版交付、如何接入实际工作、如何判断是否有帮助，不是重新定义客户。按现有模型，若第一版涉及会员范围核对，最小事实是：会员账户是经营统计对象，一行一账户，不等于跨系统自然人；卡归账户、订单关联账户，一个账户可多卡多订单，多张有效卡不重复计账户，也不重复累计订单（《数据字典》members/cards/orders；MSG-03848、MSG-03886、MSG-03888、MSG-03890）。付费资格是给定业务范围与判定日存在一张同时满足产品范围和有效期的卡，不是永久身份、等级、活跃状态或购买事实；等级和购卡实付不能代替卡类型与有效状态（MSG-03848、MSG-03854、MSG-03866、MSG-03886、MSG-03888）。本期总部运营月报的产品范围只纳入悦享年卡与家庭季卡，异业联名卡和体验卡不纳入，正式规则文件尚未取得（MSG-03848、MSG-03854）。权益端点仅就本期两类卡说明：生效当天起有效，计划结束当天已无效，提前终止当天起无效；提前终止为空仍受计划结束限制（陈姐 MSG-03886、MSG-03888、MSG-03890）。这些规则用于第一版的资格核对时必须标明适用报表范围，不能外推到其他报表。\n\n建议第一版交付一个轻量的“会员运营执行记录与核对包”，不要先做营销自动化、自动发券或复购归因结论。可包括：一是任务与执行记录，记录面向谁、做什么、线上或门店安排、确认状态、进度、问题与反馈；二是待确认清单，显式列出名单数据来源、筛选规则、完成标准、适用产品范围和判定日等未明确项；三是如确需资格核对，按上述账户、卡与日期规则生成可复核的核对表，并标明只适用于哪个报表；四是反馈台账，保留事项、来源、时间和答复状态。候选人群不是执行名单，人群和执行方案须由业务人员确认；助手不得自动发券、联系会员或改记录（MSG-03856、MSG-03860、MSG-03862）。以上交付物是建议，不是客户已确认的规则或已实现效果。\n\n接入实际工作时，小林侧可接到她现有优惠券活动的一般做法：先明确面向谁和做什么，确认执行方式与协作人，跟进发放与使用反馈，整理结果与待核问题；具体活动和候选条件不能由小林一人确认，须查实际记录并由相应负责人确认（MSG-03860、MSG-03862）。陈姐侧在门店承接前先核对会员范围、参与门店和具体任务，向门店说明工作量、现场问题由谁处理、工作如何记录；要求不清或影响门店考核的先澄清再安排（MSG-03886、MSG-03888）。执行中收问题，结束后整理情况并与小林对接（MSG-01665、MSG-01945、MSG-01953）。可建议先用一个小范围的实际活动试点并保留记录，但材料未给出已选活动、完整闭环或完成标准，不能写成已经执行。\n\n判断有没有帮助，不能直接用“复购改善”或“三个月见效”作结论：复购下降原因尚未按原报表重算，改善幅度与效果定义未核实，岗位提效也不能直接证明复购改善（MSG-01719、MSG-01731、MSG-01733、MSG-01737、MSG-01739）。建议分两层看。过程层看陈姐提出的门店侧条件：开始时是否讲清、执行中是否减少来回确认、结束后相同问题是否减少（MSG-01951、MSG-01953）；同时看小林期望的减少整理名单与执行记录、找同事核对不一致信息、反复跟进进度是否发生（MSG-03856、MSG-03860、MSG-01925、MSG-03866、MSG-03870）。但个人负担未量化，不能编造前后数字，只能依据实际记录和反馈描述。结果层若要判断对复购有无帮助，需另取原报表重算及活动、订单证据，不能由本版记录直接归因。第一版验收标准仍需业务确认，现有完成标准和反馈闭环仍待核。另需保留边界：本期字典是干净合成测试数据，不是原始 CRM；生产身份关系与历史资格能否还原仍缺实际记录依据；会员与订单、优惠活动追踪、反馈的实际关联也仍无依据，第一版不应假设可自动关联。",
+  "native_structure_check": "passed",
+  "runner_errors": [],
+  "semantic_review": "pending_independent_review",
+  "native_directories": [
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd"
+  ],
+  "native_files": {
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/answer.json": "50e1c99b617c22980432417822af8e47a54c6afe0df43697e48bc48485c12bdf",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/attempts.json": "ae0c0b112d62e593c1b55653f2fa5395324fe403f9314d780c3365617793ee62",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/platform/fde_product/agent.py": "2d3b397b3b54a0d9555c82777e5785e334d0fd0fa6d248f92211a4a1c87e9383",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/platform/fde_product/interview_extraction.py": "4158dd8cf48092fbd515c562e326d403e60d15feb76511dd04b9991c77de6e53",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/platform/fde_product/knowledge_io.py": "bd317c47e8f8fb0ebfaebab2c4babc6b70f0479301249a1b2ca5e435811b051c",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/platform/fde_product/models.py": "17cac712394ede304b9d57f2c3adcf4cb5739bbd6264880efb9603bc5dacb223",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/platform/fde_product/natural_knowledge.py": "0622a655662a7ffbe38bcc6c0e9a6d0d1545455efd3d2baf15a9abd5a2dcd68a",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/platform/fde_product/observability.py": "a7bfdbb457c5c069d78d6e296bb5ecfaff4fe4aafe25147cca9c8e85df1e7cd5",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/tools/w02_knowledge.py": "82b5f14807cbe72d0adb046d13a348a6e2f4eee7169e7f33118d08affd1369e3",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/request.json": "2a2438c73eeab4faf9c5828e5b01c8679cd5ccddb1ec2db80f2a82221ed23eb1",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/response.json": "c8a47d285cac5dbc48e5674d334d26fa34a8e47476d698b84b43334413990453",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/run.json": "bf3a3f08be16d41d7faeda90a6f01d6682cdb62f29cea692949b339414f47522",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/settings.json": "8a9e71a2642bf7189ded92b4ed8841bf29d42a1d7a2a33502682347c329f4089",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json": "74e9f31a939d73c5e1b39a230069e332a01b60d1f827d36243dd1ac8cc0ec121",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json": "34358b1f9cca39f17f3d7b74abda732460be0beaba2f93b8e8f8bcaa3d2e0a80",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json": "4fed42abba5d6f9a727c52d6e3097e965ffa3b02ef855aadb2387ab1f890ebce",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json": "855f84b576d3f0b7bea82eac6b817fc0c8c723040f131f43075380110a823f9f",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py": "4158dd8cf48092fbd515c562e326d403e60d15feb76511dd04b9991c77de6e53",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py": "17cac712394ede304b9d57f2c3adcf4cb5739bbd6264880efb9603bc5dacb223",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py": "7dc6d6e55add4179c10f6cd41944606ee0a7a722ca2e5bc30b25ca4db31a3e00",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json": "d14054e7522c11b619d6cd48033942ea74a70438668fc0f431b1f6bdc50ab6ff",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json": "ea28c2799fe3f77d32865dcef55d1726284b0780535600651e9ac7650ac94d70",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json": "d7a9ee85dc72715c80be0a9090663d7a05dd7a9054429ab1a8f4bc7d6d1f43e9",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md": "65f01bb0bd7c6e25bb04e2d45b493f02895a4d178027dbfa45f321c6406fa4c2",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json": "4d60b0499cfff1ce466183fa32c6c593956abe0513d1336ded239e4e53f3211c",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json": "fb6435f8ab761dbb26a995ec93f11530ef67840661251ab8b4c59d19ffbbf5ce",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json": "5267f566ee6af2d15d9670f57b475612ff7374601f971d7af3cf55ded704f1e0",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json": "59ab377b1cd0eb50a0a2a5c3271122f6d113bcfaa9d62b0345c7d2252950acf3",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json": "8da9a3fd1855656fdd96f9d87790f93a8ffcfca27a91722e5739aa04ac882a4b",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json": "2587eba3643f75dceb60fddeaca9ca48c8a38e3d346fab317a93a0845c3e262b",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json": "bf8ac919a167b3807bd5f45fb6144665f2810671112626bea9fab1f29189a627",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json": "056520589f9b941ba9e40992a94e37a7b8a1a642e028e05bb1727073498fba7b",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json": "750b29936fe8ce9b549b2ef169a2b103ad1dc19264f6bb348913a1bb94421d0b",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w03/answer-repair-20261107/stage5-compact-evidence/input/business_model.md": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w03/answer-repair-20261107/stage5-compact-evidence/input/knowledge.json": "292c2ca5ffd5db4f73d09fc7f5829c89754176c678c2b443683855a344f23ee4",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w03/answer-repair-20261107/stage5-compact-evidence/input/knowledge_prompt.txt": "703da892e1c284843f499b60efad2e95d60849bd5d22595f71270382df607bfe",
+    "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/source_manifest.json": "ecc00bebf0c26681583cca92557e4a239c7ebf16ab2af19e65e9fe368db61980"
+  },
+  "native_run": {
+    "contract_version": "w02-natural-0.1.0",
+    "run_id": "RUN-4a19041bd0ca4c7a85853c9c804580dd",
+    "stage": "context",
+    "scope_id": "qinghe",
+    "mode": "live",
+    "status": "succeeded",
+    "model": {
+      "provider": "api.deepseek.com",
+      "name": "deepseek-flash",
+      "adapter_version": "w02-natural-0.1.0"
+    },
+    "implementation": [
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/platform/fde_product/natural_knowledge.py",
+        "sha256": "0622a655662a7ffbe38bcc6c0e9a6d0d1545455efd3d2baf15a9abd5a2dcd68a"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/platform/fde_product/knowledge_io.py",
+        "sha256": "bd317c47e8f8fb0ebfaebab2c4babc6b70f0479301249a1b2ca5e435811b051c"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/platform/fde_product/interview_extraction.py",
+        "sha256": "4158dd8cf48092fbd515c562e326d403e60d15feb76511dd04b9991c77de6e53"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/platform/fde_product/models.py",
+        "sha256": "17cac712394ede304b9d57f2c3adcf4cb5739bbd6264880efb9603bc5dacb223"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/platform/fde_product/agent.py",
+        "sha256": "2d3b397b3b54a0d9555c82777e5785e334d0fd0fa6d248f92211a4a1c87e9383"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/platform/fde_product/observability.py",
+        "sha256": "a7bfdbb457c5c069d78d6e296bb5ecfaff4fe4aafe25147cca9c8e85df1e7cd5"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/implementation/tools/w02_knowledge.py",
+        "sha256": "82b5f14807cbe72d0adb046d13a348a6e2f4eee7169e7f33118d08affd1369e3"
+      }
+    ],
+    "configuration": [
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/source_manifest.json",
+        "sha256": "ecc00bebf0c26681583cca92557e4a239c7ebf16ab2af19e65e9fe368db61980"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/settings.json",
+        "sha256": "8a9e71a2642bf7189ded92b4ed8841bf29d42a1d7a2a33502682347c329f4089"
+      }
+    ],
+    "inputs": [
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w03/answer-repair-20261107/stage5-compact-evidence/input/business_model.md",
+        "sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+        "sha256": "d14054e7522c11b619d6cd48033942ea74a70438668fc0f431b1f6bdc50ab6ff"
+      }
+    ],
+    "outputs": [
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/request.json",
+        "sha256": "2a2438c73eeab4faf9c5828e5b01c8679cd5ccddb1ec2db80f2a82221ed23eb1"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/attempts.json",
+        "sha256": "ae0c0b112d62e593c1b55653f2fa5395324fe403f9314d780c3365617793ee62"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/response.json",
+        "sha256": "c8a47d285cac5dbc48e5674d334d26fa34a8e47476d698b84b43334413990453"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/answer.json",
+        "sha256": "50e1c99b617c22980432417822af8e47a54c6afe0df43697e48bc48485c12bdf"
+      }
+    ],
+    "semantic_review": "needs_review",
+    "error": null,
+    "request": {
+      "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/request.json",
+      "sha256": "2a2438c73eeab4faf9c5828e5b01c8679cd5ccddb1ec2db80f2a82221ed23eb1"
+    },
+    "response": {
+      "path": "artifacts/w02/knowledge_runs/RUN-4a19041bd0ca4c7a85853c9c804580dd/response.json",
+      "sha256": "c8a47d285cac5dbc48e5674d334d26fa34a8e47476d698b84b43334413990453"
+    }
+  },
+  "native_run_sha256": "bf3a3f08be16d41d7faeda90a6f01d6682cdb62f29cea692949b339414f47522",
+  "completed_at": "2026-11-07T05:38:46.555905+00:00",
+  "status": "succeeded"
+}

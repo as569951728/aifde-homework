@@ -1,0 +1,94 @@
+{
+  "status": "approved_for_control_design_only",
+  "approved": true,
+  "run_allowed": false,
+  "reviewed_at": "2026-11-07T04:41:28.402105+00:00",
+  "controls_sha256": "89c1d71cbcdbd9392ccacb806c71c6a7203ff912b8ead3827672d3ee4a35480f",
+  "controls_expectations_sha256": "e012623a5313562ea8dcc47f582d3c74716964efd026e403a486d774df4e822e",
+  "criteria_sha256": "9484670ea60a3e702b4a63254ace86a751b37bb125e7c60b5336c609380334f4",
+  "checks": [
+    {
+      "id": "exact_four_unique_ids",
+      "passed": true,
+      "reason": "四类对照各一题；无扩批"
+    },
+    {
+      "id": "existing_case_fields_only",
+      "passed": true,
+      "reason": "题文件不含预期/判据"
+    },
+    {
+      "id": "expectations_separate_not_for_model",
+      "passed": true,
+      "reason": "逐题期望单独保存"
+    },
+    {
+      "id": "CTRL01_source_metadata_exact",
+      "passed": true,
+      "reason": "原meeting/role/week与题问一致"
+    },
+    {
+      "id": "CTRL01_complete_qa_verbatim",
+      "passed": true,
+      "reason": "完整相邻问答逐字，不截前提/限定"
+    },
+    {
+      "id": "CTRL01_source_context_track",
+      "passed": true,
+      "reason": "内嵌原文题不计纯正文增益"
+    },
+    {
+      "id": "CTRL03_source_metadata_exact",
+      "passed": true,
+      "reason": "原meeting/role/week与题问一致"
+    },
+    {
+      "id": "CTRL03_complete_qa_verbatim",
+      "passed": true,
+      "reason": "完整相邻问答逐字，不截前提/限定"
+    },
+    {
+      "id": "CTRL03_source_context_track",
+      "passed": true,
+      "reason": "内嵌原文题不计纯正文增益"
+    },
+    {
+      "id": "nonleading_observation_control",
+      "passed": true,
+      "reason": "01664只邀请说明工作及好坏，来回确认负担由01665陈姐自己叙述；期望保留角色观察而非全盘否认"
+    },
+    {
+      "id": "comparable_different_sources_control",
+      "passed": true,
+      "reason": "CTRL02独立给两来源、集合/时点/口径/标识去重/子集关系；可测是否无据追加同一来源门槛"
+    },
+    {
+      "id": "valid_w02_control",
+      "passed": true,
+      "reason": "CTRL03来源未作废且原文诉求有效；期望同时保留业务确认和未授权边界"
+    },
+    {
+      "id": "multiple_cards_unknown_control",
+      "passed": true,
+      "reason": "CTRL04同时有足够正证据、完整反例、不完整信息；区分资格/购买/确切卡数，甲与丙不补未知"
+    },
+    {
+      "id": "synthetic_conditions_clearly_marked",
+      "passed": true,
+      "reason": "合成数字/记录不作青禾事实"
+    },
+    {
+      "id": "controls_short_and_self_contained",
+      "passed": true,
+      "reason": "最长553字符，来源在question内，仍须核完整实际payload限额"
+    },
+    {
+      "id": "criteria_frozen_before_author_prompt_read",
+      "passed": true,
+      "reason": "已先按原文写source-first-criteria，尚未读作者候选提示"
+    }
+  ],
+  "failed_checks": [],
+  "boundary": "仅4题设计批准；不等于实际输入执行批准。原题/期望/上下文保持冻结，候选提示与完整payload仍需独立门禁。",
+  "human_decisions": []
+}

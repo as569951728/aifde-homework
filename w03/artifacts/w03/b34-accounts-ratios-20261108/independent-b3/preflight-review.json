@@ -1,0 +1,64 @@
+{
+  "status": "approved",
+  "approved_for": "B3四项与B1/B2原12项本轮累计构建及后续真实问数；B4由另一个独立审查范围负责",
+  "reviewed_at": "2026-11-08T09:23:00.108906+00:00",
+  "read_order": "original materials, contract, test-guide, raw CSV, design -> independent ledger/calculation -> freeze -> Skill/judge/build config; no generated library/SQL/actual read",
+  "checks": [
+    {
+      "name": "source_definitions_and_field_grain",
+      "passed": true
+    },
+    {
+      "name": "raw_csv_hashes_match_manifest",
+      "passed": true
+    },
+    {
+      "name": "B3_6_full_independent_questions",
+      "passed": true
+    },
+    {
+      "name": "units_count_integer_exact_items_not_net_units",
+      "passed": true
+    },
+    {
+      "name": "original21_recalculated_objects_unchanged",
+      "passed": true
+    },
+    {
+      "name": "old_fixture1_recalculated_source_hashes_retained",
+      "passed": true
+    },
+    {
+      "name": "judge_positive_and_fault_injections",
+      "passed": true,
+      "count": 24
+    },
+    {
+      "name": "skill_generic_method_and_current_build_scope",
+      "passed": true
+    },
+    {
+      "name": "frozen_expected_hashes_stable",
+      "passed": true
+    }
+  ],
+  "failed_checks": [],
+  "scope": {
+    "B3_new_small": 6,
+    "old_small_regression": 21,
+    "old_isolated_fixture": 1
+  },
+  "hashes": {
+    "customer/w03/build-metrics/SKILL.md": "d40329243c2c60c64ddfee0cb1b0617c4c2745c4b52d2b5d2f4b2b2570ea0fb2",
+    "customer/w03/judge.py": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3",
+    "customer/w03/build.json": "30dc33eb01fd060488d1253001db2e2b418f5695d7aaa134e28f1b52e62bca8d"
+  },
+  "expected_freeze_sha256": "e7514aa48914b70a6b8f9be84cbfdec5fe2a9d7f0f8aea312f53eeecd78e2963",
+  "limitations": [
+    "U01各边界由不同账户独立覆盖；没有同一账户同时多卡和多退款的交叉样本。",
+    "July按店购买账户无重叠，D01单独不能以数值证明非可加；July-August辅助去重总数与门店数之和不同。",
+    "原样本没有自然人身份表，不能验证跨系统自然人去重，指标仅CRM账户。",
+    "本批不是规模、客户验收或提交证据。"
+  ],
+  "next_gate": "生成库后核B3四项+B1/B2旧12项表达式/聚合/日期/维度/引用，再审6+21+1真实结果SQL及完整解释；此批准不是运行通过。"
+}

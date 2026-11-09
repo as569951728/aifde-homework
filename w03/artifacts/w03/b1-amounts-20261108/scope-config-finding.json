@@ -1,0 +1,26 @@
+{
+  "status": "candidate_pending_review",
+  "failure": "v1 some answers apply unconditional CRM-account statistics_unit to money",
+  "observed_cases_so_far": [
+    "B1-R01",
+    "B1-R02",
+    "NS02-july-transaction-store"
+  ],
+  "evidence": "test-v1/traces/*/answer-trace.json customer_context and answers; catalog/result.units correct",
+  "candidate": "candidate-build.json",
+  "future_adoption_copy": "candidate-build-for-adoption.json",
+  "changed_business_scope": false,
+  "scope_explanation_conditioned_on_selected_metric": true,
+  "expected_changed": false,
+  "skill_changed": false,
+  "judge_changed": false,
+  "standard_answer_prompt_changed": false,
+  "path_rebasing": "candidate outside customer/w03 uses absolute refs to exact same source paths; future adoption uses original relative refs",
+  "source_basis": [
+    "01_订单日报说明.md amounts and account/ordering definitions",
+    "02_财务邮件.md integer cents and display conversion",
+    "05_数据字典.md account vs natural person",
+    "docs/w03/contract.md per-metric units"
+  ],
+  "iteration_limit": "one candidate re-generation and same15 regression; preserve v1 independently"
+}

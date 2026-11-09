@@ -1,0 +1,135 @@
+{
+  "version": "w03-input-preflight-independent-review-v1",
+  "reviewed_at": "2026-11-06T21:02:08.910695+08:00",
+  "verdict": "needs_revision",
+  "criteria": "criteria-and-test-impact.md",
+  "scope": "输入准备、离线inspect与用户新正文边界的有效测试设计；不启动工作流、不验收模型输出",
+  "frozen_manifest_sha256": "8bd696a16439307c6c22d44b01fff9cd270c1c141ba11be8eca3212b8f4c96d3",
+  "reviewed_manifest": {
+    "version": "w03-input-preflight-user-boundary-v1",
+    "scope": "输入准备、离线inspect、本人模型边界与有效测试输入调整；非模型执行",
+    "active_inputs": {
+      "W03/实操工程/customer/w02/extraction.json": "2174cead29aa9b579fbc3fd24f62c221efb92be132917925496539995eaa1002",
+      "W03/实操工程/customer/w02/workflow.json": "7e8ca7713feafdd94a7ad39dc1a6e65a3865f4663cab0578930f72fe6e1cea1b",
+      "W03/实操工程/docs/w03/interview_notes.md": "79d4565446c27f52e572dee1010647fd3d50eca6cda694d94275370bdda704c3",
+      "W03/实操工程/docs/w03/model_changes.md": "587f7247eb02fe2c1fe19ccd9f3094c8bcdee6556ae9307da604bc61a99d7c08"
+    },
+    "source_files": {
+      "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71",
+      "W03/实操工程/artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json": "4d60b0499cfff1ce466183fa32c6c593956abe0513d1336ded239e4e53f3211c",
+      "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308",
+      "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json": "fb6435f8ab761dbb26a995ec93f11530ef67840661251ab8b4c59d19ffbbf5ce"
+    },
+    "artifacts": {
+      "input_checks.json": "031597619a8d12fca392f53f7003bc0c0f31d8cbfd619f50dd5fd24ca9c897dd",
+      "protected_before.json": "2f842b523fb4544ef76eec732c5eb9197cfbbfe2a0a4d96de5494047e05d4621",
+      "user_decisions.json": "4daff76aa52ff879aa6f2576d83fe936df4521fee90003402150d4cacdc1a4c8",
+      "material_context_manifest.json": "f0f5209cd8b574bc3231c09d26061a30ac1a6df4e761749d777972bce5308863",
+      "inspect_execution.json": "e8d41e9de2f84922eceba7c3fb1deeccfd9c914e086cf8ebd9ae08f97df85ec7",
+      "configuration_change.json": "ee64980ac5d70d582a474ce9f3fe6f906bb25c041166c3317efabd16e289a426",
+      "inspect_materials_preview.json": "92350d1e8f7ad05f55c15f9aa81fcfc9ecfd1b32016032bd26d44b865a02eec0",
+      "inspect_stdout.json": "4f8a40bbfa7aff87515c01d203f97ff442af1fb457cb7647f62cabc07ad5d125",
+      "effective_tests/boundary_changes.json": "074a131a64f624ceccc7351fecfa486b18cd8c745fba02c8b368b96fb11e8265",
+      "effective_tests/README.md": "2cbdf3c20b45e18d5bfa33376ad35620497eb2b41416cf8e1863e95cccef1e9b",
+      "effective_tests/source_registry.json": "ae1083c3438ce82b16b3dd5acbb80dd4a8a8b79cd2e3843b10473ae9e98f8330",
+      "effective_tests/model_questions.json": "e1f574e017f9cdb1fdab7485b8a653d2b67c583e3ef0fd5fe9b38d6df86693f2",
+      "effective_tests/model_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151"
+    },
+    "protected_files": {
+      "W03/实操工程/docs/w03/business_model.md": "6e48419390810b44cdaa1ba430b01038a54be37c9f8692b58933ac8785592bf0",
+      "W03/实操工程/docs/w03/metric_decisions.md": "58119844b4cc562fd68a7edeb4ad63de558363dc1fc1b3492bf28c7448bfd5bc",
+      "W03/实操工程/docs/w03/sow.md": "23973277b7b7362ca9e942ec32da5c0b905dd797860af23a4f8e62f6ebd1d870",
+      "W03/实操工程/customer/w02/skills/extract-business/SKILL.md": "925a9b94ec4cad9afeafea3e214e2de3f677bd56efb32b5ffa9e55721c609e1e",
+      "W03/实操工程/customer/w02/extraction_prompt.txt": "97efc18d5cd409093ccea2cb5742ba364a610485bb887cf38c7e5adc2760334f",
+      "W03/实操工程/customer/w03/build-metrics/SKILL.md": "fd3ebecfb3625944de01b741e5f7b838dc7423e66a3821314042d864c8f479cb",
+      "W03/实操工程/customer/w03/tests.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "W03/实操工程/customer/w03/judge.py": "a7c9f05c7c1af76ab44bb09bffe8b4cfc138093a1af187222a89e07aab1916d4",
+      "W03/实操工程/artifacts/w03/full-test-design-20261106/v2/model_cases.md": "4e3e56f0824278089476d2240f92e365a0a3f33244403c1a538d1949c41f16e6",
+      "W03/实操工程/artifacts/w03/full-test-design-20261106/v2/revision_log.json": "f993167ed1da7d9beb2212a9261cd16cb2fc90e6faa211e49638ac0fdc1577b3",
+      "W03/实操工程/artifacts/w03/full-test-design-20261106/v2/checks.json": "a52d603b02f656783554d4acbb43e01b8fcc7ba99835e6ca702caf3fdde22494",
+      "W03/实操工程/artifacts/w03/full-test-design-20261106/v2/metric_coverage_plan.md": "af876afaf01d75c10c29582f1a2ba83305c0209b48bcae9bbdf0366e838ca70a",
+      "W03/实操工程/artifacts/w03/full-test-design-20261106/v2/source_registry.json": "2760b49028e2a1f099cdfffe0d871d9720cef1958a751c58e348911b5d0fcc6b",
+      "W03/实操工程/artifacts/w03/full-test-design-20261106/v2/manifest.json": "6b5be8342fa6b625dff1c9b69d7cc92cff6c0476f73921d5a26cb04ff9ee1a46",
+      "W03/实操工程/artifacts/w03/full-test-design-20261106/v2/metric_common_plan.json": "5019cc34fcd0bff77f4de62e6fb44fb39a22f28091edb603ac27eeaf9c636fed",
+      "W03/实操工程/artifacts/w03/full-test-design-20261106/v2/metric_coverage_plan.json": "34c967ff1e28e7473c92811c7124c2ddc86c43fe42cb98d4ee13d29cbf775cc8",
+      "W03/实操工程/artifacts/w03/full-test-design-20261106/v2/model_questions.json": "a81f860ec96af5a9a0e179464a24c5ceae9df2f0c4859a68921dda3cb01eb8bf",
+      "W03/实操工程/artifacts/w03/full-test-design-20261106/v2/model_expectations.json": "8880a32a9fe6203f53aec64fd65e2eca162b3615d47a447158277d8d77a6f566",
+      "W03/实操工程/artifacts/w03/full-test-design-20261106/v2/model_coverage.json": "373624e193002a9df0d49b6aaf3d377a550143bd10b589a6c515d8b31d1b13f9",
+      "W03/实操工程/artifacts/w03/model-update-impact-20261106/v3/input_plan.json": "87c37b0317e8d3f88c8e3cca2dfa20c365d3ec6e2a3c2ca687e78ec4bdbc78d8",
+      "W03/实操工程/artifacts/w03/model-update-impact-20261106/v3/metric_plan_addendum.json": "5b910cba13c620d1e866c387b835ed5973140d0b17d5e9c663df2e667b1331c0",
+      "W03/实操工程/artifacts/w03/model-update-impact-20261106/v3/impact.md": "f9603e95aedd98adfd8d9be2fe6e57cd2910551a33cb217e90c26b0f867e8dff",
+      "W03/实操工程/artifacts/w03/model-update-impact-20261106/v3/revision_log.json": "a0c8e63ab0c87f1c5f071733cf21012090b0e00a99e669776eab117cad6e30f7",
+      "W03/实操工程/artifacts/w03/model-update-impact-20261106/v3/paid_scope.json": "8043a87d2a33affeba992f052e3ce0ed14c947d3b653f2a3ef110b7cd4b24034",
+      "W03/实操工程/artifacts/w03/model-update-impact-20261106/v3/checks.json": "2dd9566be791480644a43e66f8a0c02807c62c009c6cafa5e5f543ecafacbc6a",
+      "W03/实操工程/artifacts/w03/model-update-impact-20261106/v3/metric_plan_addendum.md": "0ea023283746713bb11014aa9f63148d4572c545ff150577f4acec29f447e80b",
+      "W03/实操工程/artifacts/w03/model-update-impact-20261106/v3/source_registry.json": "519139ff45338edc2c7d7e0bfa5fefe1f104c5c20d72a19dc32b47dac28de1e6",
+      "W03/实操工程/artifacts/w03/model-update-impact-20261106/v3/manifest.json": "2377009acb71ffa36003c171fbc54859e17cfa312844fed21b49f4031a0e3944",
+      "W03/实操工程/artifacts/w03/model-update-impact-20261106/v3/changes.json": "639df8e18e5ba309b0d2d3a87163861efbc44c3d895a524e0d72c6bf450b42ae"
+    },
+    "status": "pending_independent_review"
+  },
+  "findings": [
+    {
+      "id": "PF-01",
+      "severity": "P2",
+      "status": "open",
+      "location": "effective_tests/model_questions.json U06 fixed_materials; model_expectations.json U06 required_points[1]",
+      "problem": "U06必答点新增用户建模取舍（个人Excel/FDE交付内容不能入正文），但实际输入契约只给question/fixture/model/fixed_materials，U06未给user_decisions.json。原访谈只说明资料性质和业务职责，不能推出用户此次对正文的取舍；正文中缺某内容也不等于模型已知该禁止要求。",
+      "minimal_fix": "把本轮user_decisions.json作为明确标注的用户建模约束加入U06固定输入，或在U06题干直接提供这一约束；不是客户事实或测试预期。已有来源注册可复用，保持原85题冻结。也可将规范性去向只留T01/T03审查，取消U06该必答要求。",
+      "human_decision_required": false
+    },
+    {
+      "id": "PF-02",
+      "severity": "P2",
+      "status": "open",
+      "location": "docs/w03/model_changes.md:15-27",
+      "problem": "顶部当前进度已记4份来源登记和inspect完成，但紧接的“本轮梳理与影响评估（当前）”仍写sources为空、下一步登记、配置未替换，构成同一文件两个当前状态。",
+      "minimal_fix": "保留旧段事实内容，将该段明确标为输入登记前的历史记录，并将表头“当前判断”标为当时判断，或添加清晰统领说明以顶部最新进度为准。同步manifest，不删除历史。",
+      "human_decision_required": false
+    }
+  ],
+  "human_decisions": [],
+  "verified": {
+    "hashes": "全部4活动输入、4来源、13产物、29保护文件匹配",
+    "source_count": 4,
+    "messages": 62,
+    "source_metadata": "week=3，四个预定角色，state=ended，消息ID唯一",
+    "batch_chars": 32000,
+    "actual_single_batch_serialized_chars": 12651,
+    "no_question_answer_split": true,
+    "md_raw_contents_exact": 8,
+    "preview_fields_match_active_inputs": [
+      "goal",
+      "business_model",
+      "notes",
+      "materials",
+      "extraction_config"
+    ],
+    "context_bytes": 134719,
+    "context_limit_bytes": 180000,
+    "effective_case_ids_match_old_85": true,
+    "tracks": {
+      "model_only": 53,
+      "model_with_source_context": 14,
+      "model_with_fixed_materials": 15,
+      "artifact_review": 3
+    },
+    "effective_fixed_materials_registered_and_hash_matched": true,
+    "no_expected_file_or_full_required_point_in_maintenance_context": true,
+    "business_model_skill_prompt_old_design_unchanged": true,
+    "inspect_no_api": "保存inspect成功结果与CLI静态分支相符；inspect分支不实例化运行模型，也不start/apply。"
+  },
+  "positive_findings": [
+    "goal/focus明确Excel/项目商业验收分流，迁出说明本身不强塞正文。",
+    "维护输入能实际看到逐字MD，提取器只读正式访谈的差别明确。",
+    "F01/F02/F07/F10/A02转原文轨，A族单列交付应用；U05已补陈/王原文。",
+    "U01/U04/REG01和T01/T03不再要求正文包含排除内容；历史85题与来源保留。",
+    "现有资料和配置准备不冒称模型已更新、测试通过或用户独立掌握。"
+  ],
+  "limitations": [
+    "未运行API、start/resume/apply或指标",
+    "离线预览不是实际模型阅读或理解成功证据",
+    "当前正式模型仍v0.4，含旧Excel句，不是新正文边界已落实"
+  ],
+  "reviewer_mutations": "仅本independent-review目录"
+}

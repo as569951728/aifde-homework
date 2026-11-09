@@ -1,0 +1,214 @@
+{
+  "created_at": "2026-11-08T02:08:34.585045+00:00",
+  "status": "completed_with_failures",
+  "approved": false,
+  "all_cases_passed": false,
+  "candidate_adoption_approved": false,
+  "scope": "本次六题真实输出的独立业务语义、引用与协议合并判读；不代表全量回归",
+  "counts": {
+    "selected": 6,
+    "native_runs": 6,
+    "http_attempts": 8,
+    "native_complete_answers": 5,
+    "overall_passed": 3,
+    "semantic_needs_revision": 2,
+    "protocol_failed": 1
+  },
+  "cases": [
+    {
+      "id": "U05",
+      "status": "needs_revision_source_certainty",
+      "passed": false,
+      "semantic_passed": false,
+      "native_execution_status": "succeeded",
+      "native_record_audit": "passed",
+      "review": "U05-review-r2.json",
+      "review_sha256": "fa9761abb27a260f1b42163a2aea9473e961b9d0c07fba83ac89ed26f551ed29",
+      "output_sha256": "9a37d1860befab53879c607bafdc02ceaadc0a88edd32cf203886963f94a16ba",
+      "answer_sha256": "a548566daaef8375ebb2eacaae92f1b5615df9a44c94da1dd00bc65f00ea2391",
+      "public_text_sha256": null,
+      "blocking_findings": [
+        {
+          "id": "U05-E-certainty",
+          "answer_quote": "最终验收确认人、授权额度和正式批准仍未定",
+          "kind": "unknown_upgraded_to_organizational_status",
+          "source_evidence": [
+            {
+              "message": "MSG-03931",
+              "quote": "最终验收确认人和授权额度不在我的职责内，我无法确认，需要另行核实；具体找谁、依据哪份授权材料，我这边不掌握，得由公司内部按审批流程定。"
+            },
+            {
+              "message": "MSG-03933",
+              "quote": "最终验收确认人、执行安排责任方和审批权限我这边不掌握，要另行核实，收益目标、预算金额和正式批准都还没定，要双方再谈。"
+            }
+          ],
+          "why_material": "会把缺少可确认权限依据记录成公司尚未确定负责人/额度，改变待核事项性质；应保留谁不掌握及尚未核实范围。",
+          "suggested_wording": "王经理未能确认最终验收确认人和授权额度，需另行核实；他表示正式批准还没定。其阶段划分核查意见不构成最终验收批准。",
+          "criterion_basis": "独立source-criteria：主体/限定/权限未知；全局语义与来源支持关系准确。不是追加固定措辞要求。"
+        }
+      ],
+      "nonblocking_findings": [
+        {
+          "kind": "quote_typography",
+          "rows": [
+            "U05-Q08"
+          ],
+          "description": "01921原有内层双引号变为单引号；raw子串不匹配保留，不是文字改写或来源迁移。"
+        }
+      ]
+    },
+    {
+      "id": "E01",
+      "status": "semantic_pass_with_nonblocking_quote_typography",
+      "passed": true,
+      "semantic_passed": true,
+      "native_execution_status": "succeeded",
+      "native_record_audit": "passed",
+      "review": "E01-review.json",
+      "review_sha256": "9689757a058846818bf130803f31f12f43f7d985e47d8a8a2654440cae6b0c23",
+      "output_sha256": "d197892ce3b27e97965d9681eca49cdfa8e4c4fe2dc69c8815d0561394d1cb4b",
+      "answer_sha256": "0126be7290256bcfa545f6e3addfb19e9dcb7a3d5ea873010533d55ef3685a07",
+      "public_text_sha256": null,
+      "blocking_findings": [],
+      "nonblocking_findings": [
+        {
+          "kind": "quote_typography",
+          "rows": [
+            "E01-Q06",
+            "E01-Q08"
+          ],
+          "description": "同一原句的两次引用改变内层引号形态；不是词语改写或跨消息拼接。"
+        }
+      ]
+    },
+    {
+      "id": "TRACECTRL01",
+      "status": "semantic_and_citation_passed",
+      "passed": true,
+      "semantic_passed": true,
+      "native_execution_status": "succeeded",
+      "native_record_audit": "passed",
+      "review": "TRACECTRL01-review.json",
+      "review_sha256": "24a53289f016f81c93dfc74e78671ebaa009d833c49d04a38c39f0e49a8decdb",
+      "output_sha256": "dbdb317de651303e2bb7628eb81288390dcfc3b5eb2b89e31b4dd6b35f933f1d",
+      "answer_sha256": "aeb2b3ad95e73536610fe68f213b48d9a473af22cc6433a90154f82edbbe006c",
+      "public_text_sha256": null,
+      "blocking_findings": [],
+      "nonblocking_findings": []
+    },
+    {
+      "id": "CTRL01",
+      "status": "semantic_and_citation_passed",
+      "passed": true,
+      "semantic_passed": true,
+      "native_execution_status": "succeeded",
+      "native_record_audit": "passed",
+      "review": "CTRL01-review.json",
+      "review_sha256": "6d2b873853ea69e88b2027a52be014d2deb48acc28a4111f71747586af33043e",
+      "output_sha256": "c4ee3334925c5fb04e5ac0d2770357c5c2b04b8fe2a324bf909eb83458ab9e91",
+      "answer_sha256": "d6344704aae0800a01305ff1e6b80733d5d318a0055986935cc305c5db4343d0",
+      "public_text_sha256": null,
+      "blocking_findings": [],
+      "nonblocking_findings": [
+        {
+          "kind": "verbosity",
+          "description": "对开放提问泛称及额外缺口的说明偏长，但未改变证据性质或新增业务否定事实。"
+        }
+      ]
+    },
+    {
+      "id": "U01",
+      "status": "needs_revision_unsupported_evidence_classification",
+      "passed": false,
+      "semantic_passed": false,
+      "native_execution_status": "succeeded",
+      "native_record_audit": "passed",
+      "review": "U01-review.json",
+      "review_sha256": "acbf278b05b1336f93fcc8820adc206f560bcddbd8bfe782d37db6a76f6882a1",
+      "output_sha256": "67726fb2a42f87639b9d64708043ac06f51978d7135246e8554dd468c80690e2",
+      "answer_sha256": "a3ea591130c021ca4d10fd2e440517c3b2335cbef725fade8e615f4fa56509a5",
+      "public_text_sha256": null,
+      "blocking_findings": [
+        {
+          "id": "U01-rule-nature",
+          "kind": "unsupported_evidence_classification",
+          "answer_quote": "上述产品范围、资格与端点属于本期模型及已取得说明的建模选择，正式规则文件和生产核验未取得，不自动成为唯一事实。",
+          "source": "模型第3节标题可复用的业务规则；规则1的小林MSG-03848/03854、规则2的资格、规则3陈姐MSG-03886/03890/03888；第5节来源索引",
+          "why_material": "本期业务规则有明确角色陈述来源，可与正式文件/生产凭据缺口并存；没有材料把卡范围、资格、端点列成学员或我方可自行选择的建模方案。",
+          "suggested_wording": "上述产品范围、资格和日期端点依据本期已取得的角色说明；正式规则文件及生产/历史执行凭据仍未取得。",
+          "criterion_basis": "原业务评判要求逐断言核理由/范围/来源；source-criteria保留来源主体、证据性质、适用范围。不是要求固定词语或拒绝一般建模表达。"
+        }
+      ],
+      "nonblocking_findings": [
+        {
+          "kind": "unnecessary_expansion",
+          "description": "开头客户定义及第5段多个非题目核心规则扩写，增加检查负担；本项本身不据此判失败。"
+        }
+      ]
+    },
+    {
+      "id": "P01",
+      "status": "failed_output_protocol",
+      "passed": false,
+      "semantic_passed": null,
+      "native_execution_status": "failed",
+      "native_record_audit": "passed",
+      "review": "P01-review.json",
+      "review_sha256": "46b29000af3940ad1cad6e0b5a60fce818ff0ecda81c15164ec3c2238c4c6cd8",
+      "output_sha256": "e40854f40d9a3f4a8e2a97450a3299417b3ed982275fb7e7f1e01d6847fe6e11",
+      "answer_sha256": null,
+      "public_text_sha256": "9d69fac7d0d1ff0829100f566da4dec2748be4ce0892576de425c00311c29f11",
+      "blocking_findings": [
+        {
+          "id": "P01-JSON_INVALID",
+          "kind": "output_protocol",
+          "detail": "answer字符串内部含原始换行而非JSON转义，标准解析报Invalid control character。finish_reason=stop，非截断；原生记录完整性passed不能代替答案协议成功。"
+        }
+      ],
+      "nonblocking_findings": []
+    }
+  ],
+  "failed_checks": [
+    "U05-E-certainty",
+    "U01-rule-nature",
+    "P01-JSON_INVALID"
+  ],
+  "protocol_audit": {
+    "path": "../protocol_audit.json",
+    "sha256": "c986d4957c9a40baab466e2578809e132fca0950d087eed5806cb257a9e9c346",
+    "record_and_input_checks": "6/6 passed",
+    "meaning": "原生记录/冻结输入一致，不代表内容正确或所有答案协议成功"
+  },
+  "citation_audit": {
+    "path": "citation-audit.json",
+    "sha256": "061dcb08ea94322d8b59f02734fa0e067940f09e13532408f69dcefee078ff43",
+    "checked_occurrences": 44,
+    "raw_matches": 41,
+    "typographic_nonmatches": 3
+  },
+  "expectation_discrepancy": {
+    "path": "expectation-discrepancy.json",
+    "sha256": "391f8ce96dcc7c802b1baaa86276a9c3aa5eea3125c105e3dae553e721ab05be",
+    "old_expectations_sent_to_model": false
+  },
+  "review_history": {
+    "U05_initial_pass_retained": "U05-review.json",
+    "U05_current": "U05-review-r2.json",
+    "explanation": "初审漏看E的一句确定程度扩大；root提醒后重新核原文纠正，不回改初审、运行前输入审核或门禁。"
+  },
+  "targeted_observations": [
+    "相邻消息直接引文归属已核，U05的E各引文与对应消息对齐；没有把后续消息拼到前一条。",
+    "TRACECTRL01中接岗同事未到归SYN-A2；全体前提和局部观察分开。",
+    "E01前提、承接、个人感受和后续限定正确，CTRL01非诱导原文新增观察未被弃用。",
+    "这些目标表现改善不等于候选整体通过：U05/U01额外来源语义错误及P01输出协议失败仍在。"
+  ],
+  "frozen_state": {
+    "manifest_sha256": "d454e804c858176ce642796fd60c8c01788b06d6a343a2d9ad2446023f475cd8",
+    "gate_sha256": "1d88039754a4884c091bf6b7d2e51e13a3888d5eebc38c5cf0f398bc565e3c97",
+    "unchanged_input_hashes": true
+  },
+  "required_next_scope": "停止本轮模型调用；可依据原文另存导师修订草稿和未来判据修订，不改原评分、不冒称原生成功。",
+  "open_user_business_decisions": [],
+  "actual_model_calls_by_reviewer": 0,
+  "prose": "本轮3题通过，U05/U01需修正来源语义，P01格式失败；候选不能判整体通过或采纳。"
+}

@@ -1,0 +1,46 @@
+{
+  "frozen_at": "2026-11-08T02:39:02.191175+00:00",
+  "frozen_before_execution": true,
+  "case_ids": [
+    "U05",
+    "U01",
+    "P01",
+    "E01",
+    "TRACECTRL01",
+    "CTRL01",
+    "E03"
+  ],
+  "original_cases": 5,
+  "control_cases": 2,
+  "files": {
+    "input/business_model.md": "63513ef37e2d1f41cc0e540fd4b771b4035c83e3674d33e0897a521bc698a72d",
+    "input/controls.json": "ab9b9cc644734f711da910f947c6ec37e35b1882bfebee458624f51cfc9bb528",
+    "input/knowledge.json": "d09859e97d115c158fddecc2b285eb242ad0f70ab28b5ecdd16b3ef9cc1bf20d",
+    "input/knowledge_prompt.txt": "9614640cce2ef475a3f90e40f6264bbc97ad9ef7548b2caf57923de1572fa67c",
+    "input/new_control_approval.json": "a5cd915e5c8e8cf555d37ec35f96847c0d9c582f60c4cdeba7ab0a1683b2d74e",
+    "input/original_questions.json": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+    "input/protected.json": "95d2b88f71ddeb897135d7e68eef40242f26aba2dac235e79370df564a0632cb",
+    "input/request_origins.json": "84247941a4cad12600aeda086be8ba2666261102a12ef4a188f7f6cf5ba13b67",
+    "input/requests.json": "aeb18673143e423e06f0cea3fa762974bffd0ab3664bdb82fa78abe4cf19d241",
+    "input/reviewer_expectations.json": "f799da7f4420620386e73f6b447efe219ed37f22ef881f08595f995b2b5280a2",
+    "input/selected_questions.json": "4df4a07150f87841bfa9c50e1fb57773d3c51352b4fd8a30493307c5e1b5926e"
+  },
+  "model_sha256": "63513ef37e2d1f41cc0e540fd4b771b4035c83e3674d33e0897a521bc698a72d",
+  "expected_sha256": "f799da7f4420620386e73f6b447efe219ed37f22ef881f08595f995b2b5280a2",
+  "candidate_prompt_sha256": "9614640cce2ef475a3f90e40f6264bbc97ad9ef7548b2caf57923de1572fa67c",
+  "reviewer_expectations_sent": false,
+  "runtime_plan": {
+    "model": "deepseek-flash",
+    "profile": "deepseek-json",
+    "timeout": 180,
+    "max_tokens": 8192,
+    "retry_max_tokens": 16384,
+    "retry_timeout": 240
+  },
+  "input_reuse": "All seven final questions including fixtures and materials are exact Stage5 strings; E03 is model_only and unchanged. Six control metadata/approval records retained.",
+  "control_source_kinds": {
+    "CTRL01": "actual W02 Chen interview",
+    "TRACECTRL01": "synthetic control"
+  },
+  "stop_rule": "At most seven native runs, each once. Only native confirmed length expansion; no semantic/format/network retry or recovery."
+}

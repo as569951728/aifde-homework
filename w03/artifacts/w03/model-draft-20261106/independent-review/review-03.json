@@ -1,0 +1,434 @@
+{
+  "version": "w03-draft-independent-review-03-v1",
+  "created_at": "2026-11-06T22:51:11.723561+08:00",
+  "review_object": {
+    "directory": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/model-draft-20261106/draft-03",
+    "proposal_sha256": "c6c0a6bc7965b217cb9f1efbd73b391496cf06b3bc8f92846e826c47568cee85",
+    "body_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+    "artifacts": {
+      "business_model.md": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+      "notes_update.md": "2dbca091c5d1b31f2322aacaf9ad569319e06b227e2ea4c4aafd0cf4da944b4a",
+      "summary.md": "a6dfd7d7381cac5552be12f4cfafff3e6ee7fd3bcddf079d3dab172c8e356028",
+      "proposal.json": "c6c0a6bc7965b217cb9f1efbd73b391496cf06b3bc8f92846e826c47568cee85",
+      "draft-02.diff": "0aecdc73bfd1cd6bf959e58be8eebbddcabd8b9349417f6340fd352fd94bfb71"
+    },
+    "workflow_status": "parent reports step13 awaiting_apply; reviewer did not operate workflow"
+  },
+  "method": {
+    "type": "final incremental static review",
+    "criteria": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/business-model-design-review-20261106/source-first-criteria.json",
+    "checklist": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/model-draft-20261106/independent-review/review-checklist.json",
+    "previous_review": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/model-draft-20261106/independent-review/review-02.json",
+    "scope": "Read actual full draft-03 body, notes and summary plus draft-02.diff. Check Q01–Q04 and direct regression only; reuse established source-first criteria and reviewed sources. Verify new MD05 scope clarification from original MD05. No broader style audit."
+  },
+  "verdict": "pass_static_review",
+  "apply_recommendation": "static_review_gate_satisfied_for_this_proposal_hash; subsequent native action remains separate from review",
+  "test_verdicts": {
+    "T01": "pass",
+    "T02": "pass",
+    "T03": "pass"
+  },
+  "case_results": [
+    {
+      "id": "T01-1",
+      "test": "T01",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:3–11、13、34、45、62",
+      "reason": "五节结构及原因验证/岗位提效双目标保留，目标、效果与待核证据区分。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T01-2",
+      "test": "T01",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:38；notes_update.md:25–30",
+      "reason": "可复用卡规则与报表判定日/窗口分开；MD04六项与MD03普通月报分层；两项付费比率分子分母和零分母语义正确。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T01-3",
+      "test": "T01",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:42–43、55、62–74；notes_update.md:16–23",
+      "reason": "正文不再含个人载体、FDE接入授权和具体运行月份；实际业务确认、门店条件与身份/历史未知保留。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T01-4",
+      "test": "T01",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:47–60",
+      "reason": "三类工作、一般券流程、未完任务/反馈触发、人员交接与真实经营观察条件保留。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T01-5",
+      "test": "T01",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:15–32、76–79；notes_update.md:7–23",
+      "reason": "正文不含保留理由、候选审核/迁移处置过程；来源保留必要索引，修订与迁移过程在notes。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T02-1",
+      "test": "T02",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:17–30",
+      "reason": "账户、卡、资格、等级、活跃、订单与复购指标分开；账户一对多卡/订单，卡和订单关联账户，两类门店明确，不虚构订单用卡。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T02-2",
+      "test": "T02",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:36–39、66",
+      "reason": "两类纳入、两类排除，同卡同时满足，开始含/结束与提前终止不含，空值不无限，多卡不重复；恢复不能只看当前状态；正式文件与历史凭据仍待核。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T02-3",
+      "test": "T02",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:11、18、22–23；notes_update.md:28–29",
+      "reason": "支付与有效购买、全退作用、退款快照、原始件数、购卡款与订单收入语义正确；财务比率并非未知。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T02-4",
+      "test": "T02",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:11、19–22、30–32、66、69–70",
+      "reason": "合成材料覆盖与生产/历史分开；当前等级不充当历史，月报资格不推广成活动名单条件，已知账户关系不重新打开。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T02-5",
+      "test": "T02",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:47–56、73–74；notes_update.md:19、34",
+      "reason": "券一般做法不代表全部工作；反馈后续断点保留；可协助逐卡核查不变成固定流程，未取得安排确认不推断现实未安排。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T02-6",
+      "test": "T02",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:18、21、26、36、38；notes_update.md:19、21、26、34；summary.md:1",
+      "reason": "首审引用错误已修且保持；当前状态限定、记录未取得确认、MD04分子分母及summary转交引用均与相应来源一致。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T03-1",
+      "test": "T03",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:5–9、40–43、51、56、58、60",
+      "reason": "双目标、会员老化假设、80万/120万不可直接比较、三类运营工作、用途、注册指标、门店观察条件及助手限制保留。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T03-2",
+      "test": "T03",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:30–32、36–39、66–74",
+      "reason": "已知本期关系和卡规则不笼统列未知；文件/生产历史、旧复购报表、活动追踪、考核和业务闭环缺口按范围保留。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T03-3",
+      "test": "T03",
+      "verdict": "pass",
+      "actual_evidence": "business_model.md:42–43、55、62–74；notes_update.md:16–23",
+      "reason": "已定迁出完成且真实业务工作/职责保留；旧购买时点候选及个人载体来源留记录，旧草稿和正式基线未覆盖。",
+      "finding_ids": [],
+      "business_decision_required": false
+    },
+    {
+      "id": "T03-4",
+      "test": "T03",
+      "verdict": "pass",
+      "actual_evidence": "notes_update.md:1–14、38–40；summary.md:1；proposal.json:base_hashes/human_reviews",
+      "reason": "20项反馈/18项使用与审核主体清楚；主题式记录不再错配R编号；前三稿、静态审查、未apply/未问答/未指标执行分开，实际hash与基线一致。",
+      "finding_ids": [],
+      "business_decision_required": false
+    }
+  ],
+  "resolved_findings": [
+    {
+      "id": "Q01",
+      "status": "resolved",
+      "prior_priority": "P1",
+      "actual_evidence": [
+        "notes_update.md:10",
+        "notes_update.md:26–28"
+      ],
+      "source_evidence": [
+        {
+          "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "locator": "29、33行"
+        },
+        {
+          "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/materials/w03/02_财务邮件.md",
+          "locator": "9–37行"
+        }
+      ],
+      "reason": "两项付费指标分子分母明确；仅各自分母为零时结果未定义，MD02通用比率同样收准。六项付费范围与普通月报仍分开。"
+    },
+    {
+      "id": "Q02",
+      "status": "resolved",
+      "prior_priority": "P1",
+      "actual_evidence": [
+        "business_model.md:55",
+        "business_model.md:62–74",
+        "notes_update.md:8、16–23",
+        "summary.md:1"
+      ],
+      "source_evidence": [
+        {
+          "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+          "locator": "interpreted_boundary、delivery_disposition"
+        }
+      ],
+      "reason": "权限/接入/授权与选月待办已迁出正文，业务口径责任、动作限制及生产身份/历史资格缺口保留；notes/summary迁移说明与实际相符。"
+    },
+    {
+      "id": "Q03",
+      "status": "resolved",
+      "prior_priority": "P2",
+      "actual_evidence": [
+        "business_model.md:38",
+        "notes_update.md:11、19、34"
+      ],
+      "source_evidence": [
+        {
+          "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+          "locator": "MSG-03885–03890，重点03886、03888"
+        }
+      ],
+      "reason": "日期判定恢复不能只看当前状态；门店安排状态限定为本次访谈/记录未取得确认，不再否定现实安排。"
+    },
+    {
+      "id": "Q04",
+      "status": "resolved",
+      "prior_priority": "P2",
+      "actual_evidence": [
+        "notes_update.md:7–14",
+        "summary.md:1",
+        "business_model.md:56"
+      ],
+      "source_evidence": [
+        {
+          "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/model-draft-20261106/independent-review/review-01.json",
+          "locator": "findings R01–R07"
+        }
+      ],
+      "reason": "修订说明按主题记录，不再错配R编号；summary中01824对应考核核查转交、01685对应导购注册指标。"
+    }
+  ],
+  "findings": [],
+  "prior_issue_resolution": [
+    {
+      "id": "R01",
+      "status": "resolved_for_current_static_scope"
+    },
+    {
+      "id": "R02",
+      "status": "resolved_for_current_static_scope"
+    },
+    {
+      "id": "R03",
+      "status": "resolved_for_current_static_scope"
+    },
+    {
+      "id": "R04",
+      "status": "resolved_for_current_static_scope"
+    },
+    {
+      "id": "R05",
+      "status": "resolved_for_current_static_scope"
+    },
+    {
+      "id": "R06",
+      "status": "resolved_for_current_static_scope"
+    },
+    {
+      "id": "R07",
+      "status": "resolved_for_current_static_scope"
+    }
+  ],
+  "prior_design_findings": [
+    {
+      "id": "D01",
+      "status": "implemented_for_current_static_scope"
+    },
+    {
+      "id": "D02",
+      "status": "implemented_for_current_static_scope"
+    },
+    {
+      "id": "D03",
+      "status": "implemented_for_current_static_scope"
+    },
+    {
+      "id": "D04",
+      "status": "implemented_for_current_static_scope"
+    },
+    {
+      "id": "D05",
+      "status": "implemented_for_current_static_scope"
+    }
+  ],
+  "human_decisions": [],
+  "business_decision_required": false,
+  "known_business_unknowns_not_closed_by_review": [
+    "正式规则文件、办理记录及生产/历史执行凭据",
+    "生产身份关系及历史资格还原条件",
+    "旧四季度复购来源、原因与会员老化假设",
+    "具体活动名单条件、业务确认人、完整考核、反馈分析及返店闭环"
+  ],
+  "source_inventory": [
+    {
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+      "sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308",
+      "read_scope_this_round": "reused same-turn original passages read for review-02",
+      "previous_read_scope": [
+        "MSG-03885",
+        "MSG-03886",
+        "MSG-03887",
+        "MSG-03888",
+        "MSG-03889",
+        "MSG-03890"
+      ]
+    },
+    {
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+      "sha256": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71",
+      "read_scope_this_round": "reused same-turn original passages read for review-02",
+      "previous_read_scope": [
+        "MSG-03856",
+        "MSG-03860",
+        "MSG-03862",
+        "MSG-03866",
+        "MSG-03867",
+        "MSG-03868",
+        "MSG-03870"
+      ]
+    },
+    {
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+      "sha256": "fb6435f8ab761dbb26a995ec93f11530ef67840661251ab8b4c59d19ffbbf5ce",
+      "read_scope_this_round": "reused same-turn original passages read for review-02",
+      "previous_read_scope": [
+        "MSG-03931"
+      ]
+    },
+    {
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-33120509-3939-5d6c-81f1-3959fed49789-transcript.json",
+      "sha256": "f582e55b0468ca02a84b35c9f668a6dcef21adf6748a43e9bed528981f6c6059",
+      "read_scope_this_round": "reused same-turn original passages read for review-02",
+      "previous_read_scope": [
+        "MSG-01685"
+      ]
+    },
+    {
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-d260d7d2-47a6-5778-9d7c-47fac88a497f-transcript.json",
+      "sha256": "8c16cefc6005cd21914dc2219208e8819ca490787cb6f677347a269b62ca9920",
+      "read_scope_this_round": "reused same-turn original passages read for review-02",
+      "previous_read_scope": [
+        "MSG-01949",
+        "MSG-01951",
+        "MSG-01953"
+      ]
+    },
+    {
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/materials/w03/01_订单日报说明.md",
+      "sha256": "976fa129493e6bd2861a58d74df2ba3ad4448ea01a2d25651124222a61cebb67",
+      "read_scope_this_round": "reused same-turn original passages read for review-02",
+      "previous_read_scope": "full"
+    },
+    {
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/materials/w03/02_财务邮件.md",
+      "sha256": "f81e0ddb5c03dd4eb2d01094816716d8375d03fe883b947ec8297edf8d525557",
+      "read_scope_this_round": "reused same-turn original passages read for review-02",
+      "previous_read_scope": "full"
+    },
+    {
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/materials/w03/03_会员运营周报.md",
+      "sha256": "25ab933556bf34bef21b528d4c7838c9baad33ae289d59f09501e765080bb492",
+      "read_scope_this_round": "reused same-turn original passages read for review-02",
+      "previous_read_scope": "full"
+    },
+    {
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+      "sha256": "c4f847fd90fd0765d37ad22f20d4a4eb0bab90f8543ae0f05d7a3cbee104c4be",
+      "read_scope_this_round": "reused same-turn original passages read for review-02",
+      "previous_read_scope": "full"
+    },
+    {
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/model-input-preflight-20261106/user_decisions.json",
+      "sha256": "4daff76aa52ff879aa6f2576d83fe936df4521fee90003402150d4cacdc1a4c8",
+      "read_scope_this_round": "reused same-turn original passages read for review-02",
+      "previous_read_scope": "full"
+    },
+    {
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/materials/w03/05_数据字典.md",
+      "sha256": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16",
+      "read_scope_this_round": "full, lines1–59",
+      "use": "verify newly clarified synthetic data scope and card/account/order relations"
+    }
+  ],
+  "integrity": {
+    "provided_proposal_hash_matches": true,
+    "provided_body_hash_matches": true,
+    "exports_match_proposal": {
+      "business_model": true,
+      "notes_update": true,
+      "summary": true
+    },
+    "protected_files": {
+      "docs/w03/business_model.md": {
+        "sha256": "6e48419390810b44cdaa1ba430b01038a54be37c9f8692b58933ac8785592bf0",
+        "matches_proposal_base": true
+      },
+      "docs/w03/interview_notes.md": {
+        "sha256": "79d4565446c27f52e572dee1010647fd3d50eca6cda694d94275370bdda704c3",
+        "matches_proposal_base": true
+      }
+    },
+    "prior_reviews_preserved": {
+      "review-01.md": "0a7e5cc742ddf5b33e2c2d588b2f0e33e28c91c410c6a81ad56ae8a9d5ee5175",
+      "review-01.json": "13783d6a74790a1b6bbd380183d73bc52b7af73684010c8d9bca848af3a6f54a",
+      "review-02.md": "9b6c72fc271b8be40e78bdc760d5187add5ed8b6b4438ccd2374796785975194",
+      "review-02.json": "4ec72f188c704d4e955b733781c587a2baad19863cb7ea498263e1710ca9eef0"
+    },
+    "native_feedback_id_count": 20,
+    "proposal_used_id_count": 18,
+    "reviewed_subcase_count": 15,
+    "static_pass_count": 15,
+    "draft_files_edited": false,
+    "formal_files_edited": false,
+    "workflow_mutated": false,
+    "skill_edited": false,
+    "model_test_cases_run": 0,
+    "metric_tests_run": 0
+  },
+  "limits": [
+    "pass只指本hash正文及关联记录的静态审查；不是客户批准、本人逐项采纳或apply。",
+    "85题模型问答、38项指标执行及独立数值校验仍未运行。",
+    "保留的业务未知仍是未知，不因静态通过而关闭；本轮无需要用户作出的新业务取舍。",
+    "未编辑草稿、正式model/notes、Skill/config或工作流，仅写本次独立review-03.md/json。"
+  ]
+}

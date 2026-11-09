@@ -1,0 +1,61 @@
+{
+  "workflow": "artifacts/w02/workflows/WF-fad974508c194a8396c74de858cea55a/session.json",
+  "extraction_run": "artifacts/w02/runs/RUN-bbca567eeb824f7c99498cd1efc10cfe/run.json",
+  "native_status": "failed",
+  "error": {
+    "code": "QUOTE_NOT_FOUND",
+    "message": "检查位置：CLM-001-0029。本次失败；保留已有请求与公开响应，核对后创建新运行。"
+  },
+  "temporary_claims": 39,
+  "invalid_quotes": [
+    {
+      "id": "C29",
+      "evidence_index": 0,
+      "message_id": "MSG-03910",
+      "literal_newline_conversion_matches": false
+    },
+    {
+      "id": "C30",
+      "evidence_index": 0,
+      "message_id": "MSG-03910",
+      "literal_newline_conversion_matches": false
+    },
+    {
+      "id": "C31",
+      "evidence_index": 0,
+      "message_id": "MSG-03910",
+      "literal_newline_conversion_matches": false
+    }
+  ],
+  "root_cause": "Three MSG-03911 answer quotes were assigned to MSG-03910 question, not whitespace normalization",
+  "attempts": [
+    {
+      "attempt": 1,
+      "finish_reason": "length",
+      "error": "MODEL_OUTPUT_TRUNCATED",
+      "seconds": 145.754
+    },
+    {
+      "attempt": 2,
+      "finish_reason": "stop",
+      "seconds": 136.41
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 17328,
+    "completion_tokens": 62888,
+    "total_tokens": 80216,
+    "completion_tokens_details": {
+      "reasoning_tokens": 42231
+    }
+  },
+  "preserved_hashes": {
+    "artifacts/w02/workflows/WF-fad974508c194a8396c74de858cea55a/session.json": "2045bd3c9e7d823d7a1d839d181c1f1d839f97f94ba197954173b7da9722c512",
+    "artifacts/w02/runs/RUN-bbca567eeb824f7c99498cd1efc10cfe/run.json": "4d0b158a2c7078befab1cc8fbe20206c2b53ad8d45a8406de7054454d9a4712e",
+    "artifacts/w02/runs/RUN-bbca567eeb824f7c99498cd1efc10cfe/step-001.response.json": "036b69ce0aa6f7afb114c396fc7de34c1a4c1e09ea807f9bdae730120e1955c2",
+    "artifacts/w03/candidate-extraction-20261106/raw_claims.json": "baa8f86aad37ef19867430613b82f7b125a5e57333609677172ace1c2cdc034b"
+  },
+  "no_resume": true,
+  "no_apply": true,
+  "note": "Raw model C IDs are not accepted native candidate IDs. First failure and automatic truncated attempt remain failed; source-first independent semantic review follows separately."
+}

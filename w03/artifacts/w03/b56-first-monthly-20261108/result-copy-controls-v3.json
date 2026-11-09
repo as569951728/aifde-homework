@@ -1,0 +1,202 @@
+{
+  "status": "passed",
+  "controls": [
+    {
+      "id": "correct_grouped_zero",
+      "source_case": "B5-H03",
+      "kind": "real_result_copy",
+      "expected_passed": true,
+      "actual_comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "status": "passed"
+    },
+    {
+      "id": "zero_replaced_null",
+      "source_case": "B5-H03",
+      "kind": "real_result_copy",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{'member': 'M00005'}.first_order_count",
+            "expected": 0,
+            "actual": null,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "status": "passed"
+    },
+    {
+      "id": "window_reranked_first",
+      "source_case": "B5-H03",
+      "kind": "real_result_copy",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{'member': 'M00005'}.first_order_count",
+            "expected": 0,
+            "actual": 1,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "status": "passed"
+    },
+    {
+      "id": "first_payment_not_net",
+      "source_case": "B5-H02-F",
+      "kind": "real_result_copy",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.first_order_sales_cents",
+            "expected": 137,
+            "actual": 200,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "status": "passed"
+    },
+    {
+      "id": "correct_gte_two",
+      "source_case": "B6-R01",
+      "kind": "real_result_copy",
+      "expected_passed": true,
+      "actual_comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "status": "passed"
+    },
+    {
+      "id": "incorrect_exact_two",
+      "source_case": "B6-R01",
+      "kind": "real_result_copy",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.monthly_repeat_buyer_count",
+            "expected": 1,
+            "actual": 0,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "status": "passed"
+    },
+    {
+      "id": "undefined_ratio_zero",
+      "source_case": "B6-Z01",
+      "kind": "real_result_copy",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.monthly_repeat_rate",
+            "expected": null,
+            "actual": 0,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "status": "passed"
+    },
+    {
+      "id": "wrong_registered_denominator",
+      "source_case": "B6-N01",
+      "kind": "real_result_copy",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.monthly_repeat_rate",
+            "expected": 0.8,
+            "actual": 0.6,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "status": "passed"
+    },
+    {
+      "id": "missing_month",
+      "source_case": "B6-M01",
+      "kind": "real_result_copy",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows",
+            "expected": {
+              "metric_time__month": "2026-08-01 00:00:00",
+              "monthly_buyer_count": 15,
+              "monthly_repeat_buyer_count": 12,
+              "monthly_repeat_rate": 0.8
+            },
+            "actual": null,
+            "rule": "missing group"
+          }
+        ]
+      },
+      "status": "passed"
+    },
+    {
+      "id": "duplicate_month",
+      "source_case": "B6-M01",
+      "kind": "real_result_copy",
+      "expected_passed": false,
+      "actual_comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "actual.rows[2]",
+            "expected": "unique group",
+            "actual": [
+              "2026-07-01 00:00:00",
+              11,
+              1,
+              0.09090909090909091
+            ],
+            "rule": "duplicate group"
+          }
+        ]
+      },
+      "status": "passed"
+    },
+    {
+      "id": "month_row_reordering",
+      "source_case": "B6-M01",
+      "kind": "real_result_copy",
+      "expected_passed": true,
+      "actual_comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "status": "passed"
+    }
+  ],
+  "total": 11,
+  "new_model_calls": 0,
+  "new_queries": 0,
+  "source_report_hashes": {
+    "artifacts/w03/b56-first-monthly-20261108/test-small-a-v3/metric_test_report.json": "5a523e3f4beb2197096e0b7daf8c491266fb3d9a52561ff0b786b2132ea4db58",
+    "artifacts/w03/b56-first-monthly-20261108/test-small-b-v3/metric_test_report.json": "5292048a827d77ab67ca5fb2bba865fa675036784040824d8db35b1d41823e77",
+    "artifacts/w03/b56-first-monthly-20261108/test-b5-fixture-v3/metric_test_report.json": "b8dda54c6bbdf60b70f389b56e90e080368b7e7a7ab4425a31043e477fd80811",
+    "artifacts/w03/b56-first-monthly-20261108/test-b6-fixture-v3/metric_test_report.json": "a560f0fff50197dc1627695e793208df0d46fd9a439638e6d1c0349502003e4f",
+    "artifacts/w03/b56-first-monthly-20261108/test-b2-fixture-v3/metric_test_report.json": "cc150e02a64e2b1d492b047fac2c82eba2608b1ffb4674d91049479676d8a235"
+  }
+}

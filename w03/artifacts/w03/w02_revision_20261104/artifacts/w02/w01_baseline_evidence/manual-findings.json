@@ -1,0 +1,75 @@
+{
+  "automated_evaluation": "7/7 pass",
+  "manual_quality_status": "known_issue_open",
+  "reviewed_by": "assistant",
+  "findings": [
+    {
+      "id": "EVAL-MANUAL-001",
+      "type": "factual_inconsistency_in_suggestion",
+      "status": "open",
+      "case_index": 6,
+      "member_id": "M004",
+      "observed": "建议由运营人员核对该会员近两月无下单的情况，通过合适渠道做一次回访或内容触达，了解需求变化后再决定是否投放权益",
+      "verified_fact": "2026 年 7 月有 1 笔已支付订单，净消费 400 元；8 月没有已支付订单。不能称近两月无下单。",
+      "evidence": {
+        "output_file": "artifacts/w01/evaluation/20261022-promptfoo/results/07-refund-explanation.json",
+        "trace_id": "139dc8665065df6d249cde8b34e3df03",
+        "comparison_evidence_id": "CMP-29dcd590e6429c3a",
+        "comparison_row": {
+          "member_id": "M004",
+          "store_id": "S01",
+          "baseline_cents": 40000,
+          "current_cents": 0,
+          "delta_cents": -40000,
+          "decline_pct": 100.0,
+          "baseline_orders": 1,
+          "current_orders": 0,
+          "declining": true,
+          "evidence_order_ids": [
+            [
+              "O0040"
+            ],
+            []
+          ],
+          "order_breakdown": {
+            "baseline": {
+              "paid_count": 1,
+              "fully_refunded_count": 0,
+              "cancelled_count": 0,
+              "paid_cents": 40000,
+              "refunded_cents": 0,
+              "net_cents": 40000,
+              "paid_order_ids": [
+                "O0040"
+              ],
+              "cancelled_order_ids": []
+            },
+            "current": {
+              "paid_count": 0,
+              "fully_refunded_count": 0,
+              "cancelled_count": 0,
+              "paid_cents": 0,
+              "refunded_cents": 0,
+              "net_cents": 0,
+              "paid_order_ids": [],
+              "cancelled_order_ids": []
+            }
+          }
+        },
+        "rationale": "基准时段 2026-07-01 至 2026-08-01，比较时段 2026-08-01 至 2026-09-01（均不含结束日）。净消费从 400 元变为 0 元，下降 100%。基准时段有 1 笔已支付订单，支付 400 元，退款 0 元，净消费 400 元。比较时段没有已支付订单，净消费为 0 元。"
+      },
+      "scope": "数据工具和结构化依据正确，建议文字与依据矛盾；本次自动断言未覆盖该建议事实。",
+      "next_validation": "保留本次基线；后续将建议中的事实逐条绑定工具依据，补充月份/订单一致性检查，再做对照回归。尚未修改提示词或验证改进效果。"
+    },
+    {
+      "id": "EVAL-MANUAL-002",
+      "type": "unverified_business_eligibility",
+      "status": "needs_customer_validation",
+      "case_index": 6,
+      "member_id": "M007",
+      "observed": "建议由运营人员判断该低客单会员是否值得纳入常规触达名单，可用新人或小额券类通用权益做一次召回试探，并观察后续是否复购",
+      "scope": "召回对象是老会员，使用新人权益的资格和客户已有权益渠道均无证据；不能视为已确认可执行的方案。",
+      "next_validation": "由客户运营确认权益资格、可用渠道与审批责任；本轮无实际营销触达。"
+    }
+  ]
+}

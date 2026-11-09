@@ -1,0 +1,274 @@
+{
+  "reviewer": "b56_execution_review",
+  "reviewed_at": "2026-11-08T15:07:57.555539+00:00",
+  "stage": "independent_actual_build_semantic_review",
+  "build": "artifacts/w03/b56-first-monthly-20261108/build-v1",
+  "status": "changes_requested",
+  "approved_for_merge_load": false,
+  "failed_checks": [
+    {
+      "id": "B5-08-grouped-zero",
+      "severity": "blocking",
+      "metrics": [
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "case_id": "B5-H03",
+      "expected_rows": [
+        [
+          "M00005",
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          "M00007",
+          1,
+          3000,
+          1,
+          0,
+          1
+        ]
+      ],
+      "actual_rows": [
+        [
+          "M00007",
+          1,
+          3000,
+          1,
+          null,
+          1
+        ],
+        [
+          "M00005",
+          null,
+          null,
+          null,
+          1,
+          1
+        ]
+      ],
+      "evidence": [
+        "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v1.sql",
+        "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v1-actual.json",
+        "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v1-judge.json"
+      ],
+      "reason": "first_valid_orders and repeat_valid_orders remove the other subset before grouping. FULL OUTER JOIN keeps each account but absent submodel columns are NULL. No fill_nulls_with or equivalent generated handling exists; Engine only normalizes simple NULL for ungrouped aggregate. Existing account groups require known business zeros.",
+      "required_change": "Regenerate the model with correct conditional metrics over shared retained order rows, or equivalent supported metric-level zero handling; keep raw v1 and frozen expected/judge unchanged. Recheck identical H03 before merge/load."
+    }
+  ],
+  "passed_checks": [
+    {
+      "id": "G01",
+      "finding": "Catalog and model usage source spans and support checked; 02 financial rules also read for old ratios."
+    },
+    {
+      "id": "G02",
+      "finding": "All32 targets present; ratios have correct closed dependencies."
+    },
+    {
+      "id": "G03",
+      "finding": "Orders/order_id, members/member_id and stores/store_id; first/repeat per order, monthly per account-month; no card join."
+    },
+    {
+      "id": "G04",
+      "finding": "Raw dates and full coverage preserved; actual H03 SQL uses Aug1 inclusive to Aug31 inclusive native representation."
+    },
+    {
+      "id": "G05",
+      "finding": "Old order-store versus member-home-store paths retained; B5 limited dimensions disclosed."
+    },
+    {
+      "id": "G06",
+      "finding": "Current source/dimension/grain/MetricFlow checks passed; independent blocker overrides."
+    },
+    {
+      "id": "B5-01",
+      "finding": "Member registration time and distinct member IDs correct."
+    },
+    {
+      "id": "B5-02",
+      "finding": "Both ranked models filter paid and net>0 before ranking."
+    },
+    {
+      "id": "B5-03",
+      "finding": "ROW_NUMBER partition member ordered_at,order_id over full source before runtime filters."
+    },
+    {
+      "id": "B5-04",
+      "finding": "First buyer distinct member from first effective order."
+    },
+    {
+      "id": "B5-05",
+      "finding": "First order count of rank1 rows; tie ordered by order_id."
+    },
+    {
+      "id": "B5-06",
+      "finding": "First net value paid-refund in cents from rank1 original order date."
+    },
+    {
+      "id": "B5-07",
+      "finding": "Repeat rows rank>=2, with own order date."
+    },
+    {
+      "id": "B6-01",
+      "finding": "Monthly GROUP BY member_id, CAST(date_trunc(month,ordered_at) AS DATE)."
+    },
+    {
+      "id": "B6-02",
+      "finding": "Only valid-order account-month rows; denominator distinct account, not registration."
+    },
+    {
+      "id": "B6-03",
+      "finding": "Repeat condition valid_order_count>=2, not ==2."
+    },
+    {
+      "id": "B6-04",
+      "finding": "Ratio monthly_repeat_buyer_count / monthly_buyer_count; dependencies closed."
+    },
+    {
+      "id": "B6-06",
+      "finding": "All3 full_month_only true, Engine enforces complete month."
+    },
+    {
+      "id": "B6-07",
+      "finding": "Engine full_month_only rejects filters and non-month groups; channel restriction attributed to implementation contract."
+    },
+    {
+      "id": "B6-08",
+      "finding": "Engine rejects multi-month ungrouped query and allows month grouping; normal nonzero month grain correct."
+    },
+    {
+      "id": "R01",
+      "finding": "Old24 measure expressions and 8 financial ratios match source scope and units. Full old regression still required."
+    }
+  ],
+  "mechanical_checks": {
+    "passed": 17,
+    "total": 18,
+    "failed": [
+      "H03_grouped_zero"
+    ]
+  },
+  "reviewed_metrics": [
+    "order_count",
+    "paid_order_count",
+    "valid_order_count",
+    "cancelled_order_count",
+    "refund_order_count",
+    "partial_refund_order_count",
+    "full_refund_order_count",
+    "payment_cents",
+    "refund_cents",
+    "net_sales_cents",
+    "gross_cents",
+    "discount_cents",
+    "buyer_count",
+    "refund_buyer_count",
+    "selling_store_count",
+    "valid_order_items",
+    "avg_order_value",
+    "avg_buyer_value",
+    "purchase_frequency",
+    "refund_amount_rate",
+    "cancel_rate",
+    "refund_order_rate",
+    "discount_rate",
+    "items_per_order",
+    "new_member_count",
+    "first_buyer_count",
+    "first_order_sales_cents",
+    "first_order_count",
+    "repeat_order_count",
+    "monthly_buyer_count",
+    "monthly_repeat_buyer_count",
+    "monthly_repeat_rate"
+  ],
+  "diagnostic": {
+    "native_deterministic_queries": 1,
+    "model_api_calls": 0,
+    "case_id": "B5-H03",
+    "ordinary_batch_test_pass": false,
+    "project_copy": "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v1-project",
+    "initial_setup_failure": "ModuleNotFoundError before query; log retained; fixed review script root path then 1 actual query",
+    "raw_generated_files_modified": false
+  },
+  "limitations": [
+    {
+      "id": "B5-filter-dimensions",
+      "detail": "first/repeat semantic models expose account/home_store/tier/time, not original order store/channel. No store/channel filtering acceptance is claimed; planned13 only require account filtering and registration grouping."
+    },
+    {
+      "id": "B6-empty-month-group",
+      "detail": "monthly_member_orders only contains months with valid purchases. Frozen B6-Z01 is an ungrouped empty month and Engine additive normalization applies. Grouped queries including an empty month may omit that month; no native empty-month-group query was run. Design review already records no such candidate; not claimed covered."
+    },
+    {
+      "id": "B6-grain-declaration",
+      "detail": "Actual aggregation is member_id+month_start, serialized grain declares synthetic member_month_key. Primary uniqueness passed; explicit two-column grain_keys would better satisfy contract wording for composite grain."
+    },
+    {
+      "id": "native-explanation",
+      "detail": "No natural-language model query or answer generated in this review. Planned47 and new13 complete explanation audits remain pending."
+    }
+  ],
+  "evidence_sha256": {
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/trace.json": "b8fa93029aea40f341252a751ad83db8e3d5d1ef2c3085a21d3b28f53e351a7b",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/skill_used.md": "d40329243c2c60c64ddfee0cb1b0617c4c2745c4b52d2b5d2f4b2b2570ea0fb2",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/provenance.json": "79c85bfb246384778670830105f1e97e05795731e5cd4c74e3aae0977c7961c1",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/first_valid_orders.sql": "187a2b00a5f650583a3819e6d4a8420e7cc01a14e5d45cf5b62cc1beec956cd6",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/input.json": "5f72f23fc0061473b08692b5e7fe2f163ebc64e18f79e6f34614c7b5eaa07f4b",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/scope.json": "3c03f74df77702d68cd217e0ccba2ec6095819271a4c44343fc42ee69c36f366",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/grain_check.json": "cf1a8431fc20d4963a6717d15a201717db83a10b03049ef70727b01b9f6253c6",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/monthly_member_orders.sql": "40692900aa4e33a9b183e9c02db28042fcf5d9713c546e8f14187062a8a998d5",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/dimension_targets.json": "061912a5979c60cb59e90d90939d1eb6857437d930c8a1d9b275d50a0d10cd25",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/metrics.yml": "af1a47cc830c69592b14a10b28ee3911b46a0b9aba426b9699b834734e4d849c",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/dimension_check.json": "61cceee83343dcad0d26bc7edbfebd818111ca740b1d2fc29dce891adcad7b58",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/repeat_valid_orders.sql": "2a9791104f6766ea7cdb1d81a05b5c494ca449ab8122abcca7c438479e33a94d",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/validation.json": "f89a21df157ae1c1e0c79da911bf96c8e5c2378155cfa462537116f10fbbefd6",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/source_check.json": "76aa3b58148d89cc797ae408eba304f008308b708476e2db124fcf4e5d1c7a2e",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/metricflow_check.json": "bfaa876f0025eaa1f2deaa278f6c6c4332a6eda564ee3d97d0a0e0524fd0494a",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/unresolved.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/catalog.json": "0b2354372b1eece8773de7321a57772d95c718beaab347036b2ed73a1a21f489",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/response.json": "ad46d5092fd70db8cb344af5ef049eb2965147353c44e6d7340b78887100d783",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/grain_contract.json": "f880ce91414548ece80d459e950447926fa50a90996505bcfda66a5d02a83239",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/validation-project/dataset.json": "c54ff9cb40774be9aa90471ce6cf99afa2340e657069aaec5b32c3766100871c",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/validation-project/dimensions.json": "2d3304e64383227c469f240051f68b8fa9660f7a036eacce00ce0fe215bf10ef",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/validation-project/validation.json": "f89a21df157ae1c1e0c79da911bf96c8e5c2378155cfa462537116f10fbbefd6",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/validation-project/grain_check.json": "cf1a8431fc20d4963a6717d15a201717db83a10b03049ef70727b01b9f6253c6",
+    "artifacts/w03/b56-first-monthly-20261108/build-v1/validation-project/metricflow_check.json": "bfaa876f0025eaa1f2deaa278f6c6c4332a6eda564ee3d97d0a0e0524fd0494a",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/review-contract.json": "ffdf5e69885f9a5c8a50df395f64f65d979dd904d5dd2b6746aed691039d7670",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/review-contract.md": "97c4c596f3037d5c8e9eaf9c814c8cb2bffe97caf94334c84fea6c532859b8c1",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/static-checks-v1.json": "e230c2f798a7ffcea1c373efb98f926c8a3aa649e1bab15592a39c35d98f0659",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v1-request.json": "971b1426838d71f8ac7b4d0e430ffd487b71a2ef8ee40b8bbc5af9237807a6f5",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v1-actual.json": "fd32a2cab35b7a7737a1030888f785ab201529c6e2761f3ea6f6d8f260a54e3b",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v1-judge.json": "7aea37966433431912964203e7588e6a8bdeee1a29bfeb6715db055266b3385d",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v1.sql": "5b81564a886c168b364b33e032a9c189683ca4f9b108ef89e6b899e7f8dd4467",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/run_diagnostic_v1.py": "5821c8d477b7379438bd7d0441169d8c4547c2d3fb0b3ebe759c7a8c6a1e0991",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v1.log": "3614eb22f2f1177ebb1362dc1cb3a34aadc36056bc66657421c6cd5dae391a25",
+    "artifacts/w03/b56-first-monthly-20261108/execution-review/diagnostic-v1-rerun.log": "f7c598dccdbb1deb93135ae752b90a6d245f1d5754f8d25eba43ac610128857a",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/expected-freeze.json": "dbd709b0a2338e00628239ecbc43ea1b956701e0650b303382950e2c2fcd7c0b",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/tests-small.json": "5106bd343b90476341348b3cbefad65bcf04b24c62ac7bbd1811f07f6d3b05dc",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/tests-fixture.json": "c3cd3367a275152fbd662ebbe21873f9aab648856ef1e8a5200b85c3d54b5ad8",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b5/design.json": "43bb302c392a14d43b5ba76149248a0c8999decd3499a3099585fb3906c90316",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/expected-freeze.json": "18b010781fdf4d133926f36090ef3dcdd0141bdd449389ec874fe31f1f3743eb",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/tests-small.json": "9f3407294d6345ffafef81f3cd2a675beca17c00576737690b93f8de33158c8c",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/tests-fixture.json": "bcea4c0268204758f78100061a6eabf3389e8bf3e32be71f95a3f5f934dc84c5",
+    "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/design.json": "8305fc7f1d358d1d7436693889899d7223ca022907e7ca5d941530b3ddc8b9ad",
+    "artifacts/w03/b56-first-monthly-20261108/design-review/final-review-v2.json": "6df785172eed6c1543b3168ffba99ab7647549c41fede8542ee5eb47c107a222",
+    "artifacts/w03/b56-first-monthly-20261108/design-review/final-review-v2.md": "8a5b77dd5fce23d7769452989f5c391e9d0a60f65695684dda23cacfc8cd9a7b",
+    "materials/w03/01_订单日报说明.md": "976fa129493e6bd2861a58d74df2ba3ad4448ea01a2d25651124222a61cebb67",
+    "materials/w03/03_会员运营周报.md": "25ab933556bf34bef21b528d4c7838c9baad33ae289d59f09501e765080bb492",
+    "materials/w03/05_数据字典.md": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16",
+    "docs/w03/business_model.md": "4e3187d124adc0856163b74a2cdd5edba064cf4ed39a698c553c9fe196ec00fb",
+    "docs/w03/contract.md": "76df027ee419a5c02a92459641e7a126ab3e8db713cdf3bc63c4ffd42bf62042",
+    "materials/w03/02_财务邮件.md": "f81e0ddb5c03dd4eb2d01094816716d8375d03fe883b947ec8297edf8d525557",
+    "materials/data/small/orders.csv": "c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1",
+    "platform/fde_product/metrics/engine.py": "e8b39da2517a65f6406da4d261173291c795248ea6c62638137e09ce750a98f3",
+    "customer/w03/judge.py": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3"
+  },
+  "next": "Regenerate a separate candidate; independently review changes and rerun unchanged deterministic H03; only then consider merge/load and the47 real-question regression. No changes to expected/judge or original generated files."
+}

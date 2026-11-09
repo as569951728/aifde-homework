@@ -1,0 +1,27 @@
+{
+  "case_id": "DQ08",
+  "started_at": "2026-11-06T15:50:02.231378+00:00",
+  "completed_at": "2026-11-06T15:50:18.483708+00:00",
+  "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "card_type": "家庭季卡",
+    "valid_from": "2026-05-20",
+    "valid_until": "2026-08-20",
+    "ended_at": "2026-08-15",
+    "decision_date": "2026-08-15"
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-505f1c7f1de646719c1e3a6be79e2dc3/run.json",
+    "run_id": "RUN-505f1c7f1de646719c1e3a6be79e2dc3",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "结论：在题设的人工构造隔离情境成立的前提下，这张“家庭季卡”于判定日 2026-08-15 在付费资格判定意义上无效。逐项依据如下：1）产品范围：家庭季卡属于本期总部运营月报纳入的悦享年卡、家庭季卡范围，因此先满足本期产品范围这一前提（MSG-03848、03854）。2）生效日期 valid_from 2026-05-20：权益从生效日期当天起有效（MSG-03886、03890、03888）。3）计划权益结束日期 valid_until 2026-08-20：计划权益结束日期当天已无效；若没有提前终止，最晚有效日为 2026-08-19（MSG-03886、03890、03888）。4）提前终止日期 ended_at 2026-08-15：该字段非空，存在提前终止时从提前终止当天起无效，因此不能延续至计划结束日（MSG-03886、03890、03888）。5）判定日 decision_date 2026-08-15：正好等于提前终止日，故判定日当天无效；按题设日期，该卡实际有效窗口为 2026-05-20 至 2026-08-14（含首尾）。本判断仅针对该卡；账户级付费资格仍需检查账户是否有另一张同时满足本期产品范围和判定日有效期的卡。该结论是情境推导，不代表已查询客户系统或客户实际记录；正式规则文件尚未取得这一缺口仍保留。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "0672c8e6f36b87b0098aaf5f8014b5b95236f29d2a0d37717af6af2e10b44ec3"
+}

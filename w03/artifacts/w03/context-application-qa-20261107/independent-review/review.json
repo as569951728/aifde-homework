@@ -1,0 +1,567 @@
+{
+  "status": "completed_with_semantic_failures",
+  "date": "2026-11-07",
+  "reviewed_at": "2026-11-07T04:04:50.946774+00:00",
+  "independent_source_first": true,
+  "criteria_sha256": "d56b76b5a544f5797aa14d6767f8bd9078c1dc0fca5b88c69dab8070aed8e529",
+  "expectation_comparison": "expectation-comparison.json",
+  "summary": {
+    "total": 16,
+    "native_passed": 16,
+    "native_failed": 0,
+    "http_attempts": 16,
+    "retries": 0,
+    "semantic_passed": 13,
+    "semantic_failed": 3,
+    "failed_ids": [
+      "U05",
+      "A03",
+      "E01"
+    ],
+    "source_context": {
+      "total": 14,
+      "passed": 11,
+      "failed": 3
+    },
+    "fixed_materials": {
+      "total": 2,
+      "passed": 2,
+      "failed": 0
+    }
+  },
+  "cases": [
+    {
+      "id": "U05",
+      "input_track": "model_with_source_context",
+      "verdict": "failed",
+      "native_verdict": "passed",
+      "reason": "A/C/D核心判断正确；B漏掉01918提问前提并改成小林基于个人使用的陈述，来源主体错误。E又将不能由认可推出批准写成最终验收尚未获批准，宜改为材料不能认定。",
+      "requirement_checks": [
+        {
+          "requirement": "逐条评A—E，不以全句笼统正确/错误代替。A可采用陈姐本期两卡日期解释并保留正式文件/历史凭据未知。",
+          "result": "passed"
+        },
+        {
+          "requirement": "B须纠正：01918由提问者先带入没人用，01919沿用；三步由小林给体验但01921否认精确清单，不算独立证实全面无人使用。",
+          "result": "failed"
+        },
+        {
+          "requirement": "C须纠正：模型/材料未核实反馈回店不等于企业没有该环节。",
+          "result": "passed"
+        },
+        {
+          "requirement": "D须纠正：活跃定义、时间及全量范围/一致性未齐，不能直接用80万/120万当已核活跃率。",
+          "result": "passed"
+        },
+        {
+          "requirement": "E须纠正：王经理认可分期只是核查意见，不构成最终验收批准。",
+          "result": "needs_source_boundary_repair"
+        }
+      ],
+      "source_attribution_check": "failed",
+      "findings": [
+        {
+          "code": "INTERVIEWER_PREMISE_REATTRIBUTED",
+          "severity": "key",
+          "actual_excerpt": "应改为小林基于个人使用的有限陈述",
+          "source": "01918提问者先说上一个项目为什么没人用；01919沿用，01921限定三步是感受。",
+          "required_repair": "B明确没人用的前提由访谈者01918带入，小林01919沿用，不是独立证实；她独立给出的是界面操作负担感受，三步非精确测量。"
+        },
+        {
+          "code": "APPROVAL_UNKNOWN_AS_DEFINITE_NONAPPROVAL",
+          "severity": "source_boundary",
+          "actual_excerpt": "最终验收尚未获批准",
+          "source": "03911/03931/03933只能支持核查意见非批准，以及审批与最终验收授权待核。",
+          "required_repair": "E改为认可分期不能证明最终验收已经批准；现有材料不能认定已获批准，最终验收确认人和授权仍需核实。"
+        }
+      ],
+      "advisories": [],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/U05.json",
+      "original_output_sha256": "671b8188792fdd20cf93251acbc2e993bf18b04e1c7f87eb79f28e721c4ed685",
+      "run": "artifacts/w02/knowledge_runs/RUN-cab6f8f9baff47b4834eda6619e59208/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "U06",
+      "input_track": "model_with_fixed_materials",
+      "verdict": "passed",
+      "native_verdict": "passed",
+      "reason": "保留题设假设，区分合成查数、活动名单及经营执行；覆盖四类落点、角色、未知及权限，不把材料应用归为正文增益。",
+      "requirement_checks": [
+        {
+          "requirement": "38项查询与独立核对完成仅为题设假设，不写成真实执行记录；仅支持指定合成范围内定义可追溯、计算/校验、口径数量重复遗漏核对。",
+          "result": "passed"
+        },
+        {
+          "requirement": "不能从测试正确推出真实生产接入、自然人跨系统统一、可触达名单/人群已定、运营授权、验收/预算/上线、复购/ROI收益或真实下降原因。",
+          "result": "passed"
+        },
+        {
+          "requirement": "优惠券偏好仅个人辅助方向；具体活动/筛选条件/名单用途/可触达性/执行方案需实际业务确认，不能用月报付费购买人数代替优惠券人群。",
+          "result": "passed"
+        },
+        {
+          "requirement": "业务模型保留卡资格/有效期/多卡账户业务规则；本期月末资格选账户再计月内订单及支持范围归本期报表/指标口径；候选名单和执行安排为后续场景方案与协作，不把个人Excel或FDE费用验收塞入正文。",
+          "result": "passed"
+        },
+        {
+          "requirement": "下一步参与：运营核业务范围与输出/人群；IT核字段覆盖/取数及真实接入依赖；门店落实范围工作量现场问题责任记录等配合条件；王经理核口径验收依据和费用合同，最终审批/验收人须另核。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed",
+      "findings": [],
+      "advisories": [],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/U06.json",
+      "original_output_sha256": "5b9ae22a6273ea18ef7f5ede0fac5009afd39570fea5071a6454d14d2d1b7e00",
+      "run": "artifacts/w02/knowledge_runs/RUN-f0e85a2c20f34a7b9434de0fd5c36c5b/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "F01",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "native_verdict": "passed",
+      "reason": "明确个人表不可作统一交付数据，同时允许核对线索、查漏重复与待核辅助；没有一律禁止参考。",
+      "requirement_checks": [
+        {
+          "requirement": "个人Excel是工作记录，不是公司统一口径，不能直接当交付数据；不因个人使用而否认其存在或一切参考价值。",
+          "result": "passed"
+        },
+        {
+          "requirement": "可作访谈/工作流程线索、与月报口径对照查漏重复的辅助材料；实际字段、来源、范围、有效性需核实，不升级为权威统计/主数据。",
+          "result": "passed"
+        },
+        {
+          "requirement": "正文不建个人Excel对象或流程节点；实际业务动作可无载体保留。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed",
+      "findings": [],
+      "advisories": [],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/F01.json",
+      "original_output_sha256": "d77c22358e3ae73185973488ff1437863ea28ac888736c815ed6559080a42de9",
+      "run": "artifacts/w02/knowledge_runs/RUN-a5a2cbf578bc49ca8cf949d89b819182/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "F02",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "native_verdict": "passed",
+      "reason": "个人偏好/痛点、阶段范围和助手权限分开，保留业务确认和禁止自动改记录。",
+      "requirement_checks": [
+        {
+          "requirement": "将先辅助优惠券活动记录为小林个人偏好/候选辅助方向，减少名单执行记录不一致核对及进度反复。",
+          "result": "passed"
+        },
+        {
+          "requirement": "人群与执行方案仍由业务人员确认，明确助手不得自动发券、联系会员或改记录。",
+          "result": "passed"
+        },
+        {
+          "requirement": "偏好不扩大本期38项合成测试查数范围，不等于后续会员筛选或经营动作已获批准；交付安排在SOW/阶段记录。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed",
+      "findings": [],
+      "advisories": [],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/F02.json",
+      "original_output_sha256": "4b0a3a4c9f5128ac4e8a024fc6f4f700f9698d40a18f81770aeeffabe5cade42",
+      "run": "artifacts/w02/knowledge_runs/RUN-8f51915d326b4ab684caa88ba5934004/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "F07",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "native_verdict": "passed",
+      "reason": "先说明对象用途范围，IT核查/记录依实际材料；没有把配合升级为生产访问、时间或真实接入承诺。",
+      "requirement_checks": [
+        {
+          "requirement": "先说明核查对象和用途；老周配合运营确认会员范围，再核取数条件、系统统计范围、时间、统计说明，列待补记录/责任。",
+          "result": "passed"
+        },
+        {
+          "requirement": "过程可形成核查记录，具体名称/内容依实际材料，无预先具体交付承诺；不把可形成写成已交付。",
+          "result": "passed"
+        },
+        {
+          "requirement": "合成库只支持结构覆盖关联核对；生产清理导入/联调另安排；不证明已获生产访问、真实数据或时间承诺，也不把未证明改成确定从未接通。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed",
+      "findings": [],
+      "advisories": [],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/F07.json",
+      "original_output_sha256": "b0c41ac270a850b77b5e1553f1369a9000f5c336599c81f78f187952115c0655",
+      "run": "artifacts/w02/knowledge_runs/RUN-b9f42a96f1494032b82617a17bacc315/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "F08",
+      "input_track": "model_with_fixed_materials",
+      "verdict": "passed",
+      "native_verdict": "passed",
+      "reason": "发放、核销、有效购买、复购改善分别取证，补关联与比较/归因证据，未虚构已产生效果。",
+      "requirement_checks": [
+        {
+          "requirement": "发放、核销、有效购买和复购效果是不同事件/结论；单有发放记录不证明后续任一项。",
+          "result": "passed"
+        },
+        {
+          "requirement": "按同一活动/券/账户与时间范围核对应核销记录、有效订单及归属关系；身份和关联需证据，不假定CRM与旧POS自然人已统一。",
+          "result": "passed"
+        },
+        {
+          "requirement": "复购提高需一致口径、可比前后/参照数据及必要归因检验；不能由发放量或查数正确推出增长。",
+          "result": "passed"
+        },
+        {
+          "requirement": "可以提出应补证据与验证方法，但不可写成现有材料已具备这些明细或已发生提升。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed",
+      "findings": [],
+      "advisories": [],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/F08.json",
+      "original_output_sha256": "b4b9a2db3feba24f2b352f901c6e5468ae150a15a48f63028e9413c9b32fd486",
+      "run": "artifacts/w02/knowledge_runs/RUN-141d7a8b214642899a715be07b248522/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "F10",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "native_verdict": "passed",
+      "reason": "注册指标已知与完整考核规则未知分开；王经理转介不当确认，小林不掌握且Excel不能计分。",
+      "requirement_checks": [
+        {
+          "requirement": "已知导购有会员注册指标；完整考核指标构成、计入方式、标准/数值口径未核实。",
+          "result": "passed"
+        },
+        {
+          "requirement": "王经理01824转介小林/陈姐分别核规则和执行，并非自己确认规则或证明小林已确认。",
+          "result": "passed"
+        },
+        {
+          "requirement": "小林01907明确注册记录及计考核不在其能确认范围，应找对应负责人；个人Excel不是统一口径且不能当考核依据。",
+          "result": "passed"
+        },
+        {
+          "requirement": "保持具体规则负责人未知，后续对照正式考核制度与实际记录；不按职位猜审批或计分规则。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed",
+      "findings": [],
+      "advisories": [],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/F10.json",
+      "original_output_sha256": "3cac8c26e09aa457b38adf72840a74f19a07a8801bdcbe3832d7cb2ad2d7f9ba",
+      "run": "artifacts/w02/knowledge_runs/RUN-392641685dcd452b8a9aa3196acb4b09/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "A01",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "native_verdict": "passed",
+      "reason": "阶段38项及双方成果材料、运营IT王经理分工完整；明确尚非实际完成、批准或收益。",
+      "requirement_checks": [
+        {
+          "requirement": "拟本期指定合成数据内38项查询与独立核对，并留定义可追溯、查询校验正确证据；会员筛选/运营执行后续另列，不能登记已交付。",
+          "result": "passed"
+        },
+        {
+          "requirement": "客户提供/确认38项清单、测试范围、统计口径与验收依据及留证方式；交付方准备实际查询独立核对结果、追溯校验说明、双方责任草案。",
+          "result": "passed"
+        },
+        {
+          "requirement": "运营核业务范围，IT核字段与覆盖，王经理参与口径/验收依据及费用合同核查；不等于公司批准或最终验收。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed",
+      "findings": [],
+      "advisories": [],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/A01.json",
+      "original_output_sha256": "870a00247da62eb5b6041b1683764bdb3d177ead4ea204a8c42ea2ca5edf652c",
+      "run": "artifacts/w02/knowledge_runs/RUN-96892649c21a4ef583148688e985fe72/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "A02",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "native_verdict": "passed",
+      "reason": "不能指定王经理/沈总批准验收，最终有权人需公司流程核实；主要论据直接来自03931/03933。附加模型章节引用有轻微偏差，见advisory。",
+      "requirement_checks": [
+        {
+          "requirement": "不可写王经理最终验收/批预算签约/授权上线；认可总结不构成这些权限。",
+          "result": "passed"
+        },
+        {
+          "requirement": "只能提核查意见，依据不足暂缓财务确认；最终验收确认人、审批人/额度及授权材料还需公司内部核实，不能自指王经理或沈总。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed_with_non_key_advisory",
+      "findings": [],
+      "advisories": [
+        {
+          "severity": "non_key",
+          "note": "附加“模型第5节最终规则责任”引用指向不精确；候选的最终规则责任在第4节门店考核语境，不能作为项目审批责任依据。答案主结论已有正确王经理直接依据，故不改变主判。",
+          "suggested_edit": "删除该模型§5补充论据；项目审批权限只引王经理03931/03933，沈总业务优先级单独引模型§4。"
+        }
+      ],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/A02.json",
+      "original_output_sha256": "d120c5182c060e9e13bf0554110c490bd205810ceea5ea3a45fb5adf9c5b05e1",
+      "run": "artifacts/w02/knowledge_runs/RUN-0c574e30512f44c080be362fda327f82/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "A03",
+      "input_track": "model_with_source_context",
+      "verdict": "failed",
+      "native_verdict": "passed",
+      "reason": "费用/结算/待谈条件本身正确；开头虚构业务模型§5含预算合同上线未决内容，将SOW来源迁移为正文来源，违反本批来源隔离。",
+      "requirement_checks": [
+        {
+          "requirement": "可写费用构成和计价依据的准备要求，未谈妥金额明确待确认；核查要对范围、责任和留证。",
+          "result": "passed"
+        },
+        {
+          "requirement": "结算应对应约定阶段成果和确认记录，但具体节点、记录形式/付款安排、金额尚待双方谈定。",
+          "result": "passed"
+        },
+        {
+          "requirement": "王经理仅核查，不据此承诺预算、签约、验收/续约；不擅填金额比例或期限。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "failed",
+      "findings": [
+        {
+          "code": "SOW_CONTENT_INVENTED_IN_MODEL",
+          "severity": "key",
+          "actual_excerpt": "业务模型第5节对预算、合同、正式上线分别确认的未决状态",
+          "source": "实际业务模型§5没有该商业内容；03911/03931/03933在本题指定王经理访谈中。",
+          "required_repair": "删除虚构的模型§5归属，费用/合同/预算/验收/上线状态直接归指定王经理访谈；不因答案需用SOW事实要求回填正文。"
+        }
+      ],
+      "advisories": [],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/A03.json",
+      "original_output_sha256": "30bce9904e14df5a2369a6bd3060a09085fe6570dc45feec793a362fd35e5a0b",
+      "run": "artifacts/w02/knowledge_runs/RUN-760ee3df72c24ed280d8863ba6745fc1/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "A04",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "native_verdict": "passed",
+      "reason": "保留未来支持范围未定与交付时书面确认前提，书面变更内容/费用责任影响、补证复核与核查非审批完整。",
+      "requirement_checks": [
+        {
+          "requirement": "后续筛选具体条件未定，题目所说以后超出范围是未来情景；03924提出交付时以书面确认范围为准，不反推当前已有书面支持范围。",
+          "result": "passed"
+        },
+        {
+          "requirement": "书面变更材料列变更内容、费用/责任影响、是否越出支持范围；王经理核书面支持范围、费用依据、责任草案、效果留证。",
+          "result": "passed"
+        },
+        {
+          "requirement": "依据不足列待确认，业务方补充后复核；王经理只核查不审批，实际有权确认者/预算签约等另落实，不自行指定审批人。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed",
+      "findings": [],
+      "advisories": [],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/A04.json",
+      "original_output_sha256": "3293853444252757840b5589b40c508ecd6a6098884b8005f2df39499362560d",
+      "run": "artifacts/w02/knowledge_runs/RUN-5b0e9069a4f440158b56a2128afc8322/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "A05",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "native_verdict": "passed",
+      "reason": "假设未改真实事件；缺项通知影响/受影响工作、执行方权限、双方书面确认费用排期完整。",
+      "requirement_checks": [
+        {
+          "requirement": "保留客户迟交为题设假设；记录缺项清单、通知时间、实际影响、受影响/不受影响工作。",
+          "result": "passed"
+        },
+        {
+          "requirement": "能否继续、如何排期由执行安排负责方定，不由王经理；该具体方本轮未知。",
+          "result": "passed"
+        },
+        {
+          "requirement": "受影响排期/费用变化要双方书面确认后再复核，未定金额待确认；不能自动顺延/加费或认定客户责任。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed_with_non_key_advisory",
+      "findings": [],
+      "advisories": [
+        {
+          "severity": "non_key",
+          "note": "“材料中的处理是继续不受影响工作”宜写成访谈者提出的方案，后文已经明确须执行安排方确定，因此没有实际越权结论。",
+          "suggested_edit": "改为“03928由访谈者拟议继续不受影响工作；03929答复明确能否继续由执行安排负责方决定”。"
+        }
+      ],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/A05.json",
+      "original_output_sha256": "654db1d99d16e12dcc98e1eccfda2d613a653b44142ba5c9c7b7c27ac420b026",
+      "run": "artifacts/w02/knowledge_runs/RUN-487cf48691f94d978159500bb951e3c6/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "A06",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "native_verdict": "passed",
+      "reason": "缺依据责任不清列待确认、业务补充复核、暂缓财务确认，明确非永久否决/非批准。",
+      "requirement_checks": [
+        {
+          "requirement": "按业务范围、费用构成、效果留证逐项看依据充分性/责任明确性。",
+          "result": "passed"
+        },
+        {
+          "requirement": "缺依据或责任不清列待确认，请业务方补充再复核；依据不足或费用范围不清暂缓财务确认。",
+          "result": "passed"
+        },
+        {
+          "requirement": "只是核查意见/暂缓，不是项目整体永久否决，也不等于无条件可以继续所有工作；执行与批准按各方职责落实。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed",
+      "findings": [],
+      "advisories": [],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/A06.json",
+      "original_output_sha256": "8defde2102277df785dd7924c24394d46728e0bce954863ec5e2505c0689faa9",
+      "run": "artifacts/w02/knowledge_runs/RUN-a7a51f3a4bcd44758424098473707243/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "E01",
+      "input_track": "model_with_source_context",
+      "verdict": "failed",
+      "native_verdict": "passed",
+      "reason": "把两条都归角色观察，漏01918提问前提；把“我看到的是”错误用作没人用的限定，其实只修饰界面多步骤。三步体验与不可精确化部分正确。",
+      "requirement_checks": [
+        {
+          "requirement": "01918提问者先带入之前没人用，01919沿用，不能当小林独立证实全项目无人使用。",
+          "result": "failed"
+        },
+        {
+          "requirement": "操作多三步由小林叙述，但01921明确为体验，不是精确操作清单；不能列出虚构三步/页面或量化工时。",
+          "result": "passed"
+        },
+        {
+          "requirement": "保留对增加工作负担的体验、需核实际页面/使用记录；助手诉求及不得自动发券联系改记录的边界不能因提问诱导而丢弃。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "failed",
+      "findings": [
+        {
+          "code": "INTERVIEWER_PREMISE_OMITTED_AND_OBSERVATION_SCOPE_SHIFT",
+          "severity": "key",
+          "actual_excerpt": "应分别按“角色观察/使用反馈”记录",
+          "source": "01918先带入没人用；01919“我看到的是那个界面让我们的操作又多了三步”修饰界面负担，不修饰项目全面没人用。",
+          "required_repair": "分清没人用为访谈者前提被沿用、不得独立证实；多三步为小林体验且01921否认精确清单；保留两组完整问答。"
+        }
+      ],
+      "advisories": [],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/E01.json",
+      "original_output_sha256": "5894b2a91dfdfca804f342977a3dec2b7e7198a4ddbaab9f7293d1c3d7f7f6b2",
+      "run": "artifacts/w02/knowledge_runs/RUN-25467c7505a54177b05db05736fbab97/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "E04",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "native_verdict": "passed",
+      "reason": "本期两卡日期规则可更新与正式文件历史凭据待核分开；旧不掌握不是相反规则，未阻塞更新。",
+      "requirement_checks": [
+        {
+          "requirement": "可据陈姐在本期悦享年卡/家庭季卡限定下的门店说明更新规则：生效当天有效，计划结束/提前终止当天无效；空值仅无提前终止仍受有效期；按判定日、账户至少一张范围内有效卡，多卡不重复人/订单。",
+          "result": "passed"
+        },
+        {
+          "requirement": "小林/老周先前不知道不是相反规则，不保留伪冲突或一律所有规则未知；也不能回写他们当时已确认。",
+          "result": "passed"
+        },
+        {
+          "requirement": "正式规则文件、办理记录/历史执行凭据、真实系统按此执行仍待核，保留来源与范围，不扩大所有卡产品。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed_with_non_key_advisory",
+      "findings": [],
+      "advisories": [
+        {
+          "severity": "non_key",
+          "note": "第4点把各指标具体判定日/窗口一并列待核易混淆未在正文展开与业务未确定；主问题要求的日期规则/来源界限均正确。",
+          "suggested_edit": "改为按相应指标口径和核查记录读取具体选择；04已经给定的本期统计选择不重列未知，未给出的其他口径另核。"
+        }
+      ],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/E04.json",
+      "original_output_sha256": "7efc7fca75ce728f91419fd2ca5400608c1b1bf6ec479939f5a9157d16edf450",
+      "run": "artifacts/w02/knowledge_runs/RUN-e641b3b998f241a8ab2dcfc082508a70/run.json",
+      "raw_score_final": true
+    },
+    {
+      "id": "E06",
+      "input_track": "model_with_source_context",
+      "verdict": "passed",
+      "native_verdict": "passed",
+      "reason": "准确区分两卡月末账户前提、陈姐新增规则与未知，以及王经理初步草案/四类要求/总结认可不等于批准。",
+      "requirement_checks": [
+        {
+          "requirement": "陈姐03885由提问者给定本期两卡/月末状态/账户统计和供月报计算；03886陈姐新增门店日期/空值/存在一张有效卡及多卡不重复规则，同时不掌握正式文件/历史凭据，配合有条件。",
+          "result": "passed"
+        },
+        {
+          "requirement": "王经理03910由提问者提出合成测试38项/独立核对、会员筛选运营后续、预算合同上线另核且当前未完成；03911认可划分并补四类材料、核查分工及权限未知。",
+          "result": "passed"
+        },
+        {
+          "requirement": "03932是访谈者总结，03933认可核查顺序并重申非批准/验收、收益/预算/批准未定及最终权限未知；不成为独立交叉验证或执行授权。",
+          "result": "passed"
+        }
+      ],
+      "source_attribution_check": "passed",
+      "findings": [],
+      "advisories": [],
+      "original_output": "artifacts/w03/context-application-qa-20261107/output/E06.json",
+      "original_output_sha256": "e232ff5bd17dd978ba547545e3a6d07da1fecbff8afd3aa7034175a7282600c3",
+      "run": "artifacts/w02/knowledge_runs/RUN-f75aae669ca84148a42200d46865dec0/run.json",
+      "raw_score_final": true
+    }
+  ],
+  "grading_boundary": "按冻结规则，全部必要点正确且无关键错误才通过。A02/A05/E04的附加措辞问题不改变正确主结论，另列非关键建议；U05/E01错置提问来源、A03虚构正文承载SOW事实是关键归属错误。",
+  "native_review": "native-request-review.json",
+  "gate": {
+    "approval_preceded_all_calls": true,
+    "status_checks_prose_consistent": true
+  },
+  "original_answers_unchanged": true,
+  "expected_and_questions_unchanged": true,
+  "manual_corrections": "三份导师修正稿必须另审另记，不改变本报告原答13/16；没有重跑。",
+  "not_proven": [
+    "业务模型正文独立增益",
+    "正式v0.4已apply",
+    "38项指标数值校验",
+    "真实生产接入/业务收益/验收批准"
+  ],
+  "human_decisions": []
+}

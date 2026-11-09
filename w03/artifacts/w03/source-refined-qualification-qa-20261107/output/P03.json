@@ -1,0 +1,32 @@
+{
+  "case_id": "P03",
+  "started_at": "2026-11-06T17:08:22.514018+00:00",
+  "completed_at": "2026-11-06T17:08:28.031571+00:00",
+  "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "account": "A",
+    "tier": "金卡",
+    "cards_complete": true,
+    "cards": [
+      {
+        "card_type": "悦享年卡",
+        "state_on_decision_day": "已失效",
+        "card_paid_cents": 10000
+      }
+    ]
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-feae6e8b149546c886dd13f8bfff357e/run.json",
+    "run_id": "RUN-feae6e8b149546c886dd13f8bfff357e",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "结论：账户A在判定日不具有本期总部月报口径下的付费资格。依据本期月报产品范围，只纳入悦享年卡与家庭季卡；账户需有一张同时符合产品范围且在判定日有效的卡。题设完整卡记录显示，账户A仅有一张悦享年卡，虽属纳入产品范围，但题设明确其判定日状态为“已失效”，因此不满足有效期条件；没有其他卡可提供资格。会员等级“金卡”和购卡实付10000分不能代替卡类型与有效状态。依据：本期产品范围见小林MSG-03848、03854；资格须同一张卡同时满足范围与有效期，见MSG-03848、03854、03870及陈姐MSG-03886、03888；等级和实付不得替代，见MSG-03848、03866。以上是在人工构造隔离情境和题设“cards_complete=true、判定日已失效”成立前提下作出的推导，不是客户真实记录或已执行查询。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "f0cbcb2b74496a686442b53a2a4a37d00c3e546f30c00a93b2744718141ca5d7"
+}

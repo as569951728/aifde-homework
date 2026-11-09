@@ -1,0 +1,95 @@
+{
+  "kind": "raw-data-derived incorrect hypotheses; not real Agent failures",
+  "checks": [
+    {
+      "case_id": "B5-N01",
+      "incorrect_rule": "rank_after_window",
+      "correct": [
+        5,
+        12800
+      ],
+      "wrong": [
+        15,
+        53700
+      ]
+    },
+    {
+      "case_id": "B5-N01",
+      "incorrect_rule": "count_later_orders_as_monthly_repeat_accounts",
+      "correct": 22,
+      "wrong": 12
+    },
+    {
+      "case_id": "B5-N01",
+      "incorrect_rule": "left_join_cards_without_order_dedup",
+      "correct": 27,
+      "wrong": 33
+    },
+    {
+      "case_id": "B5-H02-F",
+      "incorrect_rule": "physical_order_tie",
+      "correct": 137,
+      "wrong": 869
+    },
+    {
+      "case_id": "B5-H02-F",
+      "incorrect_rule": "omit_first_refund",
+      "correct": 137,
+      "wrong": 200
+    },
+    {
+      "case_id": "B5-H02-F",
+      "incorrect_rule": "rank_all_orders_or_all_paid_before_valid_filter",
+      "correct": [
+        1,
+        137,
+        1,
+        1,
+        2
+      ],
+      "wrong": [
+        0,
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "case_id": "B5-H02-F",
+      "incorrect_rule": "include_exclusive_end_date",
+      "correct": [
+        1,
+        137,
+        1,
+        1,
+        2
+      ],
+      "wrong": [
+        1,
+        137,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "case_id": "B5-Z01-F",
+      "incorrect_rule": "share_empty_order_fact_for_registration",
+      "correct": 2,
+      "wrong": 0
+    },
+    {
+      "case_id": "B5-Z01-F",
+      "incorrect_rule": "include_registration_on_exclusive_end",
+      "correct": 2,
+      "wrong": 3
+    },
+    {
+      "case_id": "B5-Z01-F",
+      "incorrect_rule": "exclude_registration_on_start",
+      "correct": 2,
+      "wrong": 1
+    }
+  ]
+}

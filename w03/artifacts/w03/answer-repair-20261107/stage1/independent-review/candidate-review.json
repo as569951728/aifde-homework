@@ -1,0 +1,46 @@
+{
+  "status": "approved_prompt_change_only",
+  "approved": true,
+  "run_allowed": false,
+  "reviewed_at": "2026-11-07T04:42:58.760700+00:00",
+  "baseline_prompt": "artifacts/w03/context-application-qa-20261107/input/knowledge_prompt.txt",
+  "baseline_prompt_sha256": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+  "candidate_prompt": "artifacts/w03/answer-repair-20261107/stage1/input/knowledge_prompt.txt",
+  "candidate_prompt_sha256": "7d237ed42f4b585cd36e09ae992d917b9bd0907ce6e5c13b3b8f92f748f7c019",
+  "checks": [
+    {
+      "id": "baseline_is_frozen_prior_prompt",
+      "passed": true
+    },
+    {
+      "id": "one_addition_no_replacement",
+      "passed": true
+    },
+    {
+      "id": "diff_matches_files",
+      "passed": true
+    },
+    {
+      "id": "no_case_ids_or_source_specific_answers",
+      "passed": true
+    },
+    {
+      "id": "generic_statement_provenance_only",
+      "passed": true,
+      "reason": "新增段仅区分提问/回应、新信息、修饰对象、数量未知、可比性、正文/附加来源、有效范围和建议；不植入题号、规则或精确答案。"
+    },
+    {
+      "id": "positive_evidence_and_hypothetical_reasoning_preserved",
+      "passed": true,
+      "reason": "明确不能因前提审查否定回答者新信息；给定测试条件仍可推导，防止过度保守。"
+    },
+    {
+      "id": "date_template_and_existing_prompt_unchanged",
+      "passed": true,
+      "reason": "唯一插入在通用来源段与单卡模板之间；模板/格式合同完全保留。"
+    }
+  ],
+  "failed_checks": [],
+  "assessment": "481字通用来源/前提/条件审查追加符合stage1最小修复范围；不构成效果证明。仍待冻结完整18题payload和执行门禁。",
+  "human_decisions": []
+}

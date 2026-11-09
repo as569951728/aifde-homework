@@ -1,0 +1,24 @@
+{
+  "created_at": "2026-11-06T15:12:13.841310+00:00",
+  "status": "approved_for_one_bounded_regression_not_formal_adoption",
+  "old_prompt_sha256": "f0447628feb59042278a7ad473d5e4091486a92207fcea3e9d5bd42a33bff6c5",
+  "new_prompt_sha256": "c2947d4bb17dcd5faf3a4da8740983c4ade6b91310d570ce18e228bfc4beaa63",
+  "new_prompt_path": "artifacts/w03/qualification-qa-20261106-r1/input/knowledge_prompt.txt",
+  "checks": {
+    "generic_instructions_not_business_answers": true,
+    "no_case_ids_or_expected_points": true,
+    "no_customer_product_card_or_order_rules_hardcoded": true,
+    "no_required_output_verdict_or_counts": true,
+    "same_runner_model_questions_expectations_selected_cases": true,
+    "knowledge_config_only_paths_changed": true,
+    "no_formal_prompt_or_skill_change": true
+  },
+  "change_reason": "R0明确存在将来源规则整体降为未确认选择、虚构导师身份、移走完整情境前提、混淆引用主体与补充未给字段状态。R1使用通用来源和条件约束针对这些错误，不提供具体答案。",
+  "model_text_assessment": "所测17题的主要资格/关系语义已有正文和原始来源依据；本轮错误未显示必须改正文才能回答。先只改提示便于保留变更范围。不得据此认定全文或所有指标规则均完备。",
+  "execution_constraints": [
+    "冻结新prompt/hash后仅一次全17题回归；全部失败/成功保留，不挑选。",
+    "原17题R0结果不覆盖，预期不因失败改写。",
+    "正式v0.4、现用prompt/Skill/配置不替换，不apply。",
+    "同一已见测试集回归不证明未见题泛化；改善亦不只靠评分数字下结论。"
+  ]
+}

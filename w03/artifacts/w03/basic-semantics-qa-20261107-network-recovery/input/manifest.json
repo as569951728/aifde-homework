@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-07",
+  "frozen_at": "2026-11-07T02:40:46.545062+00:00",
+  "frozen_before_execution": true,
+  "case_ids": [
+    "B04"
+  ],
+  "files": {
+    "input/business_model.md": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+    "input/knowledge.json": "e50b78a3bbc5cb156b8458c74ff15a82af31b042fe7372070cbc8ab9347c1989",
+    "input/knowledge_prompt.txt": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+    "input/materials/03_会员运营周报.md": "25ab933556bf34bef21b528d4c7838c9baad33ae289d59f09501e765080bb492",
+    "input/materials_index.json": "6a72b9da6a268c2191fe232603d5333a88dd2d31cd742a22b62815101ba91f4f",
+    "input/original_questions.json": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+    "input/protected.json": "25cd04dd8392eb12803de036ce08c4c890f2fef2a57d0f15e2d86d42f74df980",
+    "input/reviewer_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+    "input/selected_questions.json": "a784a79d527d7faf22f2983a83d1ad09a15f0d69789121c1250cbf372bf9ed55"
+  },
+  "source_question_sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+  "source_expectation_sha256": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+  "condition": "One original B04 no-answer network recovery. Exact same messages and parameters as failed request.",
+  "tested_input": "Course GUARD + unchanged candidate/prompt + original single question and its exact designated source text only. Material wrapper is inside course question field; native settings/request preserve it. No expected/other questions/tools.",
+  "runtime_plan": {
+    "model": "deepseek-flash",
+    "profile": "deepseek-json",
+    "max_tokens": 8192,
+    "retry_max_tokens": 16384,
+    "timeout_seconds": 180,
+    "retry_timeout_seconds": 240,
+    "max_concurrency": 2,
+    "answers_per_case": 1,
+    "automatic_semantic_retry": false
+  },
+  "stop_rule": "One additional transport attempt only; no semantic retry; keep original failed batch immutable."
+}

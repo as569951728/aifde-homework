@@ -1,0 +1,24 @@
+{
+  "case_id": "P07",
+  "started_at": "2026-11-06T15:14:26.776614+00:00",
+  "completed_at": "2026-11-06T15:14:35.292464+00:00",
+  "question": "只知道账户A等级为金卡，卡记录尚未提供。能否判断其本期付费资格？还需什么信息？",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "cards_provided": false,
+    "tier": "金卡"
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-bcd4e7f99c80408ba8c35c3d4aaaefc4/run.json",
+    "run_id": "RUN-bcd4e7f99c80408ba8c35c3d4aaaefc4",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "在本题人工构造的隔离情境下（仅知账户A等级为金卡、卡记录尚未提供），不能判断其本期付费资格；既不能判定具有，也不能判定不具有。依据业务模型：会员等级与派生付费资格是两回事，金卡属于会员等级，不能代替卡产品类型与有效状态（MSG-03848、03866、03870）；付费资格须在给定业务范围与判定日下，看账户是否存在一张同时满足产品范围与有效期的卡，且不能把不同卡的条件拼接判断（规则2、3；MSG-03848、03854、MSG-03886、03888、03890）。若问题特指本期总部运营月报，其产品范围只纳入悦享年卡与家庭季卡持有人，异业联名卡和体验卡不纳入；该口径只约束本期月报（《本期统计确认邮件》；MSG-03848、03854）。还需补充：账户A的卡记录，包括每张卡的产品类型、权益开始日期、计划权益结束日期、提前终止日期（可为空）；该资格所服务的具体报表或业务范围；以及按该统计要求确定的资格判定日。若账户A有多张卡，只需其中同一张卡同时满足产品范围与判定日有效，不因多卡重复计账户或订单（规则4；MSG-03886、03888、03890）。上述为情境推导，不是客户实际记录或已执行查询。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "5910ea6503ae942b58dbefb0704856176823261a5fe1fbe14562df38ee440ef6"
+}

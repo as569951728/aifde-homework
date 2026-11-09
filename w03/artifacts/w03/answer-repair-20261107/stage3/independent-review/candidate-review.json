@@ -1,0 +1,66 @@
+{
+  "reviewed_at": "2026-11-07T04:48:08.337385+00:00",
+  "status": "passed",
+  "approved": true,
+  "approved_for_freeze": true,
+  "approved_for_execution": false,
+  "run_allowed": false,
+  "approval_scope": "stage3_prompt_candidate_change_only",
+  "checks": [
+    {
+      "id": "source_first_before_prompt_review",
+      "passed": true
+    },
+    {
+      "id": "only_append_relative_to_stage2",
+      "passed": true
+    },
+    {
+      "id": "all_prior_rules_and_date_template_unchanged",
+      "passed": true
+    },
+    {
+      "id": "only_general_json_serialization_and_stop_constraint",
+      "passed": true
+    },
+    {
+      "id": "no_case_or_customer_or_expected_literal_in_delta",
+      "passed": true
+    },
+    {
+      "id": "explicitly_preserves_answer_content_and_tables",
+      "passed": true
+    },
+    {
+      "id": "no_parser_schema_guard_or_framework_change",
+      "passed": true
+    },
+    {
+      "id": "native_prompt_length_limit",
+      "passed": true
+    }
+  ],
+  "failed_checks": [],
+  "candidate_prompt": {
+    "path": "artifacts/w03/answer-repair-20261107/stage3/input/knowledge_prompt.txt",
+    "sha256": "9637b073135d1c0468c28be85f2481ac102dea4e4adcd1c9ec75e5420a164e07",
+    "characters": 2283
+  },
+  "base_prompt": {
+    "path": "artifacts/w03/answer-repair-20261107/stage2/input/knowledge_prompt.txt",
+    "sha256": "e7ca9a5ef2836cae5e1bf96e0544dd1dcd66a441c204593a6d077cded5ba3c41"
+  },
+  "diff_sha256": "1f4e1f6dd878e04ef833a4b283c701ec5480bd9c58f9a146100907e7bcef2ada",
+  "source_first_criteria_sha256": "a658573658183943f25a9a0c84618cdf42b83cf8968a483787c1c2052db1bdcd",
+  "appended_text": "\n\n输出提交前核对外层协议：仅一个JSON对象且唯一字段为answer，值为非空字符串。将回答中的双引号、反斜线、制表符和换行按JSON字符串正确转义；转义不能增删或改写回答内容。对象闭合后立即结束，不追加引号、括号、代码围栏、注释或其他字符。需要表格或逐行原文时，它们仍全部放在answer字符串内。\n",
+  "reason": "原F06公开输出在完整JSON后有多余引号和括号，课程严格解析为JSON_INVALID。此增量只强化既有外层协议及字符串转义，不修raw、不放宽解析器；明确转义不得改变内容，保留表格/多行。",
+  "nonblocking_observation": "格式终检是模型行为约束，不保证成功；须以新native response整体严格解析和全答语义双重验证，不能仅看有answer字段。",
+  "remaining_gate": [
+    "stage2完整原答审核通过",
+    "冻结全部16题和最终累计提示；同一最终提示重测11原失败",
+    "核原题/fixture/指定原文、FMTCTRL01精确文本及隔离",
+    "原生GUARD/schema/解析器hash不变；无容错清尾和额外模型调用"
+  ],
+  "api_calls": 0,
+  "prose": "阶段3格式提示增量审核通过，可准备冻结；执行尚未批准，须阶段2实答通过后完成输入门禁。"
+}

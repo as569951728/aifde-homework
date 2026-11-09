@@ -1,0 +1,686 @@
+{
+  "created_at": "2026-11-06T15:43:45.871771+00:00",
+  "method": "独立直接读取 native request/attempts/answer/run 并调用只读 check_run；未使用父 Agent protocol_audit.json。无网络/模型调用。",
+  "case_count": 24,
+  "live_runs": 24,
+  "successful_runs": 24,
+  "total_attempts": 24,
+  "all_http_200": true,
+  "all_finish_stop": true,
+  "expected_leakage_detected": false,
+  "all_frozen_inputs_unchanged": true,
+  "all_protected_files_unchanged": true,
+  "input_checks": {
+    "input/business_model.md": true,
+    "input/knowledge.json": true,
+    "input/knowledge_prompt.txt": true,
+    "input/original_questions.json": true,
+    "input/protected.json": true,
+    "input/reviewer_expectations.json": true,
+    "input/selected_questions.json": true
+  },
+  "protected_checks": {
+    "docs/w03/business_model.md": true,
+    "docs/w03/interview_notes.md": true,
+    "customer/w02/knowledge.json": true,
+    "customer/w02/knowledge_prompt.txt": true,
+    "customer/w02/workflow.json": true,
+    "customer/w02/extraction.json": true,
+    "customer/w02/skills/extract-business/SKILL.md": true,
+    "artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/session.json": true,
+    "artifacts/w03/model-draft-20261106/draft-03/business_model.md": true,
+    "docs/w03/metric_decisions.md": true,
+    "docs/w03/sow.md": true,
+    "customer/w03/tests.json": true
+  },
+  "cases": [
+    {
+      "id": "DY01",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY01.json",
+      "output_sha256": "91e09aa0e05f921f46e1c891219b7f5fc99d4d56f2b6377e975e96d9e520ffc9",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-74e39e02328244b69e70893ae16c9922/run.json",
+      "run_sha256": "fe9677e93efc5cc0a96d63dd8e1c13d69235f09115456b85d90d21ee70ae00a9",
+      "run_hash_matches_record": true,
+      "request_sha256": "939dde1377ac59ec539eb1c36ae964d6378429e41a3b0cf87277877ba0fdd2f3",
+      "answer_sha256": "1f07f0bf04540cf4a3733105f9dfceef0cb278ea9e2329560e565c802f9361dd",
+      "attempts_sha256": "51f0a39d629a3cd02d8d46456ab598453a75f5a746c58a68a566a15d2e57cd07",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY02",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY02.json",
+      "output_sha256": "0842ddee9702ba279bcb174c9bfc5598eec612aab39dfffda7ec6c17f4c86e99",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-32989de44dc344b7bfed02dec0db0c56/run.json",
+      "run_sha256": "b6b317782b61f26b289f89ac9830779822d2783763e208d421314789769c5778",
+      "run_hash_matches_record": true,
+      "request_sha256": "bf04c99025fdb135ef7c363ef145e18c22e540af79f1ef4d701dabce0f7041e9",
+      "answer_sha256": "7222857aa531af9b30e2b2edf8a46a63dc0cc225fce76a254547d0b79ee02428",
+      "attempts_sha256": "15c70419aa9607b880ea8524c4dec366add4e633f130a77a48131d0ca120f5f1",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY03",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY03.json",
+      "output_sha256": "ac4a424f0a566dc27f5187ff8c1a4f61bc5f7f3ee0c42a6eb1428f9a29402559",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-ef36c13ce41f4a3e804a229d3ec2d109/run.json",
+      "run_sha256": "164acfdc25bcfbe97772268c12657157a3d6e7a5f3e961a51d486a686a092724",
+      "run_hash_matches_record": true,
+      "request_sha256": "160e375f99bcc19d5c5d4ecf70397c802f19be67fe1eb53eb25275feda2bf55f",
+      "answer_sha256": "a3e3b0e372cf22356a92912599c93609736696b20cb85bf569cff157fcad4537",
+      "attempts_sha256": "ef04762b3f373e8a27e005425b3952c9d5907fe7882abe2b290cf09d7e8c88f2",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY04",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY04.json",
+      "output_sha256": "4ec4af4e06064c572bd7dafd837eadb84609278f82a21a802823db4060fe1201",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-36469f237af64caf81ab32f05d09d3c4/run.json",
+      "run_sha256": "8eb245e9b6d047f9da5f5f34afda04d901b639336353b537dd7932fe5cf67c69",
+      "run_hash_matches_record": true,
+      "request_sha256": "6a18fc77a54217e2e046fed813ace19c81dd22605bd66311df5dab1c10fd1c18",
+      "answer_sha256": "850cb37b88da6dba583d68eeebed1861f22cbaa6dd4493e4f3f141e8941ba19d",
+      "attempts_sha256": "627827bf5de4cfea44e2bc0bf8194ca5c25f6f037d969252a3172c32d4c7f337",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY05",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY05.json",
+      "output_sha256": "c956709bb67acdbb5f92b6f67d7a535e2c68dabf0c3c5dcb0d80805f1796f86b",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-15312a5b69bb44fe9d5565d4c8aabcf5/run.json",
+      "run_sha256": "356bec5e43d57271191cdc569441499bd6eb9a4c4f02496913fcaa324c5758c7",
+      "run_hash_matches_record": true,
+      "request_sha256": "d0515cf3735b3ba233ee2e1f20bbb19f14069ec867d40087a623b0550124e373",
+      "answer_sha256": "9d63a6c5f95380f66384341dde2efd0d6aa8d435eb7d7835b39ac07f17a6eb60",
+      "attempts_sha256": "761fc4ccc85614306593710bb87919fd6630003632bac8b17ce86895bf4a1c14",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY06",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY06.json",
+      "output_sha256": "777ce5faa645a82edb053569c30038c13ac8b287ea1693784ebc270b29df733e",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-d6da635457544d88ae01e33800dca2ba/run.json",
+      "run_sha256": "4a9a446272f6d3b41d75868ec0120bd1072198f7936c3b159ffe96b273932079",
+      "run_hash_matches_record": true,
+      "request_sha256": "e7af18f7ab756e8d271c5198d404d0136a5364ce852260760dfd6a9ffafdcedc",
+      "answer_sha256": "cba2652e3791b1de13a964d01d5cdb3a5cbad5e4e3de230887860cda0e75e5f2",
+      "attempts_sha256": "75c3fa7b7c8df3f11855a1c2caf541a8f6377d5ed4688a21cd3a3a6a00a0cd62",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY07",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY07.json",
+      "output_sha256": "6d03b7c928bc010931d627581d30dd5eabad0d43482433a46bc9a7942af12b9a",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-2efe66ddc78b4b8eb88cb12b898cc6b3/run.json",
+      "run_sha256": "4e2dea927620c2a3944ef03e2aeaed034c812529956eb68a467338ce36298706",
+      "run_hash_matches_record": true,
+      "request_sha256": "373407c4002071868e85f57fe9baef6f0832ab75faf014eea72c659577bafb14",
+      "answer_sha256": "b945e10e27eb570dc66b1238f98470b1f9f17ba21a3dcffc6b7b0f8272002c85",
+      "attempts_sha256": "2b87bd33cbec00fbf747080949859301d0185212b850db285cb2606dd3f46fd3",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY08",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY08.json",
+      "output_sha256": "e28f1e5485022d966bc633671b1dc442309ed952c102edb3b8fce5a3b719d725",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-446c7ff1ce1a42258a7eb68916f8cbba/run.json",
+      "run_sha256": "df2d3d391d0bfad72ebfed20a0c873effd09cc1faa6862e2757a935277c5e50f",
+      "run_hash_matches_record": true,
+      "request_sha256": "004a6d27adcd11dbf01a9db3db5d3b8e38675f1066564dd8e5245c982f67fc85",
+      "answer_sha256": "7fc1c1a0f610bb5f418e39226f610d1f0f6af851cd3ecad2df003653b5ba079b",
+      "attempts_sha256": "8501e15bfdcd54e9c249e88616844f0957356d32bdb709d8aa6823113a8f0647",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY09",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY09.json",
+      "output_sha256": "b02fec159d2795a01f4197f2c1e8b59f17499404a40e0654507549f10f215962",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-82374e5e011d4c87b28722b841ca4123/run.json",
+      "run_sha256": "9b04ffcfa2c8e52366a87a89104c08b221c88d7e7425e5d3afbf70650e3464e0",
+      "run_hash_matches_record": true,
+      "request_sha256": "a4686265d4cbe1c2545c31d20f480712e5e07b41d0c016640bc92ace9dfd14bc",
+      "answer_sha256": "9e1fee304163640f9999137e4ff09c09de8cb14ca01580eb1f0261c97a43f1e2",
+      "attempts_sha256": "5cf32120870a972718c874c216eec15575c45efeecf268e8b98b5a7ba951731a",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY10",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY10.json",
+      "output_sha256": "b50d3ccec13351aef7f7d9ca7109ae4b68b4a55ab5a4b227a66bf44d79768009",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-e7716998cc5046bfba5ce3af2715d965/run.json",
+      "run_sha256": "357c78e611d42a4c7a0e4da99eb22d36ce0d9871c30e00b342841bde10c2b30e",
+      "run_hash_matches_record": true,
+      "request_sha256": "9d502b0a70a049987b86d54d58d252fdc42286c994377296f0e5d51ad59894fe",
+      "answer_sha256": "241d4a03fcd21f7693d6d58e8394b7b7a316d1bb32fb620e414077c54dcc94a6",
+      "attempts_sha256": "1472e0945e95547564deb091dca6d46a8b100810e1a2282260e9a38f53041445",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY11",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY11.json",
+      "output_sha256": "8357d85216aa1284ab6cc470ae56dc08df895ebb7112acedeb2754c4067c7763",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-d2eee294de184ba29ac40cdd2085c774/run.json",
+      "run_sha256": "71e28fb8e8495a8e47a42450e7a56b0b50ef4097a2275287802f9e2e83dede94",
+      "run_hash_matches_record": true,
+      "request_sha256": "f86001ba5e1251fbade54f375e6435479d1b58d507bea6c2ccb0cf68859b3f57",
+      "answer_sha256": "426ca2ca161f3bb5f5bb10da3598dbdb6c95b9bc26c246f28d48cbf4368edd48",
+      "attempts_sha256": "da3696b604c10a7fde5c3c8ded355fa2f98e66cc9ff48fc2a2075f9326ca7a5e",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY12",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY12.json",
+      "output_sha256": "32ae5525c047cff4a785dbd5cd2b7503265ae15f7445a9e356800a7824471804",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-f466dfe27858447dbf385236b252e852/run.json",
+      "run_sha256": "23a9fd8e956bde99ea6ed16c4aab55315509de3afc69b7f028e1d7ffb4c62028",
+      "run_hash_matches_record": true,
+      "request_sha256": "cdf5d9966817bac745df68c04239068a33cc3cb77f0b9395b9d54a43f311f846",
+      "answer_sha256": "3b6c3a162bf60abda6f01b04e04c52416ab8dfe067131899c9fc59fbc5031b1b",
+      "attempts_sha256": "d3cbea1bfa1592ac027f21d13357eb72aeb8a75c84232d940d85ce472bf250ff",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ01",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ01.json",
+      "output_sha256": "676553fd9c0377a0ae89f7cd497544b921f988f8a9b439c129882a2282e8e1dc",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-05a2ff5497d046f8921364ef46b2afb0/run.json",
+      "run_sha256": "2b6a304b5cc5b4e83fc4e2ef323af7cbea87487a5e88470239597ac76a376d07",
+      "run_hash_matches_record": true,
+      "request_sha256": "b055cd616cd7b191b7ebf959335b4b13a48879e339a7601cbc4886745745c69d",
+      "answer_sha256": "b2271e3b94333dc03feaf2ddac180d8119d4f9523ffa9c1d4ae4004c0f19d2aa",
+      "attempts_sha256": "aa1937e755c4be9d73278a6f8cfc4d0f55221b23ca4f83cc267ebe96961b7577",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ02",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ02.json",
+      "output_sha256": "c223bca30d16731da71e901a28164d7ef08d42354c21aab8f955dfd785eebaac",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-34b4b11ebfb34447a68b2aec2709c408/run.json",
+      "run_sha256": "8cbc6b9717b0b3b61c87c40e6b8ee0b698c8e9108dcbdec65bdcb9826356ae50",
+      "run_hash_matches_record": true,
+      "request_sha256": "28a7bcf93a9ed2bc49bbee87ef751233d62afdede0485d201084080bf2d35aed",
+      "answer_sha256": "977c13bb7ae258ce9951cc1815a980a89e891a142ba96a19d6b1b05939c6a4d3",
+      "attempts_sha256": "7d38ad13a6ad7cda2070a5ecdd0bc67a78c1f37b0ee4db4c0e2fb91e7a58e4e3",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ03",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ03.json",
+      "output_sha256": "51497ab8d161adbaba670e262dbb162611dc14509862763b3cf35d0ac0119b29",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-10d0aad262d048d8a9e01adce885b397/run.json",
+      "run_sha256": "c5da1148f118c784c4946d2c1479b2ec06e979fc3f6c73965616d8c8f149a910",
+      "run_hash_matches_record": true,
+      "request_sha256": "f0dd6c6e5cd967fa032636c166134e290c3249ab5558db637cb4159d2301793f",
+      "answer_sha256": "0c3bc4912e3538d17c8f8454d2e36833062dc2f35affc5e39992611ac173d7aa",
+      "attempts_sha256": "38091441c99e50c4c4429d8bb9653ee7582051028ca9d3701228cc3d5219e962",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ04",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ04.json",
+      "output_sha256": "322dd3b0515e8bf20e0f32eab313288d9ffe551bc278c30cbf9db2228486c5d3",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-16df79ae88c243519a06a0760224a1ae/run.json",
+      "run_sha256": "bc028572a61e0a4cae19126769a81f5cbc1c336dfe0f7438f2f0c66dfef03388",
+      "run_hash_matches_record": true,
+      "request_sha256": "d69e8637326e4d41d25f0f548f27e49d4db22b14f528d5138fc0b532b01c74d5",
+      "answer_sha256": "285953dab20ed0167281978ba87e8b1e0669c7420313a215beb5bcbaf2663760",
+      "attempts_sha256": "5328439436a434c9b74228b66c3b7808b1703a24d29616295673cd53404b6503",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ05",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ05.json",
+      "output_sha256": "f364a8430fd554c8aca983df12f5840205a8f5f025361208f7392bf777955ddb",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-c1484bdf81864c06bae03abd99ed6b73/run.json",
+      "run_sha256": "3c12bca1c521f87a5e353d740825856b8545343e91f6acdd3f5f090224e41234",
+      "run_hash_matches_record": true,
+      "request_sha256": "83468360b25923b6b56f2cf1ec8a586ebb90be79adcce80b95ee907c0211b6da",
+      "answer_sha256": "a134041e93214e343d52cdc2de12414235bdacdb760035780e541f6fc8f17dcb",
+      "attempts_sha256": "a5ff1991bfdc088e5649723417cc8ea09681fbebc752c17562678a14808db53f",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ06",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ06.json",
+      "output_sha256": "63ced531b03e6ee5a2ef9652e4110fbf1beeee1869349442aaaecddb69354d5b",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-98a3e31f41f84641b36591e9e5121644/run.json",
+      "run_sha256": "b907469e74acdade4ee4a0810a2ad2c81ba681b3c8996a7a327c03d20deb33c0",
+      "run_hash_matches_record": true,
+      "request_sha256": "3b596601cd58b2f323d19896e155e9932751c1c693e0955f024042947b0a6a44",
+      "answer_sha256": "5ed1d5070581c9815c417d035cb5e4901e86a7ee84ca10d39cce7788eb9b55ce",
+      "attempts_sha256": "6267b19ada388448a347821853f0c32eb6c1ad5ac38caff8561d3c1a8059c495",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ07",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ07.json",
+      "output_sha256": "529fcee9bae7c2390bb9a62a11169e73495001e5d5c27e18794c45aa346c44d7",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-82361baaaeba4c6baa354d8602400fa3/run.json",
+      "run_sha256": "2778bf00c7b53681f0f177d7a08549f1b2f96b4f87b0ca4e8c5da7c8757c0139",
+      "run_hash_matches_record": true,
+      "request_sha256": "4bec92239ecf469a1ed5974d7d4ba210e98e115ceb5c2ac2fc75d9767cdaa86b",
+      "answer_sha256": "83372936189819563a97283493c3787fff8ee671e9ff07e31a16a6c0a5b58654",
+      "attempts_sha256": "15c5b3acc153bdf163d718f6e6217df026a33cef0180d19b9f2ba5883f984545",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ08",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ08.json",
+      "output_sha256": "42bd6845b95c19375291a96c699cff8070db8e98597895b189f1c435ba2635a8",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-7315188afb024aabbd8dbf24b1d867ba/run.json",
+      "run_sha256": "1585578b213e11bf09a83894cd3b91f0ab473b95b943beeeeb064a671e526c66",
+      "run_hash_matches_record": true,
+      "request_sha256": "6ab87954a396377245233370047feb06b8b54e2c215f78e06a804a9ea816a1c6",
+      "answer_sha256": "d974479ff65543f0e1fb26e2f8dcb1114eac2511af2d41a6f5c584360f54fdb3",
+      "attempts_sha256": "2c0bfb1fcd8286d43cd17cf289400ecef65368008f472e6cd8eae4572bf7b564",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ09",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ09.json",
+      "output_sha256": "07b841a41b4634815091dbe253b375706053e2186b3e756f2165b22ef7cd6225",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-7dfa9085669b435eb6fb9d33a63b527c/run.json",
+      "run_sha256": "f10be7fc8ef555e09539ec562d6e47e0f6d278a16d35a780f65237b45b696846",
+      "run_hash_matches_record": true,
+      "request_sha256": "e3a1f05b7e78782f9a0421c757018d7e9f88cea0352fae3b14efc1c49647f816",
+      "answer_sha256": "de1f9d5d0ad6c7d2052d2cd6338f0805b6cc55f6c78ff945d867658ef3fc2afa",
+      "attempts_sha256": "229e2b08d9b2124fb638f7442c640767eb0489efdbb1362828e7b32965759ce7",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ10",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ10.json",
+      "output_sha256": "8078eddeff17e803fe3d6807c608a880d19eee41d669f94292117603b61edda4",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-fc1872d7324842e198f7016dc7293512/run.json",
+      "run_sha256": "a37c38ed34bf71d50824cf645c85ec892221d18f6f2da951eed6c609b1ef4a22",
+      "run_hash_matches_record": true,
+      "request_sha256": "55eb8fa92b1d9d350af5ff9143b1618e516a5cfd193dc95ba7e037b7dda14529",
+      "answer_sha256": "98ec14f2601eec090307f4e370234c03bd4db82241ec8d56f75fde7349a05a90",
+      "attempts_sha256": "f7282660f41cec5971e754fb284f7409557069a27d72f6a3befe8af18b19dca1",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ11",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ11.json",
+      "output_sha256": "2c80d19a4bdc03d999b98a2bd306bea8843a7996ca860195764db024f9cf5656",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-1812756a90134d9ea06d0e03c1f421cb/run.json",
+      "run_sha256": "acb4c696e722e978cec0e297aaeb0d53f9bcec5028bb1e07601e224c04a230a1",
+      "run_hash_matches_record": true,
+      "request_sha256": "035f9a4b754837f5e6209e328fb476460b85b410dbfeb516a31b3ca70143b721",
+      "answer_sha256": "8217e799a16760f09f8bb04897d4c9ed3cb73930f575e500c6cc64bdcd9aaccb",
+      "attempts_sha256": "f3086afd096895d35c56cfa289ab2eb6333808bf4a2e79213deb57b859561446",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ12",
+      "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ12.json",
+      "output_sha256": "9ba7c056ede8506f4fd4204f04b35bb4dbbc1e536dda421fbf749bbb75dc95d7",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-420c37a4c24a457b91b7bee1b9e68bbf/run.json",
+      "run_sha256": "a1bb8f6d5e944881fe7e6959f46c0d1eb66581dd7ac5c6e8673c5b9e5e60dc56",
+      "run_hash_matches_record": true,
+      "request_sha256": "82a2ade9131e6473c5c7a41b05021b2f7167725f06862e1febc630f6346adfa2",
+      "answer_sha256": "507d0f312075f6cb2c6473af77948d2658f2ac382851e07d1c4b1c4de464203d",
+      "attempts_sha256": "fa9f42011011a206c9cf0b441067335e7ffc9db0cdd77e831f5b627f3da1ec1b",
+      "native_check": "passed",
+      "status": "succeeded",
+      "mode": "live",
+      "fixture_unchanged": true,
+      "actual_answer_matches_native": true,
+      "request_matches_frozen": true,
+      "expected_empty": true,
+      "no_request_tools": true,
+      "all_attempts_match_frozen": true,
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "status": "failure_analysis_frozen_before_r2_diff_read",
+  "created_at": "2026-11-07T04:50:35.225268+00:00",
+  "prior_review": "artifacts/w03/answer-repair-20261107/stage1/independent-review/review.json",
+  "prior_review_sha256": "6bbdaa5d4afe0bed4df1ee7b3b8a21c2af1ce0c4c97cb14598e180f1e4f08b2f",
+  "prior_summary": {
+    "total_cases": 18,
+    "native_structure_passed": 18,
+    "native_execution_succeeded": 17,
+    "native_execution_failed": 1,
+    "technical_no_answer_ids": [
+      "E01"
+    ],
+    "http_attempts": 18,
+    "same_version_semantic_retries": 0,
+    "semantic_passed": 15,
+    "semantic_failed": 2,
+    "semantic_not_assessable": 1,
+    "semantic_failed_ids": [
+      "REG01",
+      "U04"
+    ],
+    "by_group": {
+      "original_failure": {
+        "total": 8,
+        "passed": 6,
+        "failed": 1,
+        "not_assessable": 1
+      },
+      "positive_regression": {
+        "total": 6,
+        "passed": 5,
+        "failed": 1,
+        "not_assessable": 0
+      },
+      "independent_control": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "not_assessable": 0
+      }
+    }
+  },
+  "source_first_criteria": "artifacts/w03/answer-repair-20261107/stage1/independent-review/source-first-criteria.json",
+  "source_first_criteria_sha256": "107d0f8063b6e15a6ec6ef836fce5e221bec08f1d376165492e0f15827c00cb0",
+  "criteria_unchanged": true,
+  "failure_analysis": [
+    {
+      "id": "U04",
+      "mechanism": "无关对象和数字泛述引入未经来源支持的时点/来源已不同断言；主流程正确不能抵消附加关键错误。",
+      "required_behavior": "回答围绕题目所问流程与交接；如果仍写80万/120万，须明确已知统计概念不同和定义/范围/时点/来源待核，不可把未知变已不同。",
+      "regression_risks": [
+        "缩短答案不得删题目要求的已知步骤/未知/下一步核查。",
+        "不允许以只写一句结论绕开依据审查。"
+      ]
+    },
+    {
+      "id": "REG01",
+      "mechanism": "额外对象科普把会员账户改称客户定义，并把统计人群改成候选人群后错误声称原模型如此分类。",
+      "required_behavior": "忠实原对象/集合术语及材料范围，不新增客户=账户等定义；如提供自拟分组，标建议且不冒称模型已有。保持具体使用场景、业务审核、门店承接和效果验证边界。",
+      "regression_risks": [
+        "删无关内容不得删除所建议输出的依据、实际使用交接或评估方式。",
+        "不能把所有对象/分类都退为未知，模型明确规则仍可用。"
+      ]
+    }
+  ],
+  "review_protocol": [
+    "原18题、材料、fixture、期望和模型全部不变，控制期望不发送。",
+    "R2只接受针对失败机制的通用回答范围/原术语忠实改动，不含题号/客户答案/具体修正短语。",
+    "逐题实际完整messages仅system里的候选提示变化，user business_model/question完全不变；隔离配置路径不计语义输入改变。",
+    "重新审18输出，旧15/2/1不覆盖；E01若有答为新提示版本回归，不登记成旧提示网络恢复。"
+  ],
+  "human_decisions": []
+}

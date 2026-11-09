@@ -1,0 +1,32 @@
+{
+  "created_at": "2026-11-07T02:45:18.917353+00:00",
+  "status": "pass_as_mentor_working_copy",
+  "artifact_type": "independently_reviewed_mentor_edited_copy",
+  "source": "reviewed-answer/B05.json",
+  "source_sha256": "73efd0d9b8b5cb9a20d23a6677250a2c4a20e469a416f151826b37f2bd1a54f3",
+  "raw_verdict": "needs_revision",
+  "raw_verdict_changed": false,
+  "checks": {
+    "raw_output_hash_unchanged": true,
+    "raw_answer_hash_unchanged": true,
+    "exactly_one_old_sentence": true,
+    "only_declared_sentence_replaced": true,
+    "corrected_hash_matches": true,
+    "question_unchanged": true,
+    "mentor_label_not_model": true,
+    "zero_extra_calls_recorded": true
+  },
+  "raw_output_sha256": "7a734c4bab8b4a734ebafed5b31748a276e9cdb2137685b236f32811b6882abd",
+  "raw_answer_sha256": "0b283c8a45bf14a8e8a51b9de6f3e60441c7c673ee40bc27724f3613becc4970",
+  "corrected_answer_sha256": "abef09c5fac15909e7c9b1716d869e7fa31a301206467c026dd05a5c3e4a1532",
+  "reviewed_change": {
+    "old": "若该净额被用作人均消费、有效订单均额等比率的分母，则分母为 0 时按《财务邮件》仍为未定义，不能把“金额合计为 0”和“比率分母为 0 未定义”混为一谈。",
+    "new": "按《财务邮件》，人均消费和有效订单均额的分子都是净销售额，分母分别是购买会员数和有效订单数；对应分母为 0 时比率未定义，不能仅凭净销售额为 0 就判断比率未定义，也不能把“金额合计为 0”和“比率分母为 0 未定义”混为一谈。",
+    "source_refs": [
+      "materials/w03/02_财务邮件.md:9",
+      "materials/w03/02_财务邮件.md:13"
+    ],
+    "semantic_assessment": "整句已纠正两比率的分子/对应分母及零分母条件，未仅换词留下错误因果。其余四子问答案字节不变，经完整复读均与既定判据和原文一致。"
+  },
+  "limits": "只批准导师核对稿作为解释性工作副本；不是新模型答复、不是用户独立作答、不关闭B05原失分；没有额外API调用。"
+}

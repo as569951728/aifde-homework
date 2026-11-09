@@ -1,0 +1,65 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "payment_cents",
+      "refund_cents",
+      "net_sales_cents",
+      "gross_cents",
+      "discount_cents"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": [
+      {
+        "field": "order__channel",
+        "op": "eq",
+        "value": "小程序"
+      },
+      {
+        "field": "store__region",
+        "op": "eq",
+        "value": "华东"
+      }
+    ]
+  },
+  "sql": "SELECT\n  SUM(payment_cents) AS payment_cents\n  , SUM(refund_cents) AS refund_cents\n  , SUM(net_sales_cents) AS net_sales_cents\n  , SUM(gross_cents) AS gross_cents\n  , SUM(discount_cents) AS discount_cents\nFROM (\n  SELECT\n    subq_7.order__channel AS order__channel\n    , store_model_src_10000.region AS store__region\n    , subq_7.__payment_cents AS payment_cents\n    , subq_7.__refund_cents AS refund_cents\n    , subq_7.__net_sales_cents AS net_sales_cents\n    , subq_7.__gross_cents AS gross_cents\n    , subq_7.__discount_cents AS discount_cents\n  FROM (\n    SELECT\n      store_id AS store\n      , channel AS order__channel\n      , CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END AS __payment_cents\n      , CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END AS __refund_cents\n      , CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END AS __net_sales_cents\n      , CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END AS __gross_cents\n      , CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END AS __discount_cents\n    FROM \"data\".\"main\".\"orders\" orders_model_src_10000\n    WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n  ) subq_7\n  LEFT OUTER JOIN\n    \"data\".\"main\".\"stores\" store_model_src_10000\n  ON\n    subq_7.store = store_model_src_10000.store_id\n) subq_11\nWHERE (order__channel in ('小程序')) AND (store__region in ('华东'))",
+  "columns": [
+    "payment_cents",
+    "refund_cents",
+    "net_sales_cents",
+    "gross_cents",
+    "discount_cents"
+  ],
+  "rows": [
+    [
+      29700,
+      0,
+      29700,
+      32200,
+      2500
+    ]
+  ],
+  "seconds": 0.042,
+  "units": {
+    "payment_cents": "cents",
+    "refund_cents": "cents",
+    "net_sales_cents": "cents",
+    "gross_cents": "cents",
+    "discount_cents": "cents"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "2c44d4c145fdd0e36a7077dfdcca7ecfd18ad6481be98232f758eb6031535452",
+  "answer": "在青禾当前测试数据范围内，统计 2026 年 8 月（按下单日期归属）小程序渠道、订单成交门店所在地区为华东的已支付订单。该范围内：实付金额 297.00 元，退款金额 0.00 元（为覆盖范围内的实际零值），净销售额 297.00 元，支付订单原价金额 322.00 元，优惠金额 25.00 元。口径为已支付订单；退款按原订单下单日期归属，且不冲减原价金额和优惠金额；取消订单不计入。",
+  "question": "请同时列出2026年8月青禾优选小程序渠道且订单成交地区为华东的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+  "trace_id": "11fb937e-cde2-4498-abb4-b092e2aa5471",
+  "elapsed_seconds": 6.63,
+  "model_usage": {
+    "prompt_tokens": 5084,
+    "completion_tokens": 712,
+    "total_tokens": 5796
+  },
+  "model_calls_with_usage": 2
+}

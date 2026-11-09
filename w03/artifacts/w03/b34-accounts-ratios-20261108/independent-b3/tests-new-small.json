@@ -1,0 +1,272 @@
+[
+  {
+    "id": "B3-N01",
+    "question": "请同时列出2026年8月青禾优选的购买会员数、退款会员数、成交门店数和有效订单商品件数。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "buyer_count",
+          "refund_buyer_count",
+          "selling_store_count",
+          "valid_order_items"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "rows": [
+        [
+          15,
+          4,
+          2,
+          33
+        ]
+      ],
+      "units": {
+        "buyer_count": "count",
+        "refund_buyer_count": "count",
+        "selling_store_count": "count",
+        "valid_order_items": "count"
+      },
+      "data_version": "qinghe-w03-20260923-small"
+    },
+    "expected_source": "依据materials/w03/01_订单日报说明.md购买会员数、退款会员数、成交门店数、有效订单商品件数；02_财务邮件.md有效订单及归属日期；05_数据字典.md一行一单、CRM账户、订单成交门店、quantity原始件数；docs/w03/contract.md与test-guide.md。原small CSV qinghe-w03-20260923-small，orders SHA256=c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1。Asia/Shanghai ordered_at半开窗口[2026-08-01,2026-09-01)，先筛窗口及[]；有效单paid且paid_cents>refund_cents，购买账户按member_id去重，成交店按orders.store_id去重；退款账户另筛paid且refund_cents>0再按member_id去重；件数逐有效单累加原quantity，不由退款金额推净销量；卡表不参与筛选或连接。单位count，前三项业务量纲账户/账户/门店，末项业务量纲件，均整数。逐单、逐账户、逐成交门店归属见本目录order-ledger.csv/account-ledger.csv/store-ledger.csv中B3-N01。"
+  },
+  {
+    "id": "B3-D01",
+    "question": "请将2026年7月青禾优选的购买会员数、退款会员数、成交门店数和有效订单商品件数按订单成交门店编号分别列出。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "buyer_count",
+          "refund_buyer_count",
+          "selling_store_count",
+          "valid_order_items"
+        ],
+        "start": "2026-07-01",
+        "end": "2026-08-01",
+        "group_by": [
+          "store"
+        ],
+        "filters": []
+      },
+      "columns": [
+        "store",
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "rows": [
+        [
+          "S01",
+          8,
+          0,
+          1,
+          9
+        ],
+        [
+          "S02",
+          2,
+          1,
+          1,
+          4
+        ],
+        [
+          "S03",
+          1,
+          1,
+          1,
+          4
+        ]
+      ],
+      "units": {
+        "buyer_count": "count",
+        "refund_buyer_count": "count",
+        "selling_store_count": "count",
+        "valid_order_items": "count"
+      },
+      "data_version": "qinghe-w03-20260923-small"
+    },
+    "expected_source": "依据materials/w03/01_订单日报说明.md购买会员数、退款会员数、成交门店数、有效订单商品件数；02_财务邮件.md有效订单及归属日期；05_数据字典.md一行一单、CRM账户、订单成交门店、quantity原始件数；docs/w03/contract.md与test-guide.md。原small CSV qinghe-w03-20260923-small，orders SHA256=c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1。Asia/Shanghai ordered_at半开窗口[2026-07-01,2026-08-01)，先筛窗口及[]；有效单paid且paid_cents>refund_cents，购买账户按member_id去重，成交店按orders.store_id去重；退款账户另筛paid且refund_cents>0再按member_id去重；件数逐有效单累加原quantity，不由退款金额推净销量；卡表不参与筛选或连接。单位count，前三项业务量纲账户/账户/门店，末项业务量纲件，均整数。逐单、逐账户、逐成交门店归属见本目录order-ledger.csv/account-ledger.csv/store-ledger.csv中B3-D01。"
+  },
+  {
+    "id": "B3-R01",
+    "question": "请同时列出2026年8月15日青禾优选的购买会员数、退款会员数、成交门店数和有效订单商品件数。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "buyer_count",
+          "refund_buyer_count",
+          "selling_store_count",
+          "valid_order_items"
+        ],
+        "start": "2026-08-15",
+        "end": "2026-08-16",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "rows": [
+        [
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "units": {
+        "buyer_count": "count",
+        "refund_buyer_count": "count",
+        "selling_store_count": "count",
+        "valid_order_items": "count"
+      },
+      "data_version": "qinghe-w03-20260923-small"
+    },
+    "expected_source": "依据materials/w03/01_订单日报说明.md购买会员数、退款会员数、成交门店数、有效订单商品件数；02_财务邮件.md有效订单及归属日期；05_数据字典.md一行一单、CRM账户、订单成交门店、quantity原始件数；docs/w03/contract.md与test-guide.md。原small CSV qinghe-w03-20260923-small，orders SHA256=c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1。Asia/Shanghai ordered_at半开窗口[2026-08-15,2026-08-16)，先筛窗口及[]；有效单paid且paid_cents>refund_cents，购买账户按member_id去重，成交店按orders.store_id去重；退款账户另筛paid且refund_cents>0再按member_id去重；件数逐有效单累加原quantity，不由退款金额推净销量；卡表不参与筛选或连接。单位count，前三项业务量纲账户/账户/门店，末项业务量纲件，均整数。逐单、逐账户、逐成交门店归属见本目录order-ledger.csv/account-ledger.csv/store-ledger.csv中B3-R01。"
+  },
+  {
+    "id": "B3-R02",
+    "question": "请同时列出2026年8月10日青禾优选的购买会员数、退款会员数、成交门店数和有效订单商品件数。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "buyer_count",
+          "refund_buyer_count",
+          "selling_store_count",
+          "valid_order_items"
+        ],
+        "start": "2026-08-10",
+        "end": "2026-08-11",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "rows": [
+        [
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "units": {
+        "buyer_count": "count",
+        "refund_buyer_count": "count",
+        "selling_store_count": "count",
+        "valid_order_items": "count"
+      },
+      "data_version": "qinghe-w03-20260923-small"
+    },
+    "expected_source": "依据materials/w03/01_订单日报说明.md购买会员数、退款会员数、成交门店数、有效订单商品件数；02_财务邮件.md有效订单及归属日期；05_数据字典.md一行一单、CRM账户、订单成交门店、quantity原始件数；docs/w03/contract.md与test-guide.md。原small CSV qinghe-w03-20260923-small，orders SHA256=c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1。Asia/Shanghai ordered_at半开窗口[2026-08-10,2026-08-11)，先筛窗口及[]；有效单paid且paid_cents>refund_cents，购买账户按member_id去重，成交店按orders.store_id去重；退款账户另筛paid且refund_cents>0再按member_id去重；件数逐有效单累加原quantity，不由退款金额推净销量；卡表不参与筛选或连接。单位count，前三项业务量纲账户/账户/门店，末项业务量纲件，均整数。逐单、逐账户、逐成交门店归属见本目录order-ledger.csv/account-ledger.csv/store-ledger.csv中B3-R02。"
+  },
+  {
+    "id": "B3-U01",
+    "question": "请同时列出2026年7月1日至8月31日（含首尾）青禾优选的购买会员数、退款会员数、成交门店数和有效订单商品件数。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "buyer_count",
+          "refund_buyer_count",
+          "selling_store_count",
+          "valid_order_items"
+        ],
+        "start": "2026-07-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "rows": [
+        [
+          17,
+          5,
+          3,
+          50
+        ]
+      ],
+      "units": {
+        "buyer_count": "count",
+        "refund_buyer_count": "count",
+        "selling_store_count": "count",
+        "valid_order_items": "count"
+      },
+      "data_version": "qinghe-w03-20260923-small"
+    },
+    "expected_source": "依据materials/w03/01_订单日报说明.md购买会员数、退款会员数、成交门店数、有效订单商品件数；02_财务邮件.md有效订单及归属日期；05_数据字典.md一行一单、CRM账户、订单成交门店、quantity原始件数；docs/w03/contract.md与test-guide.md。原small CSV qinghe-w03-20260923-small，orders SHA256=c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1。Asia/Shanghai ordered_at半开窗口[2026-07-01,2026-09-01)，先筛窗口及[]；有效单paid且paid_cents>refund_cents，购买账户按member_id去重，成交店按orders.store_id去重；退款账户另筛paid且refund_cents>0再按member_id去重；件数逐有效单累加原quantity，不由退款金额推净销量；卡表不参与筛选或连接。单位count，前三项业务量纲账户/账户/门店，末项业务量纲件，均整数。逐单、逐账户、逐成交门店归属见本目录order-ledger.csv/account-ledger.csv/store-ledger.csv中B3-U01。"
+  },
+  {
+    "id": "B3-F01",
+    "question": "请同时列出2026年8月青禾优选小程序渠道的购买会员数、退款会员数、成交门店数和有效订单商品件数。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "buyer_count",
+          "refund_buyer_count",
+          "selling_store_count",
+          "valid_order_items"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": [
+          {
+            "field": "order__channel",
+            "op": "eq",
+            "value": "小程序"
+          }
+        ]
+      },
+      "columns": [
+        "buyer_count",
+        "refund_buyer_count",
+        "selling_store_count",
+        "valid_order_items"
+      ],
+      "rows": [
+        [
+          13,
+          2,
+          2,
+          15
+        ]
+      ],
+      "units": {
+        "buyer_count": "count",
+        "refund_buyer_count": "count",
+        "selling_store_count": "count",
+        "valid_order_items": "count"
+      },
+      "data_version": "qinghe-w03-20260923-small"
+    },
+    "expected_source": "依据materials/w03/01_订单日报说明.md购买会员数、退款会员数、成交门店数、有效订单商品件数；02_财务邮件.md有效订单及归属日期；05_数据字典.md一行一单、CRM账户、订单成交门店、quantity原始件数；docs/w03/contract.md与test-guide.md。原small CSV qinghe-w03-20260923-small，orders SHA256=c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1。Asia/Shanghai ordered_at半开窗口[2026-08-01,2026-09-01)，先筛窗口及[{\"field\": \"order__channel\", \"op\": \"eq\", \"value\": \"小程序\"}]；有效单paid且paid_cents>refund_cents，购买账户按member_id去重，成交店按orders.store_id去重；退款账户另筛paid且refund_cents>0再按member_id去重；件数逐有效单累加原quantity，不由退款金额推净销量；卡表不参与筛选或连接。单位count，前三项业务量纲账户/账户/门店，末项业务量纲件，均整数。逐单、逐账户、逐成交门店归属见本目录order-ledger.csv/account-ledger.csv/store-ledger.csv中B3-F01。"
+  }
+]

@@ -1,0 +1,120 @@
+--- a/platform/fde_product/models.py
++++ b/platform/fde_product/models.py
+@@ -10,7 +10,7 @@
+ import socket
+ import time
+ from urllib import error, request
+-from urllib.parse import urlsplit
++from urllib.parse import quote, urlsplit
+ 
+ POLICY_VERSION = "gateway-stages-20260922"
+ WIRE_FORMAT = "gateway-extra-body-v1"
+@@ -45,6 +45,33 @@
+     result=deepcopy(payload)
+     result["messages"]=[{k:v for k,v in m.items() if k!="reasoning_content"} for m in result.get("messages",[])]
+     return result
++
++def public_http_error(exc, key):
++    """Keep bounded provider diagnostics, never raw bodies or echoed credentials."""
++    try:
++        raw = exc.read(8193)
++    except (OSError, ValueError, http.client.HTTPException):
++        return {"detail_unavailable": "read_failed"}
++    if len(raw) > 8192:
++        return {"detail_unavailable": "body_too_large"}
++    try:
++        body = json.loads(raw)
++    except (ValueError, UnicodeError):
++        return {"detail_unavailable": "non_json_body"}
++    detail = body.get("error", body) if isinstance(body, dict) else None
++    if not isinstance(detail, dict):
++        return {"detail_unavailable": "unrecognized_body"}
++    result = {}
++    for field in ("message", "type", "code", "param"):
++        value = detail.get(field)
++        if isinstance(value, str):
++            for secret in (key, quote(key, safe="")):
++                if secret:
++                    value = value.replace(secret, "[REDACTED]")
++            result[field] = value[:1000]
++        elif type(value) is int:
++            result[field] = value
++    return result or {"detail_unavailable": "unrecognized_body"}
+ 
+ def call_summary(model):
+     call=getattr(model,"last_call",{}) or {}
+@@ -166,7 +193,11 @@
+                 code="MODEL_HTTP_"+str(exc.code)
+                 attempt["http_status"]=exc.code
+                 attempt["trace_ids"]={k.lower():v for k,v in (exc.headers or {}).items() if k.lower() in ("x-request-id","x-bce-request-id","llm_provider-x-request-id","x-litellm-call-id")}
+-                exc.close();attempt["error"]=code;raise ModelError(code) from None
++                try:
++                    attempt["provider_error"] = public_http_error(exc, self.key)
++                finally:
++                    exc.close()
++                attempt["error"]=code;raise ModelError(code) from None
+             except error.URLError as exc:
+                 code="MODEL_TIMEOUT" if isinstance(exc.reason,(TimeoutError,socket.timeout)) else "MODEL_NETWORK_ERROR"
+                 attempt["error"]=code;raise ModelError(code) from None
+--- a/tests/test_model_policy.py
++++ b/tests/test_model_policy.py
+@@ -1,8 +1,11 @@
+ """No network: exercise response truncation, protocol and retry boundaries."""
+ import json
++import io
+ import time
+ from copy import deepcopy
+ from unittest.mock import patch
++from urllib.error import HTTPError
++from urllib.parse import quote
+ import pytest
+ from fde_product.models import CompatibleModel,ModelError,call_summary
+ 
+@@ -105,3 +108,47 @@
+     model._send=send;model.complete([],[])
+     assert [p.pop('max_tokens') for p in sent]==[8192,16384]
+     assert sent[0]==sent[1] and sent[0]['extra_body']['thinking']['type']=='enabled'
++
++
++def test_http_error_retains_reason_without_echoed_key_or_raw_body_and_never_retries():
++    m=make();m.key='LOCAL_PRIVATE_KEY/+='
++    error_body={'error':{'message':'Invalid '+m.key+' or '+quote(m.key,safe=''),
++                        'type':'invalid_request_error','code':'invalid_parameter','param':'tools',
++                        'request_headers':{'Authorization':'Bearer '+m.key},
++                        'reasoning_content':'PRIVATE_REASONING'}}
++    stream=io.BytesIO(json.dumps(error_body).encode())
++    failure=HTTPError(m.url,400,'Bad Request',{},stream)
++    with patch.object(m,'_send',side_effect=failure) as send:
++        with pytest.raises(ModelError,match='MODEL_HTTP_400'):m.complete([],[])
++        assert send.call_count==1
++    detail=m.last_call['attempts'][0]['provider_error']
++    assert detail=={'message':'Invalid [REDACTED] or [REDACTED]',
++                    'type':'invalid_request_error','code':'invalid_parameter','param':'tools'}
++    saved=json.dumps(m.last_call)
++    assert m.key not in saved and quote(m.key,safe='') not in saved
++    assert 'PRIVATE_REASONING' not in saved and 'request_headers' not in saved
++    assert stream.closed
++
++
++@pytest.mark.parametrize('raw,reason',[
++    (b'<html>PRIVATE_KEY</html>','non_json_body'),
++    (b'x'*8193,'body_too_large'),
++    (b'["PRIVATE_KEY"]','unrecognized_body'),
++    (b'{"unexpected":"PRIVATE_KEY"}','unrecognized_body')])
++def test_http_error_unparseable_bodies_are_not_dumped(raw,reason):
++    m=make();stream=io.BytesIO(raw)
++    with patch.object(m,'_send',side_effect=HTTPError(m.url,400,'Bad Request',{},stream)):
++        with pytest.raises(ModelError,match='MODEL_HTTP_400'):m.complete([],[])
++    assert m.last_call['attempts'][0]['provider_error']=={'detail_unavailable':reason}
++    assert 'PRIVATE_KEY' not in json.dumps(m.last_call)
++    assert stream.closed
++
++
++def test_http_error_body_read_failure_preserves_original_status():
++    class FailingStream(io.BytesIO):
++        def read(self,*args):raise TimeoutError()
++    m=make();stream=FailingStream()
++    with patch.object(m,'_send',side_effect=HTTPError(m.url,400,'Bad Request',{},stream)):
++        with pytest.raises(ModelError,match='MODEL_HTTP_400'):m.complete([],[])
++    assert m.last_call['attempts'][0]['provider_error']=={'detail_unavailable':'read_failed'}
++    assert stream.closed

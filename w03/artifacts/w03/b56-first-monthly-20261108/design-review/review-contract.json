@@ -1,0 +1,373 @@
+{
+  "version": "independent-pre-author-v1",
+  "created_at": "2026-11-08T10:39:14.287047+00:00",
+  "stage": "independent_review_contract_frozen_before_author_read",
+  "scope": [
+    "B5",
+    "B6"
+  ],
+  "authors_expected_read": false,
+  "native_build_calls": 0,
+  "native_query_calls": 0,
+  "provenance": "Reviewer independently derived from current source materials and raw CSV. Existing candidate plan used only to identify requested coverage; no author directory, generated metrics SQL, library output, or actual test result read to determine expected values.",
+  "source_sha256": {
+    "materials/w03/01_订单日报说明.md": "976fa129493e6bd2861a58d74df2ba3ad4448ea01a2d25651124222a61cebb67",
+    "materials/w03/03_会员运营周报.md": "25ab933556bf34bef21b528d4c7838c9baad33ae289d59f09501e765080bb492",
+    "materials/w03/05_数据字典.md": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16",
+    "docs/w03/business_model.md": "4e3187d124adc0856163b74a2cdd5edba064cf4ed39a698c553c9fe196ec00fb",
+    "docs/w03/contract.md": "76df027ee419a5c02a92459641e7a126ab3e8db713cdf3bc63c4ffd42bf62042",
+    "docs/w03/test-guide.md": "59a643eff2eda31b2eaf2d18cec83c7aaeb46e31fd2dc5117f50f6acc9b00d2b",
+    "materials/data/small/manifest.json": "b547dfbb713644b7972d4d28e403880b09ae7bf49b0006c6dbc122aea3e30c60",
+    "materials/data/small/orders.csv": "c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1",
+    "materials/data/small/members.csv": "e99b7e82389722b1ae2e4fd267c74dd84bd61dfeabaa161221d7ae44ae955b2f",
+    "materials/data/small/stores.csv": "e8160804fd485853f6c75d9a095b1ee6f05bbbd40ba851cac84def35488aa41d",
+    "materials/data/small/cards.csv": "d27bdabd508d7881a1bea84cb79400c2a770fc1ad42fdb81877163cc018bb8d5"
+  },
+  "small_manifest_hashes_verified": {
+    "orders.csv": true,
+    "cards.csv": true,
+    "members.csv": true,
+    "stores.csv": true
+  },
+  "data_scope": {
+    "id": "qinghe-w03-20260923-small",
+    "coverage": [
+      "2024-09-01",
+      "2026-09-01"
+    ],
+    "timezone": "Asia/Shanghai",
+    "synthetic": true,
+    "claim_exclusions": [
+      "not real CRM",
+      "not natural-person deduplication",
+      "not lifetime-first purchase",
+      "not customer acceptance",
+      "not learner independent mastery"
+    ]
+  },
+  "common": {
+    "effective_order": "status=paid AND paid_cents-refund_cents>0. cancelled, full refund and paid zero net excluded; partial refund remains valid if positive.",
+    "time": "date, Asia/Shanghai, [start,end), refund snapshot attributed to original order date",
+    "expected_contract": [
+      "status",
+      "intent.metrics/start/end/group_by/filters for ok",
+      "columns",
+      "rows",
+      "units",
+      "expected_source"
+    ],
+    "comparison": "compare each metric and group identity; exact integers, predetermined ratio tolerance; reject missing/extra/duplicate groups, wrong units/time/filters; null!=0; unordered rows allowed",
+    "non_ok": "clarify/unsupported/error only status plus supported version locks; do not force ok fields or invented null figures"
+  },
+  "B5": {
+    "target_metrics": [
+      "new_member_count",
+      "first_buyer_count",
+      "first_order_sales_cents",
+      "first_order_count",
+      "repeat_order_count"
+    ],
+    "registration": "members at account grain, registered_at selects window independently of orders. Include no-purchase accounts. home_store_id and current tier permitted; never substitute order store or historical-tier claim. count unit.",
+    "ranking": "Within manifest coverage, filter effective orders then sort per member_id by ordered_at ASC, order_id ASC. Select first row once, following rows repeat. Rank over full observed coverage before window selection.",
+    "first_metrics": "first_buyer_count distinct account count of chosen first rows in window; first_order_count chosen first orders; first_order_sales_cents sum paid-refund only for those exact first rows. Need ID ledger beyond matching totals.",
+    "repeat": "all rank>=2 effective orders in window, not repeat accounts or same-month repeat buyers",
+    "filters": "First order identity is global within coverage. Apply explicitly supported order/channel/store selection after identifying first/repeat orders; filtering cannot relabel a subsequent order first. Source 03 explicitly says full coverage and first before window; post-channel/filter semantics are reviewer derivation, not a separate quoted customer authorization. Dimension reachability remains build-stage obligation.",
+    "cross_assertion": "B5-A01 consume existing same-dataset, same-window numerical case outputs/ledger without duplicate natural language query. first buyers=first orders; first orders+repeat orders=valid orders. Each component still needs independent expected and exact first IDs.",
+    "required_discrimination": [
+      "registration without any order",
+      "registration home store/current tier grouping with nonzero records",
+      "global ranking before time/window filtering",
+      "invalid prior cancelled/full-refunded order skipped",
+      "same-day valid orders with distinct net values and reversed physical sequence; exact order_id decides first and amount",
+      "positive partial refund first amount != paid amount",
+      "count all subsequent orders rather than distinct repeat accounts",
+      "coverage-internal zero and boundary time",
+      "account/observed-period wording"
+    ]
+  },
+  "B6": {
+    "target_metrics": [
+      "monthly_buyer_count",
+      "monthly_repeat_buyer_count",
+      "monthly_repeat_rate"
+    ],
+    "aggregation": "First filter effective orders. Group by (calendar month, member_id), count orders. >=1 buyer; >=2 repeat buyer. Ratio repeat accounts/buyer accounts, not all registered, order count, or average per-group ratios. units count/count/ratio.",
+    "calendar": "Complete natural months only, full stores. Multiple complete months must be separate monthly rows; each month deduplicates independently, not sum monthly distinct as global people. A member with one valid order each in two months is a buyer each month but repeat neither.",
+    "zero": "Covered no-purchase month ungrouped is [0,0,null]; uncovered period is unsupported. A month with buyers but no repeat is ratio 0. Missing grouped month rows are not automatically zero; if authors require full output calendar they must explicitly source/implement calendar completion.",
+    "restriction_sources": {
+      "full_month/full_store": "materials/w03/03_会员运营周报.md lines 29,33,37",
+      "full_channel": "docs/w03/contract.md line 29, current full_month_only engine contract; not an explicit business prohibition in source 03"
+    },
+    "required_discrimination": [
+      "one valid vs exactly two valid orders",
+      "one valid plus full-refund cannot reach two",
+      "one valid plus cancelled cannot reach two",
+      "paid zero net cannot count",
+      "partial refund positive valid",
+      "three+ valid orders still one repeat account",
+      "one order each in adjacent months is not same-month repeat",
+      "registration denominator differs",
+      "zero covered month vs absent coverage",
+      "partial month rejection",
+      "store split rejection",
+      "channel rejection source attribution",
+      "explicit multi-month total request cannot silently return pooled count/rate"
+    ]
+  },
+  "small_independent_oracle": {
+    "2026-05": {
+      "registration_ids": [],
+      "valid_order_ids": [],
+      "first_order_ids": [],
+      "first_buyer_ids": [],
+      "first_net_cents": 0,
+      "repeat_order_ids": [],
+      "monthly_valid_counts": {},
+      "monthly_buyer_count": 0,
+      "monthly_repeat_buyer_count": 0,
+      "monthly_repeat_rate": null
+    },
+    "2026-06": {
+      "registration_ids": [],
+      "valid_order_ids": [
+        "O0000015"
+      ],
+      "first_order_ids": [],
+      "first_buyer_ids": [],
+      "first_net_cents": 0,
+      "repeat_order_ids": [
+        "O0000015"
+      ],
+      "monthly_valid_counts": {
+        "M00004": 1
+      },
+      "monthly_buyer_count": 1,
+      "monthly_repeat_buyer_count": 0,
+      "monthly_repeat_rate": 0.0
+    },
+    "2026-07": {
+      "registration_ids": [
+        "M00009",
+        "M00010",
+        "M00011",
+        "M00012",
+        "M00013",
+        "M00014",
+        "M00015",
+        "M00016",
+        "M00017",
+        "M00018",
+        "M00019",
+        "M00020"
+      ],
+      "valid_order_ids": [
+        "O0000010",
+        "O0000006",
+        "O0000008",
+        "O0000009",
+        "O0000017",
+        "O0000023",
+        "O0000026",
+        "O0000029",
+        "O0000032",
+        "O0000035",
+        "O0000045",
+        "O0000048"
+      ],
+      "first_order_ids": [
+        "O0000010",
+        "O0000006",
+        "O0000008",
+        "O0000017",
+        "O0000023",
+        "O0000026",
+        "O0000029",
+        "O0000032",
+        "O0000035",
+        "O0000045",
+        "O0000048"
+      ],
+      "first_buyer_ids": [
+        "M00002",
+        "M00005",
+        "M00006",
+        "M00008",
+        "M00010",
+        "M00011",
+        "M00012",
+        "M00013",
+        "M00014",
+        "M00019",
+        "M00020"
+      ],
+      "first_net_cents": 26500,
+      "repeat_order_ids": [
+        "O0000009"
+      ],
+      "monthly_valid_counts": {
+        "M00002": 1,
+        "M00005": 1,
+        "M00006": 2,
+        "M00008": 1,
+        "M00010": 1,
+        "M00011": 1,
+        "M00012": 1,
+        "M00013": 1,
+        "M00014": 1,
+        "M00019": 1,
+        "M00020": 1
+      },
+      "monthly_buyer_count": 11,
+      "monthly_repeat_buyer_count": 1,
+      "monthly_repeat_rate": 0.09090909090909091
+    },
+    "2026-08": {
+      "registration_ids": [],
+      "valid_order_ids": [
+        "O0000001",
+        "O0000002",
+        "O0000003",
+        "O0000018",
+        "O0000007",
+        "O0000011",
+        "O0000019",
+        "O0000020",
+        "O0000021",
+        "O0000022",
+        "O0000024",
+        "O0000025",
+        "O0000027",
+        "O0000028",
+        "O0000030",
+        "O0000031",
+        "O0000033",
+        "O0000034",
+        "O0000036",
+        "O0000037",
+        "O0000038",
+        "O0000041",
+        "O0000042",
+        "O0000043",
+        "O0000044",
+        "O0000046",
+        "O0000047"
+      ],
+      "first_order_ids": [
+        "O0000011",
+        "O0000019",
+        "O0000036",
+        "O0000038",
+        "O0000041"
+      ],
+      "first_buyer_ids": [
+        "M00007",
+        "M00009",
+        "M00015",
+        "M00016",
+        "M00018"
+      ],
+      "first_net_cents": 12800,
+      "repeat_order_ids": [
+        "O0000001",
+        "O0000002",
+        "O0000003",
+        "O0000018",
+        "O0000007",
+        "O0000020",
+        "O0000021",
+        "O0000022",
+        "O0000024",
+        "O0000025",
+        "O0000027",
+        "O0000028",
+        "O0000030",
+        "O0000031",
+        "O0000033",
+        "O0000034",
+        "O0000037",
+        "O0000042",
+        "O0000043",
+        "O0000044",
+        "O0000046",
+        "O0000047"
+      ],
+      "monthly_valid_counts": {
+        "M00001": 2,
+        "M00002": 2,
+        "M00005": 1,
+        "M00007": 1,
+        "M00009": 2,
+        "M00010": 2,
+        "M00011": 2,
+        "M00012": 2,
+        "M00013": 2,
+        "M00014": 2,
+        "M00015": 2,
+        "M00016": 1,
+        "M00018": 2,
+        "M00019": 2,
+        "M00020": 2
+      },
+      "monthly_buyer_count": 15,
+      "monthly_repeat_buyer_count": 12,
+      "monthly_repeat_rate": 0.8
+    }
+  },
+  "small_discrimination": {
+    "present": [
+      "M00001 first O0000013 on coverage start, Aug repeats; CSV physical order not chronological",
+      "M00002 July first in S01, August orders in S02 distinguish all-history/filter order",
+      "M00007 July cancelled then Aug first valid",
+      "July 12 registrations include M00017 without valid purchase",
+      "M00005 one valid July and one August excludes cross-month repeat",
+      "July/ August repeat cohorts differ",
+      "May2026 covered empty month; June2026 one buyer and zero repeats",
+      "M00008 first effective O0000017 July partial refund: 2500-500=2000 cents, distinguishes paid from net for first amount"
+    ],
+    "absent_or_weak": [
+      "no same member two valid orders same date",
+      "no full-refund before later valid order in same account",
+      "no paid zero-net-zero-paid order",
+      "all registered accounts have at least an order somewhere (some only invalid); cannot show registration no-orders with source CSV alone",
+      "no 3+ valid orders per member in same month",
+      "original Aug registrations all zero: Aug grouping cannot prove home-store/tier logic",
+      "source CSV lacks one-valid-plus-full-refund same-month account; use isolated synthetic boundary if claiming this covered"
+    ]
+  },
+  "regression": {
+    "existing_metrics_numerically_validated": 24,
+    "new_metrics_design_only": 8,
+    "future_cumulative": 32,
+    "old_small_cases": 33,
+    "old_separate_fixture_cases": 1,
+    "unfixed_original_explanation_failures": [
+      "B3-U01",
+      "B1-Z01"
+    ],
+    "review_scope": "Do not reassess original 34 cases here. Preserve original failures and include both in later native regression; reviewed teacher copies never change original verdict."
+  },
+  "review_gate": {
+    "maximum_status": "approved_for_build_preparation",
+    "required": [
+      "all 8 targets independently covered",
+      "original data immutable; synthetic fixtures separate explicit manifests",
+      "frozen author artifact and source hashes",
+      "source quote attribution correct",
+      "every expected figure independently recomputable",
+      "tests/design/ledger agree and native JSON contract complete",
+      "fault exposure actually changes expected output",
+      "no author output-to-expected copy",
+      "no duplicate A01 query",
+      "unproven gaps explicit"
+    ],
+    "not_implied": [
+      "build performed",
+      "query run",
+      "numerical test passed",
+      "explanation passed",
+      "scale verified",
+      "customer acceptance",
+      "formal submission"
+    ]
+  }
+}

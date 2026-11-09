@@ -1,0 +1,193 @@
+{
+  "reviewer": "b56_execution_review",
+  "stage": "independent_criteria_before_frozen_design_read",
+  "created_at": "2026-11-08T15:04:29.244607+00:00",
+  "business_source_sha256": {
+    "materials/w03/01_订单日报说明.md": "976fa129493e6bd2861a58d74df2ba3ad4448ea01a2d25651124222a61cebb67",
+    "materials/w03/03_会员运营周报.md": "25ab933556bf34bef21b528d4c7838c9baad33ae289d59f09501e765080bb492",
+    "materials/w03/05_数据字典.md": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16",
+    "docs/w03/business_model.md": "4e3187d124adc0856163b74a2cdd5edba064cf4ed39a698c553c9fe196ec00fb",
+    "docs/w03/contract.md": "76df027ee419a5c02a92459641e7a126ab3e8db713cdf3bc63c4ffd42bf62042"
+  },
+  "scope": {
+    "build": "artifacts/w03/b56-first-monthly-20261108/build-v1",
+    "metrics_count": 32,
+    "new_batches": [
+      "B5",
+      "B6"
+    ],
+    "writes_only": "artifacts/w03/b56-first-monthly-20261108/execution-review",
+    "api_calls_allowed": false
+  },
+  "criteria": [
+    {
+      "id": "G01",
+      "title": "来源可追溯",
+      "requirement": "每条 catalog 来源和 business_model_usage 的 quote 必须是正确输入文件的连续原文；引用语义支持实际实现而非仅字符串存在。",
+      "source": "contract.md"
+    },
+    {
+      "id": "G02",
+      "title": "目标完整且依赖闭合",
+      "requirement": "累计32目标逐一完整定义；catalog/metrics一一对应，无重复、无遗漏、无未决冒充已建；ratio依赖已定义。",
+      "source": "contract.md"
+    },
+    {
+      "id": "G03",
+      "title": "真实粒度",
+      "requirement": "声明的单键/组合 grain 与 SQL 实际粒度一致；主键非空不重复，外键关系无放大，账户订单不得因卡表重复。",
+      "source": "05_数据字典.md;business_model.md"
+    },
+    {
+      "id": "G04",
+      "title": "日期覆盖",
+      "requirement": "使用 Asia/Shanghai 本地日期和查询[start,end)；全覆盖2024-09-01至2026-09-01；未覆盖不能作为0。",
+      "source": "05_数据字典.md;contract.md"
+    },
+    {
+      "id": "G05",
+      "title": "维度含义",
+      "requirement": "成交门店来自订单，归属门店来自账户；当前会员等级不声称历史等级。维度实体路径匹配指标事实粒度。",
+      "source": "05_数据字典.md;business_model.md"
+    },
+    {
+      "id": "G06",
+      "title": "技术门禁边界",
+      "requirement": "dimension/grain/metricflow检查必须是本次产物实际执行且全部通过；这不代替本次独立业务语义审核。",
+      "source": "contract.md"
+    },
+    {
+      "id": "G07",
+      "title": "证据一致性",
+      "requirement": "绑定response/catalog/model_sql/metrics/grain/checks/input哈希；批准状态、failed_checks与正文一致，不把设计批准当运行通过。",
+      "source": "contract.md"
+    },
+    {
+      "id": "B5-01",
+      "title": "注册口径",
+      "requirement": "注册会员数按 members.registered_at 统计 CRM账户；不可用订单日期、卡数、自然人身份代替。",
+      "source": "03_会员运营周报.md:7-9"
+    },
+    {
+      "id": "B5-02",
+      "title": "有效订单集合",
+      "requirement": "先筛 status=paid 且 paid_cents-refund_cents>0；取消、零实付、全退排除，正净额部分退款计入。",
+      "source": "01_订单日报说明.md:13-15"
+    },
+    {
+      "id": "B5-03",
+      "title": "全覆盖排序",
+      "requirement": "各账户先在全测试覆盖历史中按 ordered_at、order_id 升序为有效单排序，然后按查询日期/门店/渠道筛选；不能先筛窗口或维度再定首单。",
+      "source": "03_会员运营周报.md:11-25"
+    },
+    {
+      "id": "B5-04",
+      "title": "首购账户去重",
+      "requirement": "首购会员数是首有效订单日期落入窗口的不同 member_id；非终身首购；与自然人、注册、支付或付费卡身份区分。",
+      "source": "03_会员运营周报.md:11-13"
+    },
+    {
+      "id": "B5-05",
+      "title": "首单数量",
+      "requirement": "每账户全覆盖首有效单仅一笔；同日订单号排序裁决；首单数在正确订单维度和日期下求和。",
+      "source": "03_会员运营周报.md:19-21"
+    },
+    {
+      "id": "B5-06",
+      "title": "首单金额",
+      "requirement": "仅首有效单 paid_cents-refund_cents，整数分；累计退款按原订单日归属；不能先汇总账户全部订单或用实付代净额。",
+      "source": "03_会员运营周报.md:15-17;05_数据字典.md:18"
+    },
+    {
+      "id": "B5-07",
+      "title": "后续单数",
+      "requirement": "全覆盖有效序号>=2的订单按本单日期入窗计数；非月内>=2账户、非生命周期复购人数。",
+      "source": "03_会员运营周报.md:23-25"
+    },
+    {
+      "id": "B5-08",
+      "title": "零与空值",
+      "requirement": "覆盖内已存在的分组没有首单时，首单数/首购数/首单金额为0；不能将条件聚合未命中产生的NULL冒充加总零。无覆盖不可补零。",
+      "source": "contract.md"
+    },
+    {
+      "id": "B6-01",
+      "title": "账户月粒度",
+      "requirement": "先按 member_id+自然月汇总有效订单计数，每账户每月一行；必要时生成月份保留覆盖内空月份。",
+      "source": "03_会员运营周报.md:27-37"
+    },
+    {
+      "id": "B6-02",
+      "title": "购买人数",
+      "requirement": "账户月有效订单数>=1才进分母，每账户只计1；不能分母用所有注册/付费资格账户或订单笔数。",
+      "source": "03_会员运营周报.md:5,27-29"
+    },
+    {
+      "id": "B6-03",
+      "title": "复购阈值",
+      "requirement": "账户月有效订单数>=2才进分子，恰好2必须入选；不能按原始订单行条件或全覆盖累计次数替代。",
+      "source": "03_会员运营周报.md:31-33"
+    },
+    {
+      "id": "B6-04",
+      "title": "复购比率",
+      "requirement": "同月复购账户数/购买账户数；先汇总分子分母再除；不可平均账户比率或跨月合并人数。",
+      "source": "03_会员运营周报.md:35-37"
+    },
+    {
+      "id": "B6-05",
+      "title": "零月份",
+      "requirement": "覆盖内无有效订单月：人数0、0，率NULL；不得0/0=0或丢掉明确要求展示的空月。",
+      "source": "03_会员运营周报.md:37;contract.md"
+    },
+    {
+      "id": "B6-06",
+      "title": "整月政策",
+      "requirement": "三项都设置 query_policy.full_month_only=true；约束由程序执行，非完整月不能返回正常数值。",
+      "source": "contract.md"
+    },
+    {
+      "id": "B6-07",
+      "title": "全门店全渠道",
+      "requirement": "月指标拒绝门店/渠道筛选或分组，不能假装重算区域复购；限制作用于最终实际意图，不能只写解释。",
+      "source": "contract.md"
+    },
+    {
+      "id": "B6-08",
+      "title": "跨月分别展示",
+      "requirement": "连续整月跨月请求按月行返回，月份键与执行接口一致；不得将去重人数相加作跨月唯一人数。",
+      "source": "03_会员运营周报.md:5,29,37;contract.md"
+    },
+    {
+      "id": "R01",
+      "title": "累计旧24项保真",
+      "requirement": "对旧24项原料范围、金额单位、比率分子分母、订单/账户/门店去重逐一核查；维度新关系不能改变原义。",
+      "source": "01_订单日报说明.md;contract.md"
+    },
+    {
+      "id": "Q01",
+      "title": "运行SQL",
+      "requirement": "后续13题审核实际intent/SQL/完整answer；正确路由+正确范围+正确数据与单位并列检查；拒绝题不得暗中返回数值。",
+      "source": "contract.md"
+    },
+    {
+      "id": "Q02",
+      "title": "独立比较",
+      "requirement": "expected必须先冻结；逐维度键、全部值、漏行/多行/重复行、NULL、单位、状态比较，不能用actual回填。",
+      "source": "contract.md"
+    },
+    {
+      "id": "Q03",
+      "title": "完整解释",
+      "requirement": "解释逐句忠实于当前SQL/结果/来源，保留观测期非终身、CRM账户非自然人、累计退款、月口径等边界；数值通过不掩盖错句。",
+      "source": "contract.md;business_model.md"
+    }
+  ],
+  "approval_rule": "Only approve merge/load when reviewed actual generated files pass every applicable build semantic check and hashes are frozen. Query/answer checks remain separate later gates. Design approval is not execution approval.",
+  "status": "criteria_frozen_waiting_artifacts",
+  "notes": [
+    "依据指定原始材料先立判据，尚未读取设计复审或冻结期望。",
+    "B5-08 加总零与比率 NULL 分开；不得随实际产物改变独立期望。",
+    "独立审查批准仅限本次合成数据库进入merge/load，不是生产、客户验收或正式提交。"
+  ]
+}

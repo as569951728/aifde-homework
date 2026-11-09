@@ -1,0 +1,507 @@
+{
+  "reviewed_files_sha256": {
+    "customer/w03/build-metrics/SKILL.md": "7b8f0c37ede30051260e875b2f28cb328f33d84b8e303b12ff5fd78f3a390f5e",
+    "customer/w03/judge.py": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3",
+    "docs/w03/metric_decisions.md": "a0d69e4c70443c90484274cedc0dc3c4be6609100289216b821309ce4e28e112"
+  },
+  "design_tests_sha256": "85cd3a21466edc7d48f56941ff50cfc20d3a4d4cdea8e327be59966226431dcc",
+  "build_may_start": true,
+  "scope": "仅 net_sales_cents；完整12维度结构生成，业务执行仅本批8例，不代表其他37项通过。",
+  "findings": [],
+  "basis": [
+    "Skill不包含测试答案，按输入取事实，明确粒度/原始列/时间/单位/扣减/唯一角色/防一对多放大。",
+    "metric_decisions的净额/paid/订单日期/整数分与01、02、05原文一致。",
+    "judge源码纯比较：状态、已锁版本、完整意图、单位、列及行宽、分组键缺多重复、数值/null；整数精确且拒bool/str。",
+    "候选审查通过只授权进入生成；生成定义、真实问数、解释和真实结果错误注入另审。"
+  ],
+  "synthetic_judge_checks": {
+    "total": 31,
+    "correct": 31,
+    "checks": [
+      {
+        "name": "NS01-aug-total-identity-synthetic",
+        "expected_passed": true,
+        "observed": {
+          "passed": true,
+          "differences": []
+        },
+        "correct": true
+      },
+      {
+        "name": "NS02-july-transaction-store-identity-synthetic",
+        "expected_passed": true,
+        "observed": {
+          "passed": true,
+          "differences": []
+        },
+        "correct": true
+      },
+      {
+        "name": "NS03-aug-mini-program-identity-synthetic",
+        "expected_passed": true,
+        "observed": {
+          "passed": true,
+          "differences": []
+        },
+        "correct": true
+      },
+      {
+        "name": "NS04-partial-refund-day-identity-synthetic",
+        "expected_passed": true,
+        "observed": {
+          "passed": true,
+          "differences": []
+        },
+        "correct": true
+      },
+      {
+        "name": "NS05-full-refund-day-identity-synthetic",
+        "expected_passed": true,
+        "observed": {
+          "passed": true,
+          "differences": []
+        },
+        "correct": true
+      },
+      {
+        "name": "NS06-covered-empty-identity-synthetic",
+        "expected_passed": true,
+        "observed": {
+          "passed": true,
+          "differences": []
+        },
+        "correct": true
+      },
+      {
+        "name": "NS07-missing-time-identity-synthetic",
+        "expected_passed": true,
+        "observed": {
+          "passed": true,
+          "differences": []
+        },
+        "correct": true
+      },
+      {
+        "name": "NS08-outside-coverage-identity-synthetic",
+        "expected_passed": true,
+        "observed": {
+          "passed": true,
+          "differences": []
+        },
+        "correct": true
+      },
+      {
+        "name": "end-excludes-Aug31",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "intent.end",
+              "expected": "2026-09-01",
+              "actual": "2026-08-31",
+              "rule": "exact intent"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "extra-metric",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "intent.metrics",
+              "expected": [
+                "net_sales_cents"
+              ],
+              "actual": [
+                "net_sales_cents",
+                "gross_sales_cents"
+              ],
+              "rule": "exact intent"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "extra-filter",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "intent.filters",
+              "expected": [],
+              "actual": [
+                {
+                  "field": "store",
+                  "op": "eq",
+                  "value": "S01"
+                }
+              ],
+              "rule": "exact intent"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "wrong-unit",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "units",
+              "expected": {
+                "net_sales_cents": "cents"
+              },
+              "actual": {
+                "net_sales_cents": "yuan"
+              },
+              "rule": "exact units, no missing/extra units"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "one-cent-off",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "rows.{}.net_sales_cents",
+              "expected": 100300,
+              "actual": 100301,
+              "rule": "null/exact integer/declared float tolerance"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "error-with-correct-number",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "status",
+              "expected": "ok",
+              "actual": "error",
+              "rule": "exact supported status"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "wrong-data-version",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "data_version",
+              "expected": "qinghe-w03-20260923-small",
+              "actual": "synthetic-wrong-version",
+              "rule": "locked version"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "missing-data-version",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "data_version",
+              "expected": "qinghe-w03-20260923-small",
+              "actual": null,
+              "rule": "locked version"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "missing-group",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "rows",
+              "expected": {
+                "store": "S03",
+                "net_sales_cents": 9000
+              },
+              "actual": null,
+              "rule": "missing group"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "duplicate-group",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "actual.rows[3]",
+              "expected": "unique group",
+              "actual": [
+                "S01",
+                12500
+              ],
+              "rule": "duplicate group"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "extra-group",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "rows",
+              "expected": null,
+              "actual": {
+                "store": "S99",
+                "net_sales_cents": 0
+              },
+              "rule": "extra group"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "same-total-wrong-store-role",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "rows.{'store': 'S01'}.net_sales_cents",
+              "expected": 12500,
+              "actual": 4500,
+              "rule": "null/exact integer/declared float tolerance"
+            },
+            {
+              "path": "rows.{'store': 'S02'}.net_sales_cents",
+              "expected": 10000,
+              "actual": 18000,
+              "rule": "null/exact integer/declared float tolerance"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "bool-is-not-zero",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "rows.{}.net_sales_cents",
+              "expected": 0,
+              "actual": false,
+              "rule": "null/exact integer/declared float tolerance"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "numeric-string",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "rows.{}.net_sales_cents",
+              "expected": 100300,
+              "actual": "100300",
+              "rule": "null/exact integer/declared float tolerance"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "infinite",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "rows.{}.net_sales_cents",
+              "expected": 100300,
+              "actual": "inf",
+              "rule": "null/exact integer/declared float tolerance"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "duplicate-column",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "actual.columns",
+              "expected": [
+                "store",
+                "net_sales_cents"
+              ],
+              "actual": [
+                "store",
+                "store"
+              ],
+              "rule": "unique exact columns"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "bad-row-width",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "actual.rows[0]",
+              "expected": 2,
+              "actual": [
+                "S01",
+                12500,
+                0
+              ],
+              "rule": "row width"
+            },
+            {
+              "path": "rows",
+              "expected": {
+                "store": "S01",
+                "net_sales_cents": 12500
+              },
+              "actual": null,
+              "rule": "missing group"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "empty-aggregate",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "actual.rows",
+              "expected": "one aggregate row",
+              "actual": [],
+              "rule": "single aggregate"
+            },
+            {
+              "path": "rows",
+              "expected": {
+                "net_sales_cents": 100300
+              },
+              "actual": null,
+              "rule": "missing group"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "row-reorder",
+        "expected_passed": true,
+        "observed": {
+          "passed": true,
+          "differences": []
+        },
+        "correct": true
+      },
+      {
+        "name": "column-reorder",
+        "expected_passed": true,
+        "observed": {
+          "passed": true,
+          "differences": []
+        },
+        "correct": true
+      },
+      {
+        "name": "equal-finite-float",
+        "expected_passed": true,
+        "observed": {
+          "passed": true,
+          "differences": []
+        },
+        "correct": true
+      },
+      {
+        "name": "synthetic-null-not-zero",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "rows.{}.net_sales_cents",
+              "expected": null,
+              "actual": 0,
+              "rule": "null/exact integer/declared float tolerance"
+            }
+          ]
+        },
+        "correct": true
+      },
+      {
+        "name": "large-integer-one-cent",
+        "expected_passed": false,
+        "observed": {
+          "passed": false,
+          "differences": [
+            {
+              "path": "rows.{}.net_sales_cents",
+              "expected": 1000000000,
+              "actual": 1000000001,
+              "rule": "null/exact integer/declared float tolerance"
+            }
+          ]
+        },
+        "correct": true
+      }
+    ]
+  },
+  "limitations": [
+    "合成副本校验不是Agent实际犯错或真实问数；真实结果取得后再按指南注入。",
+    "没有由此证明全部指标、全部维度/运算或大样本性能。"
+  ],
+  "status": "approved",
+  "approved": true,
+  "failed_checks": [],
+  "conclusion": "独立审查通过，可以启动仅 net_sales_cents 的真实构建；31项独立合成判定检查符合预期，尚非真实问数或最终业务验证。"
+}

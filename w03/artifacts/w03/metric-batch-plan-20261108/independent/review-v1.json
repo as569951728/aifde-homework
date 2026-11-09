@@ -1,0 +1,35 @@
+{
+  "status": "requires_revision",
+  "approved": false,
+  "scope": "38项状态登记与批次测试设计；非构建、数值期望或查询验收",
+  "reviewed_candidate": "candidate-v1.json",
+  "reviewed_files_sha256": {
+    "docs/w03/指标核对与测试登记.md": "00d97a504e6816263972231150b1ee63433b1a7ac90b631b6c109a1b113b37f1",
+    "docs/w03/指标模型测试集设计.md": "d1efcadca1eb9c78a57e8aa1243ce36f624307fc2af62ef62c1e0a6750b73c8d",
+    "customer/w03/metric_register.json": "a271dee02b8af62cdc7019ced27127219ea8874bfb9d62436b6db1abe0cdc972",
+    "customer/w03/test-plans/metric_cases.json": "9c564f95202f7f435f1bc056b3db426f6f8cbae8262245926e5dec421e794991"
+  },
+  "failed_checks": [
+    {
+      "id": "B5_LOCAL_TEST_DEPENDENCY",
+      "file": "customer/w03/metric_register.json",
+      "locator": "batches[B5].local_build_minimum_dependency_closure",
+      "finding": "B5-A01还比较valid_order_count，但局部B5闭合集只含5项本批指标；默认累计库有它，局部库方案没有记录完整测试所需指标。",
+      "required_fix": "区分定义依赖闭合与测试所需闭合；为B5记录含valid_order_count的6项测试闭合集。说明局部构建运行本批测试时使用两者并集并递归闭合。"
+    }
+  ],
+  "passed_checks": [
+    "4文件与candidate-v1冻结哈希相符；38个任务ID无遗漏重复，7批精确划分，所有38项均有正常多指标场景，双向用例映射一致。",
+    "53项新增设计均executable=false、expected_state=not_computed、execution_state=not_run，无伪expected占位；原8题与已冻结独立tests题目相符。",
+    "仅net_sales原8题已通过；其余37项未构建/未冻结数值/未运行/未审解释，全部规模未跑。",
+    "11项比率/均值依赖正确闭合；B4局部定义闭合20项；累计重建、同名模型不得盲merge、新目录/版本与全已通过集回归要求明确。",
+    "核对materials01至06的粒度、时间、行集合、单位、去重/排序/分母边界；B7来源为有效week=3小林/陈姐访谈，所引用日期与资格规则吻合。",
+    "普通月内业务原文与当前引擎渠道限制明确分开；12维度、共享资格与judge计划未扩大已有证据。",
+    "Markdown各新增条目的问题/规则/目标错误与JSON逐项一致；没有要求本轮构建或计算38项期望。"
+  ],
+  "nonblocking_execution_notes": [
+    "升级原生tests前，把“上述五项/七项/八项”等上下文简写展开为独立完整问题；B4-D01的分店及整体应形成分别可表达的intent/子例。当前是明确不可执行的设计，因此不要求本轮把所有参数化条目展开。",
+    "B7-Q06卡记录缺失例须有外部完整性清单或受控故障标记，不能要求只凭缺失后的卡表推断现实中是否无卡；具体检验方式在该批冻结前确定。"
+  ],
+  "conclusion": "候选v1登记状态与主要测试设计可追溯；须补B5局部测试依赖记录后再批准设计。未执行模型API、构建、问数或新增数值核算。"
+}

@@ -1,0 +1,86 @@
+{
+  "version": "monthly-query-policy-addendum-v1",
+  "date": "2026-11-06",
+  "status": "plan_only_not_run_pending_independent_review",
+  "supersedes_only": "旧full-test-design-20261106/v2/metric_coverage_plan.json中普通月内三项的“渠道支持待核”说明；原冻结保留，当前执行计划以本补充为准。85模型题及其预期不改。",
+  "applies_to": [
+    "monthly_buyer_count",
+    "monthly_repeat_buyer_count",
+    "monthly_repeat_rate",
+    "monthly_paid_buyer_count",
+    "monthly_paid_order_count",
+    "monthly_paid_sales_cents",
+    "monthly_paid_repeat_buyer_count",
+    "monthly_paid_repeat_rate",
+    "monthly_paid_avg_order_value"
+  ],
+  "business_source_boundary": {
+    "D3": "普通月内三项明确完整自然月、全门店；不把当前程序的全渠道/零filters限制写成客户永久禁令",
+    "D4": "六项付费月报明确完整自然月、全渠道全门店，多月分列，暂不分门店/渠道"
+  },
+  "implementation_requirement": "按contract.md，九个月度定义均设置query_policy.full_month_only=true；此为待构建要求，未生成青禾库。",
+  "current_engine_behavior": "engine.py静态检查：任一被查指标full_month_only=true，则起止必须月初、filters为空、group_by只能为空或metric_time__month；跨月必须group_by=[metric_time__month]。混合指标查询也受该门禁。",
+  "source_refs": [
+    {
+      "path": "W03/实操工程/docs/w03/contract.md",
+      "sha256": "76df027ee419a5c02a92459641e7a126ab3e8db713cdf3bc63c4ffd42bf62042",
+      "nature": "工程查询契约，不是新增客户事实"
+    },
+    {
+      "path": "W03/实操工程/platform/fde_product/metrics/engine.py",
+      "sha256": "e8b39da2517a65f6406da4d261173291c795248ea6c62638137e09ce750a98f3",
+      "nature": "当前本地查询引擎的静态代码限制，非客户业务禁令、非实际查询已运行"
+    }
+  ],
+  "planned_cases": [
+    {
+      "id": "MQ-01",
+      "input": "月内复购率，2026-08-01至2026-09-01，filter channel=门店",
+      "expected_status": "unsupported",
+      "reason": "当前工具策略拒绝任何filter；不推成D3永久业务规则"
+    },
+    {
+      "id": "MQ-02",
+      "input": "月内购买会员数，完整8月，group_by member__tier",
+      "expected_status": "unsupported",
+      "reason": "当前仅允许month或单月无分组"
+    },
+    {
+      "id": "MQ-03",
+      "input": "任一月度指标，完整8月，filter member_id或tier等非渠道条件",
+      "expected_status": "unsupported",
+      "reason": "禁止所有filters，不只是门店/渠道"
+    },
+    {
+      "id": "MQ-04",
+      "input": "月内复购率，完整7–8月，不按月分组",
+      "expected_status": "unsupported",
+      "reason": "跨月需逐月"
+    },
+    {
+      "id": "MQ-05",
+      "input": "月内复购率，完整7–8月，group_by metric_time__month，filters=[]",
+      "expected_status": "ok",
+      "reason": "窗口覆盖内且metric_time__month已在实际语义图可达；数值仍须独立计算"
+    },
+    {
+      "id": "MQ-06",
+      "input": "月内购买会员数，完整8月，无分组无filter",
+      "expected_status": "ok",
+      "reason": "库已按要求构建、覆盖内；数值/单位未计算"
+    },
+    {
+      "id": "MQ-07",
+      "input": "net_sales_cents与monthly_buyer_count混合查完整8月，再加channel filter",
+      "expected_status": "unsupported",
+      "reason": "任一full_month_only就限制整次混合请求"
+    },
+    {
+      "id": "MQ-08",
+      "input": "任一月度指标，非完整月区间",
+      "expected_status": "unsupported",
+      "reason": "起止不是完整自然月边界"
+    }
+  ],
+  "execution_limits": "以上是后续查询行为测试设计，当前没有实际查询/数值期望。构建后先核策略确实落盘及维度可达，再运行真实请求。"
+}

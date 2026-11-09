@@ -1,0 +1,430 @@
+{
+  "created_at": "2026-11-06T16:20:59.195620+00:00",
+  "method": "独立原生request/attempt/answer/run只读核验与冻结checker执行；没有使用父Agent语义评分。",
+  "case_count": 12,
+  "live_runs": 12,
+  "successful_runs": 12,
+  "total_attempts": 12,
+  "all_http_200": true,
+  "all_finish_stop": true,
+  "expected_leakage_detected": false,
+  "checker_or_oracle_sent_to_model": false,
+  "all_frozen_inputs_unchanged": true,
+  "all_protected_files_unchanged": true,
+  "all_original_sources_unchanged": true,
+  "checker_sha256": "f035a2c54a069a6d47f896be1abfaf3f4590d25c510c64623547292469486aee",
+  "input_sha256": {
+    "input/business_model.md": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+    "input/knowledge.json": "5716030c561cccad6068a7300e981a7a7564773dc587d12ab325bf7d5a0afd05",
+    "input/knowledge_prompt.txt": "f803ecc68db3e6205d08fbfaec63d4aa0b34736201475f2e3607393fd9eeb811",
+    "input/original_questions.json": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+    "input/protected.json": "25cd04dd8392eb12803de036ce08c4c890f2fef2a57d0f15e2d86d42f74df980",
+    "input/reviewer_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+    "input/selected_questions.json": "b4e4c72b37f468d20c609200ba04f0757fb27c4fdab8d3735d39a49ad1ff4a30"
+  },
+  "input_checks": {
+    "input/business_model.md": true,
+    "input/knowledge.json": true,
+    "input/knowledge_prompt.txt": true,
+    "input/original_questions.json": true,
+    "input/protected.json": true,
+    "input/reviewer_expectations.json": true,
+    "input/selected_questions.json": true
+  },
+  "protected_checks": {
+    "docs/w03/business_model.md": true,
+    "docs/w03/interview_notes.md": true,
+    "customer/w02/knowledge.json": true,
+    "customer/w02/knowledge_prompt.txt": true,
+    "customer/w02/workflow.json": true,
+    "customer/w02/extraction.json": true,
+    "customer/w02/skills/extract-business/SKILL.md": true,
+    "artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/session.json": true,
+    "artifacts/w03/model-draft-20261106/draft-03/business_model.md": true,
+    "docs/w03/metric_decisions.md": true,
+    "docs/w03/sow.md": true,
+    "customer/w03/tests.json": true
+  },
+  "source_checks": {
+    "statistics_email": true,
+    "test_dictionary": true,
+    "chen": true,
+    "lin": true,
+    "zhou": true,
+    "questions": true
+  },
+  "cases": [
+    {
+      "id": "DY07",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-consistency-qa-20261107/output/DY07.json",
+      "output_sha256": "a74e04b0a093fea9dd5c34aaa19da4f6c06408f9bbc9431946ff61328a70527a",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-1a0f5f0064804606b44bf95e1f196a0b/run.json",
+      "run_sha256": "f45b31887fce475d61b0ca9a231238b7c16c06e226759b815698595b38a2fa3f",
+      "request_sha256": "fb284d7e25bb240bca9d2a4a9232f4d383070b04462ebbce32c59320bbe05daa",
+      "answer_sha256": "0b079d0e980cfa27d6632241fb668cab64cf93c41c8c859f8f17054b8c8b2e51",
+      "attempts_sha256": "a316f8a815d59fe6e76cc0577d74f1f96b87074d64909e6b2b1ddd3c5c3a4869",
+      "snapshot_manifest_sha256": "0db312ded5da09ed1a31e1fc75e24ea45e00fb2b2db60e400a319e88e3f49022",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY08",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-consistency-qa-20261107/output/DY08.json",
+      "output_sha256": "fba1cb944c468103475dd9e3e77e622980963a5236be3e64f222d1c5dca4040a",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-d6575b39a0894ff8ab379c14f4a5a54c/run.json",
+      "run_sha256": "a5765c10b4de160243662f83b830bf580582ab40de68cf5504581f16af5959c6",
+      "request_sha256": "e53ec0b9a968000b2e212e37e11051946e4ac903be36ae13a0c28aa76b2fd55b",
+      "answer_sha256": "3ed17167b7490bf950660643d2eb25be6dbc9ccfb1f38ff47419e790dfcdebb7",
+      "attempts_sha256": "c407607e8b6fa9584f79e11bdc97c846c9062f595f95ec6ff897d6972ffc987d",
+      "snapshot_manifest_sha256": "bbfd44cfaf7913e3d2d0e34c5ca8729168d267223adbab0ec59b5433aaf62b4b",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY09",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-consistency-qa-20261107/output/DY09.json",
+      "output_sha256": "e007fa3afbe9a9997f668b842e7d0d2fbdf341b178af6558a306cc68cd0ee332",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-5477491f075b44c3afe53daf49a8462a/run.json",
+      "run_sha256": "295b44fd821f2fe6b5e1c70b0a35c00a09117839a12b889a19cf442f0b66fd88",
+      "request_sha256": "59a6b3e72856bf44f5607df80919f41fdb707a40ef36ea89d192dfffc35eb1e5",
+      "answer_sha256": "ff24b4fce116dba2bbd783026e30cf60195a6706c3504348f7f6bedda793f68d",
+      "attempts_sha256": "98509b396c886e0fa3451c12b50c3bf30dab6ed7343b697807502f6eefe4e6f4",
+      "snapshot_manifest_sha256": "6d3e575a00a323efa2ee3b7646d941a6bd357a85714e0447cb69e6ee1c8ea404",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY10",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-consistency-qa-20261107/output/DY10.json",
+      "output_sha256": "9f9c664c1f5bacd75e1565ce754e0311121031ea654eb051b39bb534e5923d4b",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-96e6ac373daf4a8d84b0e28f1d310238/run.json",
+      "run_sha256": "aa3fcff34939a7ed54dbad1fd0b1b4f225ef7c76479180738752fd31e4278a59",
+      "request_sha256": "0de7a96b24c25828af7804032ccd9a14cd3666db21c10c6d0712f0172eeaae41",
+      "answer_sha256": "c43a0df7fca6ee76176728874289d1b679580f523d1391e4aa239f8a09e12adf",
+      "attempts_sha256": "4a53a1077c1a47a7c5d43ebeca6551bc182860840e3494e6693e6cf4658dada7",
+      "snapshot_manifest_sha256": "52bb1ee2c4e13e0ce95527fb041b2384efa9ffb12aec7a81ea73a0427f9d0991",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY11",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-consistency-qa-20261107/output/DY11.json",
+      "output_sha256": "870a3a49acfb207ab9814b7dd236523d722cee2730fee3836f30fe975034952c",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-cea9a5b58db847928b18a477bd121f79/run.json",
+      "run_sha256": "c9a31ff43f9abc14e856bbf4a66164117742f8ff21101547cf233934289f6111",
+      "request_sha256": "9fad632d65a6e46dac7bb8d9e4f32fd2b3acfd0f726eeef2366f7b8b5509fc77",
+      "answer_sha256": "81f89671d1c9f7a126ebfd27c921c4aea59ab7cd0c5b4ddbeab264b708fb93b6",
+      "attempts_sha256": "17b9f1f45535e29adbc115c1a27fb459a7b58eb705c21ca2ad6604fe0fc4627c",
+      "snapshot_manifest_sha256": "4449b08c8618d39e72f3db924aa6832d492c884bdc22042b3f6b9d60aea7f41a",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY12",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-consistency-qa-20261107/output/DY12.json",
+      "output_sha256": "b6b55a42423e08aa9485a4ce60d245cf1825b315a5530809b651e4d0ef051474",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-01a4124dbaec4137828d9937f21f8278/run.json",
+      "run_sha256": "c92fcb83cb938e2c1e360c9082e0f8a97500d4a570e640944dd690d63ad18dbd",
+      "request_sha256": "7ae9f8d48a85e2b115d7108c4b35876538e4c54644012236b6bb227836e6bca0",
+      "answer_sha256": "7f8ac5f48fb6c3efd9e87f603ed2b859f1c8eab26cf9bb3b00ef26d1e0fa0fbd",
+      "attempts_sha256": "6342661b5a61c8d1338f34602b374e7e6a2929065d9487218fbfaefd3cef49f8",
+      "snapshot_manifest_sha256": "551401d1328d650039e30a95ab448d7f6ffeab6ac1e49a895af91124c5d57135",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ07",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-consistency-qa-20261107/output/DQ07.json",
+      "output_sha256": "12c99eecb3b77a8564c17adc2749dc4818d17d42d7fd0ff4fab5efedbce35c07",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-b1b351d77474437aa45e422c836f5d4a/run.json",
+      "run_sha256": "e6384253c0c992eef25385e17f57e8f4f3693f9d1f676e97c66d1a5a8c5e3f45",
+      "request_sha256": "28ea437646c022dc8797ef6a4670fa04b07e9e360c2e840b2fef928821fcd5c2",
+      "answer_sha256": "c1c6ab4c20fb3e8bdaca3be199f659265bb8fcef82bece4bb8f7e9b426d90b4c",
+      "attempts_sha256": "248152e3010cb2521f25d835456374ac572c3f8cd3485aad97070f8d1c0a5cc7",
+      "snapshot_manifest_sha256": "bdd398bcabe9dd52800b4fb79cb4b766fd58f24bcf64a83b5aadbf814c5f31d7",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ08",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-consistency-qa-20261107/output/DQ08.json",
+      "output_sha256": "c399d6a4b4f58373e6e2c10dceeb75561f30177c1ebe9f2e5921278e9a3b40c1",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-7d36732dc6224f8f9ff243c8b0d3b3a7/run.json",
+      "run_sha256": "6dcd5c63a56f061c859b03984a6d7c2b1ed3a210ade094b1b1232bc97388eac1",
+      "request_sha256": "500c8d46fb102d015cbeb9813e258f5e231d91937249f6aada2152bcababae40",
+      "answer_sha256": "c2229e264969d48cbdf61f3fd584b33b398572dd710188df2ed54caa158c638f",
+      "attempts_sha256": "1626fa90f6e6f3b6d4d6d7b3757ad62153558e6bb931f2fff56017b554dc8533",
+      "snapshot_manifest_sha256": "c408174c6fd97444656ef85ba0ab74840b2141d0546f9dc4a47c7359b7718c91",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ09",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-consistency-qa-20261107/output/DQ09.json",
+      "output_sha256": "e8e1332ad6e658e5d5be3c710c36a230f9fc50bf840893c5a1c57737ef74f59b",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-88aaae373e464bbc90451016d5cd49b0/run.json",
+      "run_sha256": "1c2ad2739680891754434e6380e6231fcc9703a952726261dffb7120254b2fe2",
+      "request_sha256": "7b83b28be5857fac0989648de6db6c3acc55895d3529db5dee4d1023b47c4374",
+      "answer_sha256": "0c6bab94ca2d0e533cb3ef419e4db66469968dcf7d6d5559a73eba9efb27582d",
+      "attempts_sha256": "d3c7f57ddcdfd1dd3e3862e0f877b37b7a5ca4695406d1e611742cbe206a4f7b",
+      "snapshot_manifest_sha256": "bba98388563ee33ba8a8d5ba24b1631385fad94addf75ab7e63b6a7e6b8e1d71",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ10",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-consistency-qa-20261107/output/DQ10.json",
+      "output_sha256": "64fbabce399cd91e0b144c545ae896ac7323b5ad57fb215f20a39014f80b9dd8",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-08f00de7e89d4aacbc761ab834fa3b40/run.json",
+      "run_sha256": "c2acc0d49013f029a1ee7af3e0d0c0a28d051cdf6e4a4f6e82d7ff231a676559",
+      "request_sha256": "44a008e186749ebb4b00c8a0f4f6195bd5de49968fc7860bb9b69d3f9aa745a4",
+      "answer_sha256": "9a5f4b9dbfef681075d8e2068574d2d4e5171fe1ddca1a609631635d20ce4476",
+      "attempts_sha256": "429939021606f49aec8bf6b788a97226752b71b8121f89de26731f2a8b29e20b",
+      "snapshot_manifest_sha256": "9c62281b00f57b6aecf6aa5e8452c810119f215241ac6a3b11ffab11a2ce67cc",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ11",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-consistency-qa-20261107/output/DQ11.json",
+      "output_sha256": "0d5948def69c0e718f9d8b11286de1eadf70a66bcc78a6e0d739b4986fd42b81",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-68ef5c3232e74310bd30f2d6c9f2f156/run.json",
+      "run_sha256": "054923523ee88d43df032515683e31633c5d354b954db17fa983c962317553c4",
+      "request_sha256": "86344d697b9fd860e9b809ba944051222209e31de88e1c8c5bc8021e4bd46dcb",
+      "answer_sha256": "53705a1de6c1be06bcee0d23c168f5195a8d4eb63632289e33bb1a6d21962265",
+      "attempts_sha256": "219ad8f935f5131d2dd2f2fbafe795553649244a8cccdcc8ec181543c0269d40",
+      "snapshot_manifest_sha256": "62b5ce395bd1e55c6ed6b72ea06ee90703453301c56af029f3ab4e5b5f3f42e6",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ12",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-consistency-qa-20261107/output/DQ12.json",
+      "output_sha256": "eab41cb350c81d0d4aad30cbeb21537b6b135b033ad0bb3d4aa9b0abffce647d",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-912fe658e67c4fd1ae348cb8c32be0b1/run.json",
+      "run_sha256": "f464ff554fe9aeb889dac8fb272f6767bd36e5465d2865408edfbb7cccaee55a",
+      "request_sha256": "5982a874aea9ea0d1496ff16a531f73dfd6038d2f6cf6f0768d76a7b8b709bb3",
+      "answer_sha256": "75818f9b612912b7020ae0a61b98bd26742fe146a24a9bf71073f53c7989381b",
+      "attempts_sha256": "07a7487c17a6cffd8e0e055104fe9e81f18bcd127cd9ef8b730caf0bd3d47f27",
+      "snapshot_manifest_sha256": "dacc5f10a7119f6ecc4b47f6f10e9dd36b1f984fe5bab4f354e4c50c17bb0f74",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    }
+  ]
+}

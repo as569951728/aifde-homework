@@ -1,0 +1,65 @@
+{
+  "id": "B5-H03",
+  "question": "只看CRM账户M00005和M00007，按会员账户分别列出2026年8月的观测期首购会员数、观测期首单净销售额（单位分）、观测期首单数、观测期后续购买订单数和有效订单数。",
+  "expected": {
+    "status": "ok",
+    "intent": {
+      "metrics": [
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count",
+        "valid_order_count"
+      ],
+      "start": "2026-08-01",
+      "end": "2026-09-01",
+      "group_by": [
+        "member"
+      ],
+      "filters": [
+        {
+          "field": "member",
+          "op": "in",
+          "value": [
+            "M00005",
+            "M00007"
+          ]
+        }
+      ]
+    },
+    "columns": [
+      "member",
+      "first_buyer_count",
+      "first_order_sales_cents",
+      "first_order_count",
+      "repeat_order_count",
+      "valid_order_count"
+    ],
+    "rows": [
+      [
+        "M00005",
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        "M00007",
+        1,
+        3000,
+        1,
+        0,
+        1
+      ]
+    ],
+    "units": {
+      "first_buyer_count": "count",
+      "first_order_sales_cents": "cents",
+      "first_order_count": "count",
+      "repeat_order_count": "count",
+      "valid_order_count": "count"
+    }
+  },
+  "expected_source": "独立CSV核算；规则：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单、05_数据字典.md字段关系；数据qinghe-w03-20260923-small；Asia/Shanghai [2026-08-01,2026-09-01)。注册按registered_at；有效为paid且paid_cents-refund_cents>0；先全覆盖按账户/ordered_at/order_id排序，后筛窗口。窗口注册账户0个；首单明细O0000011=3000分；后续有效单1笔。完整账户/订单/注册与过滤明细见本目录ledger-small-cases.json#B5-H03，源文件hash见expected-freeze.json。卡不参与计数；金额整数分，不推终身首购。"
+}

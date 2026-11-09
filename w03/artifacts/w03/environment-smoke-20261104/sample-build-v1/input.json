@@ -1,0 +1,239 @@
+{
+  "business_model_filename": "business_model.md",
+  "business_model": "# 梧桐书店示例业务模型\n\n订单归属于一个会员账户和一个成交门店，订单表一行一单。本例按下单日期统计原订单的收入与退回金额；具体报表规则见 report.md。\n\n月内大额会员数：同一自然月扣退后收入累计达到 10000 分（含等于）的会员数。只计 paid 订单，扣退后收入＝实付－退回，按原订单日期归月，取消单不计。只支持整月查询；覆盖内没有达到门槛的会员时结果为 0。\n",
+  "materials": {
+    "data_dictionary.md": "# 梧桐书店示例字段字典\n\n本例与通用框架使用相同物理结构。四张源表均为 CSV，已整理好主外键；数据是独立合成示例。日期为 Asia/Shanghai 本地 date，金额为整数分。\n\norders 一行一单：order_id 为主键，member_id 关联 members.member_id，store_id 关联 stores.store_id；ordered_at 为下单日期，status 为 paid 或 cancelled；gross_cents 为原价分，paid_cents 为实付分，refund_cents 为截至快照累计退回分，quantity 为原始购买件数，channel 为渠道。SQL 使用这些实际列名，不存在 paid_amount_cents 或 refund_amount_cents。\n\nmembers 一行一账户：member_id、registered_at（注册日）、home_store_id（归属门店）、tier（等级）。stores 一行一门店：store_id、region、store_name。cards 表在本例只有表头，未使用任何资格统计：card_id、member_id、card_type、valid_from、valid_until、ended_at、card_paid_cents。\n\n收入计算使用报表说明的业务定义与 orders 字段，不能因框架包含卡模型就添加本例未提出的会员资格规则。\n",
+    "report.md": "# 梧桐书店收款说明\n\n梧桐书店按原订单日期统计收款与退回金额，取消单不计。\n\n收款单数：paid 订单数。到账总额：paid 订单实付分之和。退回金额：paid 订单退款分之和。扣退后收入：到账总额减退回金额。退回占比：退回金额除以到账总额，零分母未定义。\n\n月内大额会员数：同一自然月扣退后收入累计达到 10000 分（含等于）的会员数。只计 paid 订单，扣退后收入＝实付－退回，按原订单日期归月，取消单不计。只支持整月查询；覆盖内没有达到门槛的会员时结果为 0。\n"
+  },
+  "targets": [
+    {
+      "id": "receipt_count",
+      "name": "收款单数"
+    },
+    {
+      "id": "gross_receipts_cents",
+      "name": "到账总额"
+    },
+    {
+      "id": "returned_cents",
+      "name": "退回金额"
+    },
+    {
+      "id": "net_receipts_cents",
+      "name": "扣退后收入"
+    },
+    {
+      "id": "return_ratio",
+      "name": "退回占比"
+    },
+    {
+      "id": "monthly_large_buyer_count",
+      "name": "月内大额会员数"
+    }
+  ],
+  "access_tables": {
+    "members": {
+      "member_id": "VARCHAR",
+      "registered_at": "DATE",
+      "home_store_id": "VARCHAR",
+      "tier": "VARCHAR"
+    },
+    "stores": {
+      "store_id": "VARCHAR",
+      "region": "VARCHAR",
+      "store_name": "VARCHAR"
+    },
+    "orders": {
+      "order_id": "VARCHAR",
+      "member_id": "VARCHAR",
+      "store_id": "VARCHAR",
+      "ordered_at": "DATE",
+      "status": "VARCHAR",
+      "gross_cents": "BIGINT",
+      "paid_cents": "BIGINT",
+      "refund_cents": "BIGINT",
+      "quantity": "BIGINT",
+      "channel": "VARCHAR"
+    },
+    "cards": {
+      "card_id": "VARCHAR",
+      "member_id": "VARCHAR",
+      "card_type": "VARCHAR",
+      "valid_from": "DATE",
+      "valid_until": "DATE",
+      "ended_at": "DATE",
+      "card_paid_cents": "BIGINT"
+    }
+  },
+  "dimension_targets": [
+    {
+      "id": "store",
+      "name": "成交门店",
+      "meaning": "订单发生的门店编号"
+    },
+    {
+      "id": "home_store",
+      "name": "会员归属门店",
+      "meaning": "会员账户归属的门店编号"
+    },
+    {
+      "id": "member",
+      "name": "会员账户",
+      "meaning": "本次测试范围的 CRM 会员账户编号"
+    },
+    {
+      "id": "store__region",
+      "name": "成交地区",
+      "meaning": "订单成交门店所在地区"
+    },
+    {
+      "id": "store__store_name",
+      "name": "成交门店名称",
+      "meaning": "订单成交门店的名称"
+    },
+    {
+      "id": "home_store__region",
+      "name": "会员归属地区",
+      "meaning": "会员归属门店所在地区"
+    },
+    {
+      "id": "home_store__store_name",
+      "name": "会员归属门店名称",
+      "meaning": "会员归属门店的名称"
+    },
+    {
+      "id": "order__channel",
+      "name": "订单渠道",
+      "meaning": "订单发生的渠道"
+    },
+    {
+      "id": "order__status",
+      "name": "订单状态",
+      "meaning": "订单记录的状态"
+    },
+    {
+      "id": "member__tier",
+      "name": "会员等级",
+      "meaning": "会员账户登记的等级"
+    },
+    {
+      "id": "metric_time__day",
+      "name": "统计日",
+      "meaning": "按所选指标定义的统计时间逐日展示"
+    },
+    {
+      "id": "metric_time__month",
+      "name": "统计月",
+      "meaning": "按所选指标定义的统计时间逐自然月展示"
+    }
+  ],
+  "native_format": "dbt semantic_models/measures; MetricFlow 0.213; DuckDB",
+  "contract": {
+    "semantic_models": [
+      {
+        "name": "example_model",
+        "model": "ref('orders')",
+        "defaults": {
+          "agg_time_dimension": "ordered_at"
+        },
+        "entities": [
+          {
+            "name": "example_entity",
+            "type": "primary",
+            "expr": "order_id"
+          }
+        ],
+        "dimensions": [
+          {
+            "name": "ordered_at",
+            "type": "time",
+            "type_params": {
+              "time_granularity": "day"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "unique_measure_name",
+            "expr": "SQL expression",
+            "agg": "sum"
+          }
+        ]
+      }
+    ],
+    "metrics": [
+      {
+        "name": "target_id",
+        "label": "中文名",
+        "description": "定义",
+        "type": "simple",
+        "type_params": {
+          "measure": "unique_measure_name"
+        }
+      }
+    ],
+    "catalog": [
+      {
+        "id": "target_id",
+        "name": "中文名",
+        "aliases": [],
+        "unit": "count",
+        "sources": [
+          {
+            "file": "input.md",
+            "quote": "连续原文"
+          }
+        ],
+        "constraints": [],
+        "query_policy": {
+          "full_month_only": false
+        }
+      }
+    ],
+    "model_sql": {},
+    "unresolved": [
+      {
+        "metric_id": "another_target_id",
+        "missing_facts": [
+          "尚需客户核实的业务条件"
+        ],
+        "reason": "缺项为何影响当前任务"
+      },
+      {
+        "dimension_id": "missing_dimension_id",
+        "missing_facts": [
+          "尚需核实的维度关系"
+        ],
+        "reason": "缺失关系对查询的影响"
+      }
+    ],
+    "business_model_usage": [
+      {
+        "quote": "业务模型连续原文",
+        "used_for": [
+          {
+            "kind": "semantic_model",
+            "name": "example_model"
+          },
+          {
+            "kind": "dimension",
+            "name": "query_dimension_id"
+          },
+          {
+            "kind": "derived_model",
+            "name": "custom_model_name"
+          },
+          {
+            "kind": "metric",
+            "name": "target_id"
+          }
+        ]
+      }
+    ],
+    "grain_keys": {
+      "example_model": [
+        "order_id"
+      ]
+    }
+  }
+}

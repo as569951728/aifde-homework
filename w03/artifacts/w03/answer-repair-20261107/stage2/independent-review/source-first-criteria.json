@@ -1,0 +1,376 @@
+{
+  "created_at": "2026-11-07T04:41:58.544549+00:00",
+  "stage": "source_first_before_new_prompt_or_new_actual_answers",
+  "reviewer": "/root/w03_qualification_qa_reviewer",
+  "independence": "依据原题、材料和原访谈先形成；已知旧失败及旧判据，不声称全项目盲审。尚未读取stage1/2/3新提示。",
+  "source_question": {
+    "path": "artifacts/w03/basic-semantics-qa-20261107/input/original_questions.json",
+    "sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343"
+  },
+  "sources": [
+    {
+      "path": "materials/w03/01_订单日报说明.md",
+      "sha256": "976fa129493e6bd2861a58d74df2ba3ad4448ea01a2d25651124222a61cebb67"
+    },
+    {
+      "path": "materials/w03/02_财务邮件.md",
+      "sha256": "f81e0ddb5c03dd4eb2d01094816716d8375d03fe883b947ec8297edf8d525557"
+    },
+    {
+      "path": "materials/w03/03_会员运营周报.md",
+      "sha256": "25ab933556bf34bef21b528d4c7838c9baad33ae289d59f09501e765080bb492"
+    },
+    {
+      "path": "materials/w03/05_数据字典.md",
+      "sha256": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16"
+    },
+    {
+      "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+      "sha256": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71"
+    },
+    {
+      "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+      "sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308"
+    },
+    {
+      "path": "artifacts/w03/date-consistency-qa-20261107/independent-review/check_date_answer.py",
+      "sha256": "f035a2c54a069a6d47f896be1abfaf3f4590d25c510c64623547292469486aee"
+    }
+  ],
+  "selected_original_cases": [
+    {
+      "id": "B05",
+      "dimension": "零、未定义和越界",
+      "question": "请分别解释：覆盖内筛选无匹配订单的净额、覆盖内无购买账户月份的复购率、覆盖外月份的净额。金额13000分是否等于13000元？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/02_财务邮件.md",
+        "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "DQ10",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-25",
+        "decision_date": "2026-08-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ09",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-16"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ11",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-10",
+        "hypothetical_run_date": "2026-08-31"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "B01",
+      "dimension": "订单分类",
+      "question": "人工订单：O1 paid实付1000退款200；O2 paid实付1000退款1000；O3 cancelled实付0退款0；O4 paid实付0退款0。分别判断支付订单与有效购买，并说明退款与优惠的区别。",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "B04",
+      "dimension": "首购与窗口",
+      "question": "人工情境：同一账户全覆盖历史中最早订单取消；随后7月10日有有效订单O100、O101；8月又有有效订单O200。查8月观测期首单时应选哪笔？同日如何排序？这能叫终身首购吗？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/03_会员运营周报.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    }
+  ],
+  "control_ids": [
+    "NUMCTRL01",
+    "DATECTRL01"
+  ],
+  "criteria": {
+    "B05": {
+      "required": [
+        "覆盖内无匹配订单净额为0；不得说所有指标均为0",
+        "无购买账户月的复购率分母0，未定义",
+        "覆盖外月份不具备本数据支持，不能填0",
+        "13000分=130元",
+        "全答出现的任何比率必须辨清分子分母；未定义由相应分母为0引起"
+      ],
+      "forbidden": [
+        "将净额称人均消费/订单均额分母",
+        "净额0就直接判所有比率未定义",
+        "强求未提供contract状态码"
+      ]
+    },
+    "B01": {
+      "required": [
+        "O1支付且有效；O2支付但非有效；O3非支付且非有效；O4支付但非有效",
+        "退款为paid累计退款；优惠为原价-实付，退款不冲减原优惠",
+        "未给原价不能编具体优惠额"
+      ],
+      "forbidden": [
+        "全退从支付订单排除",
+        "paid实付0自动算有效"
+      ]
+    },
+    "B04": {
+      "required": [
+        "全覆盖历史先排除取消单，再按日期、订单号排序，首笔为7月10日O100",
+        "8月窗口无该账户观测期首单；O200不能被窗口内重新标首单",
+        "这是观测覆盖期首购，不是终身首购"
+      ],
+      "forbidden": [
+        "先截8月再找最早",
+        "把O101与O100同时算首次",
+        "编具体年份或订单金额"
+      ]
+    },
+    "DQ09": {
+      "required": [
+        "三条件独立判断：是/是/否；综合无效",
+        "计划[2026-05-20,2026-08-20)，综合[2026-05-20,2026-08-15)"
+      ],
+      "expected": {
+        "decision_date": "2026-08-16",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": true,
+          "提前终止日": false
+        },
+        "planned_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-15",
+          "含终点": "否"
+        },
+        "final_conclusion": "无效"
+      }
+    },
+    "DQ10": {
+      "required": [
+        "三条件独立判断：是/否/是；综合无效",
+        "计划与综合都[2026-05-20,2026-08-20)；后于计划结束的ended_at不延长",
+        "不能从综合无效倒推提前终止条件也失败"
+      ],
+      "expected": {
+        "decision_date": "2026-08-20",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": false,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "无效"
+      }
+    },
+    "DQ11": {
+      "required": [
+        "按decision_date 2026-08-10，而非hypothetical_run_date 2026-08-31",
+        "三条件是/是/是；有效；ended_at空不等于无限",
+        "计划及综合区间均[2026-05-20,2026-08-20)"
+      ],
+      "expected": {
+        "decision_date": "2026-08-10",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": true,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "有效"
+      }
+    },
+    "NUMCTRL01": {
+      "required": [
+        "完整按题设与来源判断，控制预期只在评审侧"
+      ],
+      "reviewer_expectation": {
+        "id": "NUMCTRL01",
+        "expected": {
+          "A": {
+            "有效订单均额": {
+              "numerator": 30,
+              "denominator": 2,
+              "value": 15,
+              "unit": "分/单"
+            },
+            "购买会员人均消费": {
+              "numerator": 30,
+              "denominator": 1,
+              "value": 30,
+              "unit": "分/账户"
+            },
+            "退款金额占比": {
+              "numerator": 0,
+              "denominator": 30,
+              "value": 0,
+              "unit": "比例或0%"
+            },
+            "取消率": {
+              "numerator": 1,
+              "denominator": 3,
+              "value": "1/3",
+              "unit": "比例或约33.33%"
+            }
+          },
+          "B": {
+            "有效订单均额": {
+              "numerator": 0,
+              "denominator": 0,
+              "value": "未定义",
+              "unit": "分/单"
+            },
+            "购买会员人均消费": {
+              "numerator": 0,
+              "denominator": 0,
+              "value": "未定义",
+              "unit": "分/账户"
+            },
+            "退款金额占比": {
+              "numerator": 0,
+              "denominator": 0,
+              "value": "未定义",
+              "unit": "比例"
+            },
+            "取消率": {
+              "numerator": 1,
+              "denominator": 1,
+              "value": 1,
+              "unit": "比例或100%"
+            }
+          }
+        },
+        "reject": [
+          "互换两个净额比率的分母",
+          "把A退款0/30说未定义",
+          "把B的0/0说0",
+          "把B取消率说未定义",
+          "把合成人工数当客户事实",
+          "把分当元"
+        ],
+        "accept": "等价正确单位换算及分数/适度四舍五入均可；无需补充题外指标。"
+      }
+    },
+    "DATECTRL01": {
+      "required": [
+        "完整按题设与来源判断，控制预期只在评审侧"
+      ],
+      "reviewer_expectation": {
+        "id": "DATECTRL01",
+        "expected": {
+          "decision_date": "2026-08-11",
+          "product_scope": "纳入",
+          "conditions": {
+            "生效日": true,
+            "计划结束日": true,
+            "提前终止日": true
+          },
+          "planned_interval": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "effective_interval": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-12",
+            "含终点": "否"
+          },
+          "final_conclusion": "有效"
+        },
+        "reject": [
+          "仅因有提前终止就判目前无效",
+          "逐项条件与综合区间或结论不一致",
+          "替换判定日或忽略计划结束日",
+          "用同一最终结论回填每个条件",
+          "把规则归给小林03850或字典"
+        ]
+      }
+    }
+  },
+  "date_sources": {
+    "product": "小林MSG-03848/03854，限本期总部月报",
+    "endpoints": "陈姐MSG-03886/03888/03890；生效日含、结束/提前终止日不含；空不无限",
+    "unknown": "具体规则文件/历史凭据未获；不妨碍按现有访谈对完整合成题设作判断"
+  },
+  "minimum_set": {
+    "original_cases": 6,
+    "independent_controls": 2,
+    "adequate_for_bounded_repair": true,
+    "coverage": "数字0/非0分母与0分子；日期提前终止早/晚于计划日、判定日在提前终止前/后、空值与非当前判定日；订单和观测首购防回归",
+    "limits": "不证明全82题、生产指标计算、所有日期组合或未见题泛化。B04使用原题新run，不复用网络恢复答案。"
+  },
+  "execution_authorized": false,
+  "pending": "只批准设计；新提示、材料/输入与原生隔离仍须门禁。"
+}

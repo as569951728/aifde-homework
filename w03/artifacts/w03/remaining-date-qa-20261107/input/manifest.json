@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-07",
+  "frozen_at": "2026-11-07T03:54:30.169577+00:00",
+  "frozen_before_execution": true,
+  "case_ids": [
+    "DY01",
+    "DY02",
+    "DY03",
+    "DY04",
+    "DY05",
+    "DY06",
+    "DQ01",
+    "DQ02",
+    "DQ03",
+    "DQ04",
+    "DQ05",
+    "DQ06"
+  ],
+  "files": {
+    "input/business_model.md": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+    "input/knowledge.json": "af73d3b7aa1ff5e195ed1b0d1a0ce83ae2c361082917a5d8b23808e841da3b09",
+    "input/knowledge_prompt.txt": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+    "input/original_questions.json": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+    "input/protected.json": "25cd04dd8392eb12803de036ce08c4c890f2fef2a57d0f15e2d86d42f74df980",
+    "input/reviewer_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+    "input/selected_questions.json": "15a6e73bb041da50e75ccb07d0b4cea9aeafbc132d1e066ae6ae310aaa359b5a"
+  },
+  "runtime_plan": {
+    "model": "deepseek-flash",
+    "profile": "deepseek-json",
+    "max_tokens": 8192,
+    "retry_max_tokens": 16384,
+    "timeout_seconds": 180,
+    "retry_timeout_seconds": 240,
+    "max_concurrency": 2,
+    "answers_per_case": 1,
+    "automatic_semantic_retry": false
+  },
+  "tested_input": "Same candidate/prompt, original single question plus its original fixture when present. No extra material or expected.",
+  "stop_rule": "One answer per case, retain all failures, no semantic retry. Input gate must pass consistently before call."
+}

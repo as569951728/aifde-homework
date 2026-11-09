@@ -1,0 +1,103 @@
+{
+  "contract_version": "w02-0.1.0-draft",
+  "artifact_id": "FACTS-RUN-b89f6bf9b0cd41e2b14b3ed3716609a1",
+  "revision": 1,
+  "scope_id": "fixture-transfer",
+  "origin_run": {
+    "run_id": "RUN-b89f6bf9b0cd41e2b14b3ed3716609a1",
+    "path": "artifacts/w02/runs/RUN-b89f6bf9b0cd41e2b14b3ed3716609a1/run.json"
+  },
+  "sources": [
+    {
+      "meeting_id": "fixture-maintenance",
+      "file": {
+        "path": "artifacts/w02/runs/RUN-b89f6bf9b0cd41e2b14b3ed3716609a1/snapshot/artifacts/w02/workflows/WF-22a75c6a30d44fc197e65caab8dface6/sources/0.json",
+        "sha256": "7ec881eff32d9d83004933aff79295cf8ad743adffcd50f3876e4efabc7e8b63"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "CLM-001-0001",
+      "statement": "本期处理时长按工单关闭日期归属，不用于其他报表。有效工单均独立统计，不因客户相同合并。单位小时；未关闭的不计入已完成时长。",
+      "kind": "fact",
+      "evidence_status": "reported",
+      "qualifiers": [],
+      "evidence": [
+        {
+          "meeting_id": "fixture-maintenance",
+          "message_id": "DOC-1",
+          "quote": "本期处理时长按工单关闭日期归属，不用于其他报表。有效工单均独立统计，不因客户相同合并。单位小时；未关闭的不计入已完成时长。"
+        }
+      ],
+      "conflict_ids": [],
+      "review": {
+        "status": "pending",
+        "note": ""
+      }
+    },
+    {
+      "id": "CLM-001-0002",
+      "statement": "对，我是觉得切两个页面很麻烦。我这周没用，其他人情况我没统计。",
+      "kind": "fact",
+      "evidence_status": "reported",
+      "qualifiers": [],
+      "evidence": [
+        {
+          "meeting_id": "fixture-maintenance",
+          "message_id": "A-1",
+          "quote": "对，我是觉得切两个页面很麻烦。我这周没用，其他人情况我没统计。"
+        }
+      ],
+      "conflict_ids": [],
+      "review": {
+        "status": "pending",
+        "note": ""
+      }
+    },
+    {
+      "id": "CLM-001-0003",
+      "statement": "帮我整理待处理工单和原始描述，但派工仍由值班主管决定。我不知道总部有没有统一合并规则，要问主管。",
+      "kind": "fact",
+      "evidence_status": "reported",
+      "qualifiers": [],
+      "evidence": [
+        {
+          "meeting_id": "fixture-maintenance",
+          "message_id": "A-2",
+          "quote": "帮我整理待处理工单和原始描述，但派工仍由值班主管决定。我不知道总部有没有统一合并规则，要问主管。"
+        }
+      ],
+      "conflict_ids": [],
+      "review": {
+        "status": "pending",
+        "note": ""
+      }
+    },
+    {
+      "id": "CLM-001-0004",
+      "statement": "当前可查询样例工单，客户字段映射和授权接入需适配；没有执行派单接口。\n我可以协助核字段，请先说明用途和所需范围。文件还没导出，权限要按流程申请。",
+      "kind": "fact",
+      "evidence_status": "reported",
+      "qualifiers": [],
+      "evidence": [
+        {
+          "meeting_id": "fixture-maintenance",
+          "message_id": "DOC-2",
+          "quote": "当前可查询样例工单，客户字段映射和授权接入需适配；没有执行派单接口。"
+        },
+        {
+          "meeting_id": "fixture-maintenance",
+          "message_id": "IT-1",
+          "quote": "我可以协助核字段，请先说明用途和所需范围。文件还没导出，权限要按流程申请。"
+        }
+      ],
+      "conflict_ids": [],
+      "review": {
+        "status": "pending",
+        "note": ""
+      }
+    }
+  ],
+  "conflicts": []
+}

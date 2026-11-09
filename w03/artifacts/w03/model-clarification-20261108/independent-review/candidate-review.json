@@ -1,0 +1,201 @@
+{
+  "artifact": "independent candidate source review",
+  "reviewer": "u01_source_review",
+  "created_at": "2026-11-08T00:40:19.872999+08:00",
+  "status": "source_review_pass",
+  "approved_for": "candidate source fidelity and clarification scope only",
+  "execution_approval": "not_assessed; separate complete-input review required",
+  "requires_new_business_decision": false,
+  "requires_candidate_revision": false,
+  "candidate": {
+    "path": "W03/实操工程/artifacts/w03/model-clarification-20261108/candidate/business_model.md",
+    "sha256": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9"
+  },
+  "baseline": {
+    "path": "W03/实操工程/artifacts/w03/answer-repair-20261107/stage5-compact-evidence/input/business_model.md",
+    "sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906"
+  },
+  "author_diff": {
+    "path": "W03/实操工程/artifacts/w03/model-clarification-20261108/candidate/model.diff",
+    "sha256": "ffe2503706a22b6a153b838fd03699accefab545439962f83a4e3bbbd40d70d7"
+  },
+  "source_criteria": {
+    "path": "W03/实操工程/artifacts/w03/model-clarification-20261108/independent-review/source-criteria.json",
+    "sha256": "ad01ff0ec0b2a9de91a7b417cb6aa6b7ed91bd6b379cdbb9018a27865ebb50e2"
+  },
+  "checks": [
+    {
+      "id": "CR01",
+      "criteria": [
+        "SC01",
+        "SC02",
+        "SC03"
+      ],
+      "status": "pass",
+      "candidate_lines": [
+        71,
+        71
+      ],
+      "reason": "第5节把已取得的角色陈述与具体统计定义/范围/时点/来源待核分开；保留老周明确的不同口径说法，移除旧文“范围不同”可能暗示已验证范围差异的歧义。未预定差异属性，也未抹去原话。",
+      "evidence": [
+        "MSG-01719",
+        "MSG-01729",
+        "MSG-01744",
+        "MSG-01746",
+        "MSG-01754"
+      ]
+    },
+    {
+      "id": "CR02",
+      "criteria": [
+        "SC03"
+      ],
+      "status": "pass",
+      "candidate_lines": [
+        9,
+        9
+      ],
+      "reason": "第1节原样保留；现有依据不支持相减、算活跃率、断言同口径矛盾与来源状态一致。第5节增加的是同一限制的复述，不是新业务决定。",
+      "evidence": [
+        "MSG-01719",
+        "MSG-01744",
+        "MSG-01754"
+      ]
+    },
+    {
+      "id": "CR03",
+      "criteria": [
+        "SC04",
+        "SC06"
+      ],
+      "status": "pass",
+      "candidate_lines": [
+        40,
+        43
+      ],
+      "reason": "三类人群沿用固定基线中的原名，仅改为逐项列出；“分别保留/不可等同”是用途与业务确认责任的规则归纳。上下文未把这段声称为客户逐字定义、正式公司SOP、三份已取得名单或集合必不相交。",
+      "evidence": [
+        "MSG-03856",
+        "MSG-03860",
+        "MSG-03862",
+        "MSG-03866",
+        "MSG-03870",
+        "MSG-01925"
+      ]
+    },
+    {
+      "id": "CR04",
+      "criteria": [
+        "SC04",
+        "SC06"
+      ],
+      "status": "pass",
+      "candidate_lines": [
+        45,
+        45
+      ],
+      "reason": "规则7原样保留业务人员确认及助手不得自动执行边界；第4节继续保留具体名单、筛选规则、确认人待核，因此列举没有升级为实际执行名单或新的执行授权。",
+      "evidence": [
+        "MSG-03858",
+        "MSG-03860",
+        "MSG-03862",
+        "MSG-01929",
+        "MSG-01953"
+      ]
+    },
+    {
+      "id": "CR05",
+      "criteria": [
+        "SC05",
+        "SC07"
+      ],
+      "status": "pass",
+      "candidate_lines": [
+        40,
+        43
+      ],
+      "reason": "两处正文修改未新增活跃定义、产品纳入、日期端点、阈值、渠道、筛选条件、统计时点、优先级或最终审批人；既有规则其余内容未改。",
+      "evidence": [
+        "MSG-01742",
+        "MSG-01754",
+        "MSG-03848",
+        "MSG-03856",
+        "MSG-03862"
+      ]
+    },
+    {
+      "id": "CR06",
+      "criteria": [
+        "SC07",
+        "SC08"
+      ],
+      "status": "pass",
+      "candidate_lines": [
+        1,
+        1
+      ],
+      "reason": "标题继续标记候选、未写入；来源评审可通过，但不能据此登记U01已修复、真实回归通过或正式采用。完整输入与执行门禁须另审。",
+      "evidence": []
+    }
+  ],
+  "mechanical_checks": {
+    "three_changed_regions_only": true,
+    "section1_unchanged": true,
+    "section2_unchanged": true,
+    "section4_unchanged": true,
+    "author_diff_matches_actual": true,
+    "source_criteria_precedes_review": true,
+    "sources_still_match_frozen_hashes": true
+  },
+  "changed_regions": [
+    {
+      "op": "replace",
+      "baseline_lines": [
+        1,
+        1
+      ],
+      "candidate_lines": [
+        1,
+        1
+      ],
+      "before": "# 青禾会员经营业务模型（W03 第三稿来源细化候选，未写入）",
+      "after": "# 青禾会员经营业务模型（W03 正文澄清候选，2026-11-08，未写入）"
+    },
+    {
+      "op": "replace",
+      "baseline_lines": [
+        40,
+        40
+      ],
+      "candidate_lines": [
+        40,
+        43
+      ],
+      "before": "5. **统计口径要求**：人数或金额统计需明确会员范围、期间、渠道、有效购买条件与来源；标签字段含义应结合实际填写核实（MSG-01742、01754）。统计人群、待业务审核的候选人群与实际执行名单三者不可等同。",
+      "after": "5. **统计口径要求**：人数或金额统计需明确会员范围、期间、渠道、有效购买条件与来源；标签字段含义应结合实际填写核实（MSG-01742、01754）。以下三类对象分别保留，三者不可等同：\n   - 统计人群。\n   - 待业务审核的候选人群。\n   - 实际执行名单。"
+    },
+    {
+      "op": "replace",
+      "baseline_lines": [
+        68,
+        68
+      ],
+      "candidate_lines": [
+        71,
+        71
+      ],
+      "before": "| 80万／120万、活跃的定义、时点与来源 | 两项角色陈述范围不同，未取得统计来源 |",
+      "after": "| 80万／120万的定义、范围、时点与来源 | 已取得的角色陈述：沈总称80万活跃会员，老周称120万系统全量会员，并说明两者不是同一口径；具体统计定义、范围、时点与统计来源仍需核对（MSG-01719、01744、01754）。当前不据此相减、计算活跃率或断言同口径矛盾 |"
+    }
+  ],
+  "failed_checks": [],
+  "blocking_findings": [],
+  "nonblocking_notes": [
+    "三分法作为模型归纳接受；后续答案若把它说成客户逐字定义，仍应按实际输出判错。",
+    "未知具体属性与不同口径的角色陈述必须同时保留；不能据本次审查认定人数或口径已做独立统计核验。",
+    "未改动正文只核对是否原样保留，未重新认证全部既有材料。"
+  ],
+  "model_api_calls": 0,
+  "new_test_results": null,
+  "conclusion": "本候选通过本次来源与改动范围评审：它忠实澄清既有证据状态，未引入新业务决策。不是运行批准、修复成功或正式采用。"
+}

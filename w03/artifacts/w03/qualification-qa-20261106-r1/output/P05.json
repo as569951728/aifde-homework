@@ -1,0 +1,32 @@
+{
+  "case_id": "P05",
+  "started_at": "2026-11-06T15:14:22.811483+00:00",
+  "completed_at": "2026-11-06T15:14:26.360927+00:00",
+  "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "account": "A",
+    "tier": "普通",
+    "cards_complete": true,
+    "cards": [
+      {
+        "card_type": "体验卡",
+        "state_on_decision_day": "有效",
+        "card_paid_cents": 0
+      }
+    ]
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-9276154585cf4993a0e97a3a07e6e43e/run.json",
+    "run_id": "RUN-9276154585cf4993a0e97a3a07e6e43e",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "在本题人工构造情境且“卡记录完整”成立的前提下，账户A在判定日不具有本期总部月报口径下的付费资格。依据业务模型第3节规则1，本期月报只纳入悦享年卡与家庭季卡持有人，体验卡不纳入；规则2还要求由同一张卡同时满足产品范围与判定日有效。A唯一一张卡是体验卡，虽然题设称其在判定日有效，但不满足产品范围；又因卡记录完整，没有其他卡可满足该口径。账户等级“普通”和购卡实付0元也不能替代卡类型作为资格依据。以上是依据题设作的情境推导，不代表客户真实账户记录或生产核验结果。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "4c666158276bb65c51be702fa7494938197776477540c15f80c7520531275696"
+}

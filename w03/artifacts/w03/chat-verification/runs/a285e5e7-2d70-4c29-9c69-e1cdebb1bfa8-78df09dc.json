@@ -1,0 +1,107 @@
+{
+  "product_version": "0.2.0-w1",
+  "runtime_revision": "w01-runtime-20260922",
+  "session_id": "a285e5e7-2d70-4c29-9c69-e1cdebb1bfa8",
+  "model_mode": "live",
+  "model_name": "deepseek-flash",
+  "prompt_sha256": "1cb83a9badfe1d7a2e0a7ac4da0cc4421200b7db50e3a699abaab6e3cd90a9dc",
+  "status": "completed",
+  "result": {
+    "status": "completed",
+    "summary": "2026年8月青禾优选的观测期首购会员数为 5 人（按CRM会员账户计数）。口径是：先基于全测试覆盖历史确定每个账户的首笔有效订单，再统计首笔订单落在2026年8月窗口内的不同会员账户数；该指标不代表终身首购。",
+    "recommendations": [],
+    "evidence_ids": [
+      "762f5dd1-73c6-4928-afeb-b0d2b842a586"
+    ],
+    "metric_query": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "first_buyer_count"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "sql": "SELECT\n  COUNT(DISTINCT case when is_first_valid_order then member_id end) AS first_buyer_count\nFROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+      "columns": [
+        "first_buyer_count"
+      ],
+      "rows": [
+        [
+          5
+        ]
+      ],
+      "seconds": 0.022,
+      "units": {
+        "first_buyer_count": "count"
+      },
+      "data_version": "qinghe-w03-20260923-small",
+      "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+      "answer": "2026年8月青禾优选的观测期首购会员数为 5 人（按CRM会员账户计数）。口径是：先基于全测试覆盖历史确定每个账户的首笔有效订单，再统计首笔订单落在2026年8月窗口内的不同会员账户数；该指标不代表终身首购。",
+      "question": "2026年8月青禾优选的观测期首购会员数是多少？",
+      "trace_id": "762f5dd1-73c6-4928-afeb-b0d2b842a586",
+      "elapsed_seconds": 7.885,
+      "model_usage": {
+        "prompt_tokens": 12410,
+        "completion_tokens": 646,
+        "total_tokens": 13056
+      },
+      "model_calls_with_usage": 2
+    }
+  },
+  "observations": [
+    {
+      "name": "query_metrics",
+      "result": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "first_buyer_count"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  COUNT(DISTINCT case when is_first_valid_order then member_id end) AS first_buyer_count\nFROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+        "columns": [
+          "first_buyer_count"
+        ],
+        "rows": [
+          [
+            5
+          ]
+        ],
+        "seconds": 0.022,
+        "units": {
+          "first_buyer_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+        "answer": "2026年8月青禾优选的观测期首购会员数为 5 人（按CRM会员账户计数）。口径是：先基于全测试覆盖历史确定每个账户的首笔有效订单，再统计首笔订单落在2026年8月窗口内的不同会员账户数；该指标不代表终身首购。",
+        "question": "2026年8月青禾优选的观测期首购会员数是多少？",
+        "trace_id": "762f5dd1-73c6-4928-afeb-b0d2b842a586",
+        "elapsed_seconds": 7.885,
+        "model_usage": {
+          "prompt_tokens": 12410,
+          "completion_tokens": 646,
+          "total_tokens": 13056
+        },
+        "model_calls_with_usage": 2
+      },
+      "call_id": "call_00_NgTPflZMeFLLOD0fksLb0642"
+    }
+  ],
+  "steps": 1,
+  "output_repairs": 0,
+  "usage": {
+    "prompt_tokens": 15118,
+    "completion_tokens": 720,
+    "total_tokens": 15838
+  },
+  "trace_id": "a3a3dd3a9d58a4feb7eb1168aaa99a34"
+}

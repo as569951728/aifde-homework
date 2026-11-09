@@ -1,0 +1,3072 @@
+{
+  "status": "completed_with_semantic_failure",
+  "reviewed_at": "2026-11-07T05:10:46.521928+00:00",
+  "scope": "13 source/business cases of stage3-r2; other reviewer owns DQ10/B05/DQ09/FMTCTRL01 and full17 aggregation",
+  "reviewed_case_ids": [
+    "U01",
+    "U05",
+    "P09",
+    "F06",
+    "A03",
+    "E01",
+    "E03",
+    "E05",
+    "REG01",
+    "U04",
+    "F05",
+    "P01",
+    "E02"
+  ],
+  "criteria_sha256": "ab3bff3d251a764ccc1ba969f8dd3caec61255af15e0211c6ea32a1b6a603a08",
+  "input_gate_review_sha256": "0b050da3f97287010edf8a1a0bd3d73a72ac6fbaeb59759efeb6b20c2bbd5d0f",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "candidate_prompt_sha256": "784ca33d9f2987261e27127bcbf7fa5abb92cb2af470a27071464ecae9fc73a2",
+  "summary": {
+    "cases": 13,
+    "semantic_passed": 12,
+    "semantic_failed": 1,
+    "semantic_failed_ids": [
+      "E01"
+    ],
+    "native_runs": 13,
+    "native_structure_passed": 13,
+    "native_successful_answers": 13,
+    "http_attempts": 13,
+    "course_truncation_expansions_in_owned_cases": 0,
+    "network_recoveries_in_owned_cases": 0,
+    "semantic_retries_in_owned_cases": 0,
+    "not_reviewed_case_ids": [
+      "DQ10",
+      "B05",
+      "DQ09",
+      "FMTCTRL01"
+    ]
+  },
+  "cases": [
+    {
+      "id": "U01",
+      "verdict": "passed",
+      "reason": "分别说明经营原因验证与岗位提效，角色报告/老化假设/三个月期望和已验证效果分清；80万/120万定义、范围、时点、来源仍待核；流程和未知保留，未重复上版已不同错误。",
+      "input_track": "model_only",
+      "required_point_review": [
+        {
+          "criterion": "经营方向为复购止跌回升；连续四季下滑为角色报告，会员老化为沈总待验证判断，三个月是期望而非承诺。",
+          "result": "passed"
+        },
+        {
+          "criterion": "减少重复整理、核对、跟进是小林岗位负担及使用诉求，未量化工时，不是已证实复购下滑原因，也非公司优先级或已实现效果。",
+          "result": "passed"
+        },
+        {
+          "criterion": "描述已知运营一般流程与小林/陈姐交接，保留具体人群选择、活跃定义、历史复购统计、实际结果与反馈分析交接等未知。",
+          "result": "passed"
+        },
+        {
+          "criterion": "80万活跃与120万全量应区分统计概念，范围、时点、定义/来源尚未齐；不能断言所有条件已不同或已可比较。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage3-r2/output/U01.json",
+      "output_sha256": "c663c04ae57f3cc32ee0423d14a7ea7026602d0b430c717f763b3a68c8107a63",
+      "actual_answer_sha256": "bfc242ce4496e1d9c01b5f3d2df1543a2d82644024d7dbd95e92d9bebe981c53",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/run.json",
+      "native_run_sha256": "58c6cfc0b2c0c57fec68f538d1adb0e3b321b50d230633da91a286707af8f4e3",
+      "native_answer_sha256": "31cdc80a8e83486d6f9a360101afd7497370c53449d72bdc5e1e735144e36f60",
+      "native_request_sha256": "957dc2878262dcf650655189c8a8cda546fa57243b50988c59c230a7bdea65b8",
+      "native_attempts_sha256": "8d134daac6a1952131d13875cd4084d0e9f73acc14f8ba992b802de68f82f21d",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1
+    },
+    {
+      "id": "U05",
+      "verdict": "passed",
+      "reason": "A—E逐项正确：陈姐规则已有说明且凭据未知；01918前提/01919承接/01921感受限定明确；未知非不存在；不能直接求率；阶段认可非验收批准。",
+      "input_track": "model_with_source_context",
+      "required_point_review": [
+        {
+          "criterion": "逐条评A—E；A可采用陈姐本期两卡日期解释，同时保留正式规则文件与历史凭据未掌握。",
+          "result": "passed"
+        },
+        {
+          "criterion": "B须归01918提问者先带入没人用、01919沿用；01921三步是个人感受而非精确步骤，不能视为独立证实全项目无人使用。",
+          "result": "passed"
+        },
+        {
+          "criterion": "C未知反馈回店不等于不存在；D不能直接由80万/120万计算被核实活跃率。",
+          "result": "passed"
+        },
+        {
+          "criterion": "E阶段认可只支持核查意见，不能推定最终验收批准；最终确认人/权限仍待核。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage3-r2/output/U05.json",
+      "output_sha256": "797bb1d3f0fbb02f8dd9b1b7693c279a767414933f334884519d1f5c880f533c",
+      "actual_answer_sha256": "82cb65152177155435dac0a31b78dc2754450f20f634d9921a78690bff800044",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/run.json",
+      "native_run_sha256": "3bf703e97426fb2d260a6c5a00fb847319db90b2f55498839951b0dd888b8adb",
+      "native_answer_sha256": "95fad06ef97117ee94e49daaf9401b144f7d782bd91770a4a4b0228698888307",
+      "native_request_sha256": "e603dd228949f770a007fdfcffcc286241c078c3911c07f0c8edc01057f0c110",
+      "native_attempts_sha256": "d8053f38951dc3e70216c0affa98e90ba22722a98e01d0e7488d808b726833c3",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1
+    },
+    {
+      "id": "P09",
+      "verdict": "passed",
+      "reason": "联名卡被本期月报排除不代表全系统免费类别，概念区分不证明系统互斥；未补卡数。",
+      "input_track": "model_only",
+      "required_point_review": [
+        {
+          "criterion": "只有有效联名卡不符合本期自营月报资格。",
+          "result": "passed"
+        },
+        {
+          "criterion": "本期不纳入不能推出系统免费注册类别；两类称谓不证明全系统互斥，重叠与分类映射待核。",
+          "result": "passed"
+        },
+        {
+          "criterion": "只依题给卡条件，不增造有效卡数量、金额、身份归类或新资格。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage3-r2/output/P09.json",
+      "output_sha256": "d5034b662d03a595427095b7acfb37e84ba26e2a2590e862a4c2c9bd2cb158e4",
+      "actual_answer_sha256": "86308a534c3ef71f3859983f510585d8ee473afba8a7ce6f78876d4bd77f269d",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/run.json",
+      "native_run_sha256": "7fd5076569e08729da97ea3e80aa5d8491f901eaaa97c2cb2044e4a195231bf9",
+      "native_answer_sha256": "ff1036e655bdddde96d556954d08a1a55a7d6969048cd6c198a0753c36084d55",
+      "native_request_sha256": "7b2a8ebf819a70f437d1e6041ade59cb6d211747339379e32ed1f799071efcbe",
+      "native_attempts_sha256": "11d20c885602d90241f10de06aa61ca3f9f271820deb0d5be3024d8e2812288d",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1
+    },
+    {
+      "id": "F06",
+      "verdict": "passed",
+      "reason": "否定已测工时与已证复购因果，明确个人负担未量化；列出权益说明及未购会员回访，未把全部运营等同券活动。",
+      "input_track": "model_only",
+      "required_point_review": [
+        {
+          "criterion": "明确“整理名单费力”是小林的岗位体验/负担陈述，未测得工时，不能补具体次数、耗时、节省量或损失。",
+          "result": "passed"
+        },
+        {
+          "criterion": "尚未证明重复整理或跟进造成复购下降；角色体验、原因假设、实际采用/执行和业务效果分别判断，不能由同现关系推出因果。",
+          "result": "passed"
+        },
+        {
+          "criterion": "除优惠券活动还有会员权益说明、对一段时间未购买会员的回访；三类工作不混成单一券流程。",
+          "result": "passed"
+        },
+        {
+          "criterion": "若说明后续核查或改进，应标建议；具体活动名单/回访天数、筛选条件和已实现结果不得补造。回答问题所需来源准确归W03小林03856/03860及模型§4，W0201623/01637—01641亦是有效既有旁证。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage3-r2/output/F06.json",
+      "output_sha256": "4109772473770fb899c98cc93e59530b388ba2a76e53d14ffede05f8c5411a36",
+      "actual_answer_sha256": "4da7e5ba1fb0dda2902933bf63493469e8ee25ee5d43fb2398d241680282c1e3",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/run.json",
+      "native_run_sha256": "5e3cc41606ecc9aeeb4f4a2eb3065c09c515f0ec4571bf1bf9fe1e392acfea6a",
+      "native_answer_sha256": "805d6afb4732aadec27a9b081b4902b46f0b9da0b5685eb30389a900b458aacf",
+      "native_request_sha256": "f085fdc9157752a6f484355d427733afbf2f2e6e1446253e85c9b6ee67a11fa3",
+      "native_attempts_sha256": "ee12575fbc9e5a27e82ef02cb6a56593eeb049ed102d629e5d27a6ee9be1de2f",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1
+    },
+    {
+      "id": "A03",
+      "verdict": "passed",
+      "reason": "费用/结算/变更延期草案与待谈条件归王经理访谈，核查非批准，未编金额/节点/权限，也未虚构正文承载SOW。",
+      "input_track": "model_with_source_context",
+      "required_point_review": [
+        {
+          "criterion": "可准备费用构成/计价依据、范围责任和留证框架，未谈妥金额待确认。",
+          "result": "passed"
+        },
+        {
+          "criterion": "结算原则对应约定阶段成果与确认记录；具体节点、记录形式、付款/金额尚待双方谈定。",
+          "result": "passed"
+        },
+        {
+          "criterion": "核查意见不等于预算签约验收上线批准；不补金额/比例/账期/确认人。",
+          "result": "passed"
+        },
+        {
+          "criterion": "依据应归本题指定王经理访谈；不虚构业务模型某节含费用合同内容，不要求商业条款回填正文。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage3-r2/output/A03.json",
+      "output_sha256": "1eaffe81e1afef7d88afb94133743c1c21465de7b19fe95729c8e7fd073e96b6",
+      "actual_answer_sha256": "2baeff11342c8c470d6e34a6341d8f8492ce6a54357615f5bb7bba454d70c03e",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/run.json",
+      "native_run_sha256": "c19a482daf8dfd32f0bac06b6c40982c60447b93b9d3e04a3eb5ec7ddfe86815",
+      "native_answer_sha256": "f18481152bfdcc313d210701691257fa277486de6aa2d9b8e7a7127c25448f4b",
+      "native_request_sha256": "0afb42f72ee92f24683d1dbbf3f1d2f1f4ded99519a63192a3dbcca295dda7e4",
+      "native_attempts_sha256": "ae8a07de065e6d51eea7140b06719e380e2f4ea1185301ceeda8f7aa41f29e1e",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1
+    },
+    {
+      "id": "E01",
+      "verdict": "failed",
+      "reason": "提到01918有原因预设，却将01919承接的“没人用”改判为小林对项目结果的陈述/观察，并建议只按小林称此事记录，未保留关键前提来源。三步体验与助手期望/自动操作边界部分正确，不能掩盖来源归属失败。",
+      "input_track": "model_with_source_context",
+      "required_point_review": [
+        {
+          "criterion": "01918提问者先带入没人用，01919沿用，不能登记为小林独立证实上一项目采用情况。",
+          "result": "failed"
+        },
+        {
+          "criterion": "01919“我看到的是”直接修饰界面操作多三步；01921进一步限定体验非精确清单，具体步骤/页面待核。",
+          "result": "needs_modifier_scope_precision"
+        },
+        {
+          "criterion": "分别保留来源、原话、体验和未核界限；不能全盘丢弃角色新增诉求，不能把未经证实前提作为后续既定事实。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "failed",
+      "findings": [
+        {
+          "code": "INTERVIEWER_PREMISE_REATTRIBUTED_AS_ROLE_OBSERVATION",
+          "severity": "key",
+          "quote": "这是小林对上一项目结果的陈述/观察",
+          "source": "01918先带入没人用前提，01919承接；不能只识别“为什么”的原因预设而遗漏采用情况前提。",
+          "replacement": {
+            "before": "MSG-01918 的提问以“为什么没人用”发问，带有原因预设；MSG-01919 中小林回答“上一个项目最后没人用”，这是小林对上一项目结果的陈述/观察，但未给出项目范围、时间、用户数、使用率或原因。应记为“小林称上一个项目最后没人用（MSG-01919）”，保留“最后”和陈述主体；不能记为已核实的采用率、零使用或失败原因，也不能把提问中的“为什么”当作已经回答的原因。回答中“我看到的是……”是个人观察，不是系统日志或统计证据。",
+            "after": "MSG-01918 的提问先带入“上一个项目没人用”的前提，再追问原因；MSG-01919 小林沿用“上一个项目最后没人用”，不构成她独立提供或证实上一项目采用情况。应同时记录提问前提、回答承接及两条消息，不能只改记为小林对项目采用情况的独立观察，也不能预设确无使用、采用率或失败原因。MSG-01919 的“我看到的是”直接修饰界面让操作多三步，不能移到“没人用”上作观察依据；该体验及01921的进一步限定另行保留。"
+          }
+        },
+        {
+          "code": "OBSERVATION_MODIFIER_PLACED_IN_WRONG_EXPLANATORY_SCOPE",
+          "severity": "source_scope",
+          "quote": "回答中“我看到的是……”是个人观察，不是系统日志或统计证据。",
+          "source": "原句为“我看到的是那个界面让我们的操作又多了三步”。原答把此说明放入没人用的记录段，未在此明确实际修饰对象；第2段虽正确描述三步体验，仍不能支撑第1段把采用情况称为角色观察。",
+          "replacement_included_in_first_finding": true
+        }
+      ],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage3-r2/output/E01.json",
+      "output_sha256": "4aae8c502e8e7b1879c8cdbd614beba080729854a3b3753916e681b52893b348",
+      "actual_answer_sha256": "c650dae30030b72319e9ce8fb2760ce96feb651c0d7f9ca1b4ddce6dee830d3f",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/run.json",
+      "native_run_sha256": "f92b669508546081da9d7d1b8f29c5a93d1200f12f19942f403c41973a6a1415",
+      "native_answer_sha256": "9e3b1d32a360b664202d32d1cd131e67b227bd64b09dba494a4e0b151fd36a48",
+      "native_request_sha256": "44fdc3fc237b34a16217f6e0b92e7254b56a644daced40e26047277aa9805cf0",
+      "native_attempts_sha256": "b2ccea5f4d094823714d0358a49e5666765f34006fa37bcfc9495b39e38b877b",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1,
+      "positive_points_preserved": [
+        "三步为个人体验、01921否认精确操作清单及页面细节，原答判断正确。",
+        "MSG-01920追问重复不能充当独立证明，原答判断正确。",
+        "第3段助手整理诉求、每条建议依据、人群/执行业务确认及未授权发券联系改记录均由01919直接支持，不应因首段错误整段弃用。",
+        "未取得使用统计、精确步骤和因果证据的状态保留。"
+      ]
+    },
+    {
+      "id": "E03",
+      "verdict": "passed",
+      "reason": "分别否定直接求活跃率、沉睡差值和同口径矛盾，保留待核定义/范围/时点/来源，未增加同一来源门槛。",
+      "input_track": "model_only",
+      "required_point_review": [
+        {
+          "criterion": "80万活跃/120万全量是不同统计概念，活跃定义、对象集合、时点、范围与来源未齐，不能直接算已核活跃率或沉睡人数。",
+          "result": "passed"
+        },
+        {
+          "criterion": "不能认定同口径矛盾；也不能把未齐写成时点/范围/来源均已证明不同。",
+          "result": "passed"
+        },
+        {
+          "criterion": "比较须核可比范围、口径、时间、标识去重和子集关系；来源可以不同，不能擅加必须同一报表/同一来源的门槛。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage3-r2/output/E03.json",
+      "output_sha256": "cfcf754a5ec8e20837a6313b8dd6a193d62b2a5e255d0371a2cf091cd3baa153",
+      "actual_answer_sha256": "65bc9b0eedff18273fd190c167797740f7496c943002b4f6001395ae4b82100f",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/run.json",
+      "native_run_sha256": "a341946d1e8ffd8abadfc20c897b301c4e935466c5ceb8688cebea193a2352c8",
+      "native_answer_sha256": "d42d7ca2c689c4a3ced8d4599ceff02cb2863ffa94bb4c411a862722c9816dd0",
+      "native_request_sha256": "c23c0c7cddfbe1ac7f32f43806f612e2a4861964b3451ecf0a2caf4420b38e4a",
+      "native_attempts_sha256": "87afb253a6818ce89853a9b06c321b8ec3f070ec0e5f5a7bc151d506290d69a5",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1
+    },
+    {
+      "id": "E05",
+      "verdict": "passed",
+      "reason": "作废W04说法不入规则/流程，保留无效来源和未采纳状态；未凭该来源认定具体频率、阈值和行为，也未一律排除有效W02。",
+      "input_track": "model_only",
+      "required_point_review": [
+        {
+          "criterion": "排除本题已作废W04唯一来源及其具体周一/60天/员工/勿扰规则，不加入事实模型。",
+          "result": "passed"
+        },
+        {
+          "criterion": "保留作废标识和追溯，若该工作有必要可另列待核，不重复当问题既定前提。",
+          "result": "passed"
+        },
+        {
+          "criterion": "有效来源按案例、范围、证据性质判断；不扩大成当前业务知识只许W03或一律排除W02。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage3-r2/output/E05.json",
+      "output_sha256": "eafe968de150b883abaa40971d647660ff9a03308bceef50a8a3c77de2a9c465",
+      "actual_answer_sha256": "7f78c1211a0b952807c140f7e50c0a55e6ed992fc60abd9d760d29518daaacb1",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/run.json",
+      "native_run_sha256": "ee2720b576e5983c6c83153554b77766d073a06fe5915ae38c4b89e4a7c57e6b",
+      "native_answer_sha256": "f60c8519804f1074494d40faa2945db3e3ac89f687a36d96f7ec6303ad883942",
+      "native_request_sha256": "90f23c946dc2d070c1cba1819afea80f2f38ec692d5902606f0b1833f9905da7",
+      "native_attempts_sha256": "0fa65c9b2182dd0f2ba3e552892d31fb303728b8d2004c9bef48e290496a62c0",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1
+    },
+    {
+      "id": "REG01",
+      "verdict": "passed",
+      "reason": "方案明确标新增建议，候选与执行分开、资格规则限定本期月报，实际活动/人群条件仍需业务确认；小林/陈姐工作衔接及过程/业务效果评估均具备。未重复全量误活跃、客户定义和人群分类误述。",
+      "input_track": "model_only",
+      "required_point_review": [
+        {
+          "criterion": "可提出先帮小林整理需关注会员及依据、优惠券活动工作和执行记录/待核信息；门店材料讲清适用范围、参与店、任务、工作量、答复责任与工作记录。",
+          "result": "passed"
+        },
+        {
+          "criterion": "所有第一版交付细节标建议，具体人群条件/数据范围/接入权限需核；不自动发券联系或改记录。",
+          "result": "passed"
+        },
+        {
+          "criterion": "承接既有业务确认与门店安排，未知分析反馈闭环不伪称已打通。",
+          "result": "passed"
+        },
+        {
+          "criterion": "评估要观察减少整理核对/反复问询、实际采纳执行、工作负担等过程；业务复购另需可比依据，不保证改善。",
+          "result": "passed"
+        },
+        {
+          "criterion": "不得把未知会员标签称为已确认“活跃标签”，也不得新增筛选阈值、人数或已验证收益。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage3-r2/output/REG01.json",
+      "output_sha256": "958bda66d8836bfd963705f3c201469686185ae6c140aa0a954770871cc0fd38",
+      "actual_answer_sha256": "4d68ed0f55c20d9e77851e0840fe79066751e5872bd8d450fe2d10541e1fd68b",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/run.json",
+      "native_run_sha256": "682c087d0fb07e260812c04945bfd99c30ba2fae634ed0c8a10417805f87707b",
+      "native_answer_sha256": "6179932e3193be69688632eadf6d9f89c718e406ea9b235cfcc31b1f9763c292",
+      "native_request_sha256": "69eb1b7e1404e9a3e745ebd47db149a2551befd5a97dd9f9e480e9004f225edd",
+      "native_attempts_sha256": "0ba60da739cc4dbb3b020a7dbafde026ce3ef6043f8a8472fdba056c9b528cb0",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1
+    },
+    {
+      "id": "U04",
+      "verdict": "passed",
+      "reason": "一般流程、局部交接、门店前置条件和具体活动未知分清，给出记录/经手岗位/影响判断的可核查下一步；未再引入已不同时点/来源。",
+      "input_track": "model_only",
+      "required_point_review": [
+        {
+          "criterion": "列小林从任务反馈明确人群用途、确认执行方式/协作人、跟进发放使用反馈、整理结果待核的通常流程。",
+          "result": "passed"
+        },
+        {
+          "criterion": "门店与陈姐核范围/门店/任务并确认人员安排，收集现场反馈。",
+          "result": "passed"
+        },
+        {
+          "criterion": "具体活动名单筛选、线上对接岗位、分析接收者与回店/下轮决策未知；不得强加已闭环。",
+          "result": "passed"
+        },
+        {
+          "criterion": "至少选一缺口给所需活动/交接记录、实际经手岗位及影响的判断；拟议流程标建议。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage3-r2/output/U04.json",
+      "output_sha256": "545dac4959993e61f4100fa8ac6531b435aeea1a6c88eb056577504abb5f54ca",
+      "actual_answer_sha256": "09a13b088eb876692b74a7243721e644e16797134de945c855be8e37810391a4",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/run.json",
+      "native_run_sha256": "58ede69576f2fc6e84acd2c109a54f53a111d087465d6a62903ead076cdbae17",
+      "native_answer_sha256": "5be37deab10c61d61c6528105ca76d13eeacd772cb3927035fb4141cf51a1b03",
+      "native_request_sha256": "5ea99d4f6d37c8ac462f41b7ed47fce1a16f3d2e54afd26dfe6d5180bd8806a0",
+      "native_attempts_sha256": "547fa1467562724d97e42ab4ac42b49a68561f58690c33eb8ba2f19882729073",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1
+    },
+    {
+      "id": "F05",
+      "verdict": "passed",
+      "reason": "局部协作不证明完整闭环；建议同一活动实例收集五环节记录并核责任/时间，不凭未知断言环节不存在。",
+      "input_track": "model_only",
+      "required_point_review": [
+        {
+          "criterion": "小林协调与陈姐落实是已述局部工作链，不证明分析反馈至下一轮决策全闭环。",
+          "result": "passed"
+        },
+        {
+          "criterion": "反馈分析接收者/方式/下轮运用未核，不能据未知断言公司没有。",
+          "result": "passed"
+        },
+        {
+          "criterion": "给可查证下一步：选实际活动留存任务/执行/反馈与回复记录，向对应经手人核对缺口及实际使用。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage3-r2/output/F05.json",
+      "output_sha256": "d7b6a9edbe13b966551e1231b3bd1bd842681dc03e020d0af727e681b0183ffa",
+      "actual_answer_sha256": "35e5d07afd8fece1b98d8a8516d2dee0916c1bd9d4bc2e22b28a7114eea876df",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/run.json",
+      "native_run_sha256": "37d2824c272a4e20deabb144979b1ae42545782678952ef578ff3e6fa5053cf4",
+      "native_answer_sha256": "f41044a87afe08010ddcbe718b4952b2ac92340b5d41555e4952c721cbd29a57",
+      "native_request_sha256": "2bd5679f0a251cd6f97c802ea5786c35a6f88bbc1fc89473193f0a27716c8662",
+      "native_attempts_sha256": "59556230f8156a320bec78103d4207cebb21748cb893762a45dcb9bb57f0691a",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1
+    },
+    {
+      "id": "P01",
+      "verdict": "passed",
+      "reason": "题设完整且唯一有效悦享年卡可判资格有，普通等级和购卡金额不替代产品/有效状态，隔离情境不当真实记录。",
+      "input_track": "model_only",
+      "required_point_review": [
+        {
+          "criterion": "完整记录下，普通等级的一张有效悦享年卡已足以具备本期资格。",
+          "result": "passed"
+        },
+        {
+          "criterion": "资格按产品/有效状态，等级和支付金额不能替代，不加金额门槛。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage3-r2/output/P01.json",
+      "output_sha256": "c6f1be0e69c3af4d1f817d90b68112d3e478570056afa86f1a036ea2ebf3a523",
+      "actual_answer_sha256": "45c8d329010605223537cc99dc01f4efb618c5e8fed8dda6452862ab35f4b35f",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/run.json",
+      "native_run_sha256": "7be81469ca9308f88482c93e9b9f5f5779d1249a557d0c1eaeb158b73428d6a5",
+      "native_answer_sha256": "fbaa35a83de781c436b19403ec400c08fc7d5f04292e5f8b72076c1267375aab",
+      "native_request_sha256": "ea40d589db56087a4a2ce71ceac1d42b24612c8360690b1a8590da7138e7783f",
+      "native_attempts_sha256": "3d365b0b34bfa8fe7e86e7663b5a9cf67bcde52286122e6bd6aa3f2b28845b5c",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1
+    },
+    {
+      "id": "E02",
+      "verdict": "passed",
+      "reason": "四季下降为未复算角色陈述，老化是假设，三个月为期望；测试只支持限定合成数据口径的可计算/复核，不证明实际原因、收益或生产资格。",
+      "input_track": "model_only",
+      "required_point_review": [
+        {
+          "criterion": "连续四季下滑为角色所述观察，历史口径仍待核；会员老化为未证实原因假设。",
+          "result": "passed"
+        },
+        {
+          "criterion": "三个月见效为沈总期望，不是获批或承诺的数值目标/因果结果。",
+          "result": "passed"
+        },
+        {
+          "criterion": "月报测试支持指定合成范围内定义追溯和查询校验，不支持实际业务改善、原因验证或验收批准。",
+          "result": "passed"
+        }
+      ],
+      "source_and_key_added_assertion_review": "passed",
+      "findings": [],
+      "advisories": [],
+      "output_path": "artifacts/w03/answer-repair-20261107/stage3-r2/output/E02.json",
+      "output_sha256": "4ea7f1162b8363704251ce255a34554c87f2bb2823c7807f4244a4636d69635c",
+      "actual_answer_sha256": "431d2094bdab40f048f660a146ea9a0de5fd9a0f9269787fed9e6bb169c304ee",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/run.json",
+      "native_run_sha256": "b954d4fd97748b3453ad8a6641bdb379b9f1b958407bcfa7eb58712a5a90b378",
+      "native_answer_sha256": "e546bc6b2557e1ec81e0de987749f0c8e309f2de3e38b18b34c27a666c0a867b",
+      "native_request_sha256": "05181d82db813049f9ec86082fc38578508cb5e0858f7ac2cb48ffa3d8d242e4",
+      "native_attempts_sha256": "3917d0e9dc6c9b0838b7ee1a68e7f43b61755aff0fb39727183a0c1e40e60c2c",
+      "native_structure_verdict": "passed",
+      "native_run_status": "succeeded",
+      "http_attempts": 1
+    }
+  ],
+  "native_checks": [
+    {
+      "id": "gate_binds_other_reviewer_input_review",
+      "passed": true
+    },
+    {
+      "id": "input_gate_status_checks_consistent",
+      "passed": true
+    },
+    {
+      "id": "gate:runner_sha256",
+      "passed": true
+    },
+    {
+      "id": "gate:manifest_sha256",
+      "passed": true
+    },
+    {
+      "id": "gate:preflight_sha256",
+      "passed": true
+    },
+    {
+      "id": "U01:native_contract_valid",
+      "passed": true
+    },
+    {
+      "id": "U01:native_success",
+      "passed": true
+    },
+    {
+      "id": "U01:request_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "U01:settings",
+      "passed": true
+    },
+    {
+      "id": "U01:answer_exact_native",
+      "passed": true
+    },
+    {
+      "id": "U01:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "U01:one_attempt",
+      "passed": true
+    },
+    {
+      "id": "U01:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "U01:gate_hash_in_output",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/answer.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/request.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/response.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/run.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/settings.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "U01:preserved:artifacts/w02/knowledge_runs/RUN-4797f2aa382b4c28b06059a2732b7f93/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "U05:native_contract_valid",
+      "passed": true
+    },
+    {
+      "id": "U05:native_success",
+      "passed": true
+    },
+    {
+      "id": "U05:request_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "U05:settings",
+      "passed": true
+    },
+    {
+      "id": "U05:answer_exact_native",
+      "passed": true
+    },
+    {
+      "id": "U05:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "U05:one_attempt",
+      "passed": true
+    },
+    {
+      "id": "U05:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "U05:gate_hash_in_output",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/answer.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/request.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/response.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/run.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/settings.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "U05:preserved:artifacts/w02/knowledge_runs/RUN-3b0cac8bef17490f8d68184a4f5c4f1a/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "P09:native_contract_valid",
+      "passed": true
+    },
+    {
+      "id": "P09:native_success",
+      "passed": true
+    },
+    {
+      "id": "P09:request_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "P09:settings",
+      "passed": true
+    },
+    {
+      "id": "P09:answer_exact_native",
+      "passed": true
+    },
+    {
+      "id": "P09:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "P09:one_attempt",
+      "passed": true
+    },
+    {
+      "id": "P09:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "P09:gate_hash_in_output",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/answer.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/request.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/response.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/run.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/settings.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "P09:preserved:artifacts/w02/knowledge_runs/RUN-8e4b3268729a43bca0e1d826117cec51/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "F06:native_contract_valid",
+      "passed": true
+    },
+    {
+      "id": "F06:native_success",
+      "passed": true
+    },
+    {
+      "id": "F06:request_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "F06:settings",
+      "passed": true
+    },
+    {
+      "id": "F06:answer_exact_native",
+      "passed": true
+    },
+    {
+      "id": "F06:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "F06:one_attempt",
+      "passed": true
+    },
+    {
+      "id": "F06:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "F06:gate_hash_in_output",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/answer.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/request.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/response.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/run.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/settings.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "F06:preserved:artifacts/w02/knowledge_runs/RUN-f4e18b476b074a289fe27c38b81b7235/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "A03:native_contract_valid",
+      "passed": true
+    },
+    {
+      "id": "A03:native_success",
+      "passed": true
+    },
+    {
+      "id": "A03:request_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "A03:settings",
+      "passed": true
+    },
+    {
+      "id": "A03:answer_exact_native",
+      "passed": true
+    },
+    {
+      "id": "A03:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "A03:one_attempt",
+      "passed": true
+    },
+    {
+      "id": "A03:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "A03:gate_hash_in_output",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/answer.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/request.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/response.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/run.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/settings.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "A03:preserved:artifacts/w02/knowledge_runs/RUN-419fe0736a354a8c95e0827b09bda293/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "E01:native_contract_valid",
+      "passed": true
+    },
+    {
+      "id": "E01:native_success",
+      "passed": true
+    },
+    {
+      "id": "E01:request_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "E01:settings",
+      "passed": true
+    },
+    {
+      "id": "E01:answer_exact_native",
+      "passed": true
+    },
+    {
+      "id": "E01:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "E01:one_attempt",
+      "passed": true
+    },
+    {
+      "id": "E01:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "E01:gate_hash_in_output",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/answer.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/request.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/response.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/run.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "E01:preserved:artifacts/w02/knowledge_runs/RUN-05db456d60804f8aa865691c5afef25c/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "E03:native_contract_valid",
+      "passed": true
+    },
+    {
+      "id": "E03:native_success",
+      "passed": true
+    },
+    {
+      "id": "E03:request_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "E03:settings",
+      "passed": true
+    },
+    {
+      "id": "E03:answer_exact_native",
+      "passed": true
+    },
+    {
+      "id": "E03:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "E03:one_attempt",
+      "passed": true
+    },
+    {
+      "id": "E03:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "E03:gate_hash_in_output",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/answer.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/request.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/response.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/run.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "E03:preserved:artifacts/w02/knowledge_runs/RUN-cc60d72df6054928ad1a03f1b007fd80/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "E05:native_contract_valid",
+      "passed": true
+    },
+    {
+      "id": "E05:native_success",
+      "passed": true
+    },
+    {
+      "id": "E05:request_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "E05:settings",
+      "passed": true
+    },
+    {
+      "id": "E05:answer_exact_native",
+      "passed": true
+    },
+    {
+      "id": "E05:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "E05:one_attempt",
+      "passed": true
+    },
+    {
+      "id": "E05:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "E05:gate_hash_in_output",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/answer.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/request.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/response.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/run.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "E05:preserved:artifacts/w02/knowledge_runs/RUN-121a8ea049014dfeac61e84f32d132e9/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:native_contract_valid",
+      "passed": true
+    },
+    {
+      "id": "REG01:native_success",
+      "passed": true
+    },
+    {
+      "id": "REG01:request_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "REG01:settings",
+      "passed": true
+    },
+    {
+      "id": "REG01:answer_exact_native",
+      "passed": true
+    },
+    {
+      "id": "REG01:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "REG01:one_attempt",
+      "passed": true
+    },
+    {
+      "id": "REG01:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "REG01:gate_hash_in_output",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/answer.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/request.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/response.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/run.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/settings.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "REG01:preserved:artifacts/w02/knowledge_runs/RUN-870e7807bfb74ceea6dc5ecfdbef70c1/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "U04:native_contract_valid",
+      "passed": true
+    },
+    {
+      "id": "U04:native_success",
+      "passed": true
+    },
+    {
+      "id": "U04:request_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "U04:settings",
+      "passed": true
+    },
+    {
+      "id": "U04:answer_exact_native",
+      "passed": true
+    },
+    {
+      "id": "U04:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "U04:one_attempt",
+      "passed": true
+    },
+    {
+      "id": "U04:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "U04:gate_hash_in_output",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/answer.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/request.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/response.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/run.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/settings.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "U04:preserved:artifacts/w02/knowledge_runs/RUN-b683d77334fc4a749b40ced8deea50f9/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "F05:native_contract_valid",
+      "passed": true
+    },
+    {
+      "id": "F05:native_success",
+      "passed": true
+    },
+    {
+      "id": "F05:request_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "F05:settings",
+      "passed": true
+    },
+    {
+      "id": "F05:answer_exact_native",
+      "passed": true
+    },
+    {
+      "id": "F05:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "F05:one_attempt",
+      "passed": true
+    },
+    {
+      "id": "F05:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "F05:gate_hash_in_output",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/answer.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/request.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/response.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/run.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/settings.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "F05:preserved:artifacts/w02/knowledge_runs/RUN-f0b0eb2b506e4be99247dbc96d961dca/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "P01:native_contract_valid",
+      "passed": true
+    },
+    {
+      "id": "P01:native_success",
+      "passed": true
+    },
+    {
+      "id": "P01:request_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "P01:settings",
+      "passed": true
+    },
+    {
+      "id": "P01:answer_exact_native",
+      "passed": true
+    },
+    {
+      "id": "P01:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "P01:one_attempt",
+      "passed": true
+    },
+    {
+      "id": "P01:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "P01:gate_hash_in_output",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/answer.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/request.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/response.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/run.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/settings.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "P01:preserved:artifacts/w02/knowledge_runs/RUN-e95f95eb6aed400d83131ad605519a85/source_manifest.json",
+      "passed": true
+    },
+    {
+      "id": "E02:native_contract_valid",
+      "passed": true
+    },
+    {
+      "id": "E02:native_success",
+      "passed": true
+    },
+    {
+      "id": "E02:request_messages_frozen",
+      "passed": true
+    },
+    {
+      "id": "E02:settings",
+      "passed": true
+    },
+    {
+      "id": "E02:answer_exact_native",
+      "passed": true
+    },
+    {
+      "id": "E02:native_run_hash",
+      "passed": true
+    },
+    {
+      "id": "E02:one_attempt",
+      "passed": true
+    },
+    {
+      "id": "E02:gate_before_call",
+      "passed": true
+    },
+    {
+      "id": "E02:gate_hash_in_output",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/answer.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/implementation/platform/fde_product/agent.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/implementation/platform/fde_product/knowledge_io.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/implementation/platform/fde_product/natural_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/implementation/platform/fde_product/observability.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/implementation/tools/w02_knowledge.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/request.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/response.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/run.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/business_model.md",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge.json",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/snapshot/artifacts/w03/answer-repair-20261107/stage3-r2/input/knowledge_prompt.txt",
+      "passed": true
+    },
+    {
+      "id": "E02:preserved:artifacts/w02/knowledge_runs/RUN-ac826bbfe20944b0956d0877f11e2092/source_manifest.json",
+      "passed": true
+    }
+  ],
+  "native_failed_checks": [],
+  "grading_boundary": "只按本批实际答复逐条判定，不继承stage1-r2旧通过分。E01部分正确且原生格式成功，仍因关键前提来源归属错误失败；精确修正只作独立评审建议，未回写模型输出。",
+  "repair_mechanism_assessment": {
+    "status": "proposed_not_tested",
+    "proposal": "仅在审查访谈陈述来源/前提的题目中先给简短证据表，再给记录/使用结论。",
+    "why_discriminating": "把所审命题在原问答中首次出现的承载片段、说话方、提问前提/承接/新增信息和限定语对象显式化，便于与非诱导原文和有效W02来源控制对照。",
+    "required_boundaries": [
+      "使用空结构，不给题号、业务答案或预填分类。",
+      "表格给实际可见短引文及消息位置；只有模型转述时明确可见范围，不伪造原问答或首次出现。",
+      "表格与后续结论必须一致，两层任一关键归属错均失败。",
+      "保留回答者真正新增的信息，不能一律否定角色陈述或按周次排除来源。",
+      "结构通过不等于语义通过；保持原题/材料/期望并新增版本回归，禁止同提示重抽。"
+    ]
+  },
+  "reviewer_model_calls": 0,
+  "original_answers_and_prior_scores_unchanged": true,
+  "human_decisions": []
+}

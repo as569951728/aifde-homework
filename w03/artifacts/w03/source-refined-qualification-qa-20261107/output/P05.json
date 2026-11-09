@@ -1,0 +1,32 @@
+{
+  "case_id": "P05",
+  "started_at": "2026-11-06T17:08:28.469742+00:00",
+  "completed_at": "2026-11-06T17:08:33.955188+00:00",
+  "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "account": "A",
+    "tier": "普通",
+    "cards_complete": true,
+    "cards": [
+      {
+        "card_type": "体验卡",
+        "state_on_decision_day": "有效",
+        "card_paid_cents": 0
+      }
+    ]
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-fd48ecd9384f40c791694f8fdc06ac8d/run.json",
+    "run_id": "RUN-fd48ecd9384f40c791694f8fdc06ac8d",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "结论：账户A在判定日不具有本期总部月报口径下的付费资格。\n\n依据与推导：本题是人工构造的隔离测试情境，且题设声明卡记录完整。按本期总部月报的纳入范围，只纳入悦享年卡与家庭季卡持有人，体验卡不纳入（小林 MSG-03848、03854）。付费资格要求账户存在一张同时满足本期产品范围且在判定日有效的卡，不能由不同卡拼接条件，也不能用会员等级或购卡实付金额替代卡类型与有效状态（MSG-03848、03854、03866、03870；陈姐 MSG-03886、03888）。账户A完整卡记录中只有一张体验卡，虽然其在判定日“有效”，但产品类型不在本期月报纳入范围，因此不满足资格条件；普通等级和实付金额0都不是本判断的替代依据。该结论仅适用于题设情境和本期总部月报口径，不代表客户真实记录或已执行查询。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "877d72d9b13330231fdcc34a80d2b01bc94bc2eeda60d70aa47aa3a1b50619af"
+}

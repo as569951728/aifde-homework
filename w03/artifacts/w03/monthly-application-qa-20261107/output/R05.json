@@ -1,0 +1,23 @@
+{
+  "case_id": "R05",
+  "started_at": "2026-11-06T17:35:13.217268+00:00",
+  "completed_at": "2026-11-06T17:35:21.047623+00:00",
+  "question": "人工情境：A在7月、8月各只有一笔有效订单。分别解释两个月的月内购买/复购人数；能否把两个月人数相加当成跨月唯一人数？",
+  "fixture": null,
+  "input_track": "model_with_fixed_materials",
+  "fixed_materials": [
+    "W03/实操工程/materials/w03/03_会员运营周报.md"
+  ],
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-f17e9ba4e040433d928862c89d6f67a9/run.json",
+    "run_id": "RUN-f17e9ba4e040433d928862c89d6f67a9",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "按题设人工情境，A在7月、8月各只有一笔有效订单。依《会员运营周报》的月内购买会员数定义（同一自然月至少一笔有效订单）和月内复购会员数定义（同一自然月至少两笔有效订单），并限整月、全门店口径：7月月内购买会员数为1，月内复购会员数为0；8月月内购买会员数也为1，月内复购会员数也为0。不能把两个月人数相加当成跨月唯一人数：相加得到2只是两个月各自人数的合计，不是跨月去重人数；周报明确多月分别列出、不将每月去重人数相加为跨月人数，月内购买会员数也不能跨月直接加总当人数。若按题设完整记录推导跨月唯一账户，A只有一人，应为1，但这属于在题设条件下的推导；材料只明确禁止把月内人数相加，未提供现成的跨月唯一人数报表项目。依据为指定材料《会员运营周报》中月内购买会员数、月内复购会员数及多月展示规则；其适用范围是测试数据覆盖内、仅整月、全门店口径。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "034e7f631050f5e82bc8961405a66d229981233def91a4b298654f4ba2181eba"
+}

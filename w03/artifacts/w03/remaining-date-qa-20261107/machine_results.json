@@ -1,0 +1,922 @@
+{
+  "checker_path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/date-consistency-qa-20261107/independent-review/check_date_answer.py",
+  "checker_sha256": "f035a2c54a069a6d47f896be1abfaf3f4590d25c510c64623547292469486aee",
+  "cases": [
+    {
+      "id": "DY01",
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2025-08-19",
+          "产品范围": "纳入",
+          "结论": "无效",
+          "来源与范围": "产品范围依据小林 MSG-03848、03854，悦享年卡纳入本期总部运营月报范围，正式规则文件尚未取得；日期端点及空值解释依据陈姐 MSG-03886、03888。本次为人工构造隔离测试情境的推导，不是课程CSV真实行、客户实际记录或生产核验结果。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2025-08-20",
+            "判定日是否满足本项条件": "否",
+            "依据": "权益在生效日期当天起有效；判定日2025-08-19早于生效日，故未生效。陈姐 MSG-03886、03888"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "计划权益结束日期当天已无效；判定日早于2026-08-20，未触及计划结束。陈姐 MSG-03886、03888"
+          },
+          "提前终止日": {
+            "题设日期": "空",
+            "判定日是否满足本项条件": "是",
+            "依据": "提前终止为空仅表示无提前终止，仍受计划结束限制；题设无提前终止。陈姐 MSG-03886、03888"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2025-08-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2025-08-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2025-08-19",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": false,
+          "计划结束日": true,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2025-08-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2025-08-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "无效"
+      }
+    },
+    {
+      "id": "DY02",
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2025-08-20",
+          "产品范围": "纳入",
+          "结论": "有效",
+          "来源与范围": "产品范围依据小林 MSG-03848、03854（本期月报纳入悦享年卡与家庭季卡，本题为悦享年卡）。日期规则依据陈姐 MSG-03886、03888、03890。本次结论仅为基于题设人工构造字段的隔离情境推导，不是客户真实记录、生产核验或已执行查询；正式规则文件与生产历史凭据仍未取得。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2025-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "陈姐 MSG-03886、03888：权益在生效日期当天起有效；判定日等于生效日，含起点。"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "陈姐 MSG-03886、03888：计划权益结束日期当天已无效；判定日早于该日。"
+          },
+          "提前终止日": {
+            "题设日期": "空",
+            "判定日是否满足本项条件": "是",
+            "依据": "题设提前终止为空；陈姐 MSG-03886、03890：空表示无提前终止，仍受计划结束日限制，本项不构成提前失效。"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2025-08-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2025-08-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2025-08-20",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": true,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2025-08-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2025-08-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "有效"
+      }
+    },
+    {
+      "id": "DY03",
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2025-08-21",
+          "产品范围": "纳入",
+          "结论": "有效",
+          "来源与范围": "产品范围依据小林 MSG-03848、03854（悦享年卡与家庭季卡纳入本期月报，体验卡和异业联名卡不纳入）；日期端点依据陈姐 MSG-03886、03888。题设为人工构造的隔离测试情境，上述结论仅在该前提成立时适用，不代表客户真实卡记录或生产核验。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2025-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "权益自生效日当天起有效；判定日不早于生效日（陈姐 MSG-03886、03888）"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "计划结束日当天已无效；判定日早于计划结束日（陈姐 MSG-03886、03888）"
+          },
+          "提前终止日": {
+            "题设日期": "空",
+            "判定日是否满足本项条件": "是",
+            "依据": "提前终止为空表示无提前终止，仍受计划结束日限制（陈姐 MSG-03886、03888）"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2025-08-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2025-08-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2025-08-21",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": true,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2025-08-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2025-08-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "有效"
+      }
+    },
+    {
+      "id": "DY04",
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2026-08-19",
+          "产品范围": "纳入",
+          "结论": "有效",
+          "来源与范围": "产品范围依据小林 MSG-03848、03854，本期月报纳入悦享年卡与家庭季卡；日期端点依据陈姐 MSG-03886、03888、03890。本题为人工构造的隔离测试情境，本结论仅按题设卡类型、日期与上述规则推导，不代表客户真实卡记录或已执行查询。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2025-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "权益自生效日期当天起有效，判定日晚于生效日；陈姐 MSG-03886、03890"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "计划权益结束日期当天已无效，判定日早于该日；陈姐 MSG-03886、03888"
+          },
+          "提前终止日": {
+            "题设日期": "空",
+            "判定日是否满足本项条件": "是",
+            "依据": "提前终止为空仅表示无提前终止，仍受计划结束日限制；陈姐 MSG-03886、03890"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2025-08-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2025-08-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2026-08-19",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": true,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2025-08-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2025-08-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "有效"
+      }
+    },
+    {
+      "id": "DY05",
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2026-08-20",
+          "产品范围": "纳入",
+          "结论": "无效",
+          "来源与范围": "产品范围见小林 MSG-03848、03854；日期端点规则见陈姐 MSG-03886、03888、03890；本次为人工构造隔离测试情境下的推导，未查询客户系统，不代表客户实际记录或实际执行。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2025-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "权益自生效日期当天起有效；判定日在其后。"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "否",
+            "依据": "计划权益结束日期当天已无效；判定日等于该日。"
+          },
+          "提前终止日": {
+            "题设日期": "空",
+            "判定日是否满足本项条件": "是",
+            "依据": "提前终止为空仅表示无提前终止，不因此失效，但仍受计划结束日限制。"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2025-08-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2025-08-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2026-08-20",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": false,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2025-08-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2025-08-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "无效"
+      }
+    },
+    {
+      "id": "DY06",
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2026-08-21",
+          "产品范围": "纳入",
+          "结论": "无效",
+          "来源与范围": "产品范围依据为悦享年卡属于本期总部运营月报纳入范围（小林 MSG-03848、03854；规则1）。日期端点依据为规则3（陈姐 MSG-03886、03888、03890）。本次推导基于题设人工构造的隔离测试情境，不是客户真实记录或已执行查询；正式规则文件及生产、历史执行凭据仍未取得。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2025-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "权益自生效日期当天起有效，判定日在其后（规则3；陈姐 MSG-03886、03888、03890）"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "否",
+            "依据": "计划权益结束日期当天已无效，判定日 2026-08-21 已超过该日（规则3；陈姐 MSG-03886、03888、03890）"
+          },
+          "提前终止日": {
+            "题设日期": "空",
+            "判定日是否满足本项条件": "是",
+            "依据": "提前终止为空表示没有提前终止，本项不构成额外终止，但仍受计划结束日限制（规则3；陈姐 MSG-03886、03888、03890）"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2025-08-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2025-08-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2026-08-21",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": false,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2025-08-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2025-08-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "无效"
+      }
+    },
+    {
+      "id": "DQ01",
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2026-05-19",
+          "产品范围": "纳入",
+          "结论": "无效",
+          "来源与范围": "家庭季卡属于本期月报纳入范围（小林 MSG-03848、03854）；日期端点与空值解释依据陈姐 MSG-03886、03888、03890；本次为人工构造隔离测试情境推导，不是客户真实记录或已执行查询。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2026-05-20",
+            "判定日是否满足本项条件": "否",
+            "依据": "权益在生效日期当天起有效；判定日2026-05-19早于生效日2026-05-20（陈姐 MSG-03886、03888、03890）"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "计划权益结束日期当天已无效；判定日2026-05-19早于计划结束日2026-08-20（陈姐 MSG-03886、03888、03890）"
+          },
+          "提前终止日": {
+            "题设日期": "空",
+            "判定日是否满足本项条件": "是",
+            "依据": "提前终止为空表示该记录没有提前终止，不产生额外失效限制，但仍受计划结束日期限制（陈姐 MSG-03886、03890）"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2026-05-19",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": false,
+          "计划结束日": true,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "无效"
+      }
+    },
+    {
+      "id": "DQ02",
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2026-05-20",
+          "产品范围": "纳入",
+          "结论": "有效",
+          "来源与范围": "产品范围对应小林 MSG-03848、03854，本期总部运营月报纳入家庭季卡；日期规则对应陈姐 MSG-03886、03888、03890；本次为人工构造隔离测试情境下的规则推导，不是客户真实记录或系统查询，正式规则文件与生产凭据未取得。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2026-05-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "权益在生效日期当天起有效；判定日等于生效日（陈姐 MSG-03886、03888）"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "判定日早于计划结束日；计划权益结束日期当天已无效（陈姐 MSG-03886、03888）"
+          },
+          "提前终止日": {
+            "题设日期": "空",
+            "判定日是否满足本项条件": "是",
+            "依据": "提前终止为空仅表示无提前终止，不触发提前终止无效，仍受计划结束日限制（陈姐 MSG-03890）"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2026-05-20",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": true,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "有效"
+      }
+    },
+    {
+      "id": "DQ03",
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2026-05-21",
+          "产品范围": "纳入",
+          "结论": "有效",
+          "来源与范围": "产品范围依据小林 MSG-03848、03854，本期月报纳入家庭季卡；日期端点依据陈姐 MSG-03886、03888、03890，生效日当天起有效、计划结束日当天已无效、提前终止当天起无效、空值表示无提前终止。本次为人工构造的隔离测试情境，不是课程CSV真实行或客户实际活动；仅按题设日期推导，未访问客户系统，正式规则文件与生产执行凭据仍未取得。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2026-05-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "规则为生效日期当天起有效；判定日2026-05-21已过生效日。陈姐 MSG-03886、03888、03890"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "规则为计划权益结束日期当天已无效；判定日2026-05-21早于计划结束日。陈姐 MSG-03886、03888、03890"
+          },
+          "提前终止日": {
+            "题设日期": "空",
+            "判定日是否满足本项条件": "是",
+            "依据": "提前终止为空表示无提前终止，仍受计划结束日期限制；判定日不受提前终止限制。陈姐 MSG-03886、03888、03890"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2026-05-21",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": true,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "有效"
+      }
+    },
+    {
+      "id": "DQ04",
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2026-08-19",
+          "产品范围": "纳入",
+          "结论": "有效",
+          "来源与范围": "产品范围依据小林 MSG-03848、03854，家庭季卡纳入本期月报自营会员范围；日期端点依据陈姐 MSG-03886、03888、03890。本题为人工构造的隔离测试情境，按题设日期推导，不代表客户真实记录或已执行查询；正式规则文件仍未取得。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2026-05-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "权益自生效日期当天起有效；判定日2026-08-19不早于生效日。依据陈姐说明的权益有效期端点规则（MSG-03886、03888、03890）及题设日期。"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "计划权益结束日期当天已无效；判定日2026-08-19早于计划结束日。依据陈姐说明的权益有效期端点规则（MSG-03886、03888、03890）及题设日期。"
+          },
+          "提前终止日": {
+            "题设日期": "空",
+            "判定日是否满足本项条件": "是",
+            "依据": "提前终止为空表示该记录没有提前终止，不触发提前终止排除，但仍受计划结束日限制。依据陈姐说明的空值解释与日期端点规则（MSG-03886、03888、03890）。"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2026-08-19",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": true,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "有效"
+      }
+    },
+    {
+      "id": "DQ05",
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2026-08-20",
+          "产品范围": "纳入",
+          "结论": "无效",
+          "来源与范围": "家庭季卡属于本期月报纳入的悦享年卡与家庭季卡范围（小林 MSG-03848、03854）；生效、计划结束及提前终止端点规则依据陈姐 MSG-03886、03888、03890。本题为人工构造的隔离测试情境，不是课程 CSV 真实行或客户实际活动；以上仅依据题设日期与上述规则推导，未访问客户系统或核验生产记录。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2026-05-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "权益自生效日期当天起有效；判定日不早于生效日（陈姐 MSG-03886、03888、03890）"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "否",
+            "依据": "计划权益结束日期当天已无效；判定日等于计划结束日，故不满足有效期条件（陈姐 MSG-03886、03888、03890）"
+          },
+          "提前终止日": {
+            "题设日期": "空",
+            "判定日是否满足本项条件": "是",
+            "依据": "提前终止为空仅表示没有提前终止，仍受计划结束日期限制，不延长有效期（陈姐 MSG-03886、03888、03890）"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2026-08-20",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": false,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "无效"
+      }
+    },
+    {
+      "id": "DQ06",
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2026-08-21",
+          "产品范围": "纳入",
+          "结论": "无效",
+          "来源与范围": "本期月报产品范围仅纳入悦享年卡与家庭季卡，依据小林 MSG-03848、03854；家庭季卡日期端点依据陈姐 MSG-03886、03888、03890 及业务模型第3节规则3。本判断基于题设人工构造的隔离测试情境，不是课程CSV真实行或客户实际活动；未访问客户系统或执行查询。计划结束日次日判定为无效。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2026-05-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "权益自生效日期当天起有效；判定日不早于生效日。依据陈姐 MSG-03886、03890 的本期两类卡端点说明。"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "否",
+            "依据": "计划权益结束日期当天已无效；判定日 2026-08-21 已超过该日。依据陈姐 MSG-03886、03888、03890。"
+          },
+          "提前终止日": {
+            "题设日期": "空",
+            "判定日是否满足本项条件": "是",
+            "依据": "提前终止为空仅表示无提前终止，不另行缩短有效期；仍受计划结束日限制。依据陈姐 MSG-03886、03890。"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2026-08-21",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": false,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "无效"
+      }
+    }
+  ],
+  "machine_pass": 12,
+  "count": 12,
+  "source_and_prose_review_separate": true,
+  "model_calls": 0
+}

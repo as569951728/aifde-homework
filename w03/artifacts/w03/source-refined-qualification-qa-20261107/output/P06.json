@@ -1,0 +1,32 @@
+{
+  "case_id": "P06",
+  "started_at": "2026-11-06T17:08:33.955528+00:00",
+  "completed_at": "2026-11-06T17:08:38.415277+00:00",
+  "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "account": "A",
+    "tier": "普通",
+    "cards_complete": true,
+    "cards": [
+      {
+        "card_type": "家庭季卡",
+        "state_on_decision_day": "有效",
+        "card_paid_cents": 0
+      }
+    ]
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-86d9ed98b0874241a631ec911d10bca8/run.json",
+    "run_id": "RUN-86d9ed98b0874241a631ec911d10bca8",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "在本题人工构造情境成立的条件下，账户A在判定日具有本期总部运营月报口径下的付费资格。依据是：本期月报只纳入悦享年卡与家庭季卡持有人（小林 MSG-03848、03854）；账户只要有一张属于本期范围且在判定日有效的卡，即具有付费资格，并且多张有效卡不重复计账户（MSG-03848、03854、03870；陈姐 MSG-03886、03888）。本题给出的账户A只有一张“家庭季卡”，且题设明确其 state_on_decision_day 为“有效”，因此同时满足产品范围与有效期条件。会员等级为普通、卡实付金额为0均不能替代卡类型与有效状态判断，也不构成排除条件（MSG-03848、03866）。上述判断仅适用于本题人工构造的隔离测试情境，不代表客户实际记录或已执行查询。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "1ae2b20a8aeb8cef398e2c53a41e65f68090f197ad28371a3c89982026a1a3ac"
+}

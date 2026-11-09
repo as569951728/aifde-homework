@@ -1,0 +1,90 @@
+{
+  "id": "U01",
+  "reviewed_at": "2026-11-08T02:07:51.960056+00:00",
+  "status": "needs_revision_unsupported_evidence_classification",
+  "semantic_passed": false,
+  "citation_attribution_passed": false,
+  "literal_quote_exact_all": null,
+  "quote_rows": [],
+  "output_sha256": "67726fb2a42f87639b9d64708043ac06f51978d7135246e8554dd468c80690e2",
+  "answer_sha256": "a3ea591130c021ca4d10fd2e440517c3b2335cbef725fade8e615f4fa56509a5",
+  "paraphrase_checks": [
+    {
+      "id": "U01-P01",
+      "content": "两项目标分开，岗位提效不能直接证明复购改善",
+      "source": "模型第1节",
+      "passed": true
+    },
+    {
+      "id": "U01-P02",
+      "content": "沈总优先核下降原因；老化是个人判断，四季度下降未重算；三个月为期望",
+      "source": "模型第1节",
+      "passed": true
+    },
+    {
+      "id": "U01-P03",
+      "content": "三类运营工作、安排协调、券一般流程、门店承接条件与助手执行边界",
+      "source": "模型第3节规则7/8、第4节",
+      "passed": true
+    },
+    {
+      "id": "U01-P04",
+      "content": "小林岗位偏好不是公司优先级或效果",
+      "source": "模型第4节",
+      "passed": true
+    },
+    {
+      "id": "U01-P05",
+      "content": "指标定义、人群时点、身份及历史资格、流程闭环等未知",
+      "source": "模型第1/2/5节",
+      "passed": true
+    },
+    {
+      "id": "U01-P06",
+      "content": "本期卡范围、同卡资格、端点、去重及有效购买规则",
+      "source": "模型第2/3节及该处来源",
+      "passed": true,
+      "note": "多断言集合引用较宽；字段关系在第2节，日期/资格在第3节；总体来源可追到模型。"
+    },
+    {
+      "id": "U01-P07",
+      "content": "上述产品范围、资格与端点属于本期模型及已取得说明的建模选择，正式规则文件和生产核验未取得，不自动成为唯一事实。",
+      "source": "模型第3节规则1/2/3及第5节来源索引",
+      "passed": false,
+      "reason": "前半把已取得角色说明的业务规则无依据重分类为建模选择；后半文件和生产核验仍缺属正确边界，不能据此改写前半性质。"
+    },
+    {
+      "id": "U01-P08",
+      "content": "门店观察未实测，券发放/核销/购买/复购分别取证",
+      "source": "模型第3节规则6、第4节末段",
+      "passed": true
+    }
+  ],
+  "semantic_findings": [
+    "经营双目标、工作内容、关键未知、原因/效果边界均能正确说明。",
+    "但全文新增无来源的建模选择标签，改变已说明业务规则的证据性质；正确结论不能抵消此额外断言。",
+    "只有模型的可用信息足以作答，无原文引号准确性门槛；本题缺陷不是没有逐字访谈。"
+  ],
+  "blocking_findings": [
+    {
+      "id": "U01-rule-nature",
+      "kind": "unsupported_evidence_classification",
+      "answer_quote": "上述产品范围、资格与端点属于本期模型及已取得说明的建模选择，正式规则文件和生产核验未取得，不自动成为唯一事实。",
+      "source": "模型第3节标题可复用的业务规则；规则1的小林MSG-03848/03854、规则2的资格、规则3陈姐MSG-03886/03890/03888；第5节来源索引",
+      "why_material": "本期业务规则有明确角色陈述来源，可与正式文件/生产凭据缺口并存；没有材料把卡范围、资格、端点列成学员或我方可自行选择的建模方案。",
+      "suggested_wording": "上述产品范围、资格和日期端点依据本期已取得的角色说明；正式规则文件及生产/历史执行凭据仍未取得。",
+      "criterion_basis": "原业务评判要求逐断言核理由/范围/来源；source-criteria保留来源主体、证据性质、适用范围。不是要求固定词语或拒绝一般建模表达。"
+    }
+  ],
+  "nonblocking_findings": [
+    {
+      "kind": "unnecessary_expansion",
+      "description": "开头客户定义及第5段多个非题目核心规则扩写，增加检查负担；本项本身不据此判失败。"
+    }
+  ],
+  "protocol_review": {
+    "audit_status": "passed",
+    "protocol_audit_sha256": "c986d4957c9a40baab466e2578809e132fca0950d087eed5806cb257a9e9c346",
+    "execution_status": "succeeded"
+  }
+}

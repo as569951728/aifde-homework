@@ -1,0 +1,294 @@
+{
+  "created_at": "2026-11-06T15:37:00.383643+00:00",
+  "phase": "post-source-first pre-answer comparison",
+  "frozen_criteria_sha256": "056f489082f3a33f05c19822eda426c933bca538264a2eccddc2ce82432c2078",
+  "checks": {
+    "manifest_files": {
+      "input/business_model.md": true,
+      "input/knowledge.json": true,
+      "input/knowledge_prompt.txt": true,
+      "input/original_questions.json": true,
+      "input/protected.json": true,
+      "input/reviewer_expectations.json": true,
+      "input/selected_questions.json": true
+    },
+    "selected_case_count": 24,
+    "all_questions_unchanged": true,
+    "candidate_matches_draft_03": true,
+    "prompt_matches_r1": true,
+    "runner_matches_r1": true,
+    "all_author_conclusions_match_source_first": true
+  },
+  "candidate_assessment": {
+    "status": "suitable_for_this_test",
+    "basis": "第3节规则1-3及第5节来源边界与原访谈一致；已有陈姐口述可用于情境推导，正式/历史/生产凭据仍待核。无须为日期24题改稿。",
+    "limit": "仅针对本轮日期题，不是完整草稿内容再审核或采纳"
+  },
+  "protocol_assessment": {
+    "status": "no_blocking_issue",
+    "reviewed": [
+      "run_batch.py prepare/execute/main",
+      "platform/fde_product/natural_knowledge.py load_task/messages_for/answer_business_model/check_run",
+      "input/knowledge.json",
+      "input/manifest.json",
+      "input/knowledge_prompt.txt"
+    ],
+    "model_visible_input": "course GUARD + unchanged R1 prompt; user object contains frozen business_model and one unchanged question plus fixture only",
+    "expected_not_model_visible": true,
+    "historical_extraction_reference": "load_task 用旧成功提取运行核 scope 与入口前置条件；messages_for 不发送提取候选、历史访谈或期望给模型，不能把配置引用当额外业务上下文",
+    "execution_review_pending": "尚未读取 output 或实际请求；完成后逐题核实际 request、answer、attempts 与原文。",
+    "no_calls_by_reviewer": true
+  },
+  "case_comparison": [
+    {
+      "id": "DY01",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效；本例区分生效前。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DY02",
+      "question_unchanged": true,
+      "independent_expected_valid": true,
+      "author_expected_valid": true,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "有效；本例区分生效当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DY03",
+      "question_unchanged": true,
+      "independent_expected_valid": true,
+      "author_expected_valid": true,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "有效；本例区分生效后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DY04",
+      "question_unchanged": true,
+      "independent_expected_valid": true,
+      "author_expected_valid": true,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "有效；本例区分计划结束前一天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DY05",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效；本例区分计划结束当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DY06",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效；本例区分计划结束后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DY07",
+      "question_unchanged": true,
+      "independent_expected_valid": true,
+      "author_expected_valid": true,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "有效；本例区分提前终止前一天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DY08",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效；本例区分提前终止当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DY09",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效；本例区分提前终止后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DY10",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效；本例区分计划结束早于记录所填终止日。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DY11",
+      "question_unchanged": true,
+      "independent_expected_valid": true,
+      "author_expected_valid": true,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "有效；本例区分历史判定而非运行时当前状态。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DY12",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效：判定日早于valid_from；非空提前终止日期不免除开始日期约束。"
+      ]
+    },
+    {
+      "id": "DQ01",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效；本例区分生效前。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DQ02",
+      "question_unchanged": true,
+      "independent_expected_valid": true,
+      "author_expected_valid": true,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "有效；本例区分生效当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DQ03",
+      "question_unchanged": true,
+      "independent_expected_valid": true,
+      "author_expected_valid": true,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "有效；本例区分生效后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DQ04",
+      "question_unchanged": true,
+      "independent_expected_valid": true,
+      "author_expected_valid": true,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "有效；本例区分计划结束前一天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DQ05",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效；本例区分计划结束当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DQ06",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效；本例区分计划结束后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DQ07",
+      "question_unchanged": true,
+      "independent_expected_valid": true,
+      "author_expected_valid": true,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "有效；本例区分提前终止前一天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DQ08",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效；本例区分提前终止当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DQ09",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效；本例区分提前终止后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DQ10",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效；本例区分计划结束早于记录所填终止日。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DQ11",
+      "question_unchanged": true,
+      "independent_expected_valid": true,
+      "author_expected_valid": true,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "有效；本例区分历史判定而非运行时当前状态。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ]
+    },
+    {
+      "id": "DQ12",
+      "question_unchanged": true,
+      "independent_expected_valid": false,
+      "author_expected_valid": false,
+      "agreement": "date conclusion and constraints consistent by full-text review",
+      "author_required_points": [
+        "无效：判定日早于valid_from；非空提前终止日期不免除开始日期约束。"
+      ]
+    }
+  ],
+  "blocking_issues": [],
+  "nonblocking_suggestions": [],
+  "needs_user_business_decision": [],
+  "reviewed_file_hashes": {
+    "artifacts/w03/date-boundary-qa-20261106/input/reviewer_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+    "artifacts/w03/date-boundary-qa-20261106/input/business_model.md": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+    "artifacts/w03/date-boundary-qa-20261106/input/knowledge_prompt.txt": "c2947d4bb17dcd5faf3a4da8740983c4ade6b91310d570ce18e228bfc4beaa63",
+    "artifacts/w03/date-boundary-qa-20261106/run_batch.py": "229e3399295119d83606c5b7f5761f45829e460279d93887e1210d753279e598",
+    "platform/fde_product/natural_knowledge.py": "0622a655662a7ffbe38bcc6c0e9a6d0d1545455efd3d2baf15a9abd5a2dcd68a"
+  }
+}

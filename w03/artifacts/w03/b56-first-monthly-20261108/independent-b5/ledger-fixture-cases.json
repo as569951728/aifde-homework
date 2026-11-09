@@ -1,0 +1,115 @@
+[
+  {
+    "case_id": "B5-H02-F",
+    "dataset_id": "qinghe-w03-b5-independent-artificial-20261108-v1",
+    "interval": [
+      "2026-06-18",
+      "2026-06-19"
+    ],
+    "registered_ids": [],
+    "first_orders": [
+      {
+        "order_id": "B5F-O003",
+        "member_id": "B5F-M02",
+        "net_cents": 137
+      }
+    ],
+    "subsequent_ids": [
+      "B5F-O004"
+    ],
+    "excluded_orders": [],
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count",
+          "valid_order_count"
+        ],
+        "start": "2026-06-18",
+        "end": "2026-06-19",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count",
+        "valid_order_count"
+      ],
+      "rows": [
+        [
+          1,
+          137,
+          1,
+          1,
+          2
+        ]
+      ],
+      "units": {
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count",
+        "valid_order_count": "count"
+      }
+    }
+  },
+  {
+    "case_id": "B5-Z01-F",
+    "dataset_id": "qinghe-w03-b5-independent-artificial-20261108-v1",
+    "interval": [
+      "2026-06-01",
+      "2026-06-16"
+    ],
+    "registered_ids": [
+      "B5F-M01",
+      "B5F-M02"
+    ],
+    "first_orders": [],
+    "subsequent_ids": [],
+    "excluded_orders": [],
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "new_member_count",
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count"
+        ],
+        "start": "2026-06-01",
+        "end": "2026-06-16",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "new_member_count",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "rows": [
+        [
+          2,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "units": {
+        "new_member_count": "count",
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count"
+      }
+    }
+  }
+]

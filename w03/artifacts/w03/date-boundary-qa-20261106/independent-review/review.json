@@ -1,0 +1,3059 @@
+{
+  "created_at": "2026-11-06T15:46:30.180687+00:00",
+  "reviewer": "independent test review Agent",
+  "status": "completed_requires_source_attribution_revision",
+  "method": "先原材料/题设冻结判据，再预期与候选，再逐字阅读24份实际回答。日期结果由预先独立推导复核；完整语义判读非关键词评分。实际请求与原生答案逐一只读核验。",
+  "counts": {
+    "cases": 24,
+    "date_logic_pass": 24,
+    "full_answer_pass": 19,
+    "full_answer_pass_with_nonblocking_suggestion": 1,
+    "full_answer_fail_requires_revision": 4,
+    "full_answer_acceptable_including_nonblocking": 20,
+    "needs_business_decision": 0,
+    "live_model_runs": 24,
+    "http_attempts": 24
+  },
+  "failed_case_ids": [
+    "DY01",
+    "DY11",
+    "DY12",
+    "DQ12"
+  ],
+  "nonblocking_case_ids": [
+    "DY11",
+    "DQ11",
+    "DQ12"
+  ],
+  "blocking_findings": [
+    {
+      "id": "SRC-04-PRODUCT",
+      "kind": "source_attribution",
+      "severity": "requires_revision",
+      "criteria": [
+        "C01",
+        "C06",
+        "C07",
+        "C10"
+      ],
+      "problem": "把《本期统计确认邮件》直接列为具体纳入卡产品的出处。04仅明确月末资格选账户、完整自然月、全渠道全门店等统计选择，且把卡产品范围和有效状态交运营与门店确认，没有列出悦享年卡或家庭季卡。",
+      "source_quote": "付费资格的卡产品范围和有效状态请向运营与门店确认，不能从等级或付款金额猜测。",
+      "correct_sources": [
+        "lin:MSG-03848",
+        "lin:MSG-03854"
+      ],
+      "why_blocking_for_full_answer": "本轮检查完整回答的来源可追溯性。产品结论有正确依据，不代表同段并列的错误文档归因可以被抵消；这不是简单少引一条来源。虽未明确宣称生产核验或正式制度已获批，仍形成错误证据路径，所以日期逻辑通过，完整回答需修订。",
+      "suggested_correction": "产品范围仅归于业务模型第3节规则1所引的小林 MSG-03848、MSG-03854；需要讲统计时点与窗口时再引用04。",
+      "requires_user_business_decision": false,
+      "date_logic_affected": false
+    }
+  ],
+  "source_attribution_followup": {
+    "trigger": "主 Agent 请求核对04引用分级，未提供需要采纳的分数；此前第一遍“无阻断项”只是未完成来源复核的进度意见。",
+    "action": "重新逐句核原答复与04；保留原先 source-first-criteria 不变。",
+    "conclusion": "四题将04直接挂在产品断言出处，判完整回答需修订；DQ11的引用紧随报告适用范围句，具有可支持的指向，记拆分引用建议。正确日期或正确并列来源不抵消错误的明确文件归因。",
+    "not_changed": [
+      "原始题目",
+      "预期",
+      "候选",
+      "提示",
+      "模型实际答复",
+      "冻结判据"
+    ]
+  },
+  "repair_boundary": "现有来源足以修正引用，无需本人重新选择业务规则。保留本轮4个完整回答失败及24个日期通过的真实记录；不覆写答复、不追加调用、不把编辑性纠正稿当新的模型通过证据。是否另开验证由主 Agent 根据剩余任务决定。",
+  "scope_limit": "仅24个单卡日期情境。未验证指标SQL/38指标数值、生产历史资格还原、正式制度、客户验收或模型采纳。",
+  "inputs_and_review_hashes": {
+    "artifacts/w03/date-boundary-qa-20261106/independent-review/source-first-criteria.json": "056f489082f3a33f05c19822eda426c933bca538264a2eccddc2ce82432c2078",
+    "artifacts/w03/date-boundary-qa-20261106/independent-review/input-and-expectation-review.json": "12c4c85e2586079ce09711a2d7cde0e5f1123af92bbf2e0bbb5a61ccfb339ee8",
+    "artifacts/w03/date-boundary-qa-20261106/independent-review/execution-protocol-review.json": "90ca1db9f1a9c01c86b9d99197ddcdc557d30c12dcb7e5f6a4d677f9958fbfbd",
+    "artifacts/w03/date-boundary-qa-20261106/input/business_model.md": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+    "artifacts/w03/date-boundary-qa-20261106/input/knowledge_prompt.txt": "c2947d4bb17dcd5faf3a4da8740983c4ade6b91310d570ce18e228bfc4beaa63",
+    "artifacts/w03/date-boundary-qa-20261106/input/original_questions.json": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+    "artifacts/w03/date-boundary-qa-20261106/input/reviewer_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151"
+  },
+  "sources": [
+    {
+      "id": "statistics_email",
+      "path": "materials/w03/04_本期统计确认邮件.md",
+      "sha256": "c4f847fd90fd0765d37ad22f20d4a4eb0bab90f8543ae0f05d7a3cbee104c4be"
+    },
+    {
+      "id": "test_dictionary",
+      "path": "materials/w03/05_数据字典.md",
+      "sha256": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16"
+    },
+    {
+      "id": "chen",
+      "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+      "sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308"
+    },
+    {
+      "id": "lin",
+      "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+      "sha256": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71"
+    },
+    {
+      "id": "zhou",
+      "path": "artifacts/w02/sources/W3-interview-b079dbb8-d9ae-5c64-bbd4-3f68731c8feb-transcript.json",
+      "sha256": "4d60b0499cfff1ce466183fa32c6c593956abe0513d1336ded239e4e53f3211c"
+    },
+    {
+      "id": "questions",
+      "path": "artifacts/w03/model-input-preflight-20261106/effective_tests/model_questions.json",
+      "sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343"
+    }
+  ],
+  "protocol_summary": {
+    "created_at": "2026-11-06T15:43:45.871771+00:00",
+    "method": "独立直接读取 native request/attempts/answer/run 并调用只读 check_run；未使用父 Agent protocol_audit.json。无网络/模型调用。",
+    "case_count": 24,
+    "live_runs": 24,
+    "successful_runs": 24,
+    "total_attempts": 24,
+    "all_http_200": true,
+    "all_finish_stop": true,
+    "expected_leakage_detected": false,
+    "all_frozen_inputs_unchanged": true,
+    "all_protected_files_unchanged": true
+  },
+  "cases": [
+    {
+      "id": "DY01",
+      "verdict": "fail",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "fail",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-19"
+      },
+      "actual_answer": "在题设人工构造的隔离测试情境下，结论是：这张悦享年卡在判定日 2025-08-19 无效，原因是尚未生效；产品范围本身符合本期口径。逐项日期依据：1）卡产品为悦享年卡，本期总部运营月报只纳入悦享年卡与家庭季卡，异业联名卡、体验卡不纳入，故产品范围符合；依据为 business_model 第3节规则1，来源 MSG-03848、03854 和《本期统计确认邮件》，正式规则文件尚未取得。2）valid_from=2025-08-20：权益从生效日期当天起有效，判定日 2025-08-19 早于生效日，因此当日不满足有效期起点。3）valid_until=2026-08-20：计划权益结束日期当天已无效；本次判定日尚未到达该日，所以结束日不是本次无效原因。4）ended_at=null：仅表示没有提前终止，从提前终止当天起无效的规则不触发；空值不等于无限期，仍受计划结束日限制，也不能补足生效日之前的期间。5）decision_date=2025-08-19：资格须按指定判定日检查，不能只看当前状态；在该日该卡尚未进入有效期。相关定义与边界：会员账户是经营统计对象，不等于跨系统自然人；卡归账户且一个账户可多卡；本期派生付费资格的含义是给定业务范围和判定日，账户存在一张同时满足产品范围与有效期的卡，不是永久身份、会员等级或购卡金额。因此本题只判断这一张卡在该日无效；若账户还有其他符合范围且当日有效的卡，账户资格需另行判断，题设未提供，不能据此推断客户实际记录或生产状态。日期端点规则依据 business_model 第3节规则2、3，来源 MSG-03886、03890、03888；这些是本期已说明口径，正式规则文件、办理记录和生产核验仍未取得。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "未到生效日；计划结束尚未到且空终止不解除开始限制。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "悦享年卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2025-08-20 <= 2025-08-19",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2025-08-19 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2025-08-19",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": false
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [
+        {
+          "id": "SRC-04-PRODUCT",
+          "kind": "source_attribution",
+          "severity": "requires_revision",
+          "criteria": [
+            "C01",
+            "C06",
+            "C07",
+            "C10"
+          ],
+          "problem": "把《本期统计确认邮件》直接列为具体纳入卡产品的出处。04仅明确月末资格选账户、完整自然月、全渠道全门店等统计选择，且把卡产品范围和有效状态交运营与门店确认，没有列出悦享年卡或家庭季卡。",
+          "source_quote": "付费资格的卡产品范围和有效状态请向运营与门店确认，不能从等级或付款金额猜测。",
+          "correct_sources": [
+            "lin:MSG-03848",
+            "lin:MSG-03854"
+          ],
+          "why_blocking_for_full_answer": "本轮检查完整回答的来源可追溯性。产品结论有正确依据，不代表同段并列的错误文档归因可以被抵消；这不是简单少引一条来源。虽未明确宣称生产核验或正式制度已获批，仍形成错误证据路径，所以日期逻辑通过，完整回答需修订。",
+          "suggested_correction": "产品范围仅归于业务模型第3节规则1所引的小林 MSG-03848、MSG-03854；需要讲统计时点与窗口时再引用04。",
+          "requires_user_business_decision": false,
+          "date_logic_affected": false,
+          "actual_quote": "依据为 business_model 第3节规则1，来源 MSG-03848、03854 和《本期统计确认邮件》"
+        }
+      ],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DY01",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY01.json",
+        "output_sha256": "91e09aa0e05f921f46e1c891219b7f5fc99d4d56f2b6377e975e96d9e520ffc9",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-74e39e02328244b69e70893ae16c9922/run.json",
+        "run_sha256": "fe9677e93efc5cc0a96d63dd8e1c13d69235f09115456b85d90d21ee70ae00a9",
+        "run_hash_matches_record": true,
+        "request_sha256": "939dde1377ac59ec539eb1c36ae964d6378429e41a3b0cf87277877ba0fdd2f3",
+        "answer_sha256": "1f07f0bf04540cf4a3733105f9dfceef0cb278ea9e2329560e565c802f9361dd",
+        "attempts_sha256": "51f0a39d629a3cd02d8d46456ab598453a75f5a746c58a68a566a15d2e57cd07",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DY02",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-20"
+      },
+      "actual_answer": "在该人工构造的隔离测试情境条件下，这张卡在判定日 2025-08-20 有效。逐项日期依据如下：1）产品范围：卡类型为“悦享年卡”，属于本期总部运营月报纳入的悦享年卡与家庭季卡范围；异业联名卡、体验卡不纳入的排除情形不适用于本卡。依据为业务模型第3节规则1及 MSG-03848、03854。2）生效日期：valid_from 为 2025-08-20，按本期已说明的悦享年卡权益端点规则，权益在生效日期当天起有效，因此判定日当天已进入有效期。依据为业务模型第3节规则3及 MSG-03886、03890、03888。3）计划结束日期：valid_until 为 2026-08-20，按规则计划权益结束日期当天已无效；判定日 2025-08-20 早于该日，因此尚未因计划结束而失效。4）提前终止：ended_at 为 null，按规则仅表示该记录没有提前终止，不等于无限期；本卡仍受计划结束日期限制，但在判定日不构成失效原因。综上，在该题设日期条件下，同一张卡同时满足产品范围与判定日有效期要求，结论为有效。该结论是人工构造情境推导，不是客户真实卡记录、生产核验或已执行查询；若判定日改为计划结束日 2026-08-20 或之后，则按同一端点规则将不在有效期内。",
+      "expected_valid_independently_derived": true,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "生效当天包含；未到计划结束且无提前终止。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "悦享年卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2025-08-20 <= 2025-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2025-08-20 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2025-08-20",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DY02",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY02.json",
+        "output_sha256": "0842ddee9702ba279bcb174c9bfc5598eec612aab39dfffda7ec6c17f4c86e99",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-32989de44dc344b7bfed02dec0db0c56/run.json",
+        "run_sha256": "b6b317782b61f26b289f89ac9830779822d2783763e208d421314789769c5778",
+        "run_hash_matches_record": true,
+        "request_sha256": "bf04c99025fdb135ef7c363ef145e18c22e540af79f1ef4d701dabce0f7041e9",
+        "answer_sha256": "7222857aa531af9b30e2b2edf8a46a63dc0cc225fce76a254547d0b79ee02428",
+        "attempts_sha256": "15c70419aa9607b880ea8524c4dec366add4e633f130a77a48131d0ca120f5f1",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DY03",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2025-08-21"
+      },
+      "actual_answer": "结论：在该人工构造情境成立的条件下，这张悦享年卡在判定日 2025-08-21 有效。\n\n逐项日期依据：\n1. 产品范围：卡类型为“悦享年卡”，属于本期总部运营月报纳入的悦享年卡与家庭季卡范围；异业联名卡、体验卡不纳入。该口径只约束本期月报，正式规则文件尚未取得。\n2. 生效日期 2025-08-20：权益自生效日期当天起有效。判定日 2025-08-21 晚于生效日，因此该卡已进入有效状态。\n3. 计划权益结束日期 2026-08-20：计划结束日期当天已无效；判定日 2025-08-21 早于该日期，因此尚未触发计划结束导致的失效。\n4. 提前终止日期为空：这仅表示该构造记录没有提前终止，不等于无限期有效，仍受计划结束日期限制；因此空值在本题中不使卡失效。\n5. 判定日：2025-08-21 同时满足“不早于生效日”和“早于计划结束日”，且无提前终止，故判定为有效。\n\n依据说明：以上适用本期已说明的悦享年卡权益端点与资格判定规则，即同一张卡须同时满足产品范围与有效期，不能拼接不同卡条件；会员等级和购卡实付金额不能代替卡类型与有效状态。本题是人工构造的隔离测试情境，结论仅为情境推导，不是客户实际记录、生产核验或已执行查询。",
+      "expected_valid_independently_derived": true,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "生效后、计划结束前，空终止不造成失效。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "悦享年卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2025-08-20 <= 2025-08-21",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2025-08-21 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2025-08-21",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DY03",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY03.json",
+        "output_sha256": "ac4a424f0a566dc27f5187ff8c1a4f61bc5f7f3ee0c42a6eb1428f9a29402559",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-ef36c13ce41f4a3e804a229d3ec2d109/run.json",
+        "run_sha256": "164acfdc25bcfbe97772268c12657157a3d6e7a5f3e961a51d486a686a092724",
+        "run_hash_matches_record": true,
+        "request_sha256": "160e375f99bcc19d5c5d4ecf70397c802f19be67fe1eb53eb25275feda2bf55f",
+        "answer_sha256": "a3e3b0e372cf22356a92912599c93609736696b20cb85bf569cff157fcad4537",
+        "attempts_sha256": "ef04762b3f373e8a27e005425b3952c9d5907fe7882abe2b290cf09d7e8c88f2",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DY04",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-19"
+      },
+      "actual_answer": "在本期产品范围内，这张悦享年卡在判定日 2026-08-19 有效。逐项日期依据：1）产品范围：悦享年卡属于本期月报纳入的悦享年卡／家庭季卡范围；2）生效端点：权益从生效日期当天起有效，2025-08-20 当天起有效，判定日不早于该日；3）计划结束端点：计划权益结束日期当天已无效，2026-08-20 当天无效，而判定日 2026-08-19 早于该日；4）提前终止：ended_at 为空，表示该记录没有提前终止，不触发提前终止失效，但仍受计划结束日期限制，不等于无限期。因此判定日落在有效区间 [2025-08-20, 2026-08-20) 内。以上依据来自业务模型第 3 节关于本期产品范围、资格判定方式与权益有效期端点的规则，以及陈姐相关说明（MSG-03886、03888、03890）；这是人工构造隔离测试情境下的推导，不是客户真实卡记录，也不是已执行查询，正式规则文件和生产核验仍未取得。",
+      "expected_valid_independently_derived": true,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "计划结束前一天有效；仍核对开始日及空值限制。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "悦享年卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2025-08-20 <= 2026-08-19",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-19 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-19",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DY04",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY04.json",
+        "output_sha256": "4ec4af4e06064c572bd7dafd837eadb84609278f82a21a802823db4060fe1201",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-36469f237af64caf81ab32f05d09d3c4/run.json",
+        "run_sha256": "8eb245e9b6d047f9da5f5f34afda04d901b639336353b537dd7932fe5cf67c69",
+        "run_hash_matches_record": true,
+        "request_sha256": "6a18fc77a54217e2e046fed813ace19c81dd22605bd66311df5dab1c10fd1c18",
+        "answer_sha256": "850cb37b88da6dba583d68eeebed1861f22cbaa6dd4493e4f3f141e8941ba19d",
+        "attempts_sha256": "627827bf5de4cfea44e2bc0bf8194ca5c25f6f037d969252a3172c32d4c7f337",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DY05",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-20"
+      },
+      "actual_answer": "在本题人工构造情境成立的前提下，这张卡的判定结果是：在 2026-08-20 指定判定日无效。逐项依据如下：1）卡类型为“悦享年卡”，属于本期总部运营月报纳入的悦享年卡与家庭季卡范围，因此先满足产品范围条件；依据为业务模型第3节规则1（MSG-03848、03854）。2）生效日期 2025-08-20：按本期已说明的两类卡端点规则，权益从生效日期当天起有效，故该卡自 2025-08-20 起进入有效区间；依据为业务模型第3节规则3（MSG-03886、03890、03888）。3）计划权益结束日期 2026-08-20：按同一端点规则，计划结束日期当天已无效，而不是到次日才无效。4）提前终止日期 ended_at 为 null：仅表示该记录没有提前终止，并不表示无限期有效，仍受计划结束日期限制。5）判定日 2026-08-20 正好等于计划权益结束日期，因此在该日该卡已不再有效。结论是：产品范围符合，但判定日落在计划结束日当天，按已说明的结束日端点规则判为无效。该判断是本题给定日期条件下的情境推导，不冒充客户真实卡记录或已执行查询；正式规则文件、办理记录及生产历史填写凭据仍未取得，但题设已给出完整日期字段，故在此条件下结论明确。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "恰逢计划结束日，结束端不包含；空终止不能延长。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "悦享年卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2025-08-20 <= 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-20 < 2026-08-20",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-20",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DY05",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY05.json",
+        "output_sha256": "c956709bb67acdbb5f92b6f67d7a535e2c68dabf0c3c5dcb0d80805f1796f86b",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-15312a5b69bb44fe9d5565d4c8aabcf5/run.json",
+        "run_sha256": "356bec5e43d57271191cdc569441499bd6eb9a4c4f02496913fcaa324c5758c7",
+        "run_hash_matches_record": true,
+        "request_sha256": "d0515cf3735b3ba233ee2e1f20bbb19f14069ec867d40087a623b0550124e373",
+        "answer_sha256": "9d63a6c5f95380f66384341dde2efd0d6aa8d435eb7d7835b39ac07f17a6eb60",
+        "attempts_sha256": "761fc4ccc85614306593710bb87919fd6630003632bac8b17ce86895bf4a1c14",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DY06",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-21"
+      },
+      "actual_answer": "结论：在本题人工构造的隔离测试情境下，这张卡在指定判定日 2026-08-21 无效，因此不满足“判定日有效”的条件。逐项日期依据如下：\n1. 产品范围：卡类型为“悦享年卡”，属于本期总部运营月报纳入的悦享年卡、家庭季卡范围（MSG-03848、MSG-03854）。\n2. 生效端点：valid_from 为 2025-08-20。按本期已说明的两类卡规则，权益自生效日期当天起有效（MSG-03886、MSG-03890、MSG-03888）。\n3. 计划结束端点：valid_until 为 2026-08-20。按同一规则，计划权益结束日期当天已无效；判定日 2026-08-21 晚于该日期，因此已超过计划有效期。\n4. 提前终止：ended_at 为空，仅表示没有提前终止记录，仍受计划结束日期限制，不等于无限期有效。\n因此，该卡虽然产品类型在本期范围内，也曾自 2025-08-20 起生效，但在 2026-08-21 已不在有效区间内。以上是对题设人工构造输入的日期推导，不是客户实际记录、生产数据或已执行查询的结果；依据为业务模型第 3 节第 1、3 条及《数据字典》卡字段说明和相关访谈。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "已过计划结束日；空终止不能使卡继续有效。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "悦享年卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2025-08-20 <= 2026-08-21",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-21 < 2026-08-20",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-21",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DY06",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY06.json",
+        "output_sha256": "777ce5faa645a82edb053569c30038c13ac8b287ea1693784ebc270b29df733e",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-d6da635457544d88ae01e33800dca2ba/run.json",
+        "run_sha256": "4a9a446272f6d3b41d75868ec0120bd1072198f7936c3b159ffe96b273932079",
+        "run_hash_matches_record": true,
+        "request_sha256": "e7af18f7ab756e8d271c5198d404d0136a5364ce852260760dfd6a9ffafdcedc",
+        "answer_sha256": "cba2652e3791b1de13a964d01d5cdb3a5cbad5e4e3de230887860cda0e75e5f2",
+        "attempts_sha256": "75c3fa7b7c8df3f11855a1c2caf541a8f6377d5ed4688a21cd3a3a6a00a0cd62",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DY07",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-14"
+      },
+      "actual_answer": "结论：在给定的人工构造隔离测试情境下，这张悦享年卡在判定日 2026-08-14 有效。逐项日期依据如下：\n1. 产品范围：卡类型为“悦享年卡”，属于本期总部运营月报纳入的悦享年卡与家庭季卡范围，因此先满足本期产品范围条件。\n2. 生效日期：valid_from 为 2025-08-20，按本期已说明的悦享年卡端点规则，权益从生效日期当天起有效；判定日 2026-08-14 晚于该日，已进入有效期。\n3. 计划结束日期：valid_until 为 2026-08-20，按规则计划权益结束日期当天已无效；判定日 2026-08-14 早于该日，因此尚未因计划结束而失效。\n4. 提前终止日期：ended_at 为 2026-08-15，按规则存在提前终止日期时，从提前终止当天起无效；判定日 2026-08-14 早于 2026-08-15，因此尚未触发提前终止失效。\n5. 同一张卡同时满足产品范围与有效期：该卡在 2026-08-14 同时满足“悦享年卡”类型条件和有效期条件，所以判断为有效。\n依据说明：产品范围和日期端点规则来自《青禾会员经营业务模型（W03 第三稿草稿，待确认，未写入）》第3节第1至3条；本题的卡类型、日期和判定日来自题设的人工构造隔离测试情境。该结论是情境推导，不是对客户真实卡记录的查询结果，也不代表生产环境已核验。",
+      "expected_valid_independently_derived": true,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "已生效、未到计划结束且早于提前终止日，三条件同时满足。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "悦享年卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2025-08-20 <= 2026-08-14",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-14 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "2026-08-14 < 2026-08-15",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-14",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DY07",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY07.json",
+        "output_sha256": "6d03b7c928bc010931d627581d30dd5eabad0d43482433a46bc9a7942af12b9a",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-2efe66ddc78b4b8eb88cb12b898cc6b3/run.json",
+        "run_sha256": "4e2dea927620c2a3944ef03e2aeaed034c812529956eb68a467338ce36298706",
+        "run_hash_matches_record": true,
+        "request_sha256": "373407c4002071868e85f57fe9baef6f0832ab75faf014eea72c659577bafb14",
+        "answer_sha256": "b945e10e27eb570dc66b1238f98470b1f9f17ba21a3dcffc6b7b0f8272002c85",
+        "attempts_sha256": "2b87bd33cbec00fbf747080949859301d0185212b850db285cb2606dd3f46fd3",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DY08",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-15"
+      },
+      "actual_answer": "结论：在题设的人工构造情境下，这张悦享年卡在判定日 2026-08-15 无效。\n\n逐项日期依据：\n1. 产品范围：卡类型为悦享年卡，属于本期总部运营月报纳入的悦享年卡、家庭季卡范围；异业联名卡和体验卡不纳入。依据业务模型第3节规则1（MSG-03848、03854）。\n2. 生效日期 2025-08-20：权益在生效日期当天起有效，判定日 2026-08-15 已晚于生效日，因此该卡已进入过有效期。依据第3节规则3（MSG-03886、03890、03888）。\n3. 计划权益结束日期 2026-08-20：计划结束日期当天已无效；判定日 2026-08-15 早于该日，若没有提前终止，计划结束本身尚不构成无效。依据同上。\n4. 提前终止日期 2026-08-15：存在提前终止时，从提前终止当天起无效。判定日与提前终止日同为 2026-08-15，因此该卡自当天起已无效。依据同上。\n5. 资格判断要求同一张卡同时满足产品范围与有效期，不能拼接不同卡条件；本卡产品范围满足，但有效期在判定日因提前终止而不满足，故判定无效。依据第3节规则2、3（MSG-03848、03854、03870、MSG-03886、03888、03890）。\n\n说明：以上是按题目给出的人工构造隔离情境所作的推导，不是对客户真实卡记录、生产数据或实际活动的查询与核验；本期正式规则文件尚未取得，端点解释来自业务模型所引用的陈姐说明。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "提前终止当天已无效；计划结束尚未到不能覆盖终止约束。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "悦享年卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2025-08-20 <= 2026-08-15",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-15 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "2026-08-15 < 2026-08-15",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-15",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DY08",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY08.json",
+        "output_sha256": "e28f1e5485022d966bc633671b1dc442309ed952c102edb3b8fce5a3b719d725",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-446c7ff1ce1a42258a7eb68916f8cbba/run.json",
+        "run_sha256": "df2d3d391d0bfad72ebfed20a0c873effd09cc1faa6862e2757a935277c5e50f",
+        "run_hash_matches_record": true,
+        "request_sha256": "004a6d27adcd11dbf01a9db3db5d3b8e38675f1066564dd8e5245c982f67fc85",
+        "answer_sha256": "7fc1c1a0f610bb5f418e39226f610d1f0f6af851cd3ecad2df003653b5ba079b",
+        "attempts_sha256": "8501e15bfdcd54e9c249e88616844f0957356d32bdb709d8aa6823113a8f0647",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DY09",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-16"
+      },
+      "actual_answer": "结论：按题设的人工构造条件，这张悦享年卡在判定日 2026-08-16 无效。\n\n逐项日期依据：\n1. 产品范围：card_type 为悦享年卡，属于本期总部运营月报纳入的悦享年卡与家庭季卡范围；异业联名卡和体验卡不纳入。依据为业务模型第3节规则1（来源列 MSG-03848、03854）。\n2. 生效日：valid_from 为 2025-08-20，权益从生效当天起有效；判定日 2026-08-16 已晚于生效日。依据为同节规则3（MSG-03886、03890、03888）。\n3. 计划结束日：valid_until 为 2026-08-20，计划结束当天已无效；若只看计划结束，2026-08-16 尚在计划结束日之前。依据同上。\n4. 提前终止日：ended_at 为 2026-08-15，存在提前终止时从提前终止当天起无效，即 2026-08-15 已无效；判定日 2026-08-16 在该日之后，因此该卡在判定日无效。依据同上。\n\n因此，这张卡在该情境下的有效区间为 2025-08-20 至 2026-08-14（含端点），2026-08-16 不在有效区间内。该结论仅针对题设这张卡；不推断账户是否还有其他卡，也不宣称已查询客户系统或实际记录。正式规则文件和生产历史凭据仍未取得，但不改变本题在给定构造条件下的判断。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "已过提前终止日；已生效和未到计划截止不能抵消终止。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "悦享年卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2025-08-20 <= 2026-08-16",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-16 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "2026-08-16 < 2026-08-15",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-16",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DY09",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY09.json",
+        "output_sha256": "b02fec159d2795a01f4197f2c1e8b59f17499404a40e0654507549f10f215962",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-82374e5e011d4c87b28722b841ca4123/run.json",
+        "run_sha256": "9b04ffcfa2c8e52366a87a89104c08b221c88d7e7425e5d3afbf70650e3464e0",
+        "run_hash_matches_record": true,
+        "request_sha256": "a4686265d4cbe1c2545c31d20f480712e5e07b41d0c016640bc92ace9dfd14bc",
+        "answer_sha256": "9e1fee304163640f9999137e4ff09c09de8cb14ca01580eb1f0261c97a43f1e2",
+        "attempts_sha256": "5cf32120870a972718c874c216eec15575c45efeecf268e8b98b5a7ba951731a",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DY10",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-25",
+        "decision_date": "2026-08-20"
+      },
+      "actual_answer": "结论：在本期产品范围及给定日期下，这张悦享年卡在指定判定日 2026-08-20 无效。\n\n逐项日期依据：\n1. 产品范围：悦享年卡属于本期总部运营月报纳入的自营会员卡产品范围；但产品范围只是资格判断的一个条件。\n2. 生效日期：valid_from 为 2025-08-20，权益从生效日期当天起有效，因此该卡的有效起点是 2025-08-20（含当天）。判定日不早于该起点。\n3. 计划结束日期：valid_until 为 2026-08-20。按本期规则，计划权益结束日期当天已无效，因此该卡有效期间应截至 2026-08-20 之前，即不包含 2026-08-20。指定判定日正好是 2026-08-20，落在计划结束日当天，故在该日无效。\n4. 提前终止日期：ended_at 为 2026-08-25，晚于计划结束日期。它不能延长计划有效期；在本判定日也不构成额外的提前终止原因。即使不考虑该字段，计划结束日期已使该卡在 2026-08-20 无效。\n\n因此，资格判定不能只看“存在一张悦享年卡”或提前终止日期是否为空，而须按指定判定日检查同一张卡的产品范围与有效期端点。本题是人工构造的隔离测试情境，以上结论仅在该组日期和本期已说明的端点规则下成立，不表示已查询客户系统或生产记录。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "计划结束当天无效；较晚的 ended_at 不延长计划截止。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "悦享年卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2025-08-20 <= 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-20 < 2026-08-20",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "2026-08-20 < 2026-08-25",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-20",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DY10",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY10.json",
+        "output_sha256": "b50d3ccec13351aef7f7d9ca7109ae4b68b4a55ab5a4b227a66bf44d79768009",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-e7716998cc5046bfba5ce3af2715d965/run.json",
+        "run_sha256": "357c78e611d42a4c7a0e4da99eb22d36ce0d9871c30e00b342841bde10c2b30e",
+        "run_hash_matches_record": true,
+        "request_sha256": "9d502b0a70a049987b86d54d58d252fdc42286c994377296f0e5d51ad59894fe",
+        "answer_sha256": "241d4a03fcd21f7693d6d58e8394b7b7a316d1bb32fb620e414077c54dcc94a6",
+        "attempts_sha256": "1472e0945e95547564deb091dca6d46a8b100810e1a2282260e9a38f53041445",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DY11",
+      "verdict": "fail",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "fail",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-10",
+        "hypothetical_run_date": "2026-08-31"
+      },
+      "actual_answer": "结论：在题设人工构造情境成立的前提下，该卡在指定判定日2026-08-10有效：它属于本期产品范围，且按权益端点规则在判定日处于有效期内。\n\n逐项日期依据：\n1. 产品范围：卡类型为「悦享年卡」，本期总部运营月报只纳入悦享年卡与家庭季卡持有人，异业联名卡和体验卡不纳入；依据MSG-03848、MSG-03854及《本期统计确认邮件》。该口径只约束本期月报，正式规则文件尚未取得。\n2. 生效日：valid_from为2025-08-20；权益自生效日期当天起有效，判定日2026-08-10已过生效日，满足。依据MSG-03886、MSG-03890。\n3. 计划结束日：valid_until为2026-08-20；计划权益结束日期当天已无效，判定日2026-08-10早于该日，仍在有效期内。依据MSG-03886、MSG-03890。\n4. 提前终止：ended_at为null；按本期材料解释，这只表示该记录没有提前终止，仍受计划结束日期限制，不等于无限期。本题无提前终止。依据MSG-03886、MSG-03888。\n5. 假设运行日：hypothetical_run_date为2026-08-31；题设将其标为假设运行日，不是指定判定日。资格须按所需判定日检查，不能以运行日替代；若误作判定日，则已晚于计划结束日2026-08-20而无效。依据MSG-03886、MSG-03888、MSG-03890。\n\n关系与建模边界：业务模型把会员账户作为经营统计对象，账户不等于跨系统自然人；会员卡归账户，一个账户可对应多张卡；付费资格是派生判断，即给定业务范围和判定日，账户存在一张同时满足产品范围与有效期的卡，不是永久身份、会员等级、活跃状态或购买事实。依据《数据字典》、MSG-01615、01679、01742、MSG-03848、03854、03886、03888。多张有效卡不重复计账户；会员等级和购卡实付不能替代卡类型与有效状态。\n\n本题只给一张卡，未给账户、订单或人群，因此上述结论只针对这张卡在题设判定日的有效期；不能据此认定账户名单、活跃、复购改善或订单归属，材料也未提供订单与具体卡的对应。本题是隔离测试情境，不是客户真实卡记录，也不是已执行查询或生产核验。与本题无关的未决项仍包括80万与120万口径、活跃定义、会员老化假设及复购原报表重算等；正式规则文件、生产或历史办理与执行凭据尚未取得。",
+      "expected_valid_independently_derived": true,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "按8月10日判断有效，明确排除8月31日运行日替代。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "悦享年卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2025-08-20 <= 2026-08-10",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-10 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-10，不替换为运行日 2026-08-31",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": false
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [
+        {
+          "id": "SRC-04-PRODUCT",
+          "kind": "source_attribution",
+          "severity": "requires_revision",
+          "criteria": [
+            "C01",
+            "C06",
+            "C07",
+            "C10"
+          ],
+          "problem": "把《本期统计确认邮件》直接列为具体纳入卡产品的出处。04仅明确月末资格选账户、完整自然月、全渠道全门店等统计选择，且把卡产品范围和有效状态交运营与门店确认，没有列出悦享年卡或家庭季卡。",
+          "source_quote": "付费资格的卡产品范围和有效状态请向运营与门店确认，不能从等级或付款金额猜测。",
+          "correct_sources": [
+            "lin:MSG-03848",
+            "lin:MSG-03854"
+          ],
+          "why_blocking_for_full_answer": "本轮检查完整回答的来源可追溯性。产品结论有正确依据，不代表同段并列的错误文档归因可以被抵消；这不是简单少引一条来源。虽未明确宣称生产核验或正式制度已获批，仍形成错误证据路径，所以日期逻辑通过，完整回答需修订。",
+          "suggested_correction": "产品范围仅归于业务模型第3节规则1所引的小林 MSG-03848、MSG-03854；需要讲统计时点与窗口时再引用04。",
+          "requires_user_business_decision": false,
+          "date_logic_affected": false,
+          "actual_quote": "依据MSG-03848、MSG-03854及《本期统计确认邮件》"
+        }
+      ],
+      "nonblocking_notes": [
+        {
+          "id": "N-VERBOSITY",
+          "kind": "answer_relevance",
+          "severity": "nonblocking",
+          "quote": "与本题无关的未决项仍包括80万与120万口径、活跃定义、会员老化假设及复购原报表重算等",
+          "assessment": "这段自行承认与本题无关，增加阅读负担；未改变日期结论或补造事实。",
+          "suggestion": "删去无关经营未决项，保留本题日期与来源边界即可。"
+        }
+      ],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DY11",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY11.json",
+        "output_sha256": "8357d85216aa1284ab6cc470ae56dc08df895ebb7112acedeb2754c4067c7763",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-d2eee294de184ba29ac40cdd2085c774/run.json",
+        "run_sha256": "71e28fb8e8495a8e47a42450e7a56b0b50ef4097a2275287802f9e2e83dede94",
+        "run_hash_matches_record": true,
+        "request_sha256": "f86001ba5e1251fbade54f375e6435479d1b58d507bea6c2ccb0cf68859b3f57",
+        "answer_sha256": "426ca2ca161f3bb5f5bb10da3598dbdb6c95b9bc26c246f28d48cbf4368edd48",
+        "attempts_sha256": "da3696b604c10a7fde5c3c8ded355fa2f98e66cc9ff48fc2a2075f9326ca7a5e",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DY12",
+      "verdict": "fail",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "fail",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "悦享年卡",
+        "valid_from": "2025-08-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2025-08-19"
+      },
+      "actual_answer": "这是人工构造的隔离测试情境，以下仅在该前提下推导，不是客户真实卡记录或已执行查询。结论：这张悦享年卡在判定日2025-08-19无效（尚未生效），因此当日不能作为该账户付费资格的有效卡依据。逐项日期依据：1）产品范围：悦享年卡属于本期总部运营月报纳入范围（《本期统计确认邮件》；MSG-03848、03854），产品范围满足。2）生效日2025-08-20：权益自生效日当天起有效（陈姐说明，MSG-03886、03890、03888）；判定日2025-08-19早于生效日一天，故判定日尚未生效。3）计划结束日2026-08-20：计划结束日当天已无效；该日虽晚于判定日，不改变上述未生效结论。4）提前终止日2026-08-15：提前终止当天起无效；该日也晚于判定日，故不改变判定日结论，但意味着该卡不会有效至计划结束日，按端点规则最后有效日应为2026-08-14。5）判定日需同时满足产品范围与有效期；本案产品范围满足、有效期不满足。补充：正式规则文件尚未取得，以上日期端点依据本期陈姐说明；本判断只针对这张卡，账户整体资格还要看是否存在另一张同时满足范围与有效期的卡。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "未到生效日；未来的计划结束及非空提前终止均不免除开始约束。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "悦享年卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2025-08-20 <= 2025-08-19",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2025-08-19 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "2025-08-19 < 2026-08-15",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2025-08-19",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": false
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [
+        {
+          "id": "SRC-04-PRODUCT",
+          "kind": "source_attribution",
+          "severity": "requires_revision",
+          "criteria": [
+            "C01",
+            "C06",
+            "C07",
+            "C10"
+          ],
+          "problem": "把《本期统计确认邮件》直接列为具体纳入卡产品的出处。04仅明确月末资格选账户、完整自然月、全渠道全门店等统计选择，且把卡产品范围和有效状态交运营与门店确认，没有列出悦享年卡或家庭季卡。",
+          "source_quote": "付费资格的卡产品范围和有效状态请向运营与门店确认，不能从等级或付款金额猜测。",
+          "correct_sources": [
+            "lin:MSG-03848",
+            "lin:MSG-03854"
+          ],
+          "why_blocking_for_full_answer": "本轮检查完整回答的来源可追溯性。产品结论有正确依据，不代表同段并列的错误文档归因可以被抵消；这不是简单少引一条来源。虽未明确宣称生产核验或正式制度已获批，仍形成错误证据路径，所以日期逻辑通过，完整回答需修订。",
+          "suggested_correction": "产品范围仅归于业务模型第3节规则1所引的小林 MSG-03848、MSG-03854；需要讲统计时点与窗口时再引用04。",
+          "requires_user_business_decision": false,
+          "date_logic_affected": false,
+          "actual_quote": "悦享年卡属于本期总部运营月报纳入范围（《本期统计确认邮件》；MSG-03848、03854）"
+        }
+      ],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DY12",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DY12.json",
+        "output_sha256": "32ae5525c047cff4a785dbd5cd2b7503265ae15f7445a9e356800a7824471804",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-f466dfe27858447dbf385236b252e852/run.json",
+        "run_sha256": "23a9fd8e956bde99ea6ed16c4aab55315509de3afc69b7f028e1d7ffb4c62028",
+        "run_hash_matches_record": true,
+        "request_sha256": "cdf5d9966817bac745df68c04239068a33cc3cb77f0b9395b9d54a43f311f846",
+        "answer_sha256": "3b6c3a162bf60abda6f01b04e04c52416ab8dfe067131899c9fc59fbc5031b1b",
+        "attempts_sha256": "d3cbea1bfa1592ac027f21d13357eb72aeb8a75c84232d940d85ce472bf250ff",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DQ01",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-19"
+      },
+      "actual_answer": "在本题人工构造的隔离测试情境下，这张卡在指定判定日 2026-05-19 无效，因此该账户在该判定日不能据此卡取得本期付费资格。逐项日期依据如下：①产品范围：卡类型为“家庭季卡”，属于本期总部运营月报纳入的悦享年卡与家庭季卡范围（MSG-03848、MSG-03854）；②生效日：valid_from 为 2026-05-20，权益自生效日期当天起有效（MSG-03886、03890），而判定日 2026-05-19 早于生效日一天，故判定日尚未生效；③计划结束日：valid_until 为 2026-08-20，该日期当天已无效，但判定日早于该日，因此本项不是本次无效的原因；④提前终止：ended_at 为 null，仅表示没有提前终止，不等于无限期，仍受计划结束日限制（MSG-03886、03888），本项也不是本次无效的原因。结论仅用于该人工构造情境，不代表课程CSV真实行、客户实际记录或已执行查询。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "未到生效日；计划结束尚未到且空终止不解除开始限制。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "家庭季卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2026-05-20 <= 2026-05-19",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-05-19 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-05-19",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DQ01",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ01.json",
+        "output_sha256": "676553fd9c0377a0ae89f7cd497544b921f988f8a9b439c129882a2282e8e1dc",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-05a2ff5497d046f8921364ef46b2afb0/run.json",
+        "run_sha256": "2b6a304b5cc5b4e83fc4e2ef323af7cbea87487a5e88470239597ac76a376d07",
+        "run_hash_matches_record": true,
+        "request_sha256": "b055cd616cd7b191b7ebf959335b4b13a48879e339a7601cbc4886745745c69d",
+        "answer_sha256": "b2271e3b94333dc03feaf2ddac180d8119d4f9523ffa9c1d4ae4004c0f19d2aa",
+        "attempts_sha256": "aa1937e755c4be9d73278a6f8cfc4d0f55221b23ca4f83cc267ebe96961b7577",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DQ02",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-20"
+      },
+      "actual_answer": "在本题人工构造情境成立的前提下，按本期总部运营月报口径推导：这张家庭季卡在判定日 2026-05-20 有效。逐项日期依据如下：1）产品范围：家庭季卡属于本期纳入的悦享年卡与家庭季卡范围，满足产品范围条件；异业联名卡、体验卡不纳入的排除规则不适用。2）生效日期：valid_from 为 2026-05-20，规则是权益在生效日期当天起有效，判定日正好等于生效日，因此起始端满足。3）计划结束日期：valid_until 为 2026-08-20，规则是计划权益结束日期当天已无效；判定日 2026-05-20 早于 2026-08-20，未到结束日及之后，因此计划结束日不导致该日无效。4）提前终止：ended_at 为 null，表示该记录没有提前终止日期，不表示无限期，仍受计划结束日期限制；在本判定日没有提前终止导致失效。5）资格判断要求同一张卡同时满足产品范围与有效期，且不得以会员等级或购卡实付金额替代卡类型与有效状态；本卡两项均满足。依据为本业务模型第3节可复用业务规则第1至4条及其中对应的 MSG-03848、03854、03886、03888、03890。上述结论是题设情境下的推导，不是客户真实卡记录、生产核验或已执行查询；也不外推到其他报表口径或历史资格还原。",
+      "expected_valid_independently_derived": true,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "生效当天包含；未到计划结束且无提前终止。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "家庭季卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2026-05-20 <= 2026-05-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-05-20 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-05-20",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DQ02",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ02.json",
+        "output_sha256": "c223bca30d16731da71e901a28164d7ef08d42354c21aab8f955dfd785eebaac",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-34b4b11ebfb34447a68b2aec2709c408/run.json",
+        "run_sha256": "8cbc6b9717b0b3b61c87c40e6b8ee0b698c8e9108dcbdec65bdcb9826356ae50",
+        "run_hash_matches_record": true,
+        "request_sha256": "28a7bcf93a9ed2bc49bbee87ef751233d62afdede0485d201084080bf2d35aed",
+        "answer_sha256": "977c13bb7ae258ce9951cc1815a980a89e891a142ba96a19d6b1b05939c6a4d3",
+        "attempts_sha256": "7d38ad13a6ad7cda2070a5ecdd0bc67a78c1f37b0ee4db4c0e2fb91e7a58e4e3",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DQ03",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-05-21"
+      },
+      "actual_answer": "在本题人工构造的隔离测试情境下，这张卡在指定判定日 2026-05-21 有效。判断依据如下：\n\n1. 产品范围：卡类型为“家庭季卡”，属于业务模型所述本期总部运营月报纳入的“悦享年卡与家庭季卡”范围；该口径只约束本期月报，正式规则文件尚未取得（MSG-03848、03854）。\n2. 生效日期：valid_from 为 2026-05-20，按本期两类卡的端点说明，权益在生效日期当天起有效，因此 2026-05-20 已开始有效；判定日 2026-05-21 在该日之后，满足起始条件（MSG-03886、03890、03888）。\n3. 计划结束日期：valid_until 为 2026-08-20，按同一端点说明，计划结束日期当天已无效，即有效截止到 2026-08-19；判定日 2026-05-21 早于计划结束日，仍在计划有效期内。\n4. 提前终止日期：ended_at 为 null，仅表示该记录没有提前终止，不表示无限期，也不解除计划结束日期限制；此情形不使 2026-05-21 失效。\n5. 结论：同一张卡同时满足本期产品范围与判定日有效期条件，因此该卡在 2026-05-21 有效。若用于账户付费资格判断，业务模型规定账户只要有一张符合本期范围且在判定日有效的卡即具有资格；但本题只判断这一张卡，不推断账户其他卡或账户整体状态。\n\n以上是题设情境下的推导，不是客户真实记录、生产核验或已执行查询。相关端点说明有本期角色陈述依据，但正式规则文件、办理记录及生产或历史填写/执行凭据仍未取得。",
+      "expected_valid_independently_derived": true,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "生效后、计划结束前，空终止不造成失效。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "家庭季卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2026-05-20 <= 2026-05-21",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-05-21 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-05-21",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DQ03",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ03.json",
+        "output_sha256": "51497ab8d161adbaba670e262dbb162611dc14509862763b3cf35d0ac0119b29",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-10d0aad262d048d8a9e01adce885b397/run.json",
+        "run_sha256": "c5da1148f118c784c4946d2c1479b2ec06e979fc3f6c73965616d8c8f149a910",
+        "run_hash_matches_record": true,
+        "request_sha256": "f0dd6c6e5cd967fa032636c166134e290c3249ab5558db637cb4159d2301793f",
+        "answer_sha256": "0c3bc4912e3538d17c8f8454d2e36833062dc2f35affc5e39992611ac173d7aa",
+        "attempts_sha256": "38091441c99e50c4c4429d8bb9653ee7582051028ca9d3701228cc3d5219e962",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DQ04",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-19"
+      },
+      "actual_answer": "按题设人工构造情境，结论：该家庭季卡在判定日 2026-08-19 有效（在本期范围内可作为付费资格判断依据）。逐项日期依据：1）产品范围：家庭季卡属于本期总部运营月报纳入的悦享年卡与家庭季卡范围，依据业务模型第3节规则1（MSG-03848、03854）；异业联名卡和体验卡不纳入。2）生效日：valid_from=2026-05-20，权益自生效日期当天起有效，因此 2026-08-19 已在有效期内，依据规则3（MSG-03886、03890）。3）计划结束日：valid_until=2026-08-20，计划权益结束日期当天已无效；判定日 2026-08-19 早于 8月20日，尚未进入结束日无效状态，依据规则3。4）提前终止：ended_at=null，表示该记录没有提前终止，不触发“提前终止当天起无效”，但仍受计划结束日期限制，不等于无限期，依据规则3（MSG-03886、03890、03888）。5）判定方式：同一张卡同时满足产品范围与判定日有效期；本题不涉及用会员等级或购卡实付代替判断，也不涉及多卡去重，依据规则2、4。限定：以上是题设情境下的推导，不是客户真实卡记录或已执行查询；业务模型为 W03 第三稿草稿待确认，正式规则文件及生产、历史凭据仍未取得，故结论只在该情境和所引规则范围内成立。",
+      "expected_valid_independently_derived": true,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "计划结束前一天有效；仍核对开始日及空值限制。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "家庭季卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2026-05-20 <= 2026-08-19",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-19 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-19",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DQ04",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ04.json",
+        "output_sha256": "322dd3b0515e8bf20e0f32eab313288d9ffe551bc278c30cbf9db2228486c5d3",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-16df79ae88c243519a06a0760224a1ae/run.json",
+        "run_sha256": "bc028572a61e0a4cae19126769a81f5cbc1c336dfe0f7438f2f0c66dfef03388",
+        "run_hash_matches_record": true,
+        "request_sha256": "d69e8637326e4d41d25f0f548f27e49d4db22b14f528d5138fc0b532b01c74d5",
+        "answer_sha256": "285953dab20ed0167281978ba87e8b1e0669c7420313a215beb5bcbaf2663760",
+        "attempts_sha256": "5328439436a434c9b74228b66c3b7808b1703a24d29616295673cd53404b6503",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DQ05",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-20"
+      },
+      "actual_answer": "结论：在本题人工构造情境下，这张家庭季卡在判定日 2026-08-20 无效。逐项日期依据如下：1）卡类型为“家庭季卡”，属于本期总部运营月报纳入的悦享年卡、家庭季卡产品范围，因此进入本口径判断；2）valid_from 为 2026-05-20，按本期已说明的端点规则，权益从生效日期当天起有效；3）valid_until 为 2026-08-20，按同一端点规则，计划权益结束日期当天已无效，所以判定日正好落在计划结束日时不能判为有效；4）ended_at 为 null，仅表示没有提前终止日期，不表示无限期，也不改变计划结束日的限制；5）decision_date 为 2026-08-20，与计划结束日相同，因此该卡在该日已因计划结束而无效。依据为本期产品范围说明（MSG-03848、03854）及有效期端点说明（MSG-03886、03888、03890），并结合《数据字典》cards 的 valid_from、valid_until、ended_at 字段含义。以上是人工构造情境下的推导，不是客户真实卡记录、系统查询或生产核验结果；且这里只判断该卡本身，不等于判断账户整体是否具有付费资格——账户若另有符合产品范围且在判定日有效的卡，仍需按账户级规则另行判断。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "恰逢计划结束日，结束端不包含；空终止不能延长。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "家庭季卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2026-05-20 <= 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-20 < 2026-08-20",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-20",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DQ05",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ05.json",
+        "output_sha256": "f364a8430fd554c8aca983df12f5840205a8f5f025361208f7392bf777955ddb",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-c1484bdf81864c06bae03abd99ed6b73/run.json",
+        "run_sha256": "3c12bca1c521f87a5e353d740825856b8545343e91f6acdd3f5f090224e41234",
+        "run_hash_matches_record": true,
+        "request_sha256": "83468360b25923b6b56f2cf1ec8a586ebb90be79adcce80b95ee907c0211b6da",
+        "answer_sha256": "a134041e93214e343d52cdc2de12414235bdacdb760035780e541f6fc8f17dcb",
+        "attempts_sha256": "a5ff1991bfdc088e5649723417cc8ea09681fbebc752c17562678a14808db53f",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DQ06",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-21"
+      },
+      "actual_answer": "结论：在题设人工构造的隔离测试情境下，这张家庭季卡在指定判定日 2026-08-21 无效。逐项日期依据如下：1）产品范围：家庭季卡属于本期总部运营月报纳入的悦享年卡、家庭季卡范围；异业联名卡和体验卡不纳入。依据为业务模型第3节规则1及 MSG-03848、03854。2）起始日期：valid_from=2026-05-20，权益自生效日期当天起有效，因此该卡从 2026-05-20 起进入有效期。3）计划结束日期：valid_until=2026-08-20，本期两类卡规则规定计划权益结束日期当天已无效，因此到 2026-08-20 当天即不再有效。4）提前终止：ended_at=null 只表示该记录没有提前终止，不等于无限期，仍受计划结束日期限制，因此不改变上述结果。5）判定日：2026-08-21 晚于计划结束日 2026-08-20，故该卡在判定日无效。上述判断依据业务模型第3节规则2、3及 MSG-03886、03888、03890 的日期端点说明；这是对人工构造输入的日期推导，不是对客户真实卡记录的查询。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "已过计划结束日；空终止不能使卡继续有效。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "家庭季卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2026-05-20 <= 2026-08-21",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-21 < 2026-08-20",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-21",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DQ06",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ06.json",
+        "output_sha256": "63ced531b03e6ee5a2ef9652e4110fbf1beeee1869349442aaaecddb69354d5b",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-98a3e31f41f84641b36591e9e5121644/run.json",
+        "run_sha256": "b907469e74acdade4ee4a0810a2ad2c81ba681b3c8996a7a327c03d20deb33c0",
+        "run_hash_matches_record": true,
+        "request_sha256": "3b596601cd58b2f323d19896e155e9932751c1c693e0955f024042947b0a6a44",
+        "answer_sha256": "5ed1d5070581c9815c417d035cb5e4901e86a7ee84ca10d39cce7788eb9b55ce",
+        "attempts_sha256": "6267b19ada388448a347821853f0c32eb6c1ad5ac38caff8561d3c1a8059c495",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DQ07",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-14"
+      },
+      "actual_answer": "在该人工构造情境下，这张家庭季卡在判定日 2026-08-14 有效。逐项依据：①产品范围：家庭季卡属于本期总部运营月报纳入的悦享年卡与家庭季卡范围（业务模型第3节规则1，来源 MSG-03848、03854）；②生效端点：valid_from=2026-05-20，权益自生效日当天起有效，判定日 2026-08-14 已晚于生效日；③计划结束端点：valid_until=2026-08-20，计划权益结束日当天已无效，判定日 2026-08-14 早于该日；④提前终止端点：ended_at=2026-08-15 非空，从提前终止当天起无效，判定日 2026-08-14 早于终止日，故尚未因提前终止失效（端点解释见业务模型第3节规则3，来源 MSG-03886、03890、03888）。综合日期区间，判定日处于生效日之后、提前终止日之前，也早于计划结束日，因此本卡在 2026-08-14 有效。以上是按题设人工构造输入所作的情境推导，不是客户真实记录或已执行查询；账户整体付费资格仍需按同一账户是否存在符合本期范围且在判定日有效的卡判断，题设仅给卡信息，不能据此推断账户名单或实际执行结果。正式规则文件尚未取得，端点口径依据业务模型所载说明。",
+      "expected_valid_independently_derived": true,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "已生效、未到计划结束且早于提前终止日，三条件同时满足。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "家庭季卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2026-05-20 <= 2026-08-14",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-14 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "2026-08-14 < 2026-08-15",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-14",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DQ07",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ07.json",
+        "output_sha256": "529fcee9bae7c2390bb9a62a11169e73495001e5d5c27e18794c45aa346c44d7",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-82361baaaeba4c6baa354d8602400fa3/run.json",
+        "run_sha256": "2778bf00c7b53681f0f177d7a08549f1b2f96b4f87b0ca4e8c5da7c8757c0139",
+        "run_hash_matches_record": true,
+        "request_sha256": "4bec92239ecf469a1ed5974d7d4ba210e98e115ceb5c2ac2fc75d9767cdaa86b",
+        "answer_sha256": "83372936189819563a97283493c3787fff8ee671e9ff07e31a16a6c0a5b58654",
+        "attempts_sha256": "15c5b3acc153bdf163d718f6e6217df026a33cef0180d19b9f2ba5883f984545",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DQ08",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-15"
+      },
+      "actual_answer": "这是人工构造的隔离测试情境，不是客户真实卡记录或已执行查询；以下仅在题设条件成立时推导。该卡为家庭季卡，属于本期总部运营月报纳入的悦享年卡、家庭季卡产品范围，因此产品类型本身不排除其本期适用性。日期依据逐项为：1）valid_from 2026-05-20：权益自生效日期当天起有效，故2026-05-20当天已进入有效期；2）valid_until 2026-08-20：按本期已说明的端点，计划权益结束日期当天已无效，若无提前终止，该卡最晚应到2026-08-19有效；3）ended_at 2026-08-15：存在提前终止日期时，从提前终止当天起无效，故2026-08-15当天已不再有效；4）decision_date 2026-08-15：与提前终止日同日，适用“当天起无效”，因此该卡在指定判定日无效，不能作为该日有效权益卡的依据。依据为《青禾会员经营业务模型（W03第三稿草稿，待确认，未写入）》第3节产品范围与权益有效期端点规则（来源标注MSG-03886、03890、03888）及其中陈姐对两类卡端点的说明；正式规则文件和生产或历史记录核验仍未取得，本结论限于本题人工构造条件。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "提前终止当天已无效；计划结束尚未到不能覆盖终止约束。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "家庭季卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2026-05-20 <= 2026-08-15",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-15 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "2026-08-15 < 2026-08-15",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-15",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DQ08",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ08.json",
+        "output_sha256": "42bd6845b95c19375291a96c699cff8070db8e98597895b189f1c435ba2635a8",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-7315188afb024aabbd8dbf24b1d867ba/run.json",
+        "run_sha256": "1585578b213e11bf09a83894cd3b91f0ab473b95b943beeeeb064a671e526c66",
+        "run_hash_matches_record": true,
+        "request_sha256": "6ab87954a396377245233370047feb06b8b54e2c215f78e06a804a9ea816a1c6",
+        "answer_sha256": "d974479ff65543f0e1fb26e2f8dcb1114eac2511af2d41a6f5c584360f54fdb3",
+        "attempts_sha256": "2c0bfb1fcd8286d43cd17cf289400ecef65368008f472e6cd8eae4572bf7b564",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DQ09",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-16"
+      },
+      "actual_answer": "结论：这张家庭季卡在判定日 2026-08-16 无效。\n\n逐项日期依据：\n1. 卡类型：家庭季卡属于本期产品范围，因此可进入本期资格判断。依据是业务模型第3节“本期月报的纳入产品范围”及派生付费资格说明。\n2. 生效日期 2026-05-20：权益从生效日当天起有效；判定日在其后，因此“已生效”条件满足。\n3. 计划权益结束日期 2026-08-20：按本期两类卡的口径，计划结束日当天已无效；但本例判定日早于该日，因此尚未到达计划结束端点。\n4. 提前终止日期 2026-08-15：存在提前终止日期时，从提前终止当天起无效。判定日 2026-08-16 已在提前终止日之后，因此该卡已因提前终止而失效。\n\n因此，虽然卡类型符合本期范围且已生效、计划结束日尚未到达，但提前终止日期优先使该卡在 2026-08-16 不具有效期。上述判断仅在本题给出的人工构造隔离测试情境下成立，不是客户真实卡记录，也不是已执行系统查询；生产记录与历史填写仍需按实际凭据核验。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "已过提前终止日；已生效和未到计划截止不能抵消终止。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "家庭季卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2026-05-20 <= 2026-08-16",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-16 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "2026-08-16 < 2026-08-15",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-16",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DQ09",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ09.json",
+        "output_sha256": "07b841a41b4634815091dbe253b375706053e2186b3e756f2165b22ef7cd6225",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-7dfa9085669b435eb6fb9d33a63b527c/run.json",
+        "run_sha256": "f10be7fc8ef555e09539ec562d6e47e0f6d278a16d35a780f65237b45b696846",
+        "run_hash_matches_record": true,
+        "request_sha256": "e3a1f05b7e78782f9a0421c757018d7e9f88cea0352fae3b14efc1c49647f816",
+        "answer_sha256": "de1f9d5d0ad6c7d2052d2cd6338f0805b6cc55f6c78ff945d867658ef3fc2afa",
+        "attempts_sha256": "229e2b08d9b2124fb638f7442c640767eb0489efdbb1362828e7b32965759ce7",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DQ10",
+      "verdict": "pass",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-25",
+        "decision_date": "2026-08-20"
+      },
+      "actual_answer": "在本题人工构造情境成立的条件下，结论是：这张家庭季卡在判定日 2026-08-20 无效。\n\n逐项日期依据：\n1. 产品范围：卡类型为“家庭季卡”，属于本期总部运营月报纳入的悦享年卡与家庭季卡范围；这是按本期口径判断，不扩展为其他报表。\n2. 生效日期 valid_from=2026-05-20：权益从生效日期当天起有效，判定日在其后，因此生效条件本身满足。\n3. 计划权益结束日期 valid_until=2026-08-20：按本期两类卡的端点规则，计划权益结束日期当天已无效。判定日正好等于该日期，因此当天不具有效期。\n4. 提前终止日期 ended_at=2026-08-25：该日期晚于计划结束日，也晚于判定日；即使记录非空，在判定日尚未触发“从提前终止当天起无效”的规则，不能延长计划结束日之后的资格。\n5. 判定日 decision_date=2026-08-20：必须按该日检查有效期，不能只看当前状态或其他日期。由于同日已落入计划结束日“当天已无效”的端点，故判定为无效。\n\n依据为业务模型第3节资格判定与权益有效期端点规则（来源涉及 MSG-03886、03890、03888）及第3节第1项本期产品范围规则（MSG-03848、03854）。本结论仅是该人工构造情境下的推导，不代表客户真实卡记录或已执行查询。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "计划结束当天无效；较晚的 ended_at 不延长计划截止。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "家庭季卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2026-05-20 <= 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-20 < 2026-08-20",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "2026-08-20 < 2026-08-25",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-20",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DQ10",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ10.json",
+        "output_sha256": "8078eddeff17e803fe3d6807c608a880d19eee41d669f94292117603b61edda4",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-fc1872d7324842e198f7016dc7293512/run.json",
+        "run_sha256": "a37c38ed34bf71d50824cf645c85ec892221d18f6f2da951eed6c609b1ef4a22",
+        "run_hash_matches_record": true,
+        "request_sha256": "55eb8fa92b1d9d350af5ff9143b1618e516a5cfd193dc95ba7e037b7dda14529",
+        "answer_sha256": "98ec14f2601eec090307f4e370234c03bd4db82241ec8d56f75fde7349a05a90",
+        "attempts_sha256": "f7282660f41cec5971e754fb284f7409557069a27d72f6a3befe8af18b19dca1",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DQ11",
+      "verdict": "pass_with_nonblocking_suggestion",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "pass_with_nonblocking_suggestion",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": null,
+        "decision_date": "2026-08-10",
+        "hypothetical_run_date": "2026-08-31"
+      },
+      "actual_answer": "在本题人工构造情境成立的前提下，这张家庭季卡在指定判定日 2026-08-10 有效。逐项依据如下：其一，产品范围：家庭季卡属于本期总部运营月报纳入的悦享年卡与家庭季卡范围，异业联名卡和体验卡不纳入；该口径只约束本期总部运营月报，依据 MSG-03848、MSG-03854 及《本期统计确认邮件》。其二，起算日期：权益从生效日期当天起有效，valid_from 为 2026-05-20，因此 2026-05-20 当天已进入有效期，2026-08-10 晚于该日。其三，计划结束日期：计划权益结束日期当天已无效，valid_until 为 2026-08-20，因此 2026-08-20 当天无效，而 2026-08-10 早于 2026-08-20，仍在计划有效期内。其四，提前终止：ended_at 为 null，按本期陈姐说明仅表示该记录没有提前终止，不等于无限期，仍受计划结束日期限制；因此没有提前终止使该卡在 2026-08-10 失效。其五，判定日：本题指定 decision_date 为 2026-08-10，资格应按该判定日检查；hypothetical_run_date 为 2026-08-31，只是假设运行日，不是本题判定日，不能替代 2026-08-10 作结论。若误以 2026-08-31 判断，则会因晚于计划结束日 2026-08-20 而无效，但本题结论按指定判定日 2026-08-10 为有效。上述端点规则来自陈姐 MSG-03886、MSG-03890、MSG-03888 的说明，正式规则文件、办理记录及生产或历史执行凭据尚未取得；本结论是人工构造情境下的推导，不是客户真实卡记录、生产核验或已执行查询。另需注意，本结论只判断这张卡在指定判定日的有效性；账户层面付费资格按“账户存在一张同时满足产品范围与有效期的卡”判断，多张有效卡不重复计账户，但本题未提供账户其他卡信息，因此不扩展判断账户整体资格。",
+      "expected_valid_independently_derived": true,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "按8月10日判断有效，明确排除8月31日运行日替代。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "家庭季卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2026-05-20 <= 2026-08-10",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-08-10 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "ended_at 为空，仅无提前终止，仍有计划截止",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-08-10，不替换为运行日 2026-08-31",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": true
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [],
+      "nonblocking_notes": [
+        {
+          "id": "N-SOURCE-SPLIT",
+          "kind": "source_precision",
+          "severity": "nonblocking",
+          "quote": "该口径只约束本期总部运营月报，依据 MSG-03848、MSG-03854 及《本期统计确认邮件》。",
+          "assessment": "此处引用紧随“只约束本期总部运营月报”，邮件确实支持本期月报统计范围；小林消息支持产品范围。全文可按不同来源分别支持邻近陈述理解，未明确称邮件列出两种产品，所以与四个直接挂在产品断言上的实例分级不同。仍建议拆开，避免读者误把邮件当产品清单来源。",
+          "suggestion": "卡产品范围引小林 MSG-03848/03854；邮件只引月末选账户、完整自然月及全渠道全门店的统计选择。"
+        },
+        {
+          "id": "N-ACCOUNT-CAVEAT",
+          "kind": "unasked_extension",
+          "severity": "nonblocking",
+          "quote": "但本题未提供账户其他卡信息，因此不扩展判断账户整体资格",
+          "assessment": "若已知此卡属于某账户，一张范围内有效卡已经足以支持该账户资格，不能把其他卡信息当必要条件。此题只问单卡有效性，回答前文也准确重述“存在一张”规则且明确判卡有效，故尾句歧义未改变本题结论，列非阻断而不据此宣称该表述正确。",
+          "suggestion": "改为“本题只判断这张卡；若它归属于某账户，该卡即可提供该判定日的资格依据，不能由此生成真实账户名单。”"
+        }
+      ],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DQ11",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ11.json",
+        "output_sha256": "2c80d19a4bdc03d999b98a2bd306bea8843a7996ca860195764db024f9cf5656",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-1812756a90134d9ea06d0e03c1f421cb/run.json",
+        "run_sha256": "acb4c696e722e978cec0e297aaeb0d53f9bcec5028bb1e07601e224c04a230a1",
+        "run_hash_matches_record": true,
+        "request_sha256": "035f9a4b754837f5e6209e328fb476460b85b410dbfeb516a31b3ca70143b721",
+        "answer_sha256": "8217e799a16760f09f8bb04897d4c9ed3cb73930f575e500c6cc64bdcd9aaccb",
+        "attempts_sha256": "f3086afd096895d35c56cfa289ab2eb6333808bf4a2e79213deb57b859561446",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    },
+    {
+      "id": "DQ12",
+      "verdict": "fail",
+      "date_logic_verdict": "pass",
+      "source_traceability_verdict": "fail",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-05-19"
+      },
+      "actual_answer": "结论：在这项人工构造情境成立的前提下，这张家庭季卡在判定日 2026-05-19 不具有付费资格，即不是有效卡。\n\n逐项日期依据：\n1. 产品范围：卡类型为“家庭季卡”，属于本期总部运营月报纳入的悦享年卡与家庭季卡范围；异业联名卡、体验卡不纳入。依据为业务模型第3节规则1及《本期统计确认邮件》所述本期范围。该口径只约束本期总部运营月报。\n2. 生效日期：valid_from 为 2026-05-20。按已说明的端点规则，权益在生效日期当天起有效；判定日 2026-05-19 早于生效日一天，因此判定日当天尚未生效。依据为业务模型第3节规则3及陈姐访谈 MSG-03886、03890、03888 的说明。\n3. 计划权益结束日期：valid_until 为 2026-08-20。按规则，计划结束日期当天已无效；判定日远早于该日，因此这一项不构成判定日无效的原因。\n4. 提前终止日期：ended_at 为 2026-08-15。按规则，存在提前终止日期时，从提前终止当天起无效；判定日 2026-05-19 早于该日，因此这一项也不构成判定日无效的原因。\n5. 空值解释不适用：本题提前终止日期非空，因此不需要使用“提前终止为空仅表示没有提前终止、仍受计划结束日期限制”的解释。\n\n综上，判定日无效的直接原因是判定日早于权益生效日期，而不是计划结束或提前终止。以上是基于题设日期和业务模型已说明规则的隔离情境推导，不是对客户真实卡记录或生产系统的查询结果；正式规则文件尚未取得，相关端点说明仍属本期材料与角色陈述范围。",
+      "expected_valid_independently_derived": false,
+      "actual_validity_conclusion_matches": true,
+      "manual_full_answer_assessment": "未到生效日；未来的计划结束及非空提前终止均不免除开始约束。",
+      "condition_checks": [
+        {
+          "condition": "product_in_scope",
+          "expression": "家庭季卡 属于本期纳入产品",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "start_inclusive",
+          "expression": "2026-05-20 <= 2026-05-19",
+          "expected_satisfied": false,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "planned_end_exclusive",
+          "expression": "2026-05-19 < 2026-08-20",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "early_end_exclusive_or_absent",
+          "expression": "2026-05-19 < 2026-08-15",
+          "expected_satisfied": true,
+          "actual_applied_correctly": true
+        },
+        {
+          "condition": "conjunction_and_historical_date",
+          "expression": "全部条件合取，使用指定判定日 2026-05-19",
+          "actual_applied_correctly": true
+        }
+      ],
+      "supporting_sources": [
+        {
+          "source_id": "lin",
+          "messages": [
+            "MSG-03848",
+            "MSG-03854"
+          ],
+          "supports": "本期产品范围"
+        },
+        {
+          "source_id": "chen",
+          "messages": [
+            "MSG-03886",
+            "MSG-03888",
+            "MSG-03890"
+          ],
+          "supports": "开始含、计划结束不含、提前终止不含、空值、指定判定日"
+        },
+        {
+          "source_id": "test_dictionary",
+          "section": "cards / 覆盖说明",
+          "supports": "物理日期字段、日期粒度和合成测试边界，不用作端点规则依据"
+        }
+      ],
+      "source_role_check": {
+        "date_rule_role_not_upgraded_to_it_or_policy": true,
+        "scope_only_current_report": true,
+        "unverified_policy_or_production_not_claimed_complete": true,
+        "document_attribution_correct": false
+      },
+      "scope_checks": {
+        "constructed_scenario_not_actual_record": true,
+        "no_query_or_production_execution_claim": true,
+        "no_extra_business_condition_changes_card_result": true,
+        "known_rule_used_despite_missing_formal_material": true,
+        "no_unauthorized_expansion_to_monthly_metric_result": true
+      },
+      "issues": [
+        {
+          "id": "SRC-04-PRODUCT",
+          "kind": "source_attribution",
+          "severity": "requires_revision",
+          "criteria": [
+            "C01",
+            "C06",
+            "C07",
+            "C10"
+          ],
+          "problem": "把《本期统计确认邮件》直接列为具体纳入卡产品的出处。04仅明确月末资格选账户、完整自然月、全渠道全门店等统计选择，且把卡产品范围和有效状态交运营与门店确认，没有列出悦享年卡或家庭季卡。",
+          "source_quote": "付费资格的卡产品范围和有效状态请向运营与门店确认，不能从等级或付款金额猜测。",
+          "correct_sources": [
+            "lin:MSG-03848",
+            "lin:MSG-03854"
+          ],
+          "why_blocking_for_full_answer": "本轮检查完整回答的来源可追溯性。产品结论有正确依据，不代表同段并列的错误文档归因可以被抵消；这不是简单少引一条来源。虽未明确宣称生产核验或正式制度已获批，仍形成错误证据路径，所以日期逻辑通过，完整回答需修订。",
+          "suggested_correction": "产品范围仅归于业务模型第3节规则1所引的小林 MSG-03848、MSG-03854；需要讲统计时点与窗口时再引用04。",
+          "requires_user_business_decision": false,
+          "date_logic_affected": false,
+          "actual_quote": "依据为业务模型第3节规则1及《本期统计确认邮件》所述本期范围"
+        }
+      ],
+      "nonblocking_notes": [
+        {
+          "id": "N-CARD-ACCOUNT",
+          "kind": "terminology",
+          "severity": "nonblocking",
+          "quote": "这张家庭季卡在判定日 2026-05-19 不具有付费资格，即不是有效卡",
+          "assessment": "付费资格是账户的派生属性，卡宜写有效或无效。后续全文明确只判该卡尚未生效，没有把单卡无效扩成整个账户无资格，所以术语问题本身非阻断。",
+          "suggestion": "改为“这张家庭季卡在判定日无效，不能据此卡取得账户资格”。"
+        }
+      ],
+      "requires_user_business_decision": false,
+      "protocol": {
+        "id": "DQ12",
+        "output_path": "artifacts/w03/date-boundary-qa-20261106/output/DQ12.json",
+        "output_sha256": "9ba7c056ede8506f4fd4204f04b35bb4dbbc1e536dda421fbf749bbb75dc95d7",
+        "run_path": "artifacts/w02/knowledge_runs/RUN-420c37a4c24a457b91b7bee1b9e68bbf/run.json",
+        "run_sha256": "a1bb8f6d5e944881fe7e6959f46c0d1eb66581dd7ac5c6e8673c5b9e5e60dc56",
+        "run_hash_matches_record": true,
+        "request_sha256": "82a2ade9131e6473c5c7a41b05021b2f7167725f06862e1febc630f6346adfa2",
+        "answer_sha256": "507d0f312075f6cb2c6473af77948d2658f2ac382851e07d1c4b1c4de464203d",
+        "attempts_sha256": "fa9f42011011a206c9cf0b441067335e7ffc9db0cdd77e831f5b627f3da1ec1b",
+        "native_check": "passed",
+        "status": "succeeded",
+        "mode": "live",
+        "fixture_unchanged": true,
+        "actual_answer_matches_native": true,
+        "request_matches_frozen": true,
+        "expected_empty": true,
+        "no_request_tools": true,
+        "all_attempts_match_frozen": true,
+        "attempt_count": 1,
+        "http_statuses": [
+          200
+        ],
+        "finish_reasons": [
+          "stop"
+        ]
+      }
+    }
+  ]
+}

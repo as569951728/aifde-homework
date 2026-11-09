@@ -1,0 +1,32 @@
+{
+  "case_id": "P04",
+  "started_at": "2026-11-06T17:08:28.031933+00:00",
+  "completed_at": "2026-11-06T17:08:37.180476+00:00",
+  "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "account": "A",
+    "tier": "金卡",
+    "cards_complete": true,
+    "cards": [
+      {
+        "card_type": "异业联名卡",
+        "state_on_decision_day": "有效",
+        "card_paid_cents": 10000
+      }
+    ]
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-af05f2fba9434dd7ac2c04c4f6cc6417/run.json",
+    "run_id": "RUN-af05f2fba9434dd7ac2c04c4f6cc6417",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "题设条件：这是人工构造的隔离测试情境；账户A为金卡，完整卡记录显示仅有一张异业联名卡，该卡在判定日状态为有效，购卡实付为10000分。\n\n依据：业务模型第3节规则1（小林 MSG-03848、03854）规定，本期总部月报只纳入悦享年卡与家庭季卡持有人，异业联名卡即使收费也由合作方经营，不属本期自营会员范围。规则2规定，付费资格要求同一张卡同时满足本期产品范围与判定日有效；会员等级与购卡实付金额不得代替卡类型和有效状态（MSG-03848、03866）。\n\n推导：账户A唯一的卡是异业联名卡，虽在判定日有效且已付费，但不满足本期总部月报的产品范围，不能构成该口径下的付费资格；金卡等级和实付金额不能补救。\n\n结论：在本期总部月报口径下，账户A于判定日无付费资格。该结论仅在此人工构造前提成立，不代表客户真实记录或生产核验结果。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "91a6379e7d1495e1628078948434ef5ede8aae83907ee10d8ecdcffb40228c7c"
+}

@@ -1,0 +1,222 @@
+{
+  "review_version": "review-v1",
+  "date": "2026-11-06",
+  "reviewer": "independent test agent w03_full_suite_reviewer",
+  "verdict": "needs_revision",
+  "review_scope": "78例完整模型测试设计、38指标覆盖计划及12维度计划；不含模型/查询执行和数值校验",
+  "reviewed_artifact": {
+    "path": "W03/实操工程/artifacts/w03/full-test-design-20261106/v1",
+    "version": "w03-full-test-design-v1",
+    "manifest_sha256": "525808e159f264f6412ccd7c7cded0e004aed981d0a7f4e4db4e63e7e8c6a46a",
+    "artifacts": {
+      "checks.json": "a417be52fcfae41618dca1c8f02cb914f90ed14fb7164abb534c6a2e3ba104d1",
+      "metric_common_plan.json": "0413fcdefce104513503188e4a5ddc6d9c2600408844a48a0aa52cb8afe53bac",
+      "metric_coverage_plan.json": "db9e6d6cbf271adceb2a03f27c9e21c59f45f1c78eaae4b4d3e6ca327298d0ff",
+      "metric_coverage_plan.md": "577644d0b303dfde657703e3314f0e5b86d14aaa2edd8f46a4f8566d848745b4",
+      "model_cases.md": "9ad5e7e232d3a20d0c3c8014434b44f31fe39536933228e36b0323802010d80a",
+      "model_coverage.json": "bb957b26fdc8f86b51a1a52a98f8ab13008726f8dece7acee252a59662df69a9",
+      "model_expectations.json": "43e27cc3a18dc49a4bed692e6e45cf2a29d3c644f5ae6e444389a4649c48bc6d",
+      "model_questions.json": "0528bc1940c10512ce3a933bf156516d6f2bc22015395331143812f04cfe191b",
+      "source_registry.json": "5fe992f1e7470e67169747bd5be361da801d20212656120c33d2c5e9ad36531d"
+    }
+  },
+  "independence": {
+    "criteria_path": "W03/实操工程/artifacts/w03/full-test-design-20261106/independent-review/independent_coverage.md",
+    "criteria_sha256": "1ac81752c9a42b7dffb0eb9a766110ca0a7599bee458ed2afd6bdebbff260a1a",
+    "criteria_formed_before_author_expectations": true
+  },
+  "verified": {
+    "design_artifact_hashes": "9/9 match",
+    "registered_source_hashes": "26/26 match",
+    "protected_files": "8539/8539 unchanged",
+    "question_ids": "78 unique; same order/set as 78 expectations",
+    "coverage_mapping": "20 IC categories; all 78 cases mapped; semantic gaps listed separately",
+    "metric_target_ids": "38/38 exactly match targets.json",
+    "dimension_target_ids": "12/12 exactly match dimension_targets.json",
+    "U01_U02_reuse": "Question and expectation objects exactly equal to first-batch freeze",
+    "execution_state": "All designed/planned/not_run; no execution claim found"
+  },
+  "findings": [
+    {
+      "id": "IR1-01",
+      "severity": "P2",
+      "title": "补齐实际使用来源的冻结登记",
+      "cases": [
+        "U01",
+        "U02",
+        "U04",
+        "U06"
+      ],
+      "location": "source_registry.json；model_questions.json:48；model_expectations.json:10、49、120",
+      "evidence": "U06实际输入了 W01/修订记录/20261106-W03新访谈修订/docs/w01/project_assessment.md；U01/U02/U04引用 before-extension/business_model-v0.4.md。两文件均未在 source_registry 中。前者是已采纳导师修订认识，不能与原访谈事实混为一类。",
+      "impact": "执行输入或预期依据可变化而来源注册表不反映；使冻结不足以复现。",
+      "minimum_fix": "把两文件路径、SHA256及证据性质加进注册表；旧快照标历史已采纳建模认识，项目判断标已采纳修订判断；保持U01/U02题目和预期对象不变即可。",
+      "basis": [
+        "独立准则 §3.2/3.3/3.9",
+        "model_expectations.json artifact_review_inputs"
+      ],
+      "discovered_by": "independent_review"
+    },
+    {
+      "id": "IR1-02",
+      "severity": "P2",
+      "title": "C05补上卡产品范围及判定日",
+      "cases": [
+        "C05"
+      ],
+      "location": "model_questions.json:570",
+      "evidence": "题干只给“一张本期已确认有效卡”，预期却要求“有资格”。异业联名卡也可以有效，但按本期口径不合格；日期也未明确是月末。",
+      "impact": "回答者保留未知具有合理依据，却可能被预期判错；题目把有效状态暗中当作纳入产品。",
+      "minimum_fix": "明确为“账户A在该月月末有一张已确认有效的悦享年卡（或家庭季卡），该月完整订单无有效购买”；再分别判断本期资格、购买、活跃。无需增加数值计算。",
+      "basis": [
+        "L MSG-03848、MSG-03854、MSG-03868",
+        "C MSG-03886",
+        "独立准则 IC-02/03/07"
+      ],
+      "discovered_by": "independent_review"
+    },
+    {
+      "id": "IR1-03",
+      "severity": "P2",
+      "title": "F08改为直接且准确的原文引用",
+      "cases": [
+        "F08"
+      ],
+      "location": "model_expectations.json:1498；model_cases.md F08",
+      "evidence": "所引W02小林二访MSG-01925讲助手诉求和权限，不是发放/核销区分；D7不存在“业务价值与验证边界”段落，也未陈述发放/核销规则。当前只有模型§2/§4是间接汇总。",
+      "impact": "测试结论大体正确，但以错段支撑会接受不可追溯的预期，不能只凭来源文件存在判通过。",
+      "minimum_fix": "引用 W2-interview-d70b1629... MSG-01648 与 W2-interview-c4fe490a... MSG-01752 的直接原话；经营效果边界可保留D7真实“范围评审安排”定位。无需向客户重问。",
+      "basis": [
+        "H-d70b1629 MSG-01648",
+        "H-c4fe490a MSG-01752",
+        "D7 范围评审安排",
+        "独立准则 IC-16/18"
+      ],
+      "discovered_by": "independent_review"
+    },
+    {
+      "id": "IR1-04",
+      "severity": "P2",
+      "title": "补非空提前终止分支中的开始边界及明确双卡组合",
+      "cases": [
+        "DY01–DY11",
+        "DQ01–DQ11",
+        "C01"
+      ],
+      "location": "model_questions.json:198起、530",
+      "evidence": "现有判定日早于valid_from的两题ended_at均为空；所有ended_at非空题的判定日均已到开始日。故“有ended_at时只比终止日、不查开始日”的错误在现有日期例上会全部得对。C01泛称两张合范围有效卡，未显式覆盖双年卡及年卡+季卡两种组合。",
+      "impact": "日期条件分支存在可逃逸错误；双卡去重的产品组合覆盖仍含糊。",
+      "minimum_fix": "两种产品分别加一例ended_at非空且判定日早于valid_from，预期无效并要求检查开始约束；将C01显式拆成双悦享年卡与悦享年卡+家庭季卡的重复计人/订单场景。",
+      "basis": [
+        "C MSG-03886、MSG-03888、MSG-03890",
+        "L MSG-03848、MSG-03854",
+        "独立准则 IC-04/05/06"
+      ],
+      "discovered_by": "author_self_check_independently_confirmed"
+    },
+    {
+      "id": "IR1-05",
+      "severity": "P2",
+      "title": "详细合同条款题应与模型正文测试分轨",
+      "cases": [
+        "A03",
+        "A04",
+        "A05",
+        "A06"
+      ],
+      "location": "model_questions.json:764起；model_expectations.json input/phase contracts",
+      "evidence": "这四题在model_only下要求详细费用、结算、变更、延期核查顺序；同套U06/T01又要求执行安排与阶段职责在流程/SOW表达，不强制全部复制进本体。",
+      "impact": "一个正确保持业务正文简洁、把合同细节留在SOW/记录的模型可能被扣分，反而诱导将合同细节塞进正文。",
+      "minimum_fix": "A03–A06改为附冻结王经理原访谈的source/fixed-material应用轨道，结果单列；A01可保留模型角色/阶段关系题，但“客户提供/交付方准备”详细材料清单允许在关联阶段文件表达，或将该详细断言拆到来源应用题。A02权限边界可继续model_only。",
+      "basis": [
+        "A 第5步、第12步",
+        "W MSG-03919、MSG-03923–03931",
+        "独立准则 IC-10/19/20"
+      ],
+      "discovered_by": "author_self_check_independently_confirmed"
+    },
+    {
+      "id": "IR1-06",
+      "severity": "P2",
+      "title": "完整模型覆盖尚漏若干明确旧边界和当前分母更新",
+      "cases": [
+        "U02",
+        "F04",
+        "F08",
+        "R05",
+        "T03",
+        "REG01",
+        "REG02"
+      ],
+      "location": "model_coverage.json IC-02/11/14/16；相关题及预期",
+      "evidence": "泛化T03“保留关系/权限”及REG分项未明确检查：①付费/免费在系统绝对互斥是学员判断未核，不可把“不具本期资格”当免费类别的充分条件；②发放对象不能直接推出允许使用对象，具体优惠适用限制仍待核；③导购注册指标存在，但考核口径与最终责任未知，王经理转问小林不等于小林已能确认；④月内复购分母已由全部注册会员改为同月有效购买账户。R05只测一单/跨月，B05只测零分母，不能分辨旧分母错误。",
+      "impact": "模型即使新增上述错误仍可能通过所有逐题必要断言，不能把这些内容算在“完整已知业务要求覆盖”内。",
+      "minimum_fix": "补聚焦题或在相应题增加明确子问与独立断言，至少对四条各有能区分错误的输入；分母题可用人工三账户（购买0/1/2笔）或直接选择应纳入分母的人群。保留建模判断与客户事实性质，勿补造考核负责人。",
+      "basis": [
+        "B §2会员行、§4.2、§4.5",
+        "H MSG-01685、01824、01907",
+        "D3 开头当前调整及月内复购率",
+        "独立准则 IC-02/11/14/16"
+      ],
+      "discovered_by": "independent_review"
+    },
+    {
+      "id": "IR1-07",
+      "severity": "P2",
+      "title": "六项指标计划需显式继承完整资格边界",
+      "cases": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_sales_cents",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_avg_order_value"
+      ],
+      "location": "metric_coverage_plan.json:1578起；metric_common_plan.json",
+      "evidence": "六项逐行已写月末/购买时点、多卡及退款等，但未列两类产品、两类排除产品、开始/计划结束/提前终止各端点、空终止仍受计划期限制等共同构建边界。20个judge控制只检比较器，不检资格转换；78个模型题通过也不能证明指标资格逻辑正确。",
+      "impact": "后续仅按当前指标计划实施，仍可能漏掉指标构建中的产品/日期转换错误；模型语义测试不可替代数值/成员归属校验。",
+      "minimum_fix": "在metric_common_plan加“六项共享资格测试族”并由六行明确引用：产品与金额/等级替代、各日期端点含非空终止开始前、空终止、任一卡/跨卡条件不能拼接、双卡去重、月底/购买日双向；后续独立记录入选账户/订单及总值。这里只补计划与连接关系，不计算数值或运行。",
+      "basis": [
+        "A 第10–11步",
+        "D4/D5",
+        "L MSG-03848/03854",
+        "C MSG-03886/03890",
+        "独立准则 §4付费六项"
+      ],
+      "discovered_by": "independent_review"
+    }
+  ],
+  "model_coverage_summary": {
+    "covered": "业务目标、账户卡关系、等级与资格、产品范围、两种卡基本日期边界、双向月末/购买时点、流程权限、证据分级、阶段责任均已有实质案例",
+    "needs_revision_criteria": [
+      "IC-02",
+      "IC-04",
+      "IC-05",
+      "IC-06",
+      "IC-10",
+      "IC-11",
+      "IC-14",
+      "IC-16",
+      "IC-18",
+      "IC-20"
+    ],
+    "note": "需修订含部分覆盖或方法问题，不表示上述类别完全未覆盖。"
+  },
+  "metric_plan_verdict": {
+    "38_ids": "complete",
+    "12_dimensions": "complete; candidate mappings reasonable at plan stage",
+    "semantics": "order definitions, ratios, first purchase ordering, monthly/full-scope constraints, independent expected/judge/scale separation substantially correct",
+    "remaining": "IR1-07 shared paid qualification family; does not require numeric expected now"
+  },
+  "human_decisions": [],
+  "human_decisions_reason": "全部发现可据现有来源修复；未发现必须由用户选择的同范围事实冲突。生产凭据/正式验收人/费用仍可保留未知，不阻塞本次设计。",
+  "not_performed": [
+    "No paid/model API calls",
+    "No model question execution",
+    "No metric query or result verification",
+    "No full numeric expected generation",
+    "No Skill/judge implementation",
+    "No edit to v1, business model, engineering config or historical submitted artifacts"
+  ],
+  "next_step": "主Agent另版修复以上设计后再冻结复审；v1及旧评分保留。"
+}

@@ -1,0 +1,115 @@
+{
+  "product_version": "0.2.0-w1",
+  "runtime_revision": "w01-runtime-20260922",
+  "session_id": "9f68681a-5814-4e2a-a5f4-06984e6f6144",
+  "model_mode": "live",
+  "model_name": "deepseek-flash",
+  "prompt_sha256": "1cb83a9badfe1d7a2e0a7ac4da0cc4421200b7db50e3a699abaab6e3cd90a9dc",
+  "status": "completed",
+  "result": {
+    "status": "completed",
+    "summary": "2026年8月青禾月末付费会员购买人数为6个账户；月末付费会员净销售额为47,550分，即475.50元。统计范围为2026年8月完整自然月、全门店、全渠道：人数按CRM会员账户计数，仅纳入月末仍符合悦享年卡或家庭季卡付费资格、且当月有有效订单的账户，同一账户多卡不重复；净销售额为这些账户当月有效订单实付金额减退款后的合计。结果未按门店分组。",
+    "recommendations": [],
+    "evidence_ids": [
+      "082fc9f8-3b52-44d5-84b2-37addd9c0d8a"
+    ],
+    "metric_query": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "monthly_paid_buyer_count",
+          "monthly_paid_sales_cents"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "sql": "SELECT\n  SUM(CASE WHEN case when is_paid_eligible then member_id end IS NOT NULL THEN 1 ELSE 0 END) AS monthly_paid_buyer_count\n  , SUM(case when is_paid_eligible then net_sales_cents else 0 end) AS monthly_paid_sales_cents\nFROM \"data\".\"main\".\"monthly_paid_member_summary\" monthly_paid_member_summary_src_10000\nWHERE DATE_TRUNC('month', month_start) BETWEEN '2026-08-01' AND '2026-08-31'",
+      "columns": [
+        "monthly_paid_buyer_count",
+        "monthly_paid_sales_cents"
+      ],
+      "rows": [
+        [
+          6,
+          47550
+        ]
+      ],
+      "seconds": 0.03,
+      "units": {
+        "monthly_paid_buyer_count": "count",
+        "monthly_paid_sales_cents": "cents"
+      },
+      "data_version": "qinghe-w03-20260923-small",
+      "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+      "answer": "2026年8月青禾月末付费会员购买人数为6个账户；月末付费会员净销售额为47,550分，即475.50元。统计范围为2026年8月完整自然月、全门店、全渠道：人数按CRM会员账户计数，仅纳入月末仍符合悦享年卡或家庭季卡付费资格、且当月有有效订单的账户，同一账户多卡不重复；净销售额为这些账户当月有效订单实付金额减退款后的合计。结果未按门店分组。",
+      "question": "请列出2026年8月青禾优选月末付费会员购买人数和月末付费会员净销售额（单位分）。",
+      "trace_id": "082fc9f8-3b52-44d5-84b2-37addd9c0d8a",
+      "elapsed_seconds": 8.408,
+      "model_usage": {
+        "prompt_tokens": 12735,
+        "completion_tokens": 743,
+        "total_tokens": 13478
+      },
+      "model_calls_with_usage": 2
+    }
+  },
+  "observations": [
+    {
+      "name": "query_metrics",
+      "result": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_paid_buyer_count",
+            "monthly_paid_sales_cents"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(CASE WHEN case when is_paid_eligible then member_id end IS NOT NULL THEN 1 ELSE 0 END) AS monthly_paid_buyer_count\n  , SUM(case when is_paid_eligible then net_sales_cents else 0 end) AS monthly_paid_sales_cents\nFROM \"data\".\"main\".\"monthly_paid_member_summary\" monthly_paid_member_summary_src_10000\nWHERE DATE_TRUNC('month', month_start) BETWEEN '2026-08-01' AND '2026-08-31'",
+        "columns": [
+          "monthly_paid_buyer_count",
+          "monthly_paid_sales_cents"
+        ],
+        "rows": [
+          [
+            6,
+            47550
+          ]
+        ],
+        "seconds": 0.03,
+        "units": {
+          "monthly_paid_buyer_count": "count",
+          "monthly_paid_sales_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+        "answer": "2026年8月青禾月末付费会员购买人数为6个账户；月末付费会员净销售额为47,550分，即475.50元。统计范围为2026年8月完整自然月、全门店、全渠道：人数按CRM会员账户计数，仅纳入月末仍符合悦享年卡或家庭季卡付费资格、且当月有有效订单的账户，同一账户多卡不重复；净销售额为这些账户当月有效订单实付金额减退款后的合计。结果未按门店分组。",
+        "question": "请列出2026年8月青禾优选月末付费会员购买人数和月末付费会员净销售额（单位分）。",
+        "trace_id": "082fc9f8-3b52-44d5-84b2-37addd9c0d8a",
+        "elapsed_seconds": 8.408,
+        "model_usage": {
+          "prompt_tokens": 12735,
+          "completion_tokens": 743,
+          "total_tokens": 13478
+        },
+        "model_calls_with_usage": 2
+      },
+      "call_id": "call_00_hrJA1ZwfmtZnzLRAjEFw6136"
+    }
+  ],
+  "steps": 1,
+  "output_repairs": 0,
+  "usage": {
+    "prompt_tokens": 15451,
+    "completion_tokens": 828,
+    "total_tokens": 16279
+  },
+  "trace_id": "675a34af46503551388ab017de426570"
+}

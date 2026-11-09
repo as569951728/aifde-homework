@@ -1,0 +1,45 @@
+[
+  {
+    "id": "B5-H01",
+    "question": "2026年8月青禾优选的观测期首购会员数、观测期首单净销售额（单位分）、观测期首单数和观测期后续购买订单数分别是多少？",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "rows": [
+        [
+          5,
+          12800,
+          5,
+          22
+        ]
+      ],
+      "units": {
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count"
+      },
+      "data_version": "qinghe-w03-20260923-small",
+      "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+      "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
+    },
+    "expected_source": "独立CSV核算；由B5-N01同窗结果拆分（该题已通过）：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单；数据qinghe-w03-20260923-small，Asia/Shanghai [2026-08-01,2026-09-01)。首购按账户全历史首笔有效单判定，首单明细O0000011=3000、O0000019=1900、O0000036=2500、O0000038=2600、O0000041=2800，合计12800分，5个账户5笔；其余有效单22笔。不含注册数（该窗注册0人）与有效订单总数，故与B5-N01列不同但值一致。"
+  }
+]

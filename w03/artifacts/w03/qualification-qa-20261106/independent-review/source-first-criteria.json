@@ -1,0 +1,383 @@
+{
+  "title": "青禾 W03 首批17题独立来源优先判据",
+  "created_at": "2026-11-06T15:02:51.792940+00:00",
+  "reviewer": "/root/w03_qualification_qa_reviewer",
+  "independence": "创建并保存本文件前只读取项目 AGENTS、17题题面及原始来源，未读取 model_expectations.json、第三稿正文、作者示范或实际输出；不使用旧静态审查结论作为实际QA证据。",
+  "scope": [
+    "U02",
+    "U03",
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06"
+  ],
+  "question_file": "artifacts/w03/model-input-preflight-20261106/effective_tests/model_questions.json",
+  "question_sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+  "source_manifest": [
+    {
+      "key": "DICT",
+      "path": "materials/w03/05_数据字典.md",
+      "sha256": "b4c905ae6d2f4c08e139c695a2868b66ee5047b2b8ea94d6eccba55aebb79c16"
+    },
+    {
+      "key": "ORDERS",
+      "path": "materials/w03/01_订单日报说明.md",
+      "sha256": "976fa129493e6bd2861a58d74df2ba3ad4448ea01a2d25651124222a61cebb67"
+    },
+    {
+      "key": "FINANCE",
+      "path": "materials/w03/02_财务邮件.md",
+      "sha256": "f81e0ddb5c03dd4eb2d01094816716d8375d03fe883b947ec8297edf8d525557"
+    },
+    {
+      "key": "MONTH",
+      "path": "materials/w03/04_本期统计确认邮件.md",
+      "sha256": "c4f847fd90fd0765d37ad22f20d4a4eb0bab90f8543ae0f05d7a3cbee104c4be"
+    },
+    {
+      "key": "LIN3",
+      "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+      "sha256": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71"
+    },
+    {
+      "key": "CHEN3",
+      "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+      "sha256": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308"
+    },
+    {
+      "key": "ZHOU2",
+      "path": "artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-c4fe490a-ddae-5bcb-a51b-f44dd796b854-transcript.json",
+      "sha256": "3cda76145150cd3f01b51307972d081784cf86d351cb4ec1bb5c8f89663feea4"
+    }
+  ],
+  "source_boundaries": [
+    "合成数据字典和人工fixture不能当客户真实记录。",
+    "本期总部月报规则不推广全历史、合作方及全系统。",
+    "小林产品范围与陈姐执行日期口径分别归属原回答；日期规则文件及历史凭据仍待核。",
+    "不采用废弃 W04；个人Excel和FDE费用/交付不写业务正文。",
+    "本次是模型实际问答审查，不是38项指标运行、客户验收或正式apply。"
+  ],
+  "grading": {
+    "pass": "主体、对象关系、结论、必要理由、作用范围和来源相容，所有题面核心要求均满足。允许等价表述，不依赖关键词。",
+    "needs_revision": "确定结论错误、核心要求遗漏、引用不支持断言或混淆范围/证据性质。",
+    "indeterminate": "实际答复无法取得/截断或原始证据确有无法解决的冲突；题目本身要求答未知而答对的应pass，不记indeterminate。",
+    "citations": "逐条核实关键断言指向的来源/消息是否支持；若回答引用模型段落，待拿到冻结模型后追至来源。不得伪造出处或以总数正确掩盖错误身份关系。"
+  },
+  "cases": [
+    {
+      "id": "U02",
+      "expected_conclusion": "账户、卡、等级、资格、活跃、购买记录和复购率分属身份、产品/记录、属性、时点状态、未定业务概念、行为及统计指标，不能合并。",
+      "required_reasoning": [
+        "账户是 CRM 账户，不能等同跨系统自然人；卡归属于账户且可多卡；等级为普通/银卡/金卡，独立于资格。",
+        "本期资格=账户至少有一张悦享年卡或家庭季卡在判定日有效，不以等级和购卡支付金额判断。",
+        "有效购买基于 paid 且实付减累计退款>0；创建订单、购买记录不自动等于有效购买。",
+        "活跃需另有行为、时间窗和统计定义，目前未核实，不能从有资格/有购买/无购买推出。",
+        "复购率是统计指标：本期月末付费复购人数/本期月末付费购买人数，复购人数是月末有资格且同月至少两笔有效订单的不同账户，零分母未定义；不能等同历史四季度复购指标。",
+        "给出至少一个明确假设的同一账户组合例，说明不能相互推出的状态，例如普通等级、有效纳入卡、有资格但当月无有效购买，活跃未知。"
+      ],
+      "disallowed_or_failure_modes": [
+        "将等级=资格=活跃；假设有卡就有购买；把月报复购率泛化为全公司历史口径；将无购买判作不活跃。"
+      ],
+      "source_refs": [
+        "DICT 各表",
+        "ORDERS 有效订单/购买会员数",
+        "FINANCE",
+        "MONTH 六指标",
+        "LIN3 MSG-03847–03870",
+        "ZHOU2 MSG-01741–01746,01753–01754"
+      ],
+      "unknown_or_boundary": "已知本期月报复购率；未确认历史复购率和活跃定义。示例仅为假设。"
+    },
+    {
+      "id": "U03",
+      "expected_conclusion": "账户可有多卡、多订单；卡/订单各归一个账户；订单成交店B与账户归属店A不同。现有关系不足以确定订单用哪张卡。",
+      "required_reasoning": [
+        "账户到卡、订单均为一对多，可能没有；一个卡/订单记录通过 member_id 对应一个账户。",
+        "账户通过 home_store_id 归属一店，门店可对应多账户；订单通过 store_id 成交于一店，门店可对应多订单。",
+        "按成交门店统计购买归 B，不用会员归属 A 替换。",
+        "orders 未提供 card_id 或订单用卡关系；同账户关系不能反推订单使用具体卡；需要明确用卡关联记录及字段定义。"
+      ],
+      "disallowed_or_failure_modes": [
+        "一账户只能一卡；将订单归属门店改成账户归属门店；通过账户任挑一卡推定用卡；把自然人当账户。"
+      ],
+      "source_refs": [
+        "DICT orders/members/cards/stores"
+      ],
+      "unknown_or_boundary": "限定合成测试数据字典，不外推生产 CRM 完整关系；无订单用卡映射。"
+    },
+    {
+      "id": "P01",
+      "expected_conclusion": "有本期付费资格",
+      "required_reasoning": [
+        "悦享年卡在判定日已确认有效，普通等级不阻止资格",
+        "完整卡记录且有效状态已给定，不要求再核对日期才能回答；限定本期总部月报。"
+      ],
+      "disallowed_or_failure_modes": [
+        "因普通等级而排除",
+        "把资格判断偷换成当月付费购买人数；编造客户事实。"
+      ],
+      "source_refs": [
+        "LIN3 MSG-03847–03854,03866–03870",
+        "DICT cards",
+        "MONTH"
+      ],
+      "unknown_or_boundary": "不把题内人工情境当作真实客户记录。"
+    },
+    {
+      "id": "P02",
+      "expected_conclusion": "有本期付费资格",
+      "required_reasoning": [
+        "家庭季卡在判定日已确认有效，普通等级不阻止资格",
+        "完整卡记录且有效状态已给定，不要求再核对日期才能回答；限定本期总部月报。"
+      ],
+      "disallowed_or_failure_modes": [
+        "漏掉家庭季卡",
+        "把资格判断偷换成当月付费购买人数；编造客户事实。"
+      ],
+      "source_refs": [
+        "LIN3 MSG-03847–03854,03866–03870",
+        "DICT cards",
+        "MONTH"
+      ],
+      "unknown_or_boundary": "不把题内人工情境当作真实客户记录。"
+    },
+    {
+      "id": "P03",
+      "expected_conclusion": "无本期付费资格",
+      "required_reasoning": [
+        "完整记录唯一悦享年卡已失效；金卡等级和正购卡金额不补足有效状态",
+        "完整卡记录且有效状态已给定，不要求再核对日期才能回答；限定本期总部月报。"
+      ],
+      "disallowed_or_failure_modes": [
+        "以金卡等级/已付款判有资格",
+        "把资格判断偷换成当月付费购买人数；编造客户事实。"
+      ],
+      "source_refs": [
+        "LIN3 MSG-03847–03854,03866–03870",
+        "DICT cards",
+        "MONTH"
+      ],
+      "unknown_or_boundary": "不把题内人工情境当作真实客户记录。"
+    },
+    {
+      "id": "P04",
+      "expected_conclusion": "无本期付费资格",
+      "required_reasoning": [
+        "完整记录唯一异业联名卡不在本期范围；有效、金卡等级和正金额不改变排除",
+        "完整卡记录且有效状态已给定，不要求再核对日期才能回答；限定本期总部月报。"
+      ],
+      "disallowed_or_failure_modes": [
+        "将任何收费有效卡纳入",
+        "把资格判断偷换成当月付费购买人数；编造客户事实。"
+      ],
+      "source_refs": [
+        "LIN3 MSG-03847–03854,03866–03870",
+        "DICT cards",
+        "MONTH"
+      ],
+      "unknown_or_boundary": "不把题内人工情境当作真实客户记录。"
+    },
+    {
+      "id": "P05",
+      "expected_conclusion": "无本期付费资格",
+      "required_reasoning": [
+        "体验卡不纳入本期；排除理由是产品范围，不是只因零金额或普通等级",
+        "完整卡记录且有效状态已给定，不要求再核对日期才能回答；限定本期总部月报。"
+      ],
+      "disallowed_or_failure_modes": [
+        "只用金额为零解释，形成错误规则",
+        "把资格判断偷换成当月付费购买人数；编造客户事实。"
+      ],
+      "source_refs": [
+        "LIN3 MSG-03847–03854,03866–03870",
+        "DICT cards",
+        "MONTH"
+      ],
+      "unknown_or_boundary": "不把题内人工情境当作真实客户记录。"
+    },
+    {
+      "id": "P06",
+      "expected_conclusion": "有本期付费资格",
+      "required_reasoning": [
+        "家庭季卡有效即满足；不能用零购卡实付新增排除条件",
+        "完整卡记录且有效状态已给定，不要求再核对日期才能回答；限定本期总部月报。"
+      ],
+      "disallowed_or_failure_modes": [
+        "以未付钱或零金额排除",
+        "把资格判断偷换成当月付费购买人数；编造客户事实。"
+      ],
+      "source_refs": [
+        "LIN3 MSG-03847–03854,03866–03870",
+        "DICT cards",
+        "MONTH"
+      ],
+      "unknown_or_boundary": "不把题内人工情境当作真实客户记录。"
+    },
+    {
+      "id": "P07",
+      "expected_conclusion": "信息不足，不能判断有/无本期资格。",
+      "required_reasoning": [
+        "等级不是资格；需要账户的卡类型及判定日有效状态，并区分卡记录缺失与完整表无卡。",
+        "若从日期判断，需 valid_from/valid_until/ended_at 和判定日；本期月报取自然月月末。"
+      ],
+      "disallowed_or_failure_modes": [
+        "按金卡判有；因未提供卡判无。"
+      ],
+      "source_refs": [
+        "LIN3 MSG-03848,03854",
+        "CHEN3 MSG-03885–03890",
+        "MONTH"
+      ],
+      "unknown_or_boundary": "缺卡记录/判定状态，不能用默认否代替未知。"
+    },
+    {
+      "id": "P08",
+      "expected_conclusion": "不能直接推广。",
+      "required_reasoning": [
+        "限定本期总部运营月报，自营产品仅悦享年卡/家庭季卡。",
+        "历史及合作方报表须取得各自统计对象、产品纳入范围、有效期/资格时点、适用期间及来源确认后再用；可与运营/报表责任人及 IT 核对规则和数据。"
+      ],
+      "disallowed_or_failure_modes": [
+        "一套规则全报表通用；认定历史或合作方一定采用相反规则。"
+      ],
+      "source_refs": [
+        "LIN3 MSG-03847–03854",
+        "MONTH",
+        "ZHOU2 MSG-01753–01754"
+      ],
+      "unknown_or_boundary": "其他报表规则未知；不得以本期排除推断全系统属性。"
+    },
+    {
+      "id": "P09",
+      "expected_conclusion": "两项都不能确定：本期无资格≠全系统免费；两类说法不证明全系统绝对互斥。",
+      "required_reasoning": [
+        "本期排除异业联名卡只约束报表；联名卡可能收费、由合作方经营。",
+        "会员体系存在两类描述、需分开核对，但系统分类标准、标签实际含义、重叠/转换和去重关系未确认。",
+        "后续找运营与 IT 按系统规则、实际记录及时间状态核实，不自行定互斥或必然重叠。"
+      ],
+      "disallowed_or_failure_modes": [
+        "把本期不纳入映射成免费；把两类存在解释为绝对互斥；断言必然重叠。"
+      ],
+      "source_refs": [
+        "LIN3 MSG-03847–03848",
+        "ZHOU2 MSG-01741–01746"
+      ],
+      "unknown_or_boundary": "系统分类映射及重叠未知，不需要把已有来源可解决的报表边界交用户裁决。"
+    },
+    {
+      "id": "C01",
+      "expected_conclusion": "1 个有资格账户，2 笔不同有效订单。",
+      "required_reasoning": [
+        "两张有效悦享年卡使 A 满足存在至少一张纳入且有效卡的条件；资格归账户。",
+        "先从卡得到去重的合资格 member_id（或 EXISTS/半连接），再关联订单；订单按 order_id 保持一行一单。",
+        "避免 cards×orders 导致 2×2=4 行后累计订单/金额；不能为了去重丢掉 O1/O2 中任一笔。"
+      ],
+      "disallowed_or_failure_modes": [
+        "按卡数算2人；算4订单；不同卡品种分别累计再相加；任意去掉一笔有效订单。"
+      ],
+      "source_refs": [
+        "DICT cards/orders",
+        "LIN3 MSG-03853–03854",
+        "CHEN3 MSG-03886,03888,03890",
+        "MONTH"
+      ],
+      "unknown_or_boundary": "题目明确两笔有效订单，此处回答人工关系情境，不宣称已完成指标数值测试。"
+    },
+    {
+      "id": "C02",
+      "expected_conclusion": "有本期付费资格。",
+      "required_reasoning": [
+        "家庭季卡已有效满足同卡产品+状态条件；失效悦享卡及异业联名卡不抵消已满足的资格；A只算一账户。"
+      ],
+      "disallowed_or_failure_modes": [
+        "要求所有卡有效或全都纳入；排除家庭季卡。"
+      ],
+      "source_refs": [
+        "LIN3 MSG-03853–03854",
+        "CHEN3 MSG-03886"
+      ],
+      "unknown_or_boundary": "不把题内人工情境当作真实客户记录。"
+    },
+    {
+      "id": "C03",
+      "expected_conclusion": "不能合并条件，A无本期资格。",
+      "required_reasoning": [
+        "失效悦享卡仅满足产品范围，有效联名卡仅满足状态；必须存在同一张卡同时满足产品纳入与判定日有效，完整记录中没有。"
+      ],
+      "disallowed_or_failure_modes": [
+        "跨卡拼接产品和有效条件；误判有资格或没有任何卡。"
+      ],
+      "source_refs": [
+        "LIN3 MSG-03848,03853–03854",
+        "CHEN3 MSG-03886"
+      ],
+      "unknown_or_boundary": "不把题内人工情境当作真实客户记录。"
+    },
+    {
+      "id": "C04",
+      "expected_conclusion": "完整卡表确认无卡则无本期资格；未提供卡表则未知。",
+      "required_reasoning": [
+        "第一种可确认没有任何满足条件的卡；第二种缺证据，不能推成无卡/无资格。",
+        "本期无资格不能自动判成全系统免费注册类别。"
+      ],
+      "disallowed_or_failure_modes": [
+        "两种一律否或未知；推断账户不存在；免费分类过度推断。"
+      ],
+      "source_refs": [
+        "LIN3 MSG-03853–03854",
+        "DICT cards",
+        "ZHOU2 MSG-01741–01746"
+      ],
+      "unknown_or_boundary": "不把题内人工情境当作真实客户记录。"
+    },
+    {
+      "id": "C05",
+      "expected_conclusion": "2026年8月月末有付费资格；当月无有效购买；活跃未知。",
+      "required_reasoning": [
+        "悦享年卡月末有效满足资格；完整订单记录无有效购买明确否定购买。",
+        "该账户不进入月末付费会员购买人数，但这不取消其资格。",
+        "活跃定义未确认，不能从无购买判不活跃，不能从资格判活跃。"
+      ],
+      "disallowed_or_failure_modes": [
+        "把资格与付费购买人数混淆；无购买所以无资格或不活跃；有卡所以活跃。"
+      ],
+      "source_refs": [
+        "MONTH",
+        "ORDERS",
+        "LIN3 MSG-03867–03870",
+        "ZHOU2 MSG-01745–01746"
+      ],
+      "unknown_or_boundary": "仅在题设月份和完整人工记录内判断；不把零购买外推历史或全渠道生产记录。"
+    },
+    {
+      "id": "C06",
+      "expected_conclusion": "1 个有资格账户，2 笔不同有效订单。",
+      "required_reasoning": [
+        "有效悦享年卡和有效家庭季卡使 A 满足存在至少一张纳入且有效卡的条件；资格归账户。",
+        "先从卡得到去重的合资格 member_id（或 EXISTS/半连接），再关联订单；订单按 order_id 保持一行一单。",
+        "避免 cards×orders 导致 2×2=4 行后累计订单/金额；不能为了去重丢掉 O1/O2 中任一笔。"
+      ],
+      "disallowed_or_failure_modes": [
+        "按卡数算2人；算4订单；不同卡品种分别累计再相加；任意去掉一笔有效订单。"
+      ],
+      "source_refs": [
+        "DICT cards/orders",
+        "LIN3 MSG-03853–03854",
+        "CHEN3 MSG-03886,03888,03890",
+        "MONTH"
+      ],
+      "unknown_or_boundary": "题目明确两笔有效订单，此处回答人工关系情境，不宣称已完成指标数值测试。"
+    }
+  ]
+}

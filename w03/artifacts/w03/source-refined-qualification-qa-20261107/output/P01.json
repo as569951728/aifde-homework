@@ -1,0 +1,32 @@
+{
+  "case_id": "P01",
+  "started_at": "2026-11-06T17:08:14.977147+00:00",
+  "completed_at": "2026-11-06T17:08:22.513662+00:00",
+  "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "account": "A",
+    "tier": "普通",
+    "cards_complete": true,
+    "cards": [
+      {
+        "card_type": "悦享年卡",
+        "state_on_decision_day": "有效",
+        "card_paid_cents": 10000
+      }
+    ]
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-038cd311248b45e4bf621421d6585104/run.json",
+    "run_id": "RUN-038cd311248b45e4bf621421d6585104",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "结论：在题设人工构造情境下，账户A在判定日有付费资格。\n\n理由：本期总部运营月报只纳入悦享年卡与家庭季卡持有人；A的完整卡记录中有一张悦享年卡，且题设明确该卡在判定日状态为“有效”。按同一张卡需同时满足产品范围与有效期的规则，账户只要存在一张符合本期范围且在判定日有效的卡，即具备付费资格；多张有效卡也不重复计账户。会员等级“普通”和购卡实付金额不能代替卡类型与有效状态，故不影响结论。依据：小林 MSG-03848、03854（本期产品范围与账户资格）；陈姐 MSG-03886、03888、03890（有效期检查与账户归并）。这是基于题设完整记录的情境推导，不是客户真实记录或已执行查询；题设未给具体判定日期，因此未独立按日期端点重算，仅采用题设“判定日有效”的给定状态。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "a55143f2232a7a5f477e8b0379a0b2ea923f90c507ce3ea3dee82802829e3161"
+}

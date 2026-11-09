@@ -1,0 +1,28 @@
+{
+  "runs": [
+    {
+      "id": "qinghe-v3",
+      "input": "inputs/qinghe.json",
+      "method": "inputs/v3.md"
+    },
+    {
+      "id": "qinghe-v6.1",
+      "input": "inputs/qinghe.json",
+      "method": "inputs/v6.1.md"
+    },
+    {
+      "id": "transfer-v3",
+      "input": "inputs/transfer.json",
+      "method": "inputs/v3.md"
+    },
+    {
+      "id": "transfer-v6.1",
+      "input": "inputs/transfer.json",
+      "method": "inputs/v6.1.md"
+    }
+  ],
+  "limit": "4条链，各审查一次、明确测试反馈后整合一次；失败保留。不在本轮继续改Skill叠提示。",
+  "runner_sha256": "ca54b46d6023d125752339343c4b67a69adbb52b6dbe5498883274ac3f6dca9a",
+  "formal_apply": false,
+  "protocol_fix": "Scripted prior assistant tool calls need an empty reasoning_content wire field; original HTTP400 retained in parent. No Skill/input/criteria changes."
+}

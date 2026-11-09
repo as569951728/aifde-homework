@@ -1,0 +1,20 @@
+{
+  "case_id": "C04",
+  "started_at": "2026-11-06T15:14:46.550935+00:00",
+  "completed_at": "2026-11-06T15:14:51.901762+00:00",
+  "question": "已确认本期完整卡表中A没有任何卡记录，是否有本期付费资格？这与卡表未提供有何不同？",
+  "fixture": null,
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-0ebf562a1daf4d8e97f6547c8c2114b0/run.json",
+    "run_id": "RUN-0ebf562a1daf4d8e97f6547c8c2114b0",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "在题设“已确认本期完整卡表完整，且账户A在该卡表中没有任何卡记录”成立的前提下，按本期模型可推导：A不具有本期总部运营月报口径下的付费资格。理由是付费资格要求账户在给定业务范围和判定日存在一张同时满足产品范围与有效期的卡；A没有任何卡记录，就不存在这样的卡。该结论是情境推导，不等于已查询客户生产系统。\n\n这与“卡表未提供”不同：卡表未提供时，缺少判断A有无卡及是否符合产品范围、有效期的依据，不能据此认定A无资格，也不能认定有资格；缺失信息不等于“无卡”。而题设已确认完整卡表且A无记录，才可推出不存在符合条件的卡。会员等级、购卡实付金额不能代替卡类型与有效状态；也不能因A无卡而推断其自然人身份或其他期间资格。依据为《数据字典》账户—卡关系及模型第2、3节关于派生付费资格、本期产品范围和资格判定方式的规则（MSG-03848、03854、03886、03888、03890）。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "5d81b91830eb9f751f003aff3ca84e3dfafb1dc860c037d15229ace968d57e0a"
+}

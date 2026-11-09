@@ -1,0 +1,87 @@
+{
+  "version": "w03-understanding-first-batch-v0.1",
+  "date": "2026-11-06",
+  "status": "mentor_reviewed_prepared_for_execution",
+  "audience": "reviewer_only",
+  "path_base": "AIFDE项目根目录",
+  "phase_handling": "U01及W02关键边界用于回归；含W03新增事实的期望用于更新后候选。旧v0.4缺新增事实而保留未知，记录为缺新增覆盖，不倒改旧成绩。执行前冻结题目与预期；发现预期错误则另版记录并对受影响比较同样重跑，不就地改答案使输出通过。",
+  "grading": "逐条核结论、理由、来源和边界；通过／需修订／无法判断分别记录。用词可不同，不用关键词计分。关键错误不能靠其他题得分抵消。",
+  "rubric_completion": "每题required_points逐条记录结论与依据；关键错误即需修订。来源不足记无法判断，不自动计通过；不要求逐字复述示范。",
+  "cases": [
+    {
+      "id": "U01",
+      "required_points": [
+        "区分理解复购变化／支持改善选择与减少小林重复整理核对两个目标；岗位提效不证明复购改善。",
+        "保留沈总优先验证复购下降原因、会员老化是待验证假设；口径和记录核查是前提及当前支持路径，不偷换成全部经营目标。",
+        "本期可核对问数能支持范围、依据、缺口及下一步分析判断；不能从测试正确推出真实原因、三个月改善或投入回报。"
+      ],
+      "unacceptable": [
+        "用“完成38项”替代原因验证目标",
+        "把会员老化写成已证实原因",
+        "把省时或复购提升写成已发生"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-0d5ba288-a623-56f1-84ac-bec076880d43-transcript.json",
+          "locator": "MSG-01731、MSG-01733、MSG-01737、MSG-01739",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+          "locator": "MSG-01925",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03856、MSG-03860",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/before-extension/business_model-v0.4.md",
+          "locator": "§1、§5",
+          "evidence_kind": "已采纳建模认识，非新增客户事实"
+        }
+      ],
+      "related_existing": [
+        "QH-KNOW-02",
+        "QH-KNOW-01"
+      ]
+    },
+    {
+      "id": "U02",
+      "required_points": [
+        "账户是本期统计标识，卡是可多张关联的权益记录，等级不等于付费资格；账户不自动等于跨系统自然人。",
+        "付费资格依业务范围和判定日；活跃依定义、期间、范围，是当前模型的分析属性，不是与付费／免费并列的永久第三身份；活跃定义未核时不能从无购买直接判不活跃。",
+        "购买是行为，由订单记录承载；复购率是有定义与范围的群体指标，定义与某期数值分开，不能当单个会员的固定身份。",
+        "例子中的结论条件一致，例如普通等级可有本期资格，但资格不证明发生购买，也不替代活跃定义。可接受其他有依据的例子，不要求固定措辞或本体术语。"
+      ],
+      "unacceptable": [
+        "把会员、卡、账户、自然人混成一个对象",
+        "把活跃定义为未经确认的固定阈值或第三身份",
+        "把等级、资格、购买和复购任意等同"
+      ],
+      "sources": [
+        {
+          "path": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/before-extension/business_model-v0.4.md",
+          "locator": "§2：会员、活跃、购买记录／订单、复购率",
+          "evidence_kind": "已采纳的概念划分，非唯一建模形式"
+        },
+        {
+          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "locator": "orders、members、cards",
+          "evidence_kind": "访谈或指定材料"
+        },
+        {
+          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+          "locator": "MSG-03848、MSG-03854、MSG-03868、MSG-03870",
+          "evidence_kind": "访谈或指定材料"
+        }
+      ],
+      "related_existing": [
+        "M01",
+        "M03",
+        "M04"
+      ]
+    }
+  ]
+}

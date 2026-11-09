@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-07",
+  "frozen_at": "2026-11-06T16:35:59.483631+00:00",
+  "frozen_before_execution": true,
+  "case_ids": [
+    "DY07",
+    "DY08",
+    "DY09",
+    "DY10",
+    "DY11",
+    "DY12",
+    "DQ07",
+    "DQ08",
+    "DQ09",
+    "DQ10",
+    "DQ11",
+    "DQ12"
+  ],
+  "files": {
+    "input/business_model.md": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+    "input/knowledge.json": "dbb6bdb9f0e4d05c796df4ade4b54a4d068a1975124184f39630aa9fb07836fc",
+    "input/knowledge_prompt.txt": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+    "input/original_questions.json": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+    "input/protected.json": "25cd04dd8392eb12803de036ce08c4c890f2fef2a57d0f15e2d86d42f74df980",
+    "input/reviewer_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+    "input/selected_questions.json": "9acfd87adc268202326c83b815e8963bb7fa9e6dcba5a39a82aaa54d914f56fe"
+  },
+  "source_question_sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+  "source_expectation_sha256": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+  "condition": "Mentor source-binding refinement of draft03 plus full empty ASCII answer template. Not an applied native model version.",
+  "tested_input": "Unchanged course GUARD + isolated answer prompt + source-refined candidate + one original question/fixture; no reviewer expected, checker, raw source documents or other answers.",
+  "runtime_plan": {
+    "model": "deepseek-flash",
+    "profile": "deepseek-json",
+    "max_tokens": 8192,
+    "retry_max_tokens": 16384,
+    "timeout_seconds": 180,
+    "retry_timeout_seconds": 240,
+    "max_concurrency": 2,
+    "answers_per_case": 1,
+    "automatic_semantic_retry": false
+  },
+  "checker_path": "artifacts/w03/date-consistency-qa-20261107/independent-review/check_date_answer.py",
+  "checker_sha256": "f035a2c54a069a6d47f896be1abfaf3f4590d25c510c64623547292469486aee",
+  "limits": "Both source representation and output template change; no single-variable causal conclusion. Only these12cases test the new candidate.",
+  "stop_rule": "One candidate, once per case. No second candidate or semantic resampling this step."
+}

@@ -1,0 +1,101 @@
+{
+  "review_version": "review-v2",
+  "date": "2026-11-06",
+  "reviewer": "independent test agent w03_full_suite_reviewer",
+  "verdict": "pass",
+  "design_status": "independent_design_review_passed_not_run",
+  "scope": "当前明确业务要求范围内的完整模型测试设计及38指标/12维度后续覆盖计划；不声称穷尽任意输入。",
+  "reviewed_artifact": {
+    "path": "W03/实操工程/artifacts/w03/full-test-design-20261106/v2",
+    "version": "w03-full-test-design-v2",
+    "manifest_sha256": "6b5be8342fa6b625dff1c9b69d7cc92cff6c0476f73921d5a26cb04ff9ee1a46",
+    "artifacts": {
+      "checks.json": "a52d603b02f656783554d4acbb43e01b8fcc7ba99835e6ca702caf3fdde22494",
+      "metric_common_plan.json": "5019cc34fcd0bff77f4de62e6fb44fb39a22f28091edb603ac27eeaf9c636fed",
+      "metric_coverage_plan.json": "34c967ff1e28e7473c92811c7124c2ddc86c43fe42cb98d4ee13d29cbf775cc8",
+      "metric_coverage_plan.md": "af876afaf01d75c10c29582f1a2ba83305c0209b48bcae9bbdf0366e838ca70a",
+      "model_cases.md": "4e3e56f0824278089476d2240f92e365a0a3f33244403c1a538d1949c41f16e6",
+      "model_coverage.json": "373624e193002a9df0d49b6aaf3d377a550143bd10b589a6c515d8b31d1b13f9",
+      "model_expectations.json": "8880a32a9fe6203f53aec64fd65e2eca162b3615d47a447158277d8d77a6f566",
+      "model_questions.json": "a81f860ec96af5a9a0e179464a24c5ceae9df2f0c4859a68921dda3cb01eb8bf",
+      "revision_log.json": "f993167ed1da7d9beb2212a9261cd16cb2fc90e6faa211e49638ac0fdc1577b3",
+      "source_registry.json": "2760b49028e2a1f099cdfffe0d871d9720cef1958a751c58e348911b5d0fcc6b"
+    }
+  },
+  "criteria": "independent_coverage.md（先于作者预期形成）与review-v1.json七项发现",
+  "resolutions": [
+    {
+      "finding": "IR1-01",
+      "status": "resolved",
+      "evidence": "source_registry新增SUPPLEMENT-27/28，分别冻结已采纳项目修订判断与历史模型快照，并标明非客户独立原话；全部实际fixed_materials及预期来源均已注册且哈希匹配。"
+    },
+    {
+      "finding": "IR1-02",
+      "status": "resolved",
+      "evidence": "C05明确2026年8月月末、已确认有效悦享年卡、该月完整订单无有效购买；资格/购买/活跃三个判断具备充分且不混淆的前提。"
+    },
+    {
+      "finding": "IR1-03",
+      "status": "resolved",
+      "evidence": "F08改为H-d70b1629 MSG-01648、H-c4fe490a MSG-01752直接支持发放与核销区别；D7改为真实“范围评审安排”，支持效果边界。"
+    },
+    {
+      "finding": "IR1-04",
+      "status": "resolved",
+      "evidence": "DY12/DQ12分别使两种产品在ended_at非空但判定日在valid_from之前，预期无效，能拦只查提前终止而漏开始日的分支错误；C01明确双年卡、C06明确年卡+季卡，均要求1账户2订单。"
+    },
+    {
+      "finding": "IR1-05",
+      "status": "resolved",
+      "evidence": "A01及A03–A06均改model_with_source_context，附冻结王经理原访谈；A02权限边界仍model_only，合同细节不再强制进入正文。分轨结果不能用作模型正文知识增益。"
+    },
+    {
+      "finding": "IR1-06",
+      "status": "resolved",
+      "evidence": "新增P09/F09/F10/R07逐一覆盖本期资格与全系统类别互斥、发放与使用资格、导购考核与转交责任、当前月内购买账户分母。R07的0/1/2单账户可区分旧全部注册分母错误；新增预期按原文或已标明建模边界，未补造客户规则。"
+    },
+    {
+      "finding": "IR1-07",
+      "status": "resolved",
+      "evidence": "六项付费指标均引用PAID-QUAL-COMMON；共享族明确产品/等级/金额、起止与提前终止、空值、非空终止但未开始、多卡/跨卡组合、月底双向、跨月资格与查询限制。计划保存逐卡理由、账户/订单身份、分子分母，缺边界时建立独立人工fixture并冻结，不改原CSV。"
+    }
+  ],
+  "verification": {
+    "v2_manifest": "matches expected 6b5be8342fa6b625dff1c9b69d7cc92cff6c0476f73921d5a26cb04ff9ee1a46",
+    "v2_artifacts": "10/10 hashes match",
+    "registered_sources": "28/28 current hashes match; all question inputs and expectation sources registered; all cited transcript message ids present",
+    "v1": "9/9 frozen artifact hashes still match review-v1 snapshot; historical findings not overwritten",
+    "model_cases": "85 unique questions and 85 same-order expectations; all cases mapped across 20 independent coverage categories; rendered questions and required/unacceptable points match JSON",
+    "input_tracks": {
+      "model_only": 58,
+      "model_with_fixed_materials": 15,
+      "model_with_source_context": 9,
+      "artifact_review": 3
+    },
+    "targets": "38 metric IDs and 12 dimension IDs exactly match current target files",
+    "U01_U02": "question and expectation objects exactly match original first-batch freeze",
+    "protected_files": "8539-entry manifest equals v1; 8 current critical model/config/test/target files hash-rechecked unchanged. This re-review did not rescan every historical file; v1 previously verified all 8539.",
+    "runtime": "All not_run/planned; no new runtime claim"
+  },
+  "semantic_conclusion": "七项均解决。新增情境与预期不引入当前来源冲突；保留原业务目标、局部流程、权限、原话前提与未知，模型规则与报表/SOW选择分轨，正例和逆向边界可区分目标错误；38计划与模型语义题、后续构建/独立数值校验不混同。",
+  "new_findings": [],
+  "human_decisions": [],
+  "remaining_work_outside_this_review": [
+    "未来冻结实际被测模型/输入/配置后执行85例中适用的问答与人工产物审核；不能把本次设计审核替代运行。",
+    "38指标计划尚未形成全部独立数值期望或正式测试实现；未执行构建、judge或问数。",
+    "生产凭据、正式审批/验收、费用及真实经营结果仍按各自证据另行处理。"
+  ],
+  "actions_performed": [
+    "Read and compare frozen v1/v2 and cited source text",
+    "Local read-only hash, reference, ID, source and rendered-artifact consistency verification",
+    "Write only independent-review/review-v2.md and review-v2.json"
+  ],
+  "not_performed": [
+    "No paid/model API call",
+    "No model QA execution",
+    "No metric query or numerical expected calculation",
+    "No judge/Skill implementation or tuning",
+    "No author artifact/model/config/historical result mutation"
+  ],
+  "stop_rule": "本次设计复审完成；不扩展执行或调优。"
+}

@@ -1,0 +1,38 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "monthly_large_buyer_count"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  SUM(COALESCE(large_buyer_flag, 0)) AS monthly_large_buyer_count\nFROM \"data\".\"main\".\"monthly_member_receipts\" monthly_member_receipts_src_10000\nWHERE DATE_TRUNC('day', month_start) BETWEEN '2026-08-01' AND '2026-08-31'",
+  "columns": [
+    "monthly_large_buyer_count"
+  ],
+  "rows": [
+    [
+      0
+    ]
+  ],
+  "seconds": 0.016,
+  "units": {
+    "monthly_large_buyer_count": "count"
+  },
+  "data_version": "wutong-sample-v2",
+  "data_sha256": "6e4f21b3e478cc6fa6b54fe2469267b23f70a7dae3e718db065d6169447ec440",
+  "catalog_sha256": "6b7bc9e3a42ce7176473ae0127b28b935bd14832af1f001996069cc94d2342b1",
+  "answer": "2026 年 8 月整月，在梧桐书店当前客户范围内，按月内 paid 订单的实付金额减退回金额累计达到 10000 分（即 100.00 元，含等于）的会员账户数统计，结果为 0。该 0 表示覆盖范围内没有会员账户达到大额门槛，不是未定义；统计仅支持整月查询，取消单不计。本次未按门店或地区等维度额外分组筛选。",
+  "question": "2026 年 8 月梧桐书店月内大额会员数是多少？",
+  "trace_id": "23997663-17ce-4b7a-bab2-3ea71a852064",
+  "elapsed_seconds": 7.083,
+  "model_usage": {
+    "prompt_tokens": 4353,
+    "completion_tokens": 666,
+    "total_tokens": 5019
+  },
+  "model_calls_with_usage": 2
+}

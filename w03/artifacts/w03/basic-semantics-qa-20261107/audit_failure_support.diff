@@ -1,0 +1,36 @@
+--- initial-reader
++++ failure-aware-reader
+@@ -36,8 +36,9 @@
+     run, settings, _, _ = runner.check_run(runner.Workspace(ROOT), output["result"]["run"])
+     request = read(run_path.parent / "request.json")
+     attempts = read(run_path.parent / "attempts.json")
+-    answer = read(run_path.parent / "answer.json")["answer"]
+-    assert run["status"] == "succeeded" and run["mode"] == "live"
++    answer = read(run_path.parent / "answer.json")["answer"] if (run_path.parent / "answer.json").exists() else None
++    assert run["status"] in {"succeeded", "failed"} and run["mode"] == "live"
++    assert (answer is not None) == (run["status"] == "succeeded")
+     assert settings["expected"] == "" and settings["include_knowledge"]
+     assert settings["question"] == runner.question_for(case)
+     assert request["messages"] == runner.messages_for(document, prompt, runner.question_for(case), True)
+@@ -47,7 +48,7 @@
+     assert output["input_track"] == case["input_track"]
+     assert output["fixed_materials"] == case["fixed_materials"]
+     assert output["native_run_sha256"] == digest(run_path)
+-    checks.append({"id": case_id, "run": output["result"]["run"], "structure_checked": True,
++    checks.append({"id": case_id, "run": output["result"]["run"], "structure_checked": True, "status": run["status"], "error": run["error"],
+                    "exact_question_and_fixture": True, "exact_frozen_model_and_prompt": True,
+                    "fixed_materials": case["fixed_materials"], "exact_designated_materials": True,
+                    "expected_sent": False, "tools": [],
+@@ -57,10 +58,10 @@
+                    "output_sha256": digest(BATCH / "output" / f"{case_id}.json")})
+     readable += [f"## {case_id} · {case['dimension']}", "", case["question"], "",
+                  "指定材料：" + "、".join(case["fixed_materials"]), "",
+-                 "### 实际回答", "", answer, "",
++                 "### 实际回答", "", answer if answer is not None else "未取得答案；原生失败：" + str(run["error"]["code"]), "",
+                  f"原生执行：[run.json]({run_path.as_posix()})。", ""]
+ audit = {"status": "all_native_records_and_model_inputs_checked", "cases": checks,
+-         "live_cases": len(checks), "http_attempts": sum(c["api_attempt_count"] for c in checks),
++         "live_cases": len(checks), "successful_answers": sum(c["status"] == "succeeded" for c in checks), "execution_failures": sum(c["status"] == "failed" for c in checks), "http_attempts": sum(c["api_attempt_count"] for c in checks),
+          "semantic_review": "independent reviewer required; this audit does not judge answers"}
+ (BATCH / "protocol_audit.json").write_text(json.dumps(audit, ensure_ascii=False, indent=2) + "\n")
+ (BATCH / "actual_answers.md").write_text("\n".join(readable))

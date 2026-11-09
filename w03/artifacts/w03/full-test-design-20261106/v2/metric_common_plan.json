@@ -1,0 +1,343 @@
+{
+  "version": "w03-metric-common-plan-v2",
+  "status": "planned_not_run",
+  "dimensions": [
+    {
+      "id": "store",
+      "name": "成交门店",
+      "meaning": "订单发生的门店编号",
+      "candidate_metrics": [
+        "net_sales_cents"
+      ],
+      "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+      "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+      "status": "planned_not_run"
+    },
+    {
+      "id": "home_store",
+      "name": "会员归属门店",
+      "meaning": "会员账户归属的门店编号",
+      "candidate_metrics": [
+        "new_member_count"
+      ],
+      "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+      "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+      "status": "planned_not_run"
+    },
+    {
+      "id": "member",
+      "name": "会员账户",
+      "meaning": "本次测试范围的 CRM 会员账户编号",
+      "candidate_metrics": [
+        "net_sales_cents"
+      ],
+      "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+      "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+      "status": "planned_not_run"
+    },
+    {
+      "id": "store__region",
+      "name": "成交地区",
+      "meaning": "订单成交门店所在地区",
+      "candidate_metrics": [
+        "net_sales_cents"
+      ],
+      "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+      "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+      "status": "planned_not_run"
+    },
+    {
+      "id": "store__store_name",
+      "name": "成交门店名称",
+      "meaning": "订单成交门店的名称",
+      "candidate_metrics": [
+        "net_sales_cents"
+      ],
+      "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+      "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+      "status": "planned_not_run"
+    },
+    {
+      "id": "home_store__region",
+      "name": "会员归属地区",
+      "meaning": "会员归属门店所在地区",
+      "candidate_metrics": [
+        "new_member_count"
+      ],
+      "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+      "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+      "status": "planned_not_run"
+    },
+    {
+      "id": "home_store__store_name",
+      "name": "会员归属门店名称",
+      "meaning": "会员归属门店的名称",
+      "candidate_metrics": [
+        "new_member_count"
+      ],
+      "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+      "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+      "status": "planned_not_run"
+    },
+    {
+      "id": "order__channel",
+      "name": "订单渠道",
+      "meaning": "订单发生的渠道",
+      "candidate_metrics": [
+        "net_sales_cents"
+      ],
+      "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+      "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+      "status": "planned_not_run"
+    },
+    {
+      "id": "order__status",
+      "name": "订单状态",
+      "meaning": "订单记录的状态",
+      "candidate_metrics": [
+        "order_count"
+      ],
+      "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+      "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+      "status": "planned_not_run"
+    },
+    {
+      "id": "member__tier",
+      "name": "会员等级",
+      "meaning": "会员账户登记的等级",
+      "candidate_metrics": [
+        "new_member_count"
+      ],
+      "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+      "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+      "status": "planned_not_run"
+    },
+    {
+      "id": "metric_time__day",
+      "name": "统计日",
+      "meaning": "按所选指标定义的统计时间逐日展示",
+      "candidate_metrics": [
+        "net_sales_cents"
+      ],
+      "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+      "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+      "status": "planned_not_run"
+    },
+    {
+      "id": "metric_time__month",
+      "name": "统计月",
+      "meaning": "按所选指标定义的统计时间逐自然月展示",
+      "candidate_metrics": [
+        "net_sales_cents"
+      ],
+      "plan": "核定义允许和关联可达后，按原始键独立分组/过滤；保留身份，不只比合计。不可达时先修构建或明确限制，不伪报已支持。",
+      "negative": "成交店与归属店互换；重复/遗漏/新增组；单位与过滤漂移",
+      "status": "planned_not_run"
+    }
+  ],
+  "response_statuses": [
+    {
+      "status": "ok",
+      "scenario": "定义完整、窗口覆盖内、维度支持的真实查询"
+    },
+    {
+      "status": "clarify",
+      "scenario": "缺必要时间范围/有歧义，不猜日期"
+    },
+    {
+      "status": "unsupported",
+      "scenario": "覆盖外或付费月报部分月、门店/渠道拆分；不得静默改问法"
+    },
+    {
+      "status": "error",
+      "scenario": "受控故障注入，如离线副本缺库/执行失败，保留错误；不对正常业务问题伪造异常"
+    }
+  ],
+  "judge_controls": [
+    {
+      "id": "J01",
+      "change": "改起止日期，保留数值",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J02",
+      "change": "换指标ID，保留数值",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J03",
+      "change": "额外加入限制过滤，保留数值",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J04",
+      "change": "错单位，数值不变",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J05",
+      "change": "改单元数值，含大整数10^9加1",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J06",
+      "change": "status改error但保留正确rows",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J07",
+      "change": "换已冻结数据版本",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J08",
+      "change": "删一个分组行",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J09",
+      "change": "复制一个分组行",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J10",
+      "change": "把未定义null改0",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J11",
+      "change": "添加额外分组",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J12",
+      "change": "交换分组身份保持总数",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J13",
+      "change": "字符串/布尔/NaN/Infinity伪装数值",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J14",
+      "change": "改group_by或把成交店换归属店",
+      "expected_judge": "reject",
+      "status": "not_run"
+    },
+    {
+      "id": "J15",
+      "change": "合法正确结果原样",
+      "expected_judge": "accept",
+      "status": "not_run"
+    },
+    {
+      "id": "J16",
+      "change": "只变行顺序",
+      "expected_judge": "accept",
+      "status": "not_run"
+    },
+    {
+      "id": "J17",
+      "change": "列顺序变但按列名重排值，语义一致",
+      "expected_judge": "accept",
+      "status": "not_run"
+    },
+    {
+      "id": "J18",
+      "change": "等价AND过滤顺序、in集合顺序变化",
+      "expected_judge": "accept",
+      "status": "not_run"
+    },
+    {
+      "id": "J19",
+      "change": "合法整数13000与13000.0等值",
+      "expected_judge": "accept",
+      "status": "not_run"
+    },
+    {
+      "id": "J20",
+      "change": "把13000改13001，即便在相对容差下接近",
+      "expected_judge": "reject",
+      "status": "not_run"
+    }
+  ],
+  "judge_contract": "纯比较，不发模型或查数请求。比较expected/actual完整status、intent、columns/rows、keys、units及冻结版本。分组先检查重复，不能dict覆盖；整型精确；浮点固定容差，null不等0。不用只比合计或答案文本替代。",
+  "answer_review": [
+    "说明客户/数据范围、时间、过滤分组、定义来源、单位与null",
+    "拒绝或澄清说明原因，不能给另一问题结果",
+    "解释正确不能代替SQL/独立数值验证；数值正确不能豁免解释越权",
+    "不从净额/复购率变化推出因果、收益、验收或自动营销授权"
+  ],
+  "construction_regression": [
+    "构建Skill经更新须在新库/项目重建并核依赖来源，不手工只改生成SQL",
+    "原始问题+未见同义变式复跑；查询已有库通过不等于构建可重复",
+    "small/scale分别版本与期望；保存失败、修复、重跑全套记录"
+  ],
+  "release_gates": [
+    "先更新并独立审业务模型候选",
+    "逐项核定指标定义/可达维度",
+    "独立形成数值期望和正式测试输入",
+    "完成构建与judge，先自检后真实查询/解释审查",
+    "规模重建回归；另备SOW和未决确认，不将测试通过当验收"
+  ],
+  "shared_qualification_family": {
+    "id": "PAID-QUAL-COMMON",
+    "applies_to": [
+      "monthly_paid_buyer_count",
+      "monthly_paid_order_count",
+      "monthly_paid_sales_cents",
+      "monthly_paid_repeat_buyer_count",
+      "monthly_paid_repeat_rate",
+      "monthly_paid_avg_order_value"
+    ],
+    "status": "planned_not_run",
+    "purpose": "六项各自数值验证都引用资格规则的成员与订单归属；模型理解题答对不能替代构建/数值验证。",
+    "families": [
+      "两种纳入产品分别正例；联名卡即使收费与体验卡均负例；普通等级+合格卡、金卡+不合格卡；购卡金额零不替代范围/有效状态。",
+      "两种纳入产品分别覆盖开始前/当天/后，计划结束前/当天/后，提前终止前/当天/后；开始含，结束和终止不含。",
+      "非空ended_at但判定日在开始前仍无效；planned end先到与termination先到分别检查；空终止仍受计划有效期限制；按历史月末而非当前运行日。",
+      "完整无卡与卡记录缺失区分；任一合范围且有效卡可使账户合格；有效卡混失效/排除卡不否定；范围与有效条件不能从两张不同卡拼接。",
+      "双年卡及年卡+季卡分别验证账户只计一次，订单ID不复制，净额不翻倍；资格人数与有购买人数区分。",
+      "月末刚生效但此前已购买纳入；购买时有效月底失效排除；月末有资格但无购买/仅全退不进买家或复购群体；月内有效一单与两单分别验证。",
+      "同账户跨月资格变化逐月重判；完整自然月、全门店全渠道；部分月/门店渠道拆分应拒绝；无购买月份率/均额为null。"
+    ],
+    "source_refs": [
+      {
+        "source": "L",
+        "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json",
+        "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868"
+      },
+      {
+        "source": "C",
+        "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json",
+        "locator": "MSG-03885、MSG-03886、MSG-03890"
+      },
+      {
+        "source": "D4",
+        "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+        "locator": "本期统计确认邮件"
+      },
+      {
+        "source": "D5",
+        "path": "W03/实操工程/materials/w03/05_数据字典.md",
+        "locator": "cards、orders"
+      }
+    ],
+    "independent_expected": "从冻结原始卡记录逐卡判断月末并集合到账户，再独立筛当月有效订单；保留逐卡理由、入选/排除账户、订单ID、分子分母及最终值，不用被测SQL。",
+    "fixture_strategy": "先检查small/scale实际是否含各边界；缺例再单建标明人工构造的隔离小fixture与manifest，不改课程原CSV；每个数据版本重新独立算期望。"
+  }
+}

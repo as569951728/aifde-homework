@@ -1,0 +1,17 @@
+--- v0.1
++++ v0.1.1
+@@ -1,4 +1,4 @@
+-# 青禾指标构建方法 v0.1
++# 青禾指标构建方法 v0.1.1
+ 
+ 当前开发起点为一项订单金额指标；以实际 targets 为本批边界。方法可继续扩展，未运行的其他目标不代表已验证。业务事实来自输入，不从测试答案、样例客户或指标名字补事实。
+ 
+@@ -22,7 +22,7 @@
+ 
+ 严格按输入 native_format 和 contract 返回一个 JSON 对象，仅含 semantic_models、metrics、catalog、model_sql、grain_keys、unresolved、business_model_usage。无 Markdown 围栏。每个所选目标只在 metrics 或 unresolved.metric_id 一处出现，catalog 与已定义 metrics 一一对应；measure 名称全局唯一。
+ 
+-simple 通过 type_params.measure 引用本次定义的 measure；ratio 的分子分母必须是本批已定义的 metric ID。依赖不闭合则留未决，不暗借历史库。catalog 填中文名、别名、单位、constraints、sources、query_policy；约束须与公式及实际业务范围一致。仅当该指标的资料要求完整月时设置 full_month_only=true，不能把其他指标的整月限制迁来。生成前逐项检查公式量纲、单位、来源和查询限制一致。
++simple 通过 type_params.measure 引用本次定义的 measure；ratio 的分子分母必须是本批已定义的 metric ID。依赖不闭合则留未决，不暗借历史库。catalog 填中文名、别名、单位、constraints、sources、query_policy；约束须与公式及实际业务范围一致。unit 必须使用接口标识，不填中文单位：整数分为 cents，计数为 count，无量纲比率为 ratio；分/单为 cents_per_order，分/账户为 cents_per_member，单/账户为 orders_per_member，件/单为 items_per_order。按实际量纲选择，展示文字“分/元”不代替协议值，也不能为修单位改变物理字段或公式。仅当该指标的资料要求完整月时设置 full_month_only=true，不能把其他指标的整月限制迁来。生成前逐项检查公式量纲、单位、来源和查询限制一致。
+ 
+ ## 五、缺口与修订
+ 

@@ -1,0 +1,155 @@
+{
+  "status": "completed_with_semantic_failure",
+  "reviewed_at": "2026-11-07T16:55:36.428130+00:00",
+  "client_date": "2026-11-08",
+  "candidate_passed": false,
+  "model_sha256": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9",
+  "candidate_prompt_sha256": "703da892e1c284843f499b60efad2e95d60849bd5d22595f71270382df607bfe",
+  "criteria_sha256": "a7c368cd6b42f3828f4fcbb3ebde8343c5ab03424897a9aeda151d365902201f",
+  "input_gate_review_sha256": "e217ebd072a024cc33c391a8ec1ced3dd961e8c72e3627b179340f087bdf01e1",
+  "summary": {
+    "total_cases": 1,
+    "semantic_passed": 0,
+    "semantic_failed": 1,
+    "semantic_failed_ids": [
+      "U05"
+    ],
+    "semantic_not_assessable": 0,
+    "native_runs": 1,
+    "http_attempts": 1,
+    "native_successes": 1,
+    "format_failures": 0,
+    "no_public_response": 0,
+    "no_final_public_response": 0,
+    "partial_public_response_only": 0,
+    "framework_length_expansions": 0,
+    "semantic_retries": 0,
+    "checks_passed": 76,
+    "checks_failed": 0
+  },
+  "cases": [
+    {
+      "id": "U05",
+      "verdict": "failed",
+      "input_track": "model_with_source_context",
+      "reason": "完整答复与严格JSON有效；A—E主判断基本正确，但B把01921后续限定误归01919，E把概括文字当03911原句引用。按原来源准确性标准判语义失败。",
+      "required_point_review": [
+        {
+          "item": "A",
+          "result": "passed",
+          "reason": "本期两卡日期端点、空终止解释与陈姐访谈说明准确，正式规则/办理记录/历史凭据缺口保留。"
+        },
+        {
+          "item": "B",
+          "result": "needs_revision",
+          "reason": "01918提问先带入没人用、01919承接非独立证实的主线正确；但“并称…当时使用感受、不是精确操作清单”在句法上被归入01919，该后续限定实际出于01921。不能因随后笼统引用01921而忽略前一句具体误挂。"
+        },
+        {
+          "item": "C",
+          "result": "passed",
+          "reason": "明确未知返店流程不能推出不存在，局部反馈与闭环未验证分开，模型第4/5节定位支持。"
+        },
+        {
+          "item": "D",
+          "result": "passed",
+          "reason": "角色两数字统计概念、定义范围时点来源待核及活跃定义未知保持；不算活跃率、不添加来源必须一致或属性已不同。"
+        },
+        {
+          "item": "E",
+          "result": "core_pass_citation_needs_revision",
+          "reason": "王经理核查意见不等批准/验收，最终确认人权限待核的主判断正确；但把“不构成审批或承诺”作为03911直接引文，原句不存在，应标转述或换准确原句。"
+        }
+      ],
+      "findings": [
+        {
+          "code": "FOLLOWUP_QUALIFIER_MISATTRIBUTED_TO_EARLIER_MESSAGE",
+          "severity": "semantic_source_attribution",
+          "location": "B 可记录内容",
+          "actual": "MSG-01919 开头承接“上一个项目最后没人用”，并称“界面让操作又多了三步”是当时使用感受、不是精确操作清单",
+          "source": "01919只陈述“我看到的是那个界面让我们的操作又多了三步”；“多了三步”是当时感受、不是精确操作清单由01921明确限定。",
+          "why_material": "本题是原问答证据审查，须区分具体消息中何时提供何种信息。与Stage4 TRACE的后续细节误挂前答同类，沿原阈值判断；核心前提归属正确不能抵消具体消息错置。",
+          "proposed_repair_without_changing_raw": "分别记录01918先带入没人用、01919承接并新增界面负担观察；01921进一步限定三步是个人感受而非精确操作清单、具体步骤和页面待核。"
+        },
+        {
+          "code": "PARAPHRASE_PRESENTED_AS_EXACT_QUOTE",
+          "severity": "source_quote_accuracy",
+          "location": "E 直接依据与缺口",
+          "actual": "王经理 MSG-03911 … 同时明确其核查意见“不构成审批或承诺”",
+          "source": "03911原文为“我只能对预算和合同材料提核查意见”及“预算额度、签约、验收和正式上线我不能替公司承诺”；03933为“不等于公司批准或验收”。没有“不构成审批或承诺”该原句。",
+          "why_material": "意思与权限边界相符，但显式引号和消息号使转述冒充原句；应修正来源呈现。B已独立足以判本题失败，不重复计题数。",
+          "proposed_repair_without_changing_raw": "去掉伪逐字引用并明确是概括，或使用03911实际短引并保留03931/03933对应边界。"
+        }
+      ],
+      "question": "请审查以下说法，逐条说明可采用、需要修正或尚不能判断，并给依据：A.陈姐已给本期卡日期规则，但具体文件与历史凭据未取得；B.小林独立证实之前项目全面无人使用；C.模型尚未核实反馈怎样返回门店，所以青禾没有这一环节；D.80万活跃与120万全量可直接算出活跃率；E.王经理认可分期思路，所以最终验收已获批准。",
+      "fixture": null,
+      "actual_answer": "A. 判定：可采用，但须保留“访谈陈述、正式文件未取得”的限定。\n- 可记录内容：陈姐已说明本期悦享年卡和家庭季卡的日期规则，即生效当天有效、计划结束当天无效、有提前终止的从提前终止当天无效、提前终止为空仍受计划结束限制；具体规则文件和历史执行凭据尚未取得，仍需核实。\n- 直接依据与缺口：陈姐 MSG-03886、03888、03890 给出了上述规则，并明确“具体规则文件和历史执行凭据我不掌握，得找运营小林核实”。缺口是正式规则文件、办理记录及历史执行凭据。\n\nB. 判定：需修正，不能按“小林独立证实全面无人使用”采用。\n- 可记录内容：MSG-01918 的提问带有“上一个项目为什么没人用”的前提，MSG-01919 开头承接“上一个项目最后没人用”，并称“界面让操作又多了三步”是当时使用感受、不是精确操作清单；未提供全面使用情况的独立核验。\n- 直接依据与缺口：见 MSG-01918、MSG-01919；MSG-01921 进一步说明具体多出哪些操作“不掌握，得对着实际界面再核实”。因此可记录为承接提问前提并补充个人感受，不能记录为独立证实“全面无人使用”。\n\nC. 判定：前半可采用，后半尚不能判断且不能由未核实推出不存在，整句需修正。\n- 可记录内容：反馈怎样返回门店仍是待核事项，完整闭环未验证；现有材料不足以判断青禾有没有这一环节。\n- 直接依据与缺口：业务模型第4节“反馈整理与后续”载明后续分析接收者、答复返回门店的方式及进入下一轮决策的衔接仍待核；第5节也将反馈闭环列为未验证。缺口是实际反馈返回记录或流程依据。\n\nD. 判定：不可采用，需修正。\n- 可记录内容：80万指沈总所称活跃会员，120万指老周所称系统全量会员；两者定义、范围、时点与来源需分别核查，“活跃”定义未知，现有依据不支持计算活跃率。本次未代入计算。\n- 直接依据与缺口：业务模型第1节说明两者定义、范围、时点与来源需分别核查，现有依据不支持相减、算活跃率或断言同口径矛盾；核心对象表亦载明“活跃”定义未知。缺口是两项人数的统计定义、范围、时点与来源。\n\nE. 判定：需修正。\n- 可记录内容：王经理只表示阶段划分思路可以；其意见是核查意见，不等于公司批准或验收，最终验收确认人和授权额度不在其职责内，仍需另行核实。\n- 直接依据与缺口：王经理 MSG-03911 说“这个划分思路可以”，同时明确其核查意见“不构成审批或承诺”，预算额度、签约、验收和正式上线不能替公司承诺；MSG-03931 说最终验收确认人和授权额度不在其职责内、无法确认；MSG-03933 再次说明其提供的是核查意见，不等于公司批准或验收。缺口是公司内部最终验收确认人及授权依据。",
+      "actual_answer_sha256": "79272311336ae9172e6af13d6754659069b93c27e3c4366afd3c3305117d2835",
+      "output_path": "artifacts/w03/model-clarification-20261108/qa-02-u05-recovery/output/U05.json",
+      "output_sha256": "907fb52fd1aa47285e3e867682ad790364de4c81ccc91dc3692ee4f19da4514b",
+      "native_run": "artifacts/w02/knowledge_runs/RUN-46922bfcf57546619e70f4c94bb0c133/run.json",
+      "native_run_sha256": "66462050ea5fd1a76c8b7a2b87edb4cf3c53f308144b28ed28acf927e5ad0aca",
+      "native_answer_sha256": "73251259d3b77a1ca3526f48fa7f9a6d6fb2e0c2319a0f540a55efafd5206c55",
+      "native_response_sha256": "d2d0f098a3ac1cccb1c187dd75db5319001e968bdf187ca36ebb8ce62edd8796",
+      "native_request_sha256": "93aa2deba9ff0bcfdf3492a23fb3869e624a6ac702e371ac0f1d5028ad146459",
+      "native_attempts_sha256": "1e6d2ab0e1e53bfd9e706f70754a20ff51429a21cbe811cbfc78a9931c047aab",
+      "http_attempts": 1,
+      "native_status": "succeeded",
+      "strict_format_passed": true
+    }
+  ],
+  "native_review_sha256": "c769a8c6a8cc3844c8a94b0416600515e4f1f82f3c089fe11b18d428306c34b7",
+  "run_index_sha256": "a4ee2d3b2b00a754b35e00b62306a2a8a3ada8d3d2621a6a8e6b27afac2a9946",
+  "answer_evidence_checks": [
+    {
+      "id": "output_matches_native_audit",
+      "passed": true
+    },
+    {
+      "id": "run_matches_native_audit",
+      "passed": true
+    },
+    {
+      "id": "answer_is_original",
+      "passed": true
+    },
+    {
+      "id": "only_one_http",
+      "passed": true
+    },
+    {
+      "id": "old_qa01_score_preserved",
+      "passed": true
+    }
+  ],
+  "answer_evidence_failed_checks": [],
+  "combined_scope_only_not_rewrite": {
+    "unique_case_ids": [
+      "U01",
+      "U05",
+      "E03",
+      "REG01",
+      "P01",
+      "CTRL02"
+    ],
+    "unique_cases": 6,
+    "native_runs": 7,
+    "http_attempts": 8,
+    "valid_complete_answers": 6,
+    "unique_case_semantic_passed": 5,
+    "unique_case_semantic_failed": 1,
+    "failed_ids": [
+      "U05"
+    ],
+    "qa01_original_result": "5pass + U05混合技术失败不可判，6run/7HTTP，保持原样",
+    "qa02_result": "U05新run格式成功但语义失败，1run/1HTTP",
+    "extra_unique_cases_added_by_recovery": 0
+  },
+  "limits": [
+    "本次只补得一份完整U05新答；原QA01截断后网络失败及公开部分响应不删除、不改分。",
+    "不继承11月7日U05通过，不用旧版填新版本失败；U01本次通过仍不回改旧Stage5分。",
+    "按已冻结门禁停止本轮所有后续恢复/同提示重抽，不修改原答。",
+    "只覆盖这6个唯一测试，不代表全82题、新正文稳定性或生产采纳；正式模型、现用prompt和Skill未替换。"
+  ],
+  "reviewer_api_calls": 0,
+  "human_decisions": []
+}

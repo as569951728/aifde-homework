@@ -1,0 +1,834 @@
+{
+  "status": "failed_original_explanation_review",
+  "approved_for_batch_closeout": false,
+  "reviewed_at": "2026-11-08T09:35:15.689387+00:00",
+  "scope": "B3新6、small原21、旧B2隔离fixture1",
+  "reviewed_case_ids": [
+    "B3-N01",
+    "B3-D01",
+    "B3-R01",
+    "B3-R02",
+    "B3-U01",
+    "B3-F01",
+    "B2-N01",
+    "B2-R01",
+    "B2-R02",
+    "B2-D01",
+    "B2-D02",
+    "B2-E01",
+    "B1-N01",
+    "B1-R01",
+    "B1-R02",
+    "B1-D01",
+    "B1-F01",
+    "B1-Z01",
+    "B1-D02",
+    "NS01-aug-total",
+    "NS02-july-transaction-store",
+    "NS03-aug-mini-program",
+    "NS04-partial-refund-day",
+    "NS05-full-refund-day",
+    "NS06-covered-empty",
+    "NS07-missing-time",
+    "NS08-outside-coverage",
+    "B2-Z01"
+  ],
+  "machine_contract_passed": 28,
+  "machine_contract_total": 28,
+  "numeric_ok_cases_passed": 26,
+  "numeric_ok_cases_total": 26,
+  "non_ok_status_cases_passed": 2,
+  "successful_sql_reviewed": 26,
+  "explanation_passed": 26,
+  "explanation_total": 28,
+  "failed_checks": [
+    {
+      "id": "B3-U01",
+      "kind": "explanation_scope_error",
+      "quote": "退款会员数按发生退款的有效已支付订单关联的不同会员账户计数",
+      "expected": "所有paid且refund_cents>0的CRM账户，包括全退；不是仅有效订单",
+      "effect": "原7–8月退款账户5个；限定有效退款订单将只有M00002/M00006/M00008共3个，遗漏M00003/M00017全退账户。",
+      "repair": "保留本轮原文；可基于同一真实结果、来源与明确反馈做独立回答审校回放。单独记录人工反馈修订，不改期望、SQL、生成库或首轮分，不冒充原生新问数/自动系统修复。若修产品方法才需重新构建并回归。"
+    },
+    {
+      "id": "B1-Z01",
+      "kind": "explanation_half_open_time_error",
+      "quote": "本次实际执行采用的业务日期范围为2026年6月1日至6月30日，未单独截断到6月29日",
+      "expected": "intent为[2026-06-01,2026-06-30)，实际SQL截至6月29日含；与问题完全相符。",
+      "effect": "错误地声称执行含6月30日并否认6月29日截止；原CSV6月30日有有效订单O0000015，不能把错误范围对应为五项0。",
+      "repair": "依据实际SQL与契约半开区间给明确反馈，保留原结果及首轮失败，另存审校回放输出。"
+    }
+  ],
+  "cases": [
+    {
+      "id": "B3-N01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/0f61a906-39ad-49da-86d1-64c3b1233430/result.json": "dd412fd62527d3590ed76db47e1b06b15c4a014d24a2ee02c61db4b58c3e849e",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/0f61a906-39ad-49da-86d1-64c3b1233430/answer-trace.json": "7f654e5af43131693ba56c69375c6e7efaa6a08b9c31e53cdf053f74c30fae88"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.417111+00:00"
+    },
+    {
+      "id": "B3-D01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a9acf2e9-3459-455a-b40a-84208d352c8a/result.json": "df2452bb8c2ee730bfeaaefa88fc9190224ac5e1191e63dd9b510859ddb5eaf1",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a9acf2e9-3459-455a-b40a-84208d352c8a/answer-trace.json": "851b70033449709f6ad9cfe88064fd91052c14599e777b58336900882eb00419"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.417676+00:00"
+    },
+    {
+      "id": "B3-R01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/803a43ce-ce8d-48ad-878d-feff82cf89bc/result.json": "6d663e280d0557427cd3a24c29688df3b4ab21a4b85f94f0c74de78e915b98eb",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/803a43ce-ce8d-48ad-878d-feff82cf89bc/answer-trace.json": "9f4ed3421da9c04e8d336e55ea002eaccaf14853353f42dd664e199f3ea1c667"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.417990+00:00"
+    },
+    {
+      "id": "B3-R02",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a6846d46-5177-4716-b86e-d6bce722f77a/result.json": "04c17d876c6fd471db0e0db384fddd163f3e6db4d97b5c699ee6898db94a9a4c",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a6846d46-5177-4716-b86e-d6bce722f77a/answer-trace.json": "74295bdeada1cb1075517c703217ac72c0453bee4d61aeb5f1d0053e220be53a"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.418291+00:00"
+    },
+    {
+      "id": "B3-U01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": false,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": {
+        "kind": "explanation_scope_error",
+        "quote": "退款会员数按发生退款的有效已支付订单关联的不同会员账户计数",
+        "expected": "所有paid且refund_cents>0的CRM账户，包括全退；不是仅有效订单",
+        "effect": "原7–8月退款账户5个；限定有效退款订单将只有M00002/M00006/M00008共3个，遗漏M00003/M00017全退账户。",
+        "repair": "保留本轮原文；可基于同一真实结果、来源与明确反馈做独立回答审校回放。单独记录人工反馈修订，不改期望、SQL、生成库或首轮分，不冒充原生新问数/自动系统修复。若修产品方法才需重新构建并回归。"
+      },
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/85c41645-6294-4fa6-b013-b3472df0fe3e/result.json": "e90a6a76e3e4ffc796f6d754fe9d28dd3faefcc98ff2a4e6e9270cb419739382",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/85c41645-6294-4fa6-b013-b3472df0fe3e/answer-trace.json": "8df5d30bbed9cbc973ba7272a10d6fe4b750d2a99e7c0aa1c7c6ad1a87ab5a80"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.418581+00:00"
+    },
+    {
+      "id": "B3-F01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/fe6a38fa-37ea-405e-9aa8-5cdea2ceeff7/result.json": "79a2a37b5429457cfc64997e085c842a0a5facd8b8afe96737b6995969053b74",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/fe6a38fa-37ea-405e-9aa8-5cdea2ceeff7/answer-trace.json": "c5e2b20a5ded0aae6f97b7a472a9675cfb652cc91a4a4110cdfb7625ae128563"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.418883+00:00"
+    },
+    {
+      "id": "B2-N01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/a5eb66b1-958c-4ba3-ac7d-7fb9eb9e46d6/result.json": "77e586fc6d0d636adaab2822d14c290571a21dee21bb5342d78bcc6cb3c28bee",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/a5eb66b1-958c-4ba3-ac7d-7fb9eb9e46d6/answer-trace.json": "8d0df8602d9eb4cd57f6b7bad66e965b607b774e66ff503b0d79e39d2a7d87c4"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.419994+00:00"
+    },
+    {
+      "id": "B2-R01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/6611758c-8e3c-4461-8036-568003acbdba/result.json": "d5c33341c605e56535596e9e1e56433c4ced476cfaa3aeca95ad95f80c7d6da6",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/6611758c-8e3c-4461-8036-568003acbdba/answer-trace.json": "85ae7045829070bcff12920c947793c100502b3bddd129aaf4891358b68894c3"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.420532+00:00"
+    },
+    {
+      "id": "B2-R02",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/1c0f4cef-8cbf-4b4e-b83a-24cf991646b2/result.json": "ac0888afb7bb79bb3e45cabd948373cc3284929cc6723c9edd7710ceae8b4aa8",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/1c0f4cef-8cbf-4b4e-b83a-24cf991646b2/answer-trace.json": "f8f0a7b38643e749e43f3f19fbc06ed37716a533c0afff9ea0bc3c4bcb9a0290"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.421067+00:00"
+    },
+    {
+      "id": "B2-D01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/d7459593-3e6c-482d-951c-cebeb2c4114e/result.json": "87fe7b05aac950874b4ac9b1308d78cf7012c2c7c9c1dd4f2f335fa29ca161d3",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/d7459593-3e6c-482d-951c-cebeb2c4114e/answer-trace.json": "32cb351fc9a10b1fc8581cc6fabbd1a6c010b65dd10b2f2a9023383560bcc61b"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.421584+00:00"
+    },
+    {
+      "id": "B2-D02",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/7e55507a-e09b-42d2-972d-550cf62ab6e1/result.json": "246790b3fed8d14176a0a0ce6d2e161b6fe721563f09c31d1c422f8383fedcc0",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/7e55507a-e09b-42d2-972d-550cf62ab6e1/answer-trace.json": "6ed4c400902d22af25cfdd377e69ba1bf89321223f9cd0b0397f95b25e811d40"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.422172+00:00"
+    },
+    {
+      "id": "B2-E01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/bbc5d406-d24a-4297-9f4a-e8148501b0be/result.json": "ee2694da055142cf2edfb9d2d856cf1b3dc504aae2d5c29a2d725d8895f2b704",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/bbc5d406-d24a-4297-9f4a-e8148501b0be/answer-trace.json": "5c961e84745b37cd8b9a84dfbd1f6446ae77cf50ea22e99882d21c4c22c8cce5"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.422978+00:00"
+    },
+    {
+      "id": "B1-N01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/f1dfca58-1e8e-4156-abf2-4b5ff58fd791/result.json": "92ea341765b1ae326bbf94ac3f49ddc89c63ecba76bed4539e2ed16cf595bb35",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/f1dfca58-1e8e-4156-abf2-4b5ff58fd791/answer-trace.json": "17e77d962343bdb14fc5cc4a732d2fd54bd75754a96559611a34357718e39e2c"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.423589+00:00"
+    },
+    {
+      "id": "B1-R01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/cc01fa5e-c7fe-48ad-97bd-d68d685c9166/result.json": "2023c36400f18e534101644f07743c5ae7e306de7d78f48d290b3fd06d40d39b",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/cc01fa5e-c7fe-48ad-97bd-d68d685c9166/answer-trace.json": "a3adc2c8e6dd5ce51e6a5c7af6ed92c5a947b19e90ade66223149bf5dce1f07d"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.424157+00:00"
+    },
+    {
+      "id": "B1-R02",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/6de34bf8-1900-44e0-a6d5-4e343e8ce529/result.json": "3963f081f3c27c626c09fe19de0ada6eab2f68240909a72ad44dfce8790f1b27",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/6de34bf8-1900-44e0-a6d5-4e343e8ce529/answer-trace.json": "737d9ae50b2c9be183401f44526664c33c5421c3cbc4b62d74785069a661de88"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.424635+00:00"
+    },
+    {
+      "id": "B1-D01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/afef68a7-2b67-4505-a746-903cf78020f3/result.json": "3f04a052d5acd8d90a95ec7a6e42dc5358620d229f486e4a65df06c1ba505628",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/afef68a7-2b67-4505-a746-903cf78020f3/answer-trace.json": "692c1af058877c005d3aa5f4ae577a4b21373559dd44990d931c0ce448432b3f"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.425156+00:00"
+    },
+    {
+      "id": "B1-F01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/8990f066-4079-405b-8000-399d05bc02b2/result.json": "09ef88ec4e2944a04b39c452635801b60c5877113bd2150b6e053889b1819f9b",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/8990f066-4079-405b-8000-399d05bc02b2/answer-trace.json": "93c6583d603e0ef69b46ed0296f1cd33b72afd27024cc8862e415accffdfbaaa"
+      },
+      "reviewed_at": "2026-11-08T09:32:35.425656+00:00"
+    },
+    {
+      "id": "B1-Z01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": false,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": {
+        "kind": "explanation_half_open_time_error",
+        "quote": "本次实际执行采用的业务日期范围为2026年6月1日至6月30日，未单独截断到6月29日",
+        "expected": "intent为[2026-06-01,2026-06-30)，实际SQL截至6月29日含；与问题完全相符。",
+        "effect": "错误地声称执行含6月30日并否认6月29日截止；原CSV6月30日有有效订单O0000015，不能把错误范围对应为五项0。",
+        "repair": "依据实际SQL与契约半开区间给明确反馈，保留原结果及首轮失败，另存审校回放输出。"
+      },
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/a65eed7f-8c6b-4dfb-9d9c-4bcc028b36c4/result.json": "4048e230980643e52e384282626d930240f08f3a97da99b7d8654bb3641e4b78",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/a65eed7f-8c6b-4dfb-9d9c-4bcc028b36c4/answer-trace.json": "318dee4eee9c3dc88e97eb78e9a5a1cfbb103808b417d312e6aba4f0eb02c0d5"
+      },
+      "reviewed_at": "2026-11-08T09:33:14.381267+00:00"
+    },
+    {
+      "id": "B1-D02",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/fd2acfd4-5936-4d6a-8f61-ea796e278bda/result.json": "9530b4e7591a5ec275ebb84fc8c5128a67772cc261be8305d6959cbe935fdc07",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/fd2acfd4-5936-4d6a-8f61-ea796e278bda/answer-trace.json": "9b1c1ef6165d4cb4bf62e6e615b4dc27b567753c3a925a88d5493ea0f37e8efe"
+      },
+      "reviewed_at": "2026-11-08T09:33:14.382181+00:00"
+    },
+    {
+      "id": "NS01-aug-total",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/4d9188f1-fdf1-44f9-914f-837557a5c3ec/result.json": "b1adbb78458d3d376dbde7c3ddfb0a6d1f0c4714350b1cd2aaaf85f0400141a4",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/4d9188f1-fdf1-44f9-914f-837557a5c3ec/answer-trace.json": "d9cbe8e62c45907f7f89d173e897f5ec1dbae7f59588735319b338d640e4ddf3"
+      },
+      "reviewed_at": "2026-11-08T09:33:14.382694+00:00"
+    },
+    {
+      "id": "NS02-july-transaction-store",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/b183e598-61f6-4c49-9308-c8afca6aecb1/result.json": "8b1436e5ceef37211e35bc0c2978426800d945a9df9d5a7134cf34db4fc249bd",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/b183e598-61f6-4c49-9308-c8afca6aecb1/answer-trace.json": "252cfc382cbe9921ddf5c4245f8686fbc18845f48d01f4a644777847bd78b1bd"
+      },
+      "reviewed_at": "2026-11-08T09:33:14.383245+00:00"
+    },
+    {
+      "id": "NS03-aug-mini-program",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/0d3c5fd2-4edf-4612-8af6-c41f3b81e648/result.json": "59eb46ac31eaeaab7f4e9932fa7b99f2b830cffcb073b0c9f6af8b43ed8a0f58",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/0d3c5fd2-4edf-4612-8af6-c41f3b81e648/answer-trace.json": "f4a1a0f312cfce4d260e9cb37c512e4a149def3c47324b134bd93e4a199c52a7"
+      },
+      "reviewed_at": "2026-11-08T09:33:14.383737+00:00"
+    },
+    {
+      "id": "NS04-partial-refund-day",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/afd61166-db08-48b3-8506-1a548a65d96e/result.json": "f55eedd65eb79e07675b679d6053ec4f41f03702ba152fd7b71b8d2a1309c79c",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/afd61166-db08-48b3-8506-1a548a65d96e/answer-trace.json": "08edbb391d40bb641b38be1d3f5c7693b23b627ed6539f2a243185ddfcbf505d"
+      },
+      "reviewed_at": "2026-11-08T09:33:14.384278+00:00"
+    },
+    {
+      "id": "NS05-full-refund-day",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/1d1d7f0d-05ac-47e3-8aba-6c359ffbec9c/result.json": "0a821110908526620eb9fdadc7667f5250163e29fa68e50dc2151401bc15c563",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/1d1d7f0d-05ac-47e3-8aba-6c359ffbec9c/answer-trace.json": "bcd24b7b138ada2ac414186ee6b6ea37a28c0a5c4747dd965f598938b88a9138"
+      },
+      "reviewed_at": "2026-11-08T09:33:14.384864+00:00"
+    },
+    {
+      "id": "NS06-covered-empty",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/43aa7823-dbc8-4ce5-8658-c622772d5f9b/result.json": "f23ca925a3eaf76455f04448b8328c4b5f7242b049ab94bdc0755034b59e12c2",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/43aa7823-dbc8-4ce5-8658-c622772d5f9b/answer-trace.json": "0e8ee45161b17b0e2fa9baebfbb788e6e47ba9cb35017f9fc9a5cc28ac13dd97"
+      },
+      "reviewed_at": "2026-11-08T09:33:36.576259+00:00"
+    },
+    {
+      "id": "NS07-missing-time",
+      "status": "clarify",
+      "structured_passed": true,
+      "sql_review_passed": null,
+      "explanation_passed": true,
+      "full_sql_read": false,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "non_ok_has_reason": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/8286dd3e-9070-4a53-9683-43fa87e271df/result.json": "781ed7317a6c104b7238bf5bb537a600334bd8674b3d72dad58c9193c84f9643"
+      },
+      "reviewed_at": "2026-11-08T09:33:36.576594+00:00"
+    },
+    {
+      "id": "NS08-outside-coverage",
+      "status": "unsupported",
+      "structured_passed": true,
+      "sql_review_passed": null,
+      "explanation_passed": true,
+      "full_sql_read": false,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "non_ok_has_reason": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/764b7e93-58af-4582-8166-3aa834183522/result.json": "9d7f318e77806664e09749eabd67c260c29f2078b0da93a22fd015c2c7930be0"
+      },
+      "reviewed_at": "2026-11-08T09:33:36.576768+00:00"
+    },
+    {
+      "id": "B2-Z01",
+      "status": "ok",
+      "structured_passed": true,
+      "sql_review_passed": true,
+      "explanation_passed": true,
+      "full_sql_read": true,
+      "full_answer_read": true,
+      "trace_checks": {
+        "numeric_and_complete_intent": true,
+        "answer_matches_trace": true,
+        "trace_used_metrics": true,
+        "trace_cites_actual": true,
+        "trace_question": true,
+        "trace_payload_fields": true,
+        "trace_catalog": true
+      },
+      "issue": null,
+      "evidence_sha256": {
+        "artifacts/w03/b34-accounts-ratios-20261108/test-fixture-v1/traces/5b14114c-891d-4886-af80-d655018562f2/result.json": "ef3edd6f6883182724ec7fb1be837fe953af7e4933fb3c0d6719ef812e2f31be",
+        "artifacts/w03/b34-accounts-ratios-20261108/test-fixture-v1/traces/5b14114c-891d-4886-af80-d655018562f2/answer-trace.json": "6121b290c02aad5b1df3e254e75d41f402108f7a0b6fe40d7e7b163c225680c7"
+      },
+      "reviewed_at": "2026-11-08T09:33:36.577536+00:00"
+    }
+  ],
+  "evidence_sha256": {
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/metric_test_report.json": "381a45299758c44061738843149291d455dfc45c51d206f8acdcb72b240be1b0",
+    "artifacts/w03/b34-accounts-ratios-20261108/version-binding-new-v1.json": "7e34cd7372e2e5ad1bf8e1a85493f6e9943f91484372198138a3538242779a10",
+    "artifacts/w03/b34-accounts-ratios-20261108/execution-tests-new-v1.json": "fde03f96437b39e2ee6f57f1e0cb13c6ac27f6fd408329635589f1ddd2c47d11",
+    ".runtime/qinghe-b34-small-v1/dataset.json": "52081d0f357f1296e0898dcde2d54f7aac9542c451dd2e04daf7353b959c0621",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/0f61a906-39ad-49da-86d1-64c3b1233430/result.json": "dd412fd62527d3590ed76db47e1b06b15c4a014d24a2ee02c61db4b58c3e849e",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/0f61a906-39ad-49da-86d1-64c3b1233430/answer-trace.json": "7f654e5af43131693ba56c69375c6e7efaa6a08b9c31e53cdf053f74c30fae88",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a9acf2e9-3459-455a-b40a-84208d352c8a/result.json": "df2452bb8c2ee730bfeaaefa88fc9190224ac5e1191e63dd9b510859ddb5eaf1",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a9acf2e9-3459-455a-b40a-84208d352c8a/answer-trace.json": "851b70033449709f6ad9cfe88064fd91052c14599e777b58336900882eb00419",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/803a43ce-ce8d-48ad-878d-feff82cf89bc/result.json": "6d663e280d0557427cd3a24c29688df3b4ab21a4b85f94f0c74de78e915b98eb",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/803a43ce-ce8d-48ad-878d-feff82cf89bc/answer-trace.json": "9f4ed3421da9c04e8d336e55ea002eaccaf14853353f42dd664e199f3ea1c667",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a6846d46-5177-4716-b86e-d6bce722f77a/result.json": "04c17d876c6fd471db0e0db384fddd163f3e6db4d97b5c699ee6898db94a9a4c",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a6846d46-5177-4716-b86e-d6bce722f77a/answer-trace.json": "74295bdeada1cb1075517c703217ac72c0453bee4d61aeb5f1d0053e220be53a",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/85c41645-6294-4fa6-b013-b3472df0fe3e/result.json": "e90a6a76e3e4ffc796f6d754fe9d28dd3faefcc98ff2a4e6e9270cb419739382",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/85c41645-6294-4fa6-b013-b3472df0fe3e/answer-trace.json": "8df5d30bbed9cbc973ba7272a10d6fe4b750d2a99e7c0aa1c7c6ad1a87ab5a80",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/fe6a38fa-37ea-405e-9aa8-5cdea2ceeff7/result.json": "79a2a37b5429457cfc64997e085c842a0a5facd8b8afe96737b6995969053b74",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/fe6a38fa-37ea-405e-9aa8-5cdea2ceeff7/answer-trace.json": "c5e2b20a5ded0aae6f97b7a472a9675cfb652cc91a4a4110cdfb7625ae128563",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/metric_test_report.json": "f3a24f275c2794eaa9c48462d705cc4e939cac910e16fcbe29856f19e81b99ce",
+    "artifacts/w03/b34-accounts-ratios-20261108/version-binding-regression-v1.json": "c7f8643c568b1c1e1d92364df1c05ab7775223430532d71be0a6583a84e42eea",
+    "artifacts/w03/b34-accounts-ratios-20261108/execution-tests-regression-v1.json": "ac5870432c8fb298a6340c558f1740dba8c037bda3f93b61eaf85b919e1cc2e4",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/a5eb66b1-958c-4ba3-ac7d-7fb9eb9e46d6/result.json": "77e586fc6d0d636adaab2822d14c290571a21dee21bb5342d78bcc6cb3c28bee",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/a5eb66b1-958c-4ba3-ac7d-7fb9eb9e46d6/answer-trace.json": "8d0df8602d9eb4cd57f6b7bad66e965b607b774e66ff503b0d79e39d2a7d87c4",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/6611758c-8e3c-4461-8036-568003acbdba/result.json": "d5c33341c605e56535596e9e1e56433c4ced476cfaa3aeca95ad95f80c7d6da6",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/6611758c-8e3c-4461-8036-568003acbdba/answer-trace.json": "85ae7045829070bcff12920c947793c100502b3bddd129aaf4891358b68894c3",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/1c0f4cef-8cbf-4b4e-b83a-24cf991646b2/result.json": "ac0888afb7bb79bb3e45cabd948373cc3284929cc6723c9edd7710ceae8b4aa8",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/1c0f4cef-8cbf-4b4e-b83a-24cf991646b2/answer-trace.json": "f8f0a7b38643e749e43f3f19fbc06ed37716a533c0afff9ea0bc3c4bcb9a0290",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/d7459593-3e6c-482d-951c-cebeb2c4114e/result.json": "87fe7b05aac950874b4ac9b1308d78cf7012c2c7c9c1dd4f2f335fa29ca161d3",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/d7459593-3e6c-482d-951c-cebeb2c4114e/answer-trace.json": "32cb351fc9a10b1fc8581cc6fabbd1a6c010b65dd10b2f2a9023383560bcc61b",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/7e55507a-e09b-42d2-972d-550cf62ab6e1/result.json": "246790b3fed8d14176a0a0ce6d2e161b6fe721563f09c31d1c422f8383fedcc0",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/7e55507a-e09b-42d2-972d-550cf62ab6e1/answer-trace.json": "6ed4c400902d22af25cfdd377e69ba1bf89321223f9cd0b0397f95b25e811d40",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/bbc5d406-d24a-4297-9f4a-e8148501b0be/result.json": "ee2694da055142cf2edfb9d2d856cf1b3dc504aae2d5c29a2d725d8895f2b704",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/bbc5d406-d24a-4297-9f4a-e8148501b0be/answer-trace.json": "5c961e84745b37cd8b9a84dfbd1f6446ae77cf50ea22e99882d21c4c22c8cce5",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/f1dfca58-1e8e-4156-abf2-4b5ff58fd791/result.json": "92ea341765b1ae326bbf94ac3f49ddc89c63ecba76bed4539e2ed16cf595bb35",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/f1dfca58-1e8e-4156-abf2-4b5ff58fd791/answer-trace.json": "17e77d962343bdb14fc5cc4a732d2fd54bd75754a96559611a34357718e39e2c",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/cc01fa5e-c7fe-48ad-97bd-d68d685c9166/result.json": "2023c36400f18e534101644f07743c5ae7e306de7d78f48d290b3fd06d40d39b",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/cc01fa5e-c7fe-48ad-97bd-d68d685c9166/answer-trace.json": "a3adc2c8e6dd5ce51e6a5c7af6ed92c5a947b19e90ade66223149bf5dce1f07d",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/6de34bf8-1900-44e0-a6d5-4e343e8ce529/result.json": "3963f081f3c27c626c09fe19de0ada6eab2f68240909a72ad44dfce8790f1b27",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/6de34bf8-1900-44e0-a6d5-4e343e8ce529/answer-trace.json": "737d9ae50b2c9be183401f44526664c33c5421c3cbc4b62d74785069a661de88",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/afef68a7-2b67-4505-a746-903cf78020f3/result.json": "3f04a052d5acd8d90a95ec7a6e42dc5358620d229f486e4a65df06c1ba505628",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/afef68a7-2b67-4505-a746-903cf78020f3/answer-trace.json": "692c1af058877c005d3aa5f4ae577a4b21373559dd44990d931c0ce448432b3f",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/8990f066-4079-405b-8000-399d05bc02b2/result.json": "09ef88ec4e2944a04b39c452635801b60c5877113bd2150b6e053889b1819f9b",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/8990f066-4079-405b-8000-399d05bc02b2/answer-trace.json": "93c6583d603e0ef69b46ed0296f1cd33b72afd27024cc8862e415accffdfbaaa",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/a65eed7f-8c6b-4dfb-9d9c-4bcc028b36c4/result.json": "4048e230980643e52e384282626d930240f08f3a97da99b7d8654bb3641e4b78",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/a65eed7f-8c6b-4dfb-9d9c-4bcc028b36c4/answer-trace.json": "318dee4eee9c3dc88e97eb78e9a5a1cfbb103808b417d312e6aba4f0eb02c0d5",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/fd2acfd4-5936-4d6a-8f61-ea796e278bda/result.json": "9530b4e7591a5ec275ebb84fc8c5128a67772cc261be8305d6959cbe935fdc07",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/fd2acfd4-5936-4d6a-8f61-ea796e278bda/answer-trace.json": "9b1c1ef6165d4cb4bf62e6e615b4dc27b567753c3a925a88d5493ea0f37e8efe",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/4d9188f1-fdf1-44f9-914f-837557a5c3ec/result.json": "b1adbb78458d3d376dbde7c3ddfb0a6d1f0c4714350b1cd2aaaf85f0400141a4",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/4d9188f1-fdf1-44f9-914f-837557a5c3ec/answer-trace.json": "d9cbe8e62c45907f7f89d173e897f5ec1dbae7f59588735319b338d640e4ddf3",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/b183e598-61f6-4c49-9308-c8afca6aecb1/result.json": "8b1436e5ceef37211e35bc0c2978426800d945a9df9d5a7134cf34db4fc249bd",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/b183e598-61f6-4c49-9308-c8afca6aecb1/answer-trace.json": "252cfc382cbe9921ddf5c4245f8686fbc18845f48d01f4a644777847bd78b1bd",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/0d3c5fd2-4edf-4612-8af6-c41f3b81e648/result.json": "59eb46ac31eaeaab7f4e9932fa7b99f2b830cffcb073b0c9f6af8b43ed8a0f58",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/0d3c5fd2-4edf-4612-8af6-c41f3b81e648/answer-trace.json": "f4a1a0f312cfce4d260e9cb37c512e4a149def3c47324b134bd93e4a199c52a7",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/afd61166-db08-48b3-8506-1a548a65d96e/result.json": "f55eedd65eb79e07675b679d6053ec4f41f03702ba152fd7b71b8d2a1309c79c",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/afd61166-db08-48b3-8506-1a548a65d96e/answer-trace.json": "08edbb391d40bb641b38be1d3f5c7693b23b627ed6539f2a243185ddfcbf505d",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/1d1d7f0d-05ac-47e3-8aba-6c359ffbec9c/result.json": "0a821110908526620eb9fdadc7667f5250163e29fa68e50dc2151401bc15c563",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/1d1d7f0d-05ac-47e3-8aba-6c359ffbec9c/answer-trace.json": "bcd24b7b138ada2ac414186ee6b6ea37a28c0a5c4747dd965f598938b88a9138",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/43aa7823-dbc8-4ce5-8658-c622772d5f9b/result.json": "f23ca925a3eaf76455f04448b8328c4b5f7242b049ab94bdc0755034b59e12c2",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/43aa7823-dbc8-4ce5-8658-c622772d5f9b/answer-trace.json": "0e8ee45161b17b0e2fa9baebfbb788e6e47ba9cb35017f9fc9a5cc28ac13dd97",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/8286dd3e-9070-4a53-9683-43fa87e271df/result.json": "781ed7317a6c104b7238bf5bb537a600334bd8674b3d72dad58c9193c84f9643",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-regression-v1/traces/764b7e93-58af-4582-8166-3aa834183522/result.json": "9d7f318e77806664e09749eabd67c260c29f2078b0da93a22fd015c2c7930be0",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-fixture-v1/metric_test_report.json": "765050d0c3b79d3da83ade736892470547d875da235f9db7af0c91cddee18eee",
+    "artifacts/w03/b34-accounts-ratios-20261108/version-binding-fixture-v1.json": "f9806a87c332c56ef5560b31bf132754fc872afc6dccb55ac4391852b0d4b6cf",
+    "artifacts/w03/b34-accounts-ratios-20261108/execution-tests-fixture-v1.json": "0cc3c211e801cb595783328788ac1799eaa358358ad77353a1754b6dc942d11a",
+    ".runtime/qinghe-b34-fixture-v1/dataset.json": "816e5a758a95309b238c0b6fa5cb7c4648c4c21960a61beae1419378e1b17ce0",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-fixture-v1/traces/5b14114c-891d-4886-af80-d655018562f2/result.json": "ef3edd6f6883182724ec7fb1be837fe953af7e4933fb3c0d6719ef812e2f31be",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-fixture-v1/traces/5b14114c-891d-4886-af80-d655018562f2/answer-trace.json": "6121b290c02aad5b1df3e254e75d41f402108f7a0b6fe40d7e7b163c225680c7",
+    "artifacts/w03/b34-accounts-ratios-20261108/combined-freeze.json": "0d66b079c111449928e01880e2f6ae63fd06dce4c9249317eaf17e90344e8c57",
+    "artifacts/w03/b34-accounts-ratios-20261108/tests-new-small.json": "45e1d2a61bbfafd4ef61211a09a1ca82351c2980a5c3952e55b25459faada9d9",
+    "artifacts/w03/b34-accounts-ratios-20261108/tests-regression-small.json": "99cf8d0dcdb30277c629ae0d6cb6d24a9351a193bc5ff3b4c6b7296753085a5d",
+    "artifacts/w03/b34-accounts-ratios-20261108/tests-fixture-b2.json": "b65f8f044ae7ac2fe151c43ec928417cd958ad26259ba2c6f5796b29d4e48891",
+    "artifacts/w03/b34-accounts-ratios-20261108/b3-result-controls.json": "69bb84d07a54097212329080e2b852431deca7148cbd89709b768626575901ad",
+    "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/expected-freeze.json": "e7514aa48914b70a6b8f9be84cbfdec5fe2a9d7f0f8aea312f53eeecd78e2963",
+    "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/generation-review-v1.json": "5fa5024e2cce251d114603f8bd5ff748d36882812d94d0a0eea6d6aba0939c01"
+  },
+  "reports": [
+    {
+      "lane": "new",
+      "report_cases": 12,
+      "complete": true
+    },
+    {
+      "lane": "regression",
+      "report_cases": 21,
+      "complete": true
+    },
+    {
+      "lane": "fixture",
+      "report_cases": 1,
+      "complete": true
+    }
+  ],
+  "notes": [
+    "所有成功SQL及完整解释逐题已读；另核answer-trace输入/输出与当前实际结果、catalog及版本一致。",
+    "原21对象与fixture题保持不变；执行只增加数据/库哈希锁，冻结业务期望和原数据未改。",
+    "初轮28/28是完整结构/意图/数值或非ok状态比较；其中26题有数值SQL、2题为clarify/unsupported原因检查。",
+    "原首轮两条解释失败不随导师审校副本修改，不称原生端到端全通过。",
+    "人工fixture仅技术边界；U01各错误模式分别有证据，不声称同一账户多卡且多退款交叉覆盖；规模0。"
+  ]
+}

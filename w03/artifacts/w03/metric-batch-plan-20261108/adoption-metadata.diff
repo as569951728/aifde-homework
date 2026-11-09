@@ -1,0 +1,52 @@
+--- reviewed/docs/w03/指标核对与测试登记.md
++++ published/docs/w03/指标核对与测试登记.md
+@@ -4,7 +4,7 @@
+ 
+ 当前：**38项已登记；38项均有测试场景设计；仅净销售额具备已跑的8例；其余37项尚未冻结数值期望、未构建/问数；规模0/38。** 本轮新增模型调用/查询为0。
+ 
+-有材料依据≠字段核定；设计完成≠期望已冻结；期望正确≠查询已通过；查询通过≠解释忠实或客户验收。设计审查状态见本轮独立报告。
++有材料依据≠字段核定；设计完成≠期望已冻结；期望正确≠查询已通过；查询通过≠解释忠实或客户验收。本轮登记及测试设计已[通过独立审查](../../artifacts/w03/metric-batch-plan-20261108/independent/review-v2.md)，不代表新增指标已核数。
+ 
+ ## 分批顺序
+ 
+--- reviewed/docs/w03/指标模型测试集设计.md
++++ published/docs/w03/指标模型测试集设计.md
+@@ -1,4 +1,6 @@
+ # W03 指标模型测试集设计与用例登记
++
++本轮[独立设计终审通过](../../artifacts/w03/metric-batch-plan-20261108/independent/review-v2.md)；新增场景仍须按批核定并冻结期望后执行。
+ 
+ 更新：2026-11-08。沿用11月6日38项覆盖计划，现形成53条新增设计条目，另引用8条真实已跑用例。设计条目数不是最终执行题数：参数化边界会拆子例，多个相关指标可在同题比较。
+ 
+--- reviewed/customer/w03/metric_register.json
++++ published/customer/w03/metric_register.json
+@@ -1,7 +1,10 @@
+ {
+   "version": "w03-metric-register-v1",
+   "updated_at": "2026-11-08",
+-  "design_review": "pending",
++  "design_review": {
++    "status": "approved_design_only",
++    "report": "artifacts/w03/metric-batch-plan-20261108/independent/review-v2.json"
++  },
+   "purpose": "逐指标状态账；当前用户要求按指标族分批推进，替代逐项停点",
+   "target_source": "customer/w03/targets.json",
+   "batches": [
+--- reviewed/customer/w03/test-plans/metric_cases.json
++++ published/customer/w03/test-plans/metric_cases.json
+@@ -1,6 +1,6 @@
+ {
+   "version": "w03-metric-test-plan-v3",
+-  "status": "design_pending_review",
++  "status": "design_reviewed_expectations_not_frozen",
+   "not_native_tests_json": true,
+   "source_plan": "artifacts/w03/full-test-design-20261106/v2",
+   "rule": "新条目为设计，未含expected.rows，不可直接交w03 test；未知期望不写0/null。参数化一行不是已具备多个可执行子例。",
+@@ -3550,5 +3550,6 @@
+     "qualification_note": "共享资格设计不是已跑用例；B7参数化设计必须落实子例和独立资格/订单明细，不以单题或模型理解题代替六指标覆盖。",
+     "judge_current_evidence": "artifacts/w03/net-sales-first-20261108/judge-injections-v2.json：13检查，10反例全拒；旧J01-J20不一律改passed，具体检查见原报告。",
+     "normal_month_channel_note": "03仅明确整月全店；contract full_month_only目前一并限制全渠道，业务原文与运行限制分别登记（B6-X03）。"
+-  }
++  },
++  "design_review_reference": "artifacts/w03/metric-batch-plan-20261108/independent/review-v2.json"
+ }

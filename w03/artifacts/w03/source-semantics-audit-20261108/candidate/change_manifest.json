@@ -1,0 +1,171 @@
+{
+  "status": "prepared_pending_independent_revision_review",
+  "expected_before_sha256": "151e861e71de7bb6e56da8ae2954b1eabe1db591180afd571256846ce12ddb4d",
+  "expected_candidate_sha256": "f799da7f4420620386e73f6b447efe219ed37f22ef881f08595f995b2b5280a2",
+  "model_before_sha256": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9",
+  "model_candidate_sha256": "63513ef37e2d1f41cc0e540fd4b771b4035c83e3674d33e0897a521bc698a72d",
+  "case_changes": [
+    "R03",
+    "F07",
+    "F08",
+    "A02",
+    "A03",
+    "E06"
+  ],
+  "patches": [
+    {
+      "patch": {
+        "op": "remove",
+        "path": "/cases/47/sources/2"
+      },
+      "old_value": {
+        "source": "C",
+        "locator": "MSG-03886",
+        "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+      },
+      "case_id": "R03"
+    },
+    {
+      "patch": {
+        "op": "replace",
+        "path": "/cases/65/sources/3",
+        "value": {
+          "source": "MODEL",
+          "path": "W03/实操工程/artifacts/w03/source-semantics-audit-20261108/input/business_model.md",
+          "locator": "§2 优惠与券（第26行）、§3 规则6（第44行）、§5 实际关联待核（第72行）",
+          "evidence_kind": "本轮冻结的业务模型候选；非正式基线"
+        }
+      },
+      "old_value": {
+        "source": "MODEL",
+        "path": "W03/实操工程/docs/w03/business_model.md",
+        "locator": "§2、§4"
+      },
+      "case_id": "F08"
+    },
+    {
+      "patch": {
+        "op": "replace",
+        "path": "/cases/64/required_points/0",
+        "value": "说明核查对象、用途和范围；老周配合核对取数条件、系统统计所用的范围、时间和统计说明，列出待补记录与待确认责任。访谈中的配合说明不构成生产访问授权，也不能证明真实数据已经接通；具体核查记录取决于实际材料，目前没有固定交付或日期承诺。",
+        "reason": "SC-F07-01"
+      },
+      "old_value": "说明对象用途范围；配合取数条件、范围时间统计说明，列待补记录责任；没有生产权限/真实接入/固定交付或日期承诺。",
+      "case_id": "F07"
+    },
+    {
+      "patch": {
+        "op": "add",
+        "path": "/cases/64/unacceptable/-",
+        "value": "将本次未取得生产权限或接通证据写成公司或当事人不存在生产权限、真实数据一定未接通。",
+        "reason": "SC-F07-01"
+      },
+      "old_value": null,
+      "case_id": "F07"
+    },
+    {
+      "patch": {
+        "op": "add",
+        "path": "/cases/64/sources/-",
+        "value": {
+          "path": "W03/实操工程/materials/w03/07_客户内部沟通.md",
+          "locator": "IT 对接纪要：样例能跑与上线接入",
+          "evidence_kind": "课程虚构沟通：生产清理、导入及联调时间另行安排"
+        },
+        "reason": "SC-F07-01"
+      },
+      "old_value": null,
+      "case_id": "F07"
+    },
+    {
+      "patch": {
+        "op": "replace",
+        "path": "/cases/69/required_points/0",
+        "value": "不能；王经理参与统计口径、验收依据及合同材料核查，认可总结不等于最终验收、预算签约或上线批准。03930中“最终验收确认人尚未明确”为提问前提；03931/03933中他明确自己无法确认具体最终验收人、授权额度/审批权限和执行安排责任方，需要另行核实，不能据此断定公司尚未指定或尚未设定这些事项。同时保留03931直接陈述“审批安排还没定”，以及03933的收益目标、预算金额和正式批准尚未定；总体安排未定不能代替对具体授权额度的核实。",
+        "reason": "SC-A02-01"
+      },
+      "old_value": "不能；只是核查意见；最终验收人、审批权限/授权额度与执行安排责任方尚待落实，不代指定。",
+      "case_id": "A02"
+    },
+    {
+      "patch": {
+        "op": "add",
+        "path": "/cases/69/unacceptable/-",
+        "value": "把王经理不掌握具体确认人或授权额度写成公司尚未指定或尚未设定；或因这些细节未知，抹去03931“审批安排还没定”和03933“正式批准都还没定”的直接陈述。",
+        "reason": "SC-A02-01"
+      },
+      "old_value": null,
+      "case_id": "A02"
+    },
+    {
+      "patch": {
+        "op": "replace",
+        "path": "/cases/70/required_points/0",
+        "value": "可列费用构成/计价依据，并拟使结算与阶段成果及确认记录对应；未谈妥金额、具体节点划分和确认记录形式待双方谈定。现无已确认付款安排；“付款安排仍待谈”的文字见03932提问方总结，综合前文可保留未确认状态，不得称03927原话或把03933认可核查顺序当作付款批准。",
+        "reason": "SC-A03-01",
+        "optional": true
+      },
+      "old_value": "可列费用构成/计价依据以及拟与阶段成果记录对应；金额、节点划分、确认记录形式及付款安排待双方谈定。",
+      "case_id": "A03"
+    },
+    {
+      "patch": {
+        "op": "replace",
+        "path": "/cases/70/sources/0/locator",
+        "value": "MSG-03926、MSG-03927、MSG-03932、MSG-03933",
+        "reason": "SC-A03-01",
+        "optional": true
+      },
+      "old_value": "MSG-03926、MSG-03927",
+      "case_id": "A03"
+    },
+    {
+      "patch": {
+        "op": "replace",
+        "path": "/cases/79/required_points/0",
+        "value": "陈姐03885提问已限定本期月报、月末、按账户和两类卡；03886在该范围新增生效当天有效、计划结束及提前终止当天无效、空终止不等于无限、按要求判定日检查和账户资格/去重规则，同时保留具体文件与历史凭据不掌握。王经理03910讨论的是学员阶段草案；03911认可边界并补四类说明、核查分工和权限限制，不等于公司主动提出全部方案或正式批准。03932为提问方总结，03933的认可须连前文读取：03931直接说审批安排还没定；具体验收人/授权额度及执行责任方他不掌握需另核，不能推公司未设；03933收益目标、预算金额和正式批准未定是独立直接陈述，不能全部降为未知。",
+        "reason": "SC-E06-01"
+      },
+      "old_value": "陈姐答复范围为两类卡本期月报；王经理讨论学员阶段草案并补四类说明；总结认可须连前文，不变成客户主动提出全部方案或正式批准。",
+      "case_id": "E06"
+    },
+    {
+      "patch": {
+        "op": "add",
+        "path": "/cases/79/unacceptable/-",
+        "value": "把陈姐新增的日期、空终止和账户规则说成只是接受提问范围或导师可选建模方案；把王经理不掌握额度改成公司未设额度；或抹去其审批安排、正式批准未定的直接陈述。",
+        "reason": "SC-E06-01"
+      },
+      "old_value": null,
+      "case_id": "E06"
+    },
+    {
+      "patch": {
+        "op": "replace",
+        "path": "/cases/79/sources/1/locator",
+        "value": "MSG-03910、MSG-03911、MSG-03930、MSG-03931、MSG-03932、MSG-03933",
+        "reason": "SC-E06-01"
+      },
+      "old_value": "MSG-03910、MSG-03911、MSG-03932、MSG-03933",
+      "case_id": "E06"
+    }
+  ],
+  "model_change": {
+    "apply_status": "not_applied",
+    "target_sha256": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9",
+    "source": "MSG-01731",
+    "old_text": "三个月见效是客户期望，改善幅度与效果定义尚未核实",
+    "new_text": "三个月见效是客户期望；沈总表示届时向董事会说明所用的具体数字与口径还没定，也不能先承诺提升幅度",
+    "finding": "MA-N01",
+    "blocking": false
+  },
+  "adopted_optional": "A03来源精度与正文一处非阻断精确化",
+  "deferred_nonblocking": [
+    "MA-N02全局重复提醒",
+    "MA-N03 C05补充来源",
+    "MA-N04 E02补充来源"
+  ],
+  "not_applied_to_formal_files": true,
+  "model_api_calls": 0,
+  "historical_grades_changed": false
+}

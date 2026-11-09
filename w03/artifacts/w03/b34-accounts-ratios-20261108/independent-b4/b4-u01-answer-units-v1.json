@@ -1,0 +1,672 @@
+{
+  "review_id": "B4-U01",
+  "query_count_added": 0,
+  "reviewed_answers": 6,
+  "passed": true,
+  "cases": [
+    {
+      "id": "B4-N01",
+      "answer": "2026年8月（统计区间2026-08-01至2026-09-01）青禾客户整体汇总结果：有效订单均额为37.15元/单；购买会员人均消费为66.87元/账户；购买频次为1.80单/账户；退款金额占比为15.75%；取消率为6.25%；退款订单率为13.33%；优惠率为4.19%；单均商品件数为1.22件/单。以上均为该客户当月汇总口径，未按门店等维度拆分；购买会员人数按CRM会员账户计数。各指标分母均非零，结果均已定义。",
+      "passed": true,
+      "review": "8月整月全店未分组；37.15元/单、66.87元/账户、1.80单/账户及15.75%、6.25%、13.33%、4.19%、1.22件/单正确。文字用8月限定窗口，没有把9月1日计入，也未冒充自然人。",
+      "groups": [
+        {
+          "group": "overall",
+          "metrics": [
+            {
+              "metric": "avg_order_value",
+              "raw_value": 3714.814814814815,
+              "unit": "cents_per_order",
+              "numerator": 100300,
+              "denominator": 27,
+              "display_reference": "37.15",
+              "display_verified": true
+            },
+            {
+              "metric": "avg_buyer_value",
+              "raw_value": 6686.666666666667,
+              "unit": "cents_per_member",
+              "numerator": 100300,
+              "denominator": 15,
+              "display_reference": "66.87",
+              "display_verified": true
+            },
+            {
+              "metric": "purchase_frequency",
+              "raw_value": 1.8,
+              "unit": "orders_per_member",
+              "numerator": 27,
+              "denominator": 15,
+              "display_reference": "1.80",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_amount_rate",
+              "raw_value": 0.15749685006299874,
+              "unit": "ratio",
+              "numerator": 18750,
+              "denominator": 119050,
+              "display_reference": "15.75%",
+              "display_verified": true
+            },
+            {
+              "metric": "cancel_rate",
+              "raw_value": 0.0625,
+              "unit": "ratio",
+              "numerator": 2,
+              "denominator": 32,
+              "display_reference": "6.25%",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_order_rate",
+              "raw_value": 0.13333333333333333,
+              "unit": "ratio",
+              "numerator": 4,
+              "denominator": 30,
+              "display_reference": "13.33%",
+              "display_verified": true
+            },
+            {
+              "metric": "discount_rate",
+              "raw_value": 0.041851106639839035,
+              "unit": "ratio",
+              "numerator": 5200,
+              "denominator": 124250,
+              "display_reference": "4.19%",
+              "display_verified": true
+            },
+            {
+              "metric": "items_per_order",
+              "raw_value": 1.2222222222222223,
+              "unit": "items_per_order",
+              "numerator": 33,
+              "denominator": 27,
+              "display_reference": "1.22",
+              "display_verified": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B4-Z01",
+      "answer": "在2026年6月1日至6月29日（含首尾）的青禾优选统计范围内，按既定指标口径查询有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率和单均商品件数；购买会员人数按CRM会员账户计数。执行结果中这8项指标均为空值，表示在当前口径下未定义（例如相关分母为零或无可计算记录），不能按0处理。因此本期没有可展示的金额或比例结果。",
+      "passed": true,
+      "review": "6月1–29日明确含首尾；八项null解释为未定义，不能按0；未把覆盖内空窗说成unsupported。解释列举分母为零/无可计算记录，符合本题无订单事实，没有捏造业务成效。",
+      "groups": [
+        {
+          "group": "overall",
+          "metrics": [
+            {
+              "metric": "avg_order_value",
+              "raw_value": null,
+              "unit": "cents_per_order",
+              "numerator": 0,
+              "denominator": 0,
+              "display_reference": "未定义/null",
+              "display_verified": true
+            },
+            {
+              "metric": "avg_buyer_value",
+              "raw_value": null,
+              "unit": "cents_per_member",
+              "numerator": 0,
+              "denominator": 0,
+              "display_reference": "未定义/null",
+              "display_verified": true
+            },
+            {
+              "metric": "purchase_frequency",
+              "raw_value": null,
+              "unit": "orders_per_member",
+              "numerator": 0,
+              "denominator": 0,
+              "display_reference": "未定义/null",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_amount_rate",
+              "raw_value": null,
+              "unit": "ratio",
+              "numerator": 0,
+              "denominator": 0,
+              "display_reference": "未定义/null",
+              "display_verified": true
+            },
+            {
+              "metric": "cancel_rate",
+              "raw_value": null,
+              "unit": "ratio",
+              "numerator": 0,
+              "denominator": 0,
+              "display_reference": "未定义/null",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_order_rate",
+              "raw_value": null,
+              "unit": "ratio",
+              "numerator": 0,
+              "denominator": 0,
+              "display_reference": "未定义/null",
+              "display_verified": true
+            },
+            {
+              "metric": "discount_rate",
+              "raw_value": null,
+              "unit": "ratio",
+              "numerator": 0,
+              "denominator": 0,
+              "display_reference": "未定义/null",
+              "display_verified": true
+            },
+            {
+              "metric": "items_per_order",
+              "raw_value": null,
+              "unit": "items_per_order",
+              "numerator": 0,
+              "denominator": 0,
+              "display_reference": "未定义/null",
+              "display_verified": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B4-R01",
+      "answer": "统计范围为当前青禾客户在2026年8月10日的汇总，未额外按门店筛选。有效订单均额、购买会员人均消费、购买频次、单均商品件数结果为空值，按口径因对应分母为零而未定义，不是零，因此不给出金额、单/账户或件/单数值。已返回比例中：退款金额占比100.00%，取消率50.00%，退款订单率100.00%，优惠率0.00%。金额以分存储，若有金额需除以100展示为元；本次金额类均值未定义，无法换算为元。人数口径为CRM会员账户，不等同于跨系统自然人。",
+      "passed": true,
+      "review": "8月10日全退与取消混合；四项均额/频次/件均额为null并明确不是0；退款金额与订单率100%、取消率50%、优惠率0%均正确，未将所有指标一律置null或0。",
+      "groups": [
+        {
+          "group": "overall",
+          "metrics": [
+            {
+              "metric": "avg_order_value",
+              "raw_value": null,
+              "unit": "cents_per_order",
+              "numerator": 0,
+              "denominator": 0,
+              "display_reference": "未定义/null",
+              "display_verified": true
+            },
+            {
+              "metric": "avg_buyer_value",
+              "raw_value": null,
+              "unit": "cents_per_member",
+              "numerator": 0,
+              "denominator": 0,
+              "display_reference": "未定义/null",
+              "display_verified": true
+            },
+            {
+              "metric": "purchase_frequency",
+              "raw_value": null,
+              "unit": "orders_per_member",
+              "numerator": 0,
+              "denominator": 0,
+              "display_reference": "未定义/null",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_amount_rate",
+              "raw_value": 1.0,
+              "unit": "ratio",
+              "numerator": 5000,
+              "denominator": 5000,
+              "display_reference": "100.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "cancel_rate",
+              "raw_value": 0.5,
+              "unit": "ratio",
+              "numerator": 1,
+              "denominator": 2,
+              "display_reference": "50.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_order_rate",
+              "raw_value": 1.0,
+              "unit": "ratio",
+              "numerator": 1,
+              "denominator": 1,
+              "display_reference": "100.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "discount_rate",
+              "raw_value": 0.0,
+              "unit": "ratio",
+              "numerator": 0,
+              "denominator": 5000,
+              "display_reference": "0.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "items_per_order",
+              "raw_value": null,
+              "unit": "items_per_order",
+              "numerator": 0,
+              "denominator": 0,
+              "display_reference": "未定义/null",
+              "display_verified": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B4-D01-store",
+      "answer": "已按2026年7月（2026-07-01至2026-08-01前）汇总青禾客户数据，并按订单成交门店分组。金额展示为元，比例展示为百分数；人数口径为CRM会员账户，不等同于跨系统自然人。统计口径：有效订单均额=净销售额/有效订单数；购买会员人均消费=净销售额/购买会员账户数；购买频次=有效订单数/购买会员账户数；退款金额占比=退款金额/实付金额；取消率=取消订单数/创建订单数；退款订单率=退款订单数/支付订单数；优惠率=优惠金额/支付订单原价金额；单均商品件数=有效订单商品件数/有效订单数。本次为合成测试数据范围。\n\n| 成交门店 | 有效订单均额(元/单) | 购买会员人均消费(元/账户) | 购买频次(单/账户) | 退款金额占比 | 取消率 | 退款订单率 | 优惠率 | 单均商品件数(件/单) |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|\n| S02 | 50.00 | 50.00 | 1.00 | 4.76% | 0.00% | 50.00% | 0.00% | 2.00 |\n| S03 | 45.00 | 90.00 | 2.00 | 10.00% | 0.00% | 50.00% | 0.00% | 2.00 |\n| S01 | 15.63 | 15.63 | 1.00 | 0.00% | 11.11% | 0.00% | 0.00% | 1.125 |\n\n以上仅列示本次按成交门店返回的S01、S02、S03三组结果；各组指标分母均非零，因此均已给出结果。",
+      "passed": true,
+      "review": "按订单成交门店S01/S02/S03分别呈现，未混会员归属店。八公式逐条正确。S01 1562.5分=15.625元按两位显示15.63元，1.125件/单保留三位同样正确；各组百分数及零优惠率正确。",
+      "groups": [
+        {
+          "group": "S02",
+          "metrics": [
+            {
+              "metric": "avg_order_value",
+              "raw_value": 5000.0,
+              "unit": "cents_per_order",
+              "numerator": 10000,
+              "denominator": 2,
+              "display_reference": "50.00",
+              "display_verified": true
+            },
+            {
+              "metric": "avg_buyer_value",
+              "raw_value": 5000.0,
+              "unit": "cents_per_member",
+              "numerator": 10000,
+              "denominator": 2,
+              "display_reference": "50.00",
+              "display_verified": true
+            },
+            {
+              "metric": "purchase_frequency",
+              "raw_value": 1.0,
+              "unit": "orders_per_member",
+              "numerator": 2,
+              "denominator": 2,
+              "display_reference": "1.00",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_amount_rate",
+              "raw_value": 0.047619047619047616,
+              "unit": "ratio",
+              "numerator": 500,
+              "denominator": 10500,
+              "display_reference": "4.76%",
+              "display_verified": true
+            },
+            {
+              "metric": "cancel_rate",
+              "raw_value": 0.0,
+              "unit": "ratio",
+              "numerator": 0,
+              "denominator": 2,
+              "display_reference": "0.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_order_rate",
+              "raw_value": 0.5,
+              "unit": "ratio",
+              "numerator": 1,
+              "denominator": 2,
+              "display_reference": "50.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "discount_rate",
+              "raw_value": 0.0,
+              "unit": "ratio",
+              "numerator": 0,
+              "denominator": 10500,
+              "display_reference": "0.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "items_per_order",
+              "raw_value": 2.0,
+              "unit": "items_per_order",
+              "numerator": 4,
+              "denominator": 2,
+              "display_reference": "2.00",
+              "display_verified": true
+            }
+          ]
+        },
+        {
+          "group": "S03",
+          "metrics": [
+            {
+              "metric": "avg_order_value",
+              "raw_value": 4500.0,
+              "unit": "cents_per_order",
+              "numerator": 9000,
+              "denominator": 2,
+              "display_reference": "45.00",
+              "display_verified": true
+            },
+            {
+              "metric": "avg_buyer_value",
+              "raw_value": 9000.0,
+              "unit": "cents_per_member",
+              "numerator": 9000,
+              "denominator": 1,
+              "display_reference": "90.00",
+              "display_verified": true
+            },
+            {
+              "metric": "purchase_frequency",
+              "raw_value": 2.0,
+              "unit": "orders_per_member",
+              "numerator": 2,
+              "denominator": 1,
+              "display_reference": "2.00",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_amount_rate",
+              "raw_value": 0.1,
+              "unit": "ratio",
+              "numerator": 1000,
+              "denominator": 10000,
+              "display_reference": "10.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "cancel_rate",
+              "raw_value": 0.0,
+              "unit": "ratio",
+              "numerator": 0,
+              "denominator": 2,
+              "display_reference": "0.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_order_rate",
+              "raw_value": 0.5,
+              "unit": "ratio",
+              "numerator": 1,
+              "denominator": 2,
+              "display_reference": "50.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "discount_rate",
+              "raw_value": 0.0,
+              "unit": "ratio",
+              "numerator": 0,
+              "denominator": 10000,
+              "display_reference": "0.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "items_per_order",
+              "raw_value": 2.0,
+              "unit": "items_per_order",
+              "numerator": 4,
+              "denominator": 2,
+              "display_reference": "2.00",
+              "display_verified": true
+            }
+          ]
+        },
+        {
+          "group": "S01",
+          "metrics": [
+            {
+              "metric": "avg_order_value",
+              "raw_value": 1562.5,
+              "unit": "cents_per_order",
+              "numerator": 12500,
+              "denominator": 8,
+              "display_reference": "15.63",
+              "display_verified": true
+            },
+            {
+              "metric": "avg_buyer_value",
+              "raw_value": 1562.5,
+              "unit": "cents_per_member",
+              "numerator": 12500,
+              "denominator": 8,
+              "display_reference": "15.63",
+              "display_verified": true
+            },
+            {
+              "metric": "purchase_frequency",
+              "raw_value": 1.0,
+              "unit": "orders_per_member",
+              "numerator": 8,
+              "denominator": 8,
+              "display_reference": "1.00",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_amount_rate",
+              "raw_value": 0.0,
+              "unit": "ratio",
+              "numerator": 0,
+              "denominator": 12500,
+              "display_reference": "0.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "cancel_rate",
+              "raw_value": 0.1111111111111111,
+              "unit": "ratio",
+              "numerator": 1,
+              "denominator": 9,
+              "display_reference": "11.11%",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_order_rate",
+              "raw_value": 0.0,
+              "unit": "ratio",
+              "numerator": 0,
+              "denominator": 8,
+              "display_reference": "0.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "discount_rate",
+              "raw_value": 0.0,
+              "unit": "ratio",
+              "numerator": 0,
+              "denominator": 12500,
+              "display_reference": "0.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "items_per_order",
+              "raw_value": 1.125,
+              "unit": "items_per_order",
+              "numerator": 9,
+              "denominator": 8,
+              "display_reference": "1.13",
+              "display_verified": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B4-D01-all",
+      "answer": "统计范围为2026年7月1日至7月31日（截至8月1日不含）的青禾优选整体数据，未按门店分组；人员口径按CRM会员账户计数，金额由分换算为元，比例以百分数展示。结果：有效订单均额26.25元/单；购买会员人均消费28.64元/账户；购买频次1.09单/账户；退款金额占比4.55%；取消率7.69%；退款订单率16.67%；优惠率0.00%；单均商品件数1.42件/单。上述指标均返回有效值，其中优惠率为零而非未定义。数据来自合成测试库，统计单位为账户、订单笔数和金额分口径，不表示跨系统自然人已去重。",
+      "passed": true,
+      "review": "7月全店整体不分组；26.25元/单、28.64元/账户、1.09单/账户、4.55%、7.69%、16.67%、0.00%、1.42件/单正确，未平均门店比率；明确合成测试与CRM账户范围。",
+      "groups": [
+        {
+          "group": "overall",
+          "metrics": [
+            {
+              "metric": "avg_order_value",
+              "raw_value": 2625.0,
+              "unit": "cents_per_order",
+              "numerator": 31500,
+              "denominator": 12,
+              "display_reference": "26.25",
+              "display_verified": true
+            },
+            {
+              "metric": "avg_buyer_value",
+              "raw_value": 2863.6363636363635,
+              "unit": "cents_per_member",
+              "numerator": 31500,
+              "denominator": 11,
+              "display_reference": "28.64",
+              "display_verified": true
+            },
+            {
+              "metric": "purchase_frequency",
+              "raw_value": 1.0909090909090908,
+              "unit": "orders_per_member",
+              "numerator": 12,
+              "denominator": 11,
+              "display_reference": "1.09",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_amount_rate",
+              "raw_value": 0.045454545454545456,
+              "unit": "ratio",
+              "numerator": 1500,
+              "denominator": 33000,
+              "display_reference": "4.55%",
+              "display_verified": true
+            },
+            {
+              "metric": "cancel_rate",
+              "raw_value": 0.07692307692307693,
+              "unit": "ratio",
+              "numerator": 1,
+              "denominator": 13,
+              "display_reference": "7.69%",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_order_rate",
+              "raw_value": 0.16666666666666666,
+              "unit": "ratio",
+              "numerator": 2,
+              "denominator": 12,
+              "display_reference": "16.67%",
+              "display_verified": true
+            },
+            {
+              "metric": "discount_rate",
+              "raw_value": 0.0,
+              "unit": "ratio",
+              "numerator": 0,
+              "denominator": 33000,
+              "display_reference": "0.00%",
+              "display_verified": true
+            },
+            {
+              "metric": "items_per_order",
+              "raw_value": 1.4166666666666667,
+              "unit": "items_per_order",
+              "numerator": 17,
+              "denominator": 12,
+              "display_reference": "1.42",
+              "display_verified": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B4-F01",
+      "answer": "统计范围为2026年8月、青禾优选小程序渠道的汇总结果，未按门店或地区分组；人数口径为购买会员账户数。结果：有效订单均额37.46元/单；购买会员人均消费37.46元/账户；购买频次1.00单/账户；退款金额占比22.33%；取消率6.25%；退款订单率13.33%；优惠率4.71%；单均商品件数1.15件/单。口径分别为：有效订单均额=净销售额/有效订单数；购买会员人均消费=净销售额/购买会员数；购买频次=有效订单数/购买会员数；退款金额占比=退款金额/实付金额；取消率=取消订单数/创建订单数；退款订单率=退款订单数/支付订单数；优惠率=优惠金额/支付订单原价金额；单均商品件数=有效订单商品件数/有效订单数。金额已由分换算为元并保留两位，比例为百分数。数据来自当前合成测试库覆盖范围。",
+      "passed": true,
+      "review": "8月小程序渠道，未按店分组。渠道条件作用于所有组成量，37.46元/单、37.46元/账户、1.00单/账户、22.33%、6.25%、13.33%、4.71%、1.15件/单正确；8公式和分转元/百分数说明准确。",
+      "groups": [
+        {
+          "group": "overall",
+          "metrics": [
+            {
+              "metric": "avg_order_value",
+              "raw_value": 3746.153846153846,
+              "unit": "cents_per_order",
+              "numerator": 48700,
+              "denominator": 13,
+              "display_reference": "37.46",
+              "display_verified": true
+            },
+            {
+              "metric": "avg_buyer_value",
+              "raw_value": 3746.153846153846,
+              "unit": "cents_per_member",
+              "numerator": 48700,
+              "denominator": 13,
+              "display_reference": "37.46",
+              "display_verified": true
+            },
+            {
+              "metric": "purchase_frequency",
+              "raw_value": 1.0,
+              "unit": "orders_per_member",
+              "numerator": 13,
+              "denominator": 13,
+              "display_reference": "1.00",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_amount_rate",
+              "raw_value": 0.22328548644338117,
+              "unit": "ratio",
+              "numerator": 14000,
+              "denominator": 62700,
+              "display_reference": "22.33%",
+              "display_verified": true
+            },
+            {
+              "metric": "cancel_rate",
+              "raw_value": 0.0625,
+              "unit": "ratio",
+              "numerator": 1,
+              "denominator": 16,
+              "display_reference": "6.25%",
+              "display_verified": true
+            },
+            {
+              "metric": "refund_order_rate",
+              "raw_value": 0.13333333333333333,
+              "unit": "ratio",
+              "numerator": 2,
+              "denominator": 15,
+              "display_reference": "13.33%",
+              "display_verified": true
+            },
+            {
+              "metric": "discount_rate",
+              "raw_value": 0.04711246200607903,
+              "unit": "ratio",
+              "numerator": 3100,
+              "denominator": 65800,
+              "display_reference": "4.71%",
+              "display_verified": true
+            },
+            {
+              "metric": "items_per_order",
+              "raw_value": 1.1538461538461537,
+              "unit": "items_per_order",
+              "numerator": 15,
+              "denominator": 13,
+              "display_reference": "1.15",
+              "display_verified": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

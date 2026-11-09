@@ -1,0 +1,31 @@
+{
+  "case_id": "C06",
+  "started_at": "2026-11-06T15:14:52.653541+00:00",
+  "completed_at": "2026-11-06T15:15:01.878759+00:00",
+  "question": "人工情境：账户A有一张悦享年卡和一张家庭季卡，在判定日均已确认有效，并有两笔不同的有效订单O1、O2。应计几个有资格账户、几笔有效订单？关联时怎样避免错误？",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "cards": [
+      "A-C1",
+      "A-C2"
+    ],
+    "orders": [
+      "O1",
+      "O2"
+    ],
+    "records_complete": true
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-9aee6d3599ae4fbcaa444f629a5a7303/run.json",
+    "run_id": "RUN-9aee6d3599ae4fbcaa444f629a5a7303",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "本题是人工构造的隔离测试情境，以下结论仅在该题设成立时成立，不代表客户真实记录或已执行查询。应计 1 个有资格账户、2 笔有效订单。依据是业务模型对“派生付费资格”的定义：账户只要有一张符合本期产品范围且在判定日有效的卡，即具有资格；账户A的悦享年卡和家庭季卡均有效，但多张有效卡不重复计账户，因此账户数为1。两笔不同有效订单O1、O2按账户—订单的一对多关系各计一笔，且规则明确不因多张有效卡重复累计订单，因此订单数为2。关联时先按账户标识把订单归到账户，再在账户层做资格去重；卡侧按“同一张卡同时满足产品范围与有效期”判资格并按账户去重；订单侧按订单标识去重并核对有效购买条件（已支付且实付减累计退款后大于零），同时保持统计期间、渠道和人群范围一致。不要按卡数复制订单、不要用订单反推具体卡，也不要把账户数或卡数混同订单数。本题材料未提供订单实际对应哪张卡，故不应建立订单—具体卡的关联；生产环境核验也仍未取得。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "19ef8d910a27d5084460c2e9ec2c584adfb909691775d466ad4e5c855ead67fb"
+}

@@ -1,0 +1,70 @@
+{
+  "status": "preparing_independent_expected",
+  "paired_batches": [
+    "B3",
+    "B4"
+  ],
+  "user_instruction": "每轮两批一起推进、合并汇报；普通实现/修复连续推进，真实业务决策升级",
+  "build_metrics": [
+    "order_count",
+    "paid_order_count",
+    "valid_order_count",
+    "cancelled_order_count",
+    "refund_order_count",
+    "partial_refund_order_count",
+    "full_refund_order_count",
+    "payment_cents",
+    "refund_cents",
+    "net_sales_cents",
+    "gross_cents",
+    "discount_cents",
+    "buyer_count",
+    "refund_buyer_count",
+    "selling_store_count",
+    "valid_order_items",
+    "avg_order_value",
+    "avg_buyer_value",
+    "purchase_frequency",
+    "refund_amount_rate",
+    "cancel_rate",
+    "refund_order_rate",
+    "discount_rate",
+    "items_per_order"
+  ],
+  "new_metrics": {
+    "B3": [
+      "buyer_count",
+      "refund_buyer_count",
+      "selling_store_count",
+      "valid_order_items"
+    ],
+    "B4": [
+      "avg_order_value",
+      "avg_buyer_value",
+      "purchase_frequency",
+      "refund_amount_rate",
+      "cancel_rate",
+      "refund_order_rate",
+      "discount_rate",
+      "items_per_order"
+    ]
+  },
+  "regression_small_questions": 21,
+  "regression_isolated_fixture_questions": 1,
+  "freeze_before_build": true,
+  "next_pair": [
+    "B5",
+    "B6"
+  ],
+  "B7": "单列剩余付费月报，后续全库回归",
+  "planned_new_small_questions": 12,
+  "planned_total_small_questions": 33,
+  "planned_fixture_questions": 1,
+  "execution_plan": {
+    "new12": "independent output directory; native w03 test",
+    "regression21": "parallel independent output directory; same read-only project",
+    "fixture1": "same library separately loaded original B2 fixture",
+    "combined_small": "derived index only; original native reports retained",
+    "concurrency_limit": 2
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "logical_calls": 16,
+  "http_attempts": 16,
+  "usage": {
+    "prompt_tokens": 90513,
+    "completion_tokens": 84012,
+    "total_tokens": 174525
+  },
+  "pairs": [
+    {
+      "old": "gap-qh-mapped-old",
+      "new": "gap-qh-new",
+      "only_system_method_changes": true
+    },
+    {
+      "old": "gap-transfer-old",
+      "new": "gap-transfer-new",
+      "only_system_method_changes": true
+    },
+    {
+      "old": "maintain-qinghe-before",
+      "new": "maintain-qinghe-after",
+      "only_system_method_changes": true
+    },
+    {
+      "old": "maintain-transfer-before",
+      "new": "maintain-transfer-after",
+      "only_system_method_changes": true
+    },
+    {
+      "old": "context-diagnostic/gap-context-before",
+      "new": "context-diagnostic/gap-context-after",
+      "only_system_method_changes": true
+    },
+    {
+      "old": "context-diagnostic/maintain-context-before",
+      "new": "context-diagnostic/maintain-context-after",
+      "only_system_method_changes": true
+    }
+  ],
+  "diagnostic_method_unchanged": [
+    [
+      "inputs/gap-after.md",
+      "context-diagnostic/inputs/gap-after.md"
+    ],
+    [
+      "inputs/maintain-after.md",
+      "context-diagnostic/inputs/maintain-after.md"
+    ]
+  ],
+  "repeat_request_exactly_identical": true,
+  "structured_outputs_all_valid": true,
+  "semantic_all_passed": false,
+  "expectations_not_in_requests": "runner仅读取input/method，expected目录未被读入；请求逐项核对",
+  "formal_workflow_started": false
+}

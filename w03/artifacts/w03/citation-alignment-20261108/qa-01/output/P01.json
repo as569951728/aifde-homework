@@ -1,0 +1,174 @@
+{
+  "case_id": "P01",
+  "started_at": "2026-11-08T02:04:39.593340+00:00",
+  "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "account": "A",
+    "tier": "普通",
+    "cards_complete": true,
+    "cards": [
+      {
+        "card_type": "悦享年卡",
+        "state_on_decision_day": "有效",
+        "card_paid_cents": 10000
+      }
+    ]
+  },
+  "input_track": "model_only",
+  "fixed_materials": [],
+  "actual_question_sha256": "ac2e5f233bb02246e05575127b9817021082c42a0069cdf63b14e78d2925395b",
+  "requests_sha256": "62adbdd4a1fb9cf4c9ab2bf11c90a2fc6f9dcc8a37934e5c41a605fd838c2cb7",
+  "model_sha256": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9",
+  "gate_sha256": "1d88039754a4884c091bf6b7d2e51e13a3888d5eebc38c5cf0f398bc565e3c97",
+  "result": {
+    "status": "failed",
+    "run": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/run.json",
+    "run_id": "RUN-1b3f2840da4c4f5588906a8f5d6934d4",
+    "error": {
+      "code": "JSON_INVALID",
+      "message": "保留本次请求及公开响应；核对原因后另建运行。"
+    },
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": null,
+  "native_structure_check": "passed",
+  "runner_errors": [],
+  "semantic_review": "pending_independent_review",
+  "native_directories": [
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4"
+  ],
+  "native_files": {
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/attempts.json": "18cc3176afe3cbeb608118a1f73d03b4f58ab47c3403b734a45f0bc4fa9f1d6d",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/platform/fde_product/agent.py": "2d3b397b3b54a0d9555c82777e5785e334d0fd0fa6d248f92211a4a1c87e9383",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/platform/fde_product/interview_extraction.py": "4158dd8cf48092fbd515c562e326d403e60d15feb76511dd04b9991c77de6e53",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/platform/fde_product/knowledge_io.py": "bd317c47e8f8fb0ebfaebab2c4babc6b70f0479301249a1b2ca5e435811b051c",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/platform/fde_product/models.py": "17cac712394ede304b9d57f2c3adcf4cb5739bbd6264880efb9603bc5dacb223",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/platform/fde_product/natural_knowledge.py": "0622a655662a7ffbe38bcc6c0e9a6d0d1545455efd3d2baf15a9abd5a2dcd68a",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/platform/fde_product/observability.py": "a7bfdbb457c5c069d78d6e296bb5ecfaff4fe4aafe25147cca9c8e85df1e7cd5",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/tools/w02_knowledge.py": "82b5f14807cbe72d0adb046d13a348a6e2f4eee7169e7f33118d08affd1369e3",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/request.json": "243d8a77ca8a9b09bf4e684bc5f94c854f96e51de28a5f43cbff7cb00ecd96fe",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/response.json": "1ea6c2436a60737a7a0fa6caf6946f051dedd9d0af0175da0545f8721db8d072",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/run.json": "1a9761206f954fd838f552b5cbff13f9be5c901df2d798a4f4162d9315aed91a",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/settings.json": "125dc459f780ed95453609b1bede219094f8d0d738443afd410f3b50d184f32a",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/candidates.json": "74e9f31a939d73c5e1b39a230069e332a01b60d1f827d36243dd1ac8cc0ec121",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/interview_facts.schema.json": "34358b1f9cca39f17f3d7b74abda732460be0beaba2f93b8e8f8bcaa3d2e0a80",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/run_evidence.schema.json": "4fed42abba5d6f9a727c52d6e3097e965ffa3b02ef855aadb2387ab1f890ebce",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/contracts/transcript.schema.json": "855f84b576d3f0b7bea82eac6b817fc0c8c723040f131f43075380110a823f9f",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/interview_extraction.py": "4158dd8cf48092fbd515c562e326d403e60d15feb76511dd04b9991c77de6e53",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/platform/fde_product/models.py": "17cac712394ede304b9d57f2c3adcf4cb5739bbd6264880efb9603bc5dacb223",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/implementation/tools/w02_interviews.py": "7dc6d6e55add4179c10f6cd41944606ee0a7a722ca2e5bc30b25ca4db31a3e00",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json": "d14054e7522c11b619d6cd48033942ea74a70438668fc0f431b1f6bdc50ab6ff",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/settings.json": "ea28c2799fe3f77d32865dcef55d1726284b0780535600651e9ac7650ac94d70",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/extraction.json": "d7a9ee85dc72715c80be0a9090663d7a05dd7a9054429ab1a8f4bc7d6d1f43e9",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/inputs/prompt.md": "65f01bb0bd7c6e25bb04e2d45b493f02895a4d178027dbfa45f321c6406fa4c2",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/0.json": "4e0dda3d8653d67b4740345a3eeffc84f5eac6b81e03fa1a64572338b7b31f71",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/1.json": "4d60b0499cfff1ce466183fa32c6c593956abe0513d1336ded239e4e53f3211c",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/2.json": "44782a4e3faf2e64dda977a14096cb2ef872b30082f5bab76685822fbbbd7308",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/snapshot/artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/sources/3.json": "fb6435f8ab761dbb26a995ec93f11530ef67840661251ab8b4c59d19ffbbf5ce",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.attempts.json": "5267f566ee6af2d15d9670f57b475612ff7374601f971d7af3cf55ded704f1e0",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.request.json": "59ab377b1cd0eb50a0a2a5c3271122f6d113bcfaa9d62b0345c7d2252950acf3",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-001.response.json": "8da9a3fd1855656fdd96f9d87790f93a8ffcfca27a91722e5739aa04ac882a4b",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.attempts.json": "2587eba3643f75dceb60fddeaca9ca48c8a38e3d346fab317a93a0845c3e262b",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.request.json": "bf8ac919a167b3807bd5f45fb6144665f2810671112626bea9fab1f29189a627",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/step-002.response.json": "056520589f9b941ba9e40992a94e37a7b8a1a642e028e05bb1727073498fba7b",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/steps.json": "750b29936fe8ce9b549b2ef169a2b103ad1dc19264f6bb348913a1bb94421d0b",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w03/citation-alignment-20261108/qa-01/input/business_model.md": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w03/citation-alignment-20261108/qa-01/input/knowledge.json": "6dd11a598a1918f662d5b9362691cd83ce4d93705ae517846f60ed836e35048b",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w03/citation-alignment-20261108/qa-01/input/knowledge_prompt.txt": "74af26664273fe70d85cd0f84d13dc07bc7850614fb8368c2f822c74742ec40d",
+    "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/source_manifest.json": "af36d8704e9aba2ee63edab289164bb8ec715651e867ed4ece94544a4f133ccd"
+  },
+  "native_run": {
+    "contract_version": "w02-natural-0.1.0",
+    "run_id": "RUN-1b3f2840da4c4f5588906a8f5d6934d4",
+    "stage": "context",
+    "scope_id": "qinghe",
+    "mode": "live",
+    "status": "failed",
+    "model": {
+      "provider": "api.deepseek.com",
+      "name": "deepseek-flash",
+      "adapter_version": "w02-natural-0.1.0"
+    },
+    "implementation": [
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/platform/fde_product/natural_knowledge.py",
+        "sha256": "0622a655662a7ffbe38bcc6c0e9a6d0d1545455efd3d2baf15a9abd5a2dcd68a"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/platform/fde_product/knowledge_io.py",
+        "sha256": "bd317c47e8f8fb0ebfaebab2c4babc6b70f0479301249a1b2ca5e435811b051c"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/platform/fde_product/interview_extraction.py",
+        "sha256": "4158dd8cf48092fbd515c562e326d403e60d15feb76511dd04b9991c77de6e53"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/platform/fde_product/models.py",
+        "sha256": "17cac712394ede304b9d57f2c3adcf4cb5739bbd6264880efb9603bc5dacb223"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/platform/fde_product/agent.py",
+        "sha256": "2d3b397b3b54a0d9555c82777e5785e334d0fd0fa6d248f92211a4a1c87e9383"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/platform/fde_product/observability.py",
+        "sha256": "a7bfdbb457c5c069d78d6e296bb5ecfaff4fe4aafe25147cca9c8e85df1e7cd5"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/implementation/tools/w02_knowledge.py",
+        "sha256": "82b5f14807cbe72d0adb046d13a348a6e2f4eee7169e7f33118d08affd1369e3"
+      }
+    ],
+    "configuration": [
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/source_manifest.json",
+        "sha256": "af36d8704e9aba2ee63edab289164bb8ec715651e867ed4ece94544a4f133ccd"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/settings.json",
+        "sha256": "125dc459f780ed95453609b1bede219094f8d0d738443afd410f3b50d184f32a"
+      }
+    ],
+    "inputs": [
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w03/citation-alignment-20261108/qa-01/input/business_model.md",
+        "sha256": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/snapshot/artifacts/w02/runs/RUN-c3e03eb3b9ca4555835f07361c425e80/run.json",
+        "sha256": "d14054e7522c11b619d6cd48033942ea74a70438668fc0f431b1f6bdc50ab6ff"
+      }
+    ],
+    "outputs": [
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/request.json",
+        "sha256": "243d8a77ca8a9b09bf4e684bc5f94c854f96e51de28a5f43cbff7cb00ecd96fe"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/attempts.json",
+        "sha256": "18cc3176afe3cbeb608118a1f73d03b4f58ab47c3403b734a45f0bc4fa9f1d6d"
+      },
+      {
+        "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/response.json",
+        "sha256": "1ea6c2436a60737a7a0fa6caf6946f051dedd9d0af0175da0545f8721db8d072"
+      }
+    ],
+    "semantic_review": "needs_review",
+    "error": {
+      "code": "JSON_INVALID",
+      "message": "保留本次请求及公开响应；核对原因后另建运行。"
+    },
+    "request": {
+      "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/request.json",
+      "sha256": "243d8a77ca8a9b09bf4e684bc5f94c854f96e51de28a5f43cbff7cb00ecd96fe"
+    },
+    "response": {
+      "path": "artifacts/w02/knowledge_runs/RUN-1b3f2840da4c4f5588906a8f5d6934d4/response.json",
+      "sha256": "1ea6c2436a60737a7a0fa6caf6946f051dedd9d0af0175da0545f8721db8d072"
+    }
+  },
+  "native_run_sha256": "1a9761206f954fd838f552b5cbff13f9be5c901df2d798a4f4162d9315aed91a",
+  "completed_at": "2026-11-08T02:04:46.446441+00:00",
+  "status": "failed"
+}

@@ -1,0 +1,96 @@
+{
+  "date": "2026-11-05",
+  "calls": [
+    {
+      "id": "gap-qh-unmapped-old",
+      "mode": "gap",
+      "input": "inputs/gap-current.json",
+      "method": "inputs/gap-before.md",
+      "stage": "initial"
+    },
+    {
+      "id": "gap-qh-mapped-old",
+      "mode": "gap",
+      "input": "inputs/gap-current-mapped.json",
+      "method": "inputs/gap-before.md",
+      "stage": "initial"
+    },
+    {
+      "id": "gap-qh-new",
+      "mode": "gap",
+      "input": "inputs/gap-current-mapped.json",
+      "method": "inputs/gap-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "gap-transfer-old",
+      "mode": "gap",
+      "input": "inputs/gap-transfer-mapped.json",
+      "method": "inputs/gap-before.md",
+      "stage": "initial"
+    },
+    {
+      "id": "gap-transfer-new",
+      "mode": "gap",
+      "input": "inputs/gap-transfer-mapped.json",
+      "method": "inputs/gap-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "gap-positive-new",
+      "mode": "gap",
+      "input": "inputs/gap-positive.json",
+      "method": "inputs/gap-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-qinghe-before",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe.json",
+      "method": "inputs/maintain-before.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-qinghe-after",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-transfer-before",
+      "mode": "maintain",
+      "input": "inputs/maintain-transfer.json",
+      "method": "inputs/maintain-before.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-transfer-after",
+      "mode": "maintain",
+      "input": "inputs/maintain-transfer.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "gap-qh-confirm",
+      "mode": "gap",
+      "input": "inputs/gap-current-mapped.json",
+      "method": "inputs/gap-after.md",
+      "stage": "confirm"
+    },
+    {
+      "id": "maintain-qh-confirm",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "confirm"
+    }
+  ],
+  "model": "deepseek-flash",
+  "max_concurrency": 2,
+  "initial_calls": 10,
+  "conditional_confirmation_calls": 2,
+  "stop": "一个候选版本。所有原标准保留；每层全部适用标准通过、原通过项不退步才接入。首轮全部新例通过才重复两个青禾例；确认不通过则留候选，不再加提示反复试。",
+  "attribution": "gap先比较旧方法原输入与加目录索引，再在同一加索引输入比较旧/新。维护新旧共用分字段输出；不把本次与昨日差异全归因Skill。",
+  "limits": "无工具隔离回放，不启动或apply正式workflow；由同一导师语义审核，不是独立盲评；次数有限不代表普遍稳定。"
+}

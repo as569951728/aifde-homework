@@ -1,0 +1,23 @@
+{
+  "changed": [
+    "customer/w02/extraction.json:sources、focus_questions、batch_chars",
+    "customer/w02/workflow.json:goal",
+    "docs/w03/interview_notes.md:本人决定及01–08逐字上下文",
+    "docs/w03/model_changes.md:本人采用及迁移边界"
+  ],
+  "batch_change": {
+    "before": 4000,
+    "after": 32000,
+    "reason": "本轮四份完整问答合并，避免消息批次切断提问/回答前提；需离线核实际批次及问答完整。不是Skill替换或语义通过。"
+  },
+  "unchanged": [
+    "维护Skill scope-first-v3",
+    "提取提示 qinghe-extraction-v2",
+    "DeepSeek profile",
+    "工作流输出docs/w03",
+    "正式业务模型/指标/SOW/测试",
+    "W02原工程与提交"
+  ],
+  "source_count": 4,
+  "run_scope": "offline inspect only; no start/resume/apply/API"
+}

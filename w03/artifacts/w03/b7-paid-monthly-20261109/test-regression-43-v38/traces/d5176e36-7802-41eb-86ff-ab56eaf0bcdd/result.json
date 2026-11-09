@@ -1,0 +1,54 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "payment_cents",
+      "refund_cents",
+      "net_sales_cents",
+      "gross_cents",
+      "discount_cents"
+    ],
+    "start": "2026-06-01",
+    "end": "2026-06-30",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  SUM(case when status = 'paid' then paid_cents else 0 end) AS payment_cents\n  , SUM(case when status = 'paid' then refund_cents else 0 end) AS refund_cents\n  , SUM(case when status = 'paid' then paid_cents - refund_cents else 0 end) AS net_sales_cents\n  , SUM(case when status = 'paid' then gross_cents else 0 end) AS gross_cents\n  , SUM(case when status = 'paid' then gross_cents - paid_cents else 0 end) AS discount_cents\nFROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-06-01' AND '2026-06-29'",
+  "columns": [
+    "payment_cents",
+    "refund_cents",
+    "net_sales_cents",
+    "gross_cents",
+    "discount_cents"
+  ],
+  "rows": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "seconds": 0.037,
+  "units": {
+    "payment_cents": "cents",
+    "refund_cents": "cents",
+    "net_sales_cents": "cents",
+    "gross_cents": "cents",
+    "discount_cents": "cents"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "在青禾当前客户数据范围内，本次实际按2026-06-01至2026-06-30（含首尾）统计，未增加门店或地区分组。五项指标均按已支付订单行口径计算，取消单不计：实付金额0.00元；退款金额0.00元，按原订单下单日期归属；净销售额0.00元，为实付金额减退款金额；支付订单原价金额0.00元，为折扣前原价；优惠金额0.00元，为原价减实付，退款不冲减原优惠金额。上述零是本次覆盖范围内的聚合结果，不是未定义。",
+  "question": "请同时列出2026年6月1日至6月29日（含首尾）青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额。",
+  "trace_id": "d5176e36-7802-41eb-86ff-ab56eaf0bcdd",
+  "elapsed_seconds": 29.124,
+  "model_usage": {
+    "prompt_tokens": 12981,
+    "completion_tokens": 1242,
+    "total_tokens": 14223
+  },
+  "model_calls_with_usage": 2
+}

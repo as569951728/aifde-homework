@@ -1,0 +1,24 @@
+{
+  "case_id": "B03",
+  "started_at": "2026-11-07T02:39:17.704896+00:00",
+  "completed_at": "2026-11-07T02:39:23.743501+00:00",
+  "question": "人工订单原始quantity=3、paid=1000、refund=200且仍有效。有效订单商品件数计几件？能否从退款金额推出退了几件？购卡金额可否并入商品净额？",
+  "fixture": null,
+  "input_track": "model_with_fixed_materials",
+  "fixed_materials": [
+    "W03/实操工程/materials/w03/01_订单日报说明.md",
+    "W03/实操工程/materials/w03/05_数据字典.md"
+  ],
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-cb31de1ec6a54cd0b8b1ac9cffcb6ff8/run.json",
+    "run_id": "RUN-cb31de1ec6a54cd0b8b1ac9cffcb6ff8",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "按题设，该订单为 paid、实付 1000、累计退款 200，扣退款后仍大于零，因此属于有效订单。材料规定“有效订单商品件数”按有效订单中的原始购买件数合计，quantity=3，所以计 3 件；它不是扣退货后的净销量。退款金额不能推算退货件数，材料明确“退款金额不能推算退货件数”。购卡金额也不可并入商品净额：数据字典说明购卡实付不等于商品订单收入，商品净销售额按 paid 订单实付减退款后合计，取消单不计。依据为《订单日报说明》中“有效订单”“有效订单商品件数”“净销售额”的定义，以及《数据字典》orders.quantity、orders.refund_cents、cards.card_paid_cents 的字段说明；上述 3 件与不能并入购卡金额的结论是基于本题给定条件作出的情境推导。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "690668f3fd143436588daa20a16fb6b388adc1468a51bc3d8b5e96eed7438d4f"
+}

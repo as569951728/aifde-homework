@@ -1,0 +1,40 @@
+{
+  "created_at": "2026-11-06T16:38:49.419224+00:00",
+  "status": "input_gate_passed_for_one_12_case_run",
+  "checks": {
+    "all_manifest_hashes": true,
+    "approved_model_exact": true,
+    "approved_prompt_exact": true,
+    "model_hash_approved": true,
+    "prompt_hash_approved": true,
+    "original_questions_identical": true,
+    "expectations_identical": true,
+    "selected_cases_exact_originals": true,
+    "selected_case_objects_exact_prior12": true,
+    "selection_metadata_only_reason_changed": true,
+    "runner_identical": true,
+    "answer_protocol_identical": true,
+    "checker_unchanged": true,
+    "all_protected_hashes": true,
+    "config_only_snapshot_paths_changed": true
+  },
+  "case_count": 12,
+  "protected_file_count": 12,
+  "input_hashes": {
+    "input/business_model.md": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+    "input/knowledge.json": "dbb6bdb9f0e4d05c796df4ade4b54a4d068a1975124184f39630aa9fb07836fc",
+    "input/knowledge_prompt.txt": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+    "input/original_questions.json": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+    "input/protected.json": "25cd04dd8392eb12803de036ce08c4c890f2fef2a57d0f15e2d86d42f74df980",
+    "input/reviewer_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+    "input/selected_questions.json": "9acfd87adc268202326c83b815e8963bb7fa9e6dcba5a39a82aaa54d914f56fe"
+  },
+  "candidate_review_sha256": "2c2039c98609dca0bb65f099ce5a5358fb5ad761a7dbd56d980e663ecfd0dd97",
+  "runner_sha256": "229e3399295119d83606c5b7f5761f45829e460279d93887e1210d753279e598",
+  "checker_sha256": "f035a2c54a069a6d47f896be1abfaf3f4590d25c510c64623547292469486aee",
+  "selection_metadata_note": "最初字节比较发现selected_questions.json并非整文件同字节；查明唯一差异是本批selection_reason。12个case对象、ids与contract均精确相同，selection_reason不进入模型messages，因此不构成改题或答案泄漏。",
+  "model_visible_input": "已审模型候选+已审空白模板提示+课程GUARD+原单题fixture；期望、checker、独立oracle不进messages。",
+  "actual_outputs_read": false,
+  "model_calls_by_reviewer": 0,
+  "limits": "执行前门禁通过，不代表实际答复通过；必须后验核每题真实request/attempt与输出。"
+}

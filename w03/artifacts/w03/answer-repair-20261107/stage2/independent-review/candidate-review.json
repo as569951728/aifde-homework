@@ -1,0 +1,70 @@
+{
+  "created_at": "2026-11-07T04:44:56.024219+00:00",
+  "status": "passed",
+  "approved": true,
+  "approval_scope": "stage2_prompt_candidate_change_only",
+  "approved_for_freeze": true,
+  "approved_for_execution": false,
+  "failed_checks": [],
+  "checks": [
+    {
+      "name": "source_first_saved_before_prompt_review",
+      "pass": true
+    },
+    {
+      "name": "only_one_insertion_relative_to_stage1",
+      "pass": true
+    },
+    {
+      "name": "date_template_byte_unchanged",
+      "pass": true
+    },
+    {
+      "name": "no_case_ids_customer_names_dates_source_ids_or_expected_literals_in_delta",
+      "pass": true
+    },
+    {
+      "name": "delta_is_conditional_general_method_not_new_business_rule",
+      "pass": true
+    },
+    {
+      "name": "covers_observed_numerator_denominator_mixup_and_condition_conjunction_error",
+      "pass": true
+    },
+    {
+      "name": "preserves_unknown_per_condition_and_no_unsupported_formula_expansion",
+      "pass": true
+    },
+    {
+      "name": "no_parser_framework_model_question_expectation_changes_by_prompt_diff",
+      "pass": true
+    },
+    {
+      "name": "prompt_below_native_character_limit",
+      "pass": true
+    }
+  ],
+  "candidate_prompt": {
+    "path": "artifacts/w03/answer-repair-20261107/stage2/input/knowledge_prompt.txt",
+    "sha256": "e7ca9a5ef2836cae5e1bf96e0544dd1dcd66a441c204593a6d077cded5ba3c41",
+    "characters": 2131
+  },
+  "stage1_base": {
+    "path": "artifacts/w03/answer-repair-20261107/stage1/input/knowledge_prompt.txt",
+    "sha256": "7d237ed42f4b585cd36e09ae992d917b9bd0907ce6e5c13b3b8f92f748f7c019",
+    "adoption_condition": "须stage1完整原答审核通过，或先处理其实际阻塞；本审不代评stage1实答。"
+  },
+  "diff_sha256": "3e3d2b55749fd1a0a72bd78a1d575c6b104eecd1e9118975d6478b9d0d155639",
+  "source_first_criteria_sha256": "a73f64fdef4959e9693c9c6dd61d42397857dca4aa56b8de6d3a1dfcebb91d4e",
+  "inserted_text": "\n仅当回答涉及金额、比率或多个判定条件时，先做独立的计算与一致性检查，再输出：\n- 每个量分别确定定义、统计对象、分子、分母和单位，再代入题设。一个量在不同公式中的位置不能串用；比率为零与分母为零分开判断，缺信息与覆盖外也不能填成已知零。不额外扩展本题未要求且没有依据的公式。\n- 对需同时满足的多个条件，每一项先只依其自身规则和题设值判真伪，再合并得到整体结论。不能因整体无效就把所有单项都填为不满足，也不能把另一项失败的原因移到本项。逐项判断、区间端点、文字说明和最终结论须互相一致；信息不足按该项保留，不影响其他已知项。\n\n",
+  "reason": "B05原答额外句将净销售额错置为人均/单均分母；DQ10原答虽总体无效正确，却将提前终止单项写否，与其判定日早于终止日的解释矛盾。通用分量核查及逐条件先判再合并正对两类错误，不给具体答案。",
+  "control_material_preparation_observation": "prepare_stage.py对独立控制按fixed_materials原顺序加入逐字原文，冻结进最终question；完整门禁仍须逐字复算NUMCTRL01的两份材料、审核实际prepare输出。原题要核与既有native question完全一致。",
+  "remaining_gate": [
+    "冻结模型/原题/原预期/控制/实际请求/参数/受保护文件hash",
+    "两份控制材料逐字及原顺序、date fixture完整",
+    "stage2只8题且单次，无工具/预期泄漏",
+    "结构化status、checks、正文一致后方可启动"
+  ],
+  "api_calls": 0,
+  "prose": "阶段2提示的最小增量审核通过，可准备冻结；尚未批准执行。"
+}

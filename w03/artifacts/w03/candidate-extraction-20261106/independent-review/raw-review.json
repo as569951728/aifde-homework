@@ -1,0 +1,1530 @@
+{
+  "title": "W03 首次失败提取的39条原始候选独立审核",
+  "version": "raw-review-v1",
+  "date": "2026-11-06",
+  "status": "raw_output_review_complete_extraction_failed_not_accepted",
+  "reviewed_run": "RUN-bbca567eeb824f7c99498cd1efc10cfe",
+  "native_failure": "QUOTE_NOT_FOUND",
+  "source_first_criteria": "independent-review/source-first-criteria.json",
+  "inputs": [
+    {
+      "path": "artifacts/w03/candidate-extraction-20261106/raw_claims.json",
+      "sha256": "baa8f86aad37ef19867430613b82f7b125a5e57333609677172ace1c2cdc034b"
+    },
+    {
+      "path": "artifacts/w02/runs/RUN-bbca567eeb824f7c99498cd1efc10cfe/step-001.response.json",
+      "sha256": "036b69ce0aa6f7afb114c396fc7de34c1a4c1e09ea807f9bdae730120e1955c2"
+    },
+    {
+      "path": "artifacts/w03/candidate-extraction-20261106/independent-review/source-first-criteria.json",
+      "sha256": "afc9b8aee1c588d847de7510893ee001ff1aef5391972d8c3dc20d5687dd3451"
+    }
+  ],
+  "raw_matches_response": true,
+  "summary": {
+    "claims_reviewed": 39,
+    "verdict_counts": {
+      "evidence_completion": 7,
+      "source_supported": 21,
+      "repair_required": 11
+    },
+    "invalid_quote_claims": [
+      "C29",
+      "C30",
+      "C31"
+    ],
+    "invalid_quote_cause": "All three exact quotes belong to MSG-03911, but are attached to MSG-03910.",
+    "semantic_status": "大部分关键规则、提问前提及权限限制已保留；仍须修复历史问数去向、确定性升级、具体文件类型和复合断言引用覆盖。",
+    "missing_explicit_claims": 1,
+    "true_source_conflicts_found": 0,
+    "human_decisions_needed": 0,
+    "routing_split_proposals": 1
+  },
+  "claims": [
+    {
+      "claim_id": "C01",
+      "native_claim_id": null,
+      "original_statement": "小林（ROLE-LIN）称，本期总部运营月报的付费会员只纳入悦享年卡和家庭季卡的持有人；异业联名卡即使收费，也由合作方经营，不进这次自营会员范围；体验卡也不进。",
+      "criteria": [
+        "B01",
+        "B02"
+      ],
+      "destination": "body",
+      "verdict": "evidence_completion",
+      "issues": [
+        {
+          "code": "EVIDENCE_SCOPE",
+          "severity": "evidence",
+          "finding": "qualifier中的“不改其他报表”在原消息有明确原文，但现有摘录没有覆盖；补短引文。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C01",
+        "statement": "小林（ROLE-LIN）称，本期总部运营月报的付费会员只纳入悦享年卡和家庭季卡的持有人；异业联名卡即使收费，也由合作方经营，不进这次自营会员范围；体验卡也不进。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "限定为“本期总部运营月报”；小林另称该口径不改其他报表。",
+          "异业联名卡“即使收费”仍不纳入本期自营会员范围。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03848",
+            "quote": "这次总部运营月报的付费会员，只纳入悦享年卡和家庭季卡的持有人。异业联名卡即使收费，也由合作方经营，不进这次自营会员范围；体验卡也不进。"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03848",
+            "quote": "这个口径只约束本期总部运营月报，不改其他报表。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C02",
+      "native_claim_id": null,
+      "original_statement": "小林称普通、银卡、金卡是会员等级，跟有没有付费资格是两回事，不能拿卡的支付金额代替卡类型和有效状态来判断。",
+      "criteria": [
+        "B03"
+      ],
+      "destination": "body",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": "核心等级/付费资格分离正确。“未给出购卡金额上限”不构成实际业务需求，可在整合时删去该无关附注，不新增金额上限待核项。"
+    },
+    {
+      "claim_id": "C03",
+      "native_claim_id": null,
+      "original_statement": "小林称同一账户就算有两张有效悦享年卡，也只算一个有资格账户。",
+      "criteria": [
+        "B04"
+      ],
+      "destination": "body",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C04",
+      "native_claim_id": null,
+      "original_statement": "小林称按本期口径，账户只要持有一张已确认有效的悦享年卡或家庭季卡，就算有付费资格；同一账户另有失效卡，或联名卡、体验卡这类不纳入范围的卡，都不影响这个判断。",
+      "criteria": [
+        "B04"
+      ],
+      "destination": "body",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C05",
+      "native_claim_id": null,
+      "original_statement": "小林称权益开始当天和计划结束当天算不算有效，她没有能直接确认的日期边界规则，得按实际记录核实；悦享年卡和家庭季卡在本期都纳入，但两类卡日期规则是否一致也不能凭卡类型下结论。",
+      "criteria": [
+        "N02"
+      ],
+      "destination": "notes",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C06",
+      "native_claim_id": null,
+      "original_statement": "小林建议系统或数据上的问题找IT负责人老周核实。",
+      "criteria": [
+        "N04"
+      ],
+      "destination": "notes",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C07",
+      "native_claim_id": null,
+      "original_statement": "小林表示最想直接问系统的是：本期月报里按悦享年卡和家庭季卡的有效状态筛出持有人，再按账户去重后，有多少个有付费资格的账户；异业联名卡和体验卡不算，等级和支付金额也不参与判断。",
+      "criteria": [
+        "B05",
+        "Q01"
+      ],
+      "destination": "notes",
+      "verdict": "repair_required",
+      "issues": [
+        {
+          "code": "SUPERSEDED_QUESTION",
+          "severity": "repair",
+          "finding": "此条忠实于03866初始问法，但应明确它随后被03868/03870收窄，不能作为独立当前查询或保留第二个“全部资格账户数”需求。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C07",
+        "statement": "小林在MSG-03866最初提出按范围内有效卡、账户去重统计有付费资格账户的问法；随后经MSG-03867追问，在MSG-03868明确收窄为月末有付费资格且当月有有效购买的账户。本条仅记录问法演变，不作为独立的全体资格账户数需求。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "历史问法只留核查记录；当前月报人数以C08所保留的后续澄清为准。",
+          "尚未取得具体数量；没有新增全部资格账户数的交付要求。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03866",
+            "quote": "我最想直接问系统的是：本期月报里，按悦享年卡和家庭季卡的有效状态筛出持有人，再按账户去重后，到底有多少个有付费资格的账户？异业联名卡和体验卡不算，等级和支付金额也不参与判断。"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03867",
+            "quote": "确认一下，您这次要数的是月末有付费资格的全部账户，包括当月没有有效购买的；还是只数其中当月有有效购买的账户？"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03868",
+            "quote": "这次数的是有付费资格、并且当月有有效购买的账户，不是把所有有资格的账户都算进来。资格还是只看悦享年卡和家庭季卡的有效状态，联名卡和体验卡不进本期口径；月末才生效、但当月此前有购买的账户，按月底资格口径纳入当月有效购买。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C08",
+      "native_claim_id": null,
+      "original_statement": "小林在MSG-03868将本期要数的人数限定为“有付费资格、并且当月有有效购买”的账户，不是把所有有资格的账户都算进来；资格仍只看悦享年卡和家庭季卡的有效状态，联名卡和体验卡不进本期口径；月末才生效、但当月此前有购买的账户，按月底资格口径纳入当月有效购买。",
+      "criteria": [
+        "B05",
+        "B06"
+      ],
+      "destination": "body",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C09",
+      "native_claim_id": null,
+      "original_statement": "小林称核对人数时除总数外会看四类信息：卡类型和有效状态（只认悦享年卡和家庭季卡，联名卡、体验卡不进本期口径）；按账户去重（同一账户多张有效悦享年卡也只算一个有资格账户）；等级和付费资格分开；月末资格和当月有效购买分开。",
+      "criteria": [
+        "B10"
+      ],
+      "destination": "body",
+      "verdict": "evidence_completion",
+      "issues": [
+        {
+          "code": "EVIDENCE_UNKNOWN_COUNT",
+          "severity": "evidence",
+          "finding": "具体数量未确认的qualifier真实，但当前引文未包括该句。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C09",
+        "statement": "小林称核对人数时除总数外会看四类信息：卡类型和有效状态（只认悦享年卡和家庭季卡，联名卡、体验卡不进本期口径）；按账户去重（同一账户多张有效悦享年卡也只算一个有资格账户）；等级和付费资格分开；月末资格和当月有效购买分开。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "这是核对依据，不是已取得具体数量；具体数量她称没有能确认的统计，得按实际记录核实。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03870",
+            "quote": "核对人数时，除了总数，我会看四样：一是卡类型和有效状态，只认悦享年卡和家庭季卡，联名卡、体验卡不进本期口径；二是按账户去重，同一账户多张有效悦享年卡也只算一个有资格账户；三是等级和付费资格分开，金卡不一定有资格，普通等级也可能有；四是月末资格和当月有效购买要分开，这次数的是有资格且当月有有效购买的账户，月末才生效但此前有购买的按月底资格纳入。"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03870",
+            "quote": "具体数量我这边还没有能确认的统计，得按实际记录核实。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C10",
+      "native_claim_id": null,
+      "original_statement": "小林称自己实际在用的是一份自己维护的Excel名单，主要用于会员优惠券活动，也用于回访一段时间没购买的会员；整理好后会找相关同事确认线上或门店的执行安排，再按记录跟进进度；这份表是个人工作记录，不是公司统一口径，不能直接当交付数据用。",
+      "criteria": [
+        "N01",
+        "B11"
+      ],
+      "destination": "notes",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": "Excel载体和权威性仅notes。实际业务交接可由C14或另行无载体改写保留，不能因排除Excel而删掉“找相关同事确认线上或门店执行安排，再按记录跟进进度”。"
+    },
+    {
+      "claim_id": "C11",
+      "native_claim_id": null,
+      "original_statement": "小林称自己经手会员优惠券活动、会员权益说明，以及对一段时间没购买的会员做回访。",
+      "criteria": [
+        "B11"
+      ],
+      "destination": "body",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C12",
+      "native_claim_id": null,
+      "original_statement": "小林表示在两类工作中若要选一个先支持，她更希望先放在优惠券活动这边。",
+      "criteria": [
+        "B12"
+      ],
+      "destination": "body",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": "个人偏好可入需求背景，不登记为公司优先级或本期已批准能力。"
+    },
+    {
+      "claim_id": "C13",
+      "native_claim_id": null,
+      "original_statement": "小林称在优惠券活动中最想少花力气的是整理名单和执行记录、找同事核对不一致的信息、反复跟进进度；人群和执行方案仍要业务人员确认，她不会让助手自动发券、联系会员或改记录。",
+      "criteria": [
+        "B12"
+      ],
+      "destination": "body",
+      "verdict": "evidence_completion",
+      "issues": [
+        {
+          "code": "EVIDENCE_UNMEASURED_WORK",
+          "severity": "evidence",
+          "finding": "“未量化工时”来自03856而非本条03860摘录；补来源，权限限制保持为业务约束。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C13",
+        "statement": "小林称在优惠券活动中最想少花力气的是整理名单和执行记录、找同事核对不一致的信息、反复跟进进度；人群和执行方案仍要业务人员确认，她不会让助手自动发券、联系会员或改记录。",
+        "kind": "opinion",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "这是她希望减少的工作和权限边界，未量化工时；未说明业务人员具体是谁。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03860",
+            "quote": "这项里最想少花力气的是整理名单和执行记录、找同事核对不一致的信息，还有反复跟进进度。人群和执行方案仍要业务人员确认，我不会让助手自动发券、联系会员或改记录。"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03856",
+            "quote": "不过这只是我觉得费力的地方，我没量过工时，也不能说它就是复购下滑的原因。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C14",
+      "native_claim_id": null,
+      "original_statement": "小林称会员优惠券活动的一般做法是先明确面向哪些会员、准备做什么，再确认执行方式和协作人，之后跟进发放和使用反馈，最后整理结果和还没核实的问题；具体哪次活动、哪些会员进候选名单、按什么条件筛，她不能确认，得查对应实际记录；候选条件也不是她一个人能定，需找相应负责人确认；她不会单独定人群，也不会自动发券或联系会员。",
+      "criteria": [
+        "B11",
+        "B13"
+      ],
+      "destination": "body",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C15",
+      "native_claim_id": null,
+      "original_statement": "小林称拿到有资格账户数后会核对名单和口径，看哪些账户该进、哪些漏了或重复，减少反复整理和找同事核对；人群和执行方案仍要业务人员确认，不会据此自动发券或联系会员；具体数量和复购下滑原因她还没有能确认的统计。",
+      "criteria": [
+        "B05",
+        "B10",
+        "B12"
+      ],
+      "destination": "body",
+      "verdict": "repair_required",
+      "issues": [
+        {
+          "code": "FINAL_QUERY_SCOPE",
+          "severity": "repair",
+          "finding": "statement沿用“有资格账户数”，单独下游使用会丢失后续月末资格+当月有效购买的收窄；保留用途并改成最终人数定义。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C15",
+        "statement": "小林表示，拿到本期月报中月末有付费资格且当月有有效购买的去重账户数及判断依据后，用于核对名单和口径，查应纳入、遗漏或重复的账户，减少反复整理和找同事核对；人群和执行方案仍由业务人员确认，不据此自动发券或联系会员；具体数量和复购下滑原因尚无可确认统计。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "用途来自MSG-03866，人数定义按MSG-03867—MSG-03870的后续澄清；不保留另一项全部资格账户数要求。",
+          "这是期望的后续用途，不代表已取得统计或已执行运营动作。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03866",
+            "quote": "拿到答案后，我会拿它核对名单和口径，看哪些账户该进、哪些漏了或重复了，减少反复整理和找同事核对。人群和执行方案仍要业务人员确认，我不会据此自动发券或联系会员。具体数量和复购下滑的原因，我这边还没有能确认的统计。"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03867",
+            "quote": "确认一下，您这次要数的是月末有付费资格的全部账户，包括当月没有有效购买的；还是只数其中当月有有效购买的账户？"
+          },
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03868",
+            "quote": "这次数的是有付费资格、并且当月有有效购买的账户，不是把所有有资格的账户都算进来。资格还是只看悦享年卡和家庭季卡的有效状态，联名卡和体验卡不进本期口径；月末才生效、但当月此前有购买的账户，按月底资格口径纳入当月有效购买。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C16",
+      "native_claim_id": null,
+      "original_statement": "小林称复购率连续四个季度在下滑，但具体计算口径还得项目组核实；先比较哪类会员、哪两个时期，她还没定，得跟项目组和业务一起确认。",
+      "criteria": [
+        "B14"
+      ],
+      "destination": "body",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C17",
+      "native_claim_id": null,
+      "original_statement": "小林个人认为可先看已有月报口径里能对上的那部分会员，把名单和依据整理成可核对的问数，以减少反复整理名单、核对执行记录和跟进进度；但她没量过工时，也不能说这就是复购下滑的原因；人群和执行方案仍要业务人员确认，她不会自动发券或联系会员。",
+      "criteria": [
+        "B14"
+      ],
+      "destination": "body",
+      "verdict": "repair_required",
+      "issues": [
+        {
+          "code": "NO_CAUSAL_HYPOTHESIS_ATTRIBUTION",
+          "severity": "repair",
+          "finding": "qualifier称“原因判断仅为假设”可能把原文没有作出的因果假设归给小林；原文仅说不能认定为下降原因。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C17",
+        "statement": "小林个人认为可先看已有月报口径里能对上的那部分会员，把名单和依据整理成可核对的问数，以减少反复整理名单、核对执行记录和跟进进度；但她没量过工时，也不能说这就是复购下滑的原因；人群和执行方案仍要业务人员确认，她不会自动发券或联系会员。",
+        "kind": "opinion",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "个人辅助想法；未量化工时；未确认重复整理/核对工作与复购下滑存在因果关系，不把它登记为小林已提出的因果假设。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+            "message_id": "MSG-03856",
+            "quote": "我个人的想法是，先看已有月报口径里能对上的那部分会员，把名单和依据整理成可核对的问数，减少反复整理名单、核对执行记录和跟进进度这些事。不过这只是我觉得费力的地方，我没量过工时，也不能说它就是复购下滑的原因。人群和执行方案还是要业务人员确认，我不会自动发券或联系会员。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C18",
+      "native_claim_id": null,
+      "original_statement": "老周称ended_at为空具体代表什么，他没有可确认的解释，不能直接当成“未终止”或“已终止”，要结合实际填写方式和统计说明核实；具体能对照哪份数据说明或实际记录，要看你手头实际提供哪些材料，他不能凭空指定。",
+      "criteria": [
+        "N02"
+      ],
+      "destination": "notes",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": "老周当时不能确认的来源记录；陈姐之后提供门店执行说明，两者不构成正面规则冲突。"
+    },
+    {
+      "claim_id": "C19",
+      "native_claim_id": null,
+      "original_statement": "老周称权益开始当天、计划结束当天是否有效，这类具体规则说明和可对照系统记录他没有可确认的，不能凭卡表字段或测试库结构下结论；本期字典和干净合成库只用于测试开发，核对结构、覆盖和关联边界，不等于生产规则或真实数据已经接通。",
+      "criteria": [
+        "N03"
+      ],
+      "destination": "notes",
+      "verdict": "repair_required",
+      "issues": [
+        {
+          "code": "UNPROVEN_TO_FALSE",
+          "severity": "repair",
+          "finding": "qualifier“生产规则或真实数据未接通”将“不等于已接通/已证明”升级为确定未接通；原文不支持这一否定事实。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C19",
+        "statement": "老周称权益开始当天、计划结束当天是否有效，这类具体规则说明和可对照系统记录他没有可确认的，不能凭卡表字段或测试库结构下结论；本期字典和干净合成库只用于测试开发，核对结构、覆盖和关联边界，不等于生产规则或真实数据已经接通。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "本期字典和合成库只用于测试开发中的结构、覆盖和关联边界核对；这些资料和测试不能证明生产规则已核实或真实数据已接通。",
+          "实际生产接入状态及正式业务规则证据仍待另行核实；不能据此断言已经接通或确定未接通。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03875",
+            "quote": "权益开始当天、计划结束当天是否有效，这类具体规则说明和可对照的系统记录，我这边没有可确认的，不能凭卡表字段或测试库结构下结论。本期字典和干净合成库只用于测试开发，核对的是结构、覆盖和关联边界，不等于生产规则或真实数据已经接通。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C20",
+      "native_claim_id": null,
+      "original_statement": "老周称要启动这场核查，最需要补的是日期端点（权益开始当天、计划结束当天是否有效）和提前终止空值含义的业务规则说明，以及能对照的实际记录；这两项他没有可确认解释，不能凭卡表字段或测试库结构下结论；应由运营和业务规则负责人确认口径，他配合核对取数条件和系统统计所用的范围、时间、统计说明，并列出需补充的记录。",
+      "criteria": [
+        "B09",
+        "N04"
+      ],
+      "destination": "delivery_notes",
+      "verdict": "evidence_completion",
+      "issues": [
+        {
+          "code": "SCOPE_ACKNOWLEDGEMENT",
+          "severity": "evidence",
+          "finding": "范围前提已引用03876，但qualifier中“老周确认范围说清楚”的直接答复未摘入；完整自然月/全渠道/全门店尚仅埋在引文，需另补明确范围条目A01。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C20",
+        "statement": "老周称要启动这场核查，最需要补的是日期端点（权益开始当天、计划结束当天是否有效）和提前终止空值含义的业务规则说明，以及能对照的实际记录；这两项他没有可确认解释，不能凭卡表字段或测试库结构下结论；应由运营和业务规则负责人确认口径，他配合核对取数条件和系统统计所用的范围、时间、统计说明，并列出需补充的记录。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "核查对象、用途和范围由访谈者在MSG-03876引入；老周确认范围说清楚并回答需补材料。",
+          "具体业务规则负责人未指定；测试字典和合成库只支持结构、覆盖和关联边界核对。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03876",
+            "quote": "我们先核本期总部运营月报中“月末有付费资格、且当月有有效购买的账户数”，用于更新业务模型并核对月报查询。范围是本周测试数据覆盖内的完整自然月、全渠道和全门店，按账户去重；小林已确认纳入悦享年卡和家庭季卡。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03877",
+            "quote": "要启动这项核查，最需要补的是日期端点（权益开始当天、计划结束当天是否有效）和提前终止空值含义的业务规则说明，以及能对照的实际记录。这两项我这边没有可确认的解释，不能凭卡表字段或测试库结构下结论。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03877",
+            "quote": "应由运营和业务规则负责人确认口径，我配合核对取数条件和系统统计所用的范围、时间、统计说明，并把需要补充的记录逐项列出来。测试字典和干净合成库只支持结构、覆盖和关联边界的核对，不等于生产规则或真实数据已经接通。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03877",
+            "quote": "核查对象、用途和范围这次说清楚了：本周测试数据覆盖内的完整自然月、全渠道全门店、按账户去重，纳入悦享年卡和家庭季卡。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C21",
+      "native_claim_id": null,
+      "original_statement": "老周称业务规则这块，运营工作找小林对接确认，他配合核对取数条件和系统统计所用的范围、时间、统计说明；日期端点和提前终止空值的含义他没有可确认的解释，不能替小林确认，也不指定具体岗位。",
+      "criteria": [
+        "N02",
+        "N04"
+      ],
+      "destination": "notes",
+      "verdict": "repair_required",
+      "issues": [
+        {
+          "code": "UNKNOWN_OWNER_SCOPE",
+          "severity": "repair",
+          "finding": "qualifier泛称“未指定具体岗位或同事”与statement已明确运营对接小林容易冲突；真正未指定的是日期业务规则的具体确认人/岗位。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C21",
+        "statement": "老周称业务规则这块，运营工作找小林对接确认，他配合核对取数条件和系统统计所用的范围、时间、统计说明；日期端点和提前终止空值的含义他没有可确认的解释，不能替小林确认，也不指定具体岗位。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "已明确运营工作找小林对接，但日期端点及提前终止空值含义的具体业务规则确认人/岗位仍未指定；不能把对接入口等同已确认规则的权威负责人。",
+          "老周称自己不能确认，不等于规则不存在。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03879",
+            "quote": "业务规则这块，运营工作找小林对接确认，我配合核对取数条件和系统统计所用的范围、时间、统计说明。日期端点和提前终止空值的含义，我这边没有可确认的解释，不能替小林确认，也不指定具体岗位。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C22",
+      "native_claim_id": null,
+      "original_statement": "老周称核查完成后能提供配合核查过程中形成的记录：核查对象和用途、系统统计所用的范围、时间和统计说明，以及需要补充的记录清单和待确认的责任项；具体记录名称和内容要看实际核查材料，他不能预先承诺交付，也不能把测试库的核对结果当成生产规则或验收结论。",
+      "criteria": [
+        "N04"
+      ],
+      "destination": "delivery_notes",
+      "verdict": "repair_required",
+      "issues": [
+        {
+          "code": "UNNECESSARY_ABSENCE_CLAIM",
+          "severity": "repair",
+          "finding": "“材料交付条件在原文未出现”过宽：原文已写依实际核查材料确定记录、不能预先承诺；不应从无生产接入细节泛化出无任何交付条件。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C22",
+        "statement": "老周称核查完成后能提供配合核查过程中形成的记录：核查对象和用途、系统统计所用的范围、时间和统计说明，以及需要补充的记录清单和待确认的责任项；具体记录名称和内容要看实际核查材料，他不能预先承诺交付，也不能把测试库的核对结果当成生产规则或验收结论。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "核查完成后或配合核查过程中可形成记录，具体名称和内容依实际材料；当前没有具体交付承诺，也不表示记录已经交付。",
+          "本条只作核查/交付依赖记录，不进入日常业务模型正文；不能用测试核对结果推导生产规则或验收结论。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03881",
+            "quote": "核查完成后，我能提供的是配合核查过程中形成的记录：核查对象和用途、系统统计所用的范围、时间和统计说明，以及需要补充的记录清单和待确认的责任项。具体记录名称和内容要看实际核查材料，我现在不能预先承诺交付，也不能把测试库的核对结果当成生产规则或验收结论。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C23",
+      "native_claim_id": null,
+      "original_statement": "老周确认MSG-03882三点理解基本准确：本期核查范围已说明；日期端点和提前终止空值含义及具体谁确认仍待向业务侧核实；他配合核对取数条件、统计范围、时间和统计说明并形成核查记录；测试库核对结果只用于结构、覆盖和关联边界，不能当作生产规则或验收结论。",
+      "criteria": [
+        "N02",
+        "N03",
+        "N04"
+      ],
+      "destination": "delivery_notes",
+      "verdict": "repair_required",
+      "issues": [
+        {
+          "code": "SUMMARY_LIMITS_AND_DIRECT_EVIDENCE",
+          "severity": "repair",
+          "finding": "当前statement摘出形成核查记录，却没有保留03883中“名称内容依实际材料、不能预先承诺交付”的限制；证据只摘确认开场，宜补同消息的直接限定。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C23",
+        "statement": "老周在MSG-03883确认本轮核查范围已说明；就其掌握范围，日期端点、提前终止空值含义及具体确认人仍待业务侧核实。他配合核对取数条件、系统统计范围、时间和说明，过程中可形成对象用途、统计说明、待补记录、待确认责任；具体记录名称及内容依实际材料，目前不能预先承诺交付。测试核对只用于结构、覆盖和关联边界，不能当生产规则或验收结论。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "这是老周对本场访谈的明确回复，不应把他当时无法确认的事项改写为所有角色都没有解释；陈姐另有门店执行说明，正式文件和历史凭据仍未取得。",
+          "未取得具体交付承诺，不将可形成记录写为已经交付。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03882",
+            "quote": "老周，我把本轮理解整理一下：\n\n1. 本期核查范围已说明；卡日期端点和提前终止空值含义、具体规则确认人仍待核。\n2. 您配合核对取数条件、统计范围、时间和统计说明。过程中可形成对象与用途、统计说明、待补记录及待确认责任等核查记录。\n3. 具体记录名称和内容依实际材料确定，目前没有具体交付承诺；测试库的核对结果不能当作生产规则或验收结论。\n\n日期规则和确认责任，我们继续向业务侧核实。以上如有理解不准确的地方，请您纠正。谢谢。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03883",
+            "quote": "你这三点理解基本准确，我逐条确认。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03883",
+            "quote": "第一，本期核查范围已经说明；日期端点和提前终止空值的含义，以及具体由谁确认，仍待向业务侧核实，我这边没有可确认的解释。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03883",
+            "quote": "第二，我配合核对取数条件、系统统计所用的范围、时间和统计说明，过程中会形成核查对象与用途、统计说明、待补记录和待确认责任这几类记录。具体记录名称和内容要看实际材料，我现在不能预先承诺交付。"
+          },
+          {
+            "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+            "message_id": "MSG-03883",
+            "quote": "第三，测试库的核对结果只用于结构、覆盖和关联边界，不能当作生产规则或验收结论。日期规则和确认责任，你们继续向业务侧核实。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C24",
+      "native_claim_id": null,
+      "original_statement": "陈姐称门店判断悦享年卡和家庭季卡权益是否有效，依据卡的有效期规则：卡在生效日期当天开始有效，到有效期结束日期当天已无效；有提前终止日期的，从提前终止当天起无效；提前终止字段为空只表示这条记录没有提前终止，不代表有效期无限；资格要按要求的判定日期检查，不能只看当前状态。",
+      "criteria": [
+        "B07",
+        "B08"
+      ],
+      "destination": "body",
+      "verdict": "evidence_completion",
+      "issues": [
+        {
+          "code": "EVIDENCE_FORMAL_RECORD_LIMIT",
+          "severity": "evidence",
+          "finding": "日期规则和问题前提完整；qualifier的正式文件/历史凭据限制来自03886后段，宜直接附入本条证据。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C24",
+        "statement": "陈姐称门店判断悦享年卡和家庭季卡权益是否有效，依据卡的有效期规则：卡在生效日期当天开始有效，到有效期结束日期当天已无效；有提前终止日期的，从提前终止当天起无效；提前终止字段为空只表示这条记录没有提前终止，不代表有效期无限；资格要按要求的判定日期检查，不能只看当前状态。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "前提“本期纳入悦享年卡和家庭季卡、按月末状态按账户统计”由访谈者在MSG-03885引入；陈姐以门店判断口径回答。",
+          "具体规则说明、办理记录和历史执行凭据她不掌握，需向运营小林核对；不能视为已取得规则文件。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03885",
+            "quote": "陈姐，我们在核本期总部运营月报的付费资格，按月末状态、按账户统计；小林已确认纳入悦享年卡和家庭季卡。这次先核这两类卡的有效期规则，供月报计算使用。\n\n就您实际经手的情况，门店判断这两类卡的权益是否有效时，依据哪份规则说明或办理记录？"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "门店判断这两类卡权益是否有效，依据的是卡的有效期规则：卡在生效日期当天开始有效，到有效期结束日期当天已无效；有提前终止日期的，从提前终止当天起无效。提前终止字段为空，只表示这条记录没有提前终止，不代表有效期无限。资格要按要求的判定日期检查，不能只看当前状态。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "至于具体是哪份规则说明或办理记录、历史执行凭据，这项具体细节我不掌握，需要向运营小林核对。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": "正文保留“陈姐说明的门店规则、本期两卡/指定判定日”及来源；正式规则文件/历史凭据缺口在notes。不是生产历史数据真实性保证。"
+    },
+    {
+      "claim_id": "C25",
+      "native_claim_id": null,
+      "original_statement": "陈姐称按账户判断，只要有一张符合本次业务范围且在判定日有效的卡就具有资格；多张有效卡不能把同一账户重复算人或重复累计订单。",
+      "criteria": [
+        "B04"
+      ],
+      "destination": "body",
+      "verdict": "repair_required",
+      "issues": [
+        {
+          "code": "WRONG_DOCUMENT_TYPE",
+          "severity": "repair",
+          "finding": "qualifier把“不掌握具体规则说明/办理记录/历史凭据”改成“不掌握具体范围文件”，原文没有这样指定；纠正文件类型并补本期两卡/月末账户前提。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C25",
+        "statement": "陈姐称按账户判断，只要有一张符合本次业务范围且在判定日有效的卡就具有资格；多张有效卡不能把同一账户重复算人或重复累计订单。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "本次指本期总部运营月报纳入的悦享年卡和家庭季卡，按月末状态、账户统计，前提来自MSG-03885。",
+          "陈姐不掌握具体规则说明、办理记录及历史执行凭据；未给出订单累计的完整计算口径，不能自行补造。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "按账户判断，只要有一张符合本次业务范围且在判定日有效的卡就具有资格；多张有效卡不能把同一账户重复算人或重复累计订单。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03885",
+            "quote": "陈姐，我们在核本期总部运营月报的付费资格，按月末状态、按账户统计；小林已确认纳入悦享年卡和家庭季卡。这次先核这两类卡的有效期规则，供月报计算使用。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03886",
+            "quote": "至于具体是哪份规则说明或办理记录、历史执行凭据，这项具体细节我不掌握，需要向运营小林核对。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C26",
+      "native_claim_id": null,
+      "original_statement": "陈姐称门店能协助核对的是：按判定日逐张卡看有效期，生效当天算有效、有效期结束当天已无效，有提前终止的从提前终止当天起无效；再按账户归并，只要有一张符合本次范围且在判定日有效的卡就算有资格，多张有效卡不能重复算人、重复累计订单。",
+      "criteria": [
+        "B15"
+      ],
+      "destination": "delivery_notes",
+      "verdict": "evidence_completion",
+      "issues": [
+        {
+          "code": "CONDITIONAL_STORE_SUPPORT",
+          "severity": "evidence",
+          "finding": "可协助事项真实，但应显式随附同一答复的配合前提，避免脱离C27后成为无条件承诺；本次核查安排去交付记录。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C26",
+        "statement": "陈姐称门店能协助核对的是：按判定日逐张卡看有效期，生效当天算有效、有效期结束当天已无效，有提前终止的从提前终止当天起无效；再按账户归并，只要有一张符合本次范围且在判定日有效的卡就算有资格，多张有效卡不能重复算人、重复累计订单。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "门店协助前须明确适用范围、具体工作量、现场问题处理者、工作记录方式；要求不清或影响考核先澄清再安排。",
+          "这是可配合事项，不代表已安排、获批或执行；具体历史执行凭据陈姐不掌握，需向运营小林核对。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03888",
+            "quote": "门店能协助核对的是：按判定日逐张卡看有效期，生效当天算有效、有效期结束当天已无效，有提前终止的从提前终止当天起无效；再按账户归并，只要有一张符合本次范围且在判定日有效的卡就算有资格，多张有效卡不能重复算人、重复累计订单。"
+          },
+          {
+            "meeting_id": "c77a57a1-651d-5183-a601-e25cbe01df51",
+            "message_id": "MSG-03888",
+            "quote": "另外要先把活动适用范围、具体工作量、现场问题由谁处理、门店付出的工作怎么记录讲清楚，我才好安排门店配合；要求不清或影响门店考核的，得先澄清再安排。具体历史执行凭据我不掌握，需要向运营小林核对。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C27",
+      "native_claim_id": null,
+      "original_statement": "陈姐提出门店配合前要先把活动适用范围、具体工作量、现场问题由谁处理、门店付出的工作怎么记录讲清楚；要求不清或影响门店考核的，得先澄清再安排。",
+      "criteria": [
+        "B15"
+      ],
+      "destination": "body",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": "青禾日常门店协作前提可入正文；不要同时把本次FDE测试配合排程/成果当作常态业务流程。"
+    },
+    {
+      "claim_id": "C28",
+      "native_claim_id": null,
+      "original_statement": "陈姐称具体是哪份规则说明或办理记录、历史执行凭据，她不掌握，需要向运营小林核对。",
+      "criteria": [
+        "N02"
+      ],
+      "destination": "notes",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C29",
+      "native_claim_id": null,
+      "original_statement": "王经理称当前阶段划分思路可以：在本周提供的合成测试数据内完成已列明38项指标查询与独立核对，会员筛选和运营执行另列后续，预算、合同与正式上线分别确认；这几条边界清楚。",
+      "criteria": [
+        "S01"
+      ],
+      "destination": "SOW_or_stage_record",
+      "verdict": "repair_required",
+      "issues": [
+        {
+          "code": "WRONG_MESSAGE_ID",
+          "severity": "repair",
+          "finding": "引文本身逐字存在于王经理答复MSG-03911，却标成访谈者提问MSG-03910；不是换行差异。仅压短原错误消息下的引文不能解决主体/来源错挂。"
+        },
+        {
+          "code": "QUESTION_PREMISE_SYNTHETIC_DATA",
+          "severity": "repair",
+          "finding": "statement中的“本周提供的合成测试数据”来自03910提问前提，03911答复只称测试数据；应保留两者分工。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C29",
+        "statement": "王经理称当前阶段划分思路可以：在本周提供的合成测试数据内完成已列明38项指标查询与独立核对，会员筛选和运营执行另列后续，预算、合同与正式上线分别确认；这几条边界清楚。",
+        "kind": "opinion",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "“本周提供的合成测试数据”和拟议阶段范围由访谈者在MSG-03910提出；王经理在MSG-03911认为划分思路和边界清楚。",
+          "这是核查意见，不构成预算/签约/验收/上线批准或已完成38项验证；仅SOW/阶段记录，不进业务模型正文。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03911",
+            "quote": "这个划分思路可以：测试数据内完成已列明的 38 项指标查询与独立核对，会员筛选和运营执行另列后续，预算、合同与正式上线分别确认，这几条边界是清楚的。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03910",
+            "quote": "王经理，我们在准备本期青禾报表查数的阶段范围。初步考虑先在本周提供的合成测试数据内，完成已列明的 38 项指标查询与独立核对，为运营核对口径和后续分析提供依据；会员筛选和运营执行另列后续，预算、合同与正式上线分别确认。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C30",
+      "native_claim_id": null,
+      "original_statement": "王经理称按他参与范围与合同核查的顺序，还缺四类说明：试点范围说明（38项指标清单、测试数据范围和独立核对方式）；费用构成及依据（金额没谈妥列待确认，不先写成承诺）；双方工作与责任草案（客户提供什么材料、交付方负责什么）；效果留证方式（用什么记录证明定义可追溯、查询和校验正确）。",
+      "criteria": [
+        "S02"
+      ],
+      "destination": "SOW_or_stage_record",
+      "verdict": "repair_required",
+      "issues": [
+        {
+          "code": "WRONG_MESSAGE_ID",
+          "severity": "repair",
+          "finding": "引文本身逐字存在于王经理答复MSG-03911，却标成访谈者提问MSG-03910；不是换行差异。仅压短原错误消息下的引文不能解决主体/来源错挂。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C30",
+        "statement": "王经理称按他参与范围与合同核查的顺序，还缺四类说明：试点范围说明（38项指标清单、测试数据范围和独立核对方式）；费用构成及依据（金额没谈妥列待确认，不先写成承诺）；双方工作与责任草案（客户提供什么材料、交付方负责什么）；效果留证方式（用什么记录证明定义可追溯、查询和校验正确）。",
+        "kind": "opinion",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "这是核查意见和范围草稿候选，不是已确定SOW；仅作SOW/交付记录候选，不进入业务模型正文。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03911",
+            "quote": "按我参与范围与合同核查的顺序，还缺四类说明：一是试点范围说明，把 38 项指标清单、测试数据范围和独立核对方式写清；二是费用构成及依据，金额没谈妥的列为待确认，不用先写成承诺；三是双方工作与责任草案，客户要提供什么材料、交付方负责什么；四是效果留证方式，说明用什么记录证明定义可追溯、查询和校验正确。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C31",
+      "native_claim_id": null,
+      "original_statement": "王经理称他只能对预算和合同材料提核查意见，依据不足或费用范围不清会要求补充、暂缓财务确认；预算额度、签约、验收和正式上线他不能替公司承诺，具体审批人和授权额度要另行核实；收益目标、预算金额和正式批准都还没定，要双方再谈。",
+      "criteria": [
+        "S03",
+        "S08"
+      ],
+      "destination": "SOW_or_stage_record",
+      "verdict": "repair_required",
+      "issues": [
+        {
+          "code": "WRONG_MESSAGE_ID",
+          "severity": "repair",
+          "finding": "引文本身逐字存在于王经理答复MSG-03911，却标成访谈者提问MSG-03910；不是换行差异。仅压短原错误消息下的引文不能解决主体/来源错挂。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C31",
+        "statement": "王经理称他只能对预算和合同材料提核查意见，依据不足或费用范围不清会要求补充、暂缓财务确认；预算额度、签约、验收和正式上线他不能替公司承诺，具体审批人和授权额度要另行核实；收益目标、预算金额和正式批准都还没定，要双方再谈。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "权限限定；不构成审批或承诺；审批人和授权额度未知。",
+          "仅作SOW/交付记录候选，不进入业务模型正文。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03911",
+            "quote": "我只能对预算和合同材料提核查意见，依据不足或费用范围不清会要求补充、暂缓财务确认；预算额度、签约、验收和正式上线我不能替公司承诺，具体审批人和授权额度要另行核实。收益目标、预算金额和正式批准都还没定，要双方再谈。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C32",
+      "native_claim_id": null,
+      "original_statement": "王经理称客户这边要提供或确认的是：38项指标清单、测试数据范围、统计口径与验收依据的确认，以及打算用什么记录说明定义可追溯、查询和校验正确；交付方负责准备查询与独立核对的结果、定义可追溯和校验说明，以及双方工作与责任的草案；运营核对业务范围，他参与统计口径与验收依据核查，IT核对字段和数据覆盖；测试查询正确不等于验收、收益达成或批准签约。",
+      "criteria": [
+        "S02",
+        "S03"
+      ],
+      "destination": "SOW_or_stage_record",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C33",
+      "native_claim_id": null,
+      "original_statement": "王经理称核查时按业务范围、费用构成、效果留证逐项看，记录依据是否充分、责任是否明确；缺依据或责任不清的列为待确认，请业务方补充后再复核；依据不足或费用范围没说清，会暂缓财务确认；这只是核查意见，不构成审批或承诺，审批人和授权额度要另行核实。",
+      "criteria": [
+        "S04"
+      ],
+      "destination": "SOW_or_stage_record",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C34",
+      "native_claim_id": null,
+      "original_statement": "王经理称范围变更请书面提出，写清变更内容、对费用和责任的影响，以及是否超出已确认的支持范围；核查时先看书面支持范围，再看费用构成及依据、双方责任草案和效果留证方式；依据不足或费用范围没说清列待确认，请业务方补充后再复核；他只能提核查意见，不构成审批或承诺；预算额度、签约、验收和正式上线仍要另行确认。",
+      "criteria": [
+        "S05"
+      ],
+      "destination": "SOW_or_stage_record",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": "已正确引用03924的未来提议与03925回应；整合时保留“在该能力交付时以书面确认支持范围为准”，不得改成当前已有已签范围。"
+    },
+    {
+      "claim_id": "C35",
+      "native_claim_id": null,
+      "original_statement": "王经理称费用测算先按费用构成和计价依据列，金额没谈妥的明确写待确认，不用先写成承诺；核查时看试点范围说明、费用构成及依据、双方工作与责任草案，以及打算用什么记录说明效果；依据不足或费用范围没说清，会要求补充、暂缓财务确认。",
+      "criteria": [
+        "S06"
+      ],
+      "destination": "SOW_or_stage_record",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C36",
+      "native_claim_id": null,
+      "original_statement": "王经理称结算节点要对应到约定的阶段成果和确认记录，比如38项指标清单、测试数据范围、统计口径与验收依据的确认，以及定义可追溯、查询和校验正确的记录；具体节点怎么切、对应哪份确认记录，要等双方把阶段成果和记录形式谈定。",
+      "criteria": [
+        "S06"
+      ],
+      "destination": "SOW_or_stage_record",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C37",
+      "native_claim_id": null,
+      "original_statement": "王经理称这类调整核查时先看书面材料：缺项清单、通知时间、实际影响，以及哪些工作受影响、哪些不受影响；工作能不能继续、怎么排期属于执行安排，不由他确认，要找负责执行安排的一方定；受影响部分的排期和费用变化，要双方书面确认后再复核，金额没谈妥列待确认；他只能就费用和合同材料提核查意见，预算金额、审批和签约仍要另行确认。",
+      "criteria": [
+        "S07"
+      ],
+      "destination": "SOW_or_stage_record",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": "已正确保留假设延期和执行决定转交；不能把提问中的拟继续不受影响工作当成王经理已授权继续。"
+    },
+    {
+      "claim_id": "C38",
+      "native_claim_id": null,
+      "original_statement": "王经理称最终验收确认人和授权额度不在他的职责内，他无法确认，需要另行核实；具体找谁、依据哪份授权材料，他不掌握，得由公司内部按审批流程定；他能做的是对统计口径与验收依据提核查意见，拿书面阶段成果、确认记录和双方责任草案核对，运营核对业务范围，IT核对字段和数据覆盖；审批安排还没定，他不能替公司确认谁有权签验收或结算。",
+      "criteria": [
+        "S03",
+        "S08"
+      ],
+      "destination": "SOW_or_stage_record",
+      "verdict": "source_supported",
+      "issues": [],
+      "proposed_replacement": null,
+      "routing_note": ""
+    },
+    {
+      "claim_id": "C39",
+      "native_claim_id": null,
+      "original_statement": "王经理在MSG-03933确认MSG-03932总结与其核查顺序一致，并重申：提供的是核查意见，不等于公司批准或验收，不能据此承诺收益；最终验收确认人、执行安排责任方和审批权限他不掌握，要另行核实；收益目标、预算金额和正式批准都还没定，要双方再谈。",
+      "criteria": [
+        "S08"
+      ],
+      "destination": "SOW_or_stage_record",
+      "verdict": "evidence_completion",
+      "issues": [
+        {
+          "code": "EVIDENCE_AUTHORITY_LIMIT",
+          "severity": "evidence",
+          "finding": "statement重申的非批准/非验收、不能承诺收益、验收人/执行责任/权限未知，实际在03933最后一段；现有03933引文只摘中间摘要，未覆盖这些核心断言。"
+        }
+      ],
+      "proposed_replacement": {
+        "id": "C39",
+        "statement": "王经理在MSG-03933确认MSG-03932总结与其核查顺序一致，并重申：提供的是核查意见，不等于公司批准或验收，不能据此承诺收益；最终验收确认人、执行安排责任方和审批权限他不掌握，要另行核实；收益目标、预算金额和正式批准都还没定，要双方再谈。",
+        "kind": "fact",
+        "evidence_status": "reported",
+        "qualifiers": [
+          "总结由访谈者MSG-03932提出，王经理确认“与我的核查顺序一致”；不能把总结中未逐项展开的细节升级为独立事实。",
+          "仅作SOW/交付记录候选，不进入业务模型正文。"
+        ],
+        "evidence": [
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03932",
+            "quote": "王经理，我把本轮讨论总结如下：\n\n1. 本期拟在已提供的合成测试数据内完成 38 项指标查询与独立核对，保留定义可追溯、查询和校验正确的依据；会员筛选与运营执行另列后续。\n\n2. 范围草稿补齐试点范围、费用依据、双方责任和效果留证。客户提供或确认指标清单、测试范围、统计口径、验收依据及留证方式；我们准备实际查询、独立核对结果、追溯与校验说明和责任草案。\n\n3. 费用按构成和计价依据列明，未谈妥的金额待确认。结算节点对应约定的阶段成果与确认记录；具体节点、记录形式及付款安排仍待双方谈定。\n\n4. 范围变更书面提出，说明变更内容、费用和责任影响、是否超出已确认范围；依据不足的列待确认，由业务方补充后复核。\n\n5. 若出现配合延期，留存缺项清单、通知时间、实际影响及受影响／不受影响的工作。能否继续、怎样排期由负责执行安排的一方确定；受影响部分的排期和费用变化，经双方书面确认后再请您复核。\n\n6. 您提供的是核查意见，不等于公司批准或验收。最终验收确认人、具体执行安排责任方、审批权限，以及预算、签约和正式上线等事项仍需另行落实；本期不据此承诺收益。\n\n我们后续整理范围草稿、未决事项和实际查询及校验证据，再带相关内容请您核查。以上如有理解不准确的地方，请您纠正。谢谢。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03933",
+            "quote": "这份总结与我的核查顺序一致：测试数据范围内完成已列明的38项指标查询与独立核对，会员筛选和运营执行另列后续；客户提供或确认指标清单、测试范围、统计口径、验收依据及留证方式，交付方准备查询与核对结果、追溯与校验说明及责任草案；费用按构成和计价依据列，未谈妥金额写待确认；变更书面提出并说明费用和责任影响；延期留存缺项清单、通知时间、实际影响和受影响／不受影响工作。"
+          },
+          {
+            "meeting_id": "92c91632-4b0e-5a7a-bd7d-55214f68ee39",
+            "message_id": "MSG-03933",
+            "quote": "第6条说得对：我提供的是核查意见，不等于公司批准或验收，也不能据此承诺收益；最终验收确认人、执行安排责任方和审批权限我这边不掌握，要另行核实，收益目标、预算金额和正式批准都还没定，要双方再谈。"
+          }
+        ],
+        "conflict_ids": [],
+        "review": {
+          "status": "pending",
+          "note": "独立审核修正建议，未写入原生候选；不代表提取成功或用户采纳。"
+        }
+      },
+      "routing_note": ""
+    }
+  ],
+  "missing_claim_proposals": [
+    {
+      "id": "A01",
+      "status": "proposed_only_not_native_candidate",
+      "criteria": [
+        "B09"
+      ],
+      "destination": "body_scope_with_notes",
+      "statement": "本次总部运营月报人数核查范围为本周测试数据覆盖内的完整自然月、全渠道、全门店，按账户去重，纳入悦享年卡和家庭季卡；核查对象为月末有付费资格且当月有有效购买的账户数。",
+      "qualifiers": [
+        "核查对象、用途和范围由访谈者MSG-03876提出，老周在MSG-03877复述范围并确认说清楚。",
+        "仅为本次核查范围，不等于生产全量、所有历史月或所有报表范围均获确认。"
+      ],
+      "evidence": [
+        {
+          "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+          "message_id": "MSG-03876",
+          "quote": "我们先核本期总部运营月报中“月末有付费资格、且当月有有效购买的账户数”，用于更新业务模型并核对月报查询。范围是本周测试数据覆盖内的完整自然月、全渠道和全门店，按账户去重；小林已确认纳入悦享年卡和家庭季卡。"
+        },
+        {
+          "meeting_id": "b079dbb8-d9ae-5c64-bbd4-3f68731c8feb",
+          "message_id": "MSG-03877",
+          "quote": "核查对象、用途和范围这次说清楚了：本周测试数据覆盖内的完整自然月、全渠道全门店、按账户去重，纳入悦享年卡和家庭季卡。"
+        }
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "criterion": "B01",
+      "claims": [
+        "C01"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "B02",
+      "claims": [
+        "C01"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "B03",
+      "claims": [
+        "C02"
+      ],
+      "coverage": "covered",
+      "note": ""
+    },
+    {
+      "criterion": "B04",
+      "claims": [
+        "C03",
+        "C04",
+        "C25"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "B05",
+      "claims": [
+        "C07",
+        "C08",
+        "C15"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "B06",
+      "claims": [
+        "C08"
+      ],
+      "coverage": "covered",
+      "note": ""
+    },
+    {
+      "criterion": "B07",
+      "claims": [
+        "C24"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "B08",
+      "claims": [
+        "C24"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "B09",
+      "claims": [
+        "C20"
+      ],
+      "coverage": "partial_needs_explicit_scope",
+      "note": "需新增A01；C20仅在提问引文保留范围，缺明确范围statement。"
+    },
+    {
+      "criterion": "B10",
+      "claims": [
+        "C09",
+        "C15"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "B11",
+      "claims": [
+        "C10",
+        "C11",
+        "C14"
+      ],
+      "coverage": "covered",
+      "note": ""
+    },
+    {
+      "criterion": "B12",
+      "claims": [
+        "C12",
+        "C13",
+        "C15"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "B13",
+      "claims": [
+        "C14"
+      ],
+      "coverage": "covered",
+      "note": ""
+    },
+    {
+      "criterion": "B14",
+      "claims": [
+        "C16",
+        "C17"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "B15",
+      "claims": [
+        "C26",
+        "C27"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "N01",
+      "claims": [
+        "C10"
+      ],
+      "coverage": "covered",
+      "note": ""
+    },
+    {
+      "criterion": "N02",
+      "claims": [
+        "C05",
+        "C18",
+        "C21",
+        "C23",
+        "C28"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "N03",
+      "claims": [
+        "C19",
+        "C23"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "N04",
+      "claims": [
+        "C06",
+        "C20",
+        "C21",
+        "C22",
+        "C23"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "S01",
+      "claims": [
+        "C29"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "S02",
+      "claims": [
+        "C30",
+        "C32"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "S03",
+      "claims": [
+        "C31",
+        "C32",
+        "C38"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    },
+    {
+      "criterion": "S04",
+      "claims": [
+        "C33"
+      ],
+      "coverage": "covered",
+      "note": ""
+    },
+    {
+      "criterion": "S05",
+      "claims": [
+        "C34"
+      ],
+      "coverage": "covered",
+      "note": ""
+    },
+    {
+      "criterion": "S06",
+      "claims": [
+        "C35",
+        "C36"
+      ],
+      "coverage": "covered",
+      "note": ""
+    },
+    {
+      "criterion": "S07",
+      "claims": [
+        "C37"
+      ],
+      "coverage": "covered",
+      "note": ""
+    },
+    {
+      "criterion": "S08",
+      "claims": [
+        "C31",
+        "C38",
+        "C39"
+      ],
+      "coverage": "covered_with_repairs",
+      "note": ""
+    }
+  ],
+  "human_decisions": [],
+  "retained_unknowns": [
+    {
+      "id": "U01",
+      "topic": "正式有效期规则文件及历史执行凭据",
+      "current_evidence": "陈姐门店解释已取得；正式文件/历史证据未取得",
+      "followup": "运营小林为核对入口，具体权威规则确认人仍未知",
+      "destination": "notes"
+    },
+    {
+      "id": "U02",
+      "topic": "有效购买完整业务定义及统计数值",
+      "current_evidence": "四访谈只有有效购买泛称和时间关系，没有订单/退货规则全定义或结果",
+      "followup": "对照另有原始材料与实际记录；本轮提取不自行补造",
+      "destination": "notes"
+    },
+    {
+      "id": "U03",
+      "topic": "复购具体口径、比较人群和两个时期",
+      "current_evidence": "四季度下降为访谈陈述，未提供复算统计",
+      "followup": "项目组和业务共同确认，未测工时、未证因果",
+      "destination": "notes"
+    },
+    {
+      "id": "U04",
+      "topic": "优惠券具体活动及候选条件、确认负责人",
+      "current_evidence": "只有通用业务流程与偏好",
+      "followup": "对应实际活动记录和相应负责人，不能默认就是小林单独决定",
+      "destination": "notes"
+    },
+    {
+      "id": "U05",
+      "topic": "生产历史状态及真实系统接通",
+      "current_evidence": "测试资料只支持结构/覆盖/关联边界",
+      "followup": "另行核实际生产数据与历史证据",
+      "destination": "delivery_dependency"
+    },
+    {
+      "id": "U06",
+      "topic": "IT具体核查记录名称、内容、实际交付",
+      "current_evidence": "依实际核查材料形成，当前无预先承诺",
+      "followup": "核查时保留，不预造文档名",
+      "destination": "delivery_record"
+    },
+    {
+      "id": "U07",
+      "topic": "最终验收人、授权额度、执行安排责任方",
+      "current_evidence": "王经理明确不能确认，具体授权材料也未掌握",
+      "followup": "公司内部按流程落实",
+      "destination": "SOW"
+    },
+    {
+      "id": "U08",
+      "topic": "费用金额、结算节点/记录形式、收益目标和正式批准",
+      "current_evidence": "均尚未谈定或另待确认",
+      "followup": "双方另行谈定与有权人确认",
+      "destination": "SOW"
+    }
+  ],
+  "remaining_unknown_note": "继续保留未知不等于要求用户重复作答。正式文件/历史凭据、有效购买完整定义、活动条件、权限和金额等需要后续真实证据，不阻止本次按来源修复。",
+  "repair_guidance": [
+    "不得改原始响应、失败状态或把C01-C39伪装为原生CLM。",
+    "本报告中的proposed_replacement均为精确修正建议，不是已被原生工作流接受的候选。",
+    "可据本报告做一次有界修复/新运行，要求按消息ID复制对应原文，保留提问前提和后续收窄；不用改正式Skill或v2。",
+    "新运行成功只说明提取通过；仍应独立核查新候选并按正文/notes/SOW分流，不能直接等同模型更新或数值测试通过。"
+  ],
+  "quote_validation": {
+    "original_quote_count": 49,
+    "original_invalid_quotes": 3,
+    "all_proposed_replacement_quotes_verified_against_original_messages": true
+  },
+  "routing_split_proposals": [
+    {
+      "id": "A02",
+      "status": "proposed_only_not_native_candidate",
+      "type": "retain_business_handoff_when_personal_carrier_is_routed_out",
+      "source_claim": "C10",
+      "criteria": [
+        "B11"
+      ],
+      "destination": "body",
+      "statement": "小林整理会员优惠券活动或未购买会员回访的名单后，会找相关同事确认线上或门店的执行安排，再按记录跟进进度。",
+      "qualifiers": [
+        "具体协作人的岗位或姓名、工作频次和交接标准未在本次访谈说明。",
+        "仅保留实际业务交接；个人Excel载体、字段和权威性仍留notes，不进入正文。"
+      ],
+      "evidence": [
+        {
+          "meeting_id": "9e678773-8915-52e1-a1e6-939429340eab",
+          "message_id": "MSG-03858",
+          "quote": "我手头实际在用的，是那份自己维护的 Excel 名单，主要用来做会员优惠券活动，也用来回访一段时间没购买的会员。整理好后，我会找相关同事确认线上或门店的执行安排，再按记录跟进进度。这份表是我个人的工作记录，不是公司统一口径，不能直接当交付数据用。"
+        }
+      ]
+    }
+  ]
+}

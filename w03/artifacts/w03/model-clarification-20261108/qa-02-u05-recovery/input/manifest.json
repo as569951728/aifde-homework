@@ -1,0 +1,35 @@
+{
+  "client_date": "2026-11-08",
+  "frozen_at": "2026-11-07T16:49:42.107134+00:00",
+  "frozen_before_execution": true,
+  "case_ids": [
+    "U05"
+  ],
+  "files": {
+    "input/business_model.md": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9",
+    "input/controls.json": "ab9b9cc644734f711da910f947c6ec37e35b1882bfebee458624f51cfc9bb528",
+    "input/knowledge.json": "6e56f0ee819045776cbb6ba2471fd8b4bc63a525d697d1a4c0835303c0401384",
+    "input/knowledge_prompt.txt": "703da892e1c284843f499b60efad2e95d60849bd5d22595f71270382df607bfe",
+    "input/new_control_approval.json": "a5cd915e5c8e8cf555d37ec35f96847c0d9c582f60c4cdeba7ab0a1683b2d74e",
+    "input/original_questions.json": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+    "input/protected.json": "25cd04dd8392eb12803de036ce08c4c890f2fef2a57d0f15e2d86d42f74df980",
+    "input/request_origins.json": "07d9b8a652ef02b497fca7df024c9c0cabf8a8ea29c96ff2787c64f44356c891",
+    "input/requests.json": "2a4b26f05b41bc01d0e8413cb5a345c92e8b5f95cd85e7b7b5cdb3e0c59fd6c2",
+    "input/reviewer_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+    "input/selected_questions.json": "0b078c96512343032d52cf991057ef015155b367171491b8dc258f265752e172"
+  },
+  "runtime_plan": {
+    "model": "deepseek-flash",
+    "profile": "deepseek-json",
+    "timeout": 180,
+    "max_tokens": 8192,
+    "retry_max_tokens": 16384,
+    "retry_timeout": 240
+  },
+  "tested_input": "Exact same model/prompt/U05 question/expectations/policy as qa-01; new isolated native run after mixed technical failure, no workflow resume",
+  "original_model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "candidate_model_sha256": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9",
+  "reviewer_expectations_sent": false,
+  "control_note": "All approved control metadata retained unchanged, none selected or sent",
+  "stop_rule": "At most one new native run; only original confirmed-length expansion allowed; no further recovery/semantic/format retries"
+}

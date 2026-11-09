@@ -1,0 +1,227 @@
+{
+  "status": "failed_explanation_review",
+  "passed": false,
+  "created_at": "2026-11-08T05:42:58.414301+00:00",
+  "report_sha256": "6f5b3f97ab04478c8bde4074f586d994ba7a79eb7dbe60f81a693f76046db945",
+  "structured_passed": 15,
+  "sql_success_cases_passed": 13,
+  "explanation_or_nonok_reason_passed": 11,
+  "total": 15,
+  "failed_checks": [
+    {
+      "case_id": "B1-R01",
+      "finding": {
+        "type": "amount_account_unit_confusion",
+        "quote": "统计单位为CRM会员账户；数据为合成测试库，覆盖2024-0"
+      }
+    },
+    {
+      "case_id": "B1-R02",
+      "finding": {
+        "type": "amount_account_unit_confusion",
+        "quote": "统计单位为 CRM 会员账户。"
+      }
+    },
+    {
+      "case_id": "NS02-july-transaction-store",
+      "finding": {
+        "type": "amount_account_unit_confusion",
+        "quote": "统计单位为CRM会员账户。"
+      }
+    },
+    {
+      "case_id": "NS04-partial-refund-day",
+      "finding": {
+        "type": "amount_account_unit_confusion",
+        "quote": "统计单位为CRM会员账户，数据来自本周合成测试库。"
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "B1-N01",
+      "trace_id": "1d6ca7a8-e74c-4762-916f-9b2d34550ce5",
+      "structured_passed": true,
+      "sql_review": "passed",
+      "answer_trace_matches_actual_and_catalog": true,
+      "explanation_passed": true,
+      "note": "8月五项金额及分转元正确；paid范围、退款原订单日及优惠不扣退忠实。",
+      "finding": null,
+      "actual_answer_or_reason": "2026年8月（按下单日期归属）青禾范围内的汇总结果为：实付金额 1,190.50 元，退款金额 187.50 元，净销售额 1,003.00 元，支付订单原价金额 1,242.50 元，优惠金额 52.00 元。口径为已支付订单，取消单不计；退款按原订单下单日期归属，不按现金退款发生日；净销售额为实付金额减退款金额；支付订单原价金额为折扣前原价，退款不冲减原价；优惠金额为原价减实付，退款不冲减原优惠。结果为该客户范围内的汇总，未按门店或地区拆分；数据来自本次合成测试库覆盖范围。"
+    },
+    {
+      "id": "B1-R01",
+      "trace_id": "92b2263c-e52e-4b57-b33c-6603e1185105",
+      "structured_passed": true,
+      "sql_review": "passed",
+      "answer_trace_matches_actual_and_catalog": true,
+      "explanation_passed": false,
+      "note": "五项金额、全退净额零及SQL正确，但解释把金额统计单位称为CRM会员账户。",
+      "finding": {
+        "type": "amount_account_unit_confusion",
+        "quote": "统计单位为CRM会员账户；数据为合成测试库，覆盖2024-0"
+      },
+      "actual_answer_or_reason": "本次按青禾当前客户范围统计，统计单位为CRM会员账户；数据为合成测试库，覆盖2024-09-01至2026-09-01。查询日期为2026-08-10，未添加额外门店筛选，也未分组，汇总为一行。口径为：纳入已支付订单，取消单不计；退款按原订单下单日期归属，不是现金退款发生日；净销售额为实付金额减退款金额；支付订单原价金额不冲减退款；优惠金额为原价减实付，且退款不冲减优惠。结果：实付金额50.00元，退款金额50.00元，净销售额0.00元，支付订单原价金额50.00元，优惠金额0.00元。其中净销售额和优惠金额为覆盖范围内的实际汇总零，不是未定义。"
+    },
+    {
+      "id": "B1-R02",
+      "trace_id": "e553359c-c55f-44a5-b23a-17b062bb714e",
+      "structured_passed": true,
+      "sql_review": "passed",
+      "answer_trace_matches_actual_and_catalog": true,
+      "explanation_passed": false,
+      "note": "部分退款五项金额正确，但解释把金额统计单位称为CRM会员账户。",
+      "finding": {
+        "type": "amount_account_unit_confusion",
+        "quote": "统计单位为 CRM 会员账户。"
+      },
+      "actual_answer_or_reason": "统计范围为当前客户青禾（问题中的“青禾优选”按当前客户范围理解）在 2026-08-15 的已支付订单，日期区间为 2026-08-15 至 2026-08-16（不含结束日）；取消单不计，未再按门店等维度筛选或分组。口径为：实付金额未扣退款，退款按原订单下单日期归属，净销售额为实付减退款，原价金额为折扣前金额且退款不冲减，优惠金额为原价减实付且退款不冲减。本次结果：实付金额 90.00 元，退款金额 20.00 元，净销售额 70.00 元，支付订单原价金额 100.00 元，优惠金额 10.00 元。数据来自合成测试库，统计单位为 CRM 会员账户。"
+    },
+    {
+      "id": "B1-D01",
+      "trace_id": "34239bed-18f4-4a44-9936-0412ab324b04",
+      "structured_passed": true,
+      "sql_review": "passed",
+      "answer_trace_matches_actual_and_catalog": true,
+      "explanation_passed": true,
+      "note": "按成交店S01/S02/S03正确分组，逐列换算正确，未换成归属店。",
+      "finding": null,
+      "actual_answer_or_reason": "统计范围为青禾客户数据中 2026 年 7 月（2026-07-01 至 2026-08-01 区间），按订单成交门店编号汇总已支付订单；退款按原订单下单日期归属，优惠金额为原价减实付且退款不冲减优惠。金额单位为元。结果：S01 实付金额 125.00、退款金额 0.00、净销售额 125.00、支付订单原价金额 125.00、优惠金额 0.00；S02 实付金额 105.00、退款金额 5.00、净销售额 100.00、支付订单原价金额 105.00、优惠金额 0.00；S03 实付金额 100.00、退款金额 10.00、净销售额 90.00、支付订单原价金额 100.00、优惠金额 0.00。各门店优惠金额为 0 表示覆盖范围内该指标合计为零。"
+    },
+    {
+      "id": "B1-F01",
+      "trace_id": "2f37aad2-3cdf-4716-ba3f-e58c14017e1a",
+      "structured_passed": true,
+      "sql_review": "passed",
+      "answer_trace_matches_actual_and_catalog": true,
+      "explanation_passed": true,
+      "note": "华东成交地区与小程序AND筛选正确，五项金额正确，未否认实际筛选。",
+      "finding": null,
+      "actual_answer_or_reason": "统计范围为2026年8月（按原订单下单日期归属）、当前青禾客户数据内，小程序渠道且订单成交门店所在地区为华东的已支付订单；取消单不计。退款金额按原订单下单日期归属，不按现金退款发生日；原价金额和优惠金额不因退款冲减。结果：实付金额297.00元，退款金额0.00元（覆盖范围内为零），净销售额297.00元，支付订单原价金额322.00元，优惠金额25.00元。净销售额为实付金额减退款金额后的合计；金额已由分换算为元并保留两位小数。"
+    },
+    {
+      "id": "B1-Z01",
+      "trace_id": "3f396a97-7ef8-49ab-a6c2-7d840745220b",
+      "structured_passed": true,
+      "sql_review": "passed",
+      "answer_trace_matches_actual_and_catalog": true,
+      "explanation_passed": true,
+      "note": "覆盖内空窗五项均零，含6月1日至29日，未将零称未知。",
+      "finding": null,
+      "actual_answer_or_reason": "在当前客户数据范围内，按订单日期统计2026年6月1日至6月29日（含首尾），口径为已支付订单（取消单不计）；退款按原订单下单日期归属，原价金额和优惠金额不因退款冲减。本次未按门店或地区筛选、分组。结果：实付金额0.00元、退款金额0.00元、净销售额0.00元、支付订单原价金额0.00元、优惠金额0.00元。以上均为本次统计覆盖范围内聚合返回的零，不是缺失或未定义。"
+    },
+    {
+      "id": "B1-D02",
+      "trace_id": "01d51d83-1f73-464a-a78e-365099655975",
+      "structured_passed": true,
+      "sql_review": "passed",
+      "answer_trace_matches_actual_and_catalog": true,
+      "explanation_passed": true,
+      "note": "6个原订单日组及全部30个金额格换算正确，不补无返回日期，不把全退排除。",
+      "finding": null,
+      "actual_answer_or_reason": "统计范围：青禾客户范围内，2026年8月按下单日期逐日统计；按已支付订单行汇总，取消单不计，未按会员账户去重。实付金额尚未扣退款；退款金额按原订单下单日期归属；净销售额=实付金额-退款金额；支付订单原价金额为折扣前原价且退款不冲减；优惠金额=原价金额-实付金额且退款不冲减。金额单位为元并保留两位小数。仅列出有返回分组的日期，未列日期只表示该日期未列出，不能据此推断指标未定义或覆盖不足。\n\n日期 | 实付金额 | 退款金额 | 净销售额 | 支付订单原价金额 | 优惠金额\n2026-08-01 | 190.00 | 90.00 | 100.00 | 190.00 | 0.00\n2026-08-05 | 267.00 | 0.00 | 267.00 | 278.00 | 11.00\n2026-08-10 | 50.00 | 50.00 | 0.00 | 50.00 | 0.00\n2026-08-15 | 90.00 | 20.00 | 70.00 | 100.00 | 10.00\n2026-08-20 | 70.00 | 0.00 | 70.00 | 70.00 | 0.00\n2026-08-31 | 523.50 | 27.50 | 496.00 | 554.50 | 31.00\n\n其中2026-08-10净销售额0.00为覆盖内零，实付金额与退款金额相抵。"
+    },
+    {
+      "id": "NS01-aug-total",
+      "trace_id": "f6075a05-4a13-48da-afd7-17b26d0fa5f5",
+      "structured_passed": true,
+      "sql_review": "passed",
+      "answer_trace_matches_actual_and_catalog": true,
+      "explanation_passed": true,
+      "note": "原8月净额100300分正确，paid扣退订单范围忠实。",
+      "finding": null,
+      "actual_answer_or_reason": "在青禾当前客户数据范围内，2026年8月（按下单日期归属）的净销售额为1003.00元。口径为已支付订单实付金额减退款后合计，取消订单不计；本次未附加其他筛选条件。"
+    },
+    {
+      "id": "NS02-july-transaction-store",
+      "trace_id": "c9f71075-d910-4eeb-9874-18f7f85a375e",
+      "structured_passed": true,
+      "sql_review": "passed",
+      "answer_trace_matches_actual_and_catalog": true,
+      "explanation_passed": false,
+      "note": "三成交店净额正确，但解释把金额统计单位称为CRM会员账户。",
+      "finding": {
+        "type": "amount_account_unit_confusion",
+        "quote": "统计单位为CRM会员账户。"
+      },
+      "actual_answer_or_reason": "统计范围为2026年7月（按原订单下单日期归属，覆盖2026-07-01至2026-07-31），客户为青禾，未额外设置门店或其他筛选。净销售额口径为已支付订单实付金额减退款后合计，取消订单不计。按订单成交门店编号分组结果：S01 净销售额 125.00 元；S02 净销售额 100.00 元；S03 净销售额 90.00 元。以上结果来自本周合成测试库，统计单位为CRM会员账户。"
+    },
+    {
+      "id": "NS03-aug-mini-program",
+      "trace_id": "9abd189b-f3bd-4be8-b4e4-2a412c39351f",
+      "structured_passed": true,
+      "sql_review": "passed",
+      "answer_trace_matches_actual_and_catalog": true,
+      "explanation_passed": true,
+      "note": "小程序净额48700分正确，解释承认实际渠道筛选。",
+      "finding": null,
+      "actual_answer_or_reason": "2026年8月，青禾客户数据范围内，小程序渠道的净销售额为487.00元。统计口径为已支付订单的实付金额减退款后合计，取消单不计，并按原订单下单日期归属；本次已按小程序渠道筛选。"
+    },
+    {
+      "id": "NS04-partial-refund-day",
+      "trace_id": "28fe59a1-1f53-4dd2-9fc0-b032be6e18ca",
+      "structured_passed": true,
+      "sql_review": "passed",
+      "answer_trace_matches_actual_and_catalog": true,
+      "explanation_passed": false,
+      "note": "净额7000分及SQL正确，但解释把金额统计单位称为CRM会员账户。",
+      "finding": {
+        "type": "amount_account_unit_confusion",
+        "quote": "统计单位为CRM会员账户，数据来自本周合成测试库。"
+      },
+      "actual_answer_or_reason": "2026年8月15日当天，青禾优选净销售额为70.00元。统计口径为已支付订单实付金额减退款后合计，取消订单不计，并按原订单下单日期归入当天；统计单位为CRM会员账户，数据来自本周合成测试库。"
+    },
+    {
+      "id": "NS05-full-refund-day",
+      "trace_id": "8e75c99a-f5b2-4d7b-ad8e-d3c32bd34f28",
+      "structured_passed": true,
+      "sql_review": "passed",
+      "answer_trace_matches_actual_and_catalog": true,
+      "explanation_passed": true,
+      "note": "净额0分正确，解释为paid汇总零，不改称只计有效购买。",
+      "finding": null,
+      "actual_answer_or_reason": "2026年8月10日当天，青禾优选按订单原下单日期归属统计的净销售额为0.00元（0分）。口径为已支付订单实付金额减退款后合计，取消单不计；本次未按门店或地区拆分。该零值是本次查询覆盖范围内的合计零，并非指标未定义。"
+    },
+    {
+      "id": "NS06-covered-empty",
+      "trace_id": "e80e5b9e-f350-4283-9e03-499dc0030e47",
+      "structured_passed": true,
+      "sql_review": "passed",
+      "answer_trace_matches_actual_and_catalog": true,
+      "explanation_passed": true,
+      "note": "覆盖内空窗净额0分正确，不误称未定义。",
+      "finding": null,
+      "actual_answer_or_reason": "2026年6月1日至6月29日（含首尾两天）范围内，青禾优选净销售额为0.00元。该结果为当前客户数据覆盖范围内的已支付订单实付金额减退款后的合计，取消单不计，并按原订单下单日期归属；此处为零，表示统计范围内净销售额合计为零。"
+    },
+    {
+      "id": "NS07-missing-time",
+      "trace_id": "1d8ca7c8-47eb-4ad9-9875-6fa967235a95",
+      "structured_passed": true,
+      "sql_review": "not_applicable_no_query",
+      "answer_trace_matches_actual_and_catalog": null,
+      "explanation_passed": true,
+      "note": "正确请求补充时间，没有猜测月份或返回金额。",
+      "finding": null,
+      "actual_answer_or_reason": "需要明确查询的时间范围（开始日期和结束日期，end 不含）才能计算净销售额；“青禾优选”是当前客户/数据集名称，不作为门店筛选。请补充时间范围。"
+    },
+    {
+      "id": "NS08-outside-coverage",
+      "trace_id": "1c830f12-fc56-456e-9e01-c13ada2c880f",
+      "structured_passed": true,
+      "sql_review": "not_applicable_no_query",
+      "answer_trace_matches_actual_and_catalog": null,
+      "explanation_passed": true,
+      "note": "正确拒绝9月整月，没有把覆盖外答成零。",
+      "finding": null,
+      "actual_answer_or_reason": "数据覆盖截止到2026-09-01，无法查询2026年9月整月净销售额。"
+    }
+  ],
+  "approved_as_final_batch": false,
+  "limitations": [
+    "small合成数据范围",
+    "金额数值通过不抵消解释单位错误",
+    "取消paid/refund0和全退net0仍需结合SQL检查",
+    "本轮不验证客户验收、规模、生产或全部12维度行为"
+  ],
+  "repair": "Only source-grounded conditional scope.statistics_unit candidate approved for one rebuild and same15 regression. Preserve this result; no rescore or actual-to-expected copy."
+}

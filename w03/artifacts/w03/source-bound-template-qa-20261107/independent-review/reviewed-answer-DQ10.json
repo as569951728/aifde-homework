@@ -1,0 +1,205 @@
+{
+  "created_at": "2026-11-06T16:43:04.870812+00:00",
+  "status": "reviewed_working_answer_approved_only",
+  "case_id": "DQ10",
+  "nature": "对导师Agent修订工作稿的独立复核；非被测模型重跑或原答改判",
+  "checks": {
+    "parent_output_hash_matches_declared": true,
+    "parent_output_matches_original_review_hash": true,
+    "native_run_reference_matches": true,
+    "native_run_hash_unchanged": true,
+    "native_record_integrity_passed": true,
+    "fixture_unchanged": true,
+    "only_single_requested_substitution": true,
+    "stored_diff_matches_exact_change": true,
+    "markdown_contains_exact_reviewed_answer": true,
+    "raw_checker_still_fails": true,
+    "working_copy_checker_passes": true,
+    "raw_full_verdict_still_fail": true,
+    "batch_model_score_still_11_of_12": true,
+    "role_clear_non_model_non_learner": true,
+    "no_new_call_declared": true
+  },
+  "semantic_review": {
+    "verdict": "pass_for_working_copy",
+    "reason": "8月20日早于非空提前终止日8月25日，所以提前终止单项为是；8月20日恰等于计划结束日，计划结束单项为否；合取为假，最终仍无效。计划及综合区间均[2026-05-20,2026-08-20)，端点和来源正确。",
+    "sources": [
+      "陈姐MSG-03886",
+      "陈姐MSG-03888",
+      "陈姐MSG-03890",
+      "原冻结判据C02/C05"
+    ],
+    "source_and_scope": "小林产品范围、陈姐日期说明和人工情境范围保持原先准确表述，无新增规则、生产核验或用户采纳主张。"
+  },
+  "artifact_hashes": {
+    "artifacts/w03/source-bound-template-qa-20261107/reviewed-answer/DQ10.json": "34c1621f3593334fbca4b3be9620c19ac964a4e83f0e749cb91409805fc78c0f",
+    "artifacts/w03/source-bound-template-qa-20261107/reviewed-answer/DQ10.md": "34009c4e269e40fc066380c6733b36c535aca00ace7ee3ab21fe95c4b9b05fd1",
+    "artifacts/w03/source-bound-template-qa-20261107/reviewed-answer/DQ10.diff": "7e18eb5bb35b4d2c07abd78822ac0d94ebc6a915d76223ef329be33c9192b6c8",
+    "artifacts/w03/source-bound-template-qa-20261107/output/DQ10.json": "878fbec1f9fe9eec83d4bd8815a353a74edd61df2353f1b5d08deb8820d0e472",
+    "artifacts/w02/knowledge_runs/RUN-cec72544a796480f9d37cddae8603a5c/run.json": "fc9e98dc06db260ce3253dfd49d3e87d7f926fe1a0c16462ff476d0862e41fbd",
+    "artifacts/w03/source-bound-template-qa-20261107/independent-review/review.json": "d2c4f57f547940e4bf02413b218e4b4f7cc3a76f10f581849de6b2c696f323bd",
+    "artifacts/w03/date-consistency-qa-20261107/independent-review/check_date_answer.py": "f035a2c54a069a6d47f896be1abfaf3f4590d25c510c64623547292469486aee"
+  },
+  "raw_model_machine_result": {
+    "contract": "date-answer-table-1",
+    "machine_status": "fail",
+    "machine_pass": false,
+    "semantic_review_required": true,
+    "full_answer_pass": null,
+    "limitations": [
+      "Does not validate prose or source-to-claim semantics.",
+      "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+      "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+    ],
+    "errors": [
+      {
+        "code": "CONDITION_MISMATCH",
+        "field": "提前终止日.满足",
+        "actual": "否",
+        "expected": "是"
+      }
+    ],
+    "parsed": {
+      "labels": {
+        "判定日": "2026-08-20",
+        "产品范围": "纳入",
+        "结论": "无效",
+        "来源与范围": "产品范围依据小林 MSG-03848、03854（家庭季卡纳入本期总部运营月报范围）；日期端点依据陈姐 MSG-03886、03888、03890。本次判断是在题设人工构造隔离情境成立前提下作出的推导，不是课程 CSV 真实行、客户实际卡记录或已执行查询；正式规则文件和生产核验仍未取得。"
+      },
+      "conditions": {
+        "生效日": {
+          "题设日期": "2026-05-20",
+          "判定日是否满足本项条件": "是",
+          "依据": "陈姐 MSG-03886、03888：权益在生效日期当天起有效；判定日不早于生效日。"
+        },
+        "计划结束日": {
+          "题设日期": "2026-08-20",
+          "判定日是否满足本项条件": "否",
+          "依据": "陈姐 MSG-03886、03888：计划权益结束日期当天已无效；判定日等于计划结束日，故不满足继续有效条件。"
+        },
+        "提前终止日": {
+          "题设日期": "2026-08-25",
+          "判定日是否满足本项条件": "否",
+          "依据": "陈姐 MSG-03886、03888：存在提前终止日期时从当天起无效；判定日早于该日，未触发提前终止，但仍受计划结束日限制。"
+        }
+      },
+      "intervals": {
+        "计划区间": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "综合有效区间": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        }
+      },
+      "source_continuation": []
+    },
+    "independently_expected": {
+      "decision_date": "2026-08-20",
+      "product_scope": "纳入",
+      "conditions": {
+        "生效日": true,
+        "计划结束日": false,
+        "提前终止日": true
+      },
+      "planned_interval": {
+        "起点": "2026-05-20",
+        "含起点": "是",
+        "终点": "2026-08-20",
+        "含终点": "否"
+      },
+      "effective_interval": {
+        "起点": "2026-05-20",
+        "含起点": "是",
+        "终点": "2026-08-20",
+        "含终点": "否"
+      },
+      "final_conclusion": "无效"
+    }
+  },
+  "working_copy_machine_result": {
+    "contract": "date-answer-table-1",
+    "machine_status": "pass",
+    "machine_pass": true,
+    "semantic_review_required": true,
+    "full_answer_pass": null,
+    "limitations": [
+      "Does not validate prose or source-to-claim semantics.",
+      "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+      "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+    ],
+    "errors": [],
+    "parsed": {
+      "labels": {
+        "判定日": "2026-08-20",
+        "产品范围": "纳入",
+        "结论": "无效",
+        "来源与范围": "产品范围依据小林 MSG-03848、03854（家庭季卡纳入本期总部运营月报范围）；日期端点依据陈姐 MSG-03886、03888、03890。本次判断是在题设人工构造隔离情境成立前提下作出的推导，不是课程 CSV 真实行、客户实际卡记录或已执行查询；正式规则文件和生产核验仍未取得。"
+      },
+      "conditions": {
+        "生效日": {
+          "题设日期": "2026-05-20",
+          "判定日是否满足本项条件": "是",
+          "依据": "陈姐 MSG-03886、03888：权益在生效日期当天起有效；判定日不早于生效日。"
+        },
+        "计划结束日": {
+          "题设日期": "2026-08-20",
+          "判定日是否满足本项条件": "否",
+          "依据": "陈姐 MSG-03886、03888：计划权益结束日期当天已无效；判定日等于计划结束日，故不满足继续有效条件。"
+        },
+        "提前终止日": {
+          "题设日期": "2026-08-25",
+          "判定日是否满足本项条件": "是",
+          "依据": "陈姐 MSG-03886、03888：存在提前终止日期时从当天起无效；判定日早于该日，未触发提前终止，但仍受计划结束日限制。"
+        }
+      },
+      "intervals": {
+        "计划区间": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "综合有效区间": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        }
+      },
+      "source_continuation": []
+    },
+    "independently_expected": {
+      "decision_date": "2026-08-20",
+      "product_scope": "纳入",
+      "conditions": {
+        "生效日": true,
+        "计划结束日": false,
+        "提前终止日": true
+      },
+      "planned_interval": {
+        "起点": "2026-05-20",
+        "含起点": "是",
+        "终点": "2026-08-20",
+        "含终点": "否"
+      },
+      "effective_interval": {
+        "起点": "2026-05-20",
+        "含起点": "是",
+        "终点": "2026-08-20",
+        "含终点": "否"
+      },
+      "final_conclusion": "无效"
+    }
+  },
+  "raw_model_score_policy": "本轮真实模型完整成绩仍11/12，DQ10原答仍fail；不把本工作稿计成模型12/12。",
+  "adoption_policy": "只可登记工作稿已复核；不等于候选全面采用、原生proposal3或正式v0.4更新、本人独立掌握或客户批准。",
+  "model_calls_by_reviewer": 0,
+  "blocking_issues": [],
+  "nonblocking_notes": []
+}

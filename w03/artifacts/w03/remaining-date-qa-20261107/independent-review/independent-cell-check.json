@@ -1,0 +1,908 @@
+{
+  "created_at": "2026-11-07T04:01:37.829291+00:00",
+  "status": "passed",
+  "cases": [
+    {
+      "id": "DY01",
+      "status": "passed",
+      "checks": {
+        "decision_date": true,
+        "in_scope": true,
+        "conclusion": true,
+        "template_headers_and_rows": true,
+        "row_key_set": true,
+        "start_row": true,
+        "planned_end_row": true,
+        "empty_termination_row": true,
+        "planned_interval": true,
+        "combined_interval": true,
+        "reason_cells_present": true,
+        "no_unfilled_placeholders": true,
+        "source_scope_section": true
+      },
+      "rows": {
+        "生效日": [
+          "生效日",
+          "2025-08-20",
+          "否",
+          "权益在生效日期当天起有效；判定日2025-08-19早于生效日，故未生效。陈姐 MSG-03886、03888"
+        ],
+        "计划结束日": [
+          "计划结束日",
+          "2026-08-20",
+          "是",
+          "计划权益结束日期当天已无效；判定日早于2026-08-20，未触及计划结束。陈姐 MSG-03886、03888"
+        ],
+        "提前终止日": [
+          "提前终止日",
+          "空",
+          "是",
+          "提前终止为空仅表示无提前终止，仍受计划结束限制；题设无提前终止。陈姐 MSG-03886、03888"
+        ],
+        "计划区间": [
+          "计划区间",
+          "2025-08-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ],
+        "综合有效区间": [
+          "综合有效区间",
+          "2025-08-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ]
+      },
+      "independent_expected": {
+        "product_in_scope": true,
+        "decision_date": "2025-08-19",
+        "start_condition": false,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": false
+      },
+      "answer_text_sha256": "67b40dec628b3f445c06b80ef4858cf482e460017056bee19a6cc58035f551be",
+      "method": "只解析结构和确定性日期值；理由和引用由独立Agent逐题阅读全文另审。"
+    },
+    {
+      "id": "DY02",
+      "status": "passed",
+      "checks": {
+        "decision_date": true,
+        "in_scope": true,
+        "conclusion": true,
+        "template_headers_and_rows": true,
+        "row_key_set": true,
+        "start_row": true,
+        "planned_end_row": true,
+        "empty_termination_row": true,
+        "planned_interval": true,
+        "combined_interval": true,
+        "reason_cells_present": true,
+        "no_unfilled_placeholders": true,
+        "source_scope_section": true
+      },
+      "rows": {
+        "生效日": [
+          "生效日",
+          "2025-08-20",
+          "是",
+          "陈姐 MSG-03886、03888：权益在生效日期当天起有效；判定日等于生效日，含起点。"
+        ],
+        "计划结束日": [
+          "计划结束日",
+          "2026-08-20",
+          "是",
+          "陈姐 MSG-03886、03888：计划权益结束日期当天已无效；判定日早于该日。"
+        ],
+        "提前终止日": [
+          "提前终止日",
+          "空",
+          "是",
+          "题设提前终止为空；陈姐 MSG-03886、03890：空表示无提前终止，仍受计划结束日限制，本项不构成提前失效。"
+        ],
+        "计划区间": [
+          "计划区间",
+          "2025-08-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ],
+        "综合有效区间": [
+          "综合有效区间",
+          "2025-08-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ]
+      },
+      "independent_expected": {
+        "product_in_scope": true,
+        "decision_date": "2025-08-20",
+        "start_condition": true,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": true
+      },
+      "answer_text_sha256": "48860abf2fffac209730030a60568a03d698f84f4a95b6fcac66c99285924fa0",
+      "method": "只解析结构和确定性日期值；理由和引用由独立Agent逐题阅读全文另审。"
+    },
+    {
+      "id": "DY03",
+      "status": "passed",
+      "checks": {
+        "decision_date": true,
+        "in_scope": true,
+        "conclusion": true,
+        "template_headers_and_rows": true,
+        "row_key_set": true,
+        "start_row": true,
+        "planned_end_row": true,
+        "empty_termination_row": true,
+        "planned_interval": true,
+        "combined_interval": true,
+        "reason_cells_present": true,
+        "no_unfilled_placeholders": true,
+        "source_scope_section": true
+      },
+      "rows": {
+        "生效日": [
+          "生效日",
+          "2025-08-20",
+          "是",
+          "权益自生效日当天起有效；判定日不早于生效日（陈姐 MSG-03886、03888）"
+        ],
+        "计划结束日": [
+          "计划结束日",
+          "2026-08-20",
+          "是",
+          "计划结束日当天已无效；判定日早于计划结束日（陈姐 MSG-03886、03888）"
+        ],
+        "提前终止日": [
+          "提前终止日",
+          "空",
+          "是",
+          "提前终止为空表示无提前终止，仍受计划结束日限制（陈姐 MSG-03886、03888）"
+        ],
+        "计划区间": [
+          "计划区间",
+          "2025-08-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ],
+        "综合有效区间": [
+          "综合有效区间",
+          "2025-08-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ]
+      },
+      "independent_expected": {
+        "product_in_scope": true,
+        "decision_date": "2025-08-21",
+        "start_condition": true,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": true
+      },
+      "answer_text_sha256": "358b3013075b1a1cc191f66478ab63ce3454b3179a847a30af32568119224127",
+      "method": "只解析结构和确定性日期值；理由和引用由独立Agent逐题阅读全文另审。"
+    },
+    {
+      "id": "DY04",
+      "status": "passed",
+      "checks": {
+        "decision_date": true,
+        "in_scope": true,
+        "conclusion": true,
+        "template_headers_and_rows": true,
+        "row_key_set": true,
+        "start_row": true,
+        "planned_end_row": true,
+        "empty_termination_row": true,
+        "planned_interval": true,
+        "combined_interval": true,
+        "reason_cells_present": true,
+        "no_unfilled_placeholders": true,
+        "source_scope_section": true
+      },
+      "rows": {
+        "生效日": [
+          "生效日",
+          "2025-08-20",
+          "是",
+          "权益自生效日期当天起有效，判定日晚于生效日；陈姐 MSG-03886、03890"
+        ],
+        "计划结束日": [
+          "计划结束日",
+          "2026-08-20",
+          "是",
+          "计划权益结束日期当天已无效，判定日早于该日；陈姐 MSG-03886、03888"
+        ],
+        "提前终止日": [
+          "提前终止日",
+          "空",
+          "是",
+          "提前终止为空仅表示无提前终止，仍受计划结束日限制；陈姐 MSG-03886、03890"
+        ],
+        "计划区间": [
+          "计划区间",
+          "2025-08-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ],
+        "综合有效区间": [
+          "综合有效区间",
+          "2025-08-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ]
+      },
+      "independent_expected": {
+        "product_in_scope": true,
+        "decision_date": "2026-08-19",
+        "start_condition": true,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": true
+      },
+      "answer_text_sha256": "2bfaec31b0fa09265b395ef6ff13d15f2888a2699135539594c19fe84ea37552",
+      "method": "只解析结构和确定性日期值；理由和引用由独立Agent逐题阅读全文另审。"
+    },
+    {
+      "id": "DY05",
+      "status": "passed",
+      "checks": {
+        "decision_date": true,
+        "in_scope": true,
+        "conclusion": true,
+        "template_headers_and_rows": true,
+        "row_key_set": true,
+        "start_row": true,
+        "planned_end_row": true,
+        "empty_termination_row": true,
+        "planned_interval": true,
+        "combined_interval": true,
+        "reason_cells_present": true,
+        "no_unfilled_placeholders": true,
+        "source_scope_section": true
+      },
+      "rows": {
+        "生效日": [
+          "生效日",
+          "2025-08-20",
+          "是",
+          "权益自生效日期当天起有效；判定日在其后。"
+        ],
+        "计划结束日": [
+          "计划结束日",
+          "2026-08-20",
+          "否",
+          "计划权益结束日期当天已无效；判定日等于该日。"
+        ],
+        "提前终止日": [
+          "提前终止日",
+          "空",
+          "是",
+          "提前终止为空仅表示无提前终止，不因此失效，但仍受计划结束日限制。"
+        ],
+        "计划区间": [
+          "计划区间",
+          "2025-08-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ],
+        "综合有效区间": [
+          "综合有效区间",
+          "2025-08-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ]
+      },
+      "independent_expected": {
+        "product_in_scope": true,
+        "decision_date": "2026-08-20",
+        "start_condition": true,
+        "planned_end_condition": false,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": false
+      },
+      "answer_text_sha256": "55c529a21d9fdcbaa58ed53c56bf01497bd814ac2742732b8a35b6a3bbf2279f",
+      "method": "只解析结构和确定性日期值；理由和引用由独立Agent逐题阅读全文另审。"
+    },
+    {
+      "id": "DY06",
+      "status": "passed",
+      "checks": {
+        "decision_date": true,
+        "in_scope": true,
+        "conclusion": true,
+        "template_headers_and_rows": true,
+        "row_key_set": true,
+        "start_row": true,
+        "planned_end_row": true,
+        "empty_termination_row": true,
+        "planned_interval": true,
+        "combined_interval": true,
+        "reason_cells_present": true,
+        "no_unfilled_placeholders": true,
+        "source_scope_section": true
+      },
+      "rows": {
+        "生效日": [
+          "生效日",
+          "2025-08-20",
+          "是",
+          "权益自生效日期当天起有效，判定日在其后（规则3；陈姐 MSG-03886、03888、03890）"
+        ],
+        "计划结束日": [
+          "计划结束日",
+          "2026-08-20",
+          "否",
+          "计划权益结束日期当天已无效，判定日 2026-08-21 已超过该日（规则3；陈姐 MSG-03886、03888、03890）"
+        ],
+        "提前终止日": [
+          "提前终止日",
+          "空",
+          "是",
+          "提前终止为空表示没有提前终止，本项不构成额外终止，但仍受计划结束日限制（规则3；陈姐 MSG-03886、03888、03890）"
+        ],
+        "计划区间": [
+          "计划区间",
+          "2025-08-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ],
+        "综合有效区间": [
+          "综合有效区间",
+          "2025-08-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ]
+      },
+      "independent_expected": {
+        "product_in_scope": true,
+        "decision_date": "2026-08-21",
+        "start_condition": true,
+        "planned_end_condition": false,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2025-08-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": false
+      },
+      "answer_text_sha256": "7efe93e9ae32f351128ba1db0e603427b147a52bdcbd3ba50929693c6eee7b7b",
+      "method": "只解析结构和确定性日期值；理由和引用由独立Agent逐题阅读全文另审。"
+    },
+    {
+      "id": "DQ01",
+      "status": "passed",
+      "checks": {
+        "decision_date": true,
+        "in_scope": true,
+        "conclusion": true,
+        "template_headers_and_rows": true,
+        "row_key_set": true,
+        "start_row": true,
+        "planned_end_row": true,
+        "empty_termination_row": true,
+        "planned_interval": true,
+        "combined_interval": true,
+        "reason_cells_present": true,
+        "no_unfilled_placeholders": true,
+        "source_scope_section": true
+      },
+      "rows": {
+        "生效日": [
+          "生效日",
+          "2026-05-20",
+          "否",
+          "权益在生效日期当天起有效；判定日2026-05-19早于生效日2026-05-20（陈姐 MSG-03886、03888、03890）"
+        ],
+        "计划结束日": [
+          "计划结束日",
+          "2026-08-20",
+          "是",
+          "计划权益结束日期当天已无效；判定日2026-05-19早于计划结束日2026-08-20（陈姐 MSG-03886、03888、03890）"
+        ],
+        "提前终止日": [
+          "提前终止日",
+          "空",
+          "是",
+          "提前终止为空表示该记录没有提前终止，不产生额外失效限制，但仍受计划结束日期限制（陈姐 MSG-03886、03890）"
+        ],
+        "计划区间": [
+          "计划区间",
+          "2026-05-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ],
+        "综合有效区间": [
+          "综合有效区间",
+          "2026-05-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ]
+      },
+      "independent_expected": {
+        "product_in_scope": true,
+        "decision_date": "2026-05-19",
+        "start_condition": false,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": false
+      },
+      "answer_text_sha256": "e86d9a36fae66b07bd752bb9fa740f35365e7b5b7ccffde9cdda9790dd3c8af1",
+      "method": "只解析结构和确定性日期值；理由和引用由独立Agent逐题阅读全文另审。"
+    },
+    {
+      "id": "DQ02",
+      "status": "passed",
+      "checks": {
+        "decision_date": true,
+        "in_scope": true,
+        "conclusion": true,
+        "template_headers_and_rows": true,
+        "row_key_set": true,
+        "start_row": true,
+        "planned_end_row": true,
+        "empty_termination_row": true,
+        "planned_interval": true,
+        "combined_interval": true,
+        "reason_cells_present": true,
+        "no_unfilled_placeholders": true,
+        "source_scope_section": true
+      },
+      "rows": {
+        "生效日": [
+          "生效日",
+          "2026-05-20",
+          "是",
+          "权益在生效日期当天起有效；判定日等于生效日（陈姐 MSG-03886、03888）"
+        ],
+        "计划结束日": [
+          "计划结束日",
+          "2026-08-20",
+          "是",
+          "判定日早于计划结束日；计划权益结束日期当天已无效（陈姐 MSG-03886、03888）"
+        ],
+        "提前终止日": [
+          "提前终止日",
+          "空",
+          "是",
+          "提前终止为空仅表示无提前终止，不触发提前终止无效，仍受计划结束日限制（陈姐 MSG-03890）"
+        ],
+        "计划区间": [
+          "计划区间",
+          "2026-05-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ],
+        "综合有效区间": [
+          "综合有效区间",
+          "2026-05-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ]
+      },
+      "independent_expected": {
+        "product_in_scope": true,
+        "decision_date": "2026-05-20",
+        "start_condition": true,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": true
+      },
+      "answer_text_sha256": "d6b722df84ff5c1444d4f37ff2b24688cfa5e21896f6e41a374ab02617123beb",
+      "method": "只解析结构和确定性日期值；理由和引用由独立Agent逐题阅读全文另审。"
+    },
+    {
+      "id": "DQ03",
+      "status": "passed",
+      "checks": {
+        "decision_date": true,
+        "in_scope": true,
+        "conclusion": true,
+        "template_headers_and_rows": true,
+        "row_key_set": true,
+        "start_row": true,
+        "planned_end_row": true,
+        "empty_termination_row": true,
+        "planned_interval": true,
+        "combined_interval": true,
+        "reason_cells_present": true,
+        "no_unfilled_placeholders": true,
+        "source_scope_section": true
+      },
+      "rows": {
+        "生效日": [
+          "生效日",
+          "2026-05-20",
+          "是",
+          "规则为生效日期当天起有效；判定日2026-05-21已过生效日。陈姐 MSG-03886、03888、03890"
+        ],
+        "计划结束日": [
+          "计划结束日",
+          "2026-08-20",
+          "是",
+          "规则为计划权益结束日期当天已无效；判定日2026-05-21早于计划结束日。陈姐 MSG-03886、03888、03890"
+        ],
+        "提前终止日": [
+          "提前终止日",
+          "空",
+          "是",
+          "提前终止为空表示无提前终止，仍受计划结束日期限制；判定日不受提前终止限制。陈姐 MSG-03886、03888、03890"
+        ],
+        "计划区间": [
+          "计划区间",
+          "2026-05-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ],
+        "综合有效区间": [
+          "综合有效区间",
+          "2026-05-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ]
+      },
+      "independent_expected": {
+        "product_in_scope": true,
+        "decision_date": "2026-05-21",
+        "start_condition": true,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": true
+      },
+      "answer_text_sha256": "7da41e7be979af8f2c9f99ce7961aa8e8d96c00aee01d31e62348fa65481392d",
+      "method": "只解析结构和确定性日期值；理由和引用由独立Agent逐题阅读全文另审。"
+    },
+    {
+      "id": "DQ04",
+      "status": "passed",
+      "checks": {
+        "decision_date": true,
+        "in_scope": true,
+        "conclusion": true,
+        "template_headers_and_rows": true,
+        "row_key_set": true,
+        "start_row": true,
+        "planned_end_row": true,
+        "empty_termination_row": true,
+        "planned_interval": true,
+        "combined_interval": true,
+        "reason_cells_present": true,
+        "no_unfilled_placeholders": true,
+        "source_scope_section": true
+      },
+      "rows": {
+        "生效日": [
+          "生效日",
+          "2026-05-20",
+          "是",
+          "权益自生效日期当天起有效；判定日2026-08-19不早于生效日。依据陈姐说明的权益有效期端点规则（MSG-03886、03888、03890）及题设日期。"
+        ],
+        "计划结束日": [
+          "计划结束日",
+          "2026-08-20",
+          "是",
+          "计划权益结束日期当天已无效；判定日2026-08-19早于计划结束日。依据陈姐说明的权益有效期端点规则（MSG-03886、03888、03890）及题设日期。"
+        ],
+        "提前终止日": [
+          "提前终止日",
+          "空",
+          "是",
+          "提前终止为空表示该记录没有提前终止，不触发提前终止排除，但仍受计划结束日限制。依据陈姐说明的空值解释与日期端点规则（MSG-03886、03888、03890）。"
+        ],
+        "计划区间": [
+          "计划区间",
+          "2026-05-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ],
+        "综合有效区间": [
+          "综合有效区间",
+          "2026-05-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ]
+      },
+      "independent_expected": {
+        "product_in_scope": true,
+        "decision_date": "2026-08-19",
+        "start_condition": true,
+        "planned_end_condition": true,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": true
+      },
+      "answer_text_sha256": "0717a5906c574d7228b46dec8c413281311b7e14ec0c9cc58576744abdee31de",
+      "method": "只解析结构和确定性日期值；理由和引用由独立Agent逐题阅读全文另审。"
+    },
+    {
+      "id": "DQ05",
+      "status": "passed",
+      "checks": {
+        "decision_date": true,
+        "in_scope": true,
+        "conclusion": true,
+        "template_headers_and_rows": true,
+        "row_key_set": true,
+        "start_row": true,
+        "planned_end_row": true,
+        "empty_termination_row": true,
+        "planned_interval": true,
+        "combined_interval": true,
+        "reason_cells_present": true,
+        "no_unfilled_placeholders": true,
+        "source_scope_section": true
+      },
+      "rows": {
+        "生效日": [
+          "生效日",
+          "2026-05-20",
+          "是",
+          "权益自生效日期当天起有效；判定日不早于生效日（陈姐 MSG-03886、03888、03890）"
+        ],
+        "计划结束日": [
+          "计划结束日",
+          "2026-08-20",
+          "否",
+          "计划权益结束日期当天已无效；判定日等于计划结束日，故不满足有效期条件（陈姐 MSG-03886、03888、03890）"
+        ],
+        "提前终止日": [
+          "提前终止日",
+          "空",
+          "是",
+          "提前终止为空仅表示没有提前终止，仍受计划结束日期限制，不延长有效期（陈姐 MSG-03886、03888、03890）"
+        ],
+        "计划区间": [
+          "计划区间",
+          "2026-05-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ],
+        "综合有效区间": [
+          "综合有效区间",
+          "2026-05-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ]
+      },
+      "independent_expected": {
+        "product_in_scope": true,
+        "decision_date": "2026-08-20",
+        "start_condition": true,
+        "planned_end_condition": false,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": false
+      },
+      "answer_text_sha256": "e474ebe5e6b04a989c915ad22a97e70540603ab9eb42ee5522dbb18325a84a89",
+      "method": "只解析结构和确定性日期值；理由和引用由独立Agent逐题阅读全文另审。"
+    },
+    {
+      "id": "DQ06",
+      "status": "passed",
+      "checks": {
+        "decision_date": true,
+        "in_scope": true,
+        "conclusion": true,
+        "template_headers_and_rows": true,
+        "row_key_set": true,
+        "start_row": true,
+        "planned_end_row": true,
+        "empty_termination_row": true,
+        "planned_interval": true,
+        "combined_interval": true,
+        "reason_cells_present": true,
+        "no_unfilled_placeholders": true,
+        "source_scope_section": true
+      },
+      "rows": {
+        "生效日": [
+          "生效日",
+          "2026-05-20",
+          "是",
+          "权益自生效日期当天起有效；判定日不早于生效日。依据陈姐 MSG-03886、03890 的本期两类卡端点说明。"
+        ],
+        "计划结束日": [
+          "计划结束日",
+          "2026-08-20",
+          "否",
+          "计划权益结束日期当天已无效；判定日 2026-08-21 已超过该日。依据陈姐 MSG-03886、03888、03890。"
+        ],
+        "提前终止日": [
+          "提前终止日",
+          "空",
+          "是",
+          "提前终止为空仅表示无提前终止，不另行缩短有效期；仍受计划结束日限制。依据陈姐 MSG-03886、03890。"
+        ],
+        "计划区间": [
+          "计划区间",
+          "2026-05-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ],
+        "综合有效区间": [
+          "综合有效区间",
+          "2026-05-20",
+          "是",
+          "2026-08-20",
+          "否"
+        ]
+      },
+      "independent_expected": {
+        "product_in_scope": true,
+        "decision_date": "2026-08-21",
+        "start_condition": true,
+        "planned_end_condition": false,
+        "early_termination_condition": true,
+        "planned_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "combined_interval": {
+          "start": "2026-05-20",
+          "include_start": true,
+          "end": "2026-08-20",
+          "include_end": false
+        },
+        "effective": false
+      },
+      "answer_text_sha256": "f9bf0a914b7a910a59b0c1a7c4b62d545bc2570478db71705cbcb104d8aeaf80",
+      "method": "只解析结构和确定性日期值；理由和引用由独立Agent逐题阅读全文另审。"
+    }
+  ],
+  "source_first_criteria_sha256": "f100b01cf762f681626f26d1ece539d34dfe817be5ce02b260049b820c10355c",
+  "note": "独立解析，无模型调用，未导入主Agent机械checker。与source-first原规则/fixture推导比对，不能替代整份答复语义审查。"
+}

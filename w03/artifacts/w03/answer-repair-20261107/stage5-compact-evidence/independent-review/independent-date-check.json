@@ -1,0 +1,157 @@
+{
+  "status": "passed",
+  "cases": {
+    "DQ10": {
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2026-08-20",
+          "产品范围": "纳入",
+          "结论": "无效",
+          "来源与范围": "产品范围“家庭季卡”属本期月报纳入范围，依据小林 MSG-03848、03854；日期端点依据陈姐 MSG-03886、03890、03888；本结论仅在题设人工构造情境成立，不是客户真实卡记录或已执行查询。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2026-05-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "权益自生效日期当天起有效；判定日不早于生效日（陈姐 MSG-03886、03890）"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "否",
+            "依据": "计划权益结束日期当天已无效；判定日等于计划结束日（陈姐 MSG-03886、03890）"
+          },
+          "提前终止日": {
+            "题设日期": "2026-08-25",
+            "判定日是否满足本项条件": "是",
+            "依据": "判定日早于提前终止日，尚未触发提前终止；提前终止日当天起才无效（陈姐 MSG-03886、03890）"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2026-08-20",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": false,
+          "提前终止日": true
+        },
+        "planned_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "final_conclusion": "无效"
+      }
+    },
+    "DQ09": {
+      "contract": "date-answer-table-1",
+      "machine_status": "pass",
+      "machine_pass": true,
+      "semantic_review_required": true,
+      "full_answer_pass": null,
+      "limitations": [
+        "Does not validate prose or source-to-claim semantics.",
+        "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+        "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+      ],
+      "errors": [],
+      "parsed": {
+        "labels": {
+          "判定日": "2026-08-16",
+          "产品范围": "纳入",
+          "结论": "无效",
+          "来源与范围": "产品范围依据小林 MSG-03848、03854（本期月报纳入家庭季卡与悦享年卡）；日期端点依据陈姐 MSG-03886、03888、03890。上述判断是在题设人工构造情境下推导，不是客户真实卡记录或已执行查询。"
+        },
+        "conditions": {
+          "生效日": {
+            "题设日期": "2026-05-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "权益自生效日期当天起有效；判定日不早于生效日"
+          },
+          "计划结束日": {
+            "题设日期": "2026-08-20",
+            "判定日是否满足本项条件": "是",
+            "依据": "计划权益结束日期当天已无效；判定日早于计划结束日"
+          },
+          "提前终止日": {
+            "题设日期": "2026-08-15",
+            "判定日是否满足本项条件": "否",
+            "依据": "存在提前终止日期时，从提前终止当天起无效；判定日晚于提前终止日"
+          }
+        },
+        "intervals": {
+          "计划区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "综合有效区间": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-15",
+            "含终点": "否"
+          }
+        },
+        "source_continuation": []
+      },
+      "independently_expected": {
+        "decision_date": "2026-08-16",
+        "product_scope": "纳入",
+        "conditions": {
+          "生效日": true,
+          "计划结束日": true,
+          "提前终止日": false
+        },
+        "planned_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-20",
+          "含终点": "否"
+        },
+        "effective_interval": {
+          "起点": "2026-05-20",
+          "含起点": "是",
+          "终点": "2026-08-15",
+          "含终点": "否"
+        },
+        "final_conclusion": "无效"
+      }
+    }
+  },
+  "checker_sha256": "f035a2c54a069a6d47f896be1abfaf3f4590d25c510c64623547292469486aee",
+  "scope": "本批两道新答逐格/条件/区间机械复核；全文、来源和题设另作独立语义判读。"
+}

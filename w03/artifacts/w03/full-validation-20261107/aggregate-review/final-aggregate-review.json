@@ -1,0 +1,248 @@
+{
+  "version": "w03-final-aggregate-audit-20261107-v1",
+  "reviewed_at": "2026-11-07T12:12:17.554375+08:00",
+  "status": "approved_aggregate_accounting_with_preserved_test_failures",
+  "verdict": "pass",
+  "meaning": "Aggregate accounting/evidence integrity passed; not an all-QA-pass verdict.",
+  "audited_completion_sha256": "fc8f452d94af18efa729bbf4aeb43d6d01a0bf1173ea660afc628bea46634d1b",
+  "audited_execution_ledger_sha256": "f7d334ec45b6f7ba2f6f9ebae1c856733b0d1bf87f35e7e0d064018c984c6043",
+  "audited_summary_sha256": "a81e5929ac68c7b398eec23e754baca462985b1a8b7372f5c401b2f64b0ae83b",
+  "audited_completion_status": "all_cases_reviewed_pending_aggregate_verification",
+  "core_contract_keys": [
+    "starting_completion_sha256",
+    "candidate_model_sha256",
+    "candidate_prompt_sha256",
+    "counts",
+    "this_turn",
+    "cumulative_model_qa_calls",
+    "batches",
+    "static_review_sha256",
+    "execution_ledger_sha256",
+    "protected_files",
+    "native_workflow",
+    "formal_model_applied",
+    "formal_prompt_replaced",
+    "skill_changed",
+    "metric_queries_executed",
+    "new_mentor_working_copies",
+    "original_questions_sha256",
+    "reviewer_expectations_sha256",
+    "continuity_updates"
+  ],
+  "core_contract_sha256": "ba96541d7740cd5fbe6d7f53b41f7746668070fb283bc996b2c875367466e210",
+  "recomputed_counts": {
+    "attempted": 82,
+    "native_accepted": 81,
+    "pass": 71,
+    "semantic_failures": 10,
+    "protocol_failures": 1
+  },
+  "recomputed_tracks": {
+    "model_only": {
+      "attempted": 53,
+      "native_accepted_answers": 52,
+      "full_pass": 46,
+      "semantic_failures": 6,
+      "output_protocol_failures": 1
+    },
+    "model_with_fixed_materials": {
+      "attempted": 15,
+      "native_accepted_answers": 15,
+      "full_pass": 14,
+      "semantic_failures": 1,
+      "output_protocol_failures": 0
+    },
+    "model_with_source_context": {
+      "attempted": 14,
+      "native_accepted_answers": 14,
+      "full_pass": 11,
+      "semantic_failures": 3,
+      "output_protocol_failures": 0
+    }
+  },
+  "new_batches": [
+    {
+      "batch": "evidence-goals-qa-20261107",
+      "cases": 5,
+      "model_runs": 5,
+      "http_attempts": 5,
+      "native_accepted_answers": 5,
+      "full_pass": 2,
+      "raw_failed_ids": [
+        "E03",
+        "E05",
+        "REG01"
+      ],
+      "review_path": "artifacts/w03/evidence-goals-qa-20261107/independent-review/review.json",
+      "review_sha256": "7d24bc0fc7fe5781ead27ed51879d79a6d23a70d77e6073c2522ca6596c74252",
+      "run_index_sha256": "4bfa0fe38721b73c680c6b528a8180b0e5065e0a20c1a61c1bd68a5dfdc336bc",
+      "native_review_sha256": "242eb753cc05a09366710bc5319caf9dac5c1f28996d302106ce4407b591b15c",
+      "semantic_retries": 0,
+      "technical_recoveries": 0
+    },
+    {
+      "batch": "remaining-date-qa-20261107",
+      "cases": 12,
+      "model_runs": 12,
+      "http_attempts": 12,
+      "native_accepted_answers": 12,
+      "full_pass": 12,
+      "raw_failed_ids": [],
+      "review_path": "artifacts/w03/remaining-date-qa-20261107/independent-review/review.json",
+      "review_sha256": "fc6a11f234c650e546f4584e5a2af96b2beccf6f351fe2f0a83b7602546003e0",
+      "run_index_sha256": "b849ef3abe7adc0c84cceceefa126893751537fcffef5a8753bba1c00e1f6cd7",
+      "native_review_sha256": "396f4e8033fe07f999e8909b5a94a637c3c5f172708fa2d9679b93eca3705747",
+      "semantic_retries": 0,
+      "technical_recoveries": 0
+    },
+    {
+      "batch": "context-application-qa-20261107",
+      "cases": 16,
+      "model_runs": 16,
+      "http_attempts": 16,
+      "native_accepted_answers": 16,
+      "full_pass": 13,
+      "raw_failed_ids": [
+        "U05",
+        "A03",
+        "E01"
+      ],
+      "review_path": "artifacts/w03/context-application-qa-20261107/independent-review/review.json",
+      "review_sha256": "b8bfc3bc0ba1e61eb7ffc527c60b64dec5262f280386ac40328c0d0aef5440d5",
+      "run_index_sha256": "d7b351c2c6cfa5c1313d7601bc7077cbc86683d30c2873b858cc40cfd2a5b2a8",
+      "native_review_sha256": "20ca1d6c9d8f4cac25c4b8b8b0ddb2b4a7b6cf55a0193b594b83f2c203ebe5b3",
+      "semantic_retries": 0,
+      "technical_recoveries": 0
+    }
+  ],
+  "current_static_review": {
+    "case_ids": [
+      "T01",
+      "T02",
+      "T03"
+    ],
+    "passed": 3,
+    "review_path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/full-validation-20261107/static-review/review.json",
+    "sha256": "22b64cbe2858956f0339a723e4406b49dbf6e120213d881ff688c495d6621e14",
+    "current_candidate_hash": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+    "prior_draft_verdict_inherited": false
+  },
+  "coverage": {
+    "old_candidate_questions": 49,
+    "new_candidate_questions": 33,
+    "new_unique_runs": 33,
+    "new_http_attempts": 33,
+    "old_new_overlap": [],
+    "missing_qa_ids": [],
+    "duplicate_qa_ids": [],
+    "raw_new_pass": 27,
+    "raw_new_semantic_failure": 6,
+    "new_technical_recoveries": 0,
+    "new_semantic_retries": 0,
+    "cumulative_model_calls": 161,
+    "call_count_basis": "operations completion baseline128 + independently verified new33; older128 calls not re-audited in full."
+  },
+  "failed_raw_ids": [
+    "U01",
+    "U05",
+    "P09",
+    "DQ10",
+    "B05",
+    "F06",
+    "A03",
+    "E01",
+    "E03",
+    "E05",
+    "REG01"
+  ],
+  "historical_extra_pass_ids": [
+    "P09",
+    "DQ10"
+  ],
+  "historical_any_pass_count": 73,
+  "historical_grade_boundary": "Current71 raw passes plus2 older-version passing answers; current P09/DQ10 failures remain. Not73 current passes.",
+  "mentor_copies": [
+    {
+      "id": "U05",
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/context-application-qa-20261107/reviewed-answer/U05.json",
+      "review_path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/context-application-qa-20261107/independent-review/reviewed-answer-review.json",
+      "review_status": "passed_as_mentor_working_copy",
+      "counts_as_model_pass": false,
+      "hashes_match": true
+    },
+    {
+      "id": "A03",
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/context-application-qa-20261107/reviewed-answer/A03.json",
+      "review_path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/context-application-qa-20261107/independent-review/reviewed-answer-review.json",
+      "review_status": "passed_as_mentor_working_copy",
+      "counts_as_model_pass": false,
+      "hashes_match": true
+    },
+    {
+      "id": "E01",
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/context-application-qa-20261107/reviewed-answer/E01.json",
+      "review_path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/context-application-qa-20261107/independent-review/reviewed-answer-review.json",
+      "review_status": "passed_as_mentor_working_copy",
+      "counts_as_model_pass": false,
+      "hashes_match": true
+    },
+    {
+      "id": "E03",
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/evidence-goals-qa-20261107/reviewed-answer/E03.json",
+      "review_path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/evidence-goals-qa-20261107/independent-review/reviewed-answer-E03.json",
+      "review_status": "pass_as_mentor_working_copy",
+      "counts_as_model_pass": false,
+      "hashes_match": true
+    },
+    {
+      "id": "E05",
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/evidence-goals-qa-20261107/reviewed-answer/E05.json",
+      "review_path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/evidence-goals-qa-20261107/independent-review/reviewed-answer-E05.json",
+      "review_status": "pass_as_mentor_working_copy",
+      "counts_as_model_pass": false,
+      "hashes_match": true
+    },
+    {
+      "id": "REG01",
+      "path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/evidence-goals-qa-20261107/reviewed-answer/REG01.json",
+      "review_path": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/evidence-goals-qa-20261107/independent-review/reviewed-answer-REG01.json",
+      "review_status": "pass_as_mentor_working_copy",
+      "counts_as_model_pass": false,
+      "hashes_match": true
+    }
+  ],
+  "mentor_grade_boundary": "Six new copies independently approved but not scored as model passes; prior five failures/copies also remain separate. Context U05/A03/E01 share reviewed-answer-review.json and each case entry/hash verified.",
+  "native_protocol_boundary": "F06 run remains failed and has no native answer.json; formatting working copy does not make raw response accepted. B04 earlier MODEL_NETWORK_ERROR and separate one-time recovery remain stored; recovery is not new semantic retry.",
+  "integrity": {
+    "failed_checks": [],
+    "detailed_check_count": 1360,
+    "raw_case_evidence_count": 82,
+    "raw_case_evidence_file": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/full-validation-20261107/aggregate-review/aggregate-check-details.json",
+    "raw_case_evidence_file_sha256": "59125ade16c03909dd6aa7bb255f889bc8874520402199b6d3723317b254e6b7",
+    "review_output_hashes_and_native_outputs_verified": true,
+    "current_prompt_found_in_all_82_selected_requests": true,
+    "expected_not_sent_in_selected_requests": true,
+    "all_12_protected_hashes_match": true,
+    "native_status": "awaiting_apply",
+    "old_pending_proposal_sha256": "c6c0a6bc7965b217cb9f1efbd73b391496cf06b3bc8f92846e826c47568cee85",
+    "current_candidate_native_proposal_aligned": false,
+    "formal_model_applied": false,
+    "formal_prompt_or_skill_replaced": false,
+    "six_continuity_after_and_backup_before_hashes_match": true
+  },
+  "findings": [],
+  "required_repairs": [],
+  "human_decisions": [],
+  "completion_status_consistency": "pending_aggregate_verification is appropriate at audited time; prose says complete coverage with 11 raw failures and separate static results, consistent with structured counts.",
+  "finalization_boundary": {
+    "reviewed_snapshot_destination": "/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/full-validation-20261107/aggregate-review/reviewed-completion.json",
+    "reviewed_snapshot_expected_sha256": "fc8f452d94af18efa729bbf4aeb43d6d01a0bf1173ea660afc628bea46634d1b",
+    "permitted_followup": "Parent will preserve exact audited completion snapshot, then only finalize completion status and append aggregate review hashes/snapshot reference/finalized_at; counts, evidence and continuity hashes remain unchanged. Parent performs final_integrity_check.",
+    "reviewer_did_not_finalize_completion": true
+  },
+  "limits": [
+    "This is aggregate ledger/evidence verification; per-case semantic judgments come from the respective independent reviews, not regraded here.",
+    "No model APIs, no modification of original answers/reviews/business body/Skill/config/workflow. Writes limited to aggregate-review.",
+    "This does not establish38-metric execution, customer acceptance, approved production use or formal apply."
+  ]
+}

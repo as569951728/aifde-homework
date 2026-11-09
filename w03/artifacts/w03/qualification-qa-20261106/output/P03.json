@@ -1,0 +1,32 @@
+{
+  "case_id": "P03",
+  "started_at": "2026-11-06T15:04:28.026919+00:00",
+  "completed_at": "2026-11-06T15:04:33.140235+00:00",
+  "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "account": "A",
+    "tier": "金卡",
+    "cards_complete": true,
+    "cards": [
+      {
+        "card_type": "悦享年卡",
+        "state_on_decision_day": "已失效",
+        "card_paid_cents": 10000
+      }
+    ]
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-40c5230ef11b4743841a5a1581f690c9/run.json",
+    "run_id": "RUN-40c5230ef11b4743841a5a1581f690c9",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "按本期总部运营月报口径，账户A在判定日没有付费资格。理由：该口径要求同一张卡同时满足两项条件——卡产品属于悦享年卡或家庭季卡，且在判定日有效。给定记录中，A唯一的卡是“悦享年卡”，产品范围符合；但该卡在判定日的状态为“已失效”，不满足有效期条件。又因输入标明卡记录完整，说明没有其他可纳入的卡可补足资格。因此不能仅凭“金卡”等级或购卡实付金额10000分认定其有付费资格；会员等级与实付金额不得代替卡类型和有效状态。该判断仅适用于本题人工构造的隔离测试情境，不代表客户实际账户或生产数据核验结果。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "1caa8f88752b0022bcce5ca6039667f2956916c0ca5d8295431e4471f720e520"
+}

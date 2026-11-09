@@ -1,0 +1,251 @@
+{
+  "semantic_models": [
+    {
+      "name": "orders",
+      "model": "ref('orders')",
+      "defaults": {
+        "agg_time_dimension": "ordered_at"
+      },
+      "entities": [
+        {
+          "name": "order",
+          "type": "primary",
+          "expr": "order_id"
+        },
+        {
+          "name": "member",
+          "type": "foreign",
+          "expr": "member_id"
+        },
+        {
+          "name": "store",
+          "type": "foreign",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "ordered_at",
+          "type": "time",
+          "type_params": {
+            "time_granularity": "day"
+          }
+        },
+        {
+          "name": "channel",
+          "type": "categorical"
+        },
+        {
+          "name": "status",
+          "type": "categorical"
+        }
+      ],
+      "measures": [
+        {
+          "name": "net_sales_cents_sum",
+          "expr": "CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END",
+          "agg": "sum"
+        }
+      ]
+    },
+    {
+      "name": "members",
+      "model": "ref('members')",
+      "entities": [
+        {
+          "name": "member",
+          "type": "primary",
+          "expr": "member_id"
+        },
+        {
+          "name": "home_store",
+          "type": "foreign",
+          "expr": "home_store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "tier",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "name": "store",
+      "model": "ref('stores')",
+      "entities": [
+        {
+          "name": "store",
+          "type": "primary",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "region",
+          "type": "categorical"
+        },
+        {
+          "name": "store_name",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "name": "home_store",
+      "model": "ref('stores')",
+      "entities": [
+        {
+          "name": "home_store",
+          "type": "primary",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "region",
+          "type": "categorical"
+        },
+        {
+          "name": "store_name",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    }
+  ],
+  "metrics": [
+    {
+      "name": "net_sales_cents",
+      "label": "净销售额",
+      "description": "paid 订单实付金额减累计退款后的合计；取消单不计；按原订单下单日期归属；单位分。",
+      "type": "simple",
+      "type_params": {
+        "measure": "net_sales_cents_sum"
+      }
+    }
+  ],
+  "catalog": [
+    {
+      "id": "net_sales_cents",
+      "name": "净销售额",
+      "aliases": [],
+      "unit": "cents",
+      "sources": [
+        {
+          "file": "01_订单日报说明.md",
+          "quote": "paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。"
+        },
+        {
+          "file": "02_财务邮件.md",
+          "quote": "财务确认：有效订单是 paid 状态且实付大于累计退款；取消、全额退款不计有效购买。退款按原订单日期归属。金额为整数分，展示元需换算。"
+        }
+      ],
+      "constraints": [
+        "仅统计 status = 'paid' 的订单；取消单贡献零，不计入净销售额",
+        "退款按原订单下单日期归属",
+        "金额单位为整数分，展示元需换算",
+        "数据覆盖 2024-09-01（含）至 2026-09-01（不含）"
+      ],
+      "query_policy": {
+        "full_month_only": false
+      }
+    }
+  ],
+  "model_sql": {},
+  "grain_keys": {
+    "orders": [
+      "order_id"
+    ],
+    "members": [
+      "member_id"
+    ],
+    "store": [
+      "store_id"
+    ],
+    "home_store": [
+      "store_id"
+    ]
+  },
+  "unresolved": [],
+  "business_model_usage": [
+    {
+      "quote": "购买记录／订单 | 一行一笔订单。保留订单识别、关联账户、渠道（门店或小程序）、下单日期、支付状态、原价、实付、累计退款、原始购买件数的含义。本期材料未提供订单实际使用哪张卡的关联 | 《数据字典》orders；MSG-01752、01938",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "orders"
+        },
+        {
+          "kind": "metric",
+          "name": "net_sales_cents"
+        }
+      ]
+    },
+    {
+      "quote": "归属门店与成交门店 | 会员归属门店描述账户归属；订单成交门店描述交易发生门店，两者是不同关系，不可互相替代 | 《数据字典》members.home_store_id 与 orders.store_id",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "store"
+        },
+        {
+          "kind": "semantic_model",
+          "name": "home_store"
+        },
+        {
+          "kind": "dimension",
+          "name": "store"
+        },
+        {
+          "kind": "dimension",
+          "name": "home_store"
+        },
+        {
+          "kind": "dimension",
+          "name": "store__region"
+        },
+        {
+          "kind": "dimension",
+          "name": "home_store__region"
+        }
+      ]
+    },
+    {
+      "quote": "本期字典给出：账户—卡为一对多，账户—订单为一对多，卡与订单均关联账户。",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "orders"
+        },
+        {
+          "kind": "semantic_model",
+          "name": "members"
+        },
+        {
+          "kind": "dimension",
+          "name": "member"
+        }
+      ]
+    },
+    {
+      "quote": "会员账户 | 经营与统计对象。一行一份 CRM 会员账户；账户不等于跨系统自然人，也不等于自然人数。属性含注册日期、归属门店、会员等级 | 《数据字典》members；MSG-01615、01679、01742",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "members"
+        },
+        {
+          "kind": "dimension",
+          "name": "member__tier"
+        },
+        {
+          "kind": "dimension",
+          "name": "home_store"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "created_at": "2026-11-07T03:56:02.116279+00:00",
+  "status": "aligned_with_source_first_criteria",
+  "criteria_sha256": "f100b01cf762f681626f26d1ece539d34dfe817be5ce02b260049b820c10355c",
+  "expectations_sha256": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+  "expectations_read_after_criteria_saved": true,
+  "cases": [
+    {
+      "id": "DY01",
+      "status": "aligned",
+      "expected_points": [
+        "无效；本例区分生效前。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "legacy_invariants": []
+    },
+    {
+      "id": "DY02",
+      "status": "aligned",
+      "expected_points": [
+        "有效；本例区分生效当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "legacy_invariants": []
+    },
+    {
+      "id": "DY03",
+      "status": "aligned",
+      "expected_points": [
+        "有效；本例区分生效后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "legacy_invariants": []
+    },
+    {
+      "id": "DY04",
+      "status": "aligned",
+      "expected_points": [
+        "有效；本例区分计划结束前一天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "legacy_invariants": []
+    },
+    {
+      "id": "DY05",
+      "status": "aligned",
+      "expected_points": [
+        "无效；本例区分计划结束当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "legacy_invariants": []
+    },
+    {
+      "id": "DY06",
+      "status": "aligned",
+      "expected_points": [
+        "无效；本例区分计划结束后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "legacy_invariants": []
+    },
+    {
+      "id": "DQ01",
+      "status": "aligned",
+      "expected_points": [
+        "无效；本例区分生效前。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "legacy_invariants": []
+    },
+    {
+      "id": "DQ02",
+      "status": "aligned",
+      "expected_points": [
+        "有效；本例区分生效当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "legacy_invariants": []
+    },
+    {
+      "id": "DQ03",
+      "status": "aligned",
+      "expected_points": [
+        "有效；本例区分生效后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "legacy_invariants": []
+    },
+    {
+      "id": "DQ04",
+      "status": "aligned",
+      "expected_points": [
+        "有效；本例区分计划结束前一天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "legacy_invariants": []
+    },
+    {
+      "id": "DQ05",
+      "status": "aligned",
+      "expected_points": [
+        "无效；本例区分计划结束当天。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "legacy_invariants": []
+    },
+    {
+      "id": "DQ06",
+      "status": "aligned",
+      "expected_points": [
+        "无效；本例区分计划结束后。开始日含，计划结束日及提前终止日不含；空终止不取消计划结束限制。"
+      ],
+      "legacy_invariants": []
+    }
+  ],
+  "notes": [
+    "既有业务目标/权限边界保留，新增有来源本期规则可修正旧未知，不照抄旧答案扣分。",
+    "日期不按最终标签单独判分：逐条件、区间、来源、题设均需匹配。"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "contract_version": "w03-0.1.0",
+  "complete": true,
+  "passed": 0,
+  "total": 1,
+  "cases": [
+    {
+      "id": "B7-C01",
+      "question": "本月青禾优选的月末付费会员购买人数是多少？",
+      "expected": {
+        "status": "clarify"
+      },
+      "actual": {
+        "status": "unsupported",
+        "reason": "monthly_paid_buyer_count 仅支持完整自然月、全门店口径；参考日期为 2026-09-01，本月（2026-09）尚未完整，不能查询该指标。",
+        "intent": {
+          "status": "unsupported",
+          "reason": "monthly_paid_buyer_count 仅支持完整自然月、全门店口径；参考日期为 2026-09-01，本月（2026-09）尚未完整，不能查询该指标。",
+          "metrics": [
+            "monthly_paid_buyer_count"
+          ],
+          "start": "2026-09-01",
+          "end": "2026-10-01",
+          "group_by": [],
+          "filters": []
+        },
+        "question": "本月青禾优选的月末付费会员购买人数是多少？",
+        "trace_id": "e99ba22f-69d6-4c42-b54d-04d783b8fc99",
+        "elapsed_seconds": 4.078,
+        "model_usage": {
+          "prompt_tokens": 11245,
+          "completion_tokens": 512,
+          "total_tokens": 11757
+        },
+        "model_calls_with_usage": 1
+      },
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "status",
+            "expected": "clarify",
+            "actual": "unsupported",
+            "rule": "exact supported status"
+          }
+        ]
+      }
+    }
+  ]
+}

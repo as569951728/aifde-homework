@@ -1,0 +1,368 @@
+{
+  "nature": "Parent-authored offline controls, manually specified independently of checker oracle; not actual model answers",
+  "checker_sha256": "f035a2c54a069a6d47f896be1abfaf3f4590d25c510c64623547292469486aee",
+  "cases": [
+    {
+      "name": "手列DQ12正例",
+      "fixture_id": "DQ12",
+      "answer": "判定日：2026-05-19\n产品范围：纳入\n结论：无效\n\n| 检查项 | 题设日期 | 判定日是否满足本项条件 | 依据 |\n| --- | --- | --- | --- |\n| 生效日 | 2026-05-20 | 否 | 尚未到生效日；检查器离线正例，非模型实答 |\n| 计划结束日 | 2026-08-20 | 是 | 尚未到计划结束日 |\n| 提前终止日 | 2026-08-15 | 是 | 尚未到提前终止日 |\n\n| 区间种类 | 起点 | 含起点 | 终点 | 含终点 |\n| --- | --- | --- | --- | --- |\n| 计划区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n| 综合有效区间 | 2026-05-20 | 是 | 2026-08-15 | 否 |\n\n来源与范围：导师按陈姐已知规则手列检查器正例；不是LLM实际回答或客户记录。\n",
+      "expected_machine_pass": true,
+      "actual": {
+        "contract": "date-answer-table-1",
+        "machine_status": "pass",
+        "machine_pass": true,
+        "semantic_review_required": true,
+        "full_answer_pass": null,
+        "limitations": [
+          "Does not validate prose or source-to-claim semantics.",
+          "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+          "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+        ],
+        "errors": [],
+        "parsed": {
+          "labels": {
+            "判定日": "2026-05-19",
+            "产品范围": "纳入",
+            "结论": "无效",
+            "来源与范围": "导师按陈姐已知规则手列检查器正例；不是LLM实际回答或客户记录。"
+          },
+          "conditions": {
+            "生效日": {
+              "题设日期": "2026-05-20",
+              "判定日是否满足本项条件": "否",
+              "依据": "尚未到生效日；检查器离线正例，非模型实答"
+            },
+            "计划结束日": {
+              "题设日期": "2026-08-20",
+              "判定日是否满足本项条件": "是",
+              "依据": "尚未到计划结束日"
+            },
+            "提前终止日": {
+              "题设日期": "2026-08-15",
+              "判定日是否满足本项条件": "是",
+              "依据": "尚未到提前终止日"
+            }
+          },
+          "intervals": {
+            "计划区间": {
+              "起点": "2026-05-20",
+              "含起点": "是",
+              "终点": "2026-08-20",
+              "含终点": "否"
+            },
+            "综合有效区间": {
+              "起点": "2026-05-20",
+              "含起点": "是",
+              "终点": "2026-08-15",
+              "含终点": "否"
+            }
+          },
+          "source_continuation": []
+        },
+        "independently_expected": {
+          "decision_date": "2026-05-19",
+          "product_scope": "纳入",
+          "conditions": {
+            "生效日": false,
+            "计划结束日": true,
+            "提前终止日": true
+          },
+          "planned_interval": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "effective_interval": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-15",
+            "含终点": "否"
+          },
+          "final_conclusion": "无效"
+        }
+      },
+      "test_pass": true
+    },
+    {
+      "name": "最终结论不变但窗口错误",
+      "fixture_id": "DQ12",
+      "answer": "判定日：2026-05-19\n产品范围：纳入\n结论：无效\n\n| 检查项 | 题设日期 | 判定日是否满足本项条件 | 依据 |\n| --- | --- | --- | --- |\n| 生效日 | 2026-05-20 | 否 | 尚未到生效日；检查器离线正例，非模型实答 |\n| 计划结束日 | 2026-08-20 | 是 | 尚未到计划结束日 |\n| 提前终止日 | 2026-08-15 | 是 | 尚未到提前终止日 |\n\n| 区间种类 | 起点 | 含起点 | 终点 | 含终点 |\n| --- | --- | --- | --- | --- |\n| 计划区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n| 综合有效区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n\n来源与范围：导师按陈姐已知规则手列检查器正例；不是LLM实际回答或客户记录。\n",
+      "expected_machine_pass": false,
+      "actual": {
+        "contract": "date-answer-table-1",
+        "machine_status": "fail",
+        "machine_pass": false,
+        "semantic_review_required": true,
+        "full_answer_pass": null,
+        "limitations": [
+          "Does not validate prose or source-to-claim semantics.",
+          "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+          "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+        ],
+        "errors": [
+          {
+            "code": "INTERVAL_MISMATCH",
+            "field": "综合有效区间.终点",
+            "actual": "2026-08-20",
+            "expected": "2026-08-15"
+          }
+        ],
+        "parsed": {
+          "labels": {
+            "判定日": "2026-05-19",
+            "产品范围": "纳入",
+            "结论": "无效",
+            "来源与范围": "导师按陈姐已知规则手列检查器正例；不是LLM实际回答或客户记录。"
+          },
+          "conditions": {
+            "生效日": {
+              "题设日期": "2026-05-20",
+              "判定日是否满足本项条件": "否",
+              "依据": "尚未到生效日；检查器离线正例，非模型实答"
+            },
+            "计划结束日": {
+              "题设日期": "2026-08-20",
+              "判定日是否满足本项条件": "是",
+              "依据": "尚未到计划结束日"
+            },
+            "提前终止日": {
+              "题设日期": "2026-08-15",
+              "判定日是否满足本项条件": "是",
+              "依据": "尚未到提前终止日"
+            }
+          },
+          "intervals": {
+            "计划区间": {
+              "起点": "2026-05-20",
+              "含起点": "是",
+              "终点": "2026-08-20",
+              "含终点": "否"
+            },
+            "综合有效区间": {
+              "起点": "2026-05-20",
+              "含起点": "是",
+              "终点": "2026-08-20",
+              "含终点": "否"
+            }
+          },
+          "source_continuation": []
+        },
+        "independently_expected": {
+          "decision_date": "2026-05-19",
+          "product_scope": "纳入",
+          "conditions": {
+            "生效日": false,
+            "计划结束日": true,
+            "提前终止日": true
+          },
+          "planned_interval": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "effective_interval": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-15",
+            "含终点": "否"
+          },
+          "final_conclusion": "无效"
+        }
+      },
+      "test_pass": true
+    },
+    {
+      "name": "手列终止当天正例",
+      "fixture_id": "DQ08",
+      "answer": "判定日：2026-08-15\n产品范围：纳入\n结论：无效\n\n| 检查项 | 题设日期 | 判定日是否满足本项条件 | 依据 |\n| --- | --- | --- | --- |\n| 生效日 | 2026-05-20 | 是 | 已到生效日；检查器离线正例，非模型实答 |\n| 计划结束日 | 2026-08-20 | 是 | 尚未到计划结束日 |\n| 提前终止日 | 2026-08-15 | 否 | 已到提前终止日 |\n\n| 区间种类 | 起点 | 含起点 | 终点 | 含终点 |\n| --- | --- | --- | --- | --- |\n| 计划区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n| 综合有效区间 | 2026-05-20 | 是 | 2026-08-15 | 否 |\n\n来源与范围：导师按陈姐已知规则手列检查器正例；不是LLM实际回答或客户记录。\n",
+      "expected_machine_pass": true,
+      "actual": {
+        "contract": "date-answer-table-1",
+        "machine_status": "pass",
+        "machine_pass": true,
+        "semantic_review_required": true,
+        "full_answer_pass": null,
+        "limitations": [
+          "Does not validate prose or source-to-claim semantics.",
+          "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+          "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+        ],
+        "errors": [],
+        "parsed": {
+          "labels": {
+            "判定日": "2026-08-15",
+            "产品范围": "纳入",
+            "结论": "无效",
+            "来源与范围": "导师按陈姐已知规则手列检查器正例；不是LLM实际回答或客户记录。"
+          },
+          "conditions": {
+            "生效日": {
+              "题设日期": "2026-05-20",
+              "判定日是否满足本项条件": "是",
+              "依据": "已到生效日；检查器离线正例，非模型实答"
+            },
+            "计划结束日": {
+              "题设日期": "2026-08-20",
+              "判定日是否满足本项条件": "是",
+              "依据": "尚未到计划结束日"
+            },
+            "提前终止日": {
+              "题设日期": "2026-08-15",
+              "判定日是否满足本项条件": "否",
+              "依据": "已到提前终止日"
+            }
+          },
+          "intervals": {
+            "计划区间": {
+              "起点": "2026-05-20",
+              "含起点": "是",
+              "终点": "2026-08-20",
+              "含终点": "否"
+            },
+            "综合有效区间": {
+              "起点": "2026-05-20",
+              "含起点": "是",
+              "终点": "2026-08-15",
+              "含终点": "否"
+            }
+          },
+          "source_continuation": []
+        },
+        "independently_expected": {
+          "decision_date": "2026-08-15",
+          "product_scope": "纳入",
+          "conditions": {
+            "生效日": true,
+            "计划结束日": true,
+            "提前终止日": false
+          },
+          "planned_interval": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "effective_interval": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-15",
+            "含终点": "否"
+          },
+          "final_conclusion": "无效"
+        }
+      },
+      "test_pass": true
+    },
+    {
+      "name": "字段条件窗口结论一起错改且表面自洽",
+      "fixture_id": "DQ08",
+      "answer": "判定日：2026-08-15\n产品范围：纳入\n结论：有效\n\n| 检查项 | 题设日期 | 判定日是否满足本项条件 | 依据 |\n| --- | --- | --- | --- |\n| 生效日 | 2026-05-20 | 是 | 已到生效日；检查器离线正例，非模型实答 |\n| 计划结束日 | 2026-08-20 | 是 | 尚未到计划结束日 |\n| 提前终止日 | 2026-08-20 | 是 | 未到错误终止日 |\n\n| 区间种类 | 起点 | 含起点 | 终点 | 含终点 |\n| --- | --- | --- | --- | --- |\n| 计划区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n| 综合有效区间 | 2026-05-20 | 是 | 2026-08-20 | 否 |\n\n来源与范围：导师按陈姐已知规则手列检查器正例；不是LLM实际回答或客户记录。\n",
+      "expected_machine_pass": false,
+      "actual": {
+        "contract": "date-answer-table-1",
+        "machine_status": "fail",
+        "machine_pass": false,
+        "semantic_review_required": true,
+        "full_answer_pass": null,
+        "limitations": [
+          "Does not validate prose or source-to-claim semantics.",
+          "No card_type echo is required: object identity is checked in native request audit; only product_scope is checked here.",
+          "Exact Markdown 是/否 tokens are parsed; JSON booleans, numbers and prefixes are not inferred."
+        ],
+        "errors": [
+          {
+            "code": "CONCLUSION_MISMATCH",
+            "field": "结论",
+            "actual": "有效",
+            "expected": "无效"
+          },
+          {
+            "code": "FIELD_MISMATCH",
+            "field": "提前终止日.题设日期",
+            "actual": "2026-08-20",
+            "expected": "2026-08-15"
+          },
+          {
+            "code": "CONDITION_MISMATCH",
+            "field": "提前终止日.满足",
+            "actual": "是",
+            "expected": "否"
+          },
+          {
+            "code": "INTERVAL_MISMATCH",
+            "field": "综合有效区间.终点",
+            "actual": "2026-08-20",
+            "expected": "2026-08-15"
+          }
+        ],
+        "parsed": {
+          "labels": {
+            "判定日": "2026-08-15",
+            "产品范围": "纳入",
+            "结论": "有效",
+            "来源与范围": "导师按陈姐已知规则手列检查器正例；不是LLM实际回答或客户记录。"
+          },
+          "conditions": {
+            "生效日": {
+              "题设日期": "2026-05-20",
+              "判定日是否满足本项条件": "是",
+              "依据": "已到生效日；检查器离线正例，非模型实答"
+            },
+            "计划结束日": {
+              "题设日期": "2026-08-20",
+              "判定日是否满足本项条件": "是",
+              "依据": "尚未到计划结束日"
+            },
+            "提前终止日": {
+              "题设日期": "2026-08-20",
+              "判定日是否满足本项条件": "是",
+              "依据": "未到错误终止日"
+            }
+          },
+          "intervals": {
+            "计划区间": {
+              "起点": "2026-05-20",
+              "含起点": "是",
+              "终点": "2026-08-20",
+              "含终点": "否"
+            },
+            "综合有效区间": {
+              "起点": "2026-05-20",
+              "含起点": "是",
+              "终点": "2026-08-20",
+              "含终点": "否"
+            }
+          },
+          "source_continuation": []
+        },
+        "independently_expected": {
+          "decision_date": "2026-08-15",
+          "product_scope": "纳入",
+          "conditions": {
+            "生效日": true,
+            "计划结束日": true,
+            "提前终止日": false
+          },
+          "planned_interval": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-20",
+            "含终点": "否"
+          },
+          "effective_interval": {
+            "起点": "2026-05-20",
+            "含起点": "是",
+            "终点": "2026-08-15",
+            "含终点": "否"
+          },
+          "final_conclusion": "无效"
+        }
+      },
+      "test_pass": true
+    }
+  ],
+  "passed": 4,
+  "actual_model_calls": 0
+}

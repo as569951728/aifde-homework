@@ -1,0 +1,20 @@
+{
+  "calls": [
+    {
+      "id": "maintain-qinghe-reviewed",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe-reviewed.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-transfer-reviewed",
+      "mode": "maintain",
+      "input": "inputs/maintain-transfer-reviewed.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "initial"
+    }
+  ],
+  "reason": "v6审前保留旧正文只能验证审核前流程。针对原两目标追加已审整合，尤其维修原处置理由与去向矛盾，按FDE明确反馈验证；不能将有反馈后的正确性算成无人审核的自动表现。",
+  "limit": "2次，只验审核后落文，不修改原冻结输入/期望/结果。任何失败不替换。"
+}

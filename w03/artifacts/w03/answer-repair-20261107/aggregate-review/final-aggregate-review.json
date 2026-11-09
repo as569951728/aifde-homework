@@ -1,0 +1,251 @@
+{
+  "status": "approved_as_accurate_aggregate_with_unresolved_failure",
+  "approved": true,
+  "reviewed_at": "2026-11-07T05:49:06.094203+00:00",
+  "review_scope": "独立汇总计数、证据hash、逐版本/分轨范围、失败保全、六接续历史完整及导师核对稿状态边界；不重评语义、不批准采用模型",
+  "failed_checks": [],
+  "substantive_findings": [],
+  "checks": [
+    {
+      "name": "native_runs_http_answers_independently_recounted",
+      "passed": true
+    },
+    {
+      "name": "105_ledger_rows_match_native_outputs_and_independent_semantic_reviews",
+      "passed": true
+    },
+    {
+      "name": "version_results_preserved_without_cross_version_82_claim",
+      "passed": true
+    },
+    {
+      "name": "13_historical_failure_closure_exact_and_U01_unresolved",
+      "passed": true
+    },
+    {
+      "name": "four_unexecuted_batches_have_zero_native_calls",
+      "passed": true
+    },
+    {
+      "name": "model_body_original_questions_expected_and_12_protected_files_preserved",
+      "passed": true
+    },
+    {
+      "name": "old_proposal_and_awaiting_apply_workflow_preserved",
+      "passed": true
+    },
+    {
+      "name": "stage5_source18_numeric_format4_disjoint_and_complete",
+      "passed": true
+    },
+    {
+      "name": "six_continuity_before_after_hashes_and_all_historical_content_preserved",
+      "passed": true
+    },
+    {
+      "name": "mentor_correction_two_changes_15_static_checks_and_body_hash_exact",
+      "passed": true
+    },
+    {
+      "name": "report_readme_progress_issue_matrix_completion_consistent",
+      "passed": true
+    }
+  ],
+  "verified_counts": {
+    "native_runs": 105,
+    "http_attempts": 107,
+    "successful_native_answers": 103,
+    "unique_original_questions": 21,
+    "unique_controls": 8,
+    "all_run_verdicts": {
+      "passed": 97,
+      "not_assessable_technical_failure": 1,
+      "failed": 6,
+      "not_assessable_network": 1
+    },
+    "final_prompt_tests": 22,
+    "final_prompt_original_questions": 16,
+    "final_prompt_independent_controls": 6,
+    "original_questions_not_rerun_on_final_prompt": 66
+  },
+  "version_counts": {
+    "stage1": {
+      "native_runs": 18,
+      "http_attempts": 18,
+      "native_succeeded": 17,
+      "native_failed": 1,
+      "semantic_passed": 15,
+      "semantic_failed": 2,
+      "semantic_not_assessable": 1,
+      "semantic_pending": 0
+    },
+    "stage1-r2": {
+      "native_runs": 18,
+      "http_attempts": 19,
+      "native_succeeded": 18,
+      "native_failed": 0,
+      "semantic_passed": 18,
+      "semantic_failed": 0,
+      "semantic_not_assessable": 0,
+      "semantic_pending": 0
+    },
+    "stage2-r2": {
+      "native_runs": 8,
+      "http_attempts": 8,
+      "native_succeeded": 8,
+      "native_failed": 0,
+      "semantic_passed": 8,
+      "semantic_failed": 0,
+      "semantic_not_assessable": 0,
+      "semantic_pending": 0
+    },
+    "stage3-r2": {
+      "native_runs": 17,
+      "http_attempts": 17,
+      "native_succeeded": 17,
+      "native_failed": 0,
+      "semantic_passed": 16,
+      "semantic_failed": 1,
+      "semantic_not_assessable": 0,
+      "semantic_pending": 0
+    },
+    "stage4-evidence-trace": {
+      "native_runs": 22,
+      "http_attempts": 22,
+      "native_succeeded": 21,
+      "native_failed": 1,
+      "semantic_passed": 19,
+      "semantic_failed": 2,
+      "semantic_not_assessable": 1,
+      "semantic_pending": 0
+    },
+    "stage5-compact-evidence": {
+      "native_runs": 22,
+      "http_attempts": 23,
+      "native_succeeded": 22,
+      "native_failed": 0,
+      "semantic_passed": 21,
+      "semantic_failed": 1,
+      "semantic_not_assessable": 0,
+      "semantic_pending": 0
+    }
+  },
+  "final_candidate": {
+    "stage": "stage5-compact-evidence",
+    "candidate_passed": false,
+    "cases": 22,
+    "passed": 21,
+    "failed_ids": [
+      "U01"
+    ],
+    "original_82_cases_executed": 16,
+    "original_82_cases_passed": 15,
+    "independent_controls": 6,
+    "other_original_questions_not_rerun": 66,
+    "original_11_failures_now_passed": 10,
+    "new_historical_failure_ids_passed_this_version": [
+      "U04",
+      "TRACECTRL01"
+    ],
+    "claim_boundary": "本审核通过的是汇总准确性，不是候选全部修复、82/82通过、稳定性保证或正式采用。"
+  },
+  "read_reviewed_artifacts": [
+    {
+      "path": "W03/实操工程/artifacts/w03/answer-repair-20261107/execution_ledger.json",
+      "sha256": "b01ea4e6b57ebb2451369f4478cdb5b8730d4678e73445867a48a6e24cc7ea45"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/answer-repair-20261107/completion.json",
+      "sha256": "e6e01dabb22e078381c71b54d7e51548bfe95fd9ebeecb8a29404437411f436b"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/answer-repair-20261107/修复结果.md",
+      "sha256": "266dc3baa329822cb0b3766511364a2111799905a923c01466c606df849dc43b"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/answer-repair-20261107/README.md",
+      "sha256": "036892e85df3b053ff11b748a452bb9d222d40eb0fdf4428de61e08b2a876501"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/answer-repair-20261107/progress.json",
+      "sha256": "e7d6d61608f2c50baff56512e6237e84ced1bc2306bc259a2749f17beed8bc54"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/answer-repair-20261107/issue_matrix.json",
+      "sha256": "24a13b528dcfff08f49de9af6d99b49ed126b01ee1eeb543d04187b47de57dc4"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/answer-repair-20261107/continuity_manifest.json",
+      "sha256": "3f6570c2f55a9a6d783ea18fb6ee9d50b1099e6f1e7f35c0e52e79f5e0890147"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/answer-repair-20261107/before-continuity/manifest.json",
+      "sha256": "6f26855de88e67977cf7502ad971fb7c99e3b16b9722b5b8fa47669a1efb899b"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/answer-repair-20261107/U01-correction-metadata.json",
+      "sha256": "242e36eb6f567a04520d369c4c47d7b614e0e425f1ccf32471c5053cb7a4a74c"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/answer-repair-20261107/U01-证据核对与待验证修订.md",
+      "sha256": "abf4c81754b6ec8d7e06f9199c19727575d57cb606b8ce443b552718dbe250d4"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/answer-repair-20261107/progress-history/U01-correction-before-review.md",
+      "sha256": "362b16ed491ead690cee80246f87399945b1d11e44f04b16af4e7f4ee0a88668"
+    }
+  ],
+  "mechanical_integrity": {
+    "path": "aggregate-review/final-integrity-check.json",
+    "sha256": "8f95669ce41eaf970f61354439d154afcfcadb57402a622c720c78b2d3cfd2fb"
+  },
+  "package_validation": {
+    "path": "aggregate-review/final-package-check.json",
+    "sha256": "77bad25fd9b3acb9db0857ea0dfc52904448090d0df388428d7e60d2db90eaf7",
+    "passed_checks": 1162
+  },
+  "continuity_diff": {
+    "path": "aggregate-review/reviewed-continuity.diff",
+    "sha256": "1f1c02e5f70b7e8c8784ec23fe545841ddd5aae78d2b4577812a85be680d0beb"
+  },
+  "reviewed_completion": {
+    "path": "aggregate-review/reviewed-completion.json",
+    "sha256": "e6e01dabb22e078381c71b54d7e51548bfe95fd9ebeecb8a29404437411f436b"
+  },
+  "reviewed_progress": {
+    "path": "aggregate-review/reviewed-progress.json",
+    "sha256": "e7d6d61608f2c50baff56512e6237e84ced1bc2306bc259a2749f17beed8bc54"
+  },
+  "allowed_final_packaging_changes": {
+    "completion.json": {
+      "allowed_existing_field_changes": [
+        "status"
+      ],
+      "allowed_new_fields": [
+        "aggregate_review",
+        "aggregate_review_path",
+        "aggregate_review_sha256",
+        "aggregate_review_status"
+      ],
+      "constraint": "仅把待审状态变成已完成汇总审核且仍有未修复项，并添加本审核路径/hash/状态；不得改变result、counts、latest、failure_closure、既有证据hash及下一步。"
+    },
+    "progress.json": {
+      "allowed_existing_field_changes": [
+        "status"
+      ],
+      "recommended_status": "reviewed_with_unresolved_failure",
+      "constraint": "仅结束pending_aggregate状态；stages、调用/HTTP计数、原分及其余字段完全保留。"
+    },
+    "verification_required": "主控另存封包前后字段差异和最终hash；与reviewed-completion/reviewed-progress快照逐项比较。超出此范围须重新审核。",
+    "no_other_reviewed_file_changes": true
+  },
+  "nonblocking_notes": [
+    "U01核对稿正文仍保留原计划句“下一步先独立审上述语义等价性”；当前顶部状态、15项独立审核及metadata已明确静态审核完成，正文澄清候选仍未执行。本次无须为更新计划句修改已审正文，继续以当前审核记录界定状态。",
+    "progress中stage4的possible_semantic_regression_ids及issue_matrix的target_stage保留早期追踪/计划字段；最终failed_ids与latest_observed_stage/verdict已明确，不作为当前待定或实际执行计数。"
+  ],
+  "semantic_rescoring_performed": false,
+  "reviewer_api_calls": 0,
+  "formal_model_adoption_approved": false,
+  "formal_prompt_or_skill_replacement_approved": false,
+  "metric_validation_or_customer_acceptance_proven": false
+}

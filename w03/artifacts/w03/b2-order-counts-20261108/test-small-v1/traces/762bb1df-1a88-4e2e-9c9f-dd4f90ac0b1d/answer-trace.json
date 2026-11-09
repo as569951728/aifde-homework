@@ -1,0 +1,88 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "你根据本轮真实执行结果回答问题。解释条件时必须使用字段语义：store、store__region、store__store_name 都表示订单成交门店及其地区/名称；home_store 及其地区/名称才表示会员归属门店。返回 intent 中已有字段筛选就是已经应用的查询条件，不能因没有额外中文同名字段而否认已应用的条件。只能引用结果中的数值；金额以分存储，展示元需除100；比例展示百分数需乘100。用简明业务语言解释统计范围、口径及限制，金额保留两位小数、比例适当四舍五入。不要展示内部 status、intent 等字段名。区分零和未定义。聚合返回零是覆盖内的零；未返回某个分组仅说明该分组未列出，不能称为该指标未定义，也不能推断数据覆盖不足。返回 JSON：{\"answer\":\"...\",\"used_metrics\":[],\"citations\":[\"当前执行结果\"]}。\ncustomer_context 指明当前已加载客户与统计单位，data_context 指明本次测试数据版本和覆盖；本轮成功结果已经处于该客户数据范围。问题中的当前客户名称不是门店筛选值，不能因为没有同名门店筛选而否认结果属于该客户。只说明实际应用的筛选和分组；若用户没有要求某维度，不添加假设性的门店歧义。人数按customer_context统计单位表述为账户，不暗示跨系统自然人已去重。用业务词说明范围，不向用户罗列技术字段ID。\n"
+    },
+    {
+      "role": "user",
+      "content": "{\"question\": \"请将2026年8月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额按订单下单日期逐日列出。\", \"customer_context\": {\"customer\": \"青禾\", \"statistics_unit\": \"统计对象与单位按所选指标定义：人数按CRM会员账户计数（不等于跨系统自然人）；订单数按订单笔数；金额以整数分保存，展示元需换算；其他指标按各自定义。\", \"scope\": \"本周合成测试库\"}, \"data_context\": {\"seed\": 20260923, \"synthetic\": true, \"counts\": {\"members\": 20, \"orders\": 48, \"stores\": 3, \"cards\": 22}, \"coverage\": [\"2024-09-01\", \"2026-09-01\"], \"sha256\": {\"orders.csv\": \"c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1\", \"cards.csv\": \"d27bdabd508d7881a1bea84cb79400c2a770fc1ad42fdb81877163cc018bb8d5\", \"members.csv\": \"e99b7e82389722b1ae2e4fd267c74dd84bd61dfeabaa161221d7ae44ae955b2f\", \"stores.csv\": \"e8160804fd485853f6c75d9a095b1ee6f05bbbd40ba851cac84def35488aa41d\"}, \"id\": \"qinghe-w03-20260923-small\", \"timezone\": \"Asia/Shanghai\", \"reference_date\": \"2026-09-01\", \"generator_version\": \"qinghe-w03-v1\", \"base_seed\": 20260922, \"library_sha256\": \"466a44dff3612cc4ca54f51e23c9d31729d2c53326c63e2c23edd5338f273949\"}, \"result\": {\"status\": \"ok\", \"intent\": {\"metrics\": [\"payment_cents\", \"refund_cents\", \"net_sales_cents\", \"gross_cents\", \"discount_cents\"], \"start\": \"2026-08-01\", \"end\": \"2026-09-01\", \"group_by\": [\"metric_time__day\"], \"filters\": []}, \"columns\": [\"metric_time__day\", \"payment_cents\", \"refund_cents\", \"net_sales_cents\", \"gross_cents\", \"discount_cents\"], \"rows\": [[\"2026-08-20 00:00:00\", 7000, 0, 7000, 7000, 0], [\"2026-08-31 00:00:00\", 52350, 2750, 49600, 55450, 3100], [\"2026-08-05 00:00:00\", 26700, 0, 26700, 27800, 1100], [\"2026-08-15 00:00:00\", 9000, 2000, 7000, 10000, 1000], [\"2026-08-10 00:00:00\", 5000, 5000, 0, 5000, 0], [\"2026-08-01 00:00:00\", 19000, 9000, 10000, 19000, 0]], \"seconds\": 0.029, \"units\": {\"payment_cents\": \"cents\", \"refund_cents\": \"cents\", \"net_sales_cents\": \"cents\", \"gross_cents\": \"cents\", \"discount_cents\": \"cents\"}, \"data_version\": \"qinghe-w03-20260923-small\", \"data_sha256\": \"8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6\", \"catalog_sha256\": \"466a44dff3612cc4ca54f51e23c9d31729d2c53326c63e2c23edd5338f273949\"}, \"definitions\": [{\"id\": \"payment_cents\", \"name\": \"实付金额\", \"aliases\": [], \"unit\": \"cents\", \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"paid 订单实付金额合计，尚未扣退款；单位分。\"}], \"constraints\": [\"事实对象为 orders 一行一笔订单；统计时间按 ordered_at 下单日期归属；纳入行集合为 status='paid' 的订单，包含后续全额退款订单；金额单位为分；不要求完整自然月。\"], \"query_policy\": {\"full_month_only\": false}}, {\"id\": \"refund_cents\", \"name\": \"退款金额\", \"aliases\": [], \"unit\": \"cents\", \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"paid 订单退款金额合计，按原订单下单日期归属，不是现金退款发生日；单位分。\"}], \"constraints\": [\"事实对象为 orders 一行一笔订单；统计时间按 ordered_at 下单日期归属，不按现金退款发生日；纳入行集合为 status='paid' 的订单；金额单位为分；不要求完整自然月。\"], \"query_policy\": {\"full_month_only\": false}}, {\"id\": \"net_sales_cents\", \"name\": \"净销售额\", \"aliases\": [], \"unit\": \"cents\", \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。\"}], \"constraints\": [\"事实对象为 orders 一行一笔订单；统计时间按 ordered_at 下单日期归属；纳入行集合为 status='paid' 的订单；计算 paid_cents - refund_cents；取消单不计；全额退款订单净额为零仍属于 paid 纳入行集合；金额单位为分；不要求完整自然月。\"], \"query_policy\": {\"full_month_only\": false}}, {\"id\": \"gross_cents\", \"name\": \"支付订单原价金额\", \"aliases\": [], \"unit\": \"cents\", \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"paid 订单折扣前原价金额合计；单位分。\"}], \"constraints\": [\"事实对象为 orders 一行一笔订单；统计时间按 ordered_at 下单日期归属；纳入行集合为 status='paid' 的订单；金额单位为分；不要求完整自然月。\"], \"query_policy\": {\"full_month_only\": false}}, {\"id\": \"discount_cents\", \"name\": \"优惠金额\", \"aliases\": [], \"unit\": \"cents\", \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"paid 订单原价减实付的金额合计；退款不冲减原优惠金额；单位分。\"}], \"constraints\": [\"事实对象为 orders 一行一笔订单；统计时间按 ordered_at 下单日期归属；纳入行集合为 status='paid' 的订单；计算 gross_cents - paid_cents；退款不冲减原优惠金额；金额单位为分；不要求完整自然月。\"], \"query_policy\": {\"full_month_only\": false}}]}"
+    }
+  ],
+  "model": "deepseek-flash",
+  "reply": {
+    "role": "assistant",
+    "content": "{\"answer\":\"统计范围：2026年8月1日至8月31日，按订单下单日期归属；对象为青禾当前测试数据范围内已支付订单。实付金额为已支付订单实付合计、尚未扣退款；退款金额按原订单下单日期归属，不按现金退款发生日；净销售额为实付减退款；支付订单原价金额为折扣前原价合计；优惠金额为原价减实付，退款不冲减原优惠金额。金额单位已由分换算为元。本次结果逐日列出如下：\\n\\n| 下单日期 | 实付金额 | 退款金额 | 净销售额 | 支付订单原价金额 | 优惠金额 |\\n|---|---:|---:|---:|---:|---:|\\n| 2026-08-01 | 190.00 | 90.00 | 100.00 | 190.00 | 0.00 |\\n| 2026-08-05 | 267.00 | 0.00 | 267.00 | 278.00 | 11.00 |\\n| 2026-08-10 | 50.00 | 50.00 | 0.00 | 50.00 | 0.00 |\\n| 2026-08-15 | 90.00 | 20.00 | 70.00 | 100.00 | 10.00 |\\n| 2026-08-20 | 70.00 | 0.00 | 70.00 | 70.00 | 0.00 |\\n| 2026-08-31 | 523.50 | 27.50 | 496.00 | 554.50 | 31.00 |\\n\\n表中0.00是本次结果覆盖内返回的零；结果未列出的日期只是未列出，不能据此判断为零、未定义或覆盖不足。\",\"used_metrics\":[\"实付金额\",\"退款金额\",\"净销售额\",\"支付订单原价金额\",\"优惠金额\"],\"citations\":[\"当前执行结果\"]}"
+  },
+  "usage": {
+    "prompt_tokens": 2012,
+    "completion_tokens": 1731,
+    "total_tokens": 3743,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1279
+    }
+  },
+  "seconds": 10.711,
+  "call": {
+    "policy_version": "gateway-stages-20260922",
+    "attempts": [
+      {
+        "attempt": 1,
+        "request": {
+          "model": "deepseek-flash",
+          "messages": [
+            {
+              "role": "system",
+              "content": "你根据本轮真实执行结果回答问题。解释条件时必须使用字段语义：store、store__region、store__store_name 都表示订单成交门店及其地区/名称；home_store 及其地区/名称才表示会员归属门店。返回 intent 中已有字段筛选就是已经应用的查询条件，不能因没有额外中文同名字段而否认已应用的条件。只能引用结果中的数值；金额以分存储，展示元需除100；比例展示百分数需乘100。用简明业务语言解释统计范围、口径及限制，金额保留两位小数、比例适当四舍五入。不要展示内部 status、intent 等字段名。区分零和未定义。聚合返回零是覆盖内的零；未返回某个分组仅说明该分组未列出，不能称为该指标未定义，也不能推断数据覆盖不足。返回 JSON：{\"answer\":\"...\",\"used_metrics\":[],\"citations\":[\"当前执行结果\"]}。\ncustomer_context 指明当前已加载客户与统计单位，data_context 指明本次测试数据版本和覆盖；本轮成功结果已经处于该客户数据范围。问题中的当前客户名称不是门店筛选值，不能因为没有同名门店筛选而否认结果属于该客户。只说明实际应用的筛选和分组；若用户没有要求某维度，不添加假设性的门店歧义。人数按customer_context统计单位表述为账户，不暗示跨系统自然人已去重。用业务词说明范围，不向用户罗列技术字段ID。\n"
+            },
+            {
+              "role": "user",
+              "content": "{\"question\": \"请将2026年8月青禾优选的实付金额、退款金额、净销售额、支付订单原价金额、优惠金额按订单下单日期逐日列出。\", \"customer_context\": {\"customer\": \"青禾\", \"statistics_unit\": \"统计对象与单位按所选指标定义：人数按CRM会员账户计数（不等于跨系统自然人）；订单数按订单笔数；金额以整数分保存，展示元需换算；其他指标按各自定义。\", \"scope\": \"本周合成测试库\"}, \"data_context\": {\"seed\": 20260923, \"synthetic\": true, \"counts\": {\"members\": 20, \"orders\": 48, \"stores\": 3, \"cards\": 22}, \"coverage\": [\"2024-09-01\", \"2026-09-01\"], \"sha256\": {\"orders.csv\": \"c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1\", \"cards.csv\": \"d27bdabd508d7881a1bea84cb79400c2a770fc1ad42fdb81877163cc018bb8d5\", \"members.csv\": \"e99b7e82389722b1ae2e4fd267c74dd84bd61dfeabaa161221d7ae44ae955b2f\", \"stores.csv\": \"e8160804fd485853f6c75d9a095b1ee6f05bbbd40ba851cac84def35488aa41d\"}, \"id\": \"qinghe-w03-20260923-small\", \"timezone\": \"Asia/Shanghai\", \"reference_date\": \"2026-09-01\", \"generator_version\": \"qinghe-w03-v1\", \"base_seed\": 20260922, \"library_sha256\": \"466a44dff3612cc4ca54f51e23c9d31729d2c53326c63e2c23edd5338f273949\"}, \"result\": {\"status\": \"ok\", \"intent\": {\"metrics\": [\"payment_cents\", \"refund_cents\", \"net_sales_cents\", \"gross_cents\", \"discount_cents\"], \"start\": \"2026-08-01\", \"end\": \"2026-09-01\", \"group_by\": [\"metric_time__day\"], \"filters\": []}, \"columns\": [\"metric_time__day\", \"payment_cents\", \"refund_cents\", \"net_sales_cents\", \"gross_cents\", \"discount_cents\"], \"rows\": [[\"2026-08-20 00:00:00\", 7000, 0, 7000, 7000, 0], [\"2026-08-31 00:00:00\", 52350, 2750, 49600, 55450, 3100], [\"2026-08-05 00:00:00\", 26700, 0, 26700, 27800, 1100], [\"2026-08-15 00:00:00\", 9000, 2000, 7000, 10000, 1000], [\"2026-08-10 00:00:00\", 5000, 5000, 0, 5000, 0], [\"2026-08-01 00:00:00\", 19000, 9000, 10000, 19000, 0]], \"seconds\": 0.029, \"units\": {\"payment_cents\": \"cents\", \"refund_cents\": \"cents\", \"net_sales_cents\": \"cents\", \"gross_cents\": \"cents\", \"discount_cents\": \"cents\"}, \"data_version\": \"qinghe-w03-20260923-small\", \"data_sha256\": \"8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6\", \"catalog_sha256\": \"466a44dff3612cc4ca54f51e23c9d31729d2c53326c63e2c23edd5338f273949\"}, \"definitions\": [{\"id\": \"payment_cents\", \"name\": \"实付金额\", \"aliases\": [], \"unit\": \"cents\", \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"paid 订单实付金额合计，尚未扣退款；单位分。\"}], \"constraints\": [\"事实对象为 orders 一行一笔订单；统计时间按 ordered_at 下单日期归属；纳入行集合为 status='paid' 的订单，包含后续全额退款订单；金额单位为分；不要求完整自然月。\"], \"query_policy\": {\"full_month_only\": false}}, {\"id\": \"refund_cents\", \"name\": \"退款金额\", \"aliases\": [], \"unit\": \"cents\", \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"paid 订单退款金额合计，按原订单下单日期归属，不是现金退款发生日；单位分。\"}], \"constraints\": [\"事实对象为 orders 一行一笔订单；统计时间按 ordered_at 下单日期归属，不按现金退款发生日；纳入行集合为 status='paid' 的订单；金额单位为分；不要求完整自然月。\"], \"query_policy\": {\"full_month_only\": false}}, {\"id\": \"net_sales_cents\", \"name\": \"净销售额\", \"aliases\": [], \"unit\": \"cents\", \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。\"}], \"constraints\": [\"事实对象为 orders 一行一笔订单；统计时间按 ordered_at 下单日期归属；纳入行集合为 status='paid' 的订单；计算 paid_cents - refund_cents；取消单不计；全额退款订单净额为零仍属于 paid 纳入行集合；金额单位为分；不要求完整自然月。\"], \"query_policy\": {\"full_month_only\": false}}, {\"id\": \"gross_cents\", \"name\": \"支付订单原价金额\", \"aliases\": [], \"unit\": \"cents\", \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"paid 订单折扣前原价金额合计；单位分。\"}], \"constraints\": [\"事实对象为 orders 一行一笔订单；统计时间按 ordered_at 下单日期归属；纳入行集合为 status='paid' 的订单；金额单位为分；不要求完整自然月。\"], \"query_policy\": {\"full_month_only\": false}}, {\"id\": \"discount_cents\", \"name\": \"优惠金额\", \"aliases\": [], \"unit\": \"cents\", \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"paid 订单原价减实付的金额合计；退款不冲减原优惠金额；单位分。\"}], \"constraints\": [\"事实对象为 orders 一行一笔订单；统计时间按 ordered_at 下单日期归属；纳入行集合为 status='paid' 的订单；计算 gross_cents - paid_cents；退款不冲减原优惠金额；金额单位为分；不要求完整自然月。\"], \"query_policy\": {\"full_month_only\": false}}]}"
+            }
+          ],
+          "stream": false,
+          "max_tokens": 8192,
+          "response_format": {
+            "type": "json_object"
+          },
+          "reasoning_effort": "low",
+          "thinking": {
+            "type": "enabled"
+          }
+        },
+        "timeout_seconds": 180.0,
+        "max_tokens": 8192,
+        "usage": {
+          "prompt_tokens": 2012,
+          "completion_tokens": 1731,
+          "total_tokens": 3743,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1279
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 1372
+        },
+        "trace_ids": {},
+        "response_id": "0240b037-737f-4ac8-a5b7-9603b83942e6",
+        "http_status": 200,
+        "finish_reason": "stop",
+        "response": {
+          "role": "assistant",
+          "content": "{\"answer\":\"统计范围：2026年8月1日至8月31日，按订单下单日期归属；对象为青禾当前测试数据范围内已支付订单。实付金额为已支付订单实付合计、尚未扣退款；退款金额按原订单下单日期归属，不按现金退款发生日；净销售额为实付减退款；支付订单原价金额为折扣前原价合计；优惠金额为原价减实付，退款不冲减原优惠金额。金额单位已由分换算为元。本次结果逐日列出如下：\\n\\n| 下单日期 | 实付金额 | 退款金额 | 净销售额 | 支付订单原价金额 | 优惠金额 |\\n|---|---:|---:|---:|---:|---:|\\n| 2026-08-01 | 190.00 | 90.00 | 100.00 | 190.00 | 0.00 |\\n| 2026-08-05 | 267.00 | 0.00 | 267.00 | 278.00 | 11.00 |\\n| 2026-08-10 | 50.00 | 50.00 | 0.00 | 50.00 | 0.00 |\\n| 2026-08-15 | 90.00 | 20.00 | 70.00 | 100.00 | 10.00 |\\n| 2026-08-20 | 70.00 | 0.00 | 70.00 | 70.00 | 0.00 |\\n| 2026-08-31 | 523.50 | 27.50 | 496.00 | 554.50 | 31.00 |\\n\\n表中0.00是本次结果覆盖内返回的零；结果未列出的日期只是未列出，不能据此判断为零、未定义或覆盖不足。\",\"used_metrics\":[\"实付金额\",\"退款金额\",\"净销售额\",\"支付订单原价金额\",\"优惠金额\"],\"citations\":[\"当前执行结果\"]}"
+        },
+        "seconds": 10.71
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2012,
+      "completion_tokens": 1731,
+      "total_tokens": 3743,
+      "completion_tokens_details": {
+        "reasoning_tokens": 1279
+      }
+    }
+  }
+}

@@ -1,0 +1,292 @@
+{
+  "created_at": "2026-11-06T15:52:15.989512+00:00",
+  "method": "独立直接读取R2原生request/attempts/answer/run并只读check_run；未读父Agent语义判分或使用其protocol_audit。",
+  "case_count": 8,
+  "live_runs": 8,
+  "successful_runs": 8,
+  "total_attempts": 8,
+  "all_http_200": true,
+  "all_finish_stop": true,
+  "expected_leakage_detected": false,
+  "all_frozen_inputs_unchanged": true,
+  "all_protected_files_unchanged": true,
+  "all_original_sources_unchanged": true,
+  "runner_same_as_r1": true,
+  "model_same_as_r1": true,
+  "prompt_matches_approved": true,
+  "prompt_sha256": "dd555f4d004aeac3141e37bfc43528b7880e00cf29429fd7b3d9f045183bd7f4",
+  "metadata_note": "R2 manifest approved_prompt_sha256 为null；实际提示字节与独立审批文件中的候选哈希逐一相等，已有可追溯审核。记录元数据缺值，不改冻结文件、不据此误判未审核。",
+  "input_checks": {
+    "input/business_model.md": true,
+    "input/knowledge.json": true,
+    "input/knowledge_prompt.txt": true,
+    "input/original_questions.json": true,
+    "input/protected.json": true,
+    "input/reviewer_expectations.json": true,
+    "input/selected_questions.json": true
+  },
+  "protected_checks": {
+    "docs/w03/business_model.md": true,
+    "docs/w03/interview_notes.md": true,
+    "customer/w02/knowledge.json": true,
+    "customer/w02/knowledge_prompt.txt": true,
+    "customer/w02/workflow.json": true,
+    "customer/w02/extraction.json": true,
+    "customer/w02/skills/extract-business/SKILL.md": true,
+    "artifacts/w02/workflows/WF-8d2ebffec9d94a25bc164ae489fe13a0/session.json": true,
+    "artifacts/w03/model-draft-20261106/draft-03/business_model.md": true,
+    "docs/w03/metric_decisions.md": true,
+    "docs/w03/sow.md": true,
+    "customer/w03/tests.json": true
+  },
+  "source_checks": {
+    "statistics_email": true,
+    "test_dictionary": true,
+    "chen": true,
+    "lin": true,
+    "zhou": true,
+    "questions": true
+  },
+  "cases": [
+    {
+      "id": "DY01",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-boundary-qa-20261106-r2/output/DY01.json",
+      "output_sha256": "726c2ed268c9ec25762a24b545b9d84391873fcb78e08954ffa21937516a6f68",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-ded82badd89841e293bfbe97e46232f2/run.json",
+      "run_sha256": "d28a150472b268fb0af740297dde56e3b9e02c8b7085fab3ea324ad0b745265c",
+      "request_sha256": "44ad675737efb7508c15085c5c3ab4511bbac2316227d779d002df8e170d6f02",
+      "answer_sha256": "8cb799dfbe3b84b3337672619ea79c17278548faf3545f98b45c00aab0e57fd6",
+      "attempts_sha256": "dec336151c9d52beab1d2647f31e819fd651f73eded7abb82b93cc891f03c06f",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY11",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-boundary-qa-20261106-r2/output/DY11.json",
+      "output_sha256": "d6280883b7735782d9483eee1df5e97905526c86b2bac4f9909ee3245282f4eb",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-f1601aace7104af68d3274381f0831ef/run.json",
+      "run_sha256": "905a9fc03b9e04af673c021cf11eb5ddb4ba0d6197faac9c1c5f0e7b18102b9d",
+      "request_sha256": "e1db4ca653ed8877fc37abfddbd62f2796e8634efccbf050f80caf189cbe15c9",
+      "answer_sha256": "dc33c23b0ad9763669461f20913ebfe146d63eef4a83c3538dbe1a08ba111756",
+      "attempts_sha256": "7f4010dc4cbf285dff535bea2bd9428efb1c5ca12f8ccee8f9ed239f36536929",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY12",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-boundary-qa-20261106-r2/output/DY12.json",
+      "output_sha256": "3e6faf48a08829bfba815cea788c05b78287561542eee051609d7939a7328a5e",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-a239464624be480d924b1e0dd2c509c5/run.json",
+      "run_sha256": "9a64db6bec2ec8963005607e2d08dbb0c9bab599c5b88d9d71aa07eb9c3f809c",
+      "request_sha256": "b1dc4833e1ed51b7c3fdd69b7d15a739380ec97aafa220b4b468c25f4cd3ad3e",
+      "answer_sha256": "404c3d79970811912126cafedeb7f5fc5b21ee96c1f6b97339bc88515dbeaf9b",
+      "attempts_sha256": "48c65b6762cda998693bd50b386dbf0ca9b6348b5e448e7fc8b234dc0ea5d4ee",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ12",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-boundary-qa-20261106-r2/output/DQ12.json",
+      "output_sha256": "10a037d2ecd5f72c238f12f21140d95d2a3795bd1cf36ee8f6676342d934e9df",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-6811064cea39412fa27d2ca470154fd1/run.json",
+      "run_sha256": "bad82a51328d0b9977cdae79ecc7ce1d686d9217827bcf2fa9358394a560f668",
+      "request_sha256": "315a7321f9aeee9352e579e9946185d0bb8dd2ed60dbd12933f4495ff9efa059",
+      "answer_sha256": "ea6ff0fcbe85905d5b7df3d827a9060bf9cea47d09159382d3f03efde019250a",
+      "attempts_sha256": "cff70d2b45b9889239f122c3b21eec44a993a3c32a5bf79264e8a0cfb3506a50",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ11",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-boundary-qa-20261106-r2/output/DQ11.json",
+      "output_sha256": "62d130ecef1ed70e843992b714a55680317175183876e2985b1f4f5dbd465548",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-4b397b2fd8e7448fab56f65588ae64c2/run.json",
+      "run_sha256": "de7e5f96218e88f194be1461ff6a71cba6cb3990858271447e60b2c9a18c346a",
+      "request_sha256": "bb72dc4c8ef8bdfc59415be5fc007f6ade35ab513d1b7f4564e830da6908f7a7",
+      "answer_sha256": "1981b24b33c534be115f3fdd063b4a9a5275cc1e593dcf0493bd2cf06315171c",
+      "attempts_sha256": "afe0cac6821e9b0afa95d7833f1afc96f440626bdd803b02484480fac975fecf",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY02",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-boundary-qa-20261106-r2/output/DY02.json",
+      "output_sha256": "313d207abffafab226d312dae37a853cc59cfa0845401000a3e6007f01b6cb90",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-abb8b3a8e78244e2a9f1eec2d4f2c320/run.json",
+      "run_sha256": "8a809b1459c4d4c26c1c608afbf352d411c2770d0db97d709130a81738bf0a93",
+      "request_sha256": "f8744c67c553c34099a64e4e98068039e3d28af3b58b2bbe1f2080e849e72eb9",
+      "answer_sha256": "f9d2ae08ca68d32b528aef831d368e27ad8505ff2be47117b41dbf192e1ac96b",
+      "attempts_sha256": "533a607181822c14640455083526f2dbb0747be554d57eae376c9de86fab9e05",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DY10",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-boundary-qa-20261106-r2/output/DY10.json",
+      "output_sha256": "212c5a294b38b376d2a42010283caa767c1331e13ca1a304488cab958abd919a",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-61a6fe5fba9a47b8a80cdf2563698b5c/run.json",
+      "run_sha256": "a05e849131f7d7fab7aa2f88bbf27691dc5882060953df8632998ad4de4287c9",
+      "request_sha256": "095c86c1d9125fb36d5e3599f7753f17c06fc75cad508fe302076ca26dd04db6",
+      "answer_sha256": "62729bc3eb22ac67e0a1d393813cbe1cedcc43e5832cad73e1b0158ce61d7504",
+      "attempts_sha256": "d0b84646cc2faa497925d3b9ca6dc1d13c9c61129fe916485f0d6743a2c2bd78",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    },
+    {
+      "id": "DQ08",
+      "status": "succeeded",
+      "mode": "live",
+      "native_check": "passed",
+      "checks": {
+        "question_unchanged": true,
+        "fixture_unchanged": true,
+        "answer_matches_native": true,
+        "run_hash_matches_record": true,
+        "request_exact_frozen_input": true,
+        "expected_empty": true,
+        "no_tools": true,
+        "all_attempts_exact_input": true
+      },
+      "output_path": "artifacts/w03/date-boundary-qa-20261106-r2/output/DQ08.json",
+      "output_sha256": "2a770127fe00a164075effa95c7312e22bb00a2dbaf4b9e7c09d5bcaf1028d45",
+      "run_path": "artifacts/w02/knowledge_runs/RUN-505f1c7f1de646719c1e3a6be79e2dc3/run.json",
+      "run_sha256": "0672c8e6f36b87b0098aaf5f8014b5b95236f29d2a0d37717af6af2e10b44ec3",
+      "request_sha256": "9def46ebf50319241d5f7761eb5f5fde6bff8771c344130e452e2ab2a97f01f2",
+      "answer_sha256": "1c9f8374df2638588f2758e0c125d24266cbd7de8425b98e9b9f5ce0d4802bbf",
+      "attempts_sha256": "1bb0eed0e9dce874d448519290b2620d8573f9535eef8ea7b7e899a60206bd1a",
+      "attempt_count": 1,
+      "http_statuses": [
+        200
+      ],
+      "finish_reasons": [
+        "stop"
+      ]
+    }
+  ]
+}

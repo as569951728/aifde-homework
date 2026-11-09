@@ -1,0 +1,32 @@
+{
+  "case_id": "P06",
+  "started_at": "2026-11-06T15:14:26.361372+00:00",
+  "completed_at": "2026-11-06T15:14:30.671121+00:00",
+  "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "account": "A",
+    "tier": "普通",
+    "cards_complete": true,
+    "cards": [
+      {
+        "card_type": "家庭季卡",
+        "state_on_decision_day": "有效",
+        "card_paid_cents": 0
+      }
+    ]
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-f170b38f84d34a2295fd2d8f2404d73f/run.json",
+    "run_id": "RUN-f170b38f84d34a2295fd2d8f2404d73f",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "在题设人工构造情境成立的前提下，账户A在判定日有付费资格。题设给出完整卡记录，其中账户A持有一张家庭季卡，且该卡在判定日的状态为“有效”；按本期总部运营月报口径，家庭季卡属于纳入产品范围，付费资格要求同一张卡同时满足产品范围和判定日有效期，因此满足。该卡实付金额为0不改变判断：材料明确购卡实付金额和会员等级不得代替卡类型与有效状态；普通等级也不影响这一派生资格。以上为基于题设条件的情境推导，不是客户真实记录或已执行查询。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "01a50bf7362b1bc5b17c2d54e99848751cd5e46797efae57c21eefb24152e63f"
+}

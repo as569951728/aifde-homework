@@ -1,0 +1,24 @@
+{
+  "case_id": "R03",
+  "started_at": "2026-11-06T17:35:05.429106+00:00",
+  "completed_at": "2026-11-06T17:35:13.216918+00:00",
+  "question": "人工情境：A月末已确认有资格，但完整8月订单只有一笔全额退款订单；B月末也有资格但无订单。8月付费购买人数是否纳入A、B？",
+  "fixture": null,
+  "input_track": "model_with_fixed_materials",
+  "fixed_materials": [
+    "W03/实操工程/materials/w03/01_订单日报说明.md",
+    "W03/实操工程/materials/w03/04_本期统计确认邮件.md"
+  ],
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-79854d63429945899cc4fa35a915f34b/run.json",
+    "run_id": "RUN-79854d63429945899cc4fa35a915f34b",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "结论：A、B均不纳入8月“月末付费会员购买人数”。这是按题设人工情境推导。该指标要求账户在自然月内至少有一笔有效订单，且月末符合本期付费资格（《本期统计确认邮件》“月末付费会员购买人数”）。有效订单须为 paid 且实付减退款后大于零；取消和全额退款不计（《订单日报说明》“有效订单数”；业务模型第2节“有效购买”）。A虽月末有资格，但8月只有一笔全额退款订单，不构成有效订单；B虽月末有资格但8月无订单。二者均不满足“至少一笔有效订单”，因此不纳入。月末资格条件对A、B均满足，但不替代有效订单条件；本题不能据此将他们纳入购买人数。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "2d8ebd867316655603924e902d02c0d0467d140265b4d4cd44f2fe87d6146c35"
+}

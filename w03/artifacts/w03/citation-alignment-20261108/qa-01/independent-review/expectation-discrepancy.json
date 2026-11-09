@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-11-08T02:07:51.960056+00:00",
+  "status": "expectation_defect_found_after_run_no_frozen_edit",
+  "id": "U05-E-expectation-certainty",
+  "frozen_expectations_path": "artifacts/w03/citation-alignment-20261108/qa-01/input/reviewer_expectations.json",
+  "frozen_expectations_sha256": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+  "original_case": "U05",
+  "original_required_point": "E需修正：王经理提出核查意见，最终验收人、授权和批准仍未定。结论需与相应主体和来源对应，不只列一串无关引用。",
+  "source_evidence": [
+    {
+      "message": "MSG-03931",
+      "quote": "最终验收确认人和授权额度不在我的职责内，我无法确认，需要另行核实；具体找谁、依据哪份授权材料，我这边不掌握，得由公司内部按审批流程定。"
+    },
+    {
+      "message": "MSG-03933",
+      "quote": "最终验收确认人、执行安排责任方和审批权限我这边不掌握，要另行核实，收益目标、预算金额和正式批准都还没定，要双方再谈。"
+    }
+  ],
+  "defect": "原期望把验收人/授权的未知与正式批准还没定合并为仍未定；角色不掌握不能证明公司未确定。",
+  "suggested_replacement": "E需修正：王经理提出核查意见，不等于最终验收批准。最终验收确认人、授权额度/审批权限仍需另行核实；王经理明确表示正式批准还没定。分别保留主体及对应来源，不能把不掌握扩大为公司未确定。",
+  "scope": "供未来独立版本修订判据；不修改本轮冻结期望、输入、门禁或原答；不重跑。",
+  "causal_boundary": "期望只供审核，protocol_audit六题均expected_sent=false；不能声称旧期望造成模型输出错误。",
+  "review_accountability": "运行前input-review对原期望交叉核查曾认一致，漏掉此确定程度问题；该原审与时间保留，不能追记为运行前发现。U05初审也漏判，另存r2纠正。",
+  "historical_effect": "不据此推翻未重新逐句核的历史结果；如后续重评，须列受影响样本并另留记录。"
+}

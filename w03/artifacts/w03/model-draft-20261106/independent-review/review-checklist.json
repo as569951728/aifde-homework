@@ -1,0 +1,342 @@
+{
+  "version": "w03-draft-artifact-review-checklist-v1",
+  "prepared_at": "2026-11-06T22:24:40.418931+08:00",
+  "review_status": "prepared_waiting_for_actual_proposal",
+  "workflow_id": "WF-8d2ebffec9d94a25bc164ae489fe13a0",
+  "proposal": null,
+  "proposal_hash": null,
+  "verdict": null,
+  "review_object": "Actual generated W03 proposal once provided; not design advice or candidate route package",
+  "inputs": {
+    "artifacts/w03/business-model-design-review-20261106/source-first-criteria.json": {
+      "sha256": "99d2caf01feff61e1549fb115dc76b3356bb71211d3a60fd2b6e3a3d4af5d149",
+      "use": "existing review criteria/boundary or protected baseline; not a generated proposal"
+    },
+    "artifacts/w03/business-model-design-review-20261106/review.json": {
+      "sha256": "9dd898e3d8da158670aac88bebb04f04a8fb1116f0aa28f81bb711ae9219d1b4",
+      "use": "existing review criteria/boundary or protected baseline; not a generated proposal"
+    },
+    "artifacts/w03/business-model-design-review-20261106/proposed_structure.md": {
+      "sha256": "88a4ef463ccd3fb31834b12fc4a196b7be1376dcd3737d85bb5c242c108cf979",
+      "use": "existing review criteria/boundary or protected baseline; not a generated proposal"
+    },
+    "artifacts/w03/model-input-preflight-20261106/effective_tests/model_expectations.json": {
+      "sha256": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+      "use": "existing review criteria/boundary or protected baseline; not a generated proposal"
+    },
+    "artifacts/w03/model-input-preflight-20261106/user_decisions.json": {
+      "sha256": "4daff76aa52ff879aa6f2576d83fe936df4521fee90003402150d4cacdc1a4c8",
+      "use": "existing review criteria/boundary or protected baseline; not a generated proposal"
+    },
+    "docs/w03/business_model.md": {
+      "sha256": "6e48419390810b44cdaa1ba430b01038a54be37c9f8692b58933ac8785592bf0",
+      "use": "existing review criteria/boundary or protected baseline; not a generated proposal"
+    }
+  },
+  "checks": [
+    {
+      "id": "T01-1",
+      "test": "T01",
+      "criteria": [
+        "C01",
+        "C09"
+      ],
+      "prior_findings": [
+        "D04",
+        "D05"
+      ],
+      "focus": "整体可读性与双目标",
+      "pass_criteria": "业务目的、对象关系、规则、业务工作/决策条件、未决与来源可清楚定位；允许等价目录，不机械要求五个同名标题。",
+      "reject_examples": "只剩卡规则或六项月报；按角色/日期/候选逐句堆叠，无法说明支持哪个业务判断。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T01-2",
+      "test": "T01",
+      "criteria": [
+        "C04"
+      ],
+      "prior_findings": [
+        "D02"
+      ],
+      "focus": "规则与统计选择分层",
+      "pass_criteria": "资格产品、同卡条件和有效期为带范围业务知识；月末选账户、整月购买、分母和报表限制在指标层，正文仅简短指向。",
+      "reject_examples": "把0019/0020等混合候选整句复制为通用规则；旧购买时点候选仍作为本期并列规则。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T01-3",
+      "test": "T01",
+      "criteria": [
+        "C07"
+      ],
+      "prior_findings": [
+        "D05"
+      ],
+      "focus": "已定正文排除边界",
+      "pass_criteria": "个人Excel/工作账及FDE费用、延期、变更、项目验收批准/交付责任不进正文；原事实与必要迁移落点可追溯。",
+      "reject_examples": "换名字留个人台账对象；旧v0.4有就继续保留；正文增加整段解释排除过程。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T01-4",
+      "test": "T01",
+      "criteria": [
+        "C06",
+        "C07"
+      ],
+      "prior_findings": [
+        "D04",
+        "D05"
+      ],
+      "focus": "流程与业务动作保留",
+      "pass_criteria": "名单用途、任务输入、参与者、工作、产出和接收者、业务确认与门店配合条件挂在相应流程环节。",
+      "reject_examples": "排除个人载体同时删掉实际工作；信息准备即被视为执行确认；将FDE核查流程代替会员经营流程。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T01-5",
+      "test": "T01",
+      "criteria": [
+        "C08",
+        "C09"
+      ],
+      "prior_findings": [
+        "D05"
+      ],
+      "focus": "正文与维护过程分离",
+      "pass_criteria": "正文写业务认识及必要业务未知，原句、来源纠错、导师取舍、迭代和测试日志留记录；必要出处可简引。",
+      "reject_examples": "把候选审核状态、导师设计过程、原题纠错写成主体内容；把代拟记成本人独立成果。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T02-1",
+      "test": "T02",
+      "criteria": [
+        "C02"
+      ],
+      "prior_findings": [
+        "D01"
+      ],
+      "focus": "对象、基数及身份",
+      "pass_criteria": "账户、卡、资格、等级、活跃、订单与群体复购指标分开；一账户可多卡/多订单，每卡及订单关联账户；成交店与归属店不同。",
+      "reject_examples": "按卡重复计账户/订单；账户当自然人；虚构订单使用某张卡；本期不合资格就等于系统免费类别。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T02-2",
+      "test": "T02",
+      "criteria": [
+        "C03",
+        "C04",
+        "C08"
+      ],
+      "prior_findings": [
+        "D01",
+        "D02"
+      ],
+      "focus": "卡资格及日期规则",
+      "pass_criteria": "本期两类卡和排除范围有来源；同一张卡同时合范围且在判定日有效；开始含、结束/提前终止不含、空终止不无限；角色说明与正式文件/历史凭据分开。",
+      "reject_examples": "失效年卡加有效联名卡拼资格；用当前状态判断历史；把Lin/Zhou不掌握判成与陈姐冲突；无文件则所有日期仍未知。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T02-3",
+      "test": "T02",
+      "criteria": [
+        "C05"
+      ],
+      "prior_findings": [
+        "D03"
+      ],
+      "focus": "原MD业务知识吸收",
+      "pass_criteria": "已支付与有效购买、累计退款快照、原始件数、购卡付款与商品订单收入等已明语义进入合适业务位置；公式/归期/排序在指标层。",
+      "reject_examples": "paid等于有效购买；金额推退货件数；购卡款当订单收入；仍将本期关系及有效购买笼统标全未知。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T02-4",
+      "test": "T02",
+      "criteria": [
+        "C04",
+        "C05",
+        "C08"
+      ],
+      "prior_findings": [
+        "D01",
+        "D03"
+      ],
+      "focus": "时间与资料覆盖限定",
+      "pass_criteria": "注册日期、订单日期、权益有效时间各有用途；给定测试关系不冒充生产身份整合；材料未提供历史等级/归属店变更，不断言公司没有历史。",
+      "reject_examples": "用本期月报追认四季度旧报表；快照退款当退款事件时间；观察期首购当终身首购；未提供写成不存在。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T02-5",
+      "test": "T02",
+      "criteria": [
+        "C06",
+        "C08"
+      ],
+      "prior_findings": [
+        "D04"
+      ],
+      "focus": "流程来源与未知断点",
+      "pass_criteria": "一般做法与真实某次实例分开；门店/小林局部交接有来源；完成标准、分析接收者、反馈回店、下一轮决策仍按实际证据保留断点。",
+      "reject_examples": "设计箭头变公司已运行闭环；券发放即核销/购买/改善；凭岗位任命具体业务确认人或效果分析者。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T02-6",
+      "test": "T02",
+      "criteria": [
+        "C08",
+        "C10"
+      ],
+      "prior_findings": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05"
+      ],
+      "focus": "新增断言逐项溯源",
+      "pass_criteria": "全部新增采用的实质断言核完整问答或指定MD，记录适用范围/来源性质；实际草稿采用事实不受24条路由数限制；3条Agent补提如采用保留其身份。",
+      "reject_examples": "只查文件存在或引文匹配即判语义正确；01918提问前提当独立事实；教师参考、checkpoint、作废W04污染；原候选已审代替正文审核。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T03-1",
+      "test": "T03",
+      "criteria": [
+        "C01",
+        "C06"
+      ],
+      "prior_findings": [
+        "D04",
+        "D05"
+      ],
+      "focus": "旧业务认识回归",
+      "pass_criteria": "保留原因验证与岗位提效双目标、会员老化假设、80万/120万不可直接比较、优惠券/权益说明/回访、局部流程及业务动作限制。",
+      "reject_examples": "只剩报表模型；提效等于复购改善；核查前提取代经营目标；丢失助手不自动发券/联系会员/改记录。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T03-2",
+      "test": "T03",
+      "criteria": [
+        "C02",
+        "C03",
+        "C05",
+        "C08"
+      ],
+      "prior_findings": [
+        "D01",
+        "D03"
+      ],
+      "focus": "旧未知按范围更新",
+      "pass_criteria": "本期已明确的账户关系、卡资格/日期和有效购买不再笼统未知；旧四季度口径、具体文件/历史凭据、生产与业务闭环缺口继续分别记录。",
+      "reject_examples": "全关未知或全开未知；新规则与旧待核自相矛盾；将本期答复推广全公司全部历史。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T03-3",
+      "test": "T03",
+      "criteria": [
+        "C07",
+        "C09"
+      ],
+      "prior_findings": [
+        "D02",
+        "D05"
+      ],
+      "focus": "合法迁移不误判退步",
+      "pass_criteria": "旧个人载体/FDE内容和旧购买时点提案依本人决定迁出；业务含义保留，原始来源不删除。",
+      "reject_examples": "要求为满足旧题把已排除内容回填正文；迁移被写为原事实从未存在；为通过改旧评分。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    },
+    {
+      "id": "T03-4",
+      "test": "T03",
+      "criteria": [
+        "C10"
+      ],
+      "prior_findings": [
+        "D05"
+      ],
+      "focus": "对象版本与完成状态",
+      "pass_criteria": "旧基线、实际proposal文本、修订说明、采用来源与版本/哈希固定；草稿内容审查、实际问答、指标校验、采纳/apply及客户批准分开。",
+      "reject_examples": "设计建议当实际正文；85题设计当执行通过；草稿审查通过直接称正式模型已采用/38指标已过。",
+      "status": "pending_proposal",
+      "evidence": [],
+      "finding": null
+    }
+  ],
+  "review_protocol": [
+    "收到实际proposal文件路径与hash后核对，固定正文及关联修订/notes增量；若输入版本变更只审受影响部分。",
+    "先读实际正文，再按T01–T03登记逐项实际位置、来源、结论；复用已读来源，仅回读支持新断言或疑点的相关原片段。",
+    "记录D01–D05在实际草稿中已解决/仍未解决/不适用及理由，不预先视为完成。",
+    "仅缺来源、真实事实冲突或需新业务取舍时列human_decisions；能按现有材料处理的问题交主Agent修订，不重新要求用户确认已定取舍。",
+    "实质遗漏、错误规则、虚构关系、越界或未落实用户边界均需修订；不按标题是否逐字相同或措辞偏好机械判失败。",
+    "通过仅表示该哈希草稿的静态正文审核通过；85例模型问答及38指标运行状态仍单列。"
+  ],
+  "planned_result_schema": {
+    "per_check": [
+      "status: pass/needs_revision/not_applicable",
+      "actual_location",
+      "source_locator",
+      "reason",
+      "required_fix_if_any"
+    ],
+    "finding": [
+      "priority",
+      "object_location",
+      "source_evidence",
+      "impact",
+      "minimal_fix",
+      "positive_and_negative_verification"
+    ],
+    "overall": [
+      "proposal_path_and_hash",
+      "T01_T02_T03_results",
+      "D01_D05_resolution",
+      "verdict",
+      "human_decisions",
+      "limits"
+    ]
+  },
+  "human_decisions": [],
+  "model_test_cases_run": 0,
+  "metric_tests_run": 0,
+  "formal_model_changed": false,
+  "workflow_mutated": false,
+  "skill_changed": false
+}

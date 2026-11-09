@@ -1,0 +1,222 @@
+{
+  "cases": [
+    {
+      "id": "U01",
+      "dimension": "模型用途与业务目标",
+      "question": "请用业务语言说明青禾的经营目标、会员运营工作和当前关键未知。理解复购变化与减少重复整理核对是什么关系？哪些观察能支持业务判断，哪些还不能说明原因或效果已经得到验证？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "U05",
+      "dimension": "证据性质、来源和纠错",
+      "question": "请审查以下说法，逐条说明可采用、需要修正或尚不能判断，并给依据：A.陈姐已给本期卡日期规则，但具体文件与历史凭据未取得；B.小林独立证实之前项目全面无人使用；C.模型尚未核实反馈怎样返回门店，所以青禾没有这一环节；D.80万活跃与120万全量可直接算出活跃率；E.王经理认可分期思路，所以最终验收已获批准。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json",
+        "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+      ],
+      "evaluation_domain": "原文证据/主体/权限审查，不评价正文是否含项目验收"
+    },
+    {
+      "id": "P09",
+      "dimension": "系统类别与本期资格",
+      "question": "人工情境：账户A只有有效异业联名卡，因此不在本期总部月报的付费资格范围。能否据此确定A在全系统属于免费注册类别？现有“付费会员卡、免费注册会员两类”的说法能否证明两类在系统绝对互斥？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ10",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-25",
+        "decision_date": "2026-08-20"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "B05",
+      "dimension": "零、未定义和越界",
+      "question": "请分别解释：覆盖内筛选无匹配订单的净额、覆盖内无购买账户月份的复购率、覆盖外月份的净额。金额13000分是否等于13000元？",
+      "input_track": "model_with_fixed_materials",
+      "fixed_materials": [
+        "W03/实操工程/materials/w03/01_订单日报说明.md",
+        "W03/实操工程/materials/w03/02_财务邮件.md",
+        "W03/实操工程/materials/w03/03_会员运营周报.md",
+        "W03/实操工程/materials/w03/05_数据字典.md"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "F06",
+      "dimension": "成效与活动多样性",
+      "question": "小林觉得整理名单费力，是否已测得工时并证明这是复购下降原因？除优惠券活动，是否还有其他工作？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "A03",
+      "dimension": "费用与结算",
+      "question": "本期费用与结算条款现在可写哪些内容，哪些还不能写成约定？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w02/sources/W3-interview-92c91632-4b0e-5a7a-bd7d-55214f68ee39-transcript.json"
+      ],
+      "evaluation_domain": "SOW/项目交付核查，不计业务模型正文覆盖"
+    },
+    {
+      "id": "E01",
+      "dimension": "提问前提",
+      "question": "阅读给定W02小林二访MSG-01918/01919及01921。“之前项目没人用”“多了三步”分别应如何记录与使用？",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [
+        "W03/实操工程/artifacts/w03/w02_revision_20261104/artifacts/w02/sources/W2-interview-4abeb711-5ac6-500b-a2e7-ad7a131a85d7-transcript.json"
+      ],
+      "evaluation_domain": "指定材料/原文应用"
+    },
+    {
+      "id": "E03",
+      "dimension": "不同统计总体",
+      "question": "沈总说80万活跃，老周说120万系统全量，可否直接算活跃率、相减作沉睡人数或认定同口径矛盾？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "E05",
+      "dimension": "失效来源拒绝",
+      "question": "某备忘声称每周一从CRM拉60天未购、排除员工并核勿扰名单。经来源核验，该说法只来自已作废W04会议5e112925-9605-5362-b908-1ef8849d9c5f，未获有效W03来源支持。应否加入当前模型？应保留什么状态？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "REG01",
+      "dimension": "W02原题回归",
+      "question": "青禾准备先给小林和陈姐提供会员运营支持，你会建议第一版交付什么、怎样接到实际工作，以及怎样判断有没有帮助？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "U04",
+      "dimension": "工作流程、角色和未知交接",
+      "question": "小林准备一次会员优惠券活动，如果需要门店配合，模型目前能确认哪些工作步骤和交接？哪些仍是我方设计或待核？请选一个缺口，说清需要什么记录、向哪类经手人核对以及它影响什么判断。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "F05",
+      "dimension": "局部链与完整闭环",
+      "question": "模型确认小林协调、陈姐落实部分门店安排，是否证明策划—执行—分析—反馈—下一轮决策全链已打通？请给一个可核查的后续动作。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "P01",
+      "dimension": "产品与等级",
+      "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "account": "A",
+        "tier": "普通",
+        "cards_complete": true,
+        "cards": [
+          {
+            "card_type": "悦享年卡",
+            "state_on_decision_day": "有效",
+            "card_paid_cents": 10000
+          }
+        ]
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "DQ09",
+      "dimension": "日期端点",
+      "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "fixture": {
+        "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+        "card_type": "家庭季卡",
+        "valid_from": "2026-05-20",
+        "valid_until": "2026-08-20",
+        "ended_at": "2026-08-15",
+        "decision_date": "2026-08-16"
+      },
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "E02",
+      "dimension": "经营假设",
+      "question": "复购连续四季下滑、会员老化、三个月希望看到改善，应分别作为哪类信息？本期月报测试能证明什么？",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "业务知识问答"
+    },
+    {
+      "id": "CTRL01",
+      "dimension": "非诱导原文的角色新增观察",
+      "question": "请将下列完整问答中可以保留的工作做法、感受和期望整理成一条业务核查记录，并说明它能支持什么判断、还不能支持什么判断。\n\n来源：本人课程角色访谈原始记录；week=2；role_id=ROLE-CHEN；meeting_id=33120509-3939-5d6c-81f1-3959fed49789。\nMSG-01664 · user\n陈姐你好，我想了解一下会员活动到了门店以后是怎么做的。你能从平时接到活动通知开始，跟我讲讲吗？这个协同活动的过程中，你觉得哪些好，哪些不好的？\n\nMSG-01665 · assistant\n接到活动安排，我一般先核对三件事：面向哪些会员、哪些门店参与、门店具体要做什么。核完再跟门店同事说明，把人员和执行安排确认下来。执行中收集顾客问题和门店反馈，有不清楚的就找运营核对，结束后整理执行情况。\n\n我和小林对接活动安排和现场反馈。比如会员拿着线上活动来问门店能不能参加，我们得先核对适用范围再答复，不能因为线上看到了就认定所有门店都能执行。\n\n好的地方是要求清楚时，门店照着做、衔接就顺。不好的地方是活动要求不清楚时，门店一边接待顾客一边来回找人确认，挺费劲。我希望适用范围、门店要做的事、现场问题由谁答，一开始就讲清楚，少些反复沟通。这只是我的工作感受，没算过耗时或损失。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [],
+      "evaluation_domain": "有效原文应用，非正文独立增益"
+    },
+    {
+      "id": "CTRL02",
+      "dimension": "不同来源且可比条件已核",
+      "question": "以下是独立构造的口径判断测试，数字与条件都不是青禾事实，不得写入青禾模型。\n测试资料A由注册台账组提供：2026年9月同一指定范围内的CRM账户总数为240。测试资料B由订单分析组独立提供：这240个账户中，当月至少有一笔有效购买的账户数为60。独立核对已确认两份资料使用同一冻结账户集合、同一CRM账户标识与去重规则、同一月份和渠道/门店范围，B是A的子集，无缺漏和重复。本题将“购买活跃”定义为该月至少有一笔有效购买。\n请判断这两份资料能否一起计算本题的购买活跃率；给出可成立的结论和仍不能推出的业务含义，并说明依据。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [],
+      "evaluation_domain": "显式合成口径对照，不是青禾事实或生产数值校验"
+    },
+    {
+      "id": "CTRL03",
+      "dimension": "有效W02来源适用",
+      "question": "当前整理按案例使用本人已取得且未作废的W02、W03来源。下面是一份已核对身份的有效W02访谈记录；现有材料没有撤回这段诉求。请据此写出一条可保留的业务知识记录，标明来源、适用边界和仍需业务确认的事项，并说明是否仅因周次为W02就应排除。\n\n来源：本人课程角色访谈原始记录；week=2；role_id=ROLE-LIN；meeting_id=4abeb711-5ac6-500b-a2e7-ad7a131a85d7。\nMSG-01924 · user\n前面讲到的工作，你最希望助手先帮哪一步，做到什么程度你才觉得有帮助？\n\nMSG-01925 · assistant\n我最希望助手先帮我把需要关注的会员整理出来，并且把每条建议的依据说清楚。做到这个程度我就觉得有帮助：我不用再重复整理名单、反复核对不一致的信息，能省掉一部分费力的活。\n\n不过人群和执行方案还是得业务人员确认，我没有授权它自动发券、联系会员或修改记录。新系统如果只是让我多用一套工具、原来的活一样不少，我不会有太大期待。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [],
+      "evaluation_domain": "有效原文应用，非正文独立增益"
+    },
+    {
+      "id": "CTRL04",
+      "dimension": "多卡数量与不完整记录",
+      "question": "以下3个账户均为人工构造的隔离测试，不是青禾真实记录。仅按本期总部月报口径判断，不把未知补成事实。\n甲：已确认至少一张本期纳入范围且月末有效的卡，其他卡尚未盘点；没有提供当月是否有效购买。\n乙：卡记录完整，只有一张月末已失效的悦享年卡和一张月末有效的异业联名卡；当月有有效购买。\n丙：卡记录不完整，目前只查到一张月末有效的体验卡，其他卡尚未核查；当月有有效购买。\n请逐户说明：月末付费资格、对“月末付费会员购买人数”的贡献能否确定、确切持卡总数能否确定。逐项给出依据。\n\n本题查询契约依据（逐字摘录 materials/w03/04_本期统计确认邮件.md；材料本身为课程虚构，以下不补充任何账户事实）：\n本次付费会员的月度指标按自然月月底最后一天的资格判断。先选月末有资格的账户，再统计这些账户当月全渠道、全门店的有效订单；不要求每笔订单发生当天也已经具有资格。有效购买沿用本次财务邮件的订单规则。\n\n## 月末付费会员购买人数\n\n自然月内有至少一笔有效订单、且月末符合总部运营月报付费资格的不同账户数。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [],
+      "evaluation_domain": "显式合成资格推理，不是客户真实记录"
+    },
+    {
+      "id": "FMTCTRL01",
+      "dimension": "独立对照：JSON字符串引号、反斜线和换行",
+      "question": "请把下面三行人工文本逐字作为回答内容，不加解释；它们只是格式测试文本，不是青禾事实：\n字段 \"answer\" 的值为 \"待核\"。\n人工路径：C:\\QH\\draft\n状态：未执行。",
+      "input_track": "model_only",
+      "fixed_materials": [],
+      "evaluation_domain": "输出格式与文本保真控制，不计业务能力覆盖"
+    },
+    {
+      "id": "TRACECTRL01",
+      "dimension": "独立迁移对照：结果说法的来源与局部观察范围",
+      "question": "以下为独立编写的证据记录测试，人物、排班和事件均为人工合成，不是青禾资料，也不代表真实单位的运行情况。\n\nSYN-Q1 · 访谈者\n新排班表启用后，所有晚班都出现了空岗，您觉得该怎么处理？\n\nSYN-A1 · 值班员\n新表启用后，所有晚班都出现了空岗。我亲眼看到的是，周二我值守的东门岗在交接时空了约十分钟；其他晚班的情况我没有查过记录。\n\nSYN-Q2 · 访谈者\n周二东门岗的“约十分钟”是根据计时记录算的吗？\n\nSYN-A2 · 值班员\n约十分钟是我当时的估计，没有计时。那天交接时接岗同事还没到，我看到东门岗暂时没人值守；其他班次的情况仍需查记录。\n\n请将“新表启用后所有晚班都出现空岗”和“周二东门岗交接时约空十分钟”分别整理为可用的核查记录，说明各自的证据范围及后续使用方式，并保留可核对的来源定位。",
+      "input_track": "model_with_source_context",
+      "fixed_materials": [],
+      "evaluation_domain": "显式合成证据归属对照，不是青禾事实或业务效果验证"
+    }
+  ]
+}

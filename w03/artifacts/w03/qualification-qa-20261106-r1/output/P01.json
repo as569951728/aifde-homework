@@ -1,0 +1,32 @@
+{
+  "case_id": "P01",
+  "started_at": "2026-11-06T15:14:09.493022+00:00",
+  "completed_at": "2026-11-06T15:14:13.409040+00:00",
+  "question": "仅据本期总部月报口径和下列完整卡记录，判断账户A在判定日是否有付费资格，并解释。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "account": "A",
+    "tier": "普通",
+    "cards_complete": true,
+    "cards": [
+      {
+        "card_type": "悦享年卡",
+        "state_on_decision_day": "有效",
+        "card_paid_cents": 10000
+      }
+    ]
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-27fdeeaedec641d3bdb83d57fd182ba2/run.json",
+    "run_id": "RUN-27fdeeaedec641d3bdb83d57fd182ba2",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "在该人工构造情境成立的前提下，账户A在判定日具有本期总部月报口径下的付费资格。依据是：本期月报只纳入悦享年卡与家庭季卡持有人；资格要求同一张卡同时满足产品范围与判定日有效期。题设给出的完整卡记录显示，账户A持有一张“悦享年卡”，且其在判定日的状态为“有效”，因此该卡同时满足产品范围与有效期条件。会员等级为“普通”不影响该判断，购卡实付金额也不得代替卡类型和有效状态来裁定资格。以上是仅据题设完整记录和本期月报口径作出的情境推导，不代表客户真实账户记录或已执行查询；本期口径的正式规则文件尚未取得。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "2f76e0c981885ac2d04186cfb11d91c629ea82fd3498cad4799a5f2a53305636"
+}

@@ -1,0 +1,1520 @@
+{
+  "passed": true,
+  "control_count": 10,
+  "passed_count": 10,
+  "checks": [
+    {
+      "id": "positive_original_B4-N01",
+      "source_case": "B4-N01",
+      "source_kind": "copy_of_real_result_only; structured corruption is synthetic, not a model failure",
+      "source_path": "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd/result.json",
+      "source_sha256": "75a197cb064a323eed6975c888166680188e721a1497ad57429192418965c572",
+      "change": "No changes",
+      "expected_passed": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "passed": true,
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            3714.814814814815,
+            6686.666666666667,
+            1.8,
+            0.15749685006299874,
+            0.0625,
+            0.13333333333333333,
+            0.041851106639839035,
+            1.2222222222222223
+          ]
+        ],
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "actual_copy": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(1), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS items_per_order\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            3714.814814814815,
+            6686.666666666667,
+            1.8,
+            0.15749685006299874,
+            0.0625,
+            0.13333333333333333,
+            0.041851106639839035,
+            1.2222222222222223
+          ]
+        ],
+        "seconds": 0.057,
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+        "answer": "2026年8月（统计区间2026-08-01至2026-09-01）青禾客户整体汇总结果：有效订单均额为37.15元/单；购买会员人均消费为66.87元/账户；购买频次为1.80单/账户；退款金额占比为15.75%；取消率为6.25%；退款订单率为13.33%；优惠率为4.19%；单均商品件数为1.22件/单。以上均为该客户当月汇总口径，未按门店等维度拆分；购买会员人数按CRM会员账户计数。各指标分母均非零，结果均已定义。",
+        "question": "请同时列出2026年8月青禾优选的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+        "trace_id": "a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd",
+        "elapsed_seconds": 9.633,
+        "model_usage": {
+          "prompt_tokens": 10275,
+          "completion_tokens": 1227,
+          "total_tokens": 11502
+        },
+        "model_calls_with_usage": 2
+      },
+      "source_object_unchanged": true
+    },
+    {
+      "id": "positive_original_B4-Z01",
+      "source_case": "B4-Z01",
+      "source_kind": "copy_of_real_result_only; structured corruption is synthetic, not a model failure",
+      "source_path": "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/47530c7d-0bde-47e0-9c10-1d3796d357ea/result.json",
+      "source_sha256": "704018a62ae0c617c024fd07e677661e9f8f3e241052722823d887cd986bfad2",
+      "change": "No changes",
+      "expected_passed": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "passed": true,
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-06-01",
+          "end": "2026-06-30",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        ],
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "actual_copy": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-06-01",
+          "end": "2026-06-30",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(1), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS items_per_order\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-06-01' AND '2026-06-29'",
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        ],
+        "seconds": 0.055,
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+        "answer": "在2026年6月1日至6月29日（含首尾）的青禾优选统计范围内，按既定指标口径查询有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率和单均商品件数；购买会员人数按CRM会员账户计数。执行结果中这8项指标均为空值，表示在当前口径下未定义（例如相关分母为零或无可计算记录），不能按0处理。因此本期没有可展示的金额或比例结果。",
+        "question": "请同时列出2026年6月1日至29日（含首尾）青禾优选的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+        "trace_id": "47530c7d-0bde-47e0-9c10-1d3796d357ea",
+        "elapsed_seconds": 10.364,
+        "model_usage": {
+          "prompt_tokens": 10241,
+          "completion_tokens": 1062,
+          "total_tokens": 11303
+        },
+        "model_calls_with_usage": 2
+      },
+      "source_object_unchanged": true
+    },
+    {
+      "id": "positive_original_B4-R01",
+      "source_case": "B4-R01",
+      "source_kind": "copy_of_real_result_only; structured corruption is synthetic, not a model failure",
+      "source_path": "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/9d3226de-2ac4-415f-bae1-e5f6d3b5dcc9/result.json",
+      "source_sha256": "7d3fc4fac78fb15bebdf7f64fcf36ea54d223dae1d2c05778926d26d01287a08",
+      "change": "No changes",
+      "expected_passed": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "passed": true,
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-10",
+          "end": "2026-08-11",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            null,
+            null,
+            null,
+            1.0,
+            0.5,
+            1.0,
+            0.0,
+            null
+          ]
+        ],
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "actual_copy": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-10",
+          "end": "2026-08-11",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(1), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS items_per_order\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-10' AND '2026-08-10'",
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            null,
+            null,
+            null,
+            1.0,
+            0.5,
+            1.0,
+            0.0,
+            null
+          ]
+        ],
+        "seconds": 0.056,
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+        "answer": "统计范围为当前青禾客户在2026年8月10日的汇总，未额外按门店筛选。有效订单均额、购买会员人均消费、购买频次、单均商品件数结果为空值，按口径因对应分母为零而未定义，不是零，因此不给出金额、单/账户或件/单数值。已返回比例中：退款金额占比100.00%，取消率50.00%，退款订单率100.00%，优惠率0.00%。金额以分存储，若有金额需除以100展示为元；本次金额类均值未定义，无法换算为元。人数口径为CRM会员账户，不等同于跨系统自然人。",
+        "question": "请同时列出2026年8月10日青禾优选的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+        "trace_id": "9d3226de-2ac4-415f-bae1-e5f6d3b5dcc9",
+        "elapsed_seconds": 14.883,
+        "model_usage": {
+          "prompt_tokens": 10239,
+          "completion_tokens": 1893,
+          "total_tokens": 12132
+        },
+        "model_calls_with_usage": 2
+      },
+      "source_object_unchanged": true
+    },
+    {
+      "id": "positive_row_and_column_reorder",
+      "source_case": "B4-D01-store",
+      "source_kind": "copy_of_real_result_only; structured corruption is synthetic, not a model failure",
+      "source_path": "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/1880dac1-a055-44c0-8f62-fa0d39ce7eb7/result.json",
+      "source_sha256": "3083b322b9e26c92112ca88a2edcb7a4e84c5c69e06e5e64d1b8a52c319749dd",
+      "change": "Only column/value and row order, group identity preserved",
+      "expected_passed": true,
+      "comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "passed": true,
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-07-01",
+          "end": "2026-08-01",
+          "group_by": [
+            "store"
+          ],
+          "filters": []
+        },
+        "columns": [
+          "store",
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            "S01",
+            1562.5,
+            1562.5,
+            1.0,
+            0.0,
+            0.1111111111111111,
+            0.0,
+            0.0,
+            1.125
+          ],
+          [
+            "S02",
+            5000.0,
+            5000.0,
+            1.0,
+            0.047619047619047616,
+            0.0,
+            0.5,
+            0.0,
+            2.0
+          ],
+          [
+            "S03",
+            4500.0,
+            9000.0,
+            2.0,
+            0.1,
+            0.0,
+            0.5,
+            0.0,
+            2.0
+          ]
+        ],
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "actual_copy": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-07-01",
+          "end": "2026-08-01",
+          "group_by": [
+            "store"
+          ],
+          "filters": []
+        },
+        "sql": "SELECT\n  store\n  , CAST(net_sales_cents AS DOUBLE) / CAST(NULLIF(valid_order_count, 0) AS DOUBLE) AS avg_order_value\n  , CAST(net_sales_cents AS DOUBLE) / CAST(NULLIF(buyer_count, 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(valid_order_count AS DOUBLE) / CAST(NULLIF(buyer_count, 0) AS DOUBLE) AS purchase_frequency\n  , CAST(refund_cents AS DOUBLE) / CAST(NULLIF(payment_cents, 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(cancelled_order_count AS DOUBLE) / CAST(NULLIF(order_count, 0) AS DOUBLE) AS cancel_rate\n  , CAST(refund_order_count AS DOUBLE) / CAST(NULLIF(paid_order_count, 0) AS DOUBLE) AS refund_order_rate\n  , CAST(discount_cents AS DOUBLE) / CAST(NULLIF(gross_cents, 0) AS DOUBLE) AS discount_rate\n  , CAST(valid_order_items AS DOUBLE) / CAST(NULLIF(valid_order_count, 0) AS DOUBLE) AS items_per_order\nFROM (\n  SELECT\n    store\n    , SUM(__net_sales_cents) AS net_sales_cents\n    , SUM(__valid_order_count) AS valid_order_count\n    , COUNT(DISTINCT __buyer_count) AS buyer_count\n    , SUM(__refund_cents) AS refund_cents\n    , SUM(__payment_cents) AS payment_cents\n    , SUM(__cancelled_order_count) AS cancelled_order_count\n    , SUM(__order_count) AS order_count\n    , SUM(__refund_order_count) AS refund_order_count\n    , SUM(__paid_order_count) AS paid_order_count\n    , SUM(__discount_cents) AS discount_cents\n    , SUM(__gross_cents) AS gross_cents\n    , SUM(__valid_order_items) AS valid_order_items\n  FROM (\n    SELECT\n      store_id AS store\n      , 1 AS __order_count\n      , CASE WHEN status = 'paid' THEN 1 ELSE 0 END AS __paid_order_count\n      , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END AS __valid_order_count\n      , CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END AS __cancelled_order_count\n      , CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END AS __refund_order_count\n      , CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END AS __payment_cents\n      , CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END AS __refund_cents\n      , CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END AS __net_sales_cents\n      , CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END AS __gross_cents\n      , CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END AS __discount_cents\n      , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END AS __buyer_count\n      , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END AS __valid_order_items\n    FROM \"data\".\"main\".\"orders\" orders_src_10000\n    WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-07-01' AND '2026-07-31'\n  ) subq_16\n  GROUP BY\n    store\n) subq_18",
+        "columns": [
+          "items_per_order",
+          "discount_rate",
+          "refund_order_rate",
+          "cancel_rate",
+          "refund_amount_rate",
+          "purchase_frequency",
+          "avg_buyer_value",
+          "avg_order_value",
+          "store"
+        ],
+        "rows": [
+          [
+            1.125,
+            0.0,
+            0.0,
+            0.1111111111111111,
+            0.0,
+            1.0,
+            1562.5,
+            1562.5,
+            "S01"
+          ],
+          [
+            2.0,
+            0.0,
+            0.5,
+            0.0,
+            0.1,
+            2.0,
+            9000.0,
+            4500.0,
+            "S03"
+          ],
+          [
+            2.0,
+            0.0,
+            0.5,
+            0.0,
+            0.047619047619047616,
+            1.0,
+            5000.0,
+            5000.0,
+            "S02"
+          ]
+        ],
+        "seconds": 0.064,
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+        "answer": "已按2026年7月（2026-07-01至2026-08-01前）汇总青禾客户数据，并按订单成交门店分组。金额展示为元，比例展示为百分数；人数口径为CRM会员账户，不等同于跨系统自然人。统计口径：有效订单均额=净销售额/有效订单数；购买会员人均消费=净销售额/购买会员账户数；购买频次=有效订单数/购买会员账户数；退款金额占比=退款金额/实付金额；取消率=取消订单数/创建订单数；退款订单率=退款订单数/支付订单数；优惠率=优惠金额/支付订单原价金额；单均商品件数=有效订单商品件数/有效订单数。本次为合成测试数据范围。\n\n| 成交门店 | 有效订单均额(元/单) | 购买会员人均消费(元/账户) | 购买频次(单/账户) | 退款金额占比 | 取消率 | 退款订单率 | 优惠率 | 单均商品件数(件/单) |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|\n| S02 | 50.00 | 50.00 | 1.00 | 4.76% | 0.00% | 50.00% | 0.00% | 2.00 |\n| S03 | 45.00 | 90.00 | 2.00 | 10.00% | 0.00% | 50.00% | 0.00% | 2.00 |\n| S01 | 15.63 | 15.63 | 1.00 | 0.00% | 11.11% | 0.00% | 0.00% | 1.125 |\n\n以上仅列示本次按成交门店返回的S01、S02、S03三组结果；各组指标分母均非零，因此均已给出结果。",
+        "question": "请按成交门店列出2026年7月青禾优选的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+        "trace_id": "1880dac1-a055-44c0-8f62-fa0d39ce7eb7",
+        "elapsed_seconds": 14.989,
+        "model_usage": {
+          "prompt_tokens": 10364,
+          "completion_tokens": 2389,
+          "total_tokens": 12753
+        },
+        "model_calls_with_usage": 2
+      },
+      "source_object_unchanged": true
+    },
+    {
+      "id": "real_null_to_zero_B4-Z01",
+      "source_case": "B4-Z01",
+      "source_kind": "copy_of_real_result_only; structured corruption is synthetic, not a model failure",
+      "source_path": "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/47530c7d-0bde-47e0-9c10-1d3796d357ea/result.json",
+      "source_sha256": "704018a62ae0c617c024fd07e677661e9f8f3e241052722823d887cd986bfad2",
+      "change": "Only avg_order_value JSON null replaced by 0",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.avg_order_value",
+            "expected": null,
+            "actual": 0,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "passed": true,
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-06-01",
+          "end": "2026-06-30",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        ],
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "actual_copy": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-06-01",
+          "end": "2026-06-30",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(1), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS items_per_order\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-06-01' AND '2026-06-29'",
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            0,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        ],
+        "seconds": 0.055,
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+        "answer": "在2026年6月1日至6月29日（含首尾）的青禾优选统计范围内，按既定指标口径查询有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率和单均商品件数；购买会员人数按CRM会员账户计数。执行结果中这8项指标均为空值，表示在当前口径下未定义（例如相关分母为零或无可计算记录），不能按0处理。因此本期没有可展示的金额或比例结果。",
+        "question": "请同时列出2026年6月1日至29日（含首尾）青禾优选的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+        "trace_id": "47530c7d-0bde-47e0-9c10-1d3796d357ea",
+        "elapsed_seconds": 10.364,
+        "model_usage": {
+          "prompt_tokens": 10241,
+          "completion_tokens": 1062,
+          "total_tokens": 11303
+        },
+        "model_calls_with_usage": 2
+      },
+      "source_object_unchanged": true
+    },
+    {
+      "id": "real_null_to_zero_B4-R01",
+      "source_case": "B4-R01",
+      "source_kind": "copy_of_real_result_only; structured corruption is synthetic, not a model failure",
+      "source_path": "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/9d3226de-2ac4-415f-bae1-e5f6d3b5dcc9/result.json",
+      "source_sha256": "7d3fc4fac78fb15bebdf7f64fcf36ea54d223dae1d2c05778926d26d01287a08",
+      "change": "Only avg_order_value JSON null replaced by 0",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.avg_order_value",
+            "expected": null,
+            "actual": 0,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "passed": true,
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-10",
+          "end": "2026-08-11",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            null,
+            null,
+            null,
+            1.0,
+            0.5,
+            1.0,
+            0.0,
+            null
+          ]
+        ],
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "actual_copy": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-10",
+          "end": "2026-08-11",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(1), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS items_per_order\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-10' AND '2026-08-10'",
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            0,
+            null,
+            null,
+            1.0,
+            0.5,
+            1.0,
+            0.0,
+            null
+          ]
+        ],
+        "seconds": 0.056,
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+        "answer": "统计范围为当前青禾客户在2026年8月10日的汇总，未额外按门店筛选。有效订单均额、购买会员人均消费、购买频次、单均商品件数结果为空值，按口径因对应分母为零而未定义，不是零，因此不给出金额、单/账户或件/单数值。已返回比例中：退款金额占比100.00%，取消率50.00%，退款订单率100.00%，优惠率0.00%。金额以分存储，若有金额需除以100展示为元；本次金额类均值未定义，无法换算为元。人数口径为CRM会员账户，不等同于跨系统自然人。",
+        "question": "请同时列出2026年8月10日青禾优选的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+        "trace_id": "9d3226de-2ac4-415f-bae1-e5f6d3b5dcc9",
+        "elapsed_seconds": 14.883,
+        "model_usage": {
+          "prompt_tokens": 10239,
+          "completion_tokens": 1893,
+          "total_tokens": 12132
+        },
+        "model_calls_with_usage": 2
+      },
+      "source_object_unchanged": true
+    },
+    {
+      "id": "raw_ratio_times_100",
+      "source_case": "B4-N01",
+      "source_kind": "copy_of_real_result_only; structured corruption is synthetic, not a model failure",
+      "source_path": "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd/result.json",
+      "source_sha256": "75a197cb064a323eed6975c888166680188e721a1497ad57429192418965c572",
+      "change": "Only raw refund_amount_rate multiplied by100 while unit stays ratio",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.refund_amount_rate",
+            "expected": 0.15749685006299874,
+            "actual": 15.749685006299874,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "passed": true,
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            3714.814814814815,
+            6686.666666666667,
+            1.8,
+            0.15749685006299874,
+            0.0625,
+            0.13333333333333333,
+            0.041851106639839035,
+            1.2222222222222223
+          ]
+        ],
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "actual_copy": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(1), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS items_per_order\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            3714.814814814815,
+            6686.666666666667,
+            1.8,
+            15.749685006299874,
+            0.0625,
+            0.13333333333333333,
+            0.041851106639839035,
+            1.2222222222222223
+          ]
+        ],
+        "seconds": 0.057,
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+        "answer": "2026年8月（统计区间2026-08-01至2026-09-01）青禾客户整体汇总结果：有效订单均额为37.15元/单；购买会员人均消费为66.87元/账户；购买频次为1.80单/账户；退款金额占比为15.75%；取消率为6.25%；退款订单率为13.33%；优惠率为4.19%；单均商品件数为1.22件/单。以上均为该客户当月汇总口径，未按门店等维度拆分；购买会员人数按CRM会员账户计数。各指标分母均非零，结果均已定义。",
+        "question": "请同时列出2026年8月青禾优选的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+        "trace_id": "a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd",
+        "elapsed_seconds": 9.633,
+        "model_usage": {
+          "prompt_tokens": 10275,
+          "completion_tokens": 1227,
+          "total_tokens": 11502
+        },
+        "model_calls_with_usage": 2
+      },
+      "source_object_unchanged": true
+    },
+    {
+      "id": "unweighted_store_mean_as_overall",
+      "source_case": "B4-D01-all",
+      "source_kind": "copy_of_real_result_only; structured corruption is synthetic, not a model failure",
+      "source_path": "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/ecb74c55-41b7-4000-b998-3e287da650e3/result.json",
+      "source_sha256": "e98f92906cf185c91e0c13617a6e8148a2e1ab5de69e42dad0349e550340c9bf",
+      "change": "Only overall metric vector replaced with unweighted averages of actual per-store ratios; 7 of8 differ, discount all zero is separately limited",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "rows.{}.avg_buyer_value",
+            "expected": 2863.6363636363635,
+            "actual": 5187.5,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.avg_order_value",
+            "expected": 2625.0,
+            "actual": 3687.5,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.cancel_rate",
+            "expected": 0.07692307692307693,
+            "actual": 0.037037037037037035,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.items_per_order",
+            "expected": 1.4166666666666667,
+            "actual": 1.7083333333333333,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.purchase_frequency",
+            "expected": 1.0909090909090908,
+            "actual": 1.3333333333333333,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.refund_amount_rate",
+            "expected": 0.045454545454545456,
+            "actual": 0.049206349206349205,
+            "rule": "null/exact integer/declared float tolerance"
+          },
+          {
+            "path": "rows.{}.refund_order_rate",
+            "expected": 0.16666666666666666,
+            "actual": 0.3333333333333333,
+            "rule": "null/exact integer/declared float tolerance"
+          }
+        ]
+      },
+      "passed": true,
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-07-01",
+          "end": "2026-08-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            2625.0,
+            2863.6363636363635,
+            1.0909090909090908,
+            0.045454545454545456,
+            0.07692307692307693,
+            0.16666666666666666,
+            0.0,
+            1.4166666666666667
+          ]
+        ],
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "actual_copy": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-07-01",
+          "end": "2026-08-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(1), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS items_per_order\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-07-01' AND '2026-07-31'",
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            3687.5,
+            5187.5,
+            1.3333333333333333,
+            0.049206349206349205,
+            0.037037037037037035,
+            0.3333333333333333,
+            0.0,
+            1.7083333333333333
+          ]
+        ],
+        "seconds": 0.059,
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+        "answer": "统计范围为2026年7月1日至7月31日（截至8月1日不含）的青禾优选整体数据，未按门店分组；人员口径按CRM会员账户计数，金额由分换算为元，比例以百分数展示。结果：有效订单均额26.25元/单；购买会员人均消费28.64元/账户；购买频次1.09单/账户；退款金额占比4.55%；取消率7.69%；退款订单率16.67%；优惠率0.00%；单均商品件数1.42件/单。上述指标均返回有效值，其中优惠率为零而非未定义。数据来自合成测试库，统计单位为账户、订单笔数和金额分口径，不表示跨系统自然人已去重。",
+        "question": "请列出2026年7月青禾优选全店整体的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+        "trace_id": "ecb74c55-41b7-4000-b998-3e287da650e3",
+        "elapsed_seconds": 10.944,
+        "model_usage": {
+          "prompt_tokens": 10281,
+          "completion_tokens": 1268,
+          "total_tokens": 11549
+        },
+        "model_calls_with_usage": 2
+      },
+      "source_object_unchanged": true
+    },
+    {
+      "id": "small_actual_with_fixture_version",
+      "source_case": "B4-N01",
+      "source_kind": "copy_of_real_result_only; structured corruption is synthetic, not a model failure",
+      "source_path": "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd/result.json",
+      "source_sha256": "75a197cb064a323eed6975c888166680188e721a1497ad57429192418965c572",
+      "change": "Only data_version swapped from independent B2 fixture binding",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "data_version",
+            "expected": "qinghe-w03-20260923-small",
+            "actual": "qinghe-w03-b2-isolated-boundaries-20261108",
+            "rule": "locked version"
+          }
+        ]
+      },
+      "passed": true,
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            3714.814814814815,
+            6686.666666666667,
+            1.8,
+            0.15749685006299874,
+            0.0625,
+            0.13333333333333333,
+            0.041851106639839035,
+            1.2222222222222223
+          ]
+        ],
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "actual_copy": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(1), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS items_per_order\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            3714.814814814815,
+            6686.666666666667,
+            1.8,
+            0.15749685006299874,
+            0.0625,
+            0.13333333333333333,
+            0.041851106639839035,
+            1.2222222222222223
+          ]
+        ],
+        "seconds": 0.057,
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-b2-isolated-boundaries-20261108",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+        "answer": "2026年8月（统计区间2026-08-01至2026-09-01）青禾客户整体汇总结果：有效订单均额为37.15元/单；购买会员人均消费为66.87元/账户；购买频次为1.80单/账户；退款金额占比为15.75%；取消率为6.25%；退款订单率为13.33%；优惠率为4.19%；单均商品件数为1.22件/单。以上均为该客户当月汇总口径，未按门店等维度拆分；购买会员人数按CRM会员账户计数。各指标分母均非零，结果均已定义。",
+        "question": "请同时列出2026年8月青禾优选的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+        "trace_id": "a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd",
+        "elapsed_seconds": 9.633,
+        "model_usage": {
+          "prompt_tokens": 10275,
+          "completion_tokens": 1227,
+          "total_tokens": 11502
+        },
+        "model_calls_with_usage": 2
+      },
+      "source_object_unchanged": true
+    },
+    {
+      "id": "small_actual_with_fixture_data_sha",
+      "source_case": "B4-N01",
+      "source_kind": "copy_of_real_result_only; structured corruption is synthetic, not a model failure",
+      "source_path": "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd/result.json",
+      "source_sha256": "75a197cb064a323eed6975c888166680188e721a1497ad57429192418965c572",
+      "change": "Only data_sha256 swapped from independent B2 fixture binding",
+      "expected_passed": false,
+      "comparison": {
+        "passed": false,
+        "differences": [
+          {
+            "path": "data_sha256",
+            "expected": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+            "actual": "04c75db8744fbf71d8f6dca30489b74922aa5f3c67955912aff7870adb8fd127",
+            "rule": "locked version"
+          }
+        ]
+      },
+      "passed": true,
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            3714.814814814815,
+            6686.666666666667,
+            1.8,
+            0.15749685006299874,
+            0.0625,
+            0.13333333333333333,
+            0.041851106639839035,
+            1.2222222222222223
+          ]
+        ],
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "actual_copy": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(1), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN 1 ELSE 0 END), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END), 0) AS DOUBLE) AS items_per_order\nFROM \"data\".\"main\".\"orders\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            3714.814814814815,
+            6686.666666666667,
+            1.8,
+            0.15749685006299874,
+            0.0625,
+            0.13333333333333333,
+            0.041851106639839035,
+            1.2222222222222223
+          ]
+        ],
+        "seconds": 0.057,
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "04c75db8744fbf71d8f6dca30489b74922aa5f3c67955912aff7870adb8fd127",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+        "answer": "2026年8月（统计区间2026-08-01至2026-09-01）青禾客户整体汇总结果：有效订单均额为37.15元/单；购买会员人均消费为66.87元/账户；购买频次为1.80单/账户；退款金额占比为15.75%；取消率为6.25%；退款订单率为13.33%；优惠率为4.19%；单均商品件数为1.22件/单。以上均为该客户当月汇总口径，未按门店等维度拆分；购买会员人数按CRM会员账户计数。各指标分母均非零，结果均已定义。",
+        "question": "请同时列出2026年8月青禾优选的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+        "trace_id": "a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd",
+        "elapsed_seconds": 9.633,
+        "model_usage": {
+          "prompt_tokens": 10275,
+          "completion_tokens": 1227,
+          "total_tokens": 11502
+        },
+        "model_calls_with_usage": 2
+      },
+      "source_object_unchanged": true
+    }
+  ],
+  "source_files_sha256_before": {
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/metric_test_report.json": "381a45299758c44061738843149291d455dfc45c51d206f8acdcb72b240be1b0",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd/result.json": "75a197cb064a323eed6975c888166680188e721a1497ad57429192418965c572",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/47530c7d-0bde-47e0-9c10-1d3796d357ea/result.json": "704018a62ae0c617c024fd07e677661e9f8f3e241052722823d887cd986bfad2",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/9d3226de-2ac4-415f-bae1-e5f6d3b5dcc9/result.json": "7d3fc4fac78fb15bebdf7f64fcf36ea54d223dae1d2c05778926d26d01287a08",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/1880dac1-a055-44c0-8f62-fa0d39ce7eb7/result.json": "3083b322b9e26c92112ca88a2edcb7a4e84c5c69e06e5e64d1b8a52c319749dd",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/ecb74c55-41b7-4000-b998-3e287da650e3/result.json": "e98f92906cf185c91e0c13617a6e8148a2e1ab5de69e42dad0349e550340c9bf",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/83c279ab-e8fc-4f0f-b051-e47f91181711/result.json": "b64bedb07c1a5cc8015e2160a698664a616cce4dfb0397cfdb2e25442d48c9f8",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd/answer-trace.json": "45c9fc21c30b1444e234f4baf7c8cb5aa6b10dbe0896969e96c80cd571be3a68",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/47530c7d-0bde-47e0-9c10-1d3796d357ea/answer-trace.json": "088faa87d43217ea2b94a349a73cdb8a41e2aeed94a5c4a124aba3f0f54f5de0",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/9d3226de-2ac4-415f-bae1-e5f6d3b5dcc9/answer-trace.json": "fe92bdec564c6cb9eee2fdb5cc18db42f8f2c802fa6722ea52f17420cacff514",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/1880dac1-a055-44c0-8f62-fa0d39ce7eb7/answer-trace.json": "0ea2e19dce9e4538164cadac0db5a0512ded4b8aeedce6ed6ff62746e1e12359",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/ecb74c55-41b7-4000-b998-3e287da650e3/answer-trace.json": "53246ffa22bce0a29a67e93b6b0864594a2b04a490f30e1a8ce8cec7a0c21272",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/83c279ab-e8fc-4f0f-b051-e47f91181711/answer-trace.json": "a45cf5a9c928494466499f107dc79b378870d4ee70585d28c4707e5b95686bd7"
+  },
+  "source_files_sha256_after": {
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/metric_test_report.json": "381a45299758c44061738843149291d455dfc45c51d206f8acdcb72b240be1b0",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd/result.json": "75a197cb064a323eed6975c888166680188e721a1497ad57429192418965c572",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/47530c7d-0bde-47e0-9c10-1d3796d357ea/result.json": "704018a62ae0c617c024fd07e677661e9f8f3e241052722823d887cd986bfad2",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/9d3226de-2ac4-415f-bae1-e5f6d3b5dcc9/result.json": "7d3fc4fac78fb15bebdf7f64fcf36ea54d223dae1d2c05778926d26d01287a08",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/1880dac1-a055-44c0-8f62-fa0d39ce7eb7/result.json": "3083b322b9e26c92112ca88a2edcb7a4e84c5c69e06e5e64d1b8a52c319749dd",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/ecb74c55-41b7-4000-b998-3e287da650e3/result.json": "e98f92906cf185c91e0c13617a6e8148a2e1ab5de69e42dad0349e550340c9bf",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/83c279ab-e8fc-4f0f-b051-e47f91181711/result.json": "b64bedb07c1a5cc8015e2160a698664a616cce4dfb0397cfdb2e25442d48c9f8",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd/answer-trace.json": "45c9fc21c30b1444e234f4baf7c8cb5aa6b10dbe0896969e96c80cd571be3a68",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/47530c7d-0bde-47e0-9c10-1d3796d357ea/answer-trace.json": "088faa87d43217ea2b94a349a73cdb8a41e2aeed94a5c4a124aba3f0f54f5de0",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/9d3226de-2ac4-415f-bae1-e5f6d3b5dcc9/answer-trace.json": "fe92bdec564c6cb9eee2fdb5cc18db42f8f2c802fa6722ea52f17420cacff514",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/1880dac1-a055-44c0-8f62-fa0d39ce7eb7/answer-trace.json": "0ea2e19dce9e4538164cadac0db5a0512ded4b8aeedce6ed6ff62746e1e12359",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/ecb74c55-41b7-4000-b998-3e287da650e3/answer-trace.json": "53246ffa22bce0a29a67e93b6b0864594a2b04a490f30e1a8ce8cec7a0c21272",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/83c279ab-e8fc-4f0f-b051-e47f91181711/answer-trace.json": "a45cf5a9c928494466499f107dc79b378870d4ee70585d28c4707e5b95686bd7"
+  },
+  "all_source_files_unchanged": true,
+  "api_calls": 0,
+  "query_calls": 0
+}

@@ -1,0 +1,149 @@
+{
+  "status": "approved_accurate_aggregate_candidate_not_passed",
+  "approved": true,
+  "reviewed_at": "2026-11-08T02:14:17.816699+00:00",
+  "scope": "本轮六题汇总、原生计数/hash、270旧保护、静态稿与原生分数分离、六接续保全；不重评旧任务语义，不调用模型。",
+  "failed_checks": [],
+  "substantive_findings": [],
+  "counts": {
+    "selected": 6,
+    "native_runs": 6,
+    "http_attempts": 8,
+    "native_complete_answers": 5,
+    "overall_passed": 3,
+    "semantic_needs_revision": 2,
+    "protocol_failed": 1
+  },
+  "case_results": {
+    "passed": [
+      "E01",
+      "TRACECTRL01",
+      "CTRL01"
+    ],
+    "semantic_needs_revision": [
+      "U05",
+      "U01"
+    ],
+    "protocol_failed": {
+      "P01": "JSON_INVALID; public response exists but no native accepted answer"
+    }
+  },
+  "scope_boundary": {
+    "original_cases": 4,
+    "controls": 2,
+    "control_source_types": {
+      "CTRL01": "effective W02 interview",
+      "TRACECTRL01": "synthetic transfer control"
+    },
+    "original_82_not_rerun": 78,
+    "new_native_runs": 6,
+    "extra_HTTP_for_confirmed_length": [
+      "U05",
+      "U01"
+    ],
+    "no_semantic_format_or_network_recovery": true,
+    "candidate_passed": false,
+    "candidate_adopted": false,
+    "static_mentor_copies_are_native_passes": false,
+    "maintenance_skill_tuning": "out_of_current_scope"
+  },
+  "mechanical_check": {
+    "path": "aggregate-review/mechanical-check.json",
+    "sha256": "26119aca8ba0b72975ffbdb54219b603f21a7918744d367316f64e4e66c5715a",
+    "passed_checks": 619
+  },
+  "reviewed_files": [
+    {
+      "path": "W03/实操工程/artifacts/w03/citation-alignment-20261108/execution_ledger.json",
+      "sha256": "8c7d1e75988fc9ac2ad66b9f0cf69e6f8c6ee8c62e712e19fda7a7594b44cabf"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/citation-alignment-20261108/completion.json",
+      "sha256": "dad5541ad95ebfd46de5b4b55fb9bef95be932f22572ab3efc43b3634c5d492c"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/citation-alignment-20261108/progress.json",
+      "sha256": "702d2ccb76e0ac5cd2f61bfb94f6463c08d691b4aef161e757a61acc2df5fce2"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/citation-alignment-20261108/验证结果.md",
+      "sha256": "ed20d382b1d572d639e8bcc01381d23247fc16a321a854b05ebf0902a9704ff5"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/citation-alignment-20261108/README.md",
+      "sha256": "1e490c408e3db95b1ff78916cab0781596fa3c4df13e1374f58d67a155cbf300"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/citation-alignment-20261108/continuity_manifest.json",
+      "sha256": "35b61f20bb70a8ac5ec233380d5d63d30c3231b32fc9d3d5cebf18697204ab5c"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/citation-alignment-20261108/qa-01/independent-review/review.json",
+      "sha256": "ef7f365af9ec8a809b15290f0f8b6912509428a13a256ac1bb94fd2660895abf"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/citation-alignment-20261108/qa-01/independent-review/expectation-discrepancy.json",
+      "sha256": "391f8ce96dcc7c802b1baaa86276a9c3aa5eea3125c105e3dae553e721ab05be"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/citation-alignment-20261108/independent-review/mentor-static-review.json",
+      "sha256": "5a9434ad6b23d7c9f869613b47dcfeedea1218b41df2e44b5afc66055a579a37"
+    }
+  ],
+  "full_context_supplement": {
+    "path": "independent-review/full-context-clarification.json",
+    "sha256": "684fb45db6b8f5821c90bddb0669a2d5f52366b712184d8ed53561bb035bbf24",
+    "markdown_path": "independent-review/full-context-clarification.md",
+    "markdown_sha256": "7fc4c1db2f845c25eebbce55625ce0a879045c2309aaaace7335461daffe996e",
+    "mechanical_check": "aggregate-review/supplement-check.json",
+    "mechanical_check_sha256": "9157b2e5ae2b53336d4f759e2cc578b165b4a3865d04800e94162bbfb906303d",
+    "conclusion": "保留03931明确的审批安排尚未定陈述；该总体安排状态不能推出具体授权额度未设定。补正先前理由覆盖，U05和批次3/2/1结论不变。"
+  },
+  "expectation_and_review_history": {
+    "frozen_expectation_unchanged": true,
+    "old_expectation_not_sent_to_model": true,
+    "initial_U05_review_retained": true,
+    "r2_review_retained": true,
+    "future_expectation_separate_and_statically_reviewed": true,
+    "mentor_copies": 3,
+    "mentor_static_checks": 23,
+    "note": "未来预期与导师稿的形成时待审标题原样保留，当前静态通过以签发审核为准；不回改输入、原生分数、运行前门禁或发生时序。"
+  },
+  "continuity": {
+    "files_checked": 6,
+    "before_after_hashes_match": true,
+    "historical_text_preserved": true,
+    "only_changes": "新增当前停点与旧latest标history；学习笔记另增一个空行，无历史内容删除。",
+    "diff": "aggregate-review/reviewed-continuity.diff",
+    "diff_sha256": "9dfb194807afcab84056db4daf41c8963c96a423d572425ff2f9d25f09938a46"
+  },
+  "reviewed_completion": {
+    "path": "aggregate-review/reviewed-completion.json",
+    "sha256": "dad5541ad95ebfd46de5b4b55fb9bef95be932f22572ab3efc43b3634c5d492c"
+  },
+  "allowed_final_packaging_changes": {
+    "completion.json": {
+      "allowed_existing_field_changes": [
+        "status"
+      ],
+      "allowed_new_audit_reference_fields": [
+        "final_review",
+        "final_review_sha256",
+        "aggregate_review",
+        "aggregate_review_path",
+        "aggregate_review_sha256",
+        "aggregate_review_status",
+        "full_context_clarification",
+        "full_context_clarification_sha256"
+      ],
+      "constraint": "仅结束待审状态并链接本审核/完整语境补充；counts、candidate_adopted、范围、next_step、模型提示及既有报告账本hash不得改变。"
+    },
+    "progress.json": "保持results_recorded及现有计数，不需再改。",
+    "other_reviewed_files": "保持原样，包括原评分、root报告、六接续、冻结输入及静态受审稿。",
+    "required_final_check": "主控另存completion与受审快照的字段差异和最终hash；超出以上范围须重新审核。"
+  },
+  "formal_model_prompt_skill_or_proposal_changed": false,
+  "metric_queries_executed": 0,
+  "reviewer_api_calls": 0,
+  "semantic_rescoring_performed": false
+}

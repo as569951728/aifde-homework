@@ -1,0 +1,63 @@
+{
+  "calls": [
+    {
+      "id": "maintain-qinghe-before",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe.json",
+      "method": "inputs/maintain-before.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-qinghe-after",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-transfer-before",
+      "mode": "maintain",
+      "input": "inputs/maintain-transfer.json",
+      "method": "inputs/maintain-before.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-transfer-after",
+      "mode": "maintain",
+      "input": "inputs/maintain-transfer.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "initial"
+    },
+    {
+      "id": "maintain-qinghe-repeat",
+      "mode": "maintain",
+      "input": "inputs/maintain-qinghe.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "confirm"
+    },
+    {
+      "id": "maintain-transfer-repeat",
+      "mode": "maintain",
+      "input": "inputs/maintain-transfer.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "confirm"
+    },
+    {
+      "id": "maintain-positive-heldout",
+      "mode": "maintain",
+      "input": "inputs/maintain-positive.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "confirm"
+    },
+    {
+      "id": "maintain-missing-heldout",
+      "mode": "maintain",
+      "input": "inputs/maintain-missing.json",
+      "method": "inputs/maintain-after.md",
+      "stage": "confirm"
+    }
+  ],
+  "gate": "全部M/H项通过且无旧通过项退步，才跑复验和新案例；全部通过才替换。语义由导师逐条核原文，不以关键词出现评分。",
+  "limit": "8次方法回放；失败保留，修改候选须新建版本，不改输入/预期。",
+  "formal_apply": false
+}

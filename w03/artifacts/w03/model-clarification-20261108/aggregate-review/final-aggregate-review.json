@@ -1,0 +1,202 @@
+{
+  "status": "approved_as_accurate_bounded_results_with_U05_failure",
+  "approved": true,
+  "reviewed_at": "2026-11-07T17:03:11.542521+00:00",
+  "review_scope": "本轮正文澄清与六题局部验证的汇总准确性、各原生run/HTTP/响应分类、证据绑定、历史保全及六接续。只核268项旧baseline哈希，不扩大重评旧105次语义。",
+  "failed_checks": [],
+  "substantive_findings": [],
+  "checks": [
+    {
+      "name": "only_two_content_points_and_title_changed",
+      "passed": true
+    },
+    {
+      "name": "stage5_prompt_original_questions_materials_expected_and_policy_unchanged",
+      "passed": true
+    },
+    {
+      "name": "candidate_source_review_and_separate_input_gates_exact",
+      "passed": true
+    },
+    {
+      "name": "7_runs_8_HTTP_6_complete_answers_6_unique_cases",
+      "passed": true
+    },
+    {
+      "name": "QA01_partial_text_then_network_failure_preserved_and_correctly_classified",
+      "passed": true
+    },
+    {
+      "name": "QA02_one_separate_same_input_recovery_is_semantic_failure_not_resume_or_best_of",
+      "passed": true
+    },
+    {
+      "name": "current_5pass_U05fail_disjoint_input_tracks_and_77_unexecuted_originals",
+      "passed": true
+    },
+    {
+      "name": "268_old_baseline_files_12_protected_and_QA01_originals_preserved",
+      "passed": true
+    },
+    {
+      "name": "six_continuity_hashes_and_historical_text_preserved_with_declared_date_update",
+      "passed": true
+    },
+    {
+      "name": "mentor_copy_16_static_checks_two_changes_and_unchanged_corrected_body_hash",
+      "passed": true
+    },
+    {
+      "name": "reports_completion_progress_and_ledger_consistent_no_adoption_claim",
+      "passed": true
+    }
+  ],
+  "verified_counts": {
+    "unique_cases": 6,
+    "passed_cases": 5,
+    "unresolved_ids": [
+      "U05"
+    ],
+    "original_cases": 5,
+    "control_cases": 1,
+    "native_runs": 7,
+    "http_attempts": 8,
+    "successful_native_answers": 6,
+    "original_82_not_rerun_on_new_body": 77,
+    "tracks": {
+      "model_only": {
+        "cases": 4,
+        "passed": 4,
+        "unresolved_ids": []
+      },
+      "source_context_original": {
+        "cases": 1,
+        "passed": 0,
+        "unresolved_ids": [
+          "U05"
+        ]
+      },
+      "independent_control": {
+        "cases": 1,
+        "passed": 1,
+        "unresolved_ids": []
+      }
+    }
+  },
+  "batches": [
+    {
+      "batch": "qa-01",
+      "native_runs": 6,
+      "http_attempts": 7,
+      "complete_answers": 5,
+      "semantic_passed": 5,
+      "semantic_failed": 0,
+      "technical_not_assessable": 1,
+      "U05": "first attempt HTTP200 length with partial public text; declared expansion terminal MODEL_NETWORK_ERROR without final response or accepted answer; original result retained"
+    },
+    {
+      "batch": "qa-02-u05-recovery",
+      "native_runs": 1,
+      "http_attempts": 1,
+      "complete_answers": 1,
+      "semantic_passed": 0,
+      "semantic_failed": 1,
+      "U05": "B attributes MSG-01921 qualifier to MSG-01919; E cites paraphrase as MSG-03911 original wording; strict JSON success does not erase semantic failure"
+    }
+  ],
+  "result_boundary": {
+    "candidate_fully_passed": false,
+    "current_unique_case_result": "5/6; U05 failed",
+    "model_only": "4/4 passed within this sample",
+    "source_context_original": "U05 failed; source citation handling distinguished from model-body clarification",
+    "independent_control": "1/1 passed; artificial comparable-input example does not establish customer facts",
+    "new_body_original_cases": 5,
+    "independent_controls": 1,
+    "other_originals_not_run_on_new_body": 77,
+    "no_cross_version_22_or_82_claim": true,
+    "no_causal_or_stability_claim": true,
+    "formal_model_prompt_or_skill_adoption_approved": false,
+    "metric_validation_or_customer_acceptance_proven": false
+  },
+  "read_reviewed_artifacts": [
+    {
+      "path": "W03/实操工程/artifacts/w03/model-clarification-20261108/execution_ledger.json",
+      "sha256": "382a90637c6f17b0f64a88cec20deb7b15e94adc9bdee9f4c9385acbb061e25a"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/model-clarification-20261108/completion.json",
+      "sha256": "d8f9160ecac25ac591a9082bd1023657bfcaa388649dc7382a409b9cf63a7ad3"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/model-clarification-20261108/progress.json",
+      "sha256": "65119fb2aff84e60c3feee4fece337e5442028bfd2db221b665e7a8e7823d370"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/model-clarification-20261108/验证结果.md",
+      "sha256": "9407082b7e12df9f6d650b1106391c2759594ba675ccfa5e6f77f31c9c48cfe3"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/model-clarification-20261108/README.md",
+      "sha256": "8173bf08a2c680765ac0266228636e0533d1a658c9c1b0c7be727a7d5064a7d8"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/model-clarification-20261108/变更说明.md",
+      "sha256": "381b714a5e722a57d37daca37ce2408d8269d07b8cddde24b5db9d5df55a07f9"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/model-clarification-20261108/continuity_manifest.json",
+      "sha256": "73ffb6e1b863b3178d9082452b373875ed48b4326491cf904e375c48ba6d66a9"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/model-clarification-20261108/U05-correction-metadata.json",
+      "sha256": "7b052cc5148f9735386576af10384e755c86894583f78493ea49b51ad5fe57d5"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/model-clarification-20261108/U05-引用核对稿.md",
+      "sha256": "4cd4b2aca6c6e8a1b381176f04c3ea428a0d700a28dd495183a486522829b280"
+    },
+    {
+      "path": "W03/实操工程/artifacts/w03/model-clarification-20261108/U05-引用核对稿-审核前状态.md",
+      "sha256": "18ebc34908ee331d825765a94eec9c96cd8cfe0d6ed6d978daa2b47d8799a5e3"
+    }
+  ],
+  "integrity_validation": {
+    "path": "aggregate-review/final-integrity-check.json",
+    "sha256": "09f027e2d9cc786cb8db67df5ee1237fd3570538b522737a725c9e024a2c2b79",
+    "passed_checks": 1059
+  },
+  "package_validation": {
+    "path": "aggregate-review/final-package-check.json",
+    "sha256": "017097c3c684c65439f79eee57a6b9de93b58e8bebd5decd6d2e517ec168cf8b",
+    "passed_checks": 81
+  },
+  "continuity_diff": {
+    "path": "aggregate-review/reviewed-continuity.diff",
+    "sha256": "ca5f5fc726c19704520842f0db682823b33cccc12ef8ca777db31b6feaf982c8"
+  },
+  "reviewed_completion": {
+    "path": "aggregate-review/reviewed-completion.json",
+    "sha256": "d8f9160ecac25ac591a9082bd1023657bfcaa388649dc7382a409b9cf63a7ad3"
+  },
+  "allowed_final_packaging_changes": {
+    "completion.json": {
+      "allowed_existing_field_changes": [
+        "status"
+      ],
+      "allowed_new_fields": [
+        "aggregate_review",
+        "aggregate_review_path",
+        "aggregate_review_sha256",
+        "aggregate_review_status"
+      ],
+      "constraint": "仅结束待审状态并添加本审核引用；result/counts/版本hash/账本报告hash/next_step/未采用边界均原样，不能登记全修或采用。"
+    },
+    "progress.json": "保持results_recorded及全文原样，无需二次状态更新。",
+    "other_reviewed_files": "保持原样；不得改评分、原答、受审正文或接续内容。",
+    "postpackage_verification": "主控另存completion与reviewed-completion之间的字段差异及最终hash；超出允许字段须复审。"
+  },
+  "audit_development_note": "终包检查器初次误将QA01不可评枚举预设为not_assessable_mixed_technical_failure；实际评审枚举是not_assessable_technical_failure，混合性质由原生attempts及response_classification单独证明。已修检查器后81项通过，未更改受审文件或原分。",
+  "reviewer_api_calls": 0,
+  "semantic_rescoring_performed": false,
+  "human_decisions": []
+}

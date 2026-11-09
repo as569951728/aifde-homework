@@ -1,0 +1,74 @@
+{
+  "updated_at": "2026-11-07T05:17:53.403222+00:00",
+  "status": "stage4_frozen_awaiting_independent_gate",
+  "actual_model_calls": 61,
+  "stages": {
+    "stage1": {
+      "attempted": 18,
+      "native_answers": 17,
+      "semantic_pass": 15,
+      "semantic_fail": 2,
+      "network_no_answer": 1,
+      "failed_ids": [
+        "REG01",
+        "U04"
+      ],
+      "not_assessable": [
+        "E01"
+      ]
+    },
+    "stage1-network-recovery": {
+      "actual_calls": 0,
+      "status": "cancelled_before_execution_due_semantic_failures"
+    },
+    "stage1-r2": {
+      "actual_calls": 18,
+      "cases": 18,
+      "status": "independently_passed",
+      "session_id": 47966,
+      "native_answers": 18,
+      "semantic_pass": 18,
+      "semantic_fail": 0,
+      "http_attempts": 19,
+      "course_builtin_truncation_expansions": 1
+    },
+    "stage2": {
+      "actual_calls": 0,
+      "status": "not_executed_pending_repaired_stage1"
+    },
+    "stage3": {
+      "actual_calls": 0,
+      "status": "not_executed_pending_repaired_stage1"
+    },
+    "stage2-r2": {
+      "actual_calls": 8,
+      "cases": 8,
+      "status": "independently_passed",
+      "native_answers": 8,
+      "http_attempts": 8,
+      "semantic_pass": 8,
+      "semantic_fail": 0
+    },
+    "stage3-r2": {
+      "actual_calls": 17,
+      "cases": 17,
+      "status": "native_passed_semantic_regression",
+      "native_answers": 17,
+      "http_attempts": 17,
+      "semantic_pass": 16,
+      "semantic_fail": 1,
+      "failed_ids": [
+        "E01"
+      ]
+    },
+    "stage4-evidence-trace": {
+      "actual_calls": 0,
+      "planned_cases": 22,
+      "status": "frozen_check_only_passed",
+      "cases": 22
+    }
+  },
+  "formal_model_applied": false,
+  "formal_skill_changed": false,
+  "http_attempts": 62
+}

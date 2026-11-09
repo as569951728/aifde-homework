@@ -1,0 +1,32 @@
+{
+  "b3_questions": 6,
+  "original21_unchanged": true,
+  "new_fixture_required": false,
+  "old_fixture_reused": true,
+  "units": {
+    "buyer_count": "count",
+    "refund_buyer_count": "count",
+    "selling_store_count": "count",
+    "valid_order_items": "count"
+  },
+  "business_dimensions": [
+    "CRM账户",
+    "CRM账户",
+    "成交门店",
+    "原始购买件"
+  ],
+  "counterexamples": {
+    "jul_aug_count_valid_orders_as_buyers": 39,
+    "jul_aug_count_refund_orders_as_refund_buyers": 6,
+    "aug_sum_quantity_after_card_left_join": 42,
+    "aug_sum_quantity_distinct": 6,
+    "aug_all_paid_quantity": 37,
+    "jul_aug_count_distinct_paid_amount_as_buyers": 29
+  },
+  "limitations": [
+    "U01各边界由不同账户独立覆盖；没有同一账户同时多卡和多退款的交叉样本。",
+    "July按店购买账户无重叠，D01单独不能以数值证明非可加；July-August辅助去重总数与门店数之和不同。",
+    "原样本没有自然人身份表，不能验证跨系统自然人去重，指标仅CRM账户。",
+    "本批不是规模、客户验收或提交证据。"
+  ]
+}

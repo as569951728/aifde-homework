@@ -1,0 +1,191 @@
+{
+  "goal": "本轮支持接单员准备维修工单，请根据以下资料更新局部业务模型、缺口和核查记录，说明关联适配判断如何变化。",
+  "existing_model": "每份维修工单有独立工单号；跨店重复报修是否合并未知。接单员使用个人便签，但便签的字段与粒度未知。处理时长统计规则待核。",
+  "context": {
+    "fixture_kind": "导师新编留出案例：溪岸维修公司，非青禾客户事实；不得用于青禾作业",
+    "task": "本轮支持接单员准备维修工单，请根据以下资料更新局部业务模型、缺口和核查记录，说明关联适配判断如何变化。",
+    "old_model": "每份维修工单有独立工单号；跨店重复报修是否合并未知。接单员使用个人便签，但便签的字段与粒度未知。处理时长统计规则待核。",
+    "old_fit_gap": [
+      {
+        "id": "FIT-7",
+        "request": "将本店工单接入助手",
+        "category": "系统适配",
+        "evidence": "产品只能读样例文件；本店实际字段和权限未核"
+      },
+      {
+        "id": "FIT-8",
+        "request": "核实重复报修合并规则",
+        "history": "已决定转调查清单；关联FIT-7，未同步登记"
+      }
+    ],
+    "sources": [
+      {
+        "id": "DOC-1",
+        "kind": "本期主管确认的统计说明",
+        "content": "本期处理时长按工单关闭日期归属，不用于其他报表。有效工单均独立统计，不因客户相同合并。单位小时；未关闭的不计入已完成时长。"
+      },
+      {
+        "id": "DOC-2",
+        "kind": "产品能力资料",
+        "content": "当前可查询样例工单，客户字段映射和授权接入需适配；没有执行派单接口。"
+      },
+      {
+        "id": "Q-1",
+        "speaker": "访谈者",
+        "content": "上次工具拖慢所有接单员，所以大家都不用了，对吗？"
+      },
+      {
+        "id": "A-1",
+        "speaker": "接单员甲",
+        "content": "对，我是觉得切两个页面很麻烦。我这周没用，其他人情况我没统计。"
+      },
+      {
+        "id": "Q-2",
+        "speaker": "访谈者",
+        "content": "你最希望改善哪一步？"
+      },
+      {
+        "id": "A-2",
+        "speaker": "接单员甲",
+        "content": "帮我整理待处理工单和原始描述，但派工仍由值班主管决定。我不知道总部有没有统一合并规则，要问主管。"
+      },
+      {
+        "id": "IT-1",
+        "speaker": "信息员",
+        "content": "我可以协助核字段，请先说明用途和所需范围。文件还没导出，权限要按流程申请。"
+      }
+    ],
+    "review_state": "导师上轮代拟的范围说明已由学员采纳；本轮新增内容尚未审阅。正式取舍表为空。"
+  },
+  "transcript": {
+    "contract_version": "w02-0.1.0-draft",
+    "scope_id": "fixture-transfer",
+    "origin": "fixture",
+    "meeting_id": "fixture-maintenance",
+    "week": 2,
+    "role_id": "ROLE-MIXED-FIXTURE",
+    "scenario_version": "review-stage-test-1",
+    "state": "ended",
+    "purpose": "合成维修案例；各来源角色和资料类型以context.sources映射为准。",
+    "messages": [
+      {
+        "id": "DOC-1",
+        "speaker": "assistant",
+        "content": "本期处理时长按工单关闭日期归属，不用于其他报表。有效工单均独立统计，不因客户相同合并。单位小时；未关闭的不计入已完成时长。"
+      },
+      {
+        "id": "DOC-2",
+        "speaker": "assistant",
+        "content": "当前可查询样例工单，客户字段映射和授权接入需适配；没有执行派单接口。"
+      },
+      {
+        "id": "Q-1",
+        "speaker": "user",
+        "content": "上次工具拖慢所有接单员，所以大家都不用了，对吗？"
+      },
+      {
+        "id": "A-1",
+        "speaker": "assistant",
+        "content": "对，我是觉得切两个页面很麻烦。我这周没用，其他人情况我没统计。"
+      },
+      {
+        "id": "Q-2",
+        "speaker": "user",
+        "content": "你最希望改善哪一步？"
+      },
+      {
+        "id": "A-2",
+        "speaker": "assistant",
+        "content": "帮我整理待处理工单和原始描述，但派工仍由值班主管决定。我不知道总部有没有统一合并规则，要问主管。"
+      },
+      {
+        "id": "IT-1",
+        "speaker": "assistant",
+        "content": "我可以协助核字段，请先说明用途和所需范围。文件还没导出，权限要按流程申请。"
+      }
+    ]
+  },
+  "claims": [
+    {
+      "id": "fixture-0",
+      "statement": "本期处理时长按工单关闭日期归属，不用于其他报表。有效工单均独立统计，不因客户相同合并。单位小时；未关闭的不计入已完成时长。",
+      "kind": "fact",
+      "evidence_status": "reported",
+      "qualifiers": [],
+      "evidence": [
+        {
+          "meeting_id": "fixture-maintenance",
+          "message_id": "DOC-1",
+          "quote": "本期处理时长按工单关闭日期归属，不用于其他报表。有效工单均独立统计，不因客户相同合并。单位小时；未关闭的不计入已完成时长。"
+        }
+      ],
+      "conflict_ids": [],
+      "review": {
+        "status": "pending",
+        "note": ""
+      }
+    },
+    {
+      "id": "fixture-1",
+      "statement": "对，我是觉得切两个页面很麻烦。我这周没用，其他人情况我没统计。",
+      "kind": "fact",
+      "evidence_status": "reported",
+      "qualifiers": [],
+      "evidence": [
+        {
+          "meeting_id": "fixture-maintenance",
+          "message_id": "A-1",
+          "quote": "对，我是觉得切两个页面很麻烦。我这周没用，其他人情况我没统计。"
+        }
+      ],
+      "conflict_ids": [],
+      "review": {
+        "status": "pending",
+        "note": ""
+      }
+    },
+    {
+      "id": "fixture-2",
+      "statement": "帮我整理待处理工单和原始描述，但派工仍由值班主管决定。我不知道总部有没有统一合并规则，要问主管。",
+      "kind": "fact",
+      "evidence_status": "reported",
+      "qualifiers": [],
+      "evidence": [
+        {
+          "meeting_id": "fixture-maintenance",
+          "message_id": "A-2",
+          "quote": "帮我整理待处理工单和原始描述，但派工仍由值班主管决定。我不知道总部有没有统一合并规则，要问主管。"
+        }
+      ],
+      "conflict_ids": [],
+      "review": {
+        "status": "pending",
+        "note": ""
+      }
+    },
+    {
+      "id": "fixture-3",
+      "statement": "当前可查询样例工单，客户字段映射和授权接入需适配；没有执行派单接口。\n我可以协助核字段，请先说明用途和所需范围。文件还没导出，权限要按流程申请。",
+      "kind": "fact",
+      "evidence_status": "reported",
+      "qualifiers": [],
+      "evidence": [
+        {
+          "meeting_id": "fixture-maintenance",
+          "message_id": "DOC-2",
+          "quote": "当前可查询样例工单，客户字段映射和授权接入需适配；没有执行派单接口。"
+        },
+        {
+          "meeting_id": "fixture-maintenance",
+          "message_id": "IT-1",
+          "quote": "我可以协助核字段，请先说明用途和所需范围。文件还没导出，权限要按流程申请。"
+        }
+      ],
+      "conflict_ids": [],
+      "review": {
+        "status": "pending",
+        "note": ""
+      }
+    }
+  ]
+}

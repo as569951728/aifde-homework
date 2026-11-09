@@ -1,0 +1,285 @@
+{
+  "semantic_models": [
+    {
+      "name": "orders",
+      "model": "ref('orders')",
+      "defaults": {
+        "agg_time_dimension": "ordered_at"
+      },
+      "entities": [
+        {
+          "name": "order",
+          "type": "primary",
+          "expr": "order_id"
+        },
+        {
+          "name": "member",
+          "type": "foreign",
+          "expr": "member_id"
+        },
+        {
+          "name": "store",
+          "type": "foreign",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "ordered_at",
+          "type": "time",
+          "type_params": {
+            "time_granularity": "day"
+          }
+        },
+        {
+          "name": "channel",
+          "type": "categorical"
+        },
+        {
+          "name": "status",
+          "type": "categorical"
+        }
+      ],
+      "measures": [
+        {
+          "name": "net_sales_cents_amount",
+          "expr": "CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END",
+          "agg": "sum"
+        }
+      ]
+    },
+    {
+      "name": "members",
+      "model": "ref('members')",
+      "entities": [
+        {
+          "name": "member",
+          "type": "primary",
+          "expr": "member_id"
+        },
+        {
+          "name": "home_store",
+          "type": "foreign",
+          "expr": "home_store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "tier",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "name": "stores",
+      "model": "ref('stores')",
+      "entities": [
+        {
+          "name": "store",
+          "type": "primary",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "region",
+          "type": "categorical"
+        },
+        {
+          "name": "store_name",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    },
+    {
+      "name": "stores_home",
+      "model": "ref('stores')",
+      "entities": [
+        {
+          "name": "home_store",
+          "type": "primary",
+          "expr": "store_id"
+        }
+      ],
+      "dimensions": [
+        {
+          "name": "region",
+          "type": "categorical"
+        },
+        {
+          "name": "store_name",
+          "type": "categorical"
+        }
+      ],
+      "measures": []
+    }
+  ],
+  "metrics": [
+    {
+      "name": "net_sales_cents",
+      "label": "净销售额",
+      "description": "paid 订单实付金额减退款金额后合计；取消单不计；按原订单下单日期归属；单位分。",
+      "type": "simple",
+      "type_params": {
+        "measure": "net_sales_cents_amount"
+      }
+    }
+  ],
+  "catalog": [
+    {
+      "id": "net_sales_cents",
+      "name": "净销售额",
+      "aliases": [],
+      "unit": "cents",
+      "sources": [
+        {
+          "file": "01_订单日报说明.md",
+          "quote": "paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。"
+        },
+        {
+          "file": "02_财务邮件.md",
+          "quote": "退款按原订单日期归属。金额为整数分，展示元需换算。"
+        }
+      ],
+      "constraints": [
+        "聚合事实对象为 orders 订单行；一行一笔订单，按订单号识别，不因会员、卡或门店关系复制订单金额。",
+        "纳入 status = 'paid' 的订单；status = 'cancelled' 的取消单不计。",
+        "净销售额 = sum(paid_cents - refund_cents)，退款按原订单下单日期归属，不按现金退款发生日重归属。",
+        "全额退款的 paid 订单扣减后为零，仍属于 paid 订单行集合，不额外加净额大于零筛选，也不改称有效购买。",
+        "金额字段为整数分，指标结果单位为 cents；不在 measure 内提前换算为元。"
+      ],
+      "query_policy": {
+        "full_month_only": false
+      }
+    }
+  ],
+  "model_sql": {},
+  "grain_keys": {
+    "orders": [
+      "order_id"
+    ],
+    "members": [
+      "member_id"
+    ],
+    "stores": [
+      "store_id"
+    ],
+    "stores_home": [
+      "store_id"
+    ]
+  },
+  "unresolved": [],
+  "business_model_usage": [
+    {
+      "quote": "一行一笔订单。保留订单识别、关联账户、渠道（门店或小程序）、下单日期、支付状态、原价、实付、累计退款、原始购买件数的含义。",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "orders"
+        },
+        {
+          "kind": "dimension",
+          "name": "order__channel"
+        },
+        {
+          "kind": "dimension",
+          "name": "order__status"
+        },
+        {
+          "kind": "metric",
+          "name": "net_sales_cents"
+        }
+      ]
+    },
+    {
+      "quote": "会员归属门店描述账户归属；订单成交门店描述交易发生门店，两者是不同关系，不可互相替代",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "stores"
+        },
+        {
+          "kind": "semantic_model",
+          "name": "stores_home"
+        },
+        {
+          "kind": "dimension",
+          "name": "store"
+        },
+        {
+          "kind": "dimension",
+          "name": "home_store"
+        },
+        {
+          "kind": "dimension",
+          "name": "store__region"
+        },
+        {
+          "kind": "dimension",
+          "name": "store__store_name"
+        },
+        {
+          "kind": "dimension",
+          "name": "home_store__region"
+        },
+        {
+          "kind": "dimension",
+          "name": "home_store__store_name"
+        }
+      ]
+    },
+    {
+      "quote": "一行一份 CRM 会员账户；账户不等于跨系统自然人，也不等于自然人数。属性含注册日期、归属门店、会员等级",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "members"
+        },
+        {
+          "kind": "dimension",
+          "name": "member"
+        },
+        {
+          "kind": "dimension",
+          "name": "member__tier"
+        }
+      ]
+    },
+    {
+      "quote": "本期字典给出：账户—卡为一对多，账户—订单为一对多，卡与订单均关联账户。",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "orders"
+        },
+        {
+          "kind": "semantic_model",
+          "name": "members"
+        }
+      ]
+    },
+    {
+      "quote": "覆盖2024-09-01（含）至2026-09-01（不含），Asia/Shanghai，日期粒度，退款为截至快照的累计额。",
+      "used_for": [
+        {
+          "kind": "semantic_model",
+          "name": "orders"
+        },
+        {
+          "kind": "dimension",
+          "name": "metric_time__day"
+        },
+        {
+          "kind": "dimension",
+          "name": "metric_time__month"
+        },
+        {
+          "kind": "metric",
+          "name": "net_sales_cents"
+        }
+      ]
+    }
+  ]
+}

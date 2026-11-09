@@ -1,0 +1,20 @@
+{
+  "case_id": "C03",
+  "started_at": "2026-11-06T17:08:54.908936+00:00",
+  "completed_at": "2026-11-06T17:08:59.885673+00:00",
+  "question": "A完整卡记录只有失效悦享年卡和有效异业联名卡，能否合并两张卡的条件判为有资格？",
+  "fixture": null,
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-db67ffd7b5904c54b272037c86e67b8e/run.json",
+    "run_id": "RUN-db67ffd7b5904c54b272037c86e67b8e",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "不能。按本期总部运营月报口径，付费资格必须由同一张卡同时满足产品范围与有效期，不能把不同卡的条件拼接判断：失效的悦享年卡只满足产品类型但不满足有效期；有效的异业联名卡虽在有效期内，但不属于本期自营会员范围。因此在题设“完整卡记录”且无其他同卡同时满足条件的前提下，该账户不能据此判为有资格。依据为业务模型第3节规则1、2及小林 MSG-03848、03854、陈姐 MSG-03886、03888；该结论限于本期月报口径和题设完整记录，正式规则文件尚未取得。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "52101ccc7b1ed0deac7c603175873f618dbdf17bddcee25f246db843924f30fb"
+}

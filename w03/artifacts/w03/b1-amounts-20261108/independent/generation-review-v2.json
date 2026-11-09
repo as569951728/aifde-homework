@@ -1,0 +1,384 @@
+{
+  "status": "approved_to_load_and_query",
+  "approved_to_load_and_query": true,
+  "failed_checks": [],
+  "created_at": "2026-11-08T05:46:21.331100+00:00",
+  "checks": [
+    {
+      "id": "reviewed_candidate_exact",
+      "passed": true,
+      "evidence": "Exact pre-reviewed execution config"
+    },
+    {
+      "id": "global_scope_applied",
+      "passed": true,
+      "evidence": "statistics_unit now conditionally distinguishes amount/quantity/account; no unconditional account unit on amounts"
+    },
+    {
+      "id": "original_input_sources_same",
+      "passed": true,
+      "evidence": "Business generation input unchanged; scope config is runtime metadata. New model generation may vary naming/catalog."
+    },
+    {
+      "id": "skill_judge_preserved",
+      "passed": true,
+      "evidence": "No method/judge tuning"
+    },
+    {
+      "id": "expected_unchanged",
+      "passed": true,
+      "evidence": "Original pre-build oracle unchanged"
+    },
+    {
+      "id": "all_15_questions_preserved",
+      "passed": true,
+      "evidence": "No business expected or question change"
+    },
+    {
+      "id": "exact_five_metrics",
+      "passed": true,
+      "evidence": "All five target simple metrics, none extra"
+    },
+    {
+      "id": "formula_payment_cents",
+      "passed": true,
+      "evidence": "CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END"
+    },
+    {
+      "id": "formula_refund_cents",
+      "passed": true,
+      "evidence": "CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END"
+    },
+    {
+      "id": "formula_net_sales_cents",
+      "passed": true,
+      "evidence": "CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END"
+    },
+    {
+      "id": "formula_gross_cents",
+      "passed": true,
+      "evidence": "CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END"
+    },
+    {
+      "id": "formula_discount_cents",
+      "passed": true,
+      "evidence": "CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END"
+    },
+    {
+      "id": "no_extra_qualification_or_derived_sql",
+      "passed": true,
+      "evidence": "orders/members/transaction-store/home-store only, no cards or qualification"
+    },
+    {
+      "id": "grain_and_order_date",
+      "passed": true,
+      "evidence": "Order row and original local order date"
+    },
+    {
+      "id": "catalog_meaning_and_units",
+      "passed": true,
+      "evidence": "Manually reviewed five catalog constraints; paid order scope, net full-refund zero retained; no account/effective-purchase substitution"
+    },
+    {
+      "id": "catalog_sources_verbatim",
+      "passed": true,
+      "evidence": "5 direct continuous quotes, supporting each formula"
+    },
+    {
+      "id": "business_model_usage_verbatim",
+      "passed": true,
+      "evidence": "Four object/relationship/role/tier quotes exact and appropriate"
+    },
+    {
+      "id": "store_roles",
+      "passed": true,
+      "evidence": "order.store_id→store primary; member.home_store_id→home_store primary; roles not conflated"
+    },
+    {
+      "id": "source_check.json",
+      "passed": true,
+      "evidence": {
+        "passed": true,
+        "errors": []
+      }
+    },
+    {
+      "id": "dimension_check.json",
+      "passed": true,
+      "evidence": {
+        "passed": true,
+        "items": [
+          {
+            "id": "store",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "home_store",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "member",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "store__region",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "store__store_name",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "home_store__region",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "home_store__store_name",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "order__channel",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "order__status",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "member__tier",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "metric_time__day",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          },
+          {
+            "id": "metric_time__month",
+            "queryable": true,
+            "unresolved": null,
+            "passed": true
+          }
+        ],
+        "available": [
+          "home_store",
+          "home_store__region",
+          "home_store__store_name",
+          "member",
+          "member__tier",
+          "metric_time__day",
+          "metric_time__month",
+          "order__channel",
+          "order__status",
+          "store",
+          "store__region",
+          "store__store_name"
+        ],
+        "per_metric": {
+          "discount_cents": {
+            "store": "store",
+            "home_store": "home_store",
+            "member": "member",
+            "store__region": "store__region",
+            "store__store_name": "store__store_name",
+            "home_store__region": "member__home_store__region",
+            "home_store__store_name": "member__home_store__store_name",
+            "order__channel": "order__channel",
+            "order__status": "order__status",
+            "member__tier": "member__tier",
+            "metric_time__day": "metric_time__day",
+            "metric_time__month": "metric_time__month"
+          },
+          "gross_cents": {
+            "store": "store",
+            "home_store": "home_store",
+            "member": "member",
+            "store__region": "store__region",
+            "store__store_name": "store__store_name",
+            "home_store__region": "member__home_store__region",
+            "home_store__store_name": "member__home_store__store_name",
+            "order__channel": "order__channel",
+            "order__status": "order__status",
+            "member__tier": "member__tier",
+            "metric_time__day": "metric_time__day",
+            "metric_time__month": "metric_time__month"
+          },
+          "net_sales_cents": {
+            "store": "store",
+            "home_store": "home_store",
+            "member": "member",
+            "store__region": "store__region",
+            "store__store_name": "store__store_name",
+            "home_store__region": "member__home_store__region",
+            "home_store__store_name": "member__home_store__store_name",
+            "order__channel": "order__channel",
+            "order__status": "order__status",
+            "member__tier": "member__tier",
+            "metric_time__day": "metric_time__day",
+            "metric_time__month": "metric_time__month"
+          },
+          "payment_cents": {
+            "store": "store",
+            "home_store": "home_store",
+            "member": "member",
+            "store__region": "store__region",
+            "store__store_name": "store__store_name",
+            "home_store__region": "member__home_store__region",
+            "home_store__store_name": "member__home_store__store_name",
+            "order__channel": "order__channel",
+            "order__status": "order__status",
+            "member__tier": "member__tier",
+            "metric_time__day": "metric_time__day",
+            "metric_time__month": "metric_time__month"
+          },
+          "refund_cents": {
+            "store": "store",
+            "home_store": "home_store",
+            "member": "member",
+            "store__region": "store__region",
+            "store__store_name": "store__store_name",
+            "home_store__region": "member__home_store__region",
+            "home_store__store_name": "member__home_store__store_name",
+            "order__channel": "order__channel",
+            "order__status": "order__status",
+            "member__tier": "member__tier",
+            "metric_time__day": "metric_time__day",
+            "metric_time__month": "metric_time__month"
+          }
+        }
+      }
+    },
+    {
+      "id": "grain_check.json",
+      "passed": true,
+      "evidence": {
+        "passed": true,
+        "items": [
+          {
+            "model": "orders_model",
+            "check": "primary_key",
+            "columns": [
+              "order_id"
+            ],
+            "rows": 48,
+            "null_rows": 0,
+            "duplicate_rows": 0,
+            "passed": true
+          },
+          {
+            "model": "orders_model",
+            "entity": "member",
+            "target": "members_model",
+            "check": "foreign_key",
+            "unmatched_rows": 0,
+            "passed": true
+          },
+          {
+            "model": "orders_model",
+            "entity": "store",
+            "target": "store_model",
+            "check": "foreign_key",
+            "unmatched_rows": 0,
+            "passed": true
+          },
+          {
+            "model": "members_model",
+            "check": "primary_key",
+            "columns": [
+              "member_id"
+            ],
+            "rows": 20,
+            "null_rows": 0,
+            "duplicate_rows": 0,
+            "passed": true
+          },
+          {
+            "model": "members_model",
+            "entity": "home_store",
+            "target": "home_store_model",
+            "check": "foreign_key",
+            "unmatched_rows": 0,
+            "passed": true
+          },
+          {
+            "model": "store_model",
+            "check": "primary_key",
+            "columns": [
+              "store_id"
+            ],
+            "rows": 3,
+            "null_rows": 0,
+            "duplicate_rows": 0,
+            "passed": true
+          },
+          {
+            "model": "home_store_model",
+            "check": "primary_key",
+            "columns": [
+              "store_id"
+            ],
+            "rows": 3,
+            "null_rows": 0,
+            "duplicate_rows": 0,
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "metricflow_check.json",
+      "passed": true,
+      "evidence": {
+        "passed": true,
+        "metrics_compiled": [
+          "discount_cents",
+          "gross_cents",
+          "net_sales_cents",
+          "payment_cents",
+          "refund_cents"
+        ],
+        "validator": "SemanticManifestValidator; native explain + DuckDB EXPLAIN"
+      }
+    },
+    {
+      "id": "validation.json",
+      "passed": true,
+      "evidence": {
+        "passed": true,
+        "failures": []
+      }
+    }
+  ],
+  "reviewed_files_sha256": {
+    "artifacts/w03/b1-amounts-20261108/build-v2/response.json": "1b6fdd76373eef8d0839d70201ce399b3017b256c0ad6d95966039a0c33e599f",
+    "artifacts/w03/b1-amounts-20261108/build-v2/catalog.json": "e6a17febd864ed33293f05db562dc37925d195e9d6233650246cb893f647873e",
+    "artifacts/w03/b1-amounts-20261108/build-v2/metrics.yml": "be8149cede21cb4aa1abe0ef0b082ae364ac382d039edd5cb921a4be22b6fdb5",
+    "artifacts/w03/b1-amounts-20261108/build-v2/scope.json": "3c03f74df77702d68cd217e0ccba2ec6095819271a4c44343fc42ee69c36f366",
+    "artifacts/w03/b1-amounts-20261108/build-v2/input.json": "cf6aa9f168f71325ce134c19da02efaf893f26cbfda57ee47d45fa1ce3603921",
+    "artifacts/w03/b1-amounts-20261108/build-v2/validation.json": "f89a21df157ae1c1e0c79da911bf96c8e5c2378155cfa462537116f10fbbefd6",
+    "artifacts/w03/b1-amounts-20261108/candidate-build.json": "5ffd7f40c5830eaae1fb068d5aa262e0ba54e96505d081d90a67227667c38e78",
+    "artifacts/w03/b1-amounts-20261108/independent/expected-freeze.json": "92c3adb4786aadeb36f5542c23e66b158dbcc7687363000c1ff6c46bf1f318c3"
+  },
+  "next_gate": "Load fresh library and same15 NL questions; independent explanations must pass, preserve v1 11/15 explanation score. This generation review does not establish successful runtime repair."
+}

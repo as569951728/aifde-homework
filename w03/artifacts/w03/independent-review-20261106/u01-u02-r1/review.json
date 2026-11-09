@@ -1,0 +1,231 @@
+{
+  "schema_version": "independent_review_v1",
+  "date": "2026-11-06",
+  "reviewer": "independent_test_agent",
+  "review_subject": "frozen u01-u02-r1 input snapshots; U01/U02 design, expectations, demonstrations and v0.4 document coverage only",
+  "overall": "pass",
+  "requires_revision": false,
+  "findings": [],
+  "human_decisions": [],
+  "decision": "首批U01/U02的设计、预期、示范及当前模型正文覆盖结论审核通过；无阻断问题，无需本人决策。",
+  "independent_criteria": {
+    "path": "independent_criteria.md",
+    "sha256": "150f4c1d03e8b9158e9babeac8df9b230c648f748f0050fa245cb669ebc30f35",
+    "saved_before_author_expectations_read": true,
+    "basis": "指定题目、冻结业务模型、原材料及W02/W03原访谈；未先读取作者预期或示范。"
+  },
+  "reviewed_snapshots": [
+    {
+      "original": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/first-batch-u01-u02/questions.json",
+      "snapshot": "input/questions.json",
+      "sha256": "b68ef07a4c209aad1d5e50fd3fdedc098c84b1cfc38ce5963865ce7752b4330e"
+    },
+    {
+      "original": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/first-batch-u01-u02/reviewer_expectations.json",
+      "snapshot": "input/reviewer_expectations.json",
+      "sha256": "74346ed292ad36f7978fa18561f257adb02b658de21062e3edf1a70aeb6b1ee9"
+    },
+    {
+      "original": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/first-batch-u01-u02/baseline_document_review.json",
+      "snapshot": "input/baseline_document_review.json",
+      "sha256": "1d723301124d0b8fabf64d228b49105f6a1b764dc374a10bd0c5db9f1bbb601b"
+    },
+    {
+      "original": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/first-batch-u01-u02/README.md",
+      "snapshot": "input/README.md",
+      "sha256": "2ec289f808c4be1a2cd2d1453810adb3da64261abe468af3113b22cd7b20c4ac"
+    },
+    {
+      "original": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/first-batch-u01-u02/freeze_manifest.json",
+      "snapshot": "input/freeze_manifest.json",
+      "sha256": "dc07b65fb343cc170b7b0a2801a8231262610a67e2f0cd1be3bb34f5b48c1689"
+    },
+    {
+      "original": "W03/实操工程/artifacts/w03/model-understanding-design-20261106/first-batch-u01-u02/checks.json",
+      "snapshot": "input/checks.json",
+      "sha256": "3be55fa6fd0cabfbda6da0085d2d4c03ed9f403c64d4c217bd5e4e3c5f81efae"
+    },
+    {
+      "original": "W03/实操工程/docs/w03/model_validation_cases.md",
+      "snapshot": "input/model_validation_cases.md",
+      "sha256": "ce3c17bf2b9f476336dc992f1e989ef74db1d865a3c5ea50a151bc4195f6a270"
+    },
+    {
+      "original": "W03/实操工程/docs/w03/business_model.md",
+      "snapshot": "input/business_model.md",
+      "sha256": "6e48419390810b44cdaa1ba430b01038a54be37c9f8692b58933ac8785592bf0"
+    }
+  ],
+  "substantive_checks": [
+    {
+      "id": "R01",
+      "topic": "U01目标、前提与效果边界",
+      "result": "pass",
+      "locations": [
+        "input/questions.json:14",
+        "input/reviewer_expectations.json:14-21",
+        "input/README.md:9-21"
+      ],
+      "source_evidence": [
+        "W2沈总 MSG-01731/01733/01737/01739：先核范围口径、验证下降原因；老化为假设、三个月为期望，试点未批准。",
+        "W2小林 MSG-01925：整理关注会员及依据、减少旧工作；人群及执行仍需确认。",
+        "W3小林 MSG-03856/03860/03868/03870；04材料第7行；07材料第15行：本期问数可帮助核对，不证明真实原因或复购改善。"
+      ],
+      "assessment": "三条必答点抓住双目标、因果调查前提和有界阶段产出；没有把完成38项、提效或技术正确当成经营结果。示范的具体本期用途有04/07及03868/03870支持，来源在README及freeze_manifest补充列明。"
+    },
+    {
+      "id": "R02",
+      "topic": "U02概念、状态及示例",
+      "result": "pass",
+      "locations": [
+        "input/questions.json:21",
+        "input/reviewer_expectations.json:53-61",
+        "input/README.md:29-45"
+      ],
+      "source_evidence": [
+        "05字典第3/24/28/31/45/49-55行：CRM账户、等级、一账户多卡及卡金额含义。",
+        "W3小林 MSG-03848/03854：等级与资格分开，至少一张有效纳入卡，多卡去重。",
+        "W3小林 MSG-03868/03870；04材料第13行：资格与当月有效购买组合。",
+        "input/business_model.md:18-20：活跃的分析属性、购买记录、群体复购率。"
+      ],
+      "assessment": "七个概念区别和例子自洽。普通等级、有效家庭季卡、当月无有效购买可以并存；有资格不代表购买或活跃。示例明确人工构造，不冒称CSV账户。具体日期算法及六项公式没有被强设为本概念题必答。"
+    },
+    {
+      "id": "R03",
+      "topic": "模型正文与指标、SOW及过程记录分工",
+      "result": "pass",
+      "locations": [
+        "input/README.md:43",
+        "input/README.md:54-57",
+        "input/baseline_document_review.json:47",
+        "input/baseline_document_review.json:75",
+        "input/model_validation_cases.md:41-45",
+        "input/model_validation_cases.md:56"
+      ],
+      "source_evidence": [
+        "04材料第5/7/9行：本期月报选择及阶段范围。",
+        "input/reviewer_expectations.json:13-21、52-61：必答点实际清单。"
+      ],
+      "assessment": "U01只要求理解本期查数怎样支持下一步；U02只要求概念与条件区别。未把38项实现、完整SOW、访谈取舍或运行日志作为正文必答。月末报表选择与通用资格规则的分工明确；示例展开的报表结论不等于硬编码所有分子分母要求。"
+    },
+    {
+      "id": "R04",
+      "topic": "旧v0.4覆盖不足与历史正确性分开",
+      "result": "pass",
+      "locations": [
+        "input/reviewer_expectations.json:7",
+        "input/README.md:47-59",
+        "input/baseline_document_review.json:38-115",
+        "input/model_validation_cases.md:130-132"
+      ],
+      "source_evidence": [
+        "input/business_model.md:5/7/9：已写双目标、原因假设和核查前提。",
+        "input/business_model.md:17/26：账户卡关系待核；购买时点规则明确为待确认候选。",
+        "input/business_model.md:18-20：活跃/购买/群体复购率概念已有。"
+      ],
+      "assessment": "覆盖记录准确：已有内容保留，W03本期用途/账户卡及等级关系/资格规则待更新。没有倒改旧W02评分；当前快照合理保留未知时记新增覆盖不足，不以外部原文补答冒称正文已知。"
+    },
+    {
+      "id": "R05",
+      "topic": "来源、前提与错误会话隔离",
+      "result": "pass",
+      "locations": [
+        "input/reviewer_expectations.json:23-43",
+        "input/reviewer_expectations.json:63-78",
+        "input/freeze_manifest.json:21-59",
+        "input/model_validation_cases.md:41",
+        "input/model_validation_cases.md:60"
+      ],
+      "source_evidence": [
+        "W3小林transcript的week=3、role_id=ROLE-LIN、meeting_id=9e678773-8915-52e1-a1e6-939429340eab。",
+        "W3陈姐transcript的week=3、role_id=ROLE-CHEN、meeting_id=c77a57a1-651d-5183-a601-e25cbe01df51。",
+        "W2小林 MSG-01918/01919/01921：无人使用前提来自问题；三步是感受，不是测量。"
+      ],
+      "assessment": "本批U01依据使用01925，并未把带前提的01919作为无人使用或效率数字的独立证据。模型与审核预期区分已采纳建模认识和客户事实。未将W04作废内容用于肯定式业务判断；文件提及60天等仅为禁止混入的反例。陈姐日期答复与小林不掌握日期边界可按角色知悉范围兼容，无须升级用户。"
+    },
+    {
+      "id": "R06",
+      "topic": "预期隔离、示范和执行状态",
+      "result": "pass",
+      "locations": [
+        "input/questions.json:6-9",
+        "input/questions.json:15-16",
+        "input/questions.json:22-23",
+        "input/README.md:3",
+        "input/README.md:9",
+        "input/README.md:27",
+        "input/README.md:41-45",
+        "input/README.md:63-65",
+        "input/freeze_manifest.json:4-10",
+        "input/baseline_document_review.json:118-121"
+      ],
+      "source_evidence": [
+        "题目输入契约仅加载question和明确选定的业务模型；fixed_materials均为空。",
+        "README把示范、正文覆盖与实际API输出分开；manifest test_run_count=0。"
+      ],
+      "assessment": "设计层没有把答案预期或导师示范作为被测输入，也没有伪造actual。设计审核通过并不验证将来运行请求真的无泄漏；实际执行时仍需保存请求、快照和逐条判读。"
+    },
+    {
+      "id": "R07",
+      "topic": "冻结与覆盖引文复核",
+      "result": "pass",
+      "locations": [
+        "input_manifest.json:4-44",
+        "input/freeze_manifest.json:11-65",
+        "input/baseline_document_review.json:8-115",
+        "input/checks.json:3-13"
+      ],
+      "source_evidence": [
+        "独立重算8份输入快照哈希、4份题目包哈希、7项作者来源哈希，全部匹配。",
+        "独立检查8项protected文件当前哈希，全部匹配冻结前值。",
+        "独立核对11处正文引文的行号及完整文本，全部匹配；model_sha256匹配。",
+        "审核预期11处消息引用及补充定位3处均可回原文；U01/U02 ID一致。"
+      ],
+      "assessment": "这些只是完整性与可追溯性证据；本轮通过另有R01–R06实质内容审查支持，不把JSON可解析或哈希匹配当业务正确性证明。"
+    }
+  ],
+  "coverage_conclusion": {
+    "already_supported": [
+      "双目标、原因假设、口径核查前提与效果边界",
+      "活跃、购买记录、群体复购率的基本概念区别"
+    ],
+    "w03_extension_needed": [
+      "本期问数帮助小林核查口径与重复遗漏的具体用途及合成测试边界",
+      "本期CRM账户—卡关系、等级与资格区别及自然人边界",
+      "本期卡范围、指定日资格与月末统计选择的适用区分"
+    ],
+    "classification": "以上待补为新资料覆盖差异，不是重判历史错误，也不是本轮正式模型已更新。"
+  },
+  "verification": {
+    "input_snapshot_hashes": 8,
+    "input_snapshot_hashes_match": true,
+    "frozen_artifact_hashes": 4,
+    "frozen_artifact_hashes_match": true,
+    "author_source_hashes": 7,
+    "author_source_hashes_match": true,
+    "protected_files": 8,
+    "protected_files_unchanged": true,
+    "baseline_quote_anchors": 11,
+    "baseline_quote_anchors_match": true,
+    "model_hash_match": true,
+    "expected_message_locator_occurrences": 11,
+    "supplementary_message_locator_occurrences": 3,
+    "message_locators_exist": true,
+    "model_calls": 0,
+    "actual_answers_evaluated": 0,
+    "metric_queries_run": 0
+  },
+  "scope_limits": [
+    "没有实际课程模型/API问答运行；不能宣称两题模型测试通过。",
+    "没有运行38项指标或校验器；没有验证数值正确、性能、生产接入或业务效果。",
+    "没有审核完整M01–M08/U03–U06或W01修订；仅为判断U01/U02上下文与分工阅读相关段。",
+    "不表示客户批准、本人独立作答/掌握、模型更新或正式验收。"
+  ],
+  "next_action": "主Agent可据已确认覆盖差异准备W03模型更新输入；候选须独立正文审核后再安排受授权的实际问答验证。当前无必须先修的U01/U02测试设计问题。",
+  "writes": [
+    "independent_criteria.md",
+    "review.md",
+    "review.json"
+  ],
+  "completed_at": "2026-11-06T06:02:37.662853+00:00"
+}

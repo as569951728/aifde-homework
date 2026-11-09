@@ -1,0 +1,205 @@
+{
+  "approved_for_batch_closeout": true,
+  "scope": "B4 only: eight ratios, six real questions. U01 reuses six answers, no extra query.",
+  "failed_checks": [],
+  "reviewed_at_utc": "2026-11-08T09:34:52.948041+00:00",
+  "reviewed_case_ids": [
+    "B4-N01",
+    "B4-Z01",
+    "B4-R01",
+    "B4-D01-store",
+    "B4-D01-all",
+    "B4-F01"
+  ],
+  "numeric_passed": 6,
+  "sql_passed": 6,
+  "explanation_passed": 6,
+  "cases": [
+    {
+      "id": "B4-N01",
+      "trace_id": "a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "sql_passed": true,
+      "sql_review": "原始订单一行一单；按ordered_at半开日期转换；每项分别SUM/COUNT DISTINCT后NULLIF除法；无一对多连接或平均比率。全窗口聚合，无额外状态/门店/渠道筛选。",
+      "explanation_passed": true,
+      "explanation_review": "8月整月全店未分组；37.15元/单、66.87元/账户、1.80单/账户及15.75%、6.25%、13.33%、4.19%、1.22件/单正确。文字用8月限定窗口，没有把9月1日计入，也未冒充自然人。",
+      "expected_preserved": true,
+      "answer_trace_coherent": true,
+      "versions_checked": {
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "passed": true
+    },
+    {
+      "id": "B4-Z01",
+      "trace_id": "47530c7d-0bde-47e0-9c10-1d3796d357ea",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "sql_passed": true,
+      "sql_review": "原始订单一行一单；按ordered_at半开日期转换；每项分别SUM/COUNT DISTINCT后NULLIF除法；无一对多连接或平均比率。全窗口聚合，无额外状态/门店/渠道筛选。",
+      "explanation_passed": true,
+      "explanation_review": "6月1–29日明确含首尾；八项null解释为未定义，不能按0；未把覆盖内空窗说成unsupported。解释列举分母为零/无可计算记录，符合本题无订单事实，没有捏造业务成效。",
+      "expected_preserved": true,
+      "answer_trace_coherent": true,
+      "versions_checked": {
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "passed": true
+    },
+    {
+      "id": "B4-R01",
+      "trace_id": "9d3226de-2ac4-415f-bae1-e5f6d3b5dcc9",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "sql_passed": true,
+      "sql_review": "原始订单一行一单；按ordered_at半开日期转换；每项分别SUM/COUNT DISTINCT后NULLIF除法；无一对多连接或平均比率。全窗口聚合，无额外状态/门店/渠道筛选。",
+      "explanation_passed": true,
+      "explanation_review": "8月10日全退与取消混合；四项均额/频次/件均额为null并明确不是0；退款金额与订单率100%、取消率50%、优惠率0%均正确，未将所有指标一律置null或0。",
+      "expected_preserved": true,
+      "answer_trace_coherent": true,
+      "versions_checked": {
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "passed": true
+    },
+    {
+      "id": "B4-D01-store",
+      "trace_id": "1880dac1-a055-44c0-8f62-fa0d39ce7eb7",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "sql_passed": true,
+      "sql_review": "原始订单一行一单；按ordered_at半开日期转换；每项分别SUM/COUNT DISTINCT后NULLIF除法；无一对多连接或平均比率。按store_id组内聚合。",
+      "explanation_passed": true,
+      "explanation_review": "按订单成交门店S01/S02/S03分别呈现，未混会员归属店。八公式逐条正确。S01 1562.5分=15.625元按两位显示15.63元，1.125件/单保留三位同样正确；各组百分数及零优惠率正确。",
+      "expected_preserved": true,
+      "answer_trace_coherent": true,
+      "versions_checked": {
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "passed": true
+    },
+    {
+      "id": "B4-D01-all",
+      "trace_id": "ecb74c55-41b7-4000-b998-3e287da650e3",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "sql_passed": true,
+      "sql_review": "原始订单一行一单；按ordered_at半开日期转换；每项分别SUM/COUNT DISTINCT后NULLIF除法；无一对多连接或平均比率。全窗口聚合，无额外状态/门店/渠道筛选。",
+      "explanation_passed": true,
+      "explanation_review": "7月全店整体不分组；26.25元/单、28.64元/账户、1.09单/账户、4.55%、7.69%、16.67%、0.00%、1.42件/单正确，未平均门店比率；明确合成测试与CRM账户范围。",
+      "expected_preserved": true,
+      "answer_trace_coherent": true,
+      "versions_checked": {
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "passed": true
+    },
+    {
+      "id": "B4-F01",
+      "trace_id": "83c279ab-e8fc-4f0f-b051-e47f91181711",
+      "numeric_comparison": {
+        "passed": true,
+        "differences": []
+      },
+      "sql_passed": true,
+      "sql_review": "原始订单一行一单；按ordered_at半开日期转换；每项分别SUM/COUNT DISTINCT后NULLIF除法；无一对多连接或平均比率。小程序WHERE对全部组成量生效。",
+      "explanation_passed": true,
+      "explanation_review": "8月小程序渠道，未按店分组。渠道条件作用于所有组成量，37.46元/单、37.46元/账户、1.00单/账户、22.33%、6.25%、13.33%、4.71%、1.15件/单正确；8公式和分转元/百分数说明准确。",
+      "expected_preserved": true,
+      "answer_trace_coherent": true,
+      "versions_checked": {
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0"
+      },
+      "passed": true
+    }
+  ],
+  "B4_U01_passed": true,
+  "real_result_controls_passed": 10,
+  "real_result_controls_total": 10,
+  "all_source_files_unchanged": true,
+  "two_data_version_control": {
+    "small_binding": {
+      "status": "frozen_before_query",
+      "project": ".runtime/qinghe-b34-small-v1",
+      "case_count": 12,
+      "data_version": "qinghe-w03-20260923-small",
+      "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+      "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+      "independent_tests": "artifacts/w03/b34-accounts-ratios-20261108/tests-new-small.json",
+      "independent_tests_sha256": "45e1d2a61bbfafd4ef61211a09a1ca82351c2980a5c3952e55b25459faada9d9",
+      "execution_tests_sha256": "fde03f96437b39e2ee6f57f1e0cb13c6ac27f6fd408329635589f1ddd2c47d11",
+      "business_expectations_changed": false
+    },
+    "fixture_binding": {
+      "status": "frozen_before_query",
+      "project": ".runtime/qinghe-b34-fixture-v1",
+      "case_count": 1,
+      "data_version": "qinghe-w03-b2-isolated-boundaries-20261108",
+      "data_sha256": "04c75db8744fbf71d8f6dca30489b74922aa5f3c67955912aff7870adb8fd127",
+      "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
+      "independent_tests": "artifacts/w03/b34-accounts-ratios-20261108/tests-fixture-b2.json",
+      "independent_tests_sha256": "b65f8f044ae7ac2fe151c43ec928417cd958ad26259ba2c6f5796b29d4e48891",
+      "execution_tests_sha256": "0cc3c211e801cb595783328788ac1799eaa358358ad77353a1754b6dc942d11a",
+      "business_expectations_changed": false
+    },
+    "separate_data_versions": true,
+    "separate_data_hashes": true,
+    "same_library": true,
+    "boundary": "B4 six cases ran only original small. B2 fixture result semantics are outside this reviewer scope; fixture identifiers are used only for wrong-version comparison controls."
+  },
+  "coverage_limits": [
+    "July per-store discount rates are all zero; that metric alone cannot distinguish averaging store rates",
+    "July buyer sets are disjoint across stores; D01 alone cannot detect summing cross-store distinct accounts; B3 separately covers account aggregation",
+    "Small data contains no paid zero-amount order; prior B2 isolated fixture is separate evidence, not part of these six expected results"
+  ],
+  "evidence_sha256": {
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/metric_test_report.json": "381a45299758c44061738843149291d455dfc45c51d206f8acdcb72b240be1b0",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd/result.json": "75a197cb064a323eed6975c888166680188e721a1497ad57429192418965c572",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/47530c7d-0bde-47e0-9c10-1d3796d357ea/result.json": "704018a62ae0c617c024fd07e677661e9f8f3e241052722823d887cd986bfad2",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/9d3226de-2ac4-415f-bae1-e5f6d3b5dcc9/result.json": "7d3fc4fac78fb15bebdf7f64fcf36ea54d223dae1d2c05778926d26d01287a08",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/1880dac1-a055-44c0-8f62-fa0d39ce7eb7/result.json": "3083b322b9e26c92112ca88a2edcb7a4e84c5c69e06e5e64d1b8a52c319749dd",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/ecb74c55-41b7-4000-b998-3e287da650e3/result.json": "e98f92906cf185c91e0c13617a6e8148a2e1ab5de69e42dad0349e550340c9bf",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/83c279ab-e8fc-4f0f-b051-e47f91181711/result.json": "b64bedb07c1a5cc8015e2160a698664a616cce4dfb0397cfdb2e25442d48c9f8",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/a7aff8c0-cda1-4b18-8a26-1ab69d59d2fd/answer-trace.json": "45c9fc21c30b1444e234f4baf7c8cb5aa6b10dbe0896969e96c80cd571be3a68",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/47530c7d-0bde-47e0-9c10-1d3796d357ea/answer-trace.json": "088faa87d43217ea2b94a349a73cdb8a41e2aeed94a5c4a124aba3f0f54f5de0",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/9d3226de-2ac4-415f-bae1-e5f6d3b5dcc9/answer-trace.json": "fe92bdec564c6cb9eee2fdb5cc18db42f8f2c802fa6722ea52f17420cacff514",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/1880dac1-a055-44c0-8f62-fa0d39ce7eb7/answer-trace.json": "0ea2e19dce9e4538164cadac0db5a0512ded4b8aeedce6ed6ff62746e1e12359",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/ecb74c55-41b7-4000-b998-3e287da650e3/answer-trace.json": "53246ffa22bce0a29a67e93b6b0864594a2b04a490f30e1a8ce8cec7a0c21272",
+    "artifacts/w03/b34-accounts-ratios-20261108/test-new-v1/traces/83c279ab-e8fc-4f0f-b051-e47f91181711/answer-trace.json": "a45cf5a9c928494466499f107dc79b378870d4ee70585d28c4707e5b95686bd7",
+    "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json": "573d50edc16c228e68188644fb49f871ccfcbb52d57b9e647a9956cab6d55e66",
+    "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/expected-freeze.json": "5231a98e4f9a59072641adc9c89e258a1569038c387d119958429058c7ad41f0",
+    "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/ratio-ledger.json": "be1d1418d56d9282e7af1f49224bab10e66876db43259a363e8082afa587e721",
+    "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/generation-review-v1.json": "085aac9d885b6ee72b351a1b7b0c53230e19923107d9df70053cf3e9fca97ed0",
+    "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/real-result-controls-v1.json": "7ff44af3656e371473aebb364fa0359e18f2c418ab8f84d770a2f1a89cfe2616",
+    "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/b4-u01-answer-units-v1.json": "f53ca4210ff5bca2897f49774b8e2aab51f5cb89b9d14ebc15d9244fd273e9a7",
+    "artifacts/w03/b34-accounts-ratios-20261108/version-binding-new-v1.json": "7e34cd7372e2e5ad1bf8e1a85493f6e9943f91484372198138a3538242779a10",
+    "artifacts/w03/b34-accounts-ratios-20261108/version-binding-fixture-v1.json": "f9806a87c332c56ef5560b31bf132754fc872afc6dccb55ac4391852b0d4b6cf",
+    "customer/w03/judge.py": "730574e11794072e97af73e3cbff1bcb735a72a3811e75cd9d67c69ac6220fe3"
+  },
+  "human_decisions": [],
+  "reviewer_model_calls": 0,
+  "reviewer_query_calls": 0
+}

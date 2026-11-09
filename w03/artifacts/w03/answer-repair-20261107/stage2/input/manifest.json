@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-07",
+  "frozen_at": "2026-11-07T04:45:25.977910+00:00",
+  "frozen_before_execution": true,
+  "case_ids": [
+    "B05",
+    "DQ10",
+    "B01",
+    "B04",
+    "DQ09",
+    "DQ11",
+    "NUMCTRL01",
+    "DATECTRL01"
+  ],
+  "files": {
+    "input/business_model.md": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+    "input/controls.json": "f9263c9f06521b22202eed2ae32ba24a218aed8180535a18c525b2963e16ece2",
+    "input/knowledge.json": "33e8942f9138070fc27e7458776b0ca979d5a9ea6e39b02ce74e008f2c864b38",
+    "input/knowledge_prompt.txt": "e7ca9a5ef2836cae5e1bf96e0544dd1dcd66a441c204593a6d077cded5ba3c41",
+    "input/new_control_approval.json": "8b845a00252b345d9a1e452423291fd3b91a82e076be587bea18908098882420",
+    "input/original_questions.json": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+    "input/protected.json": "25cd04dd8392eb12803de036ce08c4c890f2fef2a57d0f15e2d86d42f74df980",
+    "input/request_origins.json": "73228942cd20c66f6cbb96d3bc70db9ba59c8e23727eccebd92292e5afb3fffe",
+    "input/requests.json": "f00737a78174fa3142b573d2748573dc3e6ddc8a3e33c112da7f7c94e105e404",
+    "input/reviewer_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+    "input/selected_questions.json": "c33aaae0744a4b61fedd26cae3758b5a2902d904381f5f9077e389380495953e"
+  },
+  "runtime_plan": {
+    "model": "deepseek-flash",
+    "profile": "deepseek-json",
+    "timeout": 180,
+    "max_tokens": 8192,
+    "retry_max_tokens": 16384,
+    "retry_timeout": 240
+  },
+  "tested_input": "Frozen model and exact prior requests or independently authored controls. Only answer prompt changes.",
+  "reviewer_expectations_sent": false,
+  "stop_rule": "No same-version semantic/format retry; preserve any native failure."
+}

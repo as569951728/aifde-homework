@@ -1,0 +1,23 @@
+{
+  "case_id": "B06",
+  "started_at": "2026-11-07T02:39:40.249333+00:00",
+  "completed_at": "2026-11-07T02:39:47.209887+00:00",
+  "question": "四张原始表各一行代表什么？关联键是什么？如果A归属甲店而O1成交乙店，两种门店统计如何区分？能否据此确定O1用了哪张卡？",
+  "fixture": null,
+  "input_track": "model_with_fixed_materials",
+  "fixed_materials": [
+    "W03/实操工程/materials/w03/05_数据字典.md"
+  ],
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-2a5220d1a5844004b7e54b33ea974d10/run.json",
+    "run_id": "RUN-2a5220d1a5844004b7e54b33ea974d10",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "依据指定《数据字典》：四张原始表的一行含义分别是——members 一行一份 CRM 会员账户（账户不等于跨系统自然人）；stores 一行一间门店；cards 一行一张会员卡（一个账户可对应多张卡）；orders 一行一笔订单。关联键为：orders.member_id 关联 members.member_id；orders.store_id 关联 stores.store_id；cards.member_id 关联 members.member_id；members.home_store_id 关联 stores.store_id。订单与具体卡之间没有给出直接关联键。\n\n若账户 A 归属甲店，而订单 O1 的成交门店是乙店，两种门店统计要分开：按会员归属门店统计时，A 归甲店，使用 members.home_store_id；按订单成交门店统计时，O1 归乙店，使用 orders.store_id。两者是不同关系，不可互相替代。\n\n不能据此确定 O1 用了哪张卡。现有材料只提供卡关联账户、订单关联账户，未提供订单与实际使用卡的对应关系；也不能按账户多卡复制订单，或从订单反推具体卡。依据为《数据字典》members、stores、cards、orders 各表说明，以及业务模型第 2 节关于账户—卡、账户—订单关系和“不提供订单与具体卡对应”的边界说明。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+  "native_run_sha256": "553916b403ffb35d65717bb749cf07ccd0d887a93b51b4668efb0f58ccc69316"
+}

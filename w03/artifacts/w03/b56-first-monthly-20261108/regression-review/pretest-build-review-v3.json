@@ -1,0 +1,365 @@
+{
+  "status": "approved_for_old_metric_regression",
+  "passed": true,
+  "reviewed_at": "2026-11-08T15:18:38.402803+00:00",
+  "build": "build-v3",
+  "scope": "B1-B4 old24 definitions and catalog, not new8 or actual test execution",
+  "score_inherited_from_v1": false,
+  "checks": [
+    {
+      "check": "order_count_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "order_count_measure",
+          "expr": "1",
+          "agg": "sum"
+        },
+        "material_rule": "all distinct order_id, including cancelled"
+      }
+    },
+    {
+      "check": "paid_order_count_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "paid_order_count_measure",
+          "expr": "CASE WHEN status = 'paid' THEN 1 ELSE 0 END",
+          "agg": "sum"
+        },
+        "material_rule": "paid orders including full refunds and zero-paid"
+      }
+    },
+    {
+      "check": "valid_order_count_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "valid_order_count_measure",
+          "expr": "CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END",
+          "agg": "sum"
+        },
+        "material_rule": "paid and paid_cents>refund_cents"
+      }
+    },
+    {
+      "check": "cancelled_order_count_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "cancelled_order_count_measure",
+          "expr": "CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END",
+          "agg": "sum"
+        },
+        "material_rule": "cancelled"
+      }
+    },
+    {
+      "check": "refund_order_count_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "refund_order_count_measure",
+          "expr": "CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END",
+          "agg": "sum"
+        },
+        "material_rule": "paid and refund_cents>0"
+      }
+    },
+    {
+      "check": "partial_refund_order_count_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "partial_refund_order_count_measure",
+          "expr": "CASE WHEN status = 'paid' AND refund_cents > 0 AND refund_cents < paid_cents THEN 1 ELSE 0 END",
+          "agg": "sum"
+        },
+        "material_rule": "paid and 0<refund_cents<paid_cents"
+      }
+    },
+    {
+      "check": "full_refund_order_count_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "full_refund_order_count_measure",
+          "expr": "CASE WHEN status = 'paid' AND paid_cents > 0 AND refund_cents = paid_cents THEN 1 ELSE 0 END",
+          "agg": "sum"
+        },
+        "material_rule": "paid and paid_cents>0 and refund_cents=paid_cents"
+      }
+    },
+    {
+      "check": "payment_cents_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "payment_cents_measure",
+          "expr": "CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END",
+          "agg": "sum"
+        },
+        "material_rule": "sum(paid_cents) over paid orders"
+      }
+    },
+    {
+      "check": "refund_cents_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "refund_cents_measure",
+          "expr": "CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END",
+          "agg": "sum"
+        },
+        "material_rule": "sum(refund_cents) over paid orders, attributed to ordered_at, not refund cash date"
+      }
+    },
+    {
+      "check": "net_sales_cents_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "net_sales_cents_measure",
+          "expr": "CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END",
+          "agg": "sum"
+        },
+        "material_rule": "sum(paid_cents-refund_cents) over paid orders, not valid-order scope"
+      }
+    },
+    {
+      "check": "gross_cents_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "gross_cents_measure",
+          "expr": "CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END",
+          "agg": "sum"
+        },
+        "material_rule": "sum(gross_cents) over paid orders"
+      }
+    },
+    {
+      "check": "discount_cents_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "discount_cents_measure",
+          "expr": "CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END",
+          "agg": "sum"
+        },
+        "material_rule": "sum(gross_cents-paid_cents) over paid orders; refunds do not reduce discounts"
+      }
+    },
+    {
+      "check": "buyer_count_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "buyer_count_measure",
+          "expr": "CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END",
+          "agg": "count_distinct"
+        },
+        "material_rule": "distinct member_id among valid orders, within time AND filters; CRM accounts, not natural people"
+      }
+    },
+    {
+      "check": "refund_buyer_count_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "refund_buyer_count_measure",
+          "expr": "CASE WHEN status = 'paid' AND refund_cents > 0 THEN member_id END",
+          "agg": "count_distinct"
+        },
+        "material_rule": "distinct member_id among paid orders with refund_cents>0; include full refunds; order date attribution"
+      }
+    },
+    {
+      "check": "selling_store_count_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "selling_store_count_measure",
+          "expr": "CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN store_id END",
+          "agg": "count_distinct"
+        },
+        "material_rule": "distinct order store_id among valid orders; not home_store_id"
+      }
+    },
+    {
+      "check": "valid_order_items_definition",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "name": "valid_order_items_measure",
+          "expr": "CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END",
+          "agg": "sum"
+        },
+        "material_rule": "sum original quantity among valid orders; not net units and not refund-derived return quantity"
+      }
+    },
+    {
+      "check": "avg_order_value_components",
+      "passed": true,
+      "detail": {
+        "numerator": "net_sales_cents",
+        "denominator": "valid_order_count"
+      }
+    },
+    {
+      "check": "avg_buyer_value_components",
+      "passed": true,
+      "detail": {
+        "numerator": "net_sales_cents",
+        "denominator": "buyer_count"
+      }
+    },
+    {
+      "check": "purchase_frequency_components",
+      "passed": true,
+      "detail": {
+        "numerator": "valid_order_count",
+        "denominator": "buyer_count"
+      }
+    },
+    {
+      "check": "refund_amount_rate_components",
+      "passed": true,
+      "detail": {
+        "numerator": "refund_cents",
+        "denominator": "payment_cents"
+      }
+    },
+    {
+      "check": "cancel_rate_components",
+      "passed": true,
+      "detail": {
+        "numerator": "cancelled_order_count",
+        "denominator": "order_count"
+      }
+    },
+    {
+      "check": "refund_order_rate_components",
+      "passed": true,
+      "detail": {
+        "numerator": "refund_order_count",
+        "denominator": "paid_order_count"
+      }
+    },
+    {
+      "check": "discount_rate_components",
+      "passed": true,
+      "detail": {
+        "numerator": "discount_cents",
+        "denominator": "gross_cents"
+      }
+    },
+    {
+      "check": "items_per_order_components",
+      "passed": true,
+      "detail": {
+        "numerator": "valid_order_items",
+        "denominator": "valid_order_count"
+      }
+    },
+    {
+      "check": "time_default_orders",
+      "passed": true,
+      "detail": "B1-B4 use raw orders/ordered_at, no order-sequence restrictions"
+    },
+    {
+      "check": "conditional_sum_count_grain",
+      "passed": true,
+      "detail": "SUM(1) and SUM(case...1 else0) are valid order counts because raw orders has one row per nonnull unique order_id; not inheriting v1 count expression"
+    },
+    {
+      "check": "store_join",
+      "passed": true,
+      "detail": "Order store_id joins selling_store.store_id; home_store separate; no cards join"
+    },
+    {
+      "check": "catalog_24_units",
+      "passed": true,
+      "detail": {
+        "payment_cents": "cents",
+        "refund_cents": "cents",
+        "net_sales_cents": "cents",
+        "gross_cents": "cents",
+        "discount_cents": "cents",
+        "order_count": "count",
+        "paid_order_count": "count",
+        "valid_order_count": "count",
+        "cancelled_order_count": "count",
+        "refund_order_count": "count",
+        "partial_refund_order_count": "count",
+        "full_refund_order_count": "count",
+        "buyer_count": "count",
+        "refund_buyer_count": "count",
+        "selling_store_count": "count",
+        "valid_order_items": "count",
+        "avg_order_value": "cents_per_order",
+        "avg_buyer_value": "cents_per_member",
+        "purchase_frequency": "orders_per_member",
+        "refund_amount_rate": "ratio",
+        "cancel_rate": "ratio",
+        "refund_order_rate": "ratio",
+        "discount_rate": "ratio",
+        "items_per_order": "items_per_order"
+      }
+    },
+    {
+      "check": "catalog_24_constraints_review",
+      "passed": true,
+      "detail": "Read v3 all 24 catalog entries against frozen original-material criteria: paid/refund/valid distinct sets correct, account and store keys correct, original quantities, eight ratio components and denominator-zero undefined retained."
+    },
+    {
+      "check": "old24_not_monthly_restricted",
+      "passed": true,
+      "detail": "All 24 old metrics remain non-monthly"
+    },
+    {
+      "check": "catalog_quotes",
+      "passed": true,
+      "detail": "All current old24 source quotes are exact contiguous original material"
+    },
+    {
+      "check": "tests-small-a-frozen.json_old_objects_unchanged",
+      "passed": true,
+      "detail": {
+        "old_count": 12,
+        "all_count": 22,
+        "allowed_change": "data/catalog version hash metadata only"
+      }
+    },
+    {
+      "check": "tests-small-b-frozen.json_old_objects_unchanged",
+      "passed": true,
+      "detail": {
+        "old_count": 21,
+        "all_count": 21,
+        "allowed_change": "data/catalog version hash metadata only"
+      }
+    },
+    {
+      "check": "old33_split_exact_once",
+      "passed": true,
+      "detail": "12 old cases in A + 21 old cases in B"
+    }
+  ],
+  "failed_checks": [],
+  "evidence_sha256": {
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/metrics.yml": "8b4792bad4befa2ffb4d68bfdb06c18bd2caad1263dbe74a46222f69ffa6fd6c",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/catalog.json": "5807a7995c0daa630d99c0f19007cc6b07f62c40f3272b370bd2c84a1500bd3a",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/response.json": "2cb6797a135383beb060991a71adae3f32d09eb6b026d7f354468880aeafb856",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/grain_check.json": "43297d822dec04ff3d5c824a1709c5f53ac05178234bb4d7801933b63cf5a1a1",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/metricflow_check.json": "bfaa876f0025eaa1f2deaa278f6c6c4332a6eda564ee3d97d0a0e0524fd0494a",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/source_check.json": "76aa3b58148d89cc797ae408eba304f008308b708476e2db124fcf4e5d1c7a2e",
+    "artifacts/w03/b56-first-monthly-20261108/build-v3/validation.json": "f89a21df157ae1c1e0c79da911bf96c8e5c2378155cfa462537116f10fbbefd6",
+    "artifacts/w03/b56-first-monthly-20261108/regression-review/review-contract.json": "97e4e789095e7608ae7151409d09318cfbb5a59d795fbe986a4fc30b14a77c5e",
+    "artifacts/w03/b56-first-monthly-20261108/tests-regression-small.json": "2a37f79dc67627dd6a25a5872aca3c3f996eae4bec11dd404abfa5cee3a5119a",
+    "artifacts/w03/b56-first-monthly-20261108/tests-regression-b2-fixture.json": "b65f8f044ae7ac2fe151c43ec928417cd958ad26259ba2c6f5796b29d4e48891",
+    "artifacts/w03/b56-first-monthly-20261108/tests-small-a-frozen.json": "7a8b4cc6ec537b695aa28ba4ee8a76f995bc331f944bac458dcd1268d3e1f0c4",
+    "artifacts/w03/b56-first-monthly-20261108/tests-small-b-frozen.json": "99cf8d0dcdb30277c629ae0d6cb6d24a9351a193bc5ff3b4c6b7296753085a5d"
+  },
+  "actual_review": "pending complete small-a-v3 old12 + small-b-v3 old21 + b2-fixture-v3 old1"
+}

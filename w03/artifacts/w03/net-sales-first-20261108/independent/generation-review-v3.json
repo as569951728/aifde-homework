@@ -1,0 +1,29 @@
+{
+  "status": "approved",
+  "approved": true,
+  "failed_checks": [],
+  "approved_to_load_and_query": true,
+  "reviewed_generation": "build-v3",
+  "skill_version": "v0.1.2",
+  "checks": {
+    "formula": "sum CASE paid THEN paid_cents-refund_cents ELSE 0 END matches frozen materials",
+    "time_and_unit": "ordered_at/day; full_month_only=false; cents",
+    "grain_and_roles": "order_id; foreign member/store; separate home_store primary; no cards join/model_sql",
+    "business_model_usage": "Five continuous model quotes match current v0.5 and support objects/grain/roles/coverage; no invented customer authorization or formula quotation",
+    "sources": "Finance quote now only original-order refund date and integer cents, excluding neighboring effective-order definition",
+    "constraints": "Explicit order-row aggregation, all paid row set including fully refunded zero contribution, no positive-net filter, no amount/account conflation",
+    "structural_checks": "all four passed; 12 dimensions structurally queryable"
+  },
+  "reviewed_sha256": {
+    "build-v3/response.json": "70fadc0dbaf01252fddca750c15755bd22b6766797279425d4cc26339991602e",
+    "build-v3/metrics.yml": "1ba2e332c26e001b10af98412eb2b6c0d90f843cdb2da75583d1bb1272b4b19c",
+    "build-v3/catalog.json": "adb2a6d9ca7aefb4eda003f45d5a58f45f99a3e93c8ffcf8c77c2ef91008a166",
+    "build-v3/skill_used.md": "d40329243c2c60c64ddfee0cb1b0617c4c2745c4b52d2b5d2f4b2b2570ea0fb2",
+    "build-v3/source_check.json": "76aa3b58148d89cc797ae408eba304f008308b708476e2db124fcf4e5d1c7a2e",
+    "build-v3/grain_check.json": "08982b61a19062863ea2769a14c8767ff7fa4f443a6590db0c0685936fcf16bb",
+    "build-v3/dimension_check.json": "8984a710e45579cf8cf4b283124e7fddcedc25a3ad45b680d80ccb20bf4add33",
+    "build-v3/metricflow_check.json": "c7f18b19e26208893c91d1b5f4bded60fa2b5d563bf0c79f65a489cfb48a36bc"
+  },
+  "expected_unchanged_sha256": "85cd3a21466edc7d48f56941ff50cfc20d3a4d4cdea8e327be59966226431dcc",
+  "next": "Merge/load fresh project, bind version, replay same eight cases once; final explanations require evidence, not assumed improvement."
+}

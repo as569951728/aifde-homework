@@ -1,0 +1,162 @@
+{
+  "status": "complete",
+  "reviewed_at_utc": "2026-11-08T09:00:49.278278+00:00",
+  "cases": [
+    {
+      "id": "B2-N01",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "完整七列32/30/27/2/4/1/3、订单笔数、下单日期半开月、含取消/全退边界及合成范围均一致；SQL逐单条件计数无全局状态过滤。"
+    },
+    {
+      "id": "B2-R01",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "8/10七列2/1/0/1/1/0/1，完整解释全退仍paid且非有效、退款含全退，零为覆盖内零；SQL当天上下界及订单粒度正确。"
+    },
+    {
+      "id": "B2-R02",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "8/15七列1/1/1/0/1/1/0，部分退同时有效及退款，解释两端严格与全退正实付条件、无额外地区筛选均正确；SQL与之吻合。"
+    },
+    {
+      "id": "B2-Z01",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "隔离fixture逐日五行七列全部一致，汇总5/4/2/1/2/1/1正确；零paid计支付但不有效/退款/全退，取消单分开；SQL日分组与[8/21,8/26)正确。完整答案明确合成测试、非青禾经营事实，未当作真实经营。"
+    },
+    {
+      "id": "B2-D01",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "按paid/cancelled身份逐项核所有14计数，取消组保留且其他六项零解释正确；SQL按status分组无预筛paid。未列其他状态的说明没有臆称存在新状态。"
+    },
+    {
+      "id": "B2-D02",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "6/30及7/1两日14计数及日期身份正确；SQL含两端对应[6/30,7/2)，日期分组正确；回答明确退款三项为覆盖内零和合成数据范围。"
+    },
+    {
+      "id": "B2-E01",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "空窗一行七个0，SQL限定6/1至6/29；解释说明结束边界6/30、未分组、覆盖内零，未把空窗说成无覆盖。"
+    },
+    {
+      "id": "B1-N01",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "8月五金额分转元1190.50/187.50/1003.00/1242.50/52.00一致；SQL五项paid行表达式正确；完整解释退款归原单、优惠不扣退款、合成范围。"
+    },
+    {
+      "id": "B1-R01",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "8/10五金额50/50/0/50/0元；SQL只在paid贡献金额且保留全退；答案解释净额与优惠零为已知零，无额外门店条件。"
+    },
+    {
+      "id": "B1-R02",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "8/15五金额90/20/70/100/10元、下单日、paid与退款不冲优惠均正确；SQL单日五表达式正确。"
+    },
+    {
+      "id": "B1-D01",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "7月S01/S02/S03成交门店身份及15金额逐项一致；SQL直接orders.store_id分组；解释没有混成会员归属门店，分转元及零值正确。"
+    },
+    {
+      "id": "B1-F01",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "8月华东成交地区AND小程序两筛选在SQL真实存在，关联stores唯一键；五金额297/0/297/322/25元与完整解释一致，paid/退款/优惠定义准确；时间说明以2026年8月明确限定。"
+    },
+    {
+      "id": "B1-Z01",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "6/1至6/29五个0，SQL与范围一致；解释paid、分转元、退款及优惠定义，并区分零与未定义。"
+    },
+    {
+      "id": "B1-D02",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "8月六个实际日期组、每组五金额及分转元逐格一致；SQL按ordered_at日分组并保留五项paid表达式；答案完整说明只列返回日期，不将未列日期说成未定义。"
+    },
+    {
+      "id": "NS01-aug-total",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "8月净额1003.00元、paid实付减退款及取消不计、下单日归属准确；SQL整月范围正确。"
+    },
+    {
+      "id": "NS02-july-transaction-store",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "S02=100、S03=90、S01=125元及合计315元一致；SQL orders.store_id直接分组；回答明确成交门店并说明paid及净额定义。"
+    },
+    {
+      "id": "NS03-aug-mini-program",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "8月小程序净额487元；SQL真实渠道筛选、paid扣退款及月范围正确；解释没有否认筛选或增加门店条件。"
+    },
+    {
+      "id": "NS04-partial-refund-day",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "8/15净额70元，SQL与定义准确；解释完整说明下单日期、paid净额、合成范围且无额外地区筛选。"
+    },
+    {
+      "id": "NS05-full-refund-day",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "8/10净额0元，SQLpaid净额保留全退而非过滤正净额；答案正确区分覆盖内零和未定义。"
+    },
+    {
+      "id": "NS06-covered-empty",
+      "sql_passed": true,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "6/1至6/29净额0元；SQL日期及净额公式正确；完整解释覆盖内零、不当作无覆盖。"
+    },
+    {
+      "id": "NS07-missing-time",
+      "sql_passed": null,
+      "sql_applicable": false,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "缺日期返回clarify，原因请求明确统计窗口且未猜默认月份；没有查询或成功答案，已核intent-trace原回复。"
+    },
+    {
+      "id": "NS08-outside-coverage",
+      "sql_passed": null,
+      "sql_applicable": false,
+      "full_explanation_passed": true,
+      "findings": [],
+      "review_note": "9月超[2024-09-01,2026-09-01)返回unsupported，原因明确无法查询9月而非给0；没有SQL或答案调用，已核intent-trace原回复。"
+    }
+  ]
+}

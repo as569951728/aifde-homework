@@ -1,0 +1,92 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "avg_order_value",
+      "avg_buyer_value",
+      "purchase_frequency",
+      "refund_amount_rate",
+      "cancel_rate",
+      "refund_order_rate",
+      "discount_rate",
+      "items_per_order"
+    ],
+    "start": "2026-07-01",
+    "end": "2026-08-01",
+    "group_by": [
+      "store"
+    ],
+    "filters": []
+  },
+  "sql": "SELECT\n  store\n  , CAST(net_sales_cents AS DOUBLE) / CAST(NULLIF(valid_order_count, 0) AS DOUBLE) AS avg_order_value\n  , CAST(net_sales_cents AS DOUBLE) / CAST(NULLIF(buyer_count, 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(valid_order_count AS DOUBLE) / CAST(NULLIF(buyer_count, 0) AS DOUBLE) AS purchase_frequency\n  , CAST(refund_cents AS DOUBLE) / CAST(NULLIF(payment_cents, 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(cancelled_order_count AS DOUBLE) / CAST(NULLIF(order_count, 0) AS DOUBLE) AS cancel_rate\n  , CAST(refund_order_count AS DOUBLE) / CAST(NULLIF(paid_order_count, 0) AS DOUBLE) AS refund_order_rate\n  , CAST(discount_cents AS DOUBLE) / CAST(NULLIF(gross_cents, 0) AS DOUBLE) AS discount_rate\n  , CAST(valid_order_items AS DOUBLE) / CAST(NULLIF(valid_order_count, 0) AS DOUBLE) AS items_per_order\nFROM (\n  SELECT\n    store\n    , SUM(__net_sales_cents) AS net_sales_cents\n    , SUM(__valid_order_count) AS valid_order_count\n    , COUNT(DISTINCT __buyer_count) AS buyer_count\n    , SUM(__refund_cents) AS refund_cents\n    , SUM(__payment_cents) AS payment_cents\n    , SUM(__cancelled_order_count) AS cancelled_order_count\n    , SUM(__order_count) AS order_count\n    , SUM(__refund_order_count) AS refund_order_count\n    , SUM(__paid_order_count) AS paid_order_count\n    , SUM(__discount_cents) AS discount_cents\n    , SUM(__gross_cents) AS gross_cents\n    , SUM(__valid_order_items) AS valid_order_items\n  FROM (\n    SELECT\n      store_id AS store\n      , 1 AS __order_count\n      , CASE WHEN status = 'paid' THEN 1 ELSE 0 END AS __paid_order_count\n      , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN 1 ELSE 0 END AS __valid_order_count\n      , CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END AS __cancelled_order_count\n      , CASE WHEN status = 'paid' AND refund_cents > 0 THEN 1 ELSE 0 END AS __refund_order_count\n      , CASE WHEN status = 'paid' THEN paid_cents ELSE 0 END AS __payment_cents\n      , CASE WHEN status = 'paid' THEN refund_cents ELSE 0 END AS __refund_cents\n      , CASE WHEN status = 'paid' THEN paid_cents - refund_cents ELSE 0 END AS __net_sales_cents\n      , CASE WHEN status = 'paid' THEN gross_cents ELSE 0 END AS __gross_cents\n      , CASE WHEN status = 'paid' THEN gross_cents - paid_cents ELSE 0 END AS __discount_cents\n      , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN member_id END AS __buyer_count\n      , CASE WHEN status = 'paid' AND paid_cents - refund_cents > 0 THEN quantity ELSE 0 END AS __valid_order_items\n    FROM \"data\".\"main\".\"orders\" orders_src_10000\n    WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-07-01' AND '2026-07-31'\n  ) subq_16\n  GROUP BY\n    store\n) subq_18",
+  "columns": [
+    "store",
+    "avg_order_value",
+    "avg_buyer_value",
+    "purchase_frequency",
+    "refund_amount_rate",
+    "cancel_rate",
+    "refund_order_rate",
+    "discount_rate",
+    "items_per_order"
+  ],
+  "rows": [
+    [
+      "S02",
+      5000.0,
+      5000.0,
+      1.0,
+      0.047619047619047616,
+      0.0,
+      0.5,
+      0.0,
+      2.0
+    ],
+    [
+      "S01",
+      1562.5,
+      1562.5,
+      1.0,
+      0.0,
+      0.1111111111111111,
+      0.0,
+      0.0,
+      1.125
+    ],
+    [
+      "S03",
+      4500.0,
+      9000.0,
+      2.0,
+      0.1,
+      0.0,
+      0.5,
+      0.0,
+      2.0
+    ]
+  ],
+  "seconds": 0.078,
+  "units": {
+    "avg_order_value": "cents_per_order",
+    "avg_buyer_value": "cents_per_member",
+    "purchase_frequency": "orders_per_member",
+    "refund_amount_rate": "ratio",
+    "cancel_rate": "ratio",
+    "refund_order_rate": "ratio",
+    "discount_rate": "ratio",
+    "items_per_order": "items_per_order"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "74c0a84000456fa0309f7eabecceaf6189dce2cf7c943c76e3a6dc0a144920d3",
+  "answer": "统计范围为当前客户青禾在2026年7月1日至2026年8月1日（2026年7月整月）的合成测试数据，按订单成交门店分组，未额外设置门店筛选。金额已由分换算为元并保留两位，比例按百分数展示。各成交门店结果：S02：有效订单均额50.00元/单，购买会员人均消费50.00元/账户，购买频次1.00单/账户，退款金额占比4.76%，取消率0.00%，退款订单率50.00%，优惠率0.00%，单均商品件数2.00件；S01：有效订单均额15.63元/单，购买会员人均消费15.63元/账户，购买频次1.00单/账户，退款金额占比0.00%，取消率11.11%，退款订单率0.00%，优惠率0.00%，单均商品件数1.125件；S03：有效订单均额45.00元/单，购买会员人均消费90.00元/账户，购买频次2.00单/账户，退款金额占比10.00%，取消率0.00%，退款订单率50.00%，优惠率0.00%，单均商品件数2.00件。口径说明：有效订单均额按净销售额/有效订单数，购买会员人均消费按净销售额/购买会员账户数，购买频次按有效订单数/购买会员账户数，退款金额占比按退款金额/实付金额，取消率按取消订单数/创建订单数，退款订单率按退款订单数/支付订单数，优惠率按优惠金额/支付订单原价金额，单均商品件数按有效订单商品件数/有效订单数。限制说明：人数按CRM会员账户计数，不等同于跨系统自然人已去重；表中的0.00%均为覆盖范围内实际计算为零，不是未定义。",
+  "question": "请按成交门店列出2026年7月青禾优选的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+  "trace_id": "65493ba3-14ae-4c90-8549-b7394afb7588",
+  "elapsed_seconds": 16.965,
+  "model_usage": {
+    "prompt_tokens": 12005,
+    "completion_tokens": 2583,
+    "total_tokens": 14588
+  },
+  "model_calls_with_usage": 2
+}

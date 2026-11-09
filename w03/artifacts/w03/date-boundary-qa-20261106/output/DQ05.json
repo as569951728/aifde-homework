@@ -1,0 +1,27 @@
+{
+  "case_id": "DQ05",
+  "started_at": "2026-11-06T15:36:11.684554+00:00",
+  "completed_at": "2026-11-06T15:36:19.908237+00:00",
+  "question": "在本期产品范围内，判断这张卡在指定判定日是否有效，并逐项说明日期依据。",
+  "fixture": {
+    "nature": "人工构造的隔离测试情境；不是课程CSV真实行或客户实际活动",
+    "card_type": "家庭季卡",
+    "valid_from": "2026-05-20",
+    "valid_until": "2026-08-20",
+    "ended_at": null,
+    "decision_date": "2026-08-20"
+  },
+  "input_track": "model_only",
+  "result": {
+    "status": "succeeded",
+    "run": "artifacts/w02/knowledge_runs/RUN-c1484bdf81864c06bae03abd99ed6b73/run.json",
+    "run_id": "RUN-c1484bdf81864c06bae03abd99ed6b73",
+    "error": null,
+    "semantic_review": "needs_review"
+  },
+  "actual_answer": "结论：在本题人工构造情境下，这张家庭季卡在判定日 2026-08-20 无效。逐项日期依据如下：1）卡类型为“家庭季卡”，属于本期总部运营月报纳入的悦享年卡、家庭季卡产品范围，因此进入本口径判断；2）valid_from 为 2026-05-20，按本期已说明的端点规则，权益从生效日期当天起有效；3）valid_until 为 2026-08-20，按同一端点规则，计划权益结束日期当天已无效，所以判定日正好落在计划结束日时不能判为有效；4）ended_at 为 null，仅表示没有提前终止日期，不表示无限期，也不改变计划结束日的限制；5）decision_date 为 2026-08-20，与计划结束日相同，因此该卡在该日已因计划结束而无效。依据为本期产品范围说明（MSG-03848、03854）及有效期端点说明（MSG-03886、03888、03890），并结合《数据字典》cards 的 valid_from、valid_until、ended_at 字段含义。以上是人工构造情境下的推导，不是客户真实卡记录、系统查询或生产核验结果；且这里只判断该卡本身，不等于判断账户整体是否具有付费资格——账户若另有符合产品范围且在判定日有效的卡，仍需按账户级规则另行判断。",
+  "native_structure_check": "passed",
+  "semantic_review": "pending_independent_review",
+  "model_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "native_run_sha256": "3c12bca1c521f87a5e353d740825856b8545343e91f6acdd3f5f090224e41234"
+}

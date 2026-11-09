@@ -1,0 +1,42 @@
+{
+  "client_date": "2026-11-08",
+  "frozen_at": "2026-11-08T01:57:06.422908+00:00",
+  "frozen_before_execution": true,
+  "case_ids": [
+    "U05",
+    "E01",
+    "TRACECTRL01",
+    "CTRL01",
+    "U01",
+    "P01"
+  ],
+  "files": {
+    "input/business_model.md": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9",
+    "input/controls.json": "ab9b9cc644734f711da910f947c6ec37e35b1882bfebee458624f51cfc9bb528",
+    "input/knowledge.json": "6dd11a598a1918f662d5b9362691cd83ce4d93705ae517846f60ed836e35048b",
+    "input/knowledge_prompt.txt": "74af26664273fe70d85cd0f84d13dc07bc7850614fb8368c2f822c74742ec40d",
+    "input/new_control_approval.json": "a5cd915e5c8e8cf555d37ec35f96847c0d9c582f60c4cdeba7ab0a1683b2d74e",
+    "input/original_questions.json": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+    "input/protected.json": "25cd04dd8392eb12803de036ce08c4c890f2fef2a57d0f15e2d86d42f74df980",
+    "input/request_origins.json": "0ac5c1d50a68621b42416bb776601a71eef93142526aa249d56fe102ac6315cf",
+    "input/requests.json": "62adbdd4a1fb9cf4c9ab2bf11c90a2fc6f9dcc8a37934e5c41a605fd838c2cb7",
+    "input/reviewer_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+    "input/selected_questions.json": "6cb12344ddeb1fac2036046d70ca7f94f554ad4ca406fb43de668a36aa161503"
+  },
+  "runtime_plan": {
+    "model": "deepseek-flash",
+    "profile": "deepseek-json",
+    "timeout": 180,
+    "max_tokens": 8192,
+    "retry_max_tokens": 16384,
+    "retry_timeout": 240
+  },
+  "tested_input": "Same clarified model, exact Stage5 questions/materials/fixture/expectations; only the isolated answer prompt changes",
+  "original_cases": 4,
+  "control_cases": 2,
+  "reviewer_expectations_sent": false,
+  "model_sha256": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9",
+  "candidate_prompt_sha256": "74af26664273fe70d85cd0f84d13dc07bc7850614fb8368c2f822c74742ec40d",
+  "controls_note": "All six original approved control metadata records and their approval binding copied byte-for-byte; only TRACECTRL01 and CTRL01 selected",
+  "stop_rule": "At most six new native runs, each case once; only native confirmed length expansion. No semantic/format resampling or separate network recovery this round."
+}

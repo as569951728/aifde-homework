@@ -1,0 +1,209 @@
+[
+  {
+    "id": "B5-N01",
+    "question": "请同时列出2026年8月青禾优选的注册会员数、观测期首购会员数、观测期首单净销售额（单位分）、观测期首单数、观测期后续购买订单数和有效订单数。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "new_member_count",
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count",
+          "valid_order_count"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "new_member_count",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count",
+        "valid_order_count"
+      ],
+      "rows": [
+        [
+          0,
+          5,
+          12800,
+          5,
+          22,
+          27
+        ]
+      ],
+      "units": {
+        "new_member_count": "count",
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count",
+        "valid_order_count": "count"
+      }
+    },
+    "expected_source": "独立CSV核算；规则：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单、05_数据字典.md字段关系；数据qinghe-w03-20260923-small；Asia/Shanghai [2026-08-01,2026-09-01)。注册按registered_at；有效为paid且paid_cents-refund_cents>0；先全覆盖按账户/ordered_at/order_id排序，后筛窗口。窗口注册账户0个；首单明细O0000011=3000分, O0000019=1900分, O0000036=2500分, O0000038=2600分, O0000041=2800分；后续有效单22笔。完整账户/订单/注册与过滤明细见本目录ledger-small-cases.json#B5-N01，源文件hash见expected-freeze.json。卡不参与计数；金额整数分，不推终身首购。"
+  },
+  {
+    "id": "B5-D01",
+    "question": "2026年7月青禾优选的注册会员数按会员归属门店、会员等级列出。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "new_member_count"
+        ],
+        "start": "2026-07-01",
+        "end": "2026-08-01",
+        "group_by": [
+          "home_store",
+          "member__tier"
+        ],
+        "filters": []
+      },
+      "columns": [
+        "home_store",
+        "member__tier",
+        "new_member_count"
+      ],
+      "rows": [
+        [
+          "S01",
+          "普通",
+          4
+        ],
+        [
+          "S01",
+          "金卡",
+          2
+        ],
+        [
+          "S02",
+          "普通",
+          4
+        ],
+        [
+          "S02",
+          "金卡",
+          2
+        ]
+      ],
+      "units": {
+        "new_member_count": "count"
+      }
+    },
+    "expected_source": "独立CSV核算；规则：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单、05_数据字典.md字段关系；数据qinghe-w03-20260923-small；Asia/Shanghai [2026-07-01,2026-08-01)。注册按registered_at；有效为paid且paid_cents-refund_cents>0；先全覆盖按账户/ordered_at/order_id排序，后筛窗口。窗口注册账户12个；首单明细O0000006=8000分, O0000008=4000分, O0000010=2000分, O0000017=2000分, O0000023=1500分, O0000026=1500分, O0000029=1500分, O0000032=1500分, O0000035=1500分, O0000045=1500分, O0000048=1500分；后续有效单1笔。完整账户/订单/注册与过滤明细见本目录ledger-small-cases.json#B5-D01，源文件hash见expected-freeze.json。卡不参与计数；金额整数分，不推终身首购。"
+  },
+  {
+    "id": "B5-Z01",
+    "question": "2026年6月1日至29日（包含1日和29日），青禾优选的注册会员数、观测期首购会员数、观测期首单净销售额（单位分）、观测期首单数和观测期后续购买订单数分别是多少？",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "new_member_count",
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count"
+        ],
+        "start": "2026-06-01",
+        "end": "2026-06-30",
+        "group_by": [],
+        "filters": []
+      },
+      "columns": [
+        "new_member_count",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count"
+      ],
+      "rows": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "units": {
+        "new_member_count": "count",
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count"
+      }
+    },
+    "expected_source": "独立CSV核算；规则：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单、05_数据字典.md字段关系；数据qinghe-w03-20260923-small；Asia/Shanghai [2026-06-01,2026-06-30)。注册按registered_at；有效为paid且paid_cents-refund_cents>0；先全覆盖按账户/ordered_at/order_id排序，后筛窗口。窗口注册账户0个；首单明细无；后续有效单0笔。完整账户/订单/注册与过滤明细见本目录ledger-small-cases.json#B5-Z01，源文件hash见expected-freeze.json。卡不参与计数；金额整数分，不推终身首购。"
+  },
+  {
+    "id": "B5-H03",
+    "question": "只看CRM账户M00005和M00007，按会员账户分别列出2026年8月的观测期首购会员数、观测期首单净销售额（单位分）、观测期首单数、观测期后续购买订单数和有效订单数。",
+    "expected": {
+      "status": "ok",
+      "intent": {
+        "metrics": [
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count",
+          "valid_order_count"
+        ],
+        "start": "2026-08-01",
+        "end": "2026-09-01",
+        "group_by": [
+          "member"
+        ],
+        "filters": [
+          {
+            "field": "member",
+            "op": "in",
+            "value": [
+              "M00005",
+              "M00007"
+            ]
+          }
+        ]
+      },
+      "columns": [
+        "member",
+        "first_buyer_count",
+        "first_order_sales_cents",
+        "first_order_count",
+        "repeat_order_count",
+        "valid_order_count"
+      ],
+      "rows": [
+        [
+          "M00005",
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          "M00007",
+          1,
+          3000,
+          1,
+          0,
+          1
+        ]
+      ],
+      "units": {
+        "first_buyer_count": "count",
+        "first_order_sales_cents": "cents",
+        "first_order_count": "count",
+        "repeat_order_count": "count",
+        "valid_order_count": "count"
+      }
+    },
+    "expected_source": "独立CSV核算；规则：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单、05_数据字典.md字段关系；数据qinghe-w03-20260923-small；Asia/Shanghai [2026-08-01,2026-09-01)。注册按registered_at；有效为paid且paid_cents-refund_cents>0；先全覆盖按账户/ordered_at/order_id排序，后筛窗口。窗口注册账户0个；首单明细O0000011=3000分；后续有效单1笔。完整账户/订单/注册与过滤明细见本目录ledger-small-cases.json#B5-H03，源文件hash见expected-freeze.json。卡不参与计数；金额整数分，不推终身首购。"
+  }
+]

@@ -1,0 +1,789 @@
+{
+  "round": "r1",
+  "created_at": "2026-11-06T15:19:46.558081+00:00",
+  "reviewer": "/root/w03_qualification_qa_reviewer",
+  "status": "passed_for_this_17_case_regression_only",
+  "counts": {
+    "pass": 17,
+    "needs_revision": 0,
+    "indeterminate": 0
+  },
+  "r0_counts": {
+    "pass": 11,
+    "needs_revision": 6,
+    "indeterminate": 0
+  },
+  "candidate_sha256": "63e0452d7501934cdeed98e7dab7a38c3d3ef7e3d38d59bcdeb63b1a94e620e8",
+  "prompt_sha256": "c2947d4bb17dcd5faf3a4da8740983c4ade6b91310d570ce18e228bfc4beaa63",
+  "run_index_sha256": "f8092b72aee38369f94fb910d2d7fd9601900ffa8a7f0353150371cf7378054a",
+  "manifest_sha256": "5b7531e67e2dd6baf2aa3853b8a94dc75d9157f22b2826814b8e61be86e600c0",
+  "runtime_integrity": {
+    "status": "passed",
+    "cases": 17,
+    "actual_attempts": 17,
+    "length_or_semantic_retries": 0,
+    "input_expected_leakage": false,
+    "tools": false,
+    "protected_files_unchanged": true
+  },
+  "change_control": "模型正文、原题、fixture、预期、GUARD、runner和模型参数不变；仅客户层回答提示变更，配置路径改到隔离副本。批准新提示hash与实际请求逐题一致。",
+  "rubric": "沿用来源优先判据及读实际答案前的U02概念题门槛校准；没有按R1输出修改预期，也不因措辞不同要求背固定答案。",
+  "cases": [
+    {
+      "id": "U02",
+      "verdict": "pass",
+      "previous_verdict": "needs_revision",
+      "required_point_review": [
+        {
+          "point": "七项身份与概念",
+          "status": "pass",
+          "actual": "七项分列，账户不等于自然人、卡可多张、等级与资格分开；付费资格非活跃/购买事实。"
+        },
+        {
+          "point": "资格/有效购买/活跃",
+          "status": "pass",
+          "actual": "规则保持同一卡产品+有效期，支付净额>0才有效购买，活跃定义未知不判负。"
+        },
+        {
+          "point": "例子与不可推出",
+          "status": "pass",
+          "actual": "明确为构造例：金卡账户一有效纳入卡和一失效卡，订单部分有效/全退无效，活跃未知。"
+        },
+        {
+          "point": "复购率",
+          "status": "pass",
+          "actual": "群体指标，定义与结果分开；没有强行补入正文未写出的客户具体指标公式。"
+        },
+        {
+          "point": "R0来源与字段失败复查",
+          "status": "pass",
+          "actual": "有明确来源规则按原范围使用；未笼统归成未确认学员选择，提前终止为空未扩成计划结束为空。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "DICT、ORDERS、FINANCE；LIN3 03848/03854；CHEN3 03886/03888/03890；ZHOU2 01744/01754支持对象、资格、有效期、活跃未知。"
+      ],
+      "r0_issue_resolution": [
+        {
+          "code": "R0-U02-01",
+          "status": "not_reproduced",
+          "evidence": "见本题 required_point_review 中 R0 复查项及保存的完整实际答复。"
+        },
+        {
+          "code": "R0-U02-02",
+          "status": "not_reproduced",
+          "evidence": "见本题 required_point_review 中 R0 复查项及保存的完整实际答复。"
+        }
+      ],
+      "issues": [],
+      "nonblocking_notes": [
+        "例子中“是否构成复购或复购率变化，也不能由该账户单独得出”把个体复购判断和群体指标写在一起，不够精确。当前例子未给复购定义、统计期间或完整历史，未知结论可成立；若今后已有这些条件，单账户是否复购可以判断，不宜抽象成永远不能判断。此题核心是复购率的群体含义，完整答复没有输出错误的具体复购判定，本轮不判失败。"
+      ],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-f562fde6c0f44f12bc1ae58a81d9184d/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/U02.json",
+      "output_sha256": "924adb575b77ec7ba8b66cc11e79d7826426d251a91e5401c90b41f9f98f4afc",
+      "run_sha256": "ab9b978d57b6b9425b059d4428d3869b9cfe11b6691bcf60afb4ec29d8621c0d",
+      "request_sha256": "e90e97e5246219320708dba6557b62725c824451f227543a417feddee73c7e66",
+      "actual_answer": "按当前业务模型（W03第三稿草稿，待确认，未写入），这些对象的含义和边界如下；其中带明确来源的表述按原范围使用，但本模型不是生产核验，也不把建模选择当成唯一事实。\n\n1. 会员账户：经营与统计对象。一行一份CRM会员账户，属性包括注册日期、归属门店、会员等级；账户不等于跨系统自然人，也不等于自然人数（《数据字典》members；MSG-01615、01679、01742）。\n\n2. 会员卡：卡归账户，一个账户可对应多张卡。属性包括卡产品类型、权益开始日期、计划权益结束日期、提前终止日期（可为空）、购卡实付金额。购卡实付不是商品订单收入，也不直接裁定付费资格（《数据字典》cards；MSG-03848、03854、03886）。本期材料不提供订单与具体卡的对应，不能据卡数复制订单，也不能据订单反推卡。\n\n3. 会员等级：普通、银卡、金卡，与付费资格是两回事；资料只给当前等级，当前等级不能还原过去各日的等级（《数据字典》members.tier；MSG-03848、03866、03870）。\n\n4. 付费资格：这是派生的判断，不是永久身份、会员等级、活跃状态或购买事实。含义是：给定业务范围和判定日，账户存在一张同时满足产品范围与有效期的卡。就本期总部运营月报而言，只纳入悦享年卡与家庭季卡持有人；异业联名卡和体验卡不纳入该月报口径。必须由同一张卡同时满足产品范围和有效期，不能把不同卡的条件拼接判断；会员等级与购卡实付金额不得代替卡类型和有效状态（MSG-03848、03854、03870、03886、03888；《本期统计确认邮件》）。权益端点为：生效日期当天起有效，计划权益结束日期当天已无效，存在提前终止日期时从提前终止当天起无效；提前终止为空只表示没有提前终止，仍受计划结束日期限制（MSG-03886、03890、03888）。\n\n5. 活跃：按业务规则、期间和范围判断的会员分析属性，定义未知；它不是第三类会员身份，未知不判为不活跃（MSG-01719、01754）。因此当前模型不能给出某个账户是否活跃的确定结论。\n\n6. 购买记录／订单：一行一笔订单，保留订单识别、关联账户、渠道、下单日期、支付状态、原价、实付、累计退款及原始购买件数的含义（《数据字典》orders；MSG-01752、01938）。有效购买是已支付且实付减累计退款后大于零；取消与全额退款不计为有效购买。支付状态不等于有效购买，支付订单可以全部退款而仍不是有效购买；原始购买件数也不是扣退货后的净销量（《订单日报说明》《财务邮件》《数据字典》）。\n\n7. 复购率：群体指标，定义与某期结果要分开表达。定义需要人群、资格纳入时点、期间、分子分母、有效购买条件和渠道；结果需要定义版本、来源与覆盖（MSG-01619、01754、01766；《会员运营周报》）。模型没有给出可直接引用的具体复购率定义版本或结果。\n\n区别可概括为：账户是统计对象；卡是账户下的权益载体；等级是当前会员层级属性；付费资格是按产品范围、有效期和判定日派生的账户级判断；活跃是定义未知的分析属性；订单是交易记录；有效购买是对订单按支付与退款条件作出的判断；复购率是群体口径指标，不由单个账户或单笔订单直接推出。\n\n以下例子是说明性构造，不是客户实际记录或查询结果：某账户当前等级为金卡；名下有一张悦享年卡在判定日有效，另有一张家庭季卡已过计划结束日；该账户在判定日具有付费资格；有一笔已支付且退款后实付仍大于零的订单，另有一笔已支付但累计退款等于实付的订单；其活跃状态因定义未知而不能判断；其是否构成复购或复购率变化，也不能由该账户单独得出。\n\n不能相互推出的状态包括：金卡等级不能推出具有付费资格，付费资格也不能推出等级；付费资格不等于活跃，活跃也不能由付费资格推出；多张卡不等于多个账户或多份订单，不能按卡数复制订单；购卡实付不能裁定付费资格，也不是商品订单收入；支付状态不能推出有效购买，全额退款的支付订单不是有效购买；单账户的有效购买不能推出复购率，复购率需要群体口径；当前等级不能还原过去等级；提前终止为空不等于无限期；账户不等于跨系统自然人；活跃未知不能判为不活跃。会员老化是否为主因、复购连续四个季度下降的原报表重算、80万与120万的口径关系，当前仍分别属于角色陈述、个人判断或待核查事项，不能由上述对象定义直接裁决。"
+    },
+    {
+      "id": "U03",
+      "verdict": "pass",
+      "previous_verdict": "pass",
+      "required_point_review": [
+        {
+          "point": "关系基数",
+          "status": "pass",
+          "actual": "账户多卡/多订单、卡订单各归一账户、账户当前归属店与订单成交店分列，门店可多账户/订单。"
+        },
+        {
+          "point": "成交门店",
+          "status": "pass",
+          "actual": "明确归B；A仅归属。"
+        },
+        {
+          "point": "订单用卡",
+          "status": "pass",
+          "actual": "明确现有账户关系不能证明实际用哪卡，需订单—卡使用记录。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "DICT各表及CHEN3去重原话一致。"
+      ],
+      "r0_issue_resolution": [],
+      "issues": [],
+      "nonblocking_notes": [
+        "“没有直接关系／无关联”按全文明确的本期字典关系边界解读；宜统一为“本期资料未提供直接关联”，避免读成生产业务不存在关联。答案多次明确实际用卡未知并需记录，故未判实质失败。"
+      ],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-043a24fc016c4c3faee78edc30e29421/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/U03.json",
+      "output_sha256": "a428e21adeeb810c7451e753ae5d3763f765ce1fca12cbe56318cfc23f86db68",
+      "run_sha256": "73301774d735216546c0640266cdb1f4b862b8acb90ddabcda9b2e2729829798",
+      "request_sha256": "c5372c5c21b2c2e02d4215e46f741d546100347898468869230e272eba6e2a03",
+      "actual_answer": "按“一个对象可以对应几个对象”说明：一个会员账户可以对应多张会员卡（账户—卡一对多），也可以对应多笔订单（账户—订单一对多）；一张卡只归属一个账户，一笔订单只关联一个账户。账户层面还有“归属门店”字段，当前账户记录对应一个归属门店标识；订单层面有“成交门店”字段，订单的成交门店描述交易实际发生门店。一个账户若有多笔不同门店的订单，就可以对应多个成交门店；一个门店可以关联多个归属账户和多笔成交订单，但材料没有给出门店对象的完整基数约束。卡与订单、卡与门店之间没有直接关系，材料未提供订单实际使用哪张卡的关联。依据是《数据字典》members、cards、orders 的字段说明及业务模型第2节“归属门店与成交门店不可互相替代”等关系边界；账户关系是账户级关系，不等于跨系统自然人身份已统一。\n\n在题设“账户归属A店、订单在B店成交”成立的前提下，这是情境推导：按成交门店查购买，该笔购买应归B店，因为订单的成交门店是B店；账户归属A店只描述账户归属，不能替代或改写订单的成交门店。若按账户归属门店统计，账户归A店；若按成交门店统计购买，订单归B店。两者是不同口径，不能混用。统计“有效购买”时还需按已支付且实付减累计退款大于零筛选，取消和全额退款不计；这不改变成交门店归属。\n\n不能从现有关系确定该订单使用了该账户的哪张卡。依据是：本期材料只说明卡归账户、订单关联账户，未提供订单与实际使用卡之间的关联；业务模型也明确“本期材料不提供订单实际使用哪张卡的关联，不据卡数复制订单，也不据订单反推卡”。因此，即使账户有多张卡、其中一张或几张在某个判定日有效，也只能判断资格或卡状态，不能判断这笔订单实际用了哪张卡。该点属于未知，需取得订单—卡使用记录或相应凭据后才能确认。\n\n上述依据来自《数据字典》members、cards、orders 的字段与关系说明，以及业务模型第2节“核心对象、属性与关系”中账户—卡、账户—订单一对多和“归属门店与成交门店不可互相替代”的边界；订单与实际使用卡无关联也来自同节及本期材料边界。还需保留的未知包括：账户归属门店是否会在历史中变化、是否存在多个归属门店、生产环境身份关系与历史状态能否还原；本期字典是干净合成测试数据，不是原始CRM，上述关系不等于生产自然人身份已统一或历史资格已还原。以上不是已执行查询或已核实生产记录。"
+    },
+    {
+      "id": "P01",
+      "verdict": "pass",
+      "previous_verdict": "pass",
+      "required_point_review": [
+        {
+          "point": "结论",
+          "status": "pass",
+          "actual": "有本期资格。"
+        },
+        {
+          "point": "理由与负例",
+          "status": "pass",
+          "actual": "有效悦享年卡满足，普通等级/购卡实付不能代替规则。"
+        },
+        {
+          "point": "范围",
+          "status": "pass",
+          "actual": "只用完整人工情境，非生产事实。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03848/03854，DICT及MONTH与结论一致。"
+      ],
+      "r0_issue_resolution": [],
+      "issues": [],
+      "nonblocking_notes": [],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-27fdeeaedec641d3bdb83d57fd182ba2/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/P01.json",
+      "output_sha256": "19ef3e154b9ec550f3e2766ecd01836a5c5a042ece7796daac49994f6f7e0f7f",
+      "run_sha256": "2f76e0c981885ac2d04186cfb11d91c629ea82fd3498cad4799a5f2a53305636",
+      "request_sha256": "6c9c44df47dff679724a873a272753b29f97f4728e99a8ee0b466b56e69adc13",
+      "actual_answer": "在该人工构造情境成立的前提下，账户A在判定日具有本期总部月报口径下的付费资格。依据是：本期月报只纳入悦享年卡与家庭季卡持有人；资格要求同一张卡同时满足产品范围与判定日有效期。题设给出的完整卡记录显示，账户A持有一张“悦享年卡”，且其在判定日的状态为“有效”，因此该卡同时满足产品范围与有效期条件。会员等级为“普通”不影响该判断，购卡实付金额也不得代替卡类型和有效状态来裁定资格。以上是仅据题设完整记录和本期月报口径作出的情境推导，不代表客户真实账户记录或已执行查询；本期口径的正式规则文件尚未取得。"
+    },
+    {
+      "id": "P02",
+      "verdict": "pass",
+      "previous_verdict": "pass",
+      "required_point_review": [
+        {
+          "point": "结论",
+          "status": "pass",
+          "actual": "有本期资格。"
+        },
+        {
+          "point": "理由与负例",
+          "status": "pass",
+          "actual": "有效家庭季卡满足同卡条件，普通等级/3000分不改变。"
+        },
+        {
+          "point": "范围",
+          "status": "pass",
+          "actual": "完整卡记录与已知状态允许情境判断，正式文件缺失不拦题目结论。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03848/03854，DICT及MONTH与结论一致。"
+      ],
+      "r0_issue_resolution": [],
+      "issues": [],
+      "nonblocking_notes": [
+        "仍使用“本期口径下的建模选择”泛称。全文同时逐项指明原访谈依据，并未否定其有来源或将人工条件改成未核，所以按R0同一原则不因该词单独判失败。"
+      ],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-bc6621f26a60425bbb2200b8cca7c593/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/P02.json",
+      "output_sha256": "269019b477722f7217918286abc09ff01680c8d36b88adc949d0ff33edad514c",
+      "run_sha256": "d276029f6af2fef0225ef32f02278ba77ae99ae132129847905a532ca1c613a8",
+      "request_sha256": "ca745a2f5959219f2b14f6949bd61c1c86a010351abae0aa8f3cc54c54517b31",
+      "actual_answer": "结论：账户A在判定日有付费资格。\n\n依据与推导：本题是人工构造的隔离测试情境，且题设给出cards_complete=true，账户A仅有一张卡：家庭季卡，且该卡在判定日的状态直接给定为“有效”。按本期总部运营月报口径，纳入范围是悦享年卡与家庭季卡持有人，家庭季卡属于纳入产品范围。付费资格规则要求同一张卡同时满足本期产品范围与判定日有效期；账户只要有一张这样的卡即具有付费资格，多张有效卡不重复计账户。因此，家庭季卡这一张卡已同时满足产品范围和有效期，账户A在判定日有付费资格。\n\n会员等级与购卡实付：账户A为普通等级，但会员等级与付费资格是两回事；card_paid_cents=3000也不能代替卡类型和有效状态。二者均不改变上述结论。\n\n关系与建模选择：业务模型将会员账户定义为经营与统计对象，一行一份CRM会员账户，账户不等于跨系统自然人；卡归账户且账户可有多张卡；付费资格是给定业务范围与判定日派生出的资格，不是永久身份、会员等级或购买事实。本期总部月报用卡产品与有效期判断资格，是本期口径下的建模选择，不扩展为其他报表或永久身份。\n\n冲突与未知：正式规则文件尚未取得，生产环境身份统一和历史资格还原仍缺实际记录依据；但本题已给出完整卡记录及判定日状态，结论仅是该人工情境下的推导，不是客户真实记录、生产查询或已执行名单。依据为业务模型第3节规则1、2及《本期统计确认邮件》、MSG-03848、03854、03870、03886、03888所表达的本期口径。"
+    },
+    {
+      "id": "P03",
+      "verdict": "pass",
+      "previous_verdict": "pass",
+      "required_point_review": [
+        {
+          "point": "结论",
+          "status": "pass",
+          "actual": "无本期资格。"
+        },
+        {
+          "point": "理由与负例",
+          "status": "pass",
+          "actual": "唯一悦享卡失效，完整记录无其他合格卡，金卡/金额不补足。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03848/03854，DICT及MONTH与结论一致。"
+      ],
+      "r0_issue_resolution": [],
+      "issues": [],
+      "nonblocking_notes": [],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-a15296a00f004dc0b4f8da7af72f535f/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/P03.json",
+      "output_sha256": "329e9a67f5539ea47bd32224087d0f47a30787dd13bbc2409802c4e204994f60",
+      "run_sha256": "87af533655960eab37ba00a70ac1e4c36b8f843d5bc1934533b23c155faaba28",
+      "request_sha256": "ca0933aa05fad96b51f91ae4a9388d425506ea9554716ac37d4c7afc7bee9cd1",
+      "actual_answer": "在本题人工构造情境且卡记录完整的前提下，账户A在判定日没有付费资格。依据本期总部月报口径，账户需有一张同时满足本期产品范围（悦享年卡或家庭季卡）且在判定日有效的卡；A唯一的卡虽为悦享年卡，但判定日状态为“已失效”，因此不满足有效期条件。完整卡记录又表明没有其他可判断的卡。金卡等级和购卡实付金额不能代替卡类型与有效状态，故不能据此认定付费资格。该结论仅为情境推导，不代表客户实际记录或已执行查询。"
+    },
+    {
+      "id": "P04",
+      "verdict": "pass",
+      "previous_verdict": "pass",
+      "required_point_review": [
+        {
+          "point": "结论",
+          "status": "pass",
+          "actual": "无本期资格。"
+        },
+        {
+          "point": "理由与负例",
+          "status": "pass",
+          "actual": "唯一有效联名卡不纳入，收费/等级不改变。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03848/03854，DICT及MONTH与结论一致。"
+      ],
+      "r0_issue_resolution": [],
+      "issues": [],
+      "nonblocking_notes": [],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-d42f7e3e0d5a4d6e88f519dbc83704f6/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/P04.json",
+      "output_sha256": "3eef9dc4a7d2aeedfff07c046e97d825fc1d701d681e690f06aef5277b0c64da",
+      "run_sha256": "ebfc92938d8db7465c8d5637cdffd2eabc4b4c25f6ae93c85336eeb9049c48ca",
+      "request_sha256": "f6a2d3b9cd4518addb4012ef4c4aae2b6159a9bc073a7a063ec245d38aba6a79",
+      "actual_answer": "在本期总部月报口径下，账户A在判定日没有付费资格。理由是：本期月报只纳入悦享年卡与家庭季卡持有人，异业联名卡即使收费也由合作方经营，不属本期自营会员范围；而账户A的完整卡记录中唯一一张卡是异业联名卡，虽然其在判定日有效且实付10000分，也不满足产品范围。付费资格要求同一张卡同时满足产品范围与有效期，不能把金卡等级或购卡实付金额当作资格依据，也不能用其他卡的条件拼接。因此，在“卡记录完整”且仅有该异业联名卡的情境下，没有符合本期月报产品范围且在判定日有效的卡，结论为无付费资格。该判断是依据题设人工构造情境和本期月报口径所作的推导，不代表客户实际记录或已执行查询；正式规则文件尚未取得，但本题限定按本期月报口径判断。"
+    },
+    {
+      "id": "P05",
+      "verdict": "pass",
+      "previous_verdict": "pass",
+      "required_point_review": [
+        {
+          "point": "结论",
+          "status": "pass",
+          "actual": "无本期资格。"
+        },
+        {
+          "point": "理由与负例",
+          "status": "pass",
+          "actual": "体验卡产品范围不合，非由0分或普通等级否定。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03848/03854，DICT及MONTH与结论一致。"
+      ],
+      "r0_issue_resolution": [],
+      "issues": [],
+      "nonblocking_notes": [],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-9276154585cf4993a0e97a3a07e6e43e/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/P05.json",
+      "output_sha256": "4d313f3f274a151ae855744c56cfd749be17fc287125bb8bc6064b1a44b03565",
+      "run_sha256": "4c666158276bb65c51be702fa7494938197776477540c15f80c7520531275696",
+      "request_sha256": "c4bf108eb2869081aa181dd1ccdf38fe31a400a6679147c43f85a1634d8c5d87",
+      "actual_answer": "在本题人工构造情境且“卡记录完整”成立的前提下，账户A在判定日不具有本期总部月报口径下的付费资格。依据业务模型第3节规则1，本期月报只纳入悦享年卡与家庭季卡持有人，体验卡不纳入；规则2还要求由同一张卡同时满足产品范围与判定日有效。A唯一一张卡是体验卡，虽然题设称其在判定日有效，但不满足产品范围；又因卡记录完整，没有其他卡可满足该口径。账户等级“普通”和购卡实付0元也不能替代卡类型作为资格依据。以上是依据题设作的情境推导，不代表客户真实账户记录或生产核验结果。"
+    },
+    {
+      "id": "P06",
+      "verdict": "pass",
+      "previous_verdict": "pass",
+      "required_point_review": [
+        {
+          "point": "结论",
+          "status": "pass",
+          "actual": "有本期资格。"
+        },
+        {
+          "point": "理由与负例",
+          "status": "pass",
+          "actual": "有效家庭季卡即满足，0分不排除，普通等级不阻止。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03848/03854，DICT及MONTH与结论一致。"
+      ],
+      "r0_issue_resolution": [],
+      "issues": [],
+      "nonblocking_notes": [],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-f170b38f84d34a2295fd2d8f2404d73f/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/P06.json",
+      "output_sha256": "9c129956818f1dcb724af0af46052c98ee86b605e95b0efafc316e3dfc56aa06",
+      "run_sha256": "01a50bf7362b1bc5b17c2d54e99848751cd5e46797efae57c21eefb24152e63f",
+      "request_sha256": "38e611d43539e974c4394559761e13c517011d9047dc822530773f368507f892",
+      "actual_answer": "在题设人工构造情境成立的前提下，账户A在判定日有付费资格。题设给出完整卡记录，其中账户A持有一张家庭季卡，且该卡在判定日的状态为“有效”；按本期总部运营月报口径，家庭季卡属于纳入产品范围，付费资格要求同一张卡同时满足产品范围和判定日有效期，因此满足。该卡实付金额为0不改变判断：材料明确购卡实付金额和会员等级不得代替卡类型与有效状态；普通等级也不影响这一派生资格。以上为基于题设条件的情境推导，不是客户真实记录或已执行查询。"
+    },
+    {
+      "id": "P07",
+      "verdict": "pass",
+      "previous_verdict": "pass",
+      "required_point_review": [
+        {
+          "point": "未知处理",
+          "status": "pass",
+          "actual": "不能判有/无，金卡不能代替。"
+        },
+        {
+          "point": "缺失信息",
+          "status": "pass",
+          "actual": "需要账户卡类型/起止/提前终止及业务范围、判定日；不给卡不等于无卡。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03848/03854、CHEN3端点说明与DICT支持所需信息。"
+      ],
+      "r0_issue_resolution": [],
+      "issues": [],
+      "nonblocking_notes": [],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-bcd4e7f99c80408ba8c35c3d4aaaefc4/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/P07.json",
+      "output_sha256": "069ee7dffa14f95e438930b83635acc0295ea918e9ff811147e3a20c95ff0657",
+      "run_sha256": "5910ea6503ae942b58dbefb0704856176823261a5fe1fbe14562df38ee440ef6",
+      "request_sha256": "1861963a8eae65ff6db8285eb78d4fdc1fbd6618770005659db7925053e7c987",
+      "actual_answer": "在本题人工构造的隔离情境下（仅知账户A等级为金卡、卡记录尚未提供），不能判断其本期付费资格；既不能判定具有，也不能判定不具有。依据业务模型：会员等级与派生付费资格是两回事，金卡属于会员等级，不能代替卡产品类型与有效状态（MSG-03848、03866、03870）；付费资格须在给定业务范围与判定日下，看账户是否存在一张同时满足产品范围与有效期的卡，且不能把不同卡的条件拼接判断（规则2、3；MSG-03848、03854、MSG-03886、03888、03890）。若问题特指本期总部运营月报，其产品范围只纳入悦享年卡与家庭季卡持有人，异业联名卡和体验卡不纳入；该口径只约束本期月报（《本期统计确认邮件》；MSG-03848、03854）。还需补充：账户A的卡记录，包括每张卡的产品类型、权益开始日期、计划权益结束日期、提前终止日期（可为空）；该资格所服务的具体报表或业务范围；以及按该统计要求确定的资格判定日。若账户A有多张卡，只需其中同一张卡同时满足产品范围与判定日有效，不因多卡重复计账户或订单（规则4；MSG-03886、03888、03890）。上述为情境推导，不是客户实际记录或已执行查询。"
+    },
+    {
+      "id": "P08",
+      "verdict": "pass",
+      "previous_verdict": "pass",
+      "required_point_review": [
+        {
+          "point": "范围",
+          "status": "pass",
+          "actual": "只本期，不直接套历史/合作方。"
+        },
+        {
+          "point": "下一步",
+          "status": "pass",
+          "actual": "按报表核用途、期间、产品、判定日、覆盖、规则来源，合作方独立确认。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03848明确本期约束；DICT合成覆盖、MONTH范围支持。"
+      ],
+      "r0_issue_resolution": [],
+      "issues": [],
+      "nonblocking_notes": [],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-60020d845f8d4a0c96ef1d71ef798eae/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/P08.json",
+      "output_sha256": "943e253c9f102dd5529b5c03b607c88fbb86131840d77d2e2e892ce891edb5aa",
+      "run_sha256": "78721177af49fb5091206e782fa0780577975b1abe63e6dc7bf68c0f90cc166c",
+      "request_sha256": "9cfdceebc7021d593d02ecbb193291047667ddf1c0a4a7224dbe4cfa992a403a",
+      "actual_answer": "不能直接推广。材料明确：本期总部运营月报只纳入悦享年卡与家庭季卡持有人；异业联名卡即使收费也由合作方经营，不属本期自营会员范围；体验卡不纳入；并且该口径只约束本期总部运营月报，不改其他报表（业务模型第3节规则1，MSG-03848、03854）。因此，可用范围仅是本期总部运营月报及其对应的产品范围和判定方式：同一张卡同时满足产品范围与判定日有效期，账户去重，会员等级和购卡实付不能代替卡类型与有效状态。\n\n对历史报表：现有材料没有给出各历史报表的产品范围、判定日、统计窗口和数据覆盖，不能把本期月报口径回溯套用；模型也要求各报表的判定日与统计窗口按对应指标口径确定。对合作方报表：异业联名卡由合作方经营这一陈述只说明其不属本期自营会员范围，不能据此推定合作方报表应纳入或排除哪些产品，合作方报表口径尚无依据。\n\n下一步应：先取得正式规则文件；再按报表逐项确认用途、期间、判定日、产品范围、渠道、有效购买条件、去重规则和来源，由相应业务／数据负责人确认；历史报表还需核对原定义版本与数据覆盖，合作方报表需由合作方及业务负责人确认口径。在上述确认完成前，该范围只用于本期总部月报，不用于所有历史报表或合作方报表；本次也不能宣称已查询或重算。"
+    },
+    {
+      "id": "P09",
+      "verdict": "pass",
+      "previous_verdict": "needs_revision",
+      "required_point_review": [
+        {
+          "point": "两项主结论",
+          "status": "pass",
+          "actual": "不确定全系统免费，不能证明绝对互斥。"
+        },
+        {
+          "point": "理由",
+          "status": "pass",
+          "actual": "本期资格与系统类别两种规则；互斥/重叠未有记录核验。"
+        },
+        {
+          "point": "R0条件漂移复查",
+          "status": "pass",
+          "actual": "保持“A仅持有有效异业联名卡”，未再把其他卡作为当前未决条件。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03848；ZHOU2 01742/01754；W02小林01615/陈姐01679支持类别区分而未证明互斥。"
+      ],
+      "r0_issue_resolution": [
+        {
+          "code": "R0-P09-01",
+          "status": "not_reproduced",
+          "evidence": "见本题 required_point_review 中 R0 复查项及保存的完整实际答复。"
+        }
+      ],
+      "issues": [],
+      "nonblocking_notes": [],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-10cbf5ec3d244b69b80933d00d2cb094/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/P09.json",
+      "output_sha256": "4aa84a34a3678b161f7c70100644f8bc6d27443c0881a4d4740636a3f4d3b447",
+      "run_sha256": "6edf0cffb76dd033c7ea4c66bb4a27c2968d7b6b1821cbd84034c56335cad74a",
+      "request_sha256": "267820c60507b82e9f53a030c859a981a68a7f299d7297c08a3d90dae16bd61b",
+      "actual_answer": "在题设情境成立的前提下，只能得出：A因仅持有有效异业联名卡，不满足本期总部月报的付费资格范围；异业联名卡即使收费也由合作方经营，不纳入本期自营会员月报。该结论是月报派生资格的判定结果，不是对A在全系统会员身份的分类。不能据此确定A属于“免费注册类别”：材料没有已核实的“免费注册类别”全系统定义与判定规则，也未提供系统身份记录。现有“付费会员卡、免费注册会员两类”的说法不能证明两类在系统绝对互斥；业务模型明确不建立二者互斥分类，账户可能同时具备多种形态，两类在系统上是否重叠仍待记录核验。依据：本期月报产品范围与付费资格派生见《本期统计确认邮件》及MSG-03848、03854、03886、03888；不建立互斥分类的边界见MSG-01615、01679、01742。"
+    },
+    {
+      "id": "C01",
+      "verdict": "pass",
+      "previous_verdict": "needs_revision",
+      "required_point_review": [
+        {
+          "point": "数与身份",
+          "status": "pass",
+          "actual": "1有资格账户、2笔订单，O1/O2各一次。"
+        },
+        {
+          "point": "关联",
+          "status": "pass",
+          "actual": "卡资格收敛到账户层，再按订单识别计数，避免卡×订单组合。"
+        },
+        {
+          "point": "R0证据降级复查",
+          "status": "pass",
+          "actual": "本期模型及原消息作为规则依据，未把规则整组归为待确认学员选择。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03848/03854；CHEN3 03886/03888/03890；DICT明确支持资格、去重及关系。"
+      ],
+      "r0_issue_resolution": [
+        {
+          "code": "R0-C01-01",
+          "status": "not_reproduced",
+          "evidence": "见本题 required_point_review 中 R0 复查项及保存的完整实际答复。"
+        }
+      ],
+      "issues": [],
+      "nonblocking_notes": [
+        "“账户按人去重”建议改为“按CRM账户标识去重”。本答同时明确1个账户、资格收敛到账户层及订单标识粒度，没有提出跨系统自然人合并，故按完整语义本轮通过，而非按单个词判错。此题只有一个账户，不能据本结果宣称已测试跨账户自然人映射。"
+      ],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-73717a8a0381442dbcde314b7146cd49/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/C01.json",
+      "output_sha256": "249bd910434a379d90f2f8fee09f7c360ea9265cb1769274795f54cf67fe6371",
+      "run_sha256": "eb9353028f68564e444de07d819b632303c1a9dedd71e151eea87d65c830f441",
+      "request_sha256": "e52a637ba10c15f8ce46ed033265e572ab963becd6e098439d7df2579d02e599",
+      "actual_answer": "在题设的人工隔离情境且记录完整的条件下：应计 1 个有资格账户、2 笔有效订单。依据是：账户 A 同日有多张有效悦享年卡时，账户按人去重，多张有效卡不重复计账户；O1、O2 是两笔不同且各自满足有效购买条件的订单，应按订单识别去重计数，不能因账户有两张卡而复制成四笔。关联时应先把卡资格收敛到账户层（同一张卡同时满足产品范围与判定日有效期，账户有任一符合卡即具资格），再在订单粒度按订单识别统计；不要将一对多卡表直接与订单表按账户连接后按卡-订单组合计数，也不要据订单反推具体卡，因为本期材料未提供订单与具体卡的对应关系。上述为情境推导，不代表客户真实记录或已执行查询；相关依据见业务模型中付费资格、权益有效期、去重规则及《数据字典》的账户—卡、账户—订单关系说明（MSG-03848、03886、03888、03890）。"
+    },
+    {
+      "id": "C02",
+      "verdict": "pass",
+      "previous_verdict": "pass",
+      "required_point_review": [
+        {
+          "point": "存在条件",
+          "status": "pass",
+          "actual": "有效家庭季卡即可，失效悦享/联名不否定。"
+        },
+        {
+          "point": "题设",
+          "status": "pass",
+          "actual": "接受本题完整卡记录和有效状态。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03853/03854直接支持；CHEN3逐卡按判定日判断支持。"
+      ],
+      "r0_issue_resolution": [],
+      "issues": [],
+      "nonblocking_notes": [],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-d5f3eeba06d64f9fa1e7b586a0ec7432/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/C02.json",
+      "output_sha256": "41139771c78f294ee0fb16d048db37814c1b428355da6de7aa34e8e7748f45d5",
+      "run_sha256": "d3b61a5d9e844a60ed0cbcda345276451b745bb2fb02fd11f4e4d4938ff8fd7e",
+      "request_sha256": "5582cd9b3f6bda83c22b9f92c1ffc137bc14cb55af05a1abd40d7cd9180416c2",
+      "actual_answer": "有资格。题设已给定 A 的完整卡记录中有一张“已确认有效的家庭季卡”；按本期总部运营月报口径，家庭季卡属于纳入产品范围，且资格判断要求同一张卡同时满足产品范围与判定日有效，满足即可，其他卡不影响。因此，那张失效的悦享年卡不影响资格，异业联名卡即使收费也不属本期自营会员范围、同样不影响判断。依据为模型第 3 节规则 1、2、3 及来源 MSG-03848、03854、03870、MSG-03886、03888；这是基于题目给定卡记录成立的情境推导，不代表已查询客户系统。"
+    },
+    {
+      "id": "C03",
+      "verdict": "pass",
+      "previous_verdict": "needs_revision",
+      "required_point_review": [
+        {
+          "point": "同卡条件",
+          "status": "pass",
+          "actual": "不能跨卡拼接；两卡各不满足完整条件。"
+        },
+        {
+          "point": "R0完整性漂移复查",
+          "status": "pass",
+          "actual": "直接写“在题设条件下结论是不具备本期付费资格”，不再索取生产完整性才能判。"
+        },
+        {
+          "point": "R0角色引用复查",
+          "status": "pass",
+          "actual": "仅准确列消息ID，未将小林消息归陈姐。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03848/03854/03870与CHEN3 03886/03888支持同卡条件；本轮没有错误的角色归属。"
+      ],
+      "r0_issue_resolution": [
+        {
+          "code": "R0-C03-01",
+          "status": "not_reproduced",
+          "evidence": "见本题 required_point_review 中 R0 复查项及保存的完整实际答复。"
+        },
+        {
+          "code": "R0-C03-02",
+          "status": "not_reproduced",
+          "evidence": "见本题 required_point_review 中 R0 复查项及保存的完整实际答复。"
+        }
+      ],
+      "issues": [],
+      "nonblocking_notes": [],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-6008532005c44d31a2837c51e8a82c7a/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/C03.json",
+      "output_sha256": "e2ad3454b7f4ed11ab121b15f1c2b86f676b2a66976f6f934a9788242c9593eb",
+      "run_sha256": "e1cb59bfdbeff290f2d731d91fc4011b5fa14091350a0e47ca9b626bf4a57fa3",
+      "request_sha256": "140f979eb423d0a4fd5eb7da10854094b0d83aba0cb6b50037169904a1a8c9b6",
+      "actual_answer": "不能。按本期总部运营月报的付费资格口径，会员账户必须由同一张卡同时满足“产品范围”和“判定日有效”两个条件，不能把一张卡的卡类型与另一张卡的有效期拼接判断。题设中失效的悦享年卡虽属本期自营产品范围，但判定日已失效；有效的异业联名卡虽在判定日有效，但不属本期自营会员产品范围（异业联名卡由合作方经营，不纳入本期月报），因此两张卡各自都不满足完整条件，账户不能因此被判为具有本期付费资格。账户可有多张卡，但多卡不改变“同一张卡同时满足”的规则，也不能用另一张卡补足。依据为《本期统计确认邮件》及 MSG-03848、03854、03870、03886、03888 的说明；正式规则文件尚未取得，上述是本期月报口径，不是所有报表的普遍规则。若换到其他统计范围，需按该范围重新确认产品范围与有效期，但在题设条件下结论是不具备本期付费资格。"
+    },
+    {
+      "id": "C04",
+      "verdict": "pass",
+      "previous_verdict": "needs_revision",
+      "required_point_review": [
+        {
+          "point": "完整无卡",
+          "status": "pass",
+          "actual": "明确无本期资格。"
+        },
+        {
+          "point": "未提供",
+          "status": "pass",
+          "actual": "缺信息则未知，不当成无卡。"
+        },
+        {
+          "point": "R0作者归属复查",
+          "status": "pass",
+          "actual": "引用字典/模型/消息，没有补造导师/审查建议身份。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03854、CHEN3 03886、DICT支持结论和逻辑。"
+      ],
+      "r0_issue_resolution": [
+        {
+          "code": "R0-C04-01",
+          "status": "not_reproduced",
+          "evidence": "见本题 required_point_review 中 R0 复查项及保存的完整实际答复。"
+        }
+      ],
+      "issues": [],
+      "nonblocking_notes": [],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-0ebf562a1daf4d8e97f6547c8c2114b0/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/C04.json",
+      "output_sha256": "26a925bafbaa9a029d87765091f978f2527499b465cc9e587d7c2c731a2ddcf2",
+      "run_sha256": "5d81b91830eb9f751f003aff3ca84e3dfafb1dc860c037d15229ace968d57e0a",
+      "request_sha256": "6a581e8ad2e7b740bd1e6b7aa9ea7e204e352353c5b7ee23a51f6a0d4dac6f24",
+      "actual_answer": "在题设“已确认本期完整卡表完整，且账户A在该卡表中没有任何卡记录”成立的前提下，按本期模型可推导：A不具有本期总部运营月报口径下的付费资格。理由是付费资格要求账户在给定业务范围和判定日存在一张同时满足产品范围与有效期的卡；A没有任何卡记录，就不存在这样的卡。该结论是情境推导，不等于已查询客户生产系统。\n\n这与“卡表未提供”不同：卡表未提供时，缺少判断A有无卡及是否符合产品范围、有效期的依据，不能据此认定A无资格，也不能认定有资格；缺失信息不等于“无卡”。而题设已确认完整卡表且A无记录，才可推出不存在符合条件的卡。会员等级、购卡实付金额不能代替卡类型与有效状态；也不能因A无卡而推断其自然人身份或其他期间资格。依据为《数据字典》账户—卡关系及模型第2、3节关于派生付费资格、本期产品范围和资格判定方式的规则（MSG-03848、03854、03886、03888、03890）。"
+    },
+    {
+      "id": "C05",
+      "verdict": "pass",
+      "previous_verdict": "needs_revision",
+      "required_point_review": [
+        {
+          "point": "资格",
+          "status": "pass",
+          "actual": "8月月末有本期资格，未购不取消。"
+        },
+        {
+          "point": "购买",
+          "status": "pass",
+          "actual": "完整订单记录无有效购买，paid净额>0解释一致。"
+        },
+        {
+          "point": "活跃",
+          "status": "pass",
+          "actual": "无法判活跃或不活跃，需定义。"
+        },
+        {
+          "point": "R0来源分层复查",
+          "status": "pass",
+          "actual": "资格归具体模型/消息，有效购买归订单/财务材料，活跃未知归模型和01719/01754，没有说成学员选定状态。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "LIN3 03848/03854，MONTH月末范围，ORDERS/FINANCE有效订单，ZHOU2 01746/01754活跃未知支持。"
+      ],
+      "r0_issue_resolution": [
+        {
+          "code": "R0-C05-01",
+          "status": "not_reproduced",
+          "evidence": "见本题 required_point_review 中 R0 复查项及保存的完整实际答复。"
+        }
+      ],
+      "issues": [],
+      "nonblocking_notes": [],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-8807c81e5bd945cfa66c1bd748aa0209/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/C05.json",
+      "output_sha256": "4117623ec9882f3bc17e6c269dee4c661c5ee217c70d4b32891d5bc26950f8bd",
+      "run_sha256": "4938f338bd9b909943e685018940efc51d93d9e75fbd4c8245d454c6c43c4972",
+      "request_sha256": "8426183f23de4847ece47813fabc640689cc4a03a9796554215ba8c757f79171",
+      "actual_answer": "按题设的人工情境推导（不表示已查询真实记录或生产核验）：1）2026年8月月末付费资格：账户A具有本期总部运营月报口径下的派生付费资格。理由是账户A在该判定日有一张已确认有效的悦享年卡，悦享年卡属于本期月报纳入产品范围，且资格判断要求同一张卡同时满足产品范围与有效期；该资格是给定范围和判定日的派生判断，不是永久身份、会员等级、活跃状态或购买事实，也不因当月无有效购买而消失。依据：业务模型第2节“派生付费资格”、第3节规则1至4，MSG-03848、03854、03886、03888。2）当月有效购买：按题设“该月完整订单记录没有有效购买”，账户A当月无有效购买（有效购买数为0／不构成有效购买）。有效购买指已支付且实付减累计退款后大于零，取消与全额退款不计；支付状态本身不等于有效购买。依据：《订单日报说明》《财务邮件》《数据字典》及业务模型第2节“有效购买”。3）活跃状态：无法判断，不能判为活跃，也不能判为不活跃。业务模型明确“活跃”是按业务规则、期间与范围判断的分析属性，其定义未知；未知不判为不活跃，且当月无有效购买不能单独推出不活跃。依据：业务模型第2节“活跃”、第5节未决事项，MSG-01719、01754。缺失信息是“活跃”的具体定义与判定期间；题设也未给账户A其他月份购买或别的活跃行为。付费资格、有效购买和活跃状态是不同判断，不能互相替代。"
+    },
+    {
+      "id": "C06",
+      "verdict": "pass",
+      "previous_verdict": "pass",
+      "required_point_review": [
+        {
+          "point": "混合产品多卡",
+          "status": "pass",
+          "actual": "1账户、2有效订单，悦享+家庭不累加人次/订单。"
+        },
+        {
+          "point": "关联",
+          "status": "pass",
+          "actual": "卡侧按同卡条件和账户去重，订单侧order_id，按账户联系，禁止卡数复制订单。"
+        },
+        {
+          "point": "边界",
+          "status": "pass",
+          "actual": "本题人工推导不是客户查询，无订单实际卡关系。"
+        }
+      ],
+      "dimensions": {
+        "身份与对象": "pass",
+        "关系与粒度": "pass",
+        "主要结论": "pass",
+        "理由与反例": "pass",
+        "范围与题设": "pass",
+        "引用与证据性质": "pass"
+      },
+      "source_check": [
+        "DICT；LIN3 03848/03854；CHEN3 03886/03888/03890与答案必要理由一致。"
+      ],
+      "r0_issue_resolution": [],
+      "issues": [],
+      "nonblocking_notes": [],
+      "native_run": "artifacts/w02/knowledge_runs/RUN-9aee6d3599ae4fbcaa444f629a5a7303/run.json",
+      "output_path": "artifacts/w03/qualification-qa-20261106-r1/output/C06.json",
+      "output_sha256": "fa7e0864553c3d8b023e2389721c54dbe1dd125899303b8d3f97e046d328c972",
+      "run_sha256": "19ef8d910a27d5084460c2e9ec2c584adfb909691775d466ad4e5c855ead67fb",
+      "request_sha256": "2dc848d3678ed721863f1a1f1251f990c9572437b9e69fe5ac624bcf3fcee471",
+      "actual_answer": "本题是人工构造的隔离测试情境，以下结论仅在该题设成立时成立，不代表客户真实记录或已执行查询。应计 1 个有资格账户、2 笔有效订单。依据是业务模型对“派生付费资格”的定义：账户只要有一张符合本期产品范围且在判定日有效的卡，即具有资格；账户A的悦享年卡和家庭季卡均有效，但多张有效卡不重复计账户，因此账户数为1。两笔不同有效订单O1、O2按账户—订单的一对多关系各计一笔，且规则明确不因多张有效卡重复累计订单，因此订单数为2。关联时先按账户标识把订单归到账户，再在账户层做资格去重；卡侧按“同一张卡同时满足产品范围与有效期”判资格并按账户去重；订单侧按订单标识去重并核对有效购买条件（已支付且实付减累计退款后大于零），同时保持统计期间、渠道和人群范围一致。不要按卡数复制订单、不要用订单反推具体卡，也不要把账户数或卡数混同订单数。本题材料未提供订单实际对应哪张卡，故不应建立订单—具体卡的关联；生产环境核验也仍未取得。"
+    }
+  ],
+  "conclusion": "R0的6题实质失败在R1均未再出现，原11题在同一判据下未见实质回归。17题通过；仍保留4题非阻塞表述观察，不将本轮通过写为业务模型全文完备、所有测试通过或生产可用。",
+  "authorization_and_scope": [
+    "同一已见17题测试集的一次有界回归，不证明未见题泛化，不证明长期稳定性。",
+    "两轮共34次成功调用都保留；不覆盖R0失败，不用R1回改R0。",
+    "正式v0.4、现用prompt、Skill及配置未替换，未apply。",
+    "未做日期专题、其余模型题、38项指标SQL/数值独立对账、客户验收或课程提交。",
+    "当前这17题没有需用户做真实业务裁决的冲突；正式规则文件、生产历史凭据和活跃定义等原未知继续保留。"
+  ]
+}

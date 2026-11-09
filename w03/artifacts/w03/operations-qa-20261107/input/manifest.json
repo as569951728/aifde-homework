@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-07",
+  "frozen_at": "2026-11-07T03:26:14.236564+00:00",
+  "frozen_before_execution": true,
+  "case_ids": [
+    "U01",
+    "U04",
+    "F03",
+    "F04",
+    "F05",
+    "F06",
+    "F09"
+  ],
+  "files": {
+    "input/business_model.md": "dafadf82edf23d0cd7482a9dbd3e2db6f76c750a207a496b39a0d22a99d37906",
+    "input/knowledge.json": "b51eb5604b432f33c05629e89da537ff298fc95c0e9f0842793d8ed7b4fa9115",
+    "input/knowledge_prompt.txt": "214493f93716a5152495e934c626f479b5e66a4a2113e157823cf3830261554a",
+    "input/original_questions.json": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+    "input/protected.json": "25cd04dd8392eb12803de036ce08c4c890f2fef2a57d0f15e2d86d42f74df980",
+    "input/reviewer_expectations.json": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+    "input/selected_questions.json": "f993618440c4b524ed8a0f2ee93efaeea79012b8d99ecfb9055d2479d62fce46"
+  },
+  "source_question_sha256": "bc13834679927f7f1efba9fe00f2e7153e55fd5e28481e901c945c7cff2d7343",
+  "source_expectation_sha256": "470210fab17b5cebd9460fe32e84cd6e4c2188550cb6b1c948ed0efd989c7151",
+  "condition": "Same candidate and prompt; seven original model_only goals and operations cases, expected unchanged.",
+  "tested_input": "Course GUARD + unchanged candidate/prompt + original single question only. No extra sources, expected, other questions or tools.",
+  "runtime_plan": {
+    "model": "deepseek-flash",
+    "profile": "deepseek-json",
+    "max_tokens": 8192,
+    "retry_max_tokens": 16384,
+    "timeout_seconds": 180,
+    "retry_timeout_seconds": 240,
+    "max_concurrency": 2,
+    "answers_per_case": 1,
+    "automatic_semantic_retry": false
+  },
+  "stop_rule": "One answer per seven cases. No semantic retry or prompt/body changes. Keep DQ10/P09/B05 raw failures and all new results."
+}

@@ -1,0 +1,29 @@
+{
+  "client_date": "2026-11-08",
+  "user_scope": "业务模型正文、问答的引用准确性；不继续通用维护Skill调优",
+  "status": "prepared_pending_independent_review",
+  "change": "只替换证据审查回答的直接依据与缺口呈现要求；按消息分条，区分逐字短引与转述。未加入题号、消息编号、标准答案。",
+  "model_source": "artifacts/w03/model-clarification-20261108/candidate/business_model.md",
+  "model_sha256": "5fb4beed511b19c78333c38252f331c6a2aa159ec654a98eec8703f48d79ffe9",
+  "old_prompt_sha256": "703da892e1c284843f499b60efad2e95d60849bd5d22595f71270382df607bfe",
+  "candidate_prompt_sha256": "74af26664273fe70d85cd0f84d13dc07bc7850614fb8368c2f822c74742ec40d",
+  "case_ids": [
+    "U05",
+    "E01",
+    "TRACECTRL01",
+    "CTRL01",
+    "U01",
+    "P01"
+  ],
+  "original_cases": 4,
+  "control_cases": 2,
+  "stop_rule": "6 unique cases, one native run each; only native confirmed length expansion permitted. No semantic/format resampling or extra network recovery this round.",
+  "formal_model_applied": false,
+  "skill_replaced": false,
+  "business_decisions_required": [],
+  "expected_sent": false,
+  "control_source_types": {
+    "CTRL01": "valid_W02_Chen_interview",
+    "TRACECTRL01": "synthetic_not_customer_fact"
+  }
+}
