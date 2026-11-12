@@ -1,0 +1,29 @@
+# 单元测试运行记录
+# 生成时间: 2026-11-12 21:40:26 CST
+# 命令: .venv/bin/python -m unittest customer.w04.test_solution -v
+# Python: Python 3.11.16
+
+test_accepted_rows_match_emitted_tables (customer.w04.test_solution.CustomerAdapterTests.test_accepted_rows_match_emitted_tables) ... ok
+test_card_types_collapsed_to_five (customer.w04.test_solution.CustomerAdapterTests.test_card_types_collapsed_to_five) ... ok
+test_do_not_contact_not_narrowed_to_cell_start (customer.w04.test_solution.CustomerAdapterTests.test_do_not_contact_not_narrowed_to_cell_start)
+按"整格开头"实现会只剩 266 人——这条锁住匹配口径，防止第 7 步被改坏。 ... ok
+test_do_not_contact_set_equals_source_scan (customer.w04.test_solution.CustomerAdapterTests.test_do_not_contact_set_equals_source_scan) ... ok
+test_exact_duplicates_counted_once (customer.w04.test_solution.CustomerAdapterTests.test_exact_duplicates_counted_once) ... ok
+test_full_refund_maps_to_paid_not_cancelled (customer.w04.test_solution.CustomerAdapterTests.test_full_refund_maps_to_paid_not_cancelled)
+指标库 valid_order_count 写"取消和全退不计"→ 全退必须落 paid 才用得上金额条件。 ... ok
+test_missing_tag_cell_emits_nothing (customer.w04.test_solution.CustomerAdapterTests.test_missing_tag_cell_emits_nothing)
+整格是 ''/NULL/-/无 的 77,049 行不能变成备注，否则 category 会被压成"其他"。 ... ok
+test_money_is_yuan_times_hundred_without_float_drift (customer.w04.test_solution.CustomerAdapterTests.test_money_is_yuan_times_hundred_without_float_drift) ... ok
+test_notes_keep_raw_cell_and_never_empty (customer.w04.test_solution.CustomerAdapterTests.test_notes_keep_raw_cell_and_never_empty) ... ok
+test_only_sixteen_legal_tags_and_hyphen_kept_whole (customer.w04.test_solution.CustomerAdapterTests.test_only_sixteen_legal_tags_and_hyphen_kept_whole) ... ok
+test_orphan_orders_quarantined_not_accepted (customer.w04.test_solution.CustomerAdapterTests.test_orphan_orders_quarantined_not_accepted) ... ok
+test_reconciliation_equation_holds_for_every_type (customer.w04.test_solution.CustomerAdapterTests.test_reconciliation_equation_holds_for_every_type) ... ok
+test_tag_pairs_equal_independent_scan (customer.w04.test_solution.CustomerAdapterTests.test_tag_pairs_equal_independent_scan) ... ok
+test_delimiters_never_include_slash_or_space (customer.w04.test_solution.GuardTests.test_delimiters_never_include_slash_or_space) ... ok
+test_duplicate_rule_records_deduplication_not_quarantine (customer.w04.test_solution.GuardTests.test_duplicate_rule_records_deduplication_not_quarantine) ... ok
+test_orphan_rule_quarantines (customer.w04.test_solution.GuardTests.test_orphan_rule_quarantines) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 5.533s
+
+OK

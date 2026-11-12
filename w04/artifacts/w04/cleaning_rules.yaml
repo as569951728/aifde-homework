@@ -1,0 +1,119 @@
+# 青禾 W04 清洗规则（第 6 步草案 · 供审）
+# 契约：contracts/w04/cleaning_rules.schema.json（Draft 2020-12，四段全部 additionalProperties:false）
+# 纪律：规则是数据不是代码；L1 格式 → L2 映射 → L3 拆分 → L4 打标，顺序不可乱。
+# 依据标注三选一：数据自证／访谈原话(MSG 号)／自定待核。因 schema 不允许自定义字段，依据一律写在
+# 各条 evidence 或 reason 文本内，逐条对照见同目录 mapping_table.md 与 rule_evidence.md。
+# L2 值映射不在本文件内：schema 四段固定且 additionalProperties:false，放不下映射表。值映射一律落
+# customer/w04/value_mapping.csv（30 行，覆盖 ord_stat／lv／stat／card_kind／ch／src_ch／area 七个字段，
+# 每个字段的映射行数合计逐一等于源表行数，无遗漏无重复）。适配器读表，不把映射硬编码进代码。
+contract_version: "w04-0.1.0"
+data_version: "qinghe-w04-v1.1"
+
+tag_cleaning:
+  # 只切这四种。刻意不含 "/" 与 " "：小林 MSG-05263④「斜杠算一条还是两条我不替你定」；
+  # 且按空格切会把 23 条"标签在前、触达限制在后"的混写行切碎（数据自证：包含匹配 443 人 − 段级开头 420 人 = 23）。
+  delimiters:
+    - ","
+    - "，"
+    - ";"
+    - "；"
+  legal_tags_source: "customer/w04/member_tags.csv"
+  # 词表文件两列：tag（16 个正式标签）、match_order（按字数降序的最长匹配顺序）。
+  # 依据：小林 MSG-05253 确认正式标签 16 个＝字典 12＋2025 新增 4（夜间购物／会员日活跃／小程序偏好／银发族）；
+  # 数据自证：全量 tag 列 4,071 种非空写法中这 16 个命中 56,215 个（会员，标签）对、覆盖 38,098 人，其余为备注。
+  hyphenated_tag_handling: "先整词匹配合法标签，命中即完整保留，绝不按连字符切分：母婴-0到3岁、母婴-3到6岁 是标签名本身（分别 5,566／5,257 人）；同形态的 勿发短信-投诉过 属备注，同样不按连字符切。依据：小林 MSG-05253「连字符属于标签名本身」＋数据自证两种形态并存"
+  unknown_tag_handling: "16 词表未命中的文字整条进 member_notes，不丢弃、不改写、不猜测归类。依据：小林 MSG-05265「没在词表里的照原样留着，别自己归堆」；数据自证：拆段后共 1,078 种段值＝16 个正式标签＋1,062 种备注段值，落在 2,825 种整格写法上、涉及 7,150 人，产出 8,906 条备注"
+  note_extraction: "按原始分隔符分段，每段独立处理：段内先用 16 词表最长匹配取出正式标签进 member_tags，剩余文字经「去掉 / 与空白与连字符后仍非空」校验后，**每段产出一条 member_notes 记录**（不跨段合并，各段 category 可不同）。raw_text 固定为该格完整原值（一字不改），source_file／source_row／source_field 三件齐备。category 只能是契约 5 值，按 note_text 首个关键词判定，顺序不可乱：触达限制（勿打电话／勿发短信／仅保留到店服务／这阵子不方便接听）→ 卡务（卡务／续卡／卡费／金额卡／办卡／会员卡）→ 客户关系（熟客／客户关系／老客户／VIP）→ 联系状态（服务／联系状态／电话／号码／微信）→ 其他。依据：契约 README 第 58 行与 w04_import.py 第 89 行白名单（导入器只认 5 值，自造第 6 值即 INVALID_MEMBER_NOTE）；小林 MSG-05259「得看完整内容」→ 保留整格原文才核得动；组合键含 note_text（w04_import.py 第 71 行），分条实测 0 冲突"
+
+# L1 空值统一 + L2 无效值。values 里四种写法实测都出现过，不能只处理其中一两种。
+# action 用机器码：null_out＝转空值；null_out_and_drop＝转空值且该列不落库。说明写在 reason 里由人读，适配器按码执行。
+invalid_values:
+  - source_fields:
+      - "stop_dt"
+    values:
+      - ""
+      - "NULL"
+      - "-"
+      - "无"
+    action: "null_out"
+    reason: "合同缺失标记。数据自证：stop_dt 空 10,301／NULL 4,441／'-' 965／'无' 47，合计 15,754 条缺失，仅 894 条为真实提前终止日期；若把四种写法当日期解析，导入器第 51–53 行的 CSV 列校验会直接失败"
+  - source_fields:
+      - "tag"
+    values:
+      - ""
+      - "NULL"
+      - "-"
+      - "无"
+    action: "null_out"
+    reason: "整格为缺失标记时按缺失处理：既不产标签也不产备注。数据自证：'' 58,556／'-' 8,625／'NULL' 6,685／'无' 3,183，合计 77,049 条（占 119,754 的 64.3%）。此条不写会出大事——漏了它会产出 11,186 条 note_text 只有 'NULL'/'无' 的伪备注，category 全部压成「其他」，并把会员数当成备注规模（真实是 7,150 人／8,906 条）。同源证据：'/' 与 '//' 是标签分隔符残渣，剩余文字去掉 '/' 后为空的也必须丢弃"
+  - source_fields:
+      - "birth"
+      - "reg_dev"
+      - "nm"
+    values:
+      - ""
+      - "NULL"
+      - "-"
+      - "无"
+    action: "null_out_and_drop"
+    reason: "转为空值（NULL），且三列均不落库、仅用于诊断报告计数。数据自证：birth 缺 21,161（NULL 6,222／'-' 1,975／'无' 243／空 12,721）、nm 缺 5,700（NULL 888／'-' 112／'无' 521／空 4,179）、reg_dev 缺 39,917（恰等于 src_ch='系统导入' 的 39,917，全部重合）。契约 members.csv 只接受 7 列，多一列即 CSV_COLUMNS_MISMATCH，故三列不落库"
+
+abnormal_records:
+  - rule_id: "orphan_order"
+    condition: "订单的 hy_id 在 crm_member_export.csv 中不存在（会员号无法关联）"
+    action: "quarantine"
+    reason_code: "UNLINKED_ACCOUNT"
+    evidence: "数：168 笔，涉及 100 家门店，amt_total 合计 25,815.47 元、amt_pay 合计 20,567.84 元。位：matcher 按 orders.member_id left join members.member_id 判空；命中行整行写入 quarantine.csv（record_type=order），raw_json 存 {原列名:原值} 的 JSON object。法：进隔离不进 accepted——导入器 w04_import.py 第 78 行对 orders 做 left join 后 fail_if 计数非零即 raise UNLINKED_ACCOUNT:orders，留在 accepted 会让整批导入失败。依据：老周 MSG-05310 原话「这类单子本身是系统里的正常订单记录，不是异常数据」「照导出原样加载、不删不改…要不要单独隔离成一张表，你们按核对需要定」→ 隔离属技术选择，不否定其真实性；对账 read 168,253 = accepted 167,749 + quarantined 168 + deduplicated 336（自定待核：落位由契约第 78 行判死，非业务判断）"
+
+  - rule_id: "exact_duplicate_order"
+    condition: "相邻两行全部 10 列取值完全相同（order_id 相同、其余字段也相同）"
+    action: "deduplicate"
+    reason_code: "EXACT_DUPLICATE"
+    evidence: "数：336 组，每组恰好 2 行，冗余 336 行；被去重的 336 行状态分布＝已完成 245／已取消 60／全额退款 25／部分退款 6。位：去重保首条（保留 source_row 较小者），被去重行计入 record_counts.order.deduplicated=336，另出 336 组清单（order_id＋两条 source_row）。法：先 deduplicate 再判 orphan，两组集合实测零重叠（悬挂 168 与重复组交集 0），顺序不影响结果。依据：契约 README 第 65 行「完全重复行去重后仅计 deduplicated」；老周 MSG-05220／05236／05322 三次不给定性 → 定性只写「疑似导出重复（成因待核）」，不得升级为已确认（自定待核：成因未获客户确认）"
+
+  - rule_id: "refund_exceeds_paid"
+    condition: "orders.amt_rfd > orders.amt_pay（退款金额大于实付金额）"
+    action: "keep"
+    reason_code: "REFUND_EXCEEDS_PAID"
+    evidence: "数：84 笔，涉及 75 家门店、84 名会员；其中 37 笔退款介于实付与总额之间、47 笔退款超过总额。位：只打标，不改金额、不拦截、不进隔离，原值原样落库。法：Decimal 比较，不用 float（0.1 精度会误判边界）。依据：数据自证三年均匀分布（每年 0.048%~0.054%）、单店≤2 笔，不符合「历史手工补录」应集中出现的特征；老周本轮「退款>实付是历史手工补录」属个人判断、未核单据 → 记录但不改数（自定待核：成因未闭合）"
+
+  - rule_id: "do_not_contact"
+    condition: "tag 列任意位置包含「勿打电话」或「勿发短信」（包含匹配，非开头匹配）"
+    action: "keep"
+    reason_code: "DO_NOT_CONTACT"
+    evidence: "数：443 人。位：在 member_notes 打标并把 category 直接定为「触达限制」，该 443 人一律不进入任何触达名单。法：必须用「包含」而非「开头」——实测段级开头匹配 420 人、整格开头仅 266 人、包含 443 人；用整格开头会漏 177 人，用段级开头会漏 23 人。依据：小林 MSG-05265 第四答「混在中间、前面挂着标签的也一样不能丢」；红线级，漏一条＝给明确说过别打电话的客户打电话"
+
+  - rule_id: "restricted_to_store_only"
+    condition: "tag 列包含「仅保留到店服务」"
+    action: "keep"
+    reason_code: "DO_NOT_UPGRADE_CONTACT"
+    evidence: "数：13 人。位：只识别、只打标，明细进 member_notes（category=触达限制），不升级为禁联、不设有效期。法：与 do_not_contact 分开计数，避免混入 443 人的权威口径。依据：小林访谈确认此写法存在但效力未定（自定待核：是否等同禁联未获确认）"
+
+  - rule_id: "temporarily_unavailable"
+    condition: "tag 列包含「这阵子不方便接听」"
+    action: "keep"
+    reason_code: "TEMPORARY_UNAVAILABLE"
+    evidence: "数：6 行次（按出现行计，非人数）。位：只识别、只打标，不升级为禁联、不设有效期。法：按行次统计而非按人去重，因为这是时点性表述。依据：小林访谈确认写法存在但无期限约定（自定待核：有效期未定）"
+
+  - rule_id: "paid_status_anomaly"
+    condition: "ord_stat = '已支付'（区别于「已完成」，付款已完成但后续流程未走完）"
+    action: "keep"
+    reason_code: "SUSPICIOUS_UNFULFILLED"
+    evidence: "数：229 笔，全部集中在下单日期 2026-08-25~2026-08-31（覆盖期末 7 天），174 家门店，金额 10.18~674.70 元，无退款。位：映射为 status=paid，标记写入旁路清单 order_flags.csv（order_id／reason_code／原 ord_stat），不进契约 CSV——契约 orders.csv 固定 10 列，加列即 CSV_COLUMNS_MISMATCH。法：不隔离、不改状态——229 笔是真实付款；但集中在期末最后一周这一形态必须在诊断报告点出，避免被当成常规业务量。依据：数据自证分布；ord_stat 五值语义无法由业务或系统侧确认（自定待核：D7 状态映射）。同段的「全额退款→paid」已按指标库定义定案（valid_order_count 写「取消和全退不计」、full_refund_order_count 要求 status=paid），映射见 customer/w04/value_mapping.csv"
+
+  - rule_id: "unsupported_card_type"
+    condition: "card_kind 不在六值集合（悦享年卡／悦享卡（年）／家庭季卡／异业联名卡／体验卡／员工卡）之内"
+    action: "quarantine"
+    reason_code: "UNSUPPORTED_CARD_TYPE"
+    evidence: "数：本批 0 条（六值合计 16,648，与卡表行数一致）。位：命中行进 quarantine，record_type=card。法：本条为后续批次防护，本批不触发。依据：数据自证六值穷举；契约 README 第 69 行预设该 reason_code。注：员工卡属六值之一，走 card_type=员工内购 映射，不命中本条（陈姐 MSG-05290：员工卡是内购用、不算会员权益、不计付费会员资格）"
+
+  - rule_id: "invalid_date"
+    condition: "已按三形态解析后仍无法构成 YYYY-MM-DD 合法日期的值"
+    action: "quarantine"
+    reason_code: "INVALID_DATE"
+    evidence: "数：本批 0 条（join_dt 116,141+1,823+1,790＝119,754 全部可解析；ord_tm 168,253 全 19 位；st_dt／ed_dt 各 16,648 全 ISO10）。位：命中行进 quarantine，record_type 按来源表填。法：本批不触发，保留用于拦截后续批次。依据：数据自证形态穷举（自定待核：无）"
+
+raw_preservation:
+  original_files: "4 个 CRM 原始 CSV 与 2 张工作账只读保存，绝不覆盖、绝不手改；SHA-256 与 manifest.json 逐一比对：crm_member_export.csv 119,754／crm_order_export.csv 168,253／crm_card_export.csv 16,648／crm_shop.csv 403。清洗结果只能由规则重跑得出，任何人工改 CSV 都视为违规"
+  notes: "member_notes.csv 每行保留 source_file（固定 crm_member_export.csv）、source_row（CSV 记录序号，从 1 起、不含表头、按记录计数）、source_field（固定 tag）、raw_text（该格完整原值）、note_text（剩余文字）、category（契约 5 值之一）。raw_text 是核查唯一凭据，任何情况下不得截断"
+  quarantine: "quarantine.csv 每行保留 record_type（member／order／card／shop）、source_file、source_row、reason_code、raw_json（JSON object，键为原始列名、值为原始字符）。隔离不是删除：原行所有字段可在 raw_json 内完整回溯，不得只存订单号"

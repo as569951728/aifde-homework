@@ -1,0 +1,49 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "monthly_paid_buyer_count",
+      "monthly_paid_sales_cents",
+      "monthly_paid_repeat_rate"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "WITH sma_10003_cte AS (\n  SELECT\n    DATE_TRUNC('month', month_start) AS metric_time__month\n    , CASE WHEN case when is_paid_eligible then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_buyer_count\n    , case when is_paid_eligible then net_sales_cents else 0 end AS __monthly_paid_sales_cents\n    , CASE WHEN case when is_paid_eligible and valid_order_count >= 2 then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_repeat_buyer_count\n  FROM \"data\".\"main\".\"monthly_paid_member_summary\" monthly_paid_member_summary_src_10000\n)\n\nSELECT\n  MAX(subq_9.monthly_paid_buyer_count) AS monthly_paid_buyer_count\n  , MAX(subq_9.monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  , MAX(subq_16.monthly_paid_repeat_rate) AS monthly_paid_repeat_rate\nFROM (\n  SELECT\n    SUM(__monthly_paid_buyer_count) AS monthly_paid_buyer_count\n    , SUM(__monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_9\nCROSS JOIN (\n  SELECT\n    CAST(SUM(__monthly_paid_repeat_buyer_count) AS DOUBLE) / CAST(NULLIF(SUM(__monthly_paid_buyer_count), 0) AS DOUBLE) AS monthly_paid_repeat_rate\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_16",
+  "columns": [
+    "monthly_paid_buyer_count",
+    "monthly_paid_sales_cents",
+    "monthly_paid_repeat_rate"
+  ],
+  "rows": [
+    [
+      493,
+      8601918,
+      0.2332657200811359
+    ]
+  ],
+  "seconds": 0.082,
+  "units": {
+    "monthly_paid_buyer_count": "count",
+    "monthly_paid_sales_cents": "cents",
+    "monthly_paid_repeat_rate": "ratio"
+  },
+  "data_version": "qinghe-w04-v1.1",
+  "data_sha256": "b11d37818b7b611380652893836b310f3e8f48353dbab89ea35894686fec2f10",
+  "catalog_sha256": "5e2160479a94a7c4f0c11c4a055f69a345fca158c9cd968860371669c8e6a22b",
+  "coverage_notes": {
+    "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。",
+    "time_range": {
+      "start": "2024-09-01",
+      "end_exclusive": "2026-09-01"
+    },
+    "quarantined": {
+      "member": 0,
+      "order": 168,
+      "card": 0,
+      "shop": 0
+    }
+  }
+}

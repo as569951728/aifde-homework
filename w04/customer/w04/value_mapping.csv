@@ -1,0 +1,31 @@
+source_table,source_field,source_value,target_field,target_value,rule_id,rows,basis,evidence
+orders,ord_stat,已完成,status,paid,status_map,120388,数据自证（指标库 metrics.yml 定义）,已完成，无退款；paid_order_count 定义含全部 paid 单
+orders,ord_stat,已支付,status,paid,status_map,229,数据自证（指标库 metrics.yml 定义）,paid 且打标 SUSPICIOUS_UNFULFILLED，不隔离不改数（全额集中 2026-08-25~31）
+orders,ord_stat,部分退款,status,paid,status_map,8648,数据自证（指标库 metrics.yml 定义）,refund_order_count 定义「包括部分退款与全部退款」；净额>0 的进 valid
+orders,ord_stat,全额退款,status,paid,status_map,13147,数据自证（指标库 metrics.yml 定义）,valid_order_count 定义「取消和全退不计」+full_refund_order_count 要求 status=paid → 全退必须落 paid；2026-11-12 已拍板
+orders,ord_stat,已取消,status,cancelled,status_map,25841,数据自证（指标库 metrics.yml 定义）,cancelled_order_count 定义「状态为 cancelled 的订单数」；实测退款与实付均为 0
+members,lv,普通,tier,普通,tier_map,83900,数据自证＋已定,metrics.yml tier 为 categorical 无值域约束，原值直取中文；2026-11-12 已定不转英文
+members,lv,银卡,tier,银卡,tier_map,26322,数据自证＋已定,同上
+members,lv,金卡,tier,金卡,tier_map,9532,数据自证＋已定,同上
+members,stat,0,account_status,未激活,account_status_map,22296,访谈原话＋契约,字典原写中文五值、数据为数字四值（D7）；白名单见 w04_import.py L80
+members,stat,1,account_status,活跃,account_status_map,79949,契约白名单,业务口径称「正常」，但导入器白名单只有「活跃」（自定待核：Q1 待陈姐确认叫法）
+members,stat,2,account_status,冻结,account_status_map,5821,契约白名单,w04_import.py L80
+members,stat,3,account_status,注销,account_status_map,11688,契约白名单,w04_import.py L80
+cards,card_kind,悦享年卡,card_type,悦享年卡,card_type_map,8178,数据自证,当前写法
+cards,card_kind,悦享卡（年）,card_type,悦享年卡,card_type_map,1201,数据自证,旧写法：全部 199 元、开卡止于 2023-11；新写法首笔 2023-11，199 为其最低档 → 同一卡种写法切换（D12）
+cards,card_kind,家庭季卡,card_type,家庭季卡,card_type_map,3823,数据自证,—
+cards,card_kind,异业联名卡,card_type,异业联名卡,card_type_map,1814,数据自证,—
+cards,card_kind,体验卡,card_type,体验卡,card_type_map,1333,数据自证,—
+cards,card_kind,员工卡,card_type,员工内购,card_type_map,299,访谈原话,陈姐 MSG-05290：内购用、不算会员权益、不计付费会员资格；不进付费也不进免费口径，不写 UNSUPPORTED_CARD_TYPE
+orders,ch,门店,channel,门店,pass_through,93397,契约白名单,原值直取，w04_import.py L85 白名单
+orders,ch,小程序,channel,小程序,pass_through,49617,契约白名单,同上
+orders,ch,商城,channel,商城,pass_through,25239,契约白名单,同上
+members,src_ch,门店,registered_channel,门店,pass_through,54768,契约白名单,原值直取，w04_import.py L82 白名单
+members,src_ch,系统导入,registered_channel,系统导入,pass_through,39917,契约白名单,"合法值不是异常；该 39,917 人与 reg_dev 空值完全重合"
+members,src_ch,小程序,registered_channel,小程序,pass_through,18366,契约白名单,同上
+members,src_ch,商城,registered_channel,商城,pass_through,6703,契约白名单,同上
+shops,area,华东,region,华东,pass_through,183,数据自证,原值直取，metrics.yml region 无值域约束
+shops,area,华南,region,华南,pass_through,89,数据自证,原值直取，metrics.yml region 无值域约束
+shops,area,华北,region,华北,pass_through,59,数据自证,原值直取，metrics.yml region 无值域约束
+shops,area,西南,region,西南,pass_through,42,数据自证,原值直取，metrics.yml region 无值域约束
+shops,area,华中,region,华中,pass_through,30,数据自证,原值直取，metrics.yml region 无值域约束

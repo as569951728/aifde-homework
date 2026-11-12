@@ -1,0 +1,559 @@
+
+
+============================== 12:00:51.702605 | ce18a86e-71f5-4bca-9fc3-ffad96d6d415 ==============================
+[0m12:00:51.702605 [info ] [MainThread]: Running with dbt=1.12.5
+[0m12:00:51.705892 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'maximum_seed_size_mib': '1', 'warn_error': 'None', 'invocation_command': 'dbt run --profiles-dir /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project --project-dir /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project', 'version_check': 'True', 'log_cache_events': 'False', 'debug': 'False', 'use_experimental_parser': 'False', 'partial_parse': 'True', 'indirect_selection': 'eager', 'fail_fast': 'False', 'quiet': 'False', 'profiles_dir': '/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'introspect': 'True', 'log_format': 'default', 'no_print': 'None', 'use_colors': 'True', 'empty': 'False', 'write_json': 'True', 'send_anonymous_usage_stats': 'False', 'log_path': '/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project/logs', 'target_path': 'None', 'cache_selected_only': 'False', 'hints_enabled': 'True'}
+[0m12:00:52.067518 [info ] [MainThread]: Registered adapter: duckdb=1.11.0
+[0m12:00:52.402925 [debug] [MainThread]: checksum: 4a838280e4fa989b001051158afcf3bbd9ce0bf21cf147574e88df85a7f1a6b7, vars: {}, profile: w03, target: dev, version: 1.12.5
+[0m12:00:52.474780 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m12:00:57.284955 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project/target/manifest.json
+[0m12:00:57.374124 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project/target/semantic_manifest.json
+[0m12:00:57.472797 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project/target/osi_document.json
+[0m12:00:57.493780 [info ] [MainThread]: Found 9 models, 38 metrics, 500 macros, 6 semantic models
+[0m12:00:57.495449 [info ] [MainThread]: 
+[0m12:00:57.495783 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m12:00:57.496069 [info ] [MainThread]: 
+[0m12:00:57.496476 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m12:00:57.499090 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_data'
+[0m12:01:20.963507 [debug] [ThreadPool]: Using duckdb connection "list_data"
+[0m12:01:20.964257 [debug] [ThreadPool]: On list_data: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "connection_name": "list_data"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where lower(catalog_name) = '"data"'
+    
+  
+  
+[0m12:01:20.964593 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m12:01:20.972903 [debug] [ThreadPool]: SQL status: OK in 0.008 seconds
+[0m12:01:20.973920 [debug] [ThreadPool]: On list_data: Close
+[0m12:01:20.974552 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_data, now create_data_main)
+[0m12:01:20.974968 [debug] [ThreadPool]: Creating schema "database: "data"
+schema: "main"
+"
+[0m12:01:20.979212 [debug] [ThreadPool]: Using duckdb connection "create_data_main"
+[0m12:01:20.979614 [debug] [ThreadPool]: On create_data_main: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "connection_name": "create_data_main"} */
+
+    
+        select type from duckdb_databases()
+        where lower(database_name)='data'
+        and type != 'duckdb'
+    
+  
+[0m12:01:20.979928 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m12:01:20.980639 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m12:01:20.981500 [debug] [ThreadPool]: Using duckdb connection "create_data_main"
+[0m12:01:20.981815 [debug] [ThreadPool]: On create_data_main: BEGIN
+[0m12:01:20.982190 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m12:01:20.982478 [debug] [ThreadPool]: Using duckdb connection "create_data_main"
+[0m12:01:20.982771 [debug] [ThreadPool]: On create_data_main: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "connection_name": "create_data_main"} */
+
+    
+    
+        create schema if not exists "data"."main"
+    
+[0m12:01:20.983153 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m12:01:20.983698 [debug] [ThreadPool]: On create_data_main: COMMIT
+[0m12:01:20.984001 [debug] [ThreadPool]: Using duckdb connection "create_data_main"
+[0m12:01:20.984278 [debug] [ThreadPool]: On create_data_main: COMMIT
+[0m12:01:20.984650 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m12:01:20.984947 [debug] [ThreadPool]: On create_data_main: Close
+[0m12:01:20.986113 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_data_main, now list_data_main)
+[0m12:01:20.989031 [debug] [ThreadPool]: Using duckdb connection "list_data_main"
+[0m12:01:20.989456 [debug] [ThreadPool]: On list_data_main: BEGIN
+[0m12:01:20.989759 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m12:01:20.990296 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m12:01:20.990596 [debug] [ThreadPool]: Using duckdb connection "list_data_main"
+[0m12:01:20.990893 [debug] [ThreadPool]: On list_data_main: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "connection_name": "list_data_main"} */
+select
+      'data' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'main'
+    and lower(table_catalog) = 'data'
+  
+[0m12:01:20.992953 [debug] [ThreadPool]: SQL status: OK in 0.002 seconds
+[0m12:01:20.993947 [debug] [ThreadPool]: On list_data_main: ROLLBACK
+[0m12:01:20.994399 [debug] [ThreadPool]: On list_data_main: Close
+[0m12:01:20.995216 [debug] [MainThread]: Using duckdb connection "master"
+[0m12:01:20.995523 [debug] [MainThread]: On master: BEGIN
+[0m12:01:20.995801 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m12:01:20.996217 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m12:01:20.996506 [debug] [MainThread]: On master: COMMIT
+[0m12:01:20.996783 [debug] [MainThread]: Using duckdb connection "master"
+[0m12:01:20.997063 [debug] [MainThread]: On master: COMMIT
+[0m12:01:20.997394 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m12:01:20.997679 [debug] [MainThread]: On master: Close
+[0m12:01:20.999834 [debug] [Thread-1 (]: Began running node model.w03.cards
+[0m12:01:21.000319 [info ] [Thread-1 (]: 1 of 9 START sql view model main.cards ......................................... [RUN]
+[0m12:01:21.000731 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_data_main, now model.w03.cards)
+[0m12:01:21.001064 [debug] [Thread-1 (]: Began compiling node model.w03.cards
+[0m12:01:21.004007 [debug] [Thread-1 (]: Writing injected SQL for node "model.w03.cards"
+[0m12:01:21.069111 [debug] [Thread-1 (]: Began executing node model.w03.cards
+[0m12:01:21.085791 [debug] [Thread-1 (]: Writing runtime sql for node "model.w03.cards"
+[0m12:01:21.150122 [debug] [Thread-1 (]: Using duckdb connection "model.w03.cards"
+[0m12:01:21.150562 [debug] [Thread-1 (]: On model.w03.cards: BEGIN
+[0m12:01:21.150889 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m12:01:21.151445 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m12:01:21.151770 [debug] [Thread-1 (]: Using duckdb connection "model.w03.cards"
+[0m12:01:21.152093 [debug] [Thread-1 (]: On model.w03.cards: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.cards"} */
+
+  
+  create view "data"."main"."cards__dbt_tmp" as (
+    select * from raw_cards
+  );
+
+[0m12:01:21.152635 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.155686 [debug] [Thread-1 (]: Using duckdb connection "model.w03.cards"
+[0m12:01:21.156045 [debug] [Thread-1 (]: On model.w03.cards: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.cards"} */
+alter view "data"."main"."cards__dbt_tmp" rename to "cards"
+[0m12:01:21.156522 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.162717 [debug] [Thread-1 (]: On model.w03.cards: COMMIT
+[0m12:01:21.163112 [debug] [Thread-1 (]: Using duckdb connection "model.w03.cards"
+[0m12:01:21.163427 [debug] [Thread-1 (]: On model.w03.cards: COMMIT
+[0m12:01:21.164125 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.166635 [debug] [Thread-1 (]: Using duckdb connection "model.w03.cards"
+[0m12:01:21.167093 [debug] [Thread-1 (]: On model.w03.cards: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.cards"} */
+
+      drop view if exists "data"."main"."cards__dbt_backup" cascade
+    
+[0m12:01:21.167548 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.168956 [debug] [Thread-1 (]: On model.w03.cards: Close
+[0m12:01:21.170340 [info ] [Thread-1 (]: 1 of 9 OK created sql view model main.cards .................................... [[32mOK[0m in 0.17s]
+[0m12:01:21.170786 [debug] [Thread-1 (]: Finished running node model.w03.cards
+[0m12:01:21.171151 [debug] [Thread-1 (]: Began running node model.w03.members
+[0m12:01:21.171570 [info ] [Thread-1 (]: 2 of 9 START sql view model main.members ....................................... [RUN]
+[0m12:01:21.171955 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.w03.cards, now model.w03.members)
+[0m12:01:21.172283 [debug] [Thread-1 (]: Began compiling node model.w03.members
+[0m12:01:21.172957 [debug] [Thread-1 (]: Writing injected SQL for node "model.w03.members"
+[0m12:01:21.194812 [debug] [Thread-1 (]: Began executing node model.w03.members
+[0m12:01:21.197498 [debug] [Thread-1 (]: Writing runtime sql for node "model.w03.members"
+[0m12:01:21.226897 [debug] [Thread-1 (]: Using duckdb connection "model.w03.members"
+[0m12:01:21.227317 [debug] [Thread-1 (]: On model.w03.members: BEGIN
+[0m12:01:21.227630 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m12:01:21.228153 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m12:01:21.228481 [debug] [Thread-1 (]: Using duckdb connection "model.w03.members"
+[0m12:01:21.228792 [debug] [Thread-1 (]: On model.w03.members: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.members"} */
+
+  
+  create view "data"."main"."members__dbt_tmp" as (
+    select * from raw_members
+  );
+
+[0m12:01:21.229285 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.230741 [debug] [Thread-1 (]: Using duckdb connection "model.w03.members"
+[0m12:01:21.231066 [debug] [Thread-1 (]: On model.w03.members: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.members"} */
+alter view "data"."main"."members__dbt_tmp" rename to "members"
+[0m12:01:21.231515 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.232658 [debug] [Thread-1 (]: On model.w03.members: COMMIT
+[0m12:01:21.232969 [debug] [Thread-1 (]: Using duckdb connection "model.w03.members"
+[0m12:01:21.233268 [debug] [Thread-1 (]: On model.w03.members: COMMIT
+[0m12:01:21.233804 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.235452 [debug] [Thread-1 (]: Using duckdb connection "model.w03.members"
+[0m12:01:21.235795 [debug] [Thread-1 (]: On model.w03.members: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.members"} */
+
+      drop view if exists "data"."main"."members__dbt_backup" cascade
+    
+[0m12:01:21.236238 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.236992 [debug] [Thread-1 (]: On model.w03.members: Close
+[0m12:01:21.237540 [info ] [Thread-1 (]: 2 of 9 OK created sql view model main.members .................................. [[32mOK[0m in 0.07s]
+[0m12:01:21.237953 [debug] [Thread-1 (]: Finished running node model.w03.members
+[0m12:01:21.238290 [debug] [Thread-1 (]: Began running node model.w03.orders
+[0m12:01:21.238725 [info ] [Thread-1 (]: 3 of 9 START sql view model main.orders ........................................ [RUN]
+[0m12:01:21.239148 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.w03.members, now model.w03.orders)
+[0m12:01:21.239470 [debug] [Thread-1 (]: Began compiling node model.w03.orders
+[0m12:01:21.240113 [debug] [Thread-1 (]: Writing injected SQL for node "model.w03.orders"
+[0m12:01:21.259678 [debug] [Thread-1 (]: Began executing node model.w03.orders
+[0m12:01:21.262336 [debug] [Thread-1 (]: Writing runtime sql for node "model.w03.orders"
+[0m12:01:21.292355 [debug] [Thread-1 (]: Using duckdb connection "model.w03.orders"
+[0m12:01:21.292813 [debug] [Thread-1 (]: On model.w03.orders: BEGIN
+[0m12:01:21.293136 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m12:01:21.293682 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m12:01:21.294009 [debug] [Thread-1 (]: Using duckdb connection "model.w03.orders"
+[0m12:01:21.294333 [debug] [Thread-1 (]: On model.w03.orders: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.orders"} */
+
+  
+  create view "data"."main"."orders__dbt_tmp" as (
+    select * from raw_orders
+  );
+
+[0m12:01:21.294889 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.296402 [debug] [Thread-1 (]: Using duckdb connection "model.w03.orders"
+[0m12:01:21.296736 [debug] [Thread-1 (]: On model.w03.orders: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.orders"} */
+alter view "data"."main"."orders__dbt_tmp" rename to "orders"
+[0m12:01:21.297176 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.298296 [debug] [Thread-1 (]: On model.w03.orders: COMMIT
+[0m12:01:21.298612 [debug] [Thread-1 (]: Using duckdb connection "model.w03.orders"
+[0m12:01:21.298913 [debug] [Thread-1 (]: On model.w03.orders: COMMIT
+[0m12:01:21.299486 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.300559 [debug] [Thread-1 (]: Using duckdb connection "model.w03.orders"
+[0m12:01:21.300883 [debug] [Thread-1 (]: On model.w03.orders: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.orders"} */
+
+      drop view if exists "data"."main"."orders__dbt_backup" cascade
+    
+[0m12:01:21.301423 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.302188 [debug] [Thread-1 (]: On model.w03.orders: Close
+[0m12:01:21.302733 [info ] [Thread-1 (]: 3 of 9 OK created sql view model main.orders ................................... [[32mOK[0m in 0.06s]
+[0m12:01:21.303154 [debug] [Thread-1 (]: Finished running node model.w03.orders
+[0m12:01:21.303517 [debug] [Thread-1 (]: Began running node model.w03.stores
+[0m12:01:21.303987 [info ] [Thread-1 (]: 4 of 9 START sql view model main.stores ........................................ [RUN]
+[0m12:01:21.304356 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.w03.orders, now model.w03.stores)
+[0m12:01:21.304671 [debug] [Thread-1 (]: Began compiling node model.w03.stores
+[0m12:01:21.305286 [debug] [Thread-1 (]: Writing injected SQL for node "model.w03.stores"
+[0m12:01:21.324576 [debug] [Thread-1 (]: Began executing node model.w03.stores
+[0m12:01:21.327016 [debug] [Thread-1 (]: Writing runtime sql for node "model.w03.stores"
+[0m12:01:21.345044 [debug] [Thread-1 (]: Using duckdb connection "model.w03.stores"
+[0m12:01:21.345473 [debug] [Thread-1 (]: On model.w03.stores: BEGIN
+[0m12:01:21.345785 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m12:01:21.346321 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m12:01:21.346642 [debug] [Thread-1 (]: Using duckdb connection "model.w03.stores"
+[0m12:01:21.346956 [debug] [Thread-1 (]: On model.w03.stores: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.stores"} */
+
+  
+  create view "data"."main"."stores__dbt_tmp" as (
+    select * from raw_stores
+  );
+
+[0m12:01:21.347464 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.348951 [debug] [Thread-1 (]: Using duckdb connection "model.w03.stores"
+[0m12:01:21.349296 [debug] [Thread-1 (]: On model.w03.stores: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.stores"} */
+alter view "data"."main"."stores__dbt_tmp" rename to "stores"
+[0m12:01:21.349736 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.350910 [debug] [Thread-1 (]: On model.w03.stores: COMMIT
+[0m12:01:21.351243 [debug] [Thread-1 (]: Using duckdb connection "model.w03.stores"
+[0m12:01:21.351544 [debug] [Thread-1 (]: On model.w03.stores: COMMIT
+[0m12:01:21.352086 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.353332 [debug] [Thread-1 (]: Using duckdb connection "model.w03.stores"
+[0m12:01:21.353693 [debug] [Thread-1 (]: On model.w03.stores: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.stores"} */
+
+      drop view if exists "data"."main"."stores__dbt_backup" cascade
+    
+[0m12:01:21.354167 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.354981 [debug] [Thread-1 (]: On model.w03.stores: Close
+[0m12:01:21.355576 [info ] [Thread-1 (]: 4 of 9 OK created sql view model main.stores ................................... [[32mOK[0m in 0.05s]
+[0m12:01:21.356014 [debug] [Thread-1 (]: Finished running node model.w03.stores
+[0m12:01:21.356372 [debug] [Thread-1 (]: Began running node model.w03.time_spine
+[0m12:01:21.356786 [info ] [Thread-1 (]: 5 of 9 START sql view model main.time_spine .................................... [RUN]
+[0m12:01:21.357164 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.w03.stores, now model.w03.time_spine)
+[0m12:01:21.357496 [debug] [Thread-1 (]: Began compiling node model.w03.time_spine
+[0m12:01:21.358684 [debug] [Thread-1 (]: Writing injected SQL for node "model.w03.time_spine"
+[0m12:01:21.384615 [debug] [Thread-1 (]: Began executing node model.w03.time_spine
+[0m12:01:21.387168 [debug] [Thread-1 (]: Writing runtime sql for node "model.w03.time_spine"
+[0m12:01:21.406586 [debug] [Thread-1 (]: Using duckdb connection "model.w03.time_spine"
+[0m12:01:21.407016 [debug] [Thread-1 (]: On model.w03.time_spine: BEGIN
+[0m12:01:21.407335 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m12:01:21.407871 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m12:01:21.408185 [debug] [Thread-1 (]: Using duckdb connection "model.w03.time_spine"
+[0m12:01:21.408508 [debug] [Thread-1 (]: On model.w03.time_spine: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.time_spine"} */
+
+  
+  create view "data"."main"."time_spine__dbt_tmp" as (
+    select cast(date_day as date) as date_day from generate_series(date '2024-09-01', date '2026-09-01' - interval 1 day, interval 1 day) as t(date_day)
+  );
+
+[0m12:01:21.409173 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.410687 [debug] [Thread-1 (]: Using duckdb connection "model.w03.time_spine"
+[0m12:01:21.411032 [debug] [Thread-1 (]: On model.w03.time_spine: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.time_spine"} */
+alter view "data"."main"."time_spine__dbt_tmp" rename to "time_spine"
+[0m12:01:21.411515 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.412681 [debug] [Thread-1 (]: On model.w03.time_spine: COMMIT
+[0m12:01:21.413011 [debug] [Thread-1 (]: Using duckdb connection "model.w03.time_spine"
+[0m12:01:21.413312 [debug] [Thread-1 (]: On model.w03.time_spine: COMMIT
+[0m12:01:21.413863 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.415018 [debug] [Thread-1 (]: Using duckdb connection "model.w03.time_spine"
+[0m12:01:21.415361 [debug] [Thread-1 (]: On model.w03.time_spine: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.time_spine"} */
+
+      drop view if exists "data"."main"."time_spine__dbt_backup" cascade
+    
+[0m12:01:21.415781 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.416552 [debug] [Thread-1 (]: On model.w03.time_spine: Close
+[0m12:01:21.417122 [info ] [Thread-1 (]: 5 of 9 OK created sql view model main.time_spine ............................... [[32mOK[0m in 0.06s]
+[0m12:01:21.417550 [debug] [Thread-1 (]: Finished running node model.w03.time_spine
+[0m12:01:21.417907 [debug] [Thread-1 (]: Began running node model.w03.monthly_member_order_summary
+[0m12:01:21.418315 [info ] [Thread-1 (]: 6 of 9 START sql view model main.monthly_member_order_summary .................. [RUN]
+[0m12:01:21.418690 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.w03.time_spine, now model.w03.monthly_member_order_summary)
+[0m12:01:21.419019 [debug] [Thread-1 (]: Began compiling node model.w03.monthly_member_order_summary
+[0m12:01:21.420168 [debug] [Thread-1 (]: Writing injected SQL for node "model.w03.monthly_member_order_summary"
+[0m12:01:21.440542 [debug] [Thread-1 (]: Began executing node model.w03.monthly_member_order_summary
+[0m12:01:21.443227 [debug] [Thread-1 (]: Writing runtime sql for node "model.w03.monthly_member_order_summary"
+[0m12:01:21.462750 [debug] [Thread-1 (]: Using duckdb connection "model.w03.monthly_member_order_summary"
+[0m12:01:21.463163 [debug] [Thread-1 (]: On model.w03.monthly_member_order_summary: BEGIN
+[0m12:01:21.463483 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m12:01:21.464015 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m12:01:21.464336 [debug] [Thread-1 (]: Using duckdb connection "model.w03.monthly_member_order_summary"
+[0m12:01:21.464668 [debug] [Thread-1 (]: On model.w03.monthly_member_order_summary: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.monthly_member_order_summary"} */
+
+  
+  create view "data"."main"."monthly_member_order_summary__dbt_tmp" as (
+    with valid_orders as (
+  select member_id, date_trunc('month', ordered_at)::date as month_start, paid_cents - refund_cents as net_sales_cents
+  from "data"."main"."orders"
+  where status = 'paid' and paid_cents - refund_cents > 0
+)
+select member_id, month_start, count(*) as valid_order_count, sum(net_sales_cents) as net_sales_cents
+from valid_orders
+group by member_id, month_start
+  );
+
+[0m12:01:21.465406 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.466867 [debug] [Thread-1 (]: Using duckdb connection "model.w03.monthly_member_order_summary"
+[0m12:01:21.467192 [debug] [Thread-1 (]: On model.w03.monthly_member_order_summary: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.monthly_member_order_summary"} */
+alter view "data"."main"."monthly_member_order_summary__dbt_tmp" rename to "monthly_member_order_summary"
+[0m12:01:21.467673 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.468916 [debug] [Thread-1 (]: On model.w03.monthly_member_order_summary: COMMIT
+[0m12:01:21.469265 [debug] [Thread-1 (]: Using duckdb connection "model.w03.monthly_member_order_summary"
+[0m12:01:21.469580 [debug] [Thread-1 (]: On model.w03.monthly_member_order_summary: COMMIT
+[0m12:01:21.470177 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.471383 [debug] [Thread-1 (]: Using duckdb connection "model.w03.monthly_member_order_summary"
+[0m12:01:21.471731 [debug] [Thread-1 (]: On model.w03.monthly_member_order_summary: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.monthly_member_order_summary"} */
+
+      drop view if exists "data"."main"."monthly_member_order_summary__dbt_backup" cascade
+    
+[0m12:01:21.472176 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.472944 [debug] [Thread-1 (]: On model.w03.monthly_member_order_summary: Close
+[0m12:01:21.473495 [info ] [Thread-1 (]: 6 of 9 OK created sql view model main.monthly_member_order_summary ............. [[32mOK[0m in 0.05s]
+[0m12:01:21.473921 [debug] [Thread-1 (]: Finished running node model.w03.monthly_member_order_summary
+[0m12:01:21.474268 [debug] [Thread-1 (]: Began running node model.w03.orders_enriched
+[0m12:01:21.474630 [info ] [Thread-1 (]: 7 of 9 START sql view model main.orders_enriched ............................... [RUN]
+[0m12:01:21.475138 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.w03.monthly_member_order_summary, now model.w03.orders_enriched)
+[0m12:01:21.475471 [debug] [Thread-1 (]: Began compiling node model.w03.orders_enriched
+[0m12:01:21.476728 [debug] [Thread-1 (]: Writing injected SQL for node "model.w03.orders_enriched"
+[0m12:01:21.492957 [debug] [Thread-1 (]: Began executing node model.w03.orders_enriched
+[0m12:01:21.495601 [debug] [Thread-1 (]: Writing runtime sql for node "model.w03.orders_enriched"
+[0m12:01:21.521471 [debug] [Thread-1 (]: Using duckdb connection "model.w03.orders_enriched"
+[0m12:01:21.521930 [debug] [Thread-1 (]: On model.w03.orders_enriched: BEGIN
+[0m12:01:21.522248 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m12:01:21.522775 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m12:01:21.523105 [debug] [Thread-1 (]: Using duckdb connection "model.w03.orders_enriched"
+[0m12:01:21.523445 [debug] [Thread-1 (]: On model.w03.orders_enriched: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.orders_enriched"} */
+
+  
+  create view "data"."main"."orders_enriched__dbt_tmp" as (
+    with valid_orders as (
+  select order_id, member_id, ordered_at
+  from "data"."main"."orders"
+  where status = 'paid' and paid_cents - refund_cents > 0
+),
+ranked as (
+  select order_id,
+         row_number() over (partition by member_id order by ordered_at, order_id) as valid_order_seq
+  from valid_orders
+),
+flags as (
+  select order_id, valid_order_seq,
+         case when valid_order_seq = 1 then true else false end as is_first_valid_order,
+         case when valid_order_seq >= 2 then true else false end as is_repeat_valid_order
+  from ranked
+)
+select o.order_id, o.member_id, o.store_id, o.ordered_at, o.status, o.gross_cents, o.paid_cents, o.refund_cents, o.quantity, o.channel,
+       o.paid_cents - o.refund_cents as net_sales_cents,
+       f.valid_order_seq,
+       coalesce(f.is_first_valid_order, false) as is_first_valid_order,
+       coalesce(f.is_repeat_valid_order, false) as is_repeat_valid_order
+from "data"."main"."orders" o
+left join flags f on o.order_id = f.order_id
+  );
+
+[0m12:01:21.524373 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m12:01:21.525848 [debug] [Thread-1 (]: Using duckdb connection "model.w03.orders_enriched"
+[0m12:01:21.526171 [debug] [Thread-1 (]: On model.w03.orders_enriched: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.orders_enriched"} */
+alter view "data"."main"."orders_enriched__dbt_tmp" rename to "orders_enriched"
+[0m12:01:21.526603 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.527732 [debug] [Thread-1 (]: On model.w03.orders_enriched: COMMIT
+[0m12:01:21.528053 [debug] [Thread-1 (]: Using duckdb connection "model.w03.orders_enriched"
+[0m12:01:21.528523 [debug] [Thread-1 (]: On model.w03.orders_enriched: COMMIT
+[0m12:01:21.529280 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.530508 [debug] [Thread-1 (]: Using duckdb connection "model.w03.orders_enriched"
+[0m12:01:21.530851 [debug] [Thread-1 (]: On model.w03.orders_enriched: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.orders_enriched"} */
+
+      drop view if exists "data"."main"."orders_enriched__dbt_backup" cascade
+    
+[0m12:01:21.531278 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.532069 [debug] [Thread-1 (]: On model.w03.orders_enriched: Close
+[0m12:01:21.532642 [info ] [Thread-1 (]: 7 of 9 OK created sql view model main.orders_enriched .......................... [[32mOK[0m in 0.06s]
+[0m12:01:21.533071 [debug] [Thread-1 (]: Finished running node model.w03.orders_enriched
+[0m12:01:21.533430 [debug] [Thread-1 (]: Began running node model.w03.member_month_paid_eligibility
+[0m12:01:21.533799 [info ] [Thread-1 (]: 8 of 9 START sql view model main.member_month_paid_eligibility ................. [RUN]
+[0m12:01:21.534219 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.w03.orders_enriched, now model.w03.member_month_paid_eligibility)
+[0m12:01:21.534539 [debug] [Thread-1 (]: Began compiling node model.w03.member_month_paid_eligibility
+[0m12:01:21.535793 [debug] [Thread-1 (]: Writing injected SQL for node "model.w03.member_month_paid_eligibility"
+[0m12:01:21.552690 [debug] [Thread-1 (]: Began executing node model.w03.member_month_paid_eligibility
+[0m12:01:21.555340 [debug] [Thread-1 (]: Writing runtime sql for node "model.w03.member_month_paid_eligibility"
+[0m12:01:21.576543 [debug] [Thread-1 (]: Using duckdb connection "model.w03.member_month_paid_eligibility"
+[0m12:01:21.576985 [debug] [Thread-1 (]: On model.w03.member_month_paid_eligibility: BEGIN
+[0m12:01:21.577311 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m12:01:21.577859 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m12:01:21.578193 [debug] [Thread-1 (]: Using duckdb connection "model.w03.member_month_paid_eligibility"
+[0m12:01:21.578533 [debug] [Thread-1 (]: On model.w03.member_month_paid_eligibility: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.member_month_paid_eligibility"} */
+
+  
+  create view "data"."main"."member_month_paid_eligibility__dbt_tmp" as (
+    with member_months as (
+  select distinct member_id, month_start
+  from "data"."main"."monthly_member_order_summary"
+),
+elig as (
+  select mm.member_id, mm.month_start,
+         case when exists (
+           select 1
+           from "data"."main"."cards" c
+           where c.member_id = mm.member_id
+             and c.card_type in ('悦享年卡', '家庭季卡')
+             and c.valid_from <= (mm.month_start + interval '1 month' - interval '1 day')::date
+             and (mm.month_start + interval '1 month' - interval '1 day')::date < c.valid_until
+             and (c.ended_at is null or (mm.month_start + interval '1 month' - interval '1 day')::date < c.ended_at)
+         ) then true else false end as is_paid_eligible
+  from member_months mm
+)
+select member_id, month_start, is_paid_eligible from elig
+  );
+
+[0m12:01:21.579549 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m12:01:21.581090 [debug] [Thread-1 (]: Using duckdb connection "model.w03.member_month_paid_eligibility"
+[0m12:01:21.581444 [debug] [Thread-1 (]: On model.w03.member_month_paid_eligibility: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.member_month_paid_eligibility"} */
+alter view "data"."main"."member_month_paid_eligibility__dbt_tmp" rename to "member_month_paid_eligibility"
+[0m12:01:21.581917 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.583093 [debug] [Thread-1 (]: On model.w03.member_month_paid_eligibility: COMMIT
+[0m12:01:21.583434 [debug] [Thread-1 (]: Using duckdb connection "model.w03.member_month_paid_eligibility"
+[0m12:01:21.583743 [debug] [Thread-1 (]: On model.w03.member_month_paid_eligibility: COMMIT
+[0m12:01:21.584373 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.586102 [debug] [Thread-1 (]: Using duckdb connection "model.w03.member_month_paid_eligibility"
+[0m12:01:21.586475 [debug] [Thread-1 (]: On model.w03.member_month_paid_eligibility: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.member_month_paid_eligibility"} */
+
+      drop view if exists "data"."main"."member_month_paid_eligibility__dbt_backup" cascade
+    
+[0m12:01:21.586940 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.587755 [debug] [Thread-1 (]: On model.w03.member_month_paid_eligibility: Close
+[0m12:01:21.588383 [info ] [Thread-1 (]: 8 of 9 OK created sql view model main.member_month_paid_eligibility ............ [[32mOK[0m in 0.05s]
+[0m12:01:21.588851 [debug] [Thread-1 (]: Finished running node model.w03.member_month_paid_eligibility
+[0m12:01:21.589382 [debug] [Thread-1 (]: Began running node model.w03.monthly_paid_member_summary
+[0m12:01:21.589817 [info ] [Thread-1 (]: 9 of 9 START sql view model main.monthly_paid_member_summary ................... [RUN]
+[0m12:01:21.590231 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.w03.member_month_paid_eligibility, now model.w03.monthly_paid_member_summary)
+[0m12:01:21.590548 [debug] [Thread-1 (]: Began compiling node model.w03.monthly_paid_member_summary
+[0m12:01:21.591837 [debug] [Thread-1 (]: Writing injected SQL for node "model.w03.monthly_paid_member_summary"
+[0m12:01:21.613132 [debug] [Thread-1 (]: Began executing node model.w03.monthly_paid_member_summary
+[0m12:01:21.615701 [debug] [Thread-1 (]: Writing runtime sql for node "model.w03.monthly_paid_member_summary"
+[0m12:01:21.635567 [debug] [Thread-1 (]: Using duckdb connection "model.w03.monthly_paid_member_summary"
+[0m12:01:21.636000 [debug] [Thread-1 (]: On model.w03.monthly_paid_member_summary: BEGIN
+[0m12:01:21.636321 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m12:01:21.636864 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m12:01:21.637186 [debug] [Thread-1 (]: Using duckdb connection "model.w03.monthly_paid_member_summary"
+[0m12:01:21.637516 [debug] [Thread-1 (]: On model.w03.monthly_paid_member_summary: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.monthly_paid_member_summary"} */
+
+  
+  create view "data"."main"."monthly_paid_member_summary__dbt_tmp" as (
+    with summary as (
+  select member_id, month_start, valid_order_count, net_sales_cents
+  from "data"."main"."monthly_member_order_summary"
+),
+elig as (
+  select member_id, month_start, is_paid_eligible
+  from "data"."main"."member_month_paid_eligibility"
+)
+select s.member_id, s.month_start, s.valid_order_count, s.net_sales_cents, e.is_paid_eligible
+from summary s
+join elig e using (member_id, month_start)
+  );
+
+[0m12:01:21.638588 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m12:01:21.640063 [debug] [Thread-1 (]: Using duckdb connection "model.w03.monthly_paid_member_summary"
+[0m12:01:21.640414 [debug] [Thread-1 (]: On model.w03.monthly_paid_member_summary: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.monthly_paid_member_summary"} */
+alter view "data"."main"."monthly_paid_member_summary__dbt_tmp" rename to "monthly_paid_member_summary"
+[0m12:01:21.640871 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.642038 [debug] [Thread-1 (]: On model.w03.monthly_paid_member_summary: COMMIT
+[0m12:01:21.642383 [debug] [Thread-1 (]: Using duckdb connection "model.w03.monthly_paid_member_summary"
+[0m12:01:21.642687 [debug] [Thread-1 (]: On model.w03.monthly_paid_member_summary: COMMIT
+[0m12:01:21.643305 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.644534 [debug] [Thread-1 (]: Using duckdb connection "model.w03.monthly_paid_member_summary"
+[0m12:01:21.644884 [debug] [Thread-1 (]: On model.w03.monthly_paid_member_summary: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "w03", "target_name": "dev", "node_id": "model.w03.monthly_paid_member_summary"} */
+
+      drop view if exists "data"."main"."monthly_paid_member_summary__dbt_backup" cascade
+    
+[0m12:01:21.645346 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m12:01:21.646114 [debug] [Thread-1 (]: On model.w03.monthly_paid_member_summary: Close
+[0m12:01:21.646687 [info ] [Thread-1 (]: 9 of 9 OK created sql view model main.monthly_paid_member_summary .............. [[32mOK[0m in 0.06s]
+[0m12:01:21.647117 [debug] [Thread-1 (]: Finished running node model.w03.monthly_paid_member_summary
+[0m12:01:21.647866 [debug] [MainThread]: Using duckdb connection "master"
+[0m12:01:21.648187 [debug] [MainThread]: On master: BEGIN
+[0m12:01:21.648470 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m12:01:21.648900 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m12:01:21.649185 [debug] [MainThread]: On master: COMMIT
+[0m12:01:21.649475 [debug] [MainThread]: Using duckdb connection "master"
+[0m12:01:21.649757 [debug] [MainThread]: On master: COMMIT
+[0m12:01:21.650094 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m12:01:21.650390 [debug] [MainThread]: On master: Close
+[0m12:01:21.650747 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m12:01:21.651031 [debug] [MainThread]: Connection 'model.w03.monthly_paid_member_summary' was properly closed.
+[0m12:01:21.651386 [info ] [MainThread]: 
+[0m12:01:21.651723 [info ] [MainThread]: Finished running 9 view models in 0 hours 0 minutes and 24.15 seconds (24.15s).
+[0m12:01:21.652602 [debug] [MainThread]: Command end result
+[0m12:01:21.695313 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project/target/manifest.json
+[0m12:01:21.886910 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project/target/semantic_manifest.json
+[0m12:01:22.057192 [debug] [MainThread]: Wrote artifact OsiDocument to /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project/target/osi_document.json
+[0m12:01:22.083748 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project/target/run_results.json
+[0m12:01:22.084210 [info ] [MainThread]: 
+[0m12:01:22.084590 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m12:01:22.084907 [info ] [MainThread]: 
+[0m12:01:22.085228 [info ] [MainThread]: Done. PASS=9 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=9
+[0m12:01:22.087979 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 30.571436, "process_in_blocks": "0", "process_kernel_time": 0.745164, "process_mem_max_rss": "179535872", "process_out_blocks": "0", "process_user_time": 2.493524}
+[0m12:01:22.088496 [debug] [MainThread]: Command `dbt run` succeeded at 12:01:22.088444 after 30.57 seconds
+[0m12:01:22.088869 [debug] [MainThread]: Flushing usage events
+
+
+============================== 12:01:35.908647 | 7cd4fcc9-bfef-42cb-a05a-70764abe3d4a ==============================
+[0m12:01:35.908647 [info ] [MainThread]: Running with dbt=1.12.5
+[0m12:01:35.912324 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'invocation_command': 'dbt _inspect-worker --project /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project', 'use_experimental_parser': 'False', 'no_print': 'None', 'hints_enabled': 'True', 'introspect': 'True', 'send_anonymous_usage_stats': 'False', 'empty': 'None', 'fail_fast': 'False', 'log_cache_events': 'False', 'use_colors': 'True', 'version_check': 'True', 'debug': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'partial_parse': 'True', 'quiet': 'True', 'printer_width': '80', 'log_format': 'default', 'profiles_dir': '/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project', 'maximum_seed_size_mib': '1', 'write_json': 'True', 'log_path': '/Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project/logs', 'indirect_selection': 'eager', 'warn_error': 'None', 'static_parser': 'True'}
+[0m12:01:35.924033 [info ] [MainThread]: dbt version: 1.12.5
+[0m12:01:35.924508 [info ] [MainThread]: python version: 3.11.16
+[0m12:01:35.924827 [info ] [MainThread]: python path: /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/.venv/bin/python
+[0m12:01:35.925129 [info ] [MainThread]: os info: macOS-26.6.2-arm64-arm-64bit
+[0m12:01:36.101252 [info ] [MainThread]: Using profiles dir at /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project
+[0m12:01:36.101731 [info ] [MainThread]: Using profiles.yml file at /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project/profiles.yml
+[0m12:01:36.102057 [info ] [MainThread]: Using dbt_project.yml file at /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project/dbt_project.yml
+[0m12:01:36.190516 [info ] [MainThread]: adapter type: duckdb
+[0m12:01:36.191033 [info ] [MainThread]: adapter version: 1.11.0
+[0m12:01:36.301233 [info ] [MainThread]: Configuration:
+[0m12:01:36.301705 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m12:01:36.302008 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m12:01:36.302293 [info ] [MainThread]: Required dependencies:
+[0m12:01:36.302642 [debug] [MainThread]: Executing "git --help"
+[0m12:01:36.324838 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m12:01:36.325707 [debug] [MainThread]: STDERR: "b''"
+[0m12:01:36.326069 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m12:01:36.326375 [info ] [MainThread]: Connection:
+[0m12:01:36.326746 [info ] [MainThread]:   database: data
+[0m12:01:36.327027 [info ] [MainThread]:   schema: main
+[0m12:01:36.327306 [info ] [MainThread]:   path: /Users/chenzhaowen/czw-code/AIFDE/W03/实操工程/artifacts/w03/library/validation-project/data.duckdb
+[0m12:01:36.327569 [info ] [MainThread]:   config_options: None
+[0m12:01:36.327828 [info ] [MainThread]:   extensions: None
+[0m12:01:36.328092 [info ] [MainThread]:   settings: {}
+[0m12:01:36.328359 [info ] [MainThread]:   external_root: .
+[0m12:01:36.328621 [info ] [MainThread]:   use_credential_provider: None
+[0m12:01:36.328881 [info ] [MainThread]:   attach: None
+[0m12:01:36.329139 [info ] [MainThread]:   filesystems: None
+[0m12:01:36.329399 [info ] [MainThread]:   remote: None
+[0m12:01:36.329657 [info ] [MainThread]:   plugins: None
+[0m12:01:36.329909 [info ] [MainThread]:   disable_transactions: False
+[0m12:01:36.330415 [info ] [MainThread]: Registered adapter: duckdb=1.11.0
+[0m12:01:36.952064 [debug] [MainThread]: Acquiring new duckdb connection 'debug'
+[0m12:01:53.683897 [debug] [MainThread]: Using duckdb connection "debug"
+[0m12:01:53.684850 [debug] [MainThread]: On debug: select 1 as id
+[0m12:01:53.685169 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m12:01:53.692882 [debug] [MainThread]: SQL status: OK in 0.008 seconds
+[0m12:01:53.693528 [debug] [MainThread]: On debug: Close
+[0m12:01:53.693862 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m12:01:53.694151 [info ] [MainThread]: [32mAll checks passed![0m
+[0m12:01:53.696104 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": true, "command_wall_clock_time": 18.091908, "process_in_blocks": "0", "process_kernel_time": 0.633961, "process_mem_max_rss": "170049536", "process_out_blocks": "0", "process_user_time": 1.429805}
+[0m12:01:53.696526 [debug] [MainThread]: Command `cli debug` succeeded at 12:01:53.696475 after 18.09 seconds
+[0m12:01:53.696851 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m12:01:53.697161 [debug] [MainThread]: Flushing usage events

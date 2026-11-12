@@ -1,0 +1,81 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "你根据本轮真实执行结果回答问题。解释条件时必须使用字段语义：store、store__region、store__store_name 都表示订单成交门店及其地区/名称；home_store 及其地区/名称才表示会员归属门店。返回 intent 中已有字段筛选就是已经应用的查询条件，不能因没有额外中文同名字段而否认已应用的条件。只能引用结果中的数值；金额以分存储，展示元需除100；比例展示百分数需乘100。用简明业务语言解释统计范围、口径及限制，金额保留两位小数、比例适当四舍五入。不要展示内部 status、intent 等字段名。区分零和未定义。聚合返回零是覆盖内的零；未返回某个分组仅说明该分组未列出，不能称为该指标未定义，也不能推断数据覆盖不足。返回 JSON：{\"answer\":\"...\",\"used_metrics\":[],\"citations\":[\"当前执行结果\"]}。\ncustomer_context 指明当前已加载客户与统计单位，data_context 指明本次测试数据版本和覆盖；本轮成功结果已经处于该客户数据范围。问题中的当前客户名称不是门店筛选值，不能因为没有同名门店筛选而否认结果属于该客户。只说明实际应用的筛选和分组；若用户没有要求某维度，不添加假设性的门店歧义。人数按customer_context统计单位表述为账户，不暗示跨系统自然人已去重。用业务词说明范围，不向用户罗列技术字段ID。\n"
+    },
+    {
+      "role": "user",
+      "content": "{\"question\": \"2026年8月，门店、小程序、商城三个渠道各自的订单数和净销售额是多少？\", \"customer_context\": {\"customer\": \"青禾\", \"statistics_unit\": \"人数按CRM会员账户计数（不等于跨系统自然人）；订单数按订单笔数；金额以整数分保存，展示元需换算；比率与均额按定义。\", \"scope\": \"本周合成测试库\"}, \"data_context\": {\"id\": \"qinghe-w04-v1.1\", \"contract_version\": \"w04-data-0.1.0\", \"coverage\": [\"2024-09-01\", \"2026-09-01\"], \"reference_date\": \"2026-09-01\", \"timezone\": \"Asia/Shanghai\", \"source_sha256\": {\"crm_card_export.csv\": \"1e2539c564d1e007f3aaaa11b1d16de9a50a63858fed5dc09537089321b5e424\", \"crm_member_export.csv\": \"dfe1e842c80f947bf85b0b356073e6eb0c9cd7385072fbc731452d7a60ea8913\", \"crm_order_export.csv\": \"e95a5a467f044ef6d059014a71dcd39edc178d88e8ea06f87f2ecb1a40040052\", \"crm_shop.csv\": \"bcef4a1edb12f18695b545fef64b7da2c7504f3cfc535937f08c7380a5f00045\", \"小林工作账_勿扰名单.csv\": \"8460b149d9208bfad5d90f2299ecc49c69c56d4970e91fb066bec63d9889af8d\", \"小林工作账_回访名单.csv\": \"3dd64d64b5e9524bd0fbd23736b4f32f6a234b0acf47d0c5b469906a2b0b346e\"}, \"sha256\": {\"cards.csv\": \"bc362531888f6e5e6d2f72a2e5d7ec3def9a97788092e5577c6074231aa8203d\", \"member_notes.csv\": \"2d3b35574c7078bda93e42deae5efec6bbf4312a14fe9079257d8020de1cf54e\", \"member_tags.csv\": \"f157202f52a9d2562831f02cc2e0cbfc4a89a316765294c7dd48ab4a430551d9\", \"members.csv\": \"6ca27bea580099f34024b93c64bac0402d9b672d29894b2effd2d57532dd839c\", \"orders.csv\": \"256dd75d2ab611d167455fe51e53cae7e3356168b025e8988cf720d74c547981\", \"quarantine.csv\": \"43d699789f51de7a3f63c588b0f1fa4d32b432c940ad624e4d9f4428df5e27b0\", \"stores.csv\": \"244fd3e72d35f3d664a80cb6473776203958bcadb747e181ba32b1b81223cae3\"}, \"counts\": {\"members\": 119754, \"orders\": 167749, \"cards\": 16648, \"stores\": 403, \"member_tags\": 56215, \"member_notes\": 8906, \"quarantine\": 168}, \"record_counts\": {\"member\": {\"read\": 119754, \"accepted\": 119754, \"quarantined\": 0, \"deduplicated\": 0}, \"order\": {\"read\": 168253, \"accepted\": 167749, \"quarantined\": 168, \"deduplicated\": 336}, \"card\": {\"read\": 16648, \"accepted\": 16648, \"quarantined\": 0, \"deduplicated\": 0}, \"shop\": {\"read\": 403, \"accepted\": 403, \"quarantined\": 0, \"deduplicated\": 0}}, \"coverage_notes\": {\"source\": \"本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。\", \"time_range\": {\"start\": \"2024-09-01\", \"end_exclusive\": \"2026-09-01\"}, \"quarantined\": {\"member\": 0, \"order\": 168, \"card\": 0, \"shop\": 0}}, \"library_sha256\": \"5e2160479a94a7c4f0c11c4a055f69a345fca158c9cd968860371669c8e6a22b\"}, \"result\": {\"status\": \"ok\", \"intent\": {\"metrics\": [\"order_count\", \"net_sales_cents\"], \"start\": \"2026-08-01\", \"end\": \"2026-09-01\", \"group_by\": [\"order__channel\"], \"filters\": [{\"field\": \"order__channel\", \"op\": \"in\", \"value\": [\"门店\", \"小程序\", \"商城\"]}]}, \"columns\": [\"order__channel\", \"order_count\", \"net_sales_cents\"], \"rows\": [[\"小程序\", 2946, 25782877], [\"商城\", 1444, 13682763], [\"门店\", 4479, 36350734]], \"seconds\": 0.072, \"units\": {\"order_count\": \"count\", \"net_sales_cents\": \"cents\"}, \"data_version\": \"qinghe-w04-v1.1\", \"data_sha256\": \"b11d37818b7b611380652893836b310f3e8f48353dbab89ea35894686fec2f10\", \"catalog_sha256\": \"5e2160479a94a7c4f0c11c4a055f69a345fca158c9cd968860371669c8e6a22b\", \"coverage_notes\": {\"source\": \"本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。\", \"time_range\": {\"start\": \"2024-09-01\", \"end_exclusive\": \"2026-09-01\"}, \"quarantined\": {\"member\": 0, \"order\": 168, \"card\": 0, \"shop\": 0}}}, \"definitions\": [{\"id\": \"order_count\", \"name\": \"创建订单数\", \"aliases\": [], \"unit\": \"count\", \"constraints\": [\"事实对象为 orders 全部订单行；每个 order_id 计一次；包含取消单。\"], \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"按下单日期统计全部订单，每个订单号一次，包含取消单。\"}], \"query_policy\": {\"full_month_only\": false}}, {\"id\": \"net_sales_cents\", \"name\": \"净销售额\", \"aliases\": [], \"unit\": \"cents\", \"constraints\": [\"事实对象为 orders 中 status='paid' 的订单行；聚合 paid_cents-refund_cents；取消单不计；全额退款行净额为零但仍属 paid 纳入行集合。\"], \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。\"}], \"query_policy\": {\"full_month_only\": false}}]}"
+    }
+  ],
+  "model": "deepseek-flash",
+  "reply": {
+    "role": "assistant",
+    "content": "{\"answer\":\"统计范围：2026年8月1日至8月31日（按下单日期），在当前客户青禾的已加载CRM订单中，按成交渠道筛选门店、小程序、商城并分组统计。订单数按订单笔数计，每个订单号计一次，包含取消单；净销售额按已支付订单实付金额减退款，取消单不计，全额退款订单净额为零但仍计入已支付订单集合。结果：门店渠道4,479笔、净销售额363,507.34元；小程序渠道2,946笔、净销售额257,828.77元；商城渠道1,444笔、净销售额136,827.63元；三渠道合计8,869笔、净销售额758,163.74元。限制：本次只包含新CRM导出订单，门店老收银系统中还有部分会员消费未导出，因此这份CRM订单不能视为完整销售数据。\",\"used_metrics\":[\"order_count\",\"net_sales_cents\"],\"citations\":[\"当前执行结果\"]}"
+  },
+  "usage": {
+    "prompt_tokens": 2118,
+    "completion_tokens": 1328,
+    "total_tokens": 3446,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1110
+    }
+  },
+  "seconds": 8.259,
+  "call": {
+    "policy_version": "gateway-stages-20260922",
+    "attempts": [
+      {
+        "attempt": 1,
+        "request": {
+          "model": "deepseek-flash",
+          "messages": [
+            {
+              "role": "system",
+              "content": "你根据本轮真实执行结果回答问题。解释条件时必须使用字段语义：store、store__region、store__store_name 都表示订单成交门店及其地区/名称；home_store 及其地区/名称才表示会员归属门店。返回 intent 中已有字段筛选就是已经应用的查询条件，不能因没有额外中文同名字段而否认已应用的条件。只能引用结果中的数值；金额以分存储，展示元需除100；比例展示百分数需乘100。用简明业务语言解释统计范围、口径及限制，金额保留两位小数、比例适当四舍五入。不要展示内部 status、intent 等字段名。区分零和未定义。聚合返回零是覆盖内的零；未返回某个分组仅说明该分组未列出，不能称为该指标未定义，也不能推断数据覆盖不足。返回 JSON：{\"answer\":\"...\",\"used_metrics\":[],\"citations\":[\"当前执行结果\"]}。\ncustomer_context 指明当前已加载客户与统计单位，data_context 指明本次测试数据版本和覆盖；本轮成功结果已经处于该客户数据范围。问题中的当前客户名称不是门店筛选值，不能因为没有同名门店筛选而否认结果属于该客户。只说明实际应用的筛选和分组；若用户没有要求某维度，不添加假设性的门店歧义。人数按customer_context统计单位表述为账户，不暗示跨系统自然人已去重。用业务词说明范围，不向用户罗列技术字段ID。\n"
+            },
+            {
+              "role": "user",
+              "content": "{\"question\": \"2026年8月，门店、小程序、商城三个渠道各自的订单数和净销售额是多少？\", \"customer_context\": {\"customer\": \"青禾\", \"statistics_unit\": \"人数按CRM会员账户计数（不等于跨系统自然人）；订单数按订单笔数；金额以整数分保存，展示元需换算；比率与均额按定义。\", \"scope\": \"本周合成测试库\"}, \"data_context\": {\"id\": \"qinghe-w04-v1.1\", \"contract_version\": \"w04-data-0.1.0\", \"coverage\": [\"2024-09-01\", \"2026-09-01\"], \"reference_date\": \"2026-09-01\", \"timezone\": \"Asia/Shanghai\", \"source_sha256\": {\"crm_card_export.csv\": \"1e2539c564d1e007f3aaaa11b1d16de9a50a63858fed5dc09537089321b5e424\", \"crm_member_export.csv\": \"dfe1e842c80f947bf85b0b356073e6eb0c9cd7385072fbc731452d7a60ea8913\", \"crm_order_export.csv\": \"e95a5a467f044ef6d059014a71dcd39edc178d88e8ea06f87f2ecb1a40040052\", \"crm_shop.csv\": \"bcef4a1edb12f18695b545fef64b7da2c7504f3cfc535937f08c7380a5f00045\", \"小林工作账_勿扰名单.csv\": \"8460b149d9208bfad5d90f2299ecc49c69c56d4970e91fb066bec63d9889af8d\", \"小林工作账_回访名单.csv\": \"3dd64d64b5e9524bd0fbd23736b4f32f6a234b0acf47d0c5b469906a2b0b346e\"}, \"sha256\": {\"cards.csv\": \"bc362531888f6e5e6d2f72a2e5d7ec3def9a97788092e5577c6074231aa8203d\", \"member_notes.csv\": \"2d3b35574c7078bda93e42deae5efec6bbf4312a14fe9079257d8020de1cf54e\", \"member_tags.csv\": \"f157202f52a9d2562831f02cc2e0cbfc4a89a316765294c7dd48ab4a430551d9\", \"members.csv\": \"6ca27bea580099f34024b93c64bac0402d9b672d29894b2effd2d57532dd839c\", \"orders.csv\": \"256dd75d2ab611d167455fe51e53cae7e3356168b025e8988cf720d74c547981\", \"quarantine.csv\": \"43d699789f51de7a3f63c588b0f1fa4d32b432c940ad624e4d9f4428df5e27b0\", \"stores.csv\": \"244fd3e72d35f3d664a80cb6473776203958bcadb747e181ba32b1b81223cae3\"}, \"counts\": {\"members\": 119754, \"orders\": 167749, \"cards\": 16648, \"stores\": 403, \"member_tags\": 56215, \"member_notes\": 8906, \"quarantine\": 168}, \"record_counts\": {\"member\": {\"read\": 119754, \"accepted\": 119754, \"quarantined\": 0, \"deduplicated\": 0}, \"order\": {\"read\": 168253, \"accepted\": 167749, \"quarantined\": 168, \"deduplicated\": 336}, \"card\": {\"read\": 16648, \"accepted\": 16648, \"quarantined\": 0, \"deduplicated\": 0}, \"shop\": {\"read\": 403, \"accepted\": 403, \"quarantined\": 0, \"deduplicated\": 0}}, \"coverage_notes\": {\"source\": \"本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。\", \"time_range\": {\"start\": \"2024-09-01\", \"end_exclusive\": \"2026-09-01\"}, \"quarantined\": {\"member\": 0, \"order\": 168, \"card\": 0, \"shop\": 0}}, \"library_sha256\": \"5e2160479a94a7c4f0c11c4a055f69a345fca158c9cd968860371669c8e6a22b\"}, \"result\": {\"status\": \"ok\", \"intent\": {\"metrics\": [\"order_count\", \"net_sales_cents\"], \"start\": \"2026-08-01\", \"end\": \"2026-09-01\", \"group_by\": [\"order__channel\"], \"filters\": [{\"field\": \"order__channel\", \"op\": \"in\", \"value\": [\"门店\", \"小程序\", \"商城\"]}]}, \"columns\": [\"order__channel\", \"order_count\", \"net_sales_cents\"], \"rows\": [[\"小程序\", 2946, 25782877], [\"商城\", 1444, 13682763], [\"门店\", 4479, 36350734]], \"seconds\": 0.072, \"units\": {\"order_count\": \"count\", \"net_sales_cents\": \"cents\"}, \"data_version\": \"qinghe-w04-v1.1\", \"data_sha256\": \"b11d37818b7b611380652893836b310f3e8f48353dbab89ea35894686fec2f10\", \"catalog_sha256\": \"5e2160479a94a7c4f0c11c4a055f69a345fca158c9cd968860371669c8e6a22b\", \"coverage_notes\": {\"source\": \"本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。\", \"time_range\": {\"start\": \"2024-09-01\", \"end_exclusive\": \"2026-09-01\"}, \"quarantined\": {\"member\": 0, \"order\": 168, \"card\": 0, \"shop\": 0}}}, \"definitions\": [{\"id\": \"order_count\", \"name\": \"创建订单数\", \"aliases\": [], \"unit\": \"count\", \"constraints\": [\"事实对象为 orders 全部订单行；每个 order_id 计一次；包含取消单。\"], \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"按下单日期统计全部订单，每个订单号一次，包含取消单。\"}], \"query_policy\": {\"full_month_only\": false}}, {\"id\": \"net_sales_cents\", \"name\": \"净销售额\", \"aliases\": [], \"unit\": \"cents\", \"constraints\": [\"事实对象为 orders 中 status='paid' 的订单行；聚合 paid_cents-refund_cents；取消单不计；全额退款行净额为零但仍属 paid 纳入行集合。\"], \"sources\": [{\"file\": \"01_订单日报说明.md\", \"quote\": \"paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。\"}], \"query_policy\": {\"full_month_only\": false}}]}"
+            }
+          ],
+          "stream": false,
+          "max_tokens": 8192
+        },
+        "timeout_seconds": 180.0,
+        "max_tokens": 8192,
+        "usage": {
+          "prompt_tokens": 2118,
+          "completion_tokens": 1328,
+          "total_tokens": 3446,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1110
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 1990
+        },
+        "trace_ids": {},
+        "response_id": "219f81c3-2ee4-46cc-8c80-4c0bf8b3b7f7",
+        "http_status": 200,
+        "finish_reason": "stop",
+        "response": {
+          "role": "assistant",
+          "content": "{\"answer\":\"统计范围：2026年8月1日至8月31日（按下单日期），在当前客户青禾的已加载CRM订单中，按成交渠道筛选门店、小程序、商城并分组统计。订单数按订单笔数计，每个订单号计一次，包含取消单；净销售额按已支付订单实付金额减退款，取消单不计，全额退款订单净额为零但仍计入已支付订单集合。结果：门店渠道4,479笔、净销售额363,507.34元；小程序渠道2,946笔、净销售额257,828.77元；商城渠道1,444笔、净销售额136,827.63元；三渠道合计8,869笔、净销售额758,163.74元。限制：本次只包含新CRM导出订单，门店老收银系统中还有部分会员消费未导出，因此这份CRM订单不能视为完整销售数据。\",\"used_metrics\":[\"order_count\",\"net_sales_cents\"],\"citations\":[\"当前执行结果\"]}"
+        },
+        "seconds": 8.259
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2118,
+      "completion_tokens": 1328,
+      "total_tokens": 3446,
+      "completion_tokens_details": {
+        "reasoning_tokens": 1110
+      }
+    }
+  }
+}
