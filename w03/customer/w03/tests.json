@@ -2286,5 +2286,37 @@
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
     "expected_source": "独立CSV核算；由B5-N01同窗结果拆分（该题已通过）：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单；数据qinghe-w03-20260923-small，Asia/Shanghai [2026-08-01,2026-09-01)。首购按账户全历史首笔有效单判定，首单明细O0000011=3000、O0000019=1900、O0000036=2500、O0000038=2600、O0000041=2800，合计12800分，5个账户5笔；其余有效单22笔。不含注册数（该窗注册0人）与有效订单总数，故与B5-N01列不同但值一致。"
+  },
+  {
+    "id": "REV-UNDEFINED-METRIC",
+    "question": "2026年8月青禾优选的客户终身价值LTV是多少？",
+    "expected": {
+      "status": "unsupported"
+    },
+    "expected_source": "38项目标清单中未定义LTV，资料未给出价值模型与所需历史。依查询契约未定义指标不得猜公式或当零。"
+  },
+  {
+    "id": "REV-NONEXISTENT-STORE",
+    "question": "2026年8月，只筛选成交门店编号S999（这家门店不在当前数据中），青禾优选净销售额是多少？",
+    "expected": {
+      "status": "unsupported"
+    },
+    "expected_source": "原始stores.csv仅S01/S02/S03；当前产品限定筛选实体取值，契约外实体不得冒充覆盖内零值。使用明确编号，不猜测中文名。"
+  },
+  {
+    "id": "REV-VAGUE-RECENT",
+    "question": "青禾优选最近怎么样？",
+    "expected": {
+      "status": "clarify"
+    },
+    "expected_source": "缺少指标、时间窗口及要判断的业务问题，不能擅定最近=某月或默认净销售额。"
+  },
+  {
+    "id": "B7-C01",
+    "question": "本月青禾优选的月末付费会员购买人数是多少？",
+    "expected": {
+      "status": "unsupported"
+    },
+    "expected_source": "intent契约要求相对时间按数据参考日解释。manifest参考日2026-09-01，故本月为[2026-09-01,2026-10-01)，而数据覆盖[2024-09-01,2026-09-01)，整个9月在覆盖外。期望unsupported并说明覆盖不足；不能为了匹配旧实际改期望，依据是覆盖与相对时间规则。缺时段的最近怎么样另列clarify。"
   }
 ]

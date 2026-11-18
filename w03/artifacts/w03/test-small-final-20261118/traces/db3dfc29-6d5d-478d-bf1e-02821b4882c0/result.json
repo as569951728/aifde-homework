@@ -1,0 +1,50 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "buyer_count",
+      "refund_buyer_count",
+      "selling_store_count",
+      "valid_order_items"
+    ],
+    "start": "2026-08-15",
+    "end": "2026-08-16",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then member_id end) AS buyer_count\n  , COUNT(DISTINCT case when status = 'paid' and refund_cents > 0 then member_id end) AS refund_buyer_count\n  , COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then store_id end) AS selling_store_count\n  , SUM(case when status = 'paid' and paid_cents - refund_cents > 0 then quantity else 0 end) AS valid_order_items\nFROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-15' AND '2026-08-15'",
+  "columns": [
+    "buyer_count",
+    "refund_buyer_count",
+    "selling_store_count",
+    "valid_order_items"
+  ],
+  "rows": [
+    [
+      1,
+      1,
+      1,
+      1
+    ]
+  ],
+  "seconds": 0.03,
+  "units": {
+    "buyer_count": "count",
+    "refund_buyer_count": "count",
+    "selling_store_count": "count",
+    "valid_order_items": "count"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "统计范围为当前客户青禾下2026年8月15日当天（截止到8月16日之前），未额外按门店筛选或分组。结果：购买会员数1个账户（当天有有效订单的不同CRM会员账户，未做跨系统自然人去重）；退款会员数1个账户（当天已支付且退款金额大于零的订单所关联的不同会员账户）；成交门店数1家（当天有有效订单的不同订单成交门店，不是会员归属门店）；有效订单商品件数1件（有效订单中的原始购买件数合计，不是扣除退款后的净销量）。",
+  "question": "请同时列出2026年8月15日青禾优选的购买会员数、退款会员数、成交门店数和有效订单商品件数。",
+  "trace_id": "db3dfc29-6d5d-478d-bf1e-02821b4882c0",
+  "elapsed_seconds": 9.73,
+  "model_usage": {
+    "prompt_tokens": 12985,
+    "completion_tokens": 969,
+    "total_tokens": 13954
+  },
+  "model_calls_with_usage": 2
+}

@@ -1,0 +1,27 @@
+{
+  "status": "unsupported",
+  "reason": "“月末付费会员购买人数”和“月末付费会员有效订单数”都只支持完整自然月、全门店、全渠道的汇总口径，不支持按订单成交门店分别列出。2026年8月位于数据覆盖范围内，但按成交门店分组超出了这两项指标的 query_policy。若要查询，可去掉成交门店分组，改为查询2026年8月整体值。",
+  "intent": {
+    "status": "unsupported",
+    "reason": "“月末付费会员购买人数”和“月末付费会员有效订单数”都只支持完整自然月、全门店、全渠道的汇总口径，不支持按订单成交门店分别列出。2026年8月位于数据覆盖范围内，但按成交门店分组超出了这两项指标的 query_policy。若要查询，可去掉成交门店分组，改为查询2026年8月整体值。",
+    "metrics": [
+      "monthly_paid_buyer_count",
+      "monthly_paid_order_count"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [
+      "store"
+    ],
+    "filters": []
+  },
+  "question": "请将2026年8月青禾优选的月末付费会员购买人数和有效订单数按订单成交门店分别列出。",
+  "trace_id": "81ec5df5-d1e9-4100-ab23-fb01067100eb",
+  "elapsed_seconds": 6.866,
+  "model_usage": {
+    "prompt_tokens": 11326,
+    "completion_tokens": 933,
+    "total_tokens": 12259
+  },
+  "model_calls_with_usage": 1
+}

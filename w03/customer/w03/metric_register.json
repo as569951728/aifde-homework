@@ -1,11 +1,11 @@
 {
-  "version": "b7-20261109",
-  "updated_at": "2026-11-09T11:50:00+08:00",
+  "version": "revision-20261118",
+  "updated_at": "2026-11-18",
   "design_review": {
     "status": "approved_design_only",
     "report": "artifacts/w03/metric-batch-plan-20261108/independent/review-v2.json"
   },
-  "purpose": "每轮两批，独立冻结与核查；统一汇报，不逐指标停点",
+  "purpose": "当前定义、构建与测试登记；原分批过程见artifacts/w03/revision-20261118/history/metric_register-原记录.json",
   "target_source": "customer/w03/targets.json",
   "batches": [
     {
@@ -18,7 +18,7 @@
         "gross_cents",
         "discount_cents"
       ],
-      "status": "completed_small_numeric_with_reviewed_answer_correction",
+      "status": "当前定稿库大小样本数值覆盖通过；原生解释按当前逐题审查，不继承旧批次分数",
       "already_small_passed": [
         "payment_cents",
         "refund_cents",
@@ -59,7 +59,7 @@
         "partial_refund_order_count",
         "full_refund_order_count"
       ],
-      "status": "completed_small",
+      "status": "当前定稿库大小样本数值覆盖通过；原生解释按当前逐题审查，不继承旧批次分数",
       "already_small_passed": [
         "order_count",
         "paid_order_count",
@@ -102,7 +102,7 @@
         "selling_store_count",
         "valid_order_items"
       ],
-      "status": "completed_small_numeric_with_reviewed_answer_correction",
+      "status": "当前定稿库大小样本数值覆盖通过；原生解释按当前逐题审查，不继承旧批次分数",
       "already_small_passed": [
         "buyer_count",
         "refund_buyer_count",
@@ -141,7 +141,7 @@
         "discount_rate",
         "items_per_order"
       ],
-      "status": "completed_small",
+      "status": "当前定稿库大小样本数值覆盖通过；原生解释按当前逐题审查，不继承旧批次分数",
       "already_small_passed": [
         "avg_order_value",
         "avg_buyer_value",
@@ -245,7 +245,7 @@
         "first_order_count",
         "repeat_order_count"
       ],
-      "status": "design_reviewed_expected_frozen_not_built",
+      "status": "当前定稿库大小样本数值覆盖通过；原生解释按当前逐题审查，不继承旧批次分数",
       "already_small_passed": [],
       "metric_dependencies": {},
       "primary_metric_dependency_closure": [
@@ -276,7 +276,7 @@
         "monthly_repeat_buyer_count",
         "monthly_repeat_rate"
       ],
-      "status": "design_reviewed_expected_frozen_not_built",
+      "status": "当前定稿库大小样本数值覆盖通过；原生解释按当前逐题审查，不继承旧批次分数",
       "already_small_passed": [],
       "metric_dependencies": {
         "monthly_repeat_rate": [
@@ -310,7 +310,7 @@
         "monthly_paid_repeat_rate",
         "monthly_paid_avg_order_value"
       ],
-      "status": "queued",
+      "status": "当前定稿库大小样本数值覆盖通过；原生解释按当前逐题审查，不继承旧批次分数",
       "already_small_passed": [],
       "metric_dependencies": {
         "monthly_paid_repeat_rate": [
@@ -350,12 +350,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "创建订单数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -365,10 +365,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、订单粒度、下单日、count单位及范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道small七指标题+1道人工逐日边界题；辅助恒等式另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV及明确人工fixture独立核算，构建前冻结",
-      "small_status": "本批7题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "E01日期表述错句1条（已审纠正稿），其余通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -392,7 +392,14 @@
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "fixture_status": "1/1人工逐日题通过（5种订单边界）",
       "expected_reference": "artifacts/w03/b2-order-counts-20261108/independent/tests-new-small.json",
-      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#order_count"
+      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#order_count",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "paid_order_count",
@@ -401,12 +408,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "支付订单数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -416,10 +423,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、订单粒度、下单日、count单位及范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道small七指标题+1道人工逐日边界题；辅助恒等式另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV及明确人工fixture独立核算，构建前冻结",
-      "small_status": "本批7题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "E01日期表述错句1条（已审纠正稿），其余通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -443,7 +450,14 @@
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "fixture_status": "1/1人工逐日题通过（5种订单边界）",
       "expected_reference": "artifacts/w03/b2-order-counts-20261108/independent/tests-new-small.json",
-      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#paid_order_count"
+      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#paid_order_count",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "valid_order_count",
@@ -452,12 +466,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "有效订单数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -467,10 +481,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、订单粒度、下单日、count单位及范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道small七指标题+1道人工逐日边界题；辅助恒等式另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV及明确人工fixture独立核算，构建前冻结",
-      "small_status": "本批7题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "E01日期表述错句1条（已审纠正稿），其余通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -495,7 +509,14 @@
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "fixture_status": "1/1人工逐日题通过（5种订单边界）",
       "expected_reference": "artifacts/w03/b2-order-counts-20261108/independent/tests-new-small.json",
-      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#valid_order_count"
+      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#valid_order_count",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本指标相关原生解释仍有待修用例：B5-H03",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "cancelled_order_count",
@@ -504,12 +525,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "取消订单数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -519,10 +540,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、订单粒度、下单日、count单位及范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道small七指标题+1道人工逐日边界题；辅助恒等式另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV及明确人工fixture独立核算，构建前冻结",
-      "small_status": "本批7题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "E01日期表述错句1条（已审纠正稿），其余通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -546,7 +567,14 @@
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "fixture_status": "1/1人工逐日题通过（5种订单边界）",
       "expected_reference": "artifacts/w03/b2-order-counts-20261108/independent/tests-new-small.json",
-      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#cancelled_order_count"
+      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#cancelled_order_count",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "refund_order_count",
@@ -555,12 +583,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "退款订单数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -570,10 +598,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、订单粒度、下单日、count单位及范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道small七指标题+1道人工逐日边界题；辅助恒等式另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV及明确人工fixture独立核算，构建前冻结",
-      "small_status": "本批7题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "E01日期表述错句1条（已审纠正稿），其余通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -597,7 +625,14 @@
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "fixture_status": "1/1人工逐日题通过（5种订单边界）",
       "expected_reference": "artifacts/w03/b2-order-counts-20261108/independent/tests-new-small.json",
-      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#refund_order_count"
+      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#refund_order_count",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "partial_refund_order_count",
@@ -606,12 +641,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "部分退款订单数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -621,10 +656,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、订单粒度、下单日、count单位及范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道small七指标题+1道人工逐日边界题；辅助恒等式另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV及明确人工fixture独立核算，构建前冻结",
-      "small_status": "本批7题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "E01日期表述错句1条（已审纠正稿），其余通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -648,7 +683,14 @@
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "fixture_status": "1/1人工逐日题通过（5种订单边界）",
       "expected_reference": "artifacts/w03/b2-order-counts-20261108/independent/tests-new-small.json",
-      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#partial_refund_order_count"
+      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#partial_refund_order_count",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "full_refund_order_count",
@@ -657,12 +699,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "全额退款订单数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -672,10 +714,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、订单粒度、下单日、count单位及范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道small七指标题+1道人工逐日边界题；辅助恒等式另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV及明确人工fixture独立核算，构建前冻结",
-      "small_status": "本批7题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "E01日期表述错句1条（已审纠正稿），其余通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -699,7 +741,14 @@
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "fixture_status": "1/1人工逐日题通过（5种订单边界）",
       "expected_reference": "artifacts/w03/b2-order-counts-20261108/independent/tests-new-small.json",
-      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#full_refund_order_count"
+      "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#full_refund_order_count",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "payment_cents",
@@ -708,12 +757,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "实付金额"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -723,10 +772,10 @@
       "unit_token_candidate": "cents",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、日期、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "7道多指标测试及辅助关系已完成；原8题净额回归保留",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算并于构建/查询前冻结",
-      "small_status": "本批15题（7新+8净额回归）数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -795,7 +844,14 @@
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "before_B2_reference": "artifacts/w03/b2-order-counts-20261108/before/customer/w03/metric_register.json#payment_cents",
       "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#payment_cents",
-      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json"
+      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "refund_cents",
@@ -804,12 +860,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "退款金额"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -819,10 +875,10 @@
       "unit_token_candidate": "cents",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、日期、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "7道多指标测试及辅助关系已完成；原8题净额回归保留",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算并于构建/查询前冻结",
-      "small_status": "本批15题（7新+8净额回归）数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -891,7 +947,14 @@
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "before_B2_reference": "artifacts/w03/b2-order-counts-20261108/before/customer/w03/metric_register.json#refund_cents",
       "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#refund_cents",
-      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json"
+      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "net_sales_cents",
@@ -900,12 +963,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "净销售额"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -915,10 +978,10 @@
       "unit_token_candidate": "cents",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、日期、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "7道多指标测试及辅助关系已完成；原8题净额回归保留",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算并于构建/查询前冻结",
-      "small_status": "本批15题（7新+8净额回归）数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1003,7 +1066,14 @@
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "before_B2_reference": "artifacts/w03/b2-order-counts-20261108/before/customer/w03/metric_register.json#net_sales_cents",
       "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#net_sales_cents",
-      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json"
+      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "gross_cents",
@@ -1012,12 +1082,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "支付订单原价金额"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1027,10 +1097,10 @@
       "unit_token_candidate": "cents",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、日期、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "7道多指标测试及辅助关系已完成；原8题净额回归保留",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算并于构建/查询前冻结",
-      "small_status": "本批15题（7新+8净额回归）数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1099,7 +1169,14 @@
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "before_B2_reference": "artifacts/w03/b2-order-counts-20261108/before/customer/w03/metric_register.json#gross_cents",
       "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#gross_cents",
-      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json"
+      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "discount_cents",
@@ -1108,12 +1185,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "优惠金额"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1123,10 +1200,10 @@
       "unit_token_candidate": "cents",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、日期、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "7道多指标测试及辅助关系已完成；原8题净额回归保留",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算并于构建/查询前冻结",
-      "small_status": "本批15题（7新+8净额回归）数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1195,7 +1272,14 @@
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "before_B2_reference": "artifacts/w03/b2-order-counts-20261108/before/customer/w03/metric_register.json#discount_cents",
       "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#discount_cents",
-      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json"
+      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "buyer_count",
@@ -1204,12 +1288,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "购买会员数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1219,10 +1303,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、ordered_at、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道多指标small题通过；专项解释/副本负例另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算，构建/查询前冻结",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "本批6题数值通过；同答案中退款会员定义句有误（只影响退款会员解释）",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1243,7 +1327,14 @@
       "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/tests-new-small.json",
-      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json"
+      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "refund_buyer_count",
@@ -1252,12 +1343,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "退款会员数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1267,10 +1358,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、ordered_at、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道多指标small题通过；专项解释/副本负例另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算，构建/查询前冻结",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "D01/F01/U01三条退款范围错句（已审纠正稿）；N01/R01/R02通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1291,7 +1382,14 @@
       "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/tests-new-small.json",
-      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json"
+      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "selling_store_count",
@@ -1300,12 +1398,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "成交门店数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1315,10 +1413,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、ordered_at、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道多指标small题通过；专项解释/副本负例另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算，构建/查询前冻结",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "本批6题数值通过；同答案中退款会员定义句有误（只影响退款会员解释）",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1339,7 +1437,14 @@
       "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/tests-new-small.json",
-      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json"
+      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "valid_order_items",
@@ -1348,12 +1453,12 @@
       "source_refs": [
         {
           "source": "D1",
-          "path": "W03/实操工程/materials/w03/01_订单日报说明.md",
+          "path": "materials/w03/01_订单日报说明.md",
           "locator": "有效订单商品件数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1363,10 +1468,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、ordered_at、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道多指标small题通过；专项解释/副本负例另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算，构建/查询前冻结",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "本批6题数值通过；同答案中退款会员定义句有误（只影响退款会员解释）",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1387,7 +1492,14 @@
       "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
       "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/tests-new-small.json",
-      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json"
+      "correction_review_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/reviewed-corrections-v1.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "avg_order_value",
@@ -1396,12 +1508,12 @@
       "source_refs": [
         {
           "source": "D2",
-          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "path": "materials/w03/02_财务邮件.md",
           "locator": "有效订单均额"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1411,10 +1523,10 @@
       "unit_token_candidate": "cents_per_order",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、ordered_at、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道多指标small题通过；专项解释/副本负例另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算，构建/查询前冻结",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1438,7 +1550,14 @@
       "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#avg_order_value",
       "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
-      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json"
+      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本指标相关原生解释仍有待修用例：B4-Z01",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "avg_buyer_value",
@@ -1447,12 +1566,12 @@
       "source_refs": [
         {
           "source": "D2",
-          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "path": "materials/w03/02_财务邮件.md",
           "locator": "购买会员人均消费"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1462,10 +1581,10 @@
       "unit_token_candidate": "cents_per_member",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、ordered_at、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道多指标small题通过；专项解释/副本负例另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算，构建/查询前冻结",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1489,7 +1608,14 @@
       "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#avg_buyer_value",
       "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
-      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json"
+      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本指标相关原生解释仍有待修用例：B4-Z01",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "purchase_frequency",
@@ -1498,12 +1624,12 @@
       "source_refs": [
         {
           "source": "D2",
-          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "path": "materials/w03/02_财务邮件.md",
           "locator": "购买频次"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1513,10 +1639,10 @@
       "unit_token_candidate": "orders_per_member",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、ordered_at、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道多指标small题通过；专项解释/副本负例另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算，构建/查询前冻结",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1540,7 +1666,14 @@
       "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#purchase_frequency",
       "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
-      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json"
+      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本指标相关原生解释仍有待修用例：B4-Z01",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "refund_amount_rate",
@@ -1549,12 +1682,12 @@
       "source_refs": [
         {
           "source": "D2",
-          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "path": "materials/w03/02_财务邮件.md",
           "locator": "退款金额占比"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1564,10 +1697,10 @@
       "unit_token_candidate": "ratio",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、ordered_at、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道多指标small题通过；专项解释/副本负例另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算，构建/查询前冻结",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1591,7 +1724,14 @@
       "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#refund_amount_rate",
       "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
-      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json"
+      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本指标相关原生解释仍有待修用例：B4-Z01",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "cancel_rate",
@@ -1600,12 +1740,12 @@
       "source_refs": [
         {
           "source": "D2",
-          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "path": "materials/w03/02_财务邮件.md",
           "locator": "取消率"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1615,10 +1755,10 @@
       "unit_token_candidate": "ratio",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、ordered_at、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道多指标small题通过；专项解释/副本负例另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算，构建/查询前冻结",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1642,7 +1782,14 @@
       "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#cancel_rate",
       "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
-      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json"
+      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本指标相关原生解释仍有待修用例：B4-Z01",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "refund_order_rate",
@@ -1651,12 +1798,12 @@
       "source_refs": [
         {
           "source": "D2",
-          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "path": "materials/w03/02_财务邮件.md",
           "locator": "退款订单率"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1666,10 +1813,10 @@
       "unit_token_candidate": "ratio",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、ordered_at、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道多指标small题通过；专项解释/副本负例另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算，构建/查询前冻结",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1693,7 +1840,14 @@
       "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#refund_order_rate",
       "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
-      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json"
+      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本指标相关原生解释仍有待修用例：B4-Z01",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "discount_rate",
@@ -1702,12 +1856,12 @@
       "source_refs": [
         {
           "source": "D2",
-          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "path": "materials/w03/02_财务邮件.md",
           "locator": "优惠率"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1717,10 +1871,10 @@
       "unit_token_candidate": "ratio",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、ordered_at、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道多指标small题通过；专项解释/副本负例另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算，构建/查询前冻结",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1744,7 +1898,14 @@
       "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#discount_rate",
       "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
-      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json"
+      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本指标相关原生解释仍有待修用例：B4-Z01",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "items_per_order",
@@ -1753,12 +1914,12 @@
       "source_refs": [
         {
           "source": "D2",
-          "path": "W03/实操工程/materials/w03/02_财务邮件.md",
+          "path": "materials/w03/02_财务邮件.md",
           "locator": "单均商品件数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1768,10 +1929,10 @@
       "unit_token_candidate": "items_per_order",
       "basis_status": "材料已有定义",
       "definition_status": "已核字段、粒度、ordered_at、单位与范围",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "6道多指标small题通过；专项解释/副本负例另记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV独立核算，构建/查询前冻结",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1795,7 +1956,14 @@
       "before_B34_reference": "artifacts/w03/b34-accounts-ratios-20261108/before/customer/w03/metric_register.json#items_per_order",
       "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
       "catalog_sha256": "2fd0155f1ad60cee95a319ea27d82cc2e257063aca792b250647ef65248b6cb0",
-      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json"
+      "expected_reference": "artifacts/w03/b34-accounts-ratios-20261108/independent-b4/tests-new-small.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本指标相关原生解释仍有待修用例：B4-Z01",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "new_member_count",
@@ -1804,12 +1972,12 @@
       "source_refs": [
         {
           "source": "D3",
-          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "path": "materials/w03/03_会员运营周报.md",
           "locator": "注册会员数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1819,10 +1987,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "本轮字段/粒度/规则来源已核；尚未核生成实现",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "候选测试及独立期望已通过独立Agent设计审核",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV或明确人工样本独立核算已冻结，运行版本待加载绑定",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过；Z01窗口措辞提示（不含6/30未写明）",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1846,7 +2014,14 @@
       "expected_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b5/expected-freeze.json",
       "design_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b5/design.json",
       "design_review_reference": "artifacts/w03/b56-first-monthly-20261108/design-review/final-review-v2.json",
-      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json"
+      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "first_buyer_count",
@@ -1855,12 +2030,12 @@
       "source_refs": [
         {
           "source": "D3",
-          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "path": "materials/w03/03_会员运营周报.md",
           "locator": "观测期首购会员数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1870,10 +2045,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "本轮字段/粒度/规则来源已核；尚未核生成实现",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "候选测试及独立期望已通过独立Agent设计审核",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV或明确人工样本独立核算已冻结，运行版本待加载绑定",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过；Z01窗口措辞提示（不含6/30未写明）",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1901,7 +2076,14 @@
       "expected_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b5/expected-freeze.json",
       "design_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b5/design.json",
       "design_review_reference": "artifacts/w03/b56-first-monthly-20261108/design-review/final-review-v2.json",
-      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json"
+      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本指标相关原生解释仍有待修用例：B5-H03",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "first_order_sales_cents",
@@ -1910,12 +2092,12 @@
       "source_refs": [
         {
           "source": "D3",
-          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "path": "materials/w03/03_会员运营周报.md",
           "locator": "观测期首单净销售额"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1925,10 +2107,10 @@
       "unit_token_candidate": "cents",
       "basis_status": "材料已有定义",
       "definition_status": "本轮字段/粒度/规则来源已核；尚未核生成实现",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "候选测试及独立期望已通过独立Agent设计审核",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV或明确人工样本独立核算已冻结，运行版本待加载绑定",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过；Z01窗口措辞提示（不含6/30未写明）",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -1956,7 +2138,14 @@
       "expected_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b5/expected-freeze.json",
       "design_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b5/design.json",
       "design_review_reference": "artifacts/w03/b56-first-monthly-20261108/design-review/final-review-v2.json",
-      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json"
+      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本指标相关原生解释仍有待修用例：B5-H03",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "first_order_count",
@@ -1965,12 +2154,12 @@
       "source_refs": [
         {
           "source": "D3",
-          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "path": "materials/w03/03_会员运营周报.md",
           "locator": "观测期首单数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -1980,10 +2169,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "本轮字段/粒度/规则来源已核；尚未核生成实现",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "候选测试及独立期望已通过独立Agent设计审核",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV或明确人工样本独立核算已冻结，运行版本待加载绑定",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过；Z01窗口措辞提示（不含6/30未写明）",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -2011,7 +2200,14 @@
       "expected_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b5/expected-freeze.json",
       "design_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b5/design.json",
       "design_review_reference": "artifacts/w03/b56-first-monthly-20261108/design-review/final-review-v2.json",
-      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json"
+      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本指标相关原生解释仍有待修用例：B5-H03",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "repeat_order_count",
@@ -2020,12 +2216,12 @@
       "source_refs": [
         {
           "source": "D3",
-          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "path": "materials/w03/03_会员运营周报.md",
           "locator": "观测期后续购买订单数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -2035,10 +2231,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "本轮字段/粒度/规则来源已核；尚未核生成实现",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "候选测试及独立期望已通过独立Agent设计审核",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV或明确人工样本独立核算已冻结，运行版本待加载绑定",
-      "small_status": "本批6题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "解释通过；Z01窗口措辞提示（不含6/30未写明）",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -2066,7 +2262,14 @@
       "expected_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b5/expected-freeze.json",
       "design_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b5/design.json",
       "design_review_reference": "artifacts/w03/b56-first-monthly-20261108/design-review/final-review-v2.json",
-      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json"
+      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本指标相关原生解释仍有待修用例：B5-H03",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "monthly_buyer_count",
@@ -2075,12 +2278,12 @@
       "source_refs": [
         {
           "source": "D3",
-          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "path": "materials/w03/03_会员运营周报.md",
           "locator": "月内购买会员数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -2090,10 +2293,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "本轮字段/粒度/规则来源已核；尚未核生成实现",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "候选测试及独立期望已通过独立Agent设计审核",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV或明确人工样本独立核算已冻结，运行版本待加载绑定",
-      "small_status": "本批7题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "X02门店维度说明失败（已审纠正稿），其余通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -2124,7 +2327,14 @@
       "expected_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/expected-freeze.json",
       "design_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/design.json",
       "design_review_reference": "artifacts/w03/b56-first-monthly-20261108/design-review/final-review-v2.json",
-      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json"
+      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "monthly_repeat_buyer_count",
@@ -2133,12 +2343,12 @@
       "source_refs": [
         {
           "source": "D3",
-          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "path": "materials/w03/03_会员运营周报.md",
           "locator": "月内复购会员数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -2148,10 +2358,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料已有定义",
       "definition_status": "本轮字段/粒度/规则来源已核；尚未核生成实现",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "候选测试及独立期望已通过独立Agent设计审核",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV或明确人工样本独立核算已冻结，运行版本待加载绑定",
-      "small_status": "本批7题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "X02门店维度说明失败（已审纠正稿），其余通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -2182,7 +2392,14 @@
       "expected_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/expected-freeze.json",
       "design_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/design.json",
       "design_review_reference": "artifacts/w03/b56-first-monthly-20261108/design-review/final-review-v2.json",
-      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json"
+      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "monthly_repeat_rate",
@@ -2191,12 +2408,12 @@
       "source_refs": [
         {
           "source": "D3",
-          "path": "W03/实操工程/materials/w03/03_会员运营周报.md",
+          "path": "materials/w03/03_会员运营周报.md",
           "locator": "月内复购率"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         }
       ],
@@ -2206,10 +2423,10 @@
       "unit_token_candidate": "ratio",
       "basis_status": "材料已有定义",
       "definition_status": "本轮字段/粒度/规则来源已核；尚未核生成实现",
-      "build_status": "B5+B6累计32项：build-v3/library-v3已构建并加载4套数据",
-      "test_design_status": "候选测试及独立期望已通过独立Agent设计审核",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "原CSV或明确人工样本独立核算已冻结，运行版本待加载绑定",
-      "small_status": "本批7题数值/状态通过",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "X02门店维度说明失败（已审纠正稿），其余通过",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -2243,7 +2460,14 @@
       "expected_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/expected-freeze.json",
       "design_reference": "artifacts/w03/b56-first-monthly-20261108/independent-b6-v2/design.json",
       "design_review_reference": "artifacts/w03/b56-first-monthly-20261108/design-review/final-review-v2.json",
-      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json"
+      "review_reference": "artifacts/w03/b56-first-monthly-20261108/execution-review/query-review-v3-all47.json",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "monthly_paid_buyer_count",
@@ -2252,23 +2476,23 @@
       "source_refs": [
         {
           "source": "D4",
-          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "path": "materials/w03/04_本期统计确认邮件.md",
           "locator": "月末付费会员购买人数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         },
         {
           "source": "L",
           "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
-          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
         },
         {
           "source": "C",
           "locator": "MSG-03885、MSG-03886、MSG-03890",
-          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+          "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
         }
       ],
       "definition_candidate": "月末合格且月内有有效购买",
@@ -2277,10 +2501,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料+有效角色说明已取得",
       "definition_status": "待批量核定字段与范围（非无依据）",
-      "build_status": "B7累计38项：build-38/library-v38已构建加载",
-      "test_design_status": "候选场景已登记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "待独立核算/冻结",
-      "small_status": "8题中7题数值/状态通过；C01识别为2026-09（未完整月）返回unsupported",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "4份成功回答通过；X01—X03、C01理由已核；Q01一处繁体字误写",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -2299,7 +2523,14 @@
       "specific_test_boundary": "月末生效前已有购买；购买有效月末失效；资格无购买",
       "independent_expected_method": "逐月按末日逐卡判并归账户，再与当月有效订单账户相交",
       "result_reference": "artifacts/w03/b7-paid-monthly-20261109/test-b7-v1/metric_test_report.json",
-      "review_reference": "artifacts/w03/b7-paid-monthly-20261109/结果速览.md"
+      "review_reference": "artifacts/w03/b7-paid-monthly-20261109/结果速览.md",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "monthly_paid_order_count",
@@ -2308,23 +2539,23 @@
       "source_refs": [
         {
           "source": "D4",
-          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "path": "materials/w03/04_本期统计确认邮件.md",
           "locator": "月末付费会员有效订单数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         },
         {
           "source": "L",
           "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
-          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
         },
         {
           "source": "C",
           "locator": "MSG-03885、MSG-03886、MSG-03890",
-          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+          "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
         }
       ],
       "definition_candidate": "月末合格账户的当月全部有效单",
@@ -2333,10 +2564,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料+有效角色说明已取得",
       "definition_status": "待批量核定字段与范围（非无依据）",
-      "build_status": "B7累计38项：build-38/library-v38已构建加载",
-      "test_design_status": "候选场景已登记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "待独立核算/冻结",
-      "small_status": "8题中7题数值/状态通过；C01识别为2026-09（未完整月）返回unsupported",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "4份成功回答通过；X01—X03、C01理由已核；Q01一处繁体字误写",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -2355,7 +2586,14 @@
       "specific_test_boundary": "多卡不能复制订单；月末生效纳入早单",
       "independent_expected_method": "独立资格账户集合筛当月有效order_id",
       "result_reference": "artifacts/w03/b7-paid-monthly-20261109/test-b7-v1/metric_test_report.json",
-      "review_reference": "artifacts/w03/b7-paid-monthly-20261109/结果速览.md"
+      "review_reference": "artifacts/w03/b7-paid-monthly-20261109/结果速览.md",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "monthly_paid_sales_cents",
@@ -2364,23 +2602,23 @@
       "source_refs": [
         {
           "source": "D4",
-          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "path": "materials/w03/04_本期统计确认邮件.md",
           "locator": "月末付费会员净销售额"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         },
         {
           "source": "L",
           "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
-          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
         },
         {
           "source": "C",
           "locator": "MSG-03885、MSG-03886、MSG-03890",
-          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+          "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
         }
       ],
       "definition_candidate": "月末合格账户当月有效单净额",
@@ -2389,10 +2627,10 @@
       "unit_token_candidate": "cents",
       "basis_status": "材料+有效角色说明已取得",
       "definition_status": "待批量核定字段与范围（非无依据）",
-      "build_status": "B7累计38项：build-38/library-v38已构建加载",
-      "test_design_status": "候选场景已登记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "待独立核算/冻结",
-      "small_status": "8题中7题数值/状态通过；C01识别为2026-09（未完整月）返回unsupported",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "4份成功回答通过；X01—X03、C01理由已核；Q01一处繁体字误写",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -2411,7 +2649,14 @@
       "specific_test_boundary": "部分退/全退；多卡不可翻倍；购卡收入排除",
       "independent_expected_method": "独立按合格账户集合筛有效单后逐单累计净额",
       "result_reference": "artifacts/w03/b7-paid-monthly-20261109/test-b7-v1/metric_test_report.json",
-      "review_reference": "artifacts/w03/b7-paid-monthly-20261109/结果速览.md"
+      "review_reference": "artifacts/w03/b7-paid-monthly-20261109/结果速览.md",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "monthly_paid_repeat_buyer_count",
@@ -2420,23 +2665,23 @@
       "source_refs": [
         {
           "source": "D4",
-          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "path": "materials/w03/04_本期统计确认邮件.md",
           "locator": "月末付费会员复购人数"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         },
         {
           "source": "L",
           "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
-          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
         },
         {
           "source": "C",
           "locator": "MSG-03885、MSG-03886、MSG-03890",
-          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+          "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
         }
       ],
       "definition_candidate": "合格账户当月>=2有效单",
@@ -2445,10 +2690,10 @@
       "unit_token_candidate": "count",
       "basis_status": "材料+有效角色说明已取得",
       "definition_status": "待批量核定字段与范围（非无依据）",
-      "build_status": "B7累计38项：build-38/library-v38已构建加载",
-      "test_design_status": "候选场景已登记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "待独立核算/冻结",
-      "small_status": "8题中7题数值/状态通过；C01识别为2026-09（未完整月）返回unsupported",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "4份成功回答通过；X01—X03、C01理由已核；Q01一处繁体字误写",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -2467,7 +2712,14 @@
       "specific_test_boundary": "一单/两单；全退不凑单；多卡不凑次数",
       "independent_expected_method": "独立资格集合与月有效订单计数>=2账户相交",
       "result_reference": "artifacts/w03/b7-paid-monthly-20261109/test-b7-v1/metric_test_report.json",
-      "review_reference": "artifacts/w03/b7-paid-monthly-20261109/结果速览.md"
+      "review_reference": "artifacts/w03/b7-paid-monthly-20261109/结果速览.md",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "monthly_paid_repeat_rate",
@@ -2476,23 +2728,23 @@
       "source_refs": [
         {
           "source": "D4",
-          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "path": "materials/w03/04_本期统计确认邮件.md",
           "locator": "月末付费会员复购率"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         },
         {
           "source": "L",
           "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
-          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
         },
         {
           "source": "C",
           "locator": "MSG-03885、MSG-03886、MSG-03890",
-          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+          "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
         }
       ],
       "definition_candidate": "月末付费复购人数/付费购买人数",
@@ -2501,10 +2753,10 @@
       "unit_token_candidate": "ratio",
       "basis_status": "材料+有效角色说明已取得",
       "definition_status": "待批量核定字段与范围（非无依据）",
-      "build_status": "B7累计38项：build-38/library-v38已构建加载",
-      "test_design_status": "候选场景已登记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "待独立核算/冻结",
-      "small_status": "8题中7题数值/状态通过；C01识别为2026-09（未完整月）返回unsupported",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "4份成功回答通过；X01—X03、C01理由已核；Q01一处繁体字误写",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -2526,7 +2778,14 @@
       "specific_test_boundary": "分母非全部合格账户；零分母null；多月分列",
       "independent_expected_method": "独立资格下两个人群计数相除",
       "result_reference": "artifacts/w03/b7-paid-monthly-20261109/test-b7-v1/metric_test_report.json",
-      "review_reference": "artifacts/w03/b7-paid-monthly-20261109/结果速览.md"
+      "review_reference": "artifacts/w03/b7-paid-monthly-20261109/结果速览.md",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     },
     {
       "id": "monthly_paid_avg_order_value",
@@ -2535,23 +2794,23 @@
       "source_refs": [
         {
           "source": "D4",
-          "path": "W03/实操工程/materials/w03/04_本期统计确认邮件.md",
+          "path": "materials/w03/04_本期统计确认邮件.md",
           "locator": "月末付费会员订单均额"
         },
         {
           "source": "D5",
-          "path": "W03/实操工程/materials/w03/05_数据字典.md",
+          "path": "materials/w03/05_数据字典.md",
           "locator": "覆盖、表字段"
         },
         {
           "source": "L",
           "locator": "MSG-03847、MSG-03848、MSG-03854、MSG-03868",
-          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
+          "path": "artifacts/w02/sources/W3-interview-9e678773-8915-52e1-a1e6-939429340eab-transcript.json"
         },
         {
           "source": "C",
           "locator": "MSG-03885、MSG-03886、MSG-03890",
-          "path": "W03/实操工程/artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
+          "path": "artifacts/w02/sources/W3-interview-c77a57a1-651d-5183-a601-e25cbe01df51-transcript.json"
         }
       ],
       "definition_candidate": "月末付费净额/有效订单数",
@@ -2560,10 +2819,10 @@
       "unit_token_candidate": "cents_per_order",
       "basis_status": "材料+有效角色说明已取得",
       "definition_status": "待批量核定字段与范围（非无依据）",
-      "build_status": "B7累计38项：build-38/library-v38已构建加载",
-      "test_design_status": "候选场景已登记",
+      "build_status": "冻结定稿库由v0.1.5生成未改；v0.1.6泛化候选另验38项/10组，未覆盖定稿库",
+      "test_design_status": "当前55例小样本、15例规模集覆盖全部38项，附独立期望与来源",
       "expected_status": "待独立核算/冻结",
-      "small_status": "8题中7题数值/状态通过；C01识别为2026-09（未完整月）返回unsupported",
+      "small_status": "本轮结构化数值/状态55/55，通过本指标涉及用例",
       "explanation_status": "4份成功回答通过；X01—X03、C01理由已核；Q01一处繁体字误写",
       "scale_status": "未运行",
       "current_adopted_library_scope": "全38项小样本库（library-v38）",
@@ -2585,53 +2844,33 @@
       "specific_test_boundary": "分母非卡数/账户数；0订单null；整数金额除法",
       "independent_expected_method": "独立资格订单集合净额总和除订单数",
       "result_reference": "artifacts/w03/b7-paid-monthly-20261109/test-b7-v1/metric_test_report.json",
-      "review_reference": "artifacts/w03/b7-paid-monthly-20261109/结果速览.md"
+      "review_reference": "artifacts/w03/b7-paid-monthly-20261109/结果速览.md",
+      "large_status": "本轮正式规模15/15，通过本指标涉及用例",
+      "answer_status": "本轮相关原生解释已逐条核查，见最终55条表",
+      "current_evidence": [
+        "artifacts/w03/test-small-final-20261118/metric_test_report.json",
+        "artifacts/w03/test-large-final-20261118/metric_test_report.json",
+        "artifacts/w03/revision-20261118/explanation-audit-final55.json"
+      ]
     }
   ],
   "summary": {
-    "total_metrics": 38,
-    "metrics_with_design": 38,
-    "metrics_with_frozen_existing_tests": 38,
-    "metrics_with_small_pass": 38,
-    "metrics_with_scale_pass": 0,
-    "existing_real_cases": 55,
-    "new_design_entries": 56,
-    "new_model_calls": 67,
-    "new_queries": 32,
-    "original_net_regression_cases": 8,
-    "new_design_query_entries_executed": 26,
-    "new_design_auxiliary_entries_checked": 2,
-    "new_design_entries_not_run": 26,
-    "new_http_attempts": 67,
-    "last_batch": "B7",
-    "next_batch": "scale",
-    "native_small_tests": 51,
-    "isolated_fixture_tests": 4,
-    "new_design_answer_audit_entries_checked": 1,
-    "new_design_expanded_parent_entries": 1,
-    "original_explanations_passed": 42,
-    "original_explanations_total": 47,
-    "reviewed_answer_corrections": 5,
-    "automatic_answer_pipeline_fixed": false,
-    "next_pair": "规模回归",
-    "next_pair_design_metrics": 38,
-    "next_pair_design_entries": 0,
-    "next_pair_unique_candidate_questions": 0,
-    "next_pair_small_candidates": 0,
-    "next_pair_new_fixture_candidates": 0,
-    "metrics_with_frozen_design_expected": 32,
-    "next_pair_native_build_calls": 0,
-    "next_pair_native_queries": 0,
-    "next_pair_execution_state": "not_run",
-    "next_pair_design_reference": null,
+    "metric_count": 38,
+    "small_passed": 55,
+    "small_total": 55,
+    "large_passed": 15,
+    "large_total": 15,
+    "explanations_passed": 53,
+    "explanations_total": 55,
     "explanation_failures": [
-      "B2-E01",
-      "B3-D01",
-      "B3-F01",
-      "B3-U01",
-      "B6-X02"
+      "B4-Z01",
+      "B5-H03"
     ],
-    "numeric_pass_total": 47
+    "method_version": "v0.1.6",
+    "canonical_library_generated_by": "v0.1.5",
+    "candidate_replaced_library": false,
+    "next_action": "审核两条导师订正稿并按约定向王经理说明新版证据；历史apply仍未完成，不代签",
+    "customer_acceptance": "未取得"
   },
   "execution_review": [
     "artifacts/w03/b34-accounts-ratios-20261108/independent-b3/query-review-v1.json",

@@ -1,0 +1,72 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "avg_order_value",
+      "avg_buyer_value",
+      "purchase_frequency",
+      "refund_amount_rate",
+      "cancel_rate",
+      "refund_order_rate",
+      "discount_rate",
+      "items_per_order"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": [
+      {
+        "field": "order__channel",
+        "op": "eq",
+        "value": "小程序"
+      }
+    ]
+  },
+  "sql": "SELECT\n  CAST(SUM(net_sales_cents) AS DOUBLE) / CAST(NULLIF(SUM(valid_order_count), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(net_sales_cents) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT buyer_count), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(valid_order_count) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT buyer_count), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(refund_cents) AS DOUBLE) / CAST(NULLIF(SUM(payment_cents), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(cancelled_order_count) AS DOUBLE) / CAST(NULLIF(SUM(order_count), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(refund_order_count) AS DOUBLE) / CAST(NULLIF(SUM(paid_order_count), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(discount_cents) AS DOUBLE) / CAST(NULLIF(SUM(gross_cents), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(valid_order_items) AS DOUBLE) / CAST(NULLIF(SUM(valid_order_count), 0) AS DOUBLE) AS items_per_order\nFROM (\n  SELECT\n    channel AS order__channel\n    , CASE WHEN order_id IS NOT NULL THEN 1 ELSE 0 END AS order_count\n    , CASE WHEN case when status = 'paid' then order_id end IS NOT NULL THEN 1 ELSE 0 END AS paid_order_count\n    , CASE WHEN case when status = 'paid' and paid_cents - refund_cents > 0 then order_id end IS NOT NULL THEN 1 ELSE 0 END AS valid_order_count\n    , CASE WHEN case when status = 'cancelled' then order_id end IS NOT NULL THEN 1 ELSE 0 END AS cancelled_order_count\n    , CASE WHEN case when status = 'paid' and refund_cents > 0 then order_id end IS NOT NULL THEN 1 ELSE 0 END AS refund_order_count\n    , case when status = 'paid' then paid_cents else 0 end AS payment_cents\n    , case when status = 'paid' then refund_cents else 0 end AS refund_cents\n    , case when status = 'paid' then paid_cents - refund_cents else 0 end AS net_sales_cents\n    , case when status = 'paid' then gross_cents else 0 end AS gross_cents\n    , case when status = 'paid' then gross_cents - paid_cents else 0 end AS discount_cents\n    , case when status = 'paid' and paid_cents - refund_cents > 0 then member_id end AS buyer_count\n    , case when status = 'paid' and paid_cents - refund_cents > 0 then quantity else 0 end AS valid_order_items\n  FROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_15\nWHERE order__channel in ('小程序')",
+  "columns": [
+    "avg_order_value",
+    "avg_buyer_value",
+    "purchase_frequency",
+    "refund_amount_rate",
+    "cancel_rate",
+    "refund_order_rate",
+    "discount_rate",
+    "items_per_order"
+  ],
+  "rows": [
+    [
+      3746.153846153846,
+      3746.153846153846,
+      1.0,
+      0.22328548644338117,
+      0.0625,
+      0.13333333333333333,
+      0.04711246200607903,
+      1.1538461538461537
+    ]
+  ],
+  "seconds": 0.113,
+  "units": {
+    "avg_order_value": "cents_per_order",
+    "avg_buyer_value": "cents_per_member",
+    "purchase_frequency": "orders_per_member",
+    "refund_amount_rate": "ratio",
+    "cancel_rate": "ratio",
+    "refund_order_rate": "ratio",
+    "discount_rate": "ratio",
+    "items_per_order": "items_per_order"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "统计范围：青禾客户，2026年8月1日至8月31日（含首尾），仅统计小程序渠道；本次为汇总结果，未按门店拆分。人数按CRM会员账户计数，不等同于跨系统自然人；订单按订单笔数，金额展示为元。各项分母均非零，指标均已定义。\n\n1. 有效订单均额：37.46元/单（净销售额÷有效订单数）。\n2. 购买会员人均消费：37.46元/账户（净销售额÷购买会员账户数）。\n3. 购买频次：1.00单/账户（有效订单数÷购买会员账户数）。\n4. 退款金额占比：22.33%（退款金额÷实付金额）。\n5. 取消率：6.25%（取消订单数÷创建订单数）。\n6. 退款订单率：13.33%（退款订单数÷支付订单数）。\n7. 优惠率：4.71%（优惠金额÷支付订单原价金额）。\n8. 单均商品件数：1.15件/单（有效订单商品件数÷有效订单数）。\n\n限制说明：以上基于青禾本周合成测试库的当前执行结果，人数口径为会员账户数。",
+  "question": "请同时列出2026年8月青禾优选小程序渠道的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+  "trace_id": "fd8075be-d613-4ed3-980f-1324da34f27e",
+  "elapsed_seconds": 16.929,
+  "model_usage": {
+    "prompt_tokens": 13542,
+    "completion_tokens": 1945,
+    "total_tokens": 15487
+  },
+  "model_calls_with_usage": 2
+}

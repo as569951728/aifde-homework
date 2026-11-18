@@ -1,0 +1,32 @@
+{
+  "status": "unsupported",
+  "reason": "2026-08 是完整自然月且在数据覆盖范围内，但“月内购买会员数、月内复购会员数、月内复购率”均要求仅完整自然月、全门店、全渠道口径，不支持按“订单渠道=小程序”筛选，因此无法提供仅小程序渠道的月内复购会员数及月内复购率。仅小程序渠道的购买会员数可改用支持渠道筛选的“购买会员数”指标；月内复购相关指标没有小程序渠道口径。",
+  "intent": {
+    "status": "unsupported",
+    "reason": "2026-08 是完整自然月且在数据覆盖范围内，但“月内购买会员数、月内复购会员数、月内复购率”均要求仅完整自然月、全门店、全渠道口径，不支持按“订单渠道=小程序”筛选，因此无法提供仅小程序渠道的月内复购会员数及月内复购率。仅小程序渠道的购买会员数可改用支持渠道筛选的“购买会员数”指标；月内复购相关指标没有小程序渠道口径。",
+    "metrics": [
+      "monthly_buyer_count",
+      "monthly_repeat_buyer_count",
+      "monthly_repeat_rate"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": [
+      {
+        "field": "order__channel",
+        "op": "eq",
+        "value": "小程序"
+      }
+    ]
+  },
+  "question": "2026年8月青禾优选仅小程序渠道的月内购买会员数、月内复购会员数和月内复购率是多少？",
+  "trace_id": "e9ba4098-13a3-42b4-9d97-bf66a8f0a125",
+  "elapsed_seconds": 7.095,
+  "model_usage": {
+    "prompt_tokens": 11330,
+    "completion_tokens": 914,
+    "total_tokens": 12244
+  },
+  "model_calls_with_usage": 1
+}

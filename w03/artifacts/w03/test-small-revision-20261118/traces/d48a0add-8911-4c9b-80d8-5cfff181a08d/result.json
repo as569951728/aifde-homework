@@ -1,0 +1,30 @@
+{
+  "status": "unsupported",
+  "reason": "成交门店编号 S999 不在当前可查询的门店维度值中（仅支持 S01、S02、S03），无法按该门店筛选净销售额。",
+  "intent": {
+    "status": "unsupported",
+    "reason": "成交门店编号 S999 不在当前可查询的门店维度值中（仅支持 S01、S02、S03），无法按该门店筛选净销售额。",
+    "metrics": [
+      "net_sales_cents"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": [
+      {
+        "field": "store",
+        "op": "eq",
+        "value": "S999"
+      }
+    ]
+  },
+  "question": "2026年8月，只筛选成交门店编号S999（这家门店不在当前数据中），青禾优选净销售额是多少？",
+  "trace_id": "d48a0add-8911-4c9b-80d8-5cfff181a08d",
+  "elapsed_seconds": 4.833,
+  "model_usage": {
+    "prompt_tokens": 11239,
+    "completion_tokens": 566,
+    "total_tokens": 11805
+  },
+  "model_calls_with_usage": 1
+}

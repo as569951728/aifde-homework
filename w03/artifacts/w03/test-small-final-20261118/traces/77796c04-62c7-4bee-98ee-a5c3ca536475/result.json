@@ -1,0 +1,66 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "avg_order_value",
+      "avg_buyer_value",
+      "purchase_frequency",
+      "refund_amount_rate",
+      "cancel_rate",
+      "refund_order_rate",
+      "discount_rate",
+      "items_per_order"
+    ],
+    "start": "2026-07-01",
+    "end": "2026-08-01",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  CAST(SUM(case when status = 'paid' then paid_cents - refund_cents else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN case when status = 'paid' and paid_cents - refund_cents > 0 then order_id end IS NOT NULL THEN 1 ELSE 0 END), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(case when status = 'paid' then paid_cents - refund_cents else 0 end) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then member_id end), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(CASE WHEN case when status = 'paid' and paid_cents - refund_cents > 0 then order_id end IS NOT NULL THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then member_id end), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(case when status = 'paid' then refund_cents else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(case when status = 'paid' then paid_cents else 0 end), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(CASE WHEN case when status = 'cancelled' then order_id end IS NOT NULL THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN order_id IS NOT NULL THEN 1 ELSE 0 END), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(CASE WHEN case when status = 'paid' and refund_cents > 0 then order_id end IS NOT NULL THEN 1 ELSE 0 END) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN case when status = 'paid' then order_id end IS NOT NULL THEN 1 ELSE 0 END), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(case when status = 'paid' then gross_cents - paid_cents else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(case when status = 'paid' then gross_cents else 0 end), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(case when status = 'paid' and paid_cents - refund_cents > 0 then quantity else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(CASE WHEN case when status = 'paid' and paid_cents - refund_cents > 0 then order_id end IS NOT NULL THEN 1 ELSE 0 END), 0) AS DOUBLE) AS items_per_order\nFROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-07-01' AND '2026-07-31'",
+  "columns": [
+    "avg_order_value",
+    "avg_buyer_value",
+    "purchase_frequency",
+    "refund_amount_rate",
+    "cancel_rate",
+    "refund_order_rate",
+    "discount_rate",
+    "items_per_order"
+  ],
+  "rows": [
+    [
+      2625.0,
+      2863.6363636363635,
+      1.0909090909090908,
+      0.045454545454545456,
+      0.07692307692307693,
+      0.16666666666666666,
+      0.0,
+      1.4166666666666667
+    ]
+  ],
+  "seconds": 0.108,
+  "units": {
+    "avg_order_value": "cents_per_order",
+    "avg_buyer_value": "cents_per_member",
+    "purchase_frequency": "orders_per_member",
+    "refund_amount_rate": "ratio",
+    "cancel_rate": "ratio",
+    "refund_order_rate": "ratio",
+    "discount_rate": "ratio",
+    "items_per_order": "items_per_order"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "统计范围为当前客户青禾在2026年7月1日至7月31日（含首尾）的全店整体数据，未按门店或地区拆分；人数按CRM会员账户计数，订单按笔数统计，金额已由分换算为元。结果如下：\n\n- 有效订单均额：26.25元/单\n- 购买会员人均消费：28.64元/账户\n- 购买频次：1.09单/账户\n- 退款金额占比：4.55%\n- 取消率：7.69%\n- 退款订单率：16.67%\n- 优惠率：0.00%\n- 单均商品件数：1.42件/单\n\n其中优惠率为0.00%，表示该统计范围内优惠金额为0，属于覆盖范围内的零值，不是未定义。",
+  "question": "请列出2026年7月青禾优选全店整体的有效订单均额、购买会员人均消费、购买频次、退款金额占比、取消率、退款订单率、优惠率、单均商品件数。",
+  "trace_id": "77796c04-62c7-4bee-98ee-a5c3ca536475",
+  "elapsed_seconds": 12.122,
+  "model_usage": {
+    "prompt_tokens": 13523,
+    "completion_tokens": 1316,
+    "total_tokens": 14839
+  },
+  "model_calls_with_usage": 2
+}

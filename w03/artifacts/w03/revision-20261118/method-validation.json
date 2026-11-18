@@ -1,0 +1,1078 @@
+{
+  "scope": "v0.1.6泛化方法实际从相同客户资料生成38项候选；10个确定性查询核对，非新候选全部自然语言/规模验收，未替换定稿库",
+  "candidate": "artifacts/w03/revision-20261118/build-method-v016-shared-fact",
+  "defined": 38,
+  "unresolved": [],
+  "covered_metrics": 38,
+  "structural_checks": {
+    "source_check": true,
+    "grain_check": true,
+    "dimension_check": true,
+    "metricflow_check": true,
+    "validation": true
+  },
+  "skill_used_sha256": "6f9c535bae58f6ef3981567e35ace8f1ba13da942826d9ffdb0430f2bc23da4c",
+  "current_skill_sha256": "6f9c535bae58f6ef3981567e35ace8f1ba13da942826d9ffdb0430f2bc23da4c",
+  "original_library_unchanged": true,
+  "passed_cases": 10,
+  "total_cases": 10,
+  "cases": [
+    {
+      "id": "B1-N01",
+      "expected_source": "依据 materials/w03/01_订单日报说明.md、02_财务邮件.md、05_数据字典.md；数据 qinghe-w03-20260923-small。原始 CSV 逐单筛 ordered_at 半开窗口 [2026-08-01, 2026-09-01)，仅 paid；原价=原始 gross，实付=原始 paid，退款=原始 refund，净额=每单 paid-refund，优惠=每单 gross-paid，不扣 refund。成交地区经 orders.store_id→stores.store_id。纳入 O0000001,O0000002,O0000003,O0000004,O0000007,O0000011,O0000012,O0000018,O0000019,O0000020,O0000021,O0000022,O0000024,O0000025,O0000027,O0000028,O0000030,O0000031,O0000033,O0000034,O0000036,O0000037,O0000038,O0000040,O0000041,O0000042,O0000043,O0000044,O0000046,O0000047；窗口与筛选内取消排除 O0000005,O0000039；详见 order-ledger.csv。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            119050,
+            18750,
+            100300,
+            124250,
+            5200
+          ]
+        ],
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(case when status = 'paid' then paid_cents else 0 end) AS payment_cents\n  , SUM(case when status = 'paid' then refund_cents else 0 end) AS refund_cents\n  , SUM(case when status = 'paid' then paid_cents - refund_cents else 0 end) AS net_sales_cents\n  , SUM(case when status = 'paid' then gross_cents else 0 end) AS gross_cents\n  , SUM(case when status = 'paid' then gross_cents - paid_cents else 0 end) AS discount_cents\nFROM \"data\".\"main\".\"order_facts\" order_facts_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+        "columns": [
+          "payment_cents",
+          "refund_cents",
+          "net_sales_cents",
+          "gross_cents",
+          "discount_cents"
+        ],
+        "rows": [
+          [
+            119050,
+            18750,
+            100300,
+            124250,
+            5200
+          ]
+        ],
+        "seconds": 0.036,
+        "units": {
+          "payment_cents": "cents",
+          "refund_cents": "cents",
+          "net_sales_cents": "cents",
+          "gross_cents": "cents",
+          "discount_cents": "cents"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "judge": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B2-N01",
+      "expected_source": "原始依据 materials/w03/01_订单日报说明.md 七项订单定义、05_数据字典.md 一行一单/日期/状态/整数分；docs/w03/contract.md 与 test-guide.md 查询及空窗契约。数据 qinghe-w03-20260923-small；orders.csv SHA256=c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1；Asia/Shanghai ordered_at 半开窗口 [2026-08-01,2026-09-01)。每项独立筛唯一order_id，创建含取消、支付只看paid、有效需实付减退款>0、取消只看cancelled、退款需paid且退款>0、部分退需0<退款<实付、全退需paid且实付>0且退款=实付。单位单(count)。按 整体 分组；逐单归属见本目录order-ledger.csv的B2-N01。各项入选订单号：{\"order_count\": [\"O0000001\", \"O0000002\", \"O0000003\", \"O0000004\", \"O0000005\", \"O0000007\", \"O0000011\", \"O0000012\", \"O0000018\", \"O0000019\", \"O0000020\", \"O0000021\", \"O0000022\", \"O0000024\", \"O0000025\", \"O0000027\", \"O0000028\", \"O0000030\", \"O0000031\", \"O0000033\", \"O0000034\", \"O0000036\", \"O0000037\", \"O0000038\", \"O0000039\", \"O0000040\", \"O0000041\", \"O0000042\", \"O0000043\", \"O0000044\", \"O0000046\", \"O0000047\"], \"paid_order_count\": [\"O0000001\", \"O0000002\", \"O0000003\", \"O0000004\", \"O0000007\", \"O0000011\", \"O0000012\", \"O0000018\", \"O0000019\", \"O0000020\", \"O0000021\", \"O0000022\", \"O0000024\", \"O0000025\", \"O0000027\", \"O0000028\", \"O0000030\", \"O0000031\", \"O0000033\", \"O0000034\", \"O0000036\", \"O0000037\", \"O0000038\", \"O0000040\", \"O0000041\", \"O0000042\", \"O0000043\", \"O0000044\", \"O0000046\", \"O0000047\"], \"valid_order_count\": [\"O0000001\", \"O0000002\", \"O0000003\", \"O0000007\", \"O0000011\", \"O0000018\", \"O0000019\", \"O0000020\", \"O0000021\", \"O0000022\", \"O0000024\", \"O0000025\", \"O0000027\", \"O0000028\", \"O0000030\", \"O0000031\", \"O0000033\", \"O0000034\", \"O0000036\", \"O0000037\", \"O0000038\", \"O0000041\", \"O0000042\", \"O0000043\", \"O0000044\", \"O0000046\", \"O0000047\"], \"cancelled_order_count\": [\"O0000005\", \"O0000039\"], \"refund_order_count\": [\"O0000003\", \"O0000004\", \"O0000012\", \"O0000040\"], \"partial_refund_order_count\": [\"O0000003\"], \"full_refund_order_count\": [\"O0000004\", \"O0000012\", \"O0000040\"]}。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            32,
+            30,
+            27,
+            2,
+            4,
+            1,
+            3
+          ]
+        ],
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "order_count",
+            "paid_order_count",
+            "valid_order_count",
+            "cancelled_order_count",
+            "refund_order_count",
+            "partial_refund_order_count",
+            "full_refund_order_count"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  SUM(1) AS order_count\n  , SUM(case when status = 'paid' then 1 else 0 end) AS paid_order_count\n  , SUM(case when status = 'paid' and paid_cents - refund_cents > 0 then 1 else 0 end) AS valid_order_count\n  , SUM(case when status = 'cancelled' then 1 else 0 end) AS cancelled_order_count\n  , SUM(case when status = 'paid' and refund_cents > 0 then 1 else 0 end) AS refund_order_count\n  , SUM(case when status = 'paid' and refund_cents > 0 and refund_cents < paid_cents then 1 else 0 end) AS partial_refund_order_count\n  , SUM(case when status = 'paid' and paid_cents > 0 and refund_cents = paid_cents then 1 else 0 end) AS full_refund_order_count\nFROM \"data\".\"main\".\"order_facts\" order_facts_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+        "columns": [
+          "order_count",
+          "paid_order_count",
+          "valid_order_count",
+          "cancelled_order_count",
+          "refund_order_count",
+          "partial_refund_order_count",
+          "full_refund_order_count"
+        ],
+        "rows": [
+          [
+            32,
+            30,
+            27,
+            2,
+            4,
+            1,
+            3
+          ]
+        ],
+        "seconds": 0.04,
+        "units": {
+          "order_count": "count",
+          "paid_order_count": "count",
+          "valid_order_count": "count",
+          "cancelled_order_count": "count",
+          "refund_order_count": "count",
+          "partial_refund_order_count": "count",
+          "full_refund_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "judge": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B3-N01",
+      "expected_source": "依据materials/w03/01_订单日报说明.md购买会员数、退款会员数、成交门店数、有效订单商品件数；02_财务邮件.md有效订单及归属日期；05_数据字典.md一行一单、CRM账户、订单成交门店、quantity原始件数；docs/w03/contract.md与test-guide.md。原small CSV qinghe-w03-20260923-small，orders SHA256=c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1。Asia/Shanghai ordered_at半开窗口[2026-08-01,2026-09-01)，先筛窗口及[]；有效单paid且paid_cents>refund_cents，购买账户按member_id去重，成交店按orders.store_id去重；退款账户另筛paid且refund_cents>0再按member_id去重；件数逐有效单累加原quantity，不由退款金额推净销量；卡表不参与筛选或连接。单位count，前三项业务量纲账户/账户/门店，末项业务量纲件，均整数。逐单、逐账户、逐成交门店归属见本目录order-ledger.csv/account-ledger.csv/store-ledger.csv中B3-N01。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "buyer_count",
+            "refund_buyer_count",
+            "selling_store_count",
+            "valid_order_items"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "buyer_count",
+          "refund_buyer_count",
+          "selling_store_count",
+          "valid_order_items"
+        ],
+        "rows": [
+          [
+            15,
+            4,
+            2,
+            33
+          ]
+        ],
+        "units": {
+          "buyer_count": "count",
+          "refund_buyer_count": "count",
+          "selling_store_count": "count",
+          "valid_order_items": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "buyer_count",
+            "refund_buyer_count",
+            "selling_store_count",
+            "valid_order_items"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then member_id end) AS buyer_count\n  , COUNT(DISTINCT case when status = 'paid' and refund_cents > 0 then member_id end) AS refund_buyer_count\n  , COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then store_id end) AS selling_store_count\n  , SUM(case when status = 'paid' and paid_cents - refund_cents > 0 then quantity else 0 end) AS valid_order_items\nFROM \"data\".\"main\".\"order_facts\" order_facts_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+        "columns": [
+          "buyer_count",
+          "refund_buyer_count",
+          "selling_store_count",
+          "valid_order_items"
+        ],
+        "rows": [
+          [
+            15,
+            4,
+            2,
+            33
+          ]
+        ],
+        "seconds": 0.037,
+        "units": {
+          "buyer_count": "count",
+          "refund_buyer_count": "count",
+          "selling_store_count": "count",
+          "valid_order_items": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "judge": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B4-N01",
+      "expected_source": "独立从materials/data/small/orders.csv逐行核算，原文件SHA256=c6e0dee6081e7a6f7782b54de78b3182835c46184c8e7569fc23feab8cf3c4f1。时间[2026-08-01,2026-09-01)，成交门店来自orders.store_id，小程序条件仅在F01应用于全部组成量。01_订单日报说明.md规定paid金额/有效订单/购买CRM账户/件数；02_财务邮件.md规定八比率分别的分子分母、分母0未定义；05_数据字典.md规定订单粒度、覆盖和字段。每组入选订单、有效/paid/取消/退款订单集合、购买账户、全部整数分子分母和精确分数见ratio-ledger.json的B4-N01。先在窗口及筛选内分别聚合分子分母再除，不取逐订单或门店比率的平均；有效订单原始件数不扣推算退货件数。所有有限比率存JSON浮点，零分母为null。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            3714.814814814815,
+            6686.666666666667,
+            1.8,
+            0.15749685006299874,
+            0.0625,
+            0.13333333333333333,
+            0.041851106639839035,
+            1.2222222222222223
+          ]
+        ],
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  CAST(SUM(case when status = 'paid' then paid_cents - refund_cents else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(case when status = 'paid' and paid_cents - refund_cents > 0 then 1 else 0 end), 0) AS DOUBLE) AS avg_order_value\n  , CAST(SUM(case when status = 'paid' then paid_cents - refund_cents else 0 end) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then member_id end), 0) AS DOUBLE) AS avg_buyer_value\n  , CAST(SUM(case when status = 'paid' and paid_cents - refund_cents > 0 then 1 else 0 end) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then member_id end), 0) AS DOUBLE) AS purchase_frequency\n  , CAST(SUM(case when status = 'paid' then refund_cents else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(case when status = 'paid' then paid_cents else 0 end), 0) AS DOUBLE) AS refund_amount_rate\n  , CAST(SUM(case when status = 'cancelled' then 1 else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(1), 0) AS DOUBLE) AS cancel_rate\n  , CAST(SUM(case when status = 'paid' and refund_cents > 0 then 1 else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(case when status = 'paid' then 1 else 0 end), 0) AS DOUBLE) AS refund_order_rate\n  , CAST(SUM(case when status = 'paid' then gross_cents - paid_cents else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(case when status = 'paid' then gross_cents else 0 end), 0) AS DOUBLE) AS discount_rate\n  , CAST(SUM(case when status = 'paid' and paid_cents - refund_cents > 0 then quantity else 0 end) AS DOUBLE) / CAST(NULLIF(SUM(case when status = 'paid' and paid_cents - refund_cents > 0 then 1 else 0 end), 0) AS DOUBLE) AS items_per_order\nFROM \"data\".\"main\".\"order_facts\" order_facts_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+        "columns": [
+          "avg_order_value",
+          "avg_buyer_value",
+          "purchase_frequency",
+          "refund_amount_rate",
+          "cancel_rate",
+          "refund_order_rate",
+          "discount_rate",
+          "items_per_order"
+        ],
+        "rows": [
+          [
+            3714.814814814815,
+            6686.666666666667,
+            1.8,
+            0.15749685006299874,
+            0.0625,
+            0.13333333333333333,
+            0.041851106639839035,
+            1.2222222222222223
+          ]
+        ],
+        "seconds": 0.066,
+        "units": {
+          "avg_order_value": "cents_per_order",
+          "avg_buyer_value": "cents_per_member",
+          "purchase_frequency": "orders_per_member",
+          "refund_amount_rate": "ratio",
+          "cancel_rate": "ratio",
+          "refund_order_rate": "ratio",
+          "discount_rate": "ratio",
+          "items_per_order": "items_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "judge": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B5-N01",
+      "expected_source": "独立CSV核算；规则：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单、05_数据字典.md字段关系；数据qinghe-w03-20260923-small；Asia/Shanghai [2026-08-01,2026-09-01)。注册按registered_at；有效为paid且paid_cents-refund_cents>0；先全覆盖按账户/ordered_at/order_id排序，后筛窗口。窗口注册账户0个；首单明细O0000011=3000分, O0000019=1900分, O0000036=2500分, O0000038=2600分, O0000041=2800分；后续有效单22笔。完整账户/订单/注册与过滤明细见本目录ledger-small-cases.json#B5-N01，源文件hash见expected-freeze.json。卡不参与计数；金额整数分，不推终身首购。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "new_member_count",
+            "first_buyer_count",
+            "first_order_sales_cents",
+            "first_order_count",
+            "repeat_order_count",
+            "valid_order_count"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "new_member_count",
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count",
+          "valid_order_count"
+        ],
+        "rows": [
+          [
+            0,
+            5,
+            12800,
+            5,
+            22,
+            27
+          ]
+        ],
+        "units": {
+          "new_member_count": "count",
+          "first_buyer_count": "count",
+          "first_order_sales_cents": "cents",
+          "first_order_count": "count",
+          "repeat_order_count": "count",
+          "valid_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "new_member_count",
+            "first_buyer_count",
+            "first_order_sales_cents",
+            "first_order_count",
+            "repeat_order_count",
+            "valid_order_count"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "SELECT\n  MAX(subq_12.new_member_count) AS new_member_count\n  , MAX(subq_19.first_buyer_count) AS first_buyer_count\n  , MAX(subq_19.first_order_sales_cents) AS first_order_sales_cents\n  , MAX(subq_19.first_order_count) AS first_order_count\n  , MAX(subq_19.repeat_order_count) AS repeat_order_count\n  , MAX(subq_19.valid_order_count) AS valid_order_count\nFROM (\n  SELECT\n    SUM(1) AS new_member_count\n  FROM \"data\".\"main\".\"members\" members_src_10000\n  WHERE DATE_TRUNC('day', registered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_12\nCROSS JOIN (\n  SELECT\n    COUNT(DISTINCT case when is_first_valid_order then member_id end) AS first_buyer_count\n    , SUM(case when is_first_valid_order then paid_cents - refund_cents else 0 end) AS first_order_sales_cents\n    , SUM(case when is_first_valid_order then 1 else 0 end) AS first_order_count\n    , SUM(case when is_repeat_valid_order then 1 else 0 end) AS repeat_order_count\n    , SUM(case when status = 'paid' and paid_cents - refund_cents > 0 then 1 else 0 end) AS valid_order_count\n  FROM \"data\".\"main\".\"order_facts\" order_facts_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_19",
+        "columns": [
+          "new_member_count",
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count",
+          "valid_order_count"
+        ],
+        "rows": [
+          [
+            0,
+            5,
+            12800,
+            5,
+            22,
+            27
+          ]
+        ],
+        "seconds": 0.057,
+        "units": {
+          "new_member_count": "count",
+          "first_buyer_count": "count",
+          "first_order_sales_cents": "cents",
+          "first_order_count": "count",
+          "repeat_order_count": "count",
+          "valid_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "judge": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B6-N01",
+      "expected_source": "依据materials/w03/03_会员运营周报.md（月内3项）与01_订单日报说明.md（有效订单）、05_数据字典.md，原small manifest与4表sha逐项验证。以paid且paid_cents-refund_cents>0选订单，再按CRM账户和自然月建订单ID集合；>=1为购买，>=2为复购；复购账户数/购买账户数，零分母null；与卡张数、会员等级、付费资格无关。2026-08购买15账户、复购12账户，12/15=0.8。明细见ledger-small.csv和monthly-summary-small.json；均按原订单日期归月。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_buyer_count",
+            "monthly_repeat_buyer_count",
+            "monthly_repeat_rate"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "rows": [
+          [
+            15,
+            12,
+            0.8
+          ]
+        ],
+        "units": {
+          "monthly_buyer_count": "count",
+          "monthly_repeat_buyer_count": "count",
+          "monthly_repeat_rate": "ratio"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_buyer_count",
+            "monthly_repeat_buyer_count",
+            "monthly_repeat_rate"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "WITH sma_10002_cte AS (\n  SELECT\n    DATE_TRUNC('day', ordered_at) AS metric_time__day\n    , case when status = 'paid' and paid_cents - refund_cents > 0 then member_id end AS __monthly_buyer_count\n    , case when is_monthly_repeat_order then member_id end AS __monthly_repeat_buyer_count\n  FROM \"data\".\"main\".\"order_facts\" order_facts_src_10000\n)\n\nSELECT\n  MAX(subq_8.monthly_buyer_count) AS monthly_buyer_count\n  , MAX(subq_8.monthly_repeat_buyer_count) AS monthly_repeat_buyer_count\n  , MAX(subq_15.monthly_repeat_rate) AS monthly_repeat_rate\nFROM (\n  SELECT\n    COUNT(DISTINCT __monthly_buyer_count) AS monthly_buyer_count\n    , COUNT(DISTINCT __monthly_repeat_buyer_count) AS monthly_repeat_buyer_count\n  FROM sma_10002_cte\n  WHERE metric_time__day BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_8\nCROSS JOIN (\n  SELECT\n    CAST(COUNT(DISTINCT __monthly_repeat_buyer_count) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT __monthly_buyer_count), 0) AS DOUBLE) AS monthly_repeat_rate\n  FROM sma_10002_cte\n  WHERE metric_time__day BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_15",
+        "columns": [
+          "monthly_buyer_count",
+          "monthly_repeat_buyer_count",
+          "monthly_repeat_rate"
+        ],
+        "rows": [
+          [
+            15,
+            12,
+            0.8
+          ]
+        ],
+        "seconds": 0.036,
+        "units": {
+          "monthly_buyer_count": "count",
+          "monthly_repeat_buyer_count": "count",
+          "monthly_repeat_rate": "ratio"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "judge": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B7-N01",
+      "expected_source": "独立CSV核算：月末2026-08-31按悦享年卡/家庭季卡、valid_from<=D<valid_until、ended_at空或D<ended_at判资格；8个账户有资格，6个有有效订单，共10笔，净额47550分，4个复购；比率4/6，均额47550/10。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_paid_buyer_count",
+            "monthly_paid_order_count",
+            "monthly_paid_sales_cents",
+            "monthly_paid_repeat_buyer_count",
+            "monthly_paid_repeat_rate",
+            "monthly_paid_avg_order_value"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "monthly_paid_buyer_count",
+          "monthly_paid_order_count",
+          "monthly_paid_sales_cents",
+          "monthly_paid_repeat_buyer_count",
+          "monthly_paid_repeat_rate",
+          "monthly_paid_avg_order_value"
+        ],
+        "rows": [
+          [
+            6,
+            10,
+            47550,
+            4,
+            0.6666666666666666,
+            4755
+          ]
+        ],
+        "units": {
+          "monthly_paid_buyer_count": "count",
+          "monthly_paid_order_count": "count",
+          "monthly_paid_sales_cents": "cents",
+          "monthly_paid_repeat_buyer_count": "count",
+          "monthly_paid_repeat_rate": "ratio",
+          "monthly_paid_avg_order_value": "cents_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_paid_buyer_count",
+            "monthly_paid_order_count",
+            "monthly_paid_sales_cents",
+            "monthly_paid_repeat_buyer_count",
+            "monthly_paid_repeat_rate",
+            "monthly_paid_avg_order_value"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "WITH sma_10002_cte AS (\n  SELECT\n    DATE_TRUNC('day', ordered_at) AS metric_time__day\n    , case when is_paid_eligible_month and status = 'paid' and paid_cents - refund_cents > 0 then member_id end AS __monthly_paid_buyer_count\n    , case when is_paid_eligible_month and status = 'paid' and paid_cents - refund_cents > 0 then 1 else 0 end AS __monthly_paid_order_count\n    , case when is_paid_eligible_month and status = 'paid' and paid_cents - refund_cents > 0 then paid_cents - refund_cents else 0 end AS __monthly_paid_sales_cents\n    , case when is_paid_eligible_month and is_monthly_repeat_order then member_id end AS __monthly_paid_repeat_buyer_count\n  FROM \"data\".\"main\".\"order_facts\" order_facts_src_10000\n)\n\nSELECT\n  MAX(subq_10.monthly_paid_buyer_count) AS monthly_paid_buyer_count\n  , MAX(subq_10.monthly_paid_order_count) AS monthly_paid_order_count\n  , MAX(subq_10.monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  , MAX(subq_10.monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n  , MAX(subq_17.monthly_paid_repeat_rate) AS monthly_paid_repeat_rate\n  , MAX(subq_17.monthly_paid_avg_order_value) AS monthly_paid_avg_order_value\nFROM (\n  SELECT\n    COUNT(DISTINCT __monthly_paid_buyer_count) AS monthly_paid_buyer_count\n    , SUM(__monthly_paid_order_count) AS monthly_paid_order_count\n    , SUM(__monthly_paid_sales_cents) AS monthly_paid_sales_cents\n    , COUNT(DISTINCT __monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n  FROM sma_10002_cte\n  WHERE metric_time__day BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_10\nCROSS JOIN (\n  SELECT\n    CAST(COUNT(DISTINCT __monthly_paid_repeat_buyer_count) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT __monthly_paid_buyer_count), 0) AS DOUBLE) AS monthly_paid_repeat_rate\n    , CAST(SUM(__monthly_paid_sales_cents) AS DOUBLE) / CAST(NULLIF(SUM(__monthly_paid_order_count), 0) AS DOUBLE) AS monthly_paid_avg_order_value\n  FROM sma_10002_cte\n  WHERE metric_time__day BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_17",
+        "columns": [
+          "monthly_paid_buyer_count",
+          "monthly_paid_order_count",
+          "monthly_paid_sales_cents",
+          "monthly_paid_repeat_buyer_count",
+          "monthly_paid_repeat_rate",
+          "monthly_paid_avg_order_value"
+        ],
+        "rows": [
+          [
+            6,
+            10,
+            47550,
+            4,
+            0.6666666666666666,
+            4755.0
+          ]
+        ],
+        "seconds": 0.049,
+        "units": {
+          "monthly_paid_buyer_count": "count",
+          "monthly_paid_order_count": "count",
+          "monthly_paid_sales_cents": "cents",
+          "monthly_paid_repeat_buyer_count": "count",
+          "monthly_paid_repeat_rate": "ratio",
+          "monthly_paid_avg_order_value": "cents_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "judge": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B5-H03",
+      "expected_source": "独立CSV核算；规则：materials/w03/03_会员运营周报.md注册与观测期四节、01_订单日报说明.md有效订单、05_数据字典.md字段关系；数据qinghe-w03-20260923-small；Asia/Shanghai [2026-08-01,2026-09-01)。注册按registered_at；有效为paid且paid_cents-refund_cents>0；先全覆盖按账户/ordered_at/order_id排序，后筛窗口。窗口注册账户0个；首单明细O0000011=3000分；后续有效单1笔。完整账户/订单/注册与过滤明细见本目录ledger-small-cases.json#B5-H03，源文件hash见expected-freeze.json。卡不参与计数；金额整数分，不推终身首购。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "first_buyer_count",
+            "first_order_sales_cents",
+            "first_order_count",
+            "repeat_order_count",
+            "valid_order_count"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [
+            "member"
+          ],
+          "filters": [
+            {
+              "field": "member",
+              "op": "in",
+              "value": [
+                "M00005",
+                "M00007"
+              ]
+            }
+          ]
+        },
+        "columns": [
+          "member",
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count",
+          "valid_order_count"
+        ],
+        "rows": [
+          [
+            "M00005",
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            "M00007",
+            1,
+            3000,
+            1,
+            0,
+            1
+          ]
+        ],
+        "units": {
+          "first_buyer_count": "count",
+          "first_order_sales_cents": "cents",
+          "first_order_count": "count",
+          "repeat_order_count": "count",
+          "valid_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "first_buyer_count",
+            "first_order_sales_cents",
+            "first_order_count",
+            "repeat_order_count",
+            "valid_order_count"
+          ],
+          "start": "2026-08-01",
+          "end": "2026-09-01",
+          "group_by": [
+            "member"
+          ],
+          "filters": [
+            {
+              "field": "member",
+              "op": "in",
+              "value": [
+                "M00005",
+                "M00007"
+              ]
+            }
+          ]
+        },
+        "sql": "SELECT\n  member\n  , COUNT(DISTINCT first_buyer_count) AS first_buyer_count\n  , SUM(first_order_sales_cents) AS first_order_sales_cents\n  , SUM(first_order_count) AS first_order_count\n  , SUM(repeat_order_count) AS repeat_order_count\n  , SUM(valid_order_count) AS valid_order_count\nFROM (\n  SELECT\n    member_id AS member\n    , case when status = 'paid' and paid_cents - refund_cents > 0 then 1 else 0 end AS valid_order_count\n    , case when is_first_valid_order then member_id end AS first_buyer_count\n    , case when is_first_valid_order then paid_cents - refund_cents else 0 end AS first_order_sales_cents\n    , case when is_first_valid_order then 1 else 0 end AS first_order_count\n    , case when is_repeat_valid_order then 1 else 0 end AS repeat_order_count\n  FROM \"data\".\"main\".\"order_facts\" order_facts_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_8\nWHERE member in ('M00005','M00007')\nGROUP BY\n  member",
+        "columns": [
+          "member",
+          "first_buyer_count",
+          "first_order_sales_cents",
+          "first_order_count",
+          "repeat_order_count",
+          "valid_order_count"
+        ],
+        "rows": [
+          [
+            "M00005",
+            0,
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            "M00007",
+            1,
+            3000,
+            1,
+            0,
+            1
+          ]
+        ],
+        "seconds": 0.043,
+        "units": {
+          "first_buyer_count": "count",
+          "first_order_sales_cents": "cents",
+          "first_order_count": "count",
+          "repeat_order_count": "count",
+          "valid_order_count": "count"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "judge": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B7-M01",
+      "expected_source": "独立CSV核算：7月末11个有资格账户中6个有有效订单、6笔、15500分、无复购（复购率0），均额15500/6；8月同上题；各月单列，不跨月合计。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_paid_buyer_count",
+            "monthly_paid_order_count",
+            "monthly_paid_sales_cents",
+            "monthly_paid_repeat_buyer_count",
+            "monthly_paid_repeat_rate",
+            "monthly_paid_avg_order_value"
+          ],
+          "start": "2026-07-01",
+          "end": "2026-09-01",
+          "group_by": [
+            "metric_time__month"
+          ],
+          "filters": []
+        },
+        "columns": [
+          "metric_time__month",
+          "monthly_paid_buyer_count",
+          "monthly_paid_order_count",
+          "monthly_paid_sales_cents",
+          "monthly_paid_repeat_buyer_count",
+          "monthly_paid_repeat_rate",
+          "monthly_paid_avg_order_value"
+        ],
+        "rows": [
+          [
+            "2026-07-01 00:00:00",
+            6,
+            6,
+            15500,
+            0,
+            0,
+            2583.3333333333335
+          ],
+          [
+            "2026-08-01 00:00:00",
+            6,
+            10,
+            47550,
+            4,
+            0.6666666666666666,
+            4755
+          ]
+        ],
+        "units": {
+          "monthly_paid_buyer_count": "count",
+          "monthly_paid_order_count": "count",
+          "monthly_paid_sales_cents": "cents",
+          "monthly_paid_repeat_buyer_count": "count",
+          "monthly_paid_repeat_rate": "ratio",
+          "monthly_paid_avg_order_value": "cents_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_paid_buyer_count",
+            "monthly_paid_order_count",
+            "monthly_paid_sales_cents",
+            "monthly_paid_repeat_buyer_count",
+            "monthly_paid_repeat_rate",
+            "monthly_paid_avg_order_value"
+          ],
+          "start": "2026-07-01",
+          "end": "2026-09-01",
+          "group_by": [
+            "metric_time__month"
+          ],
+          "filters": []
+        },
+        "sql": "WITH sma_10002_cte AS (\n  SELECT\n    DATE_TRUNC('day', ordered_at) AS metric_time__day\n    , DATE_TRUNC('month', ordered_at) AS metric_time__month\n    , case when is_paid_eligible_month and status = 'paid' and paid_cents - refund_cents > 0 then member_id end AS __monthly_paid_buyer_count\n    , case when is_paid_eligible_month and status = 'paid' and paid_cents - refund_cents > 0 then 1 else 0 end AS __monthly_paid_order_count\n    , case when is_paid_eligible_month and status = 'paid' and paid_cents - refund_cents > 0 then paid_cents - refund_cents else 0 end AS __monthly_paid_sales_cents\n    , case when is_paid_eligible_month and is_monthly_repeat_order then member_id end AS __monthly_paid_repeat_buyer_count\n  FROM \"data\".\"main\".\"order_facts\" order_facts_src_10000\n)\n\nSELECT\n  COALESCE(subq_10.metric_time__month, subq_16.metric_time__month) AS metric_time__month\n  , MAX(subq_10.monthly_paid_buyer_count) AS monthly_paid_buyer_count\n  , MAX(subq_10.monthly_paid_order_count) AS monthly_paid_order_count\n  , MAX(subq_10.monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  , MAX(subq_10.monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n  , MAX(CAST(subq_16.monthly_paid_repeat_buyer_count AS DOUBLE) / CAST(NULLIF(subq_16.monthly_paid_buyer_count, 0) AS DOUBLE)) AS monthly_paid_repeat_rate\n  , MAX(CAST(subq_16.monthly_paid_sales_cents AS DOUBLE) / CAST(NULLIF(subq_16.monthly_paid_order_count, 0) AS DOUBLE)) AS monthly_paid_avg_order_value\nFROM (\n  SELECT\n    metric_time__month\n    , COUNT(DISTINCT __monthly_paid_buyer_count) AS monthly_paid_buyer_count\n    , SUM(__monthly_paid_order_count) AS monthly_paid_order_count\n    , SUM(__monthly_paid_sales_cents) AS monthly_paid_sales_cents\n    , COUNT(DISTINCT __monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n  FROM sma_10002_cte\n  WHERE metric_time__day BETWEEN '2026-07-01' AND '2026-08-31'\n  GROUP BY\n    metric_time__month\n) subq_10\nFULL OUTER JOIN (\n  SELECT\n    metric_time__month\n    , COUNT(DISTINCT __monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n    , COUNT(DISTINCT __monthly_paid_buyer_count) AS monthly_paid_buyer_count\n    , SUM(__monthly_paid_sales_cents) AS monthly_paid_sales_cents\n    , SUM(__monthly_paid_order_count) AS monthly_paid_order_count\n  FROM sma_10002_cte\n  WHERE metric_time__day BETWEEN '2026-07-01' AND '2026-08-31'\n  GROUP BY\n    metric_time__month\n) subq_16\nON\n  subq_10.metric_time__month = subq_16.metric_time__month\nGROUP BY\n  COALESCE(subq_10.metric_time__month, subq_16.metric_time__month)",
+        "columns": [
+          "metric_time__month",
+          "monthly_paid_buyer_count",
+          "monthly_paid_order_count",
+          "monthly_paid_sales_cents",
+          "monthly_paid_repeat_buyer_count",
+          "monthly_paid_repeat_rate",
+          "monthly_paid_avg_order_value"
+        ],
+        "rows": [
+          [
+            "2026-07-01 00:00:00",
+            6,
+            6,
+            15500,
+            0,
+            0.0,
+            2583.3333333333335
+          ],
+          [
+            "2026-08-01 00:00:00",
+            6,
+            10,
+            47550,
+            4,
+            0.6666666666666666,
+            4755.0
+          ]
+        ],
+        "seconds": 0.044,
+        "units": {
+          "monthly_paid_buyer_count": "count",
+          "monthly_paid_order_count": "count",
+          "monthly_paid_sales_cents": "cents",
+          "monthly_paid_repeat_buyer_count": "count",
+          "monthly_paid_repeat_rate": "ratio",
+          "monthly_paid_avg_order_value": "cents_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "judge": {
+        "passed": true,
+        "differences": []
+      }
+    },
+    {
+      "id": "B7-Z01",
+      "expected_source": "独立CSV核算：2026-05月末有11个有资格账户，但当月无有效订单；人数/订单/净额/复购人数为0，复购率与均额分母为零为null。",
+      "expected": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_paid_buyer_count",
+            "monthly_paid_order_count",
+            "monthly_paid_sales_cents",
+            "monthly_paid_repeat_buyer_count",
+            "monthly_paid_repeat_rate",
+            "monthly_paid_avg_order_value"
+          ],
+          "start": "2026-05-01",
+          "end": "2026-06-01",
+          "group_by": [],
+          "filters": []
+        },
+        "columns": [
+          "monthly_paid_buyer_count",
+          "monthly_paid_order_count",
+          "monthly_paid_sales_cents",
+          "monthly_paid_repeat_buyer_count",
+          "monthly_paid_repeat_rate",
+          "monthly_paid_avg_order_value"
+        ],
+        "rows": [
+          [
+            0,
+            0,
+            0,
+            0,
+            null,
+            null
+          ]
+        ],
+        "units": {
+          "monthly_paid_buyer_count": "count",
+          "monthly_paid_order_count": "count",
+          "monthly_paid_sales_cents": "cents",
+          "monthly_paid_repeat_buyer_count": "count",
+          "monthly_paid_repeat_rate": "ratio",
+          "monthly_paid_avg_order_value": "cents_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "actual": {
+        "status": "ok",
+        "intent": {
+          "metrics": [
+            "monthly_paid_buyer_count",
+            "monthly_paid_order_count",
+            "monthly_paid_sales_cents",
+            "monthly_paid_repeat_buyer_count",
+            "monthly_paid_repeat_rate",
+            "monthly_paid_avg_order_value"
+          ],
+          "start": "2026-05-01",
+          "end": "2026-06-01",
+          "group_by": [],
+          "filters": []
+        },
+        "sql": "WITH sma_10002_cte AS (\n  SELECT\n    DATE_TRUNC('day', ordered_at) AS metric_time__day\n    , case when is_paid_eligible_month and status = 'paid' and paid_cents - refund_cents > 0 then member_id end AS __monthly_paid_buyer_count\n    , case when is_paid_eligible_month and status = 'paid' and paid_cents - refund_cents > 0 then 1 else 0 end AS __monthly_paid_order_count\n    , case when is_paid_eligible_month and status = 'paid' and paid_cents - refund_cents > 0 then paid_cents - refund_cents else 0 end AS __monthly_paid_sales_cents\n    , case when is_paid_eligible_month and is_monthly_repeat_order then member_id end AS __monthly_paid_repeat_buyer_count\n  FROM \"data\".\"main\".\"order_facts\" order_facts_src_10000\n)\n\nSELECT\n  MAX(subq_10.monthly_paid_buyer_count) AS monthly_paid_buyer_count\n  , MAX(subq_10.monthly_paid_order_count) AS monthly_paid_order_count\n  , MAX(subq_10.monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  , MAX(subq_10.monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n  , MAX(subq_17.monthly_paid_repeat_rate) AS monthly_paid_repeat_rate\n  , MAX(subq_17.monthly_paid_avg_order_value) AS monthly_paid_avg_order_value\nFROM (\n  SELECT\n    COUNT(DISTINCT __monthly_paid_buyer_count) AS monthly_paid_buyer_count\n    , SUM(__monthly_paid_order_count) AS monthly_paid_order_count\n    , SUM(__monthly_paid_sales_cents) AS monthly_paid_sales_cents\n    , COUNT(DISTINCT __monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n  FROM sma_10002_cte\n  WHERE metric_time__day BETWEEN '2026-05-01' AND '2026-05-31'\n) subq_10\nCROSS JOIN (\n  SELECT\n    CAST(COUNT(DISTINCT __monthly_paid_repeat_buyer_count) AS DOUBLE) / CAST(NULLIF(COUNT(DISTINCT __monthly_paid_buyer_count), 0) AS DOUBLE) AS monthly_paid_repeat_rate\n    , CAST(SUM(__monthly_paid_sales_cents) AS DOUBLE) / CAST(NULLIF(SUM(__monthly_paid_order_count), 0) AS DOUBLE) AS monthly_paid_avg_order_value\n  FROM sma_10002_cte\n  WHERE metric_time__day BETWEEN '2026-05-01' AND '2026-05-31'\n) subq_17",
+        "columns": [
+          "monthly_paid_buyer_count",
+          "monthly_paid_order_count",
+          "monthly_paid_sales_cents",
+          "monthly_paid_repeat_buyer_count",
+          "monthly_paid_repeat_rate",
+          "monthly_paid_avg_order_value"
+        ],
+        "rows": [
+          [
+            0,
+            0,
+            0,
+            0,
+            null,
+            null
+          ]
+        ],
+        "seconds": 0.045,
+        "units": {
+          "monthly_paid_buyer_count": "count",
+          "monthly_paid_order_count": "count",
+          "monthly_paid_sales_cents": "cents",
+          "monthly_paid_repeat_buyer_count": "count",
+          "monthly_paid_repeat_rate": "ratio",
+          "monthly_paid_avg_order_value": "cents_per_order"
+        },
+        "data_version": "qinghe-w03-20260923-small",
+        "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+        "catalog_sha256": "ef70cc99f4fca4b88db5993898cfdb62cebdaa376e9431ec11646fe368414199"
+      },
+      "judge": {
+        "passed": true,
+        "differences": []
+      }
+    }
+  ],
+  "passed": true
+}

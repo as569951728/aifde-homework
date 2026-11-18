@@ -1,0 +1,75 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "first_buyer_count",
+      "first_order_sales_cents",
+      "first_order_count",
+      "repeat_order_count",
+      "valid_order_count"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [
+      "member"
+    ],
+    "filters": [
+      {
+        "field": "member",
+        "op": "in",
+        "value": [
+          "M00005",
+          "M00007"
+        ]
+      }
+    ]
+  },
+  "sql": "SELECT\n  member\n  , COUNT(DISTINCT first_buyer_count) AS first_buyer_count\n  , SUM(first_order_sales_cents) AS first_order_sales_cents\n  , SUM(first_order_count) AS first_order_count\n  , SUM(repeat_order_count) AS repeat_order_count\n  , SUM(valid_order_count) AS valid_order_count\nFROM (\n  SELECT\n    member_id AS member\n    , CASE WHEN case when status = 'paid' and paid_cents - refund_cents > 0 then order_id end IS NOT NULL THEN 1 ELSE 0 END AS valid_order_count\n    , case when is_first_valid_order then member_id end AS first_buyer_count\n    , case when is_first_valid_order then net_sales_cents else 0 end AS first_order_sales_cents\n    , CASE WHEN case when is_first_valid_order then order_id end IS NOT NULL THEN 1 ELSE 0 END AS first_order_count\n    , CASE WHEN case when is_repeat_valid_order then order_id end IS NOT NULL THEN 1 ELSE 0 END AS repeat_order_count\n  FROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_8\nWHERE member in ('M00005','M00007')\nGROUP BY\n  member",
+  "columns": [
+    "member",
+    "first_buyer_count",
+    "first_order_sales_cents",
+    "first_order_count",
+    "repeat_order_count",
+    "valid_order_count"
+  ],
+  "rows": [
+    [
+      "M00007",
+      1,
+      3000,
+      1,
+      0,
+      1
+    ],
+    [
+      "M00005",
+      0,
+      0,
+      0,
+      1,
+      1
+    ]
+  ],
+  "seconds": 0.04,
+  "units": {
+    "first_buyer_count": "count",
+    "first_order_sales_cents": "cents",
+    "first_order_count": "count",
+    "repeat_order_count": "count",
+    "valid_order_count": "count"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "统计范围：当前客户青禾、本周合成测试库；统计日期为2026年8月1日至8月31日（含首尾，查询右边界9月1日不包含）。本次已按CRM会员账户筛选M00005、M00007，并按会员账户分组；人数/账户数按CRM会员账户计数。\n\n| 会员账户 | 观测期首购会员账户数 | 观测期首单净销售额 | 观测期首单数 | 观测期后续购买订单数 | 有效订单数 |\n|---|---:|---:|---:|---:|---:|\n| M00005 | 0 | 0分（0.00元） | 0 | 0 | 1 |\n| M00007 | 1 | 3000分（30.00元） | 1 | 0 | 1 |\n\n口径说明：观测期首购会员数先用全测试覆盖历史确定每个账户的首笔有效订单，再统计首笔落入8月窗口的不同账户数，不代表终身首购。首单净销售额取上述首笔有效订单的净销售额，按首单日期归属，同日期按订单号排序；金额原始单位为分，折合元已除以100。首单数统计首笔有效订单落入窗口的订单笔数。后续购买订单数统计账户全测试覆盖历史中第二笔及以后的有效订单，按订单日期落入8月窗口计数，不是月内复购人数。有效订单数按已支付且实付金额减退款金额大于零的订单笔数统计，取消和全退不计；该指标与首单/后续订单数按各自口径独立统计，不能直接混合推导。\n\n表中0表示该账户在该指标本次覆盖和窗口内统计为0（如M00005首购、首单为0，M00007后续购买订单为0），不是未定义；未列出的其他账户不在本次筛选范围内。",
+  "question": "只看CRM账户M00005和M00007，按会员账户分别列出2026年8月的观测期首购会员数、观测期首单净销售额（单位分）、观测期首单数、观测期后续购买订单数和有效订单数。",
+  "trace_id": "1f9af097-f08a-445d-ac75-455777831fb9",
+  "elapsed_seconds": 32.665,
+  "model_usage": {
+    "prompt_tokens": 13306,
+    "completion_tokens": 4539,
+    "total_tokens": 17845
+  },
+  "model_calls_with_usage": 2
+}

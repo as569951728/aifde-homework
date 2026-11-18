@@ -1,0 +1,241 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "00-control-exact.json",
+      "expected_acceptance": true,
+      "actual_acceptance": true,
+      "judge": "pass",
+      "differences": []
+    },
+    {
+      "case": "00-control-reordered.json",
+      "expected_acceptance": true,
+      "actual_acceptance": true,
+      "judge": "pass",
+      "differences": []
+    },
+    {
+      "case": "01-wrong-metric.json",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "judge": "pass",
+      "differences": [
+        {
+          "path": "intent.metrics",
+          "expected": [
+            "payment_cents",
+            "refund_cents",
+            "net_sales_cents",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "actual": [
+            "payment_cents",
+            "refund_cents",
+            "order_count",
+            "gross_cents",
+            "discount_cents"
+          ],
+          "rule": "exact intent"
+        }
+      ]
+    },
+    {
+      "case": "02-wrong-date.json",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "judge": "pass",
+      "differences": [
+        {
+          "path": "intent.end",
+          "expected": "2026-09-01",
+          "actual": "2026-09-02",
+          "rule": "exact intent"
+        }
+      ]
+    },
+    {
+      "case": "03-wrong-filter.json",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "judge": "pass",
+      "differences": [
+        {
+          "path": "intent.filters",
+          "expected": [],
+          "actual": [
+            {
+              "field": "order__channel",
+              "op": "eq",
+              "value": "mini_program"
+            }
+          ],
+          "rule": "exact intent"
+        }
+      ]
+    },
+    {
+      "case": "04-wrong-group.json",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "judge": "pass",
+      "differences": [
+        {
+          "path": "intent.group_by",
+          "expected": [
+            "store"
+          ],
+          "actual": [
+            "store__region"
+          ],
+          "rule": "exact intent"
+        },
+        {
+          "path": "actual.columns",
+          "expected": [
+            "store",
+            "avg_buyer_value",
+            "avg_order_value",
+            "cancel_rate",
+            "discount_rate",
+            "items_per_order",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "refund_order_rate"
+          ],
+          "actual": [
+            "store__region",
+            "avg_order_value",
+            "avg_buyer_value",
+            "purchase_frequency",
+            "refund_amount_rate",
+            "cancel_rate",
+            "refund_order_rate",
+            "discount_rate",
+            "items_per_order"
+          ],
+          "rule": "unique exact columns"
+        }
+      ]
+    },
+    {
+      "case": "05-missing-group.json",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "judge": "pass",
+      "differences": [
+        {
+          "path": "rows",
+          "expected": {
+            "store": "S03",
+            "avg_order_value": 4500.0,
+            "avg_buyer_value": 9000.0,
+            "purchase_frequency": 2.0,
+            "refund_amount_rate": 0.1,
+            "cancel_rate": 0.0,
+            "refund_order_rate": 0.5,
+            "discount_rate": 0.0,
+            "items_per_order": 2.0
+          },
+          "actual": null,
+          "rule": "missing group"
+        }
+      ]
+    },
+    {
+      "case": "06-unit-confusion.json",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "judge": "pass",
+      "differences": [
+        {
+          "path": "units",
+          "expected": {
+            "payment_cents": "cents",
+            "refund_cents": "cents",
+            "net_sales_cents": "cents",
+            "gross_cents": "cents",
+            "discount_cents": "cents"
+          },
+          "actual": {
+            "payment_cents": "cents",
+            "refund_cents": "cents",
+            "net_sales_cents": "ratio",
+            "gross_cents": "cents",
+            "discount_cents": "cents"
+          },
+          "rule": "exact units, no missing/extra units"
+        }
+      ]
+    },
+    {
+      "case": "07-ratio-as-percent.json",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "judge": "pass",
+      "differences": [
+        {
+          "path": "rows.{'metric_time__month': '2026-08-01 00:00:00'}.monthly_repeat_rate",
+          "expected": 0.8,
+          "actual": 80.0,
+          "rule": "null/exact integer/declared float tolerance"
+        },
+        {
+          "path": "rows.{'metric_time__month': '2026-07-01 00:00:00'}.monthly_repeat_rate",
+          "expected": 0.09090909090909091,
+          "actual": 9.090909,
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    },
+    {
+      "case": "08-null-as-zero.json",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "judge": "pass",
+      "differences": [
+        {
+          "path": "rows.{}.monthly_paid_avg_order_value",
+          "expected": null,
+          "actual": 0,
+          "rule": "null/exact integer/declared float tolerance"
+        },
+        {
+          "path": "rows.{}.monthly_paid_repeat_rate",
+          "expected": null,
+          "actual": 0,
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    },
+    {
+      "case": "09-tampered-value.json",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "judge": "pass",
+      "differences": [
+        {
+          "path": "rows.{}.payment_cents",
+          "expected": 119050,
+          "actual": 119051,
+          "rule": "null/exact integer/declared float tolerance"
+        }
+      ]
+    },
+    {
+      "case": "10-error-disguised.json",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "judge": "pass",
+      "differences": [
+        {
+          "path": "status",
+          "expected": "ok",
+          "actual": "error",
+          "rule": "exact supported status"
+        }
+      ]
+    }
+  ]
+}

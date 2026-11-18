@@ -44,7 +44,7 @@
       "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
-    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 与 small 轮 B1-N01 同口径，规模数据独立重算。"
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 与 small 轮 B1-N01 同口径，规模数据独立重算。；本次版本绑定由原始manifest完整序列化哈希与定稿库文件摘要计算，不取orders.csv单文件哈希，也不从实际答案复制。"
   },
   {
     "id": "LG-B2",
@@ -99,7 +99,7 @@
       "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
-    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 恒等式：创建=支付+取消（34306=31564+2742）；退款=部分退+全退（4718=3087+1631）。"
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 恒等式：创建=支付+取消（34306=31564+2742）；退款=部分退+全退（4718=3087+1631）。；本次版本绑定由原始manifest完整序列化哈希与定稿库文件摘要计算，不取orders.csv单文件哈希，也不从实际答案复制。"
   },
   {
     "id": "LG-B3",
@@ -142,7 +142,7 @@
       "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
-    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。"
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。；本次版本绑定由原始manifest完整序列化哈希与定稿库文件摘要计算，不取orders.csv单文件哈希，也不从实际答案复制。"
   },
   {
     "id": "LG-B4",
@@ -201,7 +201,7 @@
       "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
-    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 比率在窗口内先聚合分子分母再相除，不取逐单或逐店比率的平均。"
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 比率在窗口内先聚合分子分母再相除，不取逐单或逐店比率的平均。；本次版本绑定由原始manifest完整序列化哈希与定稿库文件摘要计算，不取orders.csv单文件哈希，也不从实际答案复制。"
   },
   {
     "id": "LG-B5",
@@ -248,7 +248,7 @@
       "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
-    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 该窗注册 0 人；首单数+后续单数=29933=29933。"
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 该窗注册 0 人；首单数+后续单数=29933=29933。；本次版本绑定由原始manifest完整序列化哈希与定稿库文件摘要计算，不取orders.csv单文件哈希，也不从实际答案复制。"
   },
   {
     "id": "LG-B5-h",
@@ -291,7 +291,7 @@
       "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
-    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 与 LG-B5 同值不同问法；首购不代表终身首购。"
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 与 LG-B5 同值不同问法；首购不代表终身首购。；本次版本绑定由原始manifest完整序列化哈希与定稿库文件摘要计算，不取orders.csv单文件哈希，也不从实际答案复制。"
   },
   {
     "id": "LG-B6",
@@ -330,7 +330,7 @@
       "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
-    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 复购=同月有效订单≥2笔的账户；复购率=复购人数/购买人数，分母 0 时为 null。"
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 复购=同月有效订单≥2笔的账户；复购率=复购人数/购买人数，分母 0 时为 null。；本次版本绑定由原始manifest完整序列化哈希与定稿库文件摘要计算，不取orders.csv单文件哈希，也不从实际答案复制。"
   },
   {
     "id": "LG-B6-m",
@@ -379,7 +379,7 @@
       "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
-    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 多月按自然月分行，资格、账户与订单不跨月串用。"
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 多月按自然月分行，资格、账户与订单不跨月串用。；本次版本绑定由原始manifest完整序列化哈希与定稿库文件摘要计算，不取orders.csv单文件哈希，也不从实际答案复制。"
   },
   {
     "id": "LG-B7",
@@ -430,7 +430,7 @@
       "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
-    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 月末资格按 2026-08-31 判定；先筛资格再连当月有效订单。"
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 月末资格按 2026-08-31 判定；先筛资格再连当月有效订单。；本次版本绑定由原始manifest完整序列化哈希与定稿库文件摘要计算，不取orders.csv单文件哈希，也不从实际答案复制。"
   },
   {
     "id": "LG-B7-jul",
@@ -481,7 +481,7 @@
       "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
-    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 判定日为 2026-07-31，与 8 月独立重判。"
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 判定日为 2026-07-31，与 8 月独立重判。；本次版本绑定由原始manifest完整序列化哈希与定稿库文件摘要计算，不取orders.csv单文件哈希，也不从实际答案复制。"
   },
   {
     "id": "LG-B4-store",
@@ -878,7 +878,7 @@
       "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
-    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 每组独立聚合分子分母；门店来自 orders.store_id；24 家门店。"
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 每组独立聚合分子分母；门店来自 orders.store_id；24 家门店。；本次版本绑定由原始manifest完整序列化哈希与定稿库文件摘要计算，不取orders.csv单文件哈希，也不从实际答案复制。"
   },
   {
     "id": "LG-B4-channel",
@@ -923,7 +923,7 @@
       "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
-    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 渠道筛选取 orders.channel='小程序'；通用指标支持渠道过滤，六项付费月报不支持。"
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 渠道筛选取 orders.channel='小程序'；通用指标支持渠道过滤，六项付费月报不支持。；本次版本绑定由原始manifest完整序列化哈希与定稿库文件摘要计算，不取orders.csv单文件哈希，也不从实际答案复制。"
   },
   {
     "id": "LG-X1",
@@ -970,6 +970,6 @@
       "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
       "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508"
     },
-    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 与 LG-B1 同值不同问法，检验单指标识别与单位。"
+    "expected_source": "独立核算：materials/data/large 原始 CSV 逐记录计算（脚本 artifacts/w03/large-20261109/large_expected.py，SHA256 orders.csv=15fe0a98b1f34f1e2f7ce100a1ebb74d8f2cffa5023d0a93c7d07e959ffdd4b3）。口径来自 01_订单日报说明.md（金额/订单/有效/账户/件数）、02_财务邮件.md（八比率分子分母，零分母未定义）、03_会员运营周报.md（注册与观测期首购、月内复购≥2笔）、04_本期统计确认邮件.md（六项付费月报整月全店全渠道）、05_数据字典.md（一单一行、字段）、docs/w03/contract.md（半开区间）、docs/w03/B7-测试设计.md（月末资格）。有效订单=paid且实付减退款>0；比率用精确分数计算后转浮点，分母为零记 null；首购按账户全历史有效单排序（ordered_at, order_id）后判定首笔是否落窗。 与 LG-B1 同值不同问法，检验单指标识别与单位。；本次版本绑定由原始manifest完整序列化哈希与定稿库文件摘要计算，不取orders.csv单文件哈希，也不从实际答案复制。"
   }
 ]

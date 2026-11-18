@@ -1,0 +1,50 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "buyer_count",
+      "refund_buyer_count",
+      "selling_store_count",
+      "valid_order_items"
+    ],
+    "start": "2026-08-10",
+    "end": "2026-08-11",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then member_id end) AS buyer_count\n  , COUNT(DISTINCT case when status = 'paid' and refund_cents > 0 then member_id end) AS refund_buyer_count\n  , COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then store_id end) AS selling_store_count\n  , SUM(case when status = 'paid' and paid_cents - refund_cents > 0 then quantity else 0 end) AS valid_order_items\nFROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-10' AND '2026-08-10'",
+  "columns": [
+    "buyer_count",
+    "refund_buyer_count",
+    "selling_store_count",
+    "valid_order_items"
+  ],
+  "rows": [
+    [
+      0,
+      1,
+      0,
+      0
+    ]
+  ],
+  "seconds": 0.031,
+  "units": {
+    "buyer_count": "count",
+    "refund_buyer_count": "count",
+    "selling_store_count": "count",
+    "valid_order_items": "count"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "统计范围为2026年8月10日当天（含当日，截止到次日零点前），位于当前青禾客户数据范围内，未设置额外门店筛选。结果：购买会员数0个CRM会员账户；退款会员数1个CRM会员账户；成交门店数0家；有效订单商品件数0件。口径说明：购买会员数按有效订单中的不同会员账户去重；退款会员数按已支付且退款金额大于零的订单中的不同会员账户去重，独立于有效订单口径；成交门店数按有效订单的成交门店去重，不是会员归属门店；有效订单商品件数为有效订单中的原始购买件数合计，不是扣除退款后的净销量。购买会员数、成交门店数、有效订单商品件数的0是统计覆盖范围内的实际零值，不是缺少定义或未查询。",
+  "question": "请同时列出2026年8月10日青禾优选的购买会员数、退款会员数、成交门店数和有效订单商品件数。",
+  "trace_id": "ac819fab-6df9-47c8-8e39-cb8b7a4b71d0",
+  "elapsed_seconds": 11.778,
+  "model_usage": {
+    "prompt_tokens": 12985,
+    "completion_tokens": 1231,
+    "total_tokens": 14216
+  },
+  "model_calls_with_usage": 2
+}

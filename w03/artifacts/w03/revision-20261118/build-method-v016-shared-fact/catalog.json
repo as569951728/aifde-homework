@@ -1,0 +1,716 @@
+[
+  {
+    "id": "order_count",
+    "name": "创建订单数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "按下单日期统计全部订单，每个订单号一次，包含取消单。"
+      }
+    ],
+    "constraints": [
+      "按订单下单日期统计；包含取消单；订单事实粒度为一行一笔订单。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "paid_order_count",
+    "name": "支付订单数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "状态为 paid 的订单数，包括后来全部退款的订单。"
+      }
+    ],
+    "constraints": [
+      "仅统计 status = 'paid' 的订单，包括后来全部退款的订单。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "valid_order_count",
+    "name": "有效订单数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "状态为 paid 且实付金额减退款金额大于零的订单数；取消和全退不计。"
+      }
+    ],
+    "constraints": [
+      "仅 status = 'paid' 且 paid_cents - refund_cents > 0；取消和全额退款不计。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "cancelled_order_count",
+    "name": "取消订单数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "状态为 cancelled 的订单数。"
+      }
+    ],
+    "constraints": [
+      "仅统计 status = 'cancelled' 的订单。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "refund_order_count",
+    "name": "退款订单数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 状态且退款金额大于零的订单数，包括部分退款与全部退款。"
+      }
+    ],
+    "constraints": [
+      "status = 'paid' 且 refund_cents > 0；包括部分退款与全部退款。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "partial_refund_order_count",
+    "name": "部分退款订单数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 状态且退款大于零、小于实付金额的订单数。"
+      }
+    ],
+    "constraints": [
+      "status = 'paid' 且 refund_cents > 0 且 refund_cents < paid_cents。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "full_refund_order_count",
+    "name": "全额退款订单数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 状态且实付大于零、退款等于实付的订单数。"
+      }
+    ],
+    "constraints": [
+      "status = 'paid' 且 paid_cents > 0 且 refund_cents = paid_cents。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "payment_cents",
+    "name": "实付金额",
+    "aliases": [],
+    "unit": "cents",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单实付金额合计，尚未扣退款；单位分。"
+      }
+    ],
+    "constraints": [
+      "仅 paid 订单实付金额合计；尚未扣退款；整数分。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "refund_cents",
+    "name": "退款金额",
+    "aliases": [],
+    "unit": "cents",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单退款金额合计，按原订单下单日期归属，不是现金退款发生日；单位分。"
+      }
+    ],
+    "constraints": [
+      "仅 paid 订单退款金额合计；按原订单下单日期归属；整数分。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "net_sales_cents",
+    "name": "净销售额",
+    "aliases": [],
+    "unit": "cents",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单实付减退款后合计；取消单不计；按原订单下单日期归属；单位分。"
+      }
+    ],
+    "constraints": [
+      "paid 订单实付减退款后合计；取消单不计；全额退款仍属 paid 行，净额为零；整数分。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "gross_cents",
+    "name": "支付订单原价金额",
+    "aliases": [],
+    "unit": "cents",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单折扣前原价金额合计；单位分。"
+      }
+    ],
+    "constraints": [
+      "仅 paid 订单折扣前原价金额合计；整数分。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "discount_cents",
+    "name": "优惠金额",
+    "aliases": [],
+    "unit": "cents",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "paid 订单原价减实付的金额合计；退款不冲减原优惠金额；单位分。"
+      }
+    ],
+    "constraints": [
+      "仅 paid 订单原价减实付合计；退款不冲减原优惠金额；整数分。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "buyer_count",
+    "name": "购买会员数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "统计窗口及筛选条件内有有效订单的不同 CRM 会员账户数，不做跨系统自然人去重。"
+      }
+    ],
+    "constraints": [
+      "统计窗口及筛选条件内有有效订单的不同 CRM 会员账户数；不做跨系统自然人去重。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "refund_buyer_count",
+    "name": "退款会员数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "统计窗口内发生退款的 paid 订单关联的不同 CRM 会员账户数。"
+      }
+    ],
+    "constraints": [
+      "统计窗口内发生退款的 paid 订单关联的不同 CRM 会员账户数。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "selling_store_count",
+    "name": "成交门店数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "窗口内至少有一笔有效订单的不同订单归属门店数。"
+      }
+    ],
+    "constraints": [
+      "窗口内至少有一笔有效订单的不同订单成交门店数；使用订单 store_id，不是会员归属门店。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "valid_order_items",
+    "name": "有效订单商品件数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "01_订单日报说明.md",
+        "quote": "有效订单中的原始购买件数合计；退款金额不能推算退货件数，此项不是净商品销量。"
+      }
+    ],
+    "constraints": [
+      "有效订单中的 quantity 合计；不是扣退货后的净商品销量。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "avg_order_value",
+    "name": "有效订单均额",
+    "aliases": [],
+    "unit": "cents_per_order",
+    "sources": [
+      {
+        "file": "02_财务邮件.md",
+        "quote": "净销售额除以有效订单数，单位分／单；分母零时未定义。"
+      }
+    ],
+    "constraints": [
+      "净销售额除以有效订单数；分母为零时未定义；单位分／单。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "avg_buyer_value",
+    "name": "购买会员人均消费",
+    "aliases": [],
+    "unit": "cents_per_member",
+    "sources": [
+      {
+        "file": "02_财务邮件.md",
+        "quote": "净销售额除以购买会员数，单位分／账户；分母零时未定义。"
+      }
+    ],
+    "constraints": [
+      "净销售额除以购买会员数；分母为零时未定义；单位分／账户。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "purchase_frequency",
+    "name": "购买频次",
+    "aliases": [],
+    "unit": "orders_per_member",
+    "sources": [
+      {
+        "file": "02_财务邮件.md",
+        "quote": "有效订单数除以购买会员数，单位单／账户；分母零时未定义。"
+      }
+    ],
+    "constraints": [
+      "有效订单数除以购买会员数；分母为零时未定义；单位单／账户。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "refund_amount_rate",
+    "name": "退款金额占比",
+    "aliases": [],
+    "unit": "ratio",
+    "sources": [
+      {
+        "file": "02_财务邮件.md",
+        "quote": "退款金额除以实付金额；分母零时未定义。"
+      }
+    ],
+    "constraints": [
+      "退款金额除以实付金额；分母为零时未定义。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "cancel_rate",
+    "name": "取消率",
+    "aliases": [],
+    "unit": "ratio",
+    "sources": [
+      {
+        "file": "02_财务邮件.md",
+        "quote": "取消订单数除以创建订单数；分母零时未定义。"
+      }
+    ],
+    "constraints": [
+      "取消订单数除以创建订单数；分母为零时未定义。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "refund_order_rate",
+    "name": "退款订单率",
+    "aliases": [],
+    "unit": "ratio",
+    "sources": [
+      {
+        "file": "02_财务邮件.md",
+        "quote": "退款订单数除以支付订单数；分母零时未定义。"
+      }
+    ],
+    "constraints": [
+      "退款订单数除以支付订单数；分母为零时未定义。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "discount_rate",
+    "name": "优惠率",
+    "aliases": [],
+    "unit": "ratio",
+    "sources": [
+      {
+        "file": "02_财务邮件.md",
+        "quote": "优惠金额除以支付订单原价金额；分母零时未定义。"
+      }
+    ],
+    "constraints": [
+      "优惠金额除以支付订单原价金额；分母为零时未定义。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "items_per_order",
+    "name": "单均商品件数",
+    "aliases": [],
+    "unit": "items_per_order",
+    "sources": [
+      {
+        "file": "02_财务邮件.md",
+        "quote": "有效订单商品件数除以有效订单数；分母零时未定义。"
+      }
+    ],
+    "constraints": [
+      "有效订单商品件数除以有效订单数；分母为零时未定义。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "new_member_count",
+    "name": "注册会员数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "03_会员运营周报.md",
+        "quote": "按注册日期统计新注册 CRM 账户数；可按归属门店和会员等级分组，不等于自然人数。"
+      }
+    ],
+    "constraints": [
+      "按注册日期统计新注册 CRM 账户数；不等于自然人数。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "first_buyer_count",
+    "name": "观测期首购会员数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "03_会员运营周报.md",
+        "quote": "在测试覆盖期内首次有效订单落入查询窗口的不同 CRM 账户数；不代表终身首购。先用全覆盖历史确定首次，再按窗口筛选。"
+      }
+    ],
+    "constraints": [
+      "先用全测试覆盖历史确定每个账户首次有效订单，再筛选落入查询窗口的不同账户；不代表终身首购。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "first_order_sales_cents",
+    "name": "观测期首单净销售额",
+    "aliases": [],
+    "unit": "cents",
+    "sources": [
+      {
+        "file": "03_会员运营周报.md",
+        "quote": "每个账户在测试覆盖期内第一笔有效订单的净销售额，按该单日期归属；相同日期按订单号排序；单位分。"
+      }
+    ],
+    "constraints": [
+      "每个账户全测试覆盖期内第一笔有效订单的净销售额；按该单日期归属；相同日期按订单号排序；整数分。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "first_order_count",
+    "name": "观测期首单数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "03_会员运营周报.md",
+        "quote": "在全测试覆盖期内先为每个账户按日期、订单号排序，其第一笔有效订单落入窗口的单数。"
+      }
+    ],
+    "constraints": [
+      "全测试覆盖期内先为每个账户按日期、订单号排序，其第一笔有效订单落入窗口的单数。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "repeat_order_count",
+    "name": "观测期后续购买订单数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "03_会员运营周报.md",
+        "quote": "账户全测试覆盖期内第二笔及以后的有效订单，按订单日期落入窗口计数。不是月内复购人数。"
+      }
+    ],
+    "constraints": [
+      "账户全测试覆盖期内第二笔及以后的有效订单，按订单日期落入窗口计数；不是月内复购人数。"
+    ],
+    "query_policy": {
+      "full_month_only": false
+    }
+  },
+  {
+    "id": "monthly_buyer_count",
+    "name": "月内购买会员数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "03_会员运营周报.md",
+        "quote": "同一自然月有至少一笔有效订单的账户数，仅整月、全门店口径；允许连续整月按月分别展示，不能跨月直接加总当人数。"
+      }
+    ],
+    "constraints": [
+      "同一自然月有至少一笔有效订单的账户数；仅整月、全门店口径；跨月按月分别展示，不能跨月加总当人数。"
+    ],
+    "query_policy": {
+      "full_month_only": true
+    }
+  },
+  {
+    "id": "monthly_repeat_buyer_count",
+    "name": "月内复购会员数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "03_会员运营周报.md",
+        "quote": "同一自然月有至少两笔有效订单的账户数，仅整月、全门店口径；不能由全量订单行上的简单条件代替。"
+      }
+    ],
+    "constraints": [
+      "同一自然月有至少两笔有效订单的账户数；仅整月、全门店口径；不能由全量订单行上的简单条件代替。"
+    ],
+    "query_policy": {
+      "full_month_only": true
+    }
+  },
+  {
+    "id": "monthly_repeat_rate",
+    "name": "月内复购率",
+    "aliases": [],
+    "unit": "ratio",
+    "sources": [
+      {
+        "file": "03_会员运营周报.md",
+        "quote": "同一自然月的月内复购会员数除以月内购买会员数，仅整月、全门店口径；分母零时未定义；跨多月查询必须按月展示。"
+      }
+    ],
+    "constraints": [
+      "同一自然月的月内复购会员数除以月内购买会员数；仅整月、全门店口径；分母零时未定义；跨多月必须按月展示。"
+    ],
+    "query_policy": {
+      "full_month_only": true
+    }
+  },
+  {
+    "id": "monthly_paid_buyer_count",
+    "name": "月末付费会员购买人数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "04_本期统计确认邮件.md",
+        "quote": "自然月内有至少一笔有效订单、且月末符合总部运营月报付费资格的不同账户数。"
+      },
+      {
+        "file": "business_model.md",
+        "quote": "只纳入悦享年卡与家庭季卡持有人。"
+      }
+    ],
+    "constraints": [
+      "先按自然月月末最后一天判断付费资格，再统计该账户当月有效订单；仅完整自然月、全渠道、全门店；按账户去重。",
+      "付费资格：同一张卡同时满足 card_type 为悦享年卡或家庭季卡，且 valid_from <= 月末、valid_until > 月末、ended_at 为空或 > 月末。"
+    ],
+    "query_policy": {
+      "full_month_only": true
+    }
+  },
+  {
+    "id": "monthly_paid_order_count",
+    "name": "月末付费会员有效订单数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "04_本期统计确认邮件.md",
+        "quote": "月末符合付费资格的账户在该自然月的全部有效订单数，按账户资格筛选，不按卡重复。"
+      },
+      {
+        "file": "business_model.md",
+        "quote": "只纳入悦享年卡与家庭季卡持有人。"
+      }
+    ],
+    "constraints": [
+      "月末符合付费资格的账户在该自然月的全部有效订单数；按账户资格筛选，不按卡重复；仅完整自然月、全渠道、全门店。",
+      "付费资格：同一张卡同时满足 card_type 为悦享年卡或家庭季卡，且 valid_from <= 月末、valid_until > 月末、ended_at 为空或 > 月末。"
+    ],
+    "query_policy": {
+      "full_month_only": true
+    }
+  },
+  {
+    "id": "monthly_paid_sales_cents",
+    "name": "月末付费会员净销售额",
+    "aliases": [],
+    "unit": "cents",
+    "sources": [
+      {
+        "file": "04_本期统计确认邮件.md",
+        "quote": "月末符合付费资格的账户在该自然月的有效订单净销售额合计，单位分。"
+      },
+      {
+        "file": "business_model.md",
+        "quote": "只纳入悦享年卡与家庭季卡持有人。"
+      }
+    ],
+    "constraints": [
+      "月末符合付费资格的账户在该自然月有效订单的净销售额合计；仅完整自然月、全渠道、全门店；整数分。",
+      "付费资格：同一张卡同时满足 card_type 为悦享年卡或家庭季卡，且 valid_from <= 月末、valid_until > 月末、ended_at 为空或 > 月末。"
+    ],
+    "query_policy": {
+      "full_month_only": true
+    }
+  },
+  {
+    "id": "monthly_paid_repeat_buyer_count",
+    "name": "月末付费会员复购人数",
+    "aliases": [],
+    "unit": "count",
+    "sources": [
+      {
+        "file": "04_本期统计确认邮件.md",
+        "quote": "月末符合付费资格，且同一自然月至少有两笔有效订单的不同账户数。"
+      },
+      {
+        "file": "business_model.md",
+        "quote": "只纳入悦享年卡与家庭季卡持有人。"
+      }
+    ],
+    "constraints": [
+      "月末符合付费资格，且同一自然月至少有两笔有效订单的不同账户数；仅完整自然月、全渠道、全门店；按账户去重。",
+      "付费资格：同一张卡同时满足 card_type 为悦享年卡或家庭季卡，且 valid_from <= 月末、valid_until > 月末、ended_at 为空或 > 月末。"
+    ],
+    "query_policy": {
+      "full_month_only": true
+    }
+  },
+  {
+    "id": "monthly_paid_repeat_rate",
+    "name": "月末付费会员复购率",
+    "aliases": [],
+    "unit": "ratio",
+    "sources": [
+      {
+        "file": "04_本期统计确认邮件.md",
+        "quote": "月末付费会员复购人数除以月末付费会员购买人数；分母为零时未定义。"
+      },
+      {
+        "file": "business_model.md",
+        "quote": "只纳入悦享年卡与家庭季卡持有人。"
+      }
+    ],
+    "constraints": [
+      "月末付费会员复购人数除以月末付费会员购买人数；仅完整自然月、全渠道、全门店；分母零时未定义。",
+      "付费资格：同一张卡同时满足 card_type 为悦享年卡或家庭季卡，且 valid_from <= 月末、valid_until > 月末、ended_at 为空或 > 月末。"
+    ],
+    "query_policy": {
+      "full_month_only": true
+    }
+  },
+  {
+    "id": "monthly_paid_avg_order_value",
+    "name": "月末付费会员订单均额",
+    "aliases": [],
+    "unit": "cents_per_order",
+    "sources": [
+      {
+        "file": "04_本期统计确认邮件.md",
+        "quote": "月末付费会员净销售额除以月末付费会员有效订单数；单位分／单，分母零时未定义。"
+      },
+      {
+        "file": "business_model.md",
+        "quote": "只纳入悦享年卡与家庭季卡持有人。"
+      }
+    ],
+    "constraints": [
+      "月末付费会员净销售额除以月末付费会员有效订单数；仅完整自然月、全渠道、全门店；分母零时未定义；单位分／单。",
+      "付费资格：同一张卡同时满足 card_type 为悦享年卡或家庭季卡，且 valid_from <= 月末、valid_until > 月末、ended_at 为空或 > 月末。"
+    ],
+    "query_policy": {
+      "full_month_only": true
+    }
+  }
+]

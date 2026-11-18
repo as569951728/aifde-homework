@@ -1,0 +1,38 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "net_sales_cents"
+    ],
+    "start": "2026-08-10",
+    "end": "2026-08-11",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  SUM(case when status = 'paid' then paid_cents - refund_cents else 0 end) AS net_sales_cents\nFROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-10' AND '2026-08-10'",
+  "columns": [
+    "net_sales_cents"
+  ],
+  "rows": [
+    [
+      0
+    ]
+  ],
+  "seconds": 0.018,
+  "units": {
+    "net_sales_cents": "cents"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "2026年8月10日当天，青禾优选口径下的净销售额为 0.00 元。\n\n统计范围：按订单归属日期统计2026年8月10日当天（含当日，区间至次日不含）；未额外限定门店，即覆盖该客户数据范围内的全部成交门店。\n口径：净销售额按已支付（paid）订单的实付金额减退款金额汇总，取消订单不计；全额退款订单行净额为零但仍纳入已支付行集合。金额以分存储，本次结果为 0 分，换算后为 0.00 元。\n说明：这里的 0 是统计范围内的实际汇总结果（当天净额为 0），并非指标未定义或数据缺失。",
+  "question": "2026年8月10日当天青禾优选净销售额是多少？",
+  "trace_id": "2f24d1fb-fa26-4f4e-b826-d1458d05d085",
+  "elapsed_seconds": 6.449,
+  "model_usage": {
+    "prompt_tokens": 12416,
+    "completion_tokens": 564,
+    "total_tokens": 12980
+  },
+  "model_calls_with_usage": 2
+}

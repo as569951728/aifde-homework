@@ -1,0 +1,50 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "first_buyer_count",
+      "first_order_sales_cents",
+      "first_order_count",
+      "repeat_order_count"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  COUNT(DISTINCT case when is_first_valid_order then member_id end) AS first_buyer_count\n  , SUM(case when is_first_valid_order then net_sales_cents else 0 end) AS first_order_sales_cents\n  , SUM(CASE WHEN case when is_first_valid_order then order_id end IS NOT NULL THEN 1 ELSE 0 END) AS first_order_count\n  , SUM(CASE WHEN case when is_repeat_valid_order then order_id end IS NOT NULL THEN 1 ELSE 0 END) AS repeat_order_count\nFROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+  "columns": [
+    "first_buyer_count",
+    "first_order_sales_cents",
+    "first_order_count",
+    "repeat_order_count"
+  ],
+  "rows": [
+    [
+      5,
+      12800,
+      5,
+      22
+    ]
+  ],
+  "seconds": 0.029,
+  "units": {
+    "first_buyer_count": "count",
+    "first_order_sales_cents": "cents",
+    "first_order_count": "count",
+    "repeat_order_count": "count"
+  },
+  "data_version": "qinghe-w03-20260923-small",
+  "data_sha256": "8a295969ec24556ebd7f818506633919e71f840fc86488d53efc185f9768cfe6",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "2026年8月1日至8月31日，青禾当前数据范围内：观测期首购会员数为5个CRM会员账户；观测期首单净销售额为12800分，即128.00元；观测期首单数为5笔；观测期后续购买订单数为22笔。首购会员和首单均按全测试覆盖历史先确定每个账户的首笔有效订单，再筛选首笔订单日期落在8月的账户/订单，因此不代表终身首购；后续购买订单数统计各账户第二笔及以后的有效订单在8月内的订单数，不是月内复购人数。",
+  "question": "2026年8月青禾优选的观测期首购会员数、观测期首单净销售额（单位分）、观测期首单数和观测期后续购买订单数分别是多少？",
+  "trace_id": "fb0facce-aaf3-4841-8ddf-18422eee4408",
+  "elapsed_seconds": 11.058,
+  "model_usage": {
+    "prompt_tokens": 13078,
+    "completion_tokens": 1056,
+    "total_tokens": 14134
+  },
+  "model_calls_with_usage": 2
+}

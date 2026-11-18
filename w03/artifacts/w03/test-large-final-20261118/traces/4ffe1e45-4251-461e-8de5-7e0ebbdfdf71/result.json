@@ -1,0 +1,50 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "buyer_count",
+      "refund_buyer_count",
+      "selling_store_count",
+      "valid_order_items"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "SELECT\n  COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then member_id end) AS buyer_count\n  , COUNT(DISTINCT case when status = 'paid' and refund_cents > 0 then member_id end) AS refund_buyer_count\n  , COUNT(DISTINCT case when status = 'paid' and paid_cents - refund_cents > 0 then store_id end) AS selling_store_count\n  , SUM(case when status = 'paid' and paid_cents - refund_cents > 0 then quantity else 0 end) AS valid_order_items\nFROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\nWHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'",
+  "columns": [
+    "buyer_count",
+    "refund_buyer_count",
+    "selling_store_count",
+    "valid_order_items"
+  ],
+  "rows": [
+    [
+      16504,
+      4173,
+      24,
+      120210
+    ]
+  ],
+  "seconds": 0.054,
+  "units": {
+    "buyer_count": "count",
+    "refund_buyer_count": "count",
+    "selling_store_count": "count",
+    "valid_order_items": "count"
+  },
+  "data_version": "qinghe-w03-20260923-large",
+  "data_sha256": "0074e7f764c63e836617aecb0e217aa3b5cc0cf9ede557179ad46b077dcf8ba8",
+  "catalog_sha256": "68c6ced20dcd7a753744cac62d978cb24af2a8828ee6fdec14d85f3b655f8508",
+  "answer": "青禾在2026年8月1日至8月31日（含首尾）范围内，未附加其他筛选、也未按维度分组，统计结果如下：购买会员数为16,504个CRM会员账户；退款会员数为4,173个CRM会员账户；成交门店数为24家；有效订单商品件数为120,210件。口径说明：购买会员数按有效订单中的不同会员账户去重，不跨系统自然人；退款会员数按发生已支付且退款金额大于零的订单关联的不同会员账户去重；成交门店数按有效订单归属门店去重，指成交门店而非会员归属门店；有效订单商品件数为有效订单的原始购买件数合计，不是扣除退款后的净销量。",
+  "question": "请同时列出2026年8月青禾优选的购买会员数、退款会员数、成交门店数和有效订单商品件数。",
+  "trace_id": "4ffe1e45-4251-461e-8de5-7e0ebbdfdf71",
+  "elapsed_seconds": 12.278,
+  "model_usage": {
+    "prompt_tokens": 313562,
+    "completion_tokens": 756,
+    "total_tokens": 314318
+  },
+  "model_calls_with_usage": 2
+}
