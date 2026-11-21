@@ -1,41 +1,28 @@
 # 指标修订
 
+> 2026-11-21接续：采用指定W04 checkpoint的业务补充事实，保留本人38项可执行定义。修订范围元数据与解释依据，不替换参考SQL或原试做者测试结果；本轮复验另记 `artifacts/w04/checkpoint_revision_validation.json`。
+
 ## 本次修订的指标 ID 清单
 
-**修订 6 项**（仅 `catalog.json` 的 `constraints` 与 `sources` 纯追加，指标 ID、`metrics.yml`、全部 `.sql` 均未动）：
-
-| # | 指标 ID | 名称 |
-| --- | --- | --- |
-| 1 | `monthly_paid_buyer_count` | 月末付费会员购买人数 |
-| 2 | `monthly_paid_order_count` | 月末付费会员有效订单数 |
-| 3 | `monthly_paid_sales_cents` | 月末付费会员净销售额 |
-| 4 | `monthly_paid_repeat_buyer_count` | 月末付费会员复购人数 |
-| 5 | `monthly_paid_repeat_rate` | 月末付费会员复购率 |
-| 6 | `monthly_paid_avg_order_value` | 月末付费会员订单均额 |
-
-**其余 32 项核对后无修订**：订单状态映射（已完成／已支付／部分退款→paid、全额退款→paid、已取消→cancelled，保留原 `ord_stat`）与 W03 measures 一致；新增会员用 `join_dt`、stat=0 不计有效会员、员工卡不进付费与免费口径（陈姐 MSG-05290、05357）均与现有定义一致；9 项月度指标"全门店、全渠道"措辞保留——该口径本周获门店侧背书（陈姐 MSG-05365"先别急着把哪一种排除掉"、05367 认可）；`orders` 语义模型 `channel` 维度已具备拆分能力，未启用为默认（报数粒度待核，见第三章）。
+本次不改38项ID、metrics.yml和派生SQL。对monthly_paid_buyer_count、monthly_paid_order_count、monthly_paid_sales_cents、monthly_paid_repeat_buyer_count四项catalog约束中的“确认不存在文件”订正为“未取得，存在性未知”。另两项monthly_paid_repeat_rate、monthly_paid_avg_order_value原有月报适用范围限定保留。前次W04对六项月报说明的追加属于历史，不冒充本次计算逻辑修改。
 
 ## 逐项修订前与修订后定义
 
-> 六项均为**追加一条 constraint**（原 constraints 逐字保留）并追加访谈出处；以下列出追加内容。
-
-| 指标 ID | 修订前 | 修订后（追加） |
+| 项 | 修订前 | 修订后 |
 | --- | --- | --- |
-| `monthly_paid_buyer_count` | constraints 1 条（资格判定＋全渠道全门店）；sources 2 条 | 追加 constraint："付费会员口径只约束本期总部运营月报，不等于全部在售卡的范围；正式卡产品规则文件经门店与运营两侧确认不存在，本期卡种范围按导出实际取值推断并标注（陈姐 MSG-05359、小林 MSG-05370、05372）。" 追加 sources：`interviews/xiao-lin-2.md`、`interviews/chen-jie-2.md` 各一条 |
-| `monthly_paid_order_count` | 同上结构 | 同上追加（同一条 constraint 与两条 sources） |
-| `monthly_paid_sales_cents` | 同上结构 | 同上追加（同一条 constraint 与两条 sources） |
-| `monthly_paid_repeat_buyer_count` | 同上结构 | 同上追加（同一条 constraint 与两条 sources） |
-| `monthly_paid_repeat_rate` | constraints 1 条（分子分母＋全渠道全门店）；sources 1 条 | 追加 constraint："适用范围承分子分母的付费会员口径：只约束本期总部运营月报，不等于全部在售卡的范围（小林 MSG-05372、05374）。" 追加 source：`interviews/xiao-lin-2.md` 一条 |
-| `monthly_paid_avg_order_value` | 同上结构 | 同上追加（同 `monthly_paid_repeat_rate`） |
-
-**改动范围校验（可复现）**：改动前后对比确认——仅上述 6 项变化，且为 constraints 与 sources 的纯追加；其余 32 项序列化后逐字节一致；ID 集合与顺序不变（备份：`.bak-catalog-第9步前-20261112.json`，校验脚本断言全部通过）。
+| 上述四项的文件证据 | 门店与运营确认不存在正式文件 | 双方均未提供可确认文件，不能推定公司不存在；月报产品范围来自运营说明，导出外完整性待核 |
+| new_member_count解释 | 诊断称未激活不计入有效会员，容易误解为注册数排除 | 计算仍为按join_dt映射registered_at的新注册账户行，包括未激活；业务活跃口径未定义 |
+| 六项付费月报 | 模型缺员工卡解释 | SQL仍只看两类产品同卡有效；员工卡本身不授予资格，账户其他卡独立判断 |
+| 全体净销售与月度净销售 | 超额退款影响未充分说明 | 全体净销售保留负净额；有效购买/月度汇总先筛净额大于零，两者不能混用 |
+| 合计与渠道拆分 | 本周“先别排除”被当成背书 | 合计延续W03约定；按原始渠道值分解不等于门店业绩归属 |
+| 库scope元数据 | 仍写本周合成测试库 | 改为W04新CRM适配库与明确覆盖，不再把W03测试范围套到当前运行 |
+| 全体净销售的金额依据 | 退款成因仅按未知处理 | QH4-03已说明超额退款是历史补录错误，正确值待凭据；本人保留错误负净额仅供核对，不当正式经营金额；月度有效购买筛净额大于零 |
+| 回访账历史高价值规则 | 未完整解释参考日与净消费窗口 | QH4-09补齐各条拉名单日前12个月、不低于3000元、窗口含起点不含名单日；当前38项未新增候选名单计算，不冒充规则已做名单验收 |
 
 ## 修订依据、来源、原因及适用范围
 
-- **依据与来源**：小林 MSG-05372"月报只算悦享年卡和家庭季卡，这个口径只约束月报，不等于全部在售卡的范围"、MSG-05374（重申）；陈姐 MSG-05359"门店办卡、退卡没有我这边能确认的《卡产品规则》或《权益说明》这类正式文件"；小林 MSG-05370"我手头没有可给的卡产品配置清单或权益说明……你报告里写'未取得'是合适的"。逐字原文见 `artifacts/w04/interviews/xiao-lin-2.md`、`chen-jie-2.md`。
-- **原因**：W03 该口径由运营确定（MSG-03848、03854），本周小林明确其**适用边界只到月报**——不外推为全部在售卡范围；同时"正式规则文件"从"尚未取得"改为"门店与运营两侧确认不存在"，措辞需如实反映（不写"已取得"，也不写"待访谈再核"——访谈额度已尽）。
-- **涉及模型修订的互引**：本表六项对应 `model_changes.md` 第二章"§3 规则 1（月报产品范围）"与"§5 未决表第 1 行"两行；模型 §1 统计范围段与本章"适用范围"互引。
-- **适用范围**：6 项付费月报与 3 项非付费月度指标（`monthly_buyer_count`、`monthly_repeat_buyer_count`、`monthly_repeat_rate`）共 9 项，本期均按**全门店、全渠道合计**实现；`channel` 维度已在 `orders` 语义模型中，拆分能力具备、未启用为默认；月报实际报数粒度（一个总数／分门店／分渠道）与三渠道归属未取得业务确认（小林 MSG-05374、05376；陈姐 MSG-05363、05365），保守方向（不排除任何渠道）已获门店侧背书（陈姐 MSG-05365、05367）。
-- **运行验证**：38 项指标在修订后的库上于新项目 `project-c` 实跑（2026-08-01 ～ 2026-09-01），结果见 `artifacts/w04/metrics_run.json`：**38 项全部 `status=ok`，`run_metrics.py` 打印 `38 []`**；`project-c/validation.json` 为 `{"passed": true, "failures": []}`。抽查复核：`order_count`=8,869、`paid_order_count`=7,421、`valid_order_count`=6,845、`payment_cents`=85,274,970、`net_sales_cents`=75,816,374，与清洗后 CSV 独立直算逐项一致；`monthly_paid_buyer_count`=493、`monthly_paid_sales_cents`=8,601,918、`monthly_paid_repeat_rate`=0.2333。
+文件证据：陈姐MSG-05359、小林MSG-05370；账户日期与未激活：老周MSG-05240；员工卡：陈姐MSG-05290、05357、05367；来源缺口：老周MSG-05232、05318。完整模型修订见model_changes.md。每项均限于新CRM已接受数据，不推算老收银未导出消费，商品明细未取得不能当零。
 
-涉及业务模型修订时引用 model_changes.md 对应条目，核对指标定义与 business_model.md 是否一致；可引用诊断报告的已有证据。
+旧版8月运行493个购买账户、115个复购账户、8,601,918分净销售额、115/493复购率是基线。本次修改catalog说明及备注/覆盖信息后，须新建库重跑38项，并对全部行、数值及缺失/多余分组逐项比对；实际结果和限制写入artifacts/w04/revision_validation.json，不以旧记录冒充复验。
+
+以上11月18日运行保留原日期；11月21日复核以 `checkpoint_revision_validation.json` 及本轮运行目录为准。本人实现与checkpoint参考的隔离方法不同，不能用参考库全体净销售或卡数直接替代独立期望。W03合成样本的6账户、10单、47,550分保持历史，不与W04结果互换。

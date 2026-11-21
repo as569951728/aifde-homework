@@ -546,6 +546,17 @@ def adapt(tables, rules, context):
                           '所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。',
                 'time_range': {'start': '2024-09-01', 'end_exclusive': '2026-09-01'},
                 'quarantined': {kind: counts[kind]['quarantined'] for kind in counts}}
+    excess = sum(o['refund_cents'] > o['paid_cents'] for o in result['orders'])
+    staff = [c for c in result['cards'] if c['card_type'] == '员工内购']
+    coverage['source'] += (
+        ' 迁移前未导出的订单及商品明细未取得，不能当零或据此分析商品结构。'
+        ' 保留退款大于实付的订单 %d 笔，原金额不修正；全体订单口径的净销售额包含其负净额，'
+        '有效购买、月度购买净销售额与月度复购按净额大于零筛选，不含这些订单；'
+        '课程方 QH4-03 已说明其为历史手工补录错误，正确金额仍待逐笔凭据；'
+        '包含错误负净额的全体净销售仅供异常核对，不作为正式经营结论。'
+        ' 员工内购卡 %d 张（%d 个账户）留库，员工卡本身不授予月报付费资格；'
+        '同账户其他范围内有效卡独立判定。员工账户的订单未从全体订单指标中一概排除。'
+        % (excess, len(staff), len({c['member_id'] for c in staff})))
     return {'tables': result, 'record_counts': counts,
             'field_mapping': _field_mapping(),
             'samples': samples, 'coverage_notes': coverage,
@@ -558,10 +569,10 @@ W04_TABLES = {'member': 'members', 'order': 'orders', 'card': 'cards', 'shop': '
 SLASH_RE = re.compile(r'^[0-9]{4}/[0-9]{2}/[0-9]{2}$')
 COMPACT_RE = re.compile(r'^[0-9]{8}$')
 CATEGORY_KEYWORDS = (
-    ('触达限制', ('勿打电话', '勿发短信', '仅保留到店服务', '这阵子不方便接听')),
+    ('触达限制', ('勿打电话', '勿发短信')),
     ('卡务', ('卡务', '续卡', '卡费', '金额卡', '办卡', '会员卡', '储值卡')),
     ('客户关系', ('熟客', '客户关系', '老客户', 'VIP', 'vip')),
-    ('联系状态', ('服务', '联系状态', '电话', '号码', '微信')),
+    ('联系状态', ('服务', '联系状态', '电话', '号码', '微信', '这阵子不方便接听')),
 )
 
 
@@ -640,32 +651,32 @@ def _category(note):
 
 
 def _tags_and_notes(row, raw_tag, missing_values, tags, splitter, member_id, result, seen):
-    """One segment in, one tag set plus at most one note out. Raw cell is never rewritten."""
+    """Keep the remaining note whole: punctuation inside a note is not a boundary."""
     if (raw_tag or '').strip() in missing_values:
         return
-    for segment in splitter.split(raw_tag or ''):
-        if not segment.strip():
-            continue
-        rest = segment
-        for tag in tags:
-            if tag in rest:
-                rest = rest.replace(tag, '\u0000' * len(tag))
-                key = ('tag', member_id, tag)
-                if key not in seen:
-                    seen.add(key)
-                    result['member_tags'].append({'member_id': member_id, 'tag': tag})
-        leftover = rest.replace('\u0000', '')
-        if not leftover.replace('/', '').strip(' -\u3000'):
-            continue
-        note_text = leftover.strip(' -\u3000')
-        key = ('note', member_id, row['source_row'], note_text)
-        if key in seen:
-            continue
-        seen.add(key)
-        result['member_notes'].append({'member_id': member_id, 'source_file': row['source_file'],
-                                       'source_row': row['source_row'], 'source_field': 'tag',
-                                       'raw_text': raw_tag, 'note_text': note_text,
-                                       'category': _category(leftover)})
+    rest = raw_tag or ''
+    for tag in tags:
+        if tag in rest:
+            rest = rest.replace(tag, '\u0000' * len(tag))
+            key = ('tag', member_id, tag)
+            if key not in seen:
+                seen.add(key)
+                result['member_tags'].append({'member_id': member_id, 'tag': tag})
+    leftover = rest.replace('\u0000', '')
+    # Only strip separator residue at the outside. Internal commas/slashes stay.
+    edge = ' -\u3000\t\r\n/' + ''.join(
+        re.sub(r'\\(.)', r'\1', part) for part in splitter.pattern.split('|'))
+    note_text = leftover.strip(edge)
+    if not note_text:
+        return
+    key = ('note', member_id, row['source_row'], note_text)
+    if key in seen:
+        return
+    seen.add(key)
+    result['member_notes'].append({'member_id': member_id, 'source_file': row['source_file'],
+                                   'source_row': row['source_row'], 'source_field': 'tag',
+                                   'raw_text': raw_tag, 'note_text': note_text,
+                                   'category': _category(note_text)})
 
 
 def _field_mapping():
@@ -681,7 +692,7 @@ def _field_mapping():
             ('created_at', ['create_tm'], '取前 10 位日期（建档时间，与 join_dt 不同源）'),
             ('member_tags.tag', ['tag'], '16 词表最长匹配；连字符属标签名不切；缺失标记不产标签'),
             ('member_notes.raw_text', ['tag'], '保留该格完整原值，一字不改'),
-            ('member_notes.note_text', ['tag'], '按分隔符分段，段内去掉已命中标签后的剩余文字，每段一条'),
+            ('member_notes.note_text', ['tag'], '整格识别正式标签，剩余备注整条保留，内部逗号不切分；原格完整保留于 raw_text'),
             ('member_notes.category', ['tag'], '按关键词归入契约 5 值：触达限制→卡务→客户关系→联系状态→其他'),
         ],
         'crm_order_export.csv': [
@@ -689,7 +700,7 @@ def _field_mapping():
             ('member_id', ['hy_id'], '与会员表关联；关联不上进 quarantine（UNLINKED_ACCOUNT）'),
             ('store_id', ['shop_cd'], 'NFKC、去空白、转大写'),
             ('ordered_at', ['ord_tm'], '取日期前 10 位'),
-            ('status', ['ord_stat'], '已完成／已支付／部分退款／全额退款→paid，已取消→cancelled；原值另存 order_flags.csv'),
+            ('status', ['ord_stat'], '已完成／已支付／部分退款／全额退款→paid，已取消→cancelled；原值保留在原始CSV，异常订单另存order_flags.csv'),
             ('gross_cents', ['amt_total'], 'Decimal 元乘 100 转整数分，禁 float'),
             ('paid_cents', ['amt_pay'], 'Decimal 元乘 100 转整数分'),
             ('refund_cents', ['amt_rfd'], 'Decimal 元乘 100 转整数分；大于实付只打标不改数'),
@@ -699,7 +710,7 @@ def _field_mapping():
         'crm_card_export.csv': [
             ('card_id', ['card_no'], '原样'),
             ('member_id', ['hy_id'], '与会员表关联'),
-            ('card_type', ['card_kind'], '悦享卡（年）并入悦享年卡；员工卡→员工内购，不进付费与免费口径'),
+            ('card_type', ['card_kind'], '悦享卡（年）并入悦享年卡；员工卡→员工内购，本卡不授予付费资格；不据此认定免费身份或排除账户普通购物'),
             ('valid_from', ['st_dt'], '原样 ISO 日期'),
             ('valid_until', ['ed_dt'], '原样 ISO 日期'),
             ('ended_at', ['stop_dt'], '四种缺失写法（空／NULL／-／无）转空值，不填当天不推算'),

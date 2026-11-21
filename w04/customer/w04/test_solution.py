@@ -107,6 +107,23 @@ class CustomerAdapterTests(unittest.TestCase):
                 self.assertNotIn(note['note_text'], MISSING)
                 self.assertIn(note['category'], ('触达限制', '客户关系', '卡务', '联系状态', '其他'))
 
+    def test_confirmed_card_note_keeps_internal_comma(self):
+        """小林 MSG-05263 明确说这个逗号属于同一条备注。"""
+        expected = '卡务-11月办卡，门店留有登记'
+        sources = {i for i, row in enumerate(self.members, 1) if expected in row['tag']}
+        self.assertTrue(sources)
+        for source_row in sources:
+            got = [note for note in self.result['tables']['member_notes']
+                   if note['source_row'] == source_row]
+            self.assertEqual(len(got), 1)
+            self.assertIn(expected, got[0]['note_text'])
+
+    def test_unconfirmed_contact_effect_not_upgraded(self):
+        """效力待核的词单独出现不能直接变成禁止触达。"""
+        for text in ('仅保留到店服务', '这阵子不方便接听'):
+            self.assertNotEqual(self.module._category(text), '触达限制')
+        self.assertEqual(self.module._category('勿打电话-这阵子不方便接听'), '触达限制')
+
     def test_missing_tag_cell_emits_nothing(self):
         """整格是 ''/NULL/-/无 的 77,049 行不能变成备注，否则 category 会被压成"其他"。"""
         blank = {row['hy_id'] for row in self.members if (row['tag'] or '').strip() in MISSING}
@@ -193,8 +210,9 @@ class GuardTests(unittest.TestCase):
     def test_duplicate_rule_records_deduplication_not_quarantine(self):
         rule = {item['rule_id']: item for item in self.rules['abnormal_records']}['exact_duplicate_order']
         self.assertEqual(rule['action'], 'deduplicate')
-        self.assertIn('疑似', rule['evidence'])
-        self.assertNotIn('已确认为导出重复', rule['evidence'])
+        # Source wording changes when later evidence arrives; the disposition
+        # contract stays fixed. Real-input tests above check actual dedup counts.
+        self.assertEqual(rule['reason_code'], 'EXACT_DUPLICATE')
 
     def test_orphan_rule_quarantines(self):
         rule = {item['rule_id']: item for item in self.rules['abnormal_records']}['orphan_order']

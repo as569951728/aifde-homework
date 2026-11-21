@@ -80,7 +80,7 @@
         "tag"
       ],
       "target": "member_notes.note_text",
-      "transformation": "按分隔符分段，段内去掉已命中标签后的剩余文字，每段一条"
+      "transformation": "整格识别正式标签，剩余备注整条保留，内部逗号不切分；原格完整保留于 raw_text"
     },
     {
       "source_file": "crm_member_export.csv",
@@ -128,7 +128,7 @@
         "ord_stat"
       ],
       "target": "status",
-      "transformation": "已完成／已支付／部分退款／全额退款→paid，已取消→cancelled；原值另存 order_flags.csv"
+      "transformation": "已完成／已支付／部分退款／全额退款→paid，已取消→cancelled；原值保留在原始CSV，异常订单另存order_flags.csv"
     },
     {
       "source_file": "crm_order_export.csv",
@@ -192,7 +192,7 @@
         "card_kind"
       ],
       "target": "card_type",
-      "transformation": "悦享卡（年）并入悦享年卡；员工卡→员工内购，不进付费与免费口径"
+      "transformation": "悦享卡（年）并入悦享年卡；员工卡→员工内购，本卡不授予付费资格；不据此认定免费身份或排除账户普通购物"
     },
     {
       "source_file": "crm_card_export.csv",
@@ -314,12 +314,12 @@
     }
   ],
   "repeat_import": {
-    "first_run_id": "/Users/chenzhaowen/czw-code/AIFDE/W04/实操工程/.runtime/w04/run-01/project-a",
-    "second_run_id": "/Users/chenzhaowen/czw-code/AIFDE/W04/实操工程/.runtime/w04/run-01/project-b",
+    "first_run_id": "/Users/chenzhaowen/czw-code/AIFDE/W04/实操工程/.runtime/w04/checkpoint-20261121/project-a",
+    "second_run_id": "/Users/chenzhaowen/czw-code/AIFDE/W04/实操工程/.runtime/w04/checkpoint-20261121/project-b",
     "before": {
       "cards": 16648,
       "member_month_paid_eligibility": 96553,
-      "member_notes": 8906,
+      "member_notes": 7150,
       "member_tags": 56215,
       "members": 119754,
       "monthly_member_order_summary": 96553,
@@ -328,7 +328,7 @@
       "orders_enriched": 167749,
       "quarantine": 168,
       "raw_cards": 16648,
-      "raw_member_notes": 8906,
+      "raw_member_notes": 7150,
       "raw_member_tags": 56215,
       "raw_members": 119754,
       "raw_orders": 167749,
@@ -340,7 +340,7 @@
     "after": {
       "cards": 16648,
       "member_month_paid_eligibility": 96553,
-      "member_notes": 8906,
+      "member_notes": 7150,
       "member_tags": 56215,
       "members": 119754,
       "monthly_member_order_summary": 96553,
@@ -349,7 +349,7 @@
       "orders_enriched": 167749,
       "quarantine": 168,
       "raw_cards": 16648,
-      "raw_member_notes": 8906,
+      "raw_member_notes": 7150,
       "raw_member_tags": 56215,
       "raw_members": 119754,
       "raw_orders": 167749,

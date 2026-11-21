@@ -1,0 +1,59 @@
+{
+  "status": "ok",
+  "intent": {
+    "metrics": [
+      "monthly_paid_buyer_count",
+      "monthly_paid_sales_cents",
+      "monthly_paid_repeat_rate"
+    ],
+    "start": "2026-08-01",
+    "end": "2026-09-01",
+    "group_by": [],
+    "filters": []
+  },
+  "sql": "WITH sma_10003_cte AS (\n  SELECT\n    DATE_TRUNC('month', month_start) AS metric_time__month\n    , CASE WHEN case when is_paid_eligible then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_buyer_count\n    , case when is_paid_eligible then net_sales_cents else 0 end AS __monthly_paid_sales_cents\n    , CASE WHEN case when is_paid_eligible and valid_order_count >= 2 then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_repeat_buyer_count\n  FROM \"data\".\"main\".\"monthly_paid_member_summary\" monthly_paid_member_summary_src_10000\n)\n\nSELECT\n  MAX(subq_9.monthly_paid_buyer_count) AS monthly_paid_buyer_count\n  , MAX(subq_9.monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  , MAX(subq_16.monthly_paid_repeat_rate) AS monthly_paid_repeat_rate\nFROM (\n  SELECT\n    SUM(__monthly_paid_buyer_count) AS monthly_paid_buyer_count\n    , SUM(__monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_9\nCROSS JOIN (\n  SELECT\n    CAST(SUM(__monthly_paid_repeat_buyer_count) AS DOUBLE) / CAST(NULLIF(SUM(__monthly_paid_buyer_count), 0) AS DOUBLE) AS monthly_paid_repeat_rate\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_16",
+  "columns": [
+    "monthly_paid_buyer_count",
+    "monthly_paid_sales_cents",
+    "monthly_paid_repeat_rate"
+  ],
+  "rows": [
+    [
+      493,
+      8601918,
+      0.2332657200811359
+    ]
+  ],
+  "seconds": 0.048,
+  "units": {
+    "monthly_paid_buyer_count": "count",
+    "monthly_paid_sales_cents": "cents",
+    "monthly_paid_repeat_rate": "ratio"
+  },
+  "data_version": "qinghe-w04-v1.1",
+  "data_sha256": "d5381618a8ebb58741054ab0a2394a408891a88d2d1d528813b065f314e46a29",
+  "catalog_sha256": "c2f9033f0bd99674621d8f12809bfdb0876a1606f1f2498d18683fb1e2e5558e",
+  "coverage_notes": {
+    "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。 迁移前未导出的订单及商品明细未取得，不能当零或据此分析商品结构。 保留退款大于实付的订单 84 笔，原金额不修正；全体订单口径的净销售额包含其负净额，有效购买、月度购买净销售额与月度复购按净额大于零筛选，不含这些订单；原因仍待凭据核实。 员工内购卡 299 张（244 个账户）留库，员工卡本身不授予月报付费资格；同账户其他范围内有效卡独立判定。员工账户的订单未从全体订单指标中一概排除。",
+    "time_range": {
+      "start": "2024-09-01",
+      "end_exclusive": "2026-09-01"
+    },
+    "quarantined": {
+      "member": 0,
+      "order": 168,
+      "card": 0,
+      "shop": 0
+    }
+  },
+  "answer": "2026年8月，按月末付费会员口径，购买人数为493个CRM会员账户，净销售额为86,019.18元，复购率为23.33%。统计范围为2026年8月完整自然月、全门店、全渠道；付费会员资格按自然月最后一天判断，仅悦享年卡、家庭季卡且同日有效，账户任一卡满足即可且不按卡重复。购买人数为月末符合资格且当月有有效订单的不同账户数；销售额为这些账户当月有效订单实付减退款的净额合计；复购率为复购人数除以购买人数，人数按CRM会员账户计，不是跨系统自然人。限制：本次只基于新CRM导出，老收银系统部分会员消费未导出，不能当作完整销售数据；保留的84笔退款大于实付订单原金额未修正，上述购买、净销售额和复购按净额大于零筛选，不含这些订单；月报纳入卡种来自运营说明，正式规则文件未取得，完整性待核，员工卡本身不授予资格。",
+  "question": "2026年8月，付费会员的购买人数、销售额和复购率各是多少？",
+  "trace_id": "b23a22d2-fa73-4607-bd04-f2d7759a2df6",
+  "elapsed_seconds": 20.691,
+  "model_usage": {
+    "prompt_tokens": 24111,
+    "completion_tokens": 2575,
+    "total_tokens": 26686
+  },
+  "model_calls_with_usage": 2
+}

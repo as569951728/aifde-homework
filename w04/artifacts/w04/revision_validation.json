@@ -1,0 +1,396 @@
+{
+  "review_date": "2026-11-18",
+  "scope": "按教师点评修订及本批数据复验；不是客户正式验收或课程提交凭证",
+  "passed": true,
+  "checks": [
+    {
+      "check": "38指标全部可执行",
+      "expected": 38,
+      "actual": 38,
+      "judge": "pass"
+    },
+    {
+      "check": "指标ID集合不变",
+      "expected": [
+        "avg_buyer_value",
+        "avg_order_value",
+        "buyer_count",
+        "cancel_rate",
+        "cancelled_order_count",
+        "discount_cents",
+        "discount_rate",
+        "first_buyer_count",
+        "first_order_count",
+        "first_order_sales_cents",
+        "full_refund_order_count",
+        "gross_cents",
+        "items_per_order",
+        "monthly_buyer_count",
+        "monthly_paid_avg_order_value",
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_sales_cents",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate",
+        "net_sales_cents",
+        "new_member_count",
+        "order_count",
+        "paid_order_count",
+        "partial_refund_order_count",
+        "payment_cents",
+        "purchase_frequency",
+        "refund_amount_rate",
+        "refund_buyer_count",
+        "refund_cents",
+        "refund_order_count",
+        "refund_order_rate",
+        "repeat_order_count",
+        "selling_store_count",
+        "valid_order_count",
+        "valid_order_items"
+      ],
+      "actual": [
+        "avg_buyer_value",
+        "avg_order_value",
+        "buyer_count",
+        "cancel_rate",
+        "cancelled_order_count",
+        "discount_cents",
+        "discount_rate",
+        "first_buyer_count",
+        "first_order_count",
+        "first_order_sales_cents",
+        "full_refund_order_count",
+        "gross_cents",
+        "items_per_order",
+        "monthly_buyer_count",
+        "monthly_paid_avg_order_value",
+        "monthly_paid_buyer_count",
+        "monthly_paid_order_count",
+        "monthly_paid_repeat_buyer_count",
+        "monthly_paid_repeat_rate",
+        "monthly_paid_sales_cents",
+        "monthly_repeat_buyer_count",
+        "monthly_repeat_rate",
+        "net_sales_cents",
+        "new_member_count",
+        "order_count",
+        "paid_order_count",
+        "partial_refund_order_count",
+        "payment_cents",
+        "purchase_frequency",
+        "refund_amount_rate",
+        "refund_buyer_count",
+        "refund_cents",
+        "refund_order_count",
+        "refund_order_rate",
+        "repeat_order_count",
+        "selling_store_count",
+        "valid_order_count",
+        "valid_order_items"
+      ],
+      "judge": "pass"
+    },
+    {
+      "check": "38项全部列与结果行逐值对比旧版，证明稳定性非独立正确性",
+      "expected": [],
+      "actual": [],
+      "judge": "pass"
+    },
+    {
+      "check": "原始CSV独立直算:order_count",
+      "expected": 8869,
+      "actual": 8869,
+      "judge": "pass"
+    },
+    {
+      "check": "原始CSV独立直算:paid_order_count",
+      "expected": 7421,
+      "actual": 7421,
+      "judge": "pass"
+    },
+    {
+      "check": "原始CSV独立直算:valid_order_count",
+      "expected": 6845,
+      "actual": 6845,
+      "judge": "pass"
+    },
+    {
+      "check": "原始CSV独立直算:net_sales_cents",
+      "expected": 75816374,
+      "actual": 75816374,
+      "judge": "pass"
+    },
+    {
+      "check": "原始CSV独立直算:monthly_paid_buyer_count",
+      "expected": 493,
+      "actual": 493,
+      "judge": "pass"
+    },
+    {
+      "check": "原始CSV独立直算:monthly_paid_repeat_buyer_count",
+      "expected": 115,
+      "actual": 115,
+      "judge": "pass"
+    },
+    {
+      "check": "原始CSV独立直算:monthly_paid_sales_cents",
+      "expected": 8601918,
+      "actual": 8601918,
+      "judge": "pass"
+    },
+    {
+      "check": "原始CSV独立直算:monthly_paid_repeat_rate",
+      "expected": 0.2332657200811359,
+      "actual": 0.2332657200811359,
+      "judge": "pass"
+    },
+    {
+      "check": "完整备注条数",
+      "expected": 7150,
+      "actual": 7150,
+      "judge": "pass"
+    },
+    {
+      "check": "标签对",
+      "expected": 56215,
+      "actual": 56215,
+      "judge": "pass"
+    },
+    {
+      "check": "触达限制账户",
+      "expected": 443,
+      "actual": 443,
+      "judge": "pass"
+    },
+    {
+      "check": "所有备注raw_text与源格逐字一致",
+      "expected": 0,
+      "actual": 0,
+      "judge": "pass"
+    },
+    {
+      "check": "14条真实来源中的卡务内部逗号保留",
+      "expected": 14,
+      "actual": 14,
+      "judge": "pass"
+    },
+    {
+      "check": "两次导入全部表计数一致",
+      "expected": {
+        "cards": 16648,
+        "member_month_paid_eligibility": 96553,
+        "member_notes": 7150,
+        "member_tags": 56215,
+        "members": 119754,
+        "monthly_member_order_summary": 96553,
+        "monthly_paid_member_summary": 96553,
+        "orders": 167749,
+        "orders_enriched": 167749,
+        "quarantine": 168,
+        "raw_cards": 16648,
+        "raw_member_notes": 7150,
+        "raw_member_tags": 56215,
+        "raw_members": 119754,
+        "raw_orders": 167749,
+        "raw_quarantine": 168,
+        "raw_stores": 403,
+        "stores": 403,
+        "time_spine": 730
+      },
+      "actual": {
+        "cards": 16648,
+        "member_month_paid_eligibility": 96553,
+        "member_notes": 7150,
+        "member_tags": 56215,
+        "members": 119754,
+        "monthly_member_order_summary": 96553,
+        "monthly_paid_member_summary": 96553,
+        "orders": 167749,
+        "orders_enriched": 167749,
+        "quarantine": 168,
+        "raw_cards": 16648,
+        "raw_member_notes": 7150,
+        "raw_member_tags": 56215,
+        "raw_members": 119754,
+        "raw_orders": 167749,
+        "raw_quarantine": 168,
+        "raw_stores": 403,
+        "stores": 403,
+        "time_spine": 730
+      },
+      "judge": "pass"
+    },
+    {
+      "check": "两次导入全部表内容哈希一致",
+      "expected": {
+        "cards": "e705dcb2d67c4b6be0a54f1568824ccc9f7d0952ab85aa9397202eec32da9d2e",
+        "member_month_paid_eligibility": "dda2671a0f705fc72c300b4748c392ad1cbfc1c08a511a319d8771630690ff64",
+        "member_notes": "c3db80544f0a1cfc12f48782707211ee6b0e74a8562a5188f9bbc0b85138168f",
+        "member_tags": "05e4172b1b737512ab6a3ce6da4712edd9f2f745ec63fa5f422f66d1d80b6dd1",
+        "members": "e48b1451e1caeec31966916c692d7be890298146c09709ff1892351e08219151",
+        "monthly_member_order_summary": "9f0b4a4ab61fd7f2b6fd35ebbe16fd02963dd0daea4de6f6d913df1201595309",
+        "monthly_paid_member_summary": "2c0bc181c4599189b3b44097e94f9d0af063cb1ceb50b8cd1f84a5d245659174",
+        "orders": "44122d34a50e11b63e94ce1fe8a78cb3cba24506d0ace8d32fb0659e71fc3897",
+        "orders_enriched": "270e4712d463ea8eb05365d15fb91d07d17fe2b9b2d6e5fc8975512ada28e5bf",
+        "quarantine": "cfe97d817fbca5f572f5ad00d874f23347ecd937f09c39de06972f26968b96f9",
+        "raw_cards": "e705dcb2d67c4b6be0a54f1568824ccc9f7d0952ab85aa9397202eec32da9d2e",
+        "raw_member_notes": "c3db80544f0a1cfc12f48782707211ee6b0e74a8562a5188f9bbc0b85138168f",
+        "raw_member_tags": "05e4172b1b737512ab6a3ce6da4712edd9f2f745ec63fa5f422f66d1d80b6dd1",
+        "raw_members": "e48b1451e1caeec31966916c692d7be890298146c09709ff1892351e08219151",
+        "raw_orders": "44122d34a50e11b63e94ce1fe8a78cb3cba24506d0ace8d32fb0659e71fc3897",
+        "raw_quarantine": "cfe97d817fbca5f572f5ad00d874f23347ecd937f09c39de06972f26968b96f9",
+        "raw_stores": "ecd538e3dc403b99f189a3756a644d51e7f7c7e57462d2c361db16daf13acd48",
+        "stores": "ecd538e3dc403b99f189a3756a644d51e7f7c7e57462d2c361db16daf13acd48",
+        "time_spine": "b6f7b6ed839304a77e201c04471ab49a150385c4b959b75136da9f4f3acd43fa"
+      },
+      "actual": {
+        "cards": "e705dcb2d67c4b6be0a54f1568824ccc9f7d0952ab85aa9397202eec32da9d2e",
+        "member_month_paid_eligibility": "dda2671a0f705fc72c300b4748c392ad1cbfc1c08a511a319d8771630690ff64",
+        "member_notes": "c3db80544f0a1cfc12f48782707211ee6b0e74a8562a5188f9bbc0b85138168f",
+        "member_tags": "05e4172b1b737512ab6a3ce6da4712edd9f2f745ec63fa5f422f66d1d80b6dd1",
+        "members": "e48b1451e1caeec31966916c692d7be890298146c09709ff1892351e08219151",
+        "monthly_member_order_summary": "9f0b4a4ab61fd7f2b6fd35ebbe16fd02963dd0daea4de6f6d913df1201595309",
+        "monthly_paid_member_summary": "2c0bc181c4599189b3b44097e94f9d0af063cb1ceb50b8cd1f84a5d245659174",
+        "orders": "44122d34a50e11b63e94ce1fe8a78cb3cba24506d0ace8d32fb0659e71fc3897",
+        "orders_enriched": "270e4712d463ea8eb05365d15fb91d07d17fe2b9b2d6e5fc8975512ada28e5bf",
+        "quarantine": "cfe97d817fbca5f572f5ad00d874f23347ecd937f09c39de06972f26968b96f9",
+        "raw_cards": "e705dcb2d67c4b6be0a54f1568824ccc9f7d0952ab85aa9397202eec32da9d2e",
+        "raw_member_notes": "c3db80544f0a1cfc12f48782707211ee6b0e74a8562a5188f9bbc0b85138168f",
+        "raw_member_tags": "05e4172b1b737512ab6a3ce6da4712edd9f2f745ec63fa5f422f66d1d80b6dd1",
+        "raw_members": "e48b1451e1caeec31966916c692d7be890298146c09709ff1892351e08219151",
+        "raw_orders": "44122d34a50e11b63e94ce1fe8a78cb3cba24506d0ace8d32fb0659e71fc3897",
+        "raw_quarantine": "cfe97d817fbca5f572f5ad00d874f23347ecd937f09c39de06972f26968b96f9",
+        "raw_stores": "ecd538e3dc403b99f189a3756a644d51e7f7c7e57462d2c361db16daf13acd48",
+        "stores": "ecd538e3dc403b99f189a3756a644d51e7f7c7e57462d2c361db16daf13acd48",
+        "time_spine": "b6f7b6ed839304a77e201c04471ab49a150385c4b959b75136da9f4f3acd43fa"
+      },
+      "judge": "pass"
+    },
+    {
+      "check": "清洗CSV与两库金额:gross_cents",
+      "expected": [
+        2404610774,
+        2404610774
+      ],
+      "actual": [
+        2404610774,
+        2404610774
+      ],
+      "judge": "pass"
+    },
+    {
+      "check": "清洗CSV与两库金额:paid_cents",
+      "expected": [
+        1709460394,
+        1709460394
+      ],
+      "actual": [
+        1709460394,
+        1709460394
+      ],
+      "judge": "pass"
+    },
+    {
+      "check": "清洗CSV与两库金额:refund_cents",
+      "expected": [
+        203643700,
+        203643700
+      ],
+      "actual": [
+        203643700,
+        203643700
+      ],
+      "judge": "pass"
+    },
+    {
+      "check": "demo状态:before",
+      "expected": "ok",
+      "actual": "ok",
+      "judge": "pass"
+    },
+    {
+      "check": "demo状态:after",
+      "expected": "ok",
+      "actual": "ok",
+      "judge": "pass"
+    },
+    {
+      "check": "demo状态:main",
+      "expected": "ok",
+      "actual": "ok",
+      "judge": "pass"
+    },
+    {
+      "check": "同题调优查询结果列与值一致",
+      "expected": [
+        [
+          "order__channel",
+          "order_count",
+          "net_sales_cents"
+        ],
+        [
+          [
+            "小程序",
+            2946,
+            25782877
+          ],
+          [
+            "门店",
+            4479,
+            36350734
+          ],
+          [
+            "商城",
+            1444,
+            13682763
+          ]
+        ]
+      ],
+      "actual": [
+        [
+          "order__channel",
+          "order_count",
+          "net_sales_cents"
+        ],
+        [
+          [
+            "小程序",
+            2946,
+            25782877
+          ],
+          [
+            "门店",
+            4479,
+            36350734
+          ],
+          [
+            "商城",
+            1444,
+            13682763
+          ]
+        ]
+      ],
+      "judge": "pass"
+    },
+    {
+      "check": "回访冲突定位数量",
+      "expected": 5,
+      "actual": 5,
+      "judge": "pass"
+    }
+  ],
+  "remaining_unknowns": [
+    "5户回访限制生效与渠道",
+    "正式文件及配置",
+    "老系统补导",
+    "状态映射和重复/超额退款凭据",
+    "在售停售与月报归属口径"
+  ],
+  "execution_notes": [
+    "首次并发访问同库出现1项DuckDB锁失败，已改顺序重跑全部38项通过",
+    "笼统订单数问题返回clarify，保留原记录；同题调优对照均使用明确创建订单数含取消的问法"
+  ]
+}

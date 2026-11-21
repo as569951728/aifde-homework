@@ -1,0 +1,76 @@
+{
+  "id": "qinghe-w04-v1.1",
+  "contract_version": "w04-data-0.1.0",
+  "coverage": [
+    "2024-09-01",
+    "2026-09-01"
+  ],
+  "reference_date": "2026-09-01",
+  "timezone": "Asia/Shanghai",
+  "source_sha256": {
+    "crm_card_export.csv": "1e2539c564d1e007f3aaaa11b1d16de9a50a63858fed5dc09537089321b5e424",
+    "crm_member_export.csv": "dfe1e842c80f947bf85b0b356073e6eb0c9cd7385072fbc731452d7a60ea8913",
+    "crm_order_export.csv": "e95a5a467f044ef6d059014a71dcd39edc178d88e8ea06f87f2ecb1a40040052",
+    "crm_shop.csv": "bcef4a1edb12f18695b545fef64b7da2c7504f3cfc535937f08c7380a5f00045",
+    "小林工作账_勿扰名单.csv": "8460b149d9208bfad5d90f2299ecc49c69c56d4970e91fb066bec63d9889af8d",
+    "小林工作账_回访名单.csv": "3dd64d64b5e9524bd0fbd23736b4f32f6a234b0acf47d0c5b469906a2b0b346e"
+  },
+  "sha256": {
+    "cards.csv": "bc362531888f6e5e6d2f72a2e5d7ec3def9a97788092e5577c6074231aa8203d",
+    "member_notes.csv": "16dba838fda305ee8a3d000454cf4427a24137247a35c2ab5a018a7f0fc1ada2",
+    "member_tags.csv": "d3a6c4ca09d4f4252861047bf30add63331606d62812ff4e7a5ced41af268898",
+    "members.csv": "6ca27bea580099f34024b93c64bac0402d9b672d29894b2effd2d57532dd839c",
+    "orders.csv": "256dd75d2ab611d167455fe51e53cae7e3356168b025e8988cf720d74c547981",
+    "quarantine.csv": "43d699789f51de7a3f63c588b0f1fa4d32b432c940ad624e4d9f4428df5e27b0",
+    "stores.csv": "244fd3e72d35f3d664a80cb6473776203958bcadb747e181ba32b1b81223cae3"
+  },
+  "counts": {
+    "members": 119754,
+    "orders": 167749,
+    "cards": 16648,
+    "stores": 403,
+    "member_tags": 56215,
+    "member_notes": 7150,
+    "quarantine": 168
+  },
+  "record_counts": {
+    "member": {
+      "read": 119754,
+      "accepted": 119754,
+      "quarantined": 0,
+      "deduplicated": 0
+    },
+    "order": {
+      "read": 168253,
+      "accepted": 167749,
+      "quarantined": 168,
+      "deduplicated": 336
+    },
+    "card": {
+      "read": 16648,
+      "accepted": 16648,
+      "quarantined": 0,
+      "deduplicated": 0
+    },
+    "shop": {
+      "read": 403,
+      "accepted": 403,
+      "quarantined": 0,
+      "deduplicated": 0
+    }
+  },
+  "coverage_notes": {
+    "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。 迁移前未导出的订单及商品明细未取得，不能当零或据此分析商品结构。 保留退款大于实付的订单 84 笔，原金额不修正；全体订单口径的净销售额包含其负净额，有效购买、月度购买净销售额与月度复购按净额大于零筛选，不含这些订单；原因仍待凭据核实。 员工内购卡 299 张（244 个账户）留库，员工卡本身不授予月报付费资格；同账户其他范围内有效卡独立判定。员工账户的订单未从全体订单指标中一概排除。",
+    "time_range": {
+      "start": "2024-09-01",
+      "end_exclusive": "2026-09-01"
+    },
+    "quarantined": {
+      "member": 0,
+      "order": 168,
+      "card": 0,
+      "shop": 0
+    }
+  },
+  "library_sha256": "c2f9033f0bd99674621d8f12809bfdb0876a1606f1f2498d18683fb1e2e5558e"
+}

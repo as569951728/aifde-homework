@@ -1,16 +1,178 @@
 {
   "contract_version": "w04-0.3.0",
-  "selected_chain": "付费会员月报三问（主链路 A：月末付费会员购买人数／净销售额／复购率，2026年8月）；三渠道订单与净销售额（旁证链路 B，第 12.1 调优所在链路）",
+  "selected_chain": "当前主链路A：新CRM已覆盖范围的2026年8月付费会员月报四问；同题仅补日期覆盖端点说明。旁证B保留2026-11-18渠道归属调优历史，日期及版本分列。",
   "data_version": "qinghe-w04-v1.1",
-  "query_library_version": "5e2160479a94a7c4f0c11c4a055f69a345fca158c9cd968860371669c8e6a22b",
+  "query_library_version": "97361f14e2a9bf6b348cdda93d670ea39af2b7f5a98b88ea5e8ad00f25e906e9；c2f9033f0bd99674621d8f12809bfdb0876a1606f1f2498d18683fb1e2e5558e",
   "runs": [
     {
-      "question": "2026年8月，门店、小程序、商城三个渠道各自的订单数和净销售额是多少？",
-      "agent_answer": "2026年8月（8月1日至9月1日，左闭右开）按成交渠道统计：门店渠道订单4,479笔、净销售额363,507.34元；小程序渠道订单2,946笔、净销售额257,828.77元；商城渠道订单1,444笔、净销售额136,827.63元。订单数按创建订单数统计，每个订单号计一次并包含取消单；净销售额仅计已支付订单的实付金额减退款，取消单不计。按成交渠道分解不等于门店业绩归属，渠道归属口径需业务方确认。数据仅来自新CRM导出，门店老收银系统部分会员消费记录未导出，因此不能视为完整销售数据；另有168笔订单被隔离未纳入本次统计。",
+      "question": "青禾2026年8月付费会员购买账户数、复购账户数、有效购买净销售额和复购率是多少？请说明数据覆盖与异常记录对这些指标的影响。",
+      "agent_answer": "青禾2026年8月（2026-08-01至2026-08-31，完整自然月）按月末付费会员口径：购买账户数493个，复购账户数115个，有效购买净销售额86,019.18元，复购率=115/493≈23.33%。复购率分母493不为零，结果为已定义。统计对象为月末2026-08-31符合总部运营月报付费资格的CRM会员账户：仅悦享年卡、家庭季卡且当日有效，任一卡满足即可且不按卡重复；再统计这些账户当月全门店、全渠道有效订单。人数按CRM会员账户计数，不等同于跨系统自然人。该口径只约束本期总部运营月报，月报卡种来自运营说明，正式卡产品规则文件未取得，完整性待核；员工内购卡本身不授予月报付费资格，员工账户如另有合格卡则按规则独立判定，其订单未从全体订单指标中一概排除。数据覆盖为订单[2024-09-01,2026-09-01)，起始日包含、结束日2026-09-01不包含，因此8月是完整月。本次只含新CRM导出，门店老收银系统部分会员消费未导出，迁移前未导出订单及商品明细亦未取得，不能把CRM订单当作完整销售，也不能将缺失当零。异常记录影响：168笔订单被隔离未纳入；336条重复订单已去重；84笔退款大于实付订单原金额保留，但月度有效购买、净销售额和复购按净额大于零筛选，故不计入本次四项指标；含超额退款负净额的全体订单净销售额不适用于本结果。",
       "query_status": "executed",
       "actual_queries": [
         {
-          "sql": "SELECT\n  order__channel\n  , SUM(order_count) AS order_count\n  , SUM(net_sales_cents) AS net_sales_cents\nFROM (\n  SELECT\n    channel AS order__channel\n    , CASE WHEN order_id IS NOT NULL THEN 1 ELSE 0 END AS order_count\n    , case when status = 'paid' then paid_cents - refund_cents else 0 end AS net_sales_cents\n  FROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_5\nWHERE order__channel in ('门店','小程序','商城')\nGROUP BY\n  order__channel",
+          "sql": "WITH sma_10003_cte AS (\n  SELECT\n    DATE_TRUNC('month', month_start) AS metric_time__month\n    , CASE WHEN case when is_paid_eligible then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_buyer_count\n    , case when is_paid_eligible then net_sales_cents else 0 end AS __monthly_paid_sales_cents\n    , CASE WHEN case when is_paid_eligible and valid_order_count >= 2 then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_repeat_buyer_count\n  FROM \"data\".\"main\".\"monthly_paid_member_summary\" monthly_paid_member_summary_src_10000\n)\n\nSELECT\n  MAX(subq_9.monthly_paid_buyer_count) AS monthly_paid_buyer_count\n  , MAX(subq_9.monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n  , MAX(subq_9.monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  , MAX(subq_16.monthly_paid_repeat_rate) AS monthly_paid_repeat_rate\nFROM (\n  SELECT\n    SUM(__monthly_paid_buyer_count) AS monthly_paid_buyer_count\n    , SUM(__monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n    , SUM(__monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_9\nCROSS JOIN (\n  SELECT\n    CAST(SUM(__monthly_paid_repeat_buyer_count) AS DOUBLE) / CAST(NULLIF(SUM(__monthly_paid_buyer_count), 0) AS DOUBLE) AS monthly_paid_repeat_rate\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_16",
+          "result": {
+            "status": "ok",
+            "intent": {
+              "metrics": [
+                "monthly_paid_buyer_count",
+                "monthly_paid_repeat_buyer_count",
+                "monthly_paid_sales_cents",
+                "monthly_paid_repeat_rate"
+              ],
+              "start": "2026-08-01",
+              "end": "2026-09-01",
+              "group_by": [],
+              "filters": []
+            },
+            "sql": "WITH sma_10003_cte AS (\n  SELECT\n    DATE_TRUNC('month', month_start) AS metric_time__month\n    , CASE WHEN case when is_paid_eligible then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_buyer_count\n    , case when is_paid_eligible then net_sales_cents else 0 end AS __monthly_paid_sales_cents\n    , CASE WHEN case when is_paid_eligible and valid_order_count >= 2 then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_repeat_buyer_count\n  FROM \"data\".\"main\".\"monthly_paid_member_summary\" monthly_paid_member_summary_src_10000\n)\n\nSELECT\n  MAX(subq_9.monthly_paid_buyer_count) AS monthly_paid_buyer_count\n  , MAX(subq_9.monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n  , MAX(subq_9.monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  , MAX(subq_16.monthly_paid_repeat_rate) AS monthly_paid_repeat_rate\nFROM (\n  SELECT\n    SUM(__monthly_paid_buyer_count) AS monthly_paid_buyer_count\n    , SUM(__monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n    , SUM(__monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_9\nCROSS JOIN (\n  SELECT\n    CAST(SUM(__monthly_paid_repeat_buyer_count) AS DOUBLE) / CAST(NULLIF(SUM(__monthly_paid_buyer_count), 0) AS DOUBLE) AS monthly_paid_repeat_rate\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_16",
+            "columns": [
+              "monthly_paid_buyer_count",
+              "monthly_paid_repeat_buyer_count",
+              "monthly_paid_sales_cents",
+              "monthly_paid_repeat_rate"
+            ],
+            "rows": [
+              [
+                493,
+                115,
+                8601918,
+                0.2332657200811359
+              ]
+            ],
+            "seconds": 0.068,
+            "units": {
+              "monthly_paid_buyer_count": "count",
+              "monthly_paid_repeat_buyer_count": "count",
+              "monthly_paid_sales_cents": "cents",
+              "monthly_paid_repeat_rate": "ratio"
+            },
+            "data_version": "qinghe-w04-v1.1",
+            "data_sha256": "2512e2c6dae08c4f4d48c7355d6ec553d8badb8ff7b8043f3a8a4cb901bcf761",
+            "catalog_sha256": "97361f14e2a9bf6b348cdda93d670ea39af2b7f5a98b88ea5e8ad00f25e906e9",
+            "coverage_notes": {
+              "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。 迁移前未导出的订单及商品明细未取得，不能当零或据此分析商品结构。 保留退款大于实付的订单 84 笔，原金额不修正；全体订单口径的净销售额包含其负净额，有效购买、月度购买净销售额与月度复购按净额大于零筛选，不含这些订单；课程方 QH4-03 已说明其为历史手工补录错误，正确金额仍待逐笔凭据；包含错误负净额的全体净销售仅供异常核对，不作为正式经营结论。 员工内购卡 299 张（244 个账户）留库，员工卡本身不授予月报付费资格；同账户其他范围内有效卡独立判定。员工账户的订单未从全体订单指标中一概排除。",
+              "time_range": {
+                "start": "2024-09-01",
+                "end_exclusive": "2026-09-01"
+              },
+              "quarantined": {
+                "member": 0,
+                "order": 168,
+                "card": 0,
+                "shop": 0
+              }
+            }
+          },
+          "error": null
+        }
+      ],
+      "coverage_notes": {
+        "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。 迁移前未导出的订单及商品明细未取得，不能当零或据此分析商品结构。 保留退款大于实付的订单 84 笔，原金额不修正；全体订单口径的净销售额包含其负净额，有效购买、月度购买净销售额与月度复购按净额大于零筛选，不含这些订单；课程方 QH4-03 已说明其为历史手工补录错误，正确金额仍待逐笔凭据；包含错误负净额的全体净销售仅供异常核对，不作为正式经营结论。 员工内购卡 299 张（244 个账户）留库，员工卡本身不授予月报付费资格；同账户其他范围内有效卡独立判定。员工账户的订单未从全体订单指标中一概排除。",
+        "time_range": {
+          "start": "2024-09-01",
+          "end_exclusive": "2026-09-01"
+        },
+        "quarantined": {
+          "member": 0,
+          "order": 168,
+          "card": 0,
+          "shop": 0
+        }
+      },
+      "bad_case": false,
+      "bad_case_reason": "",
+      "tuning": {
+        "before": {
+          "agent_answer": "2026年8月（完整自然月，全门店、全渠道，未按门店或渠道分组）青禾月末付费会员：购买账户数493个账户，复购账户数115个账户，有效购买净销售额为86,019.18元，复购率为23.33%（115/493）。购买账户数按月末持有悦享年卡或家庭季卡且当月有有效订单的CRM会员账户统计；复购账户数指同月至少有两笔有效订单的账户，复购率即复购账户数除以购买账户数。有效购买净销售额和复购判定按净额大于零筛选。数据覆盖方面，本次仅含新CRM四个导出，订单覆盖2024-09-01至2026-09-01；老收银系统部分会员消费未导出，因此这份CRM订单不能视为完整销售数据，上述购买账户数和销售额的完整性受此限制。异常记录方面，168笔订单被隔离、未进入本次统计；84笔退款大于实付的订单保留原金额未修正，因其净额为负，不进入本次有效购买净销售额和复购筛选，故不直接计入上述销售额和复购判定，但隔离订单及未导出的老系统订单仍影响整体完整性。员工内购卡299张（244个账户）留库，员工卡本身不授予月报付费资格，同账户其他范围内有效卡独立判定，员工账户订单未从全体订单中一概排除。月报卡种依据运营说明，正式规则文件未取得，卡种完整性待核。",
+          "query_status": "executed",
+          "actual_queries": [
+            {
+              "sql": "WITH sma_10003_cte AS (\n  SELECT\n    DATE_TRUNC('month', month_start) AS metric_time__month\n    , CASE WHEN case when is_paid_eligible then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_buyer_count\n    , case when is_paid_eligible then net_sales_cents else 0 end AS __monthly_paid_sales_cents\n    , CASE WHEN case when is_paid_eligible and valid_order_count >= 2 then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_repeat_buyer_count\n  FROM \"data\".\"main\".\"monthly_paid_member_summary\" monthly_paid_member_summary_src_10000\n)\n\nSELECT\n  MAX(subq_9.monthly_paid_buyer_count) AS monthly_paid_buyer_count\n  , MAX(subq_9.monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n  , MAX(subq_9.monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  , MAX(subq_16.monthly_paid_repeat_rate) AS monthly_paid_repeat_rate\nFROM (\n  SELECT\n    SUM(__monthly_paid_buyer_count) AS monthly_paid_buyer_count\n    , SUM(__monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n    , SUM(__monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_9\nCROSS JOIN (\n  SELECT\n    CAST(SUM(__monthly_paid_repeat_buyer_count) AS DOUBLE) / CAST(NULLIF(SUM(__monthly_paid_buyer_count), 0) AS DOUBLE) AS monthly_paid_repeat_rate\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_16",
+              "result": {
+                "status": "ok",
+                "intent": {
+                  "metrics": [
+                    "monthly_paid_buyer_count",
+                    "monthly_paid_repeat_buyer_count",
+                    "monthly_paid_sales_cents",
+                    "monthly_paid_repeat_rate"
+                  ],
+                  "start": "2026-08-01",
+                  "end": "2026-09-01",
+                  "group_by": [],
+                  "filters": []
+                },
+                "sql": "WITH sma_10003_cte AS (\n  SELECT\n    DATE_TRUNC('month', month_start) AS metric_time__month\n    , CASE WHEN case when is_paid_eligible then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_buyer_count\n    , case when is_paid_eligible then net_sales_cents else 0 end AS __monthly_paid_sales_cents\n    , CASE WHEN case when is_paid_eligible and valid_order_count >= 2 then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_repeat_buyer_count\n  FROM \"data\".\"main\".\"monthly_paid_member_summary\" monthly_paid_member_summary_src_10000\n)\n\nSELECT\n  MAX(subq_9.monthly_paid_buyer_count) AS monthly_paid_buyer_count\n  , MAX(subq_9.monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n  , MAX(subq_9.monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  , MAX(subq_16.monthly_paid_repeat_rate) AS monthly_paid_repeat_rate\nFROM (\n  SELECT\n    SUM(__monthly_paid_buyer_count) AS monthly_paid_buyer_count\n    , SUM(__monthly_paid_repeat_buyer_count) AS monthly_paid_repeat_buyer_count\n    , SUM(__monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_9\nCROSS JOIN (\n  SELECT\n    CAST(SUM(__monthly_paid_repeat_buyer_count) AS DOUBLE) / CAST(NULLIF(SUM(__monthly_paid_buyer_count), 0) AS DOUBLE) AS monthly_paid_repeat_rate\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_16",
+                "columns": [
+                  "monthly_paid_buyer_count",
+                  "monthly_paid_repeat_buyer_count",
+                  "monthly_paid_sales_cents",
+                  "monthly_paid_repeat_rate"
+                ],
+                "rows": [
+                  [
+                    493,
+                    115,
+                    8601918,
+                    0.2332657200811359
+                  ]
+                ],
+                "seconds": 0.078,
+                "units": {
+                  "monthly_paid_buyer_count": "count",
+                  "monthly_paid_repeat_buyer_count": "count",
+                  "monthly_paid_sales_cents": "cents",
+                  "monthly_paid_repeat_rate": "ratio"
+                },
+                "data_version": "qinghe-w04-v1.1",
+                "data_sha256": "2512e2c6dae08c4f4d48c7355d6ec553d8badb8ff7b8043f3a8a4cb901bcf761",
+                "catalog_sha256": "97361f14e2a9bf6b348cdda93d670ea39af2b7f5a98b88ea5e8ad00f25e906e9",
+                "coverage_notes": {
+                  "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。 迁移前未导出的订单及商品明细未取得，不能当零或据此分析商品结构。 保留退款大于实付的订单 84 笔，原金额不修正；全体订单口径的净销售额包含其负净额，有效购买、月度购买净销售额与月度复购按净额大于零筛选，不含这些订单；课程方 QH4-03 已说明其为历史手工补录错误，正确金额仍待逐笔凭据；包含错误负净额的全体净销售仅供异常核对，不作为正式经营结论。 员工内购卡 299 张（244 个账户）留库，员工卡本身不授予月报付费资格；同账户其他范围内有效卡独立判定。员工账户的订单未从全体订单指标中一概排除。",
+                  "time_range": {
+                    "start": "2024-09-01",
+                    "end_exclusive": "2026-09-01"
+                  },
+                  "quarantined": {
+                    "member": 0,
+                    "order": 168,
+                    "card": 0,
+                    "shop": 0
+                  }
+                }
+              },
+              "error": null
+            }
+          ],
+          "coverage_notes": {
+            "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。 迁移前未导出的订单及商品明细未取得，不能当零或据此分析商品结构。 保留退款大于实付的订单 84 笔，原金额不修正；全体订单口径的净销售额包含其负净额，有效购买、月度购买净销售额与月度复购按净额大于零筛选，不含这些订单；课程方 QH4-03 已说明其为历史手工补录错误，正确金额仍待逐笔凭据；包含错误负净额的全体净销售仅供异常核对，不作为正式经营结论。 员工内购卡 299 张（244 个账户）留库，员工卡本身不授予月报付费资格；同账户其他范围内有效卡独立判定。员工账户的订单未从全体订单指标中一概排除。",
+            "time_range": {
+              "start": "2024-09-01",
+              "end_exclusive": "2026-09-01"
+            },
+            "quarantined": {
+              "member": 0,
+              "order": 168,
+              "card": 0,
+              "shop": 0
+            }
+          },
+          "bad_case": true,
+          "bad_case_reason": "数值和来源范围正确，但时间覆盖只列两个日期，未明确2026-09-01不包含；本轮作为解释完整性问题处理，不记为数值错误。"
+        },
+        "change_location": "提示词／上下文",
+        "change": "说明数据时间覆盖时，明确起始日包含、end_exclusive对应结束日不包含；不要只列两个日期而省略端点含义。",
+        "reason": "同题、同库、同SQL，仅补起始日包含及结束日不包含的解释；逐项比较意图、列、行、单位、库版本和SQL完全一致。"
+      }
+    },
+    {
+      "question": "2026年8月，门店、小程序、商城三个渠道各自的创建订单数（包含取消单）和净销售额是多少？",
+      "agent_answer": "2026年8月按成交渠道统计：门店创建订单数4,479笔，净销售额363,507.34元；小程序2,946笔，净销售额257,828.77元；商城1,444笔，净销售额136,827.63元。合计8,869笔，净销售额758,163.74元。创建订单数按订单笔数统计并包含取消单；净销售额按已支付订单实付减退款统计，取消单不计，且全体订单口径包含超额退款形成的负净额。以上为按成交渠道的分解，不等同于门店业绩归属，渠道归属口径待业务方确认。数据仅覆盖新CRM导出的订单，门店老收银系统中部分会员消费未导出，因此不能视为完整销售数据；迁移前未导出的订单及商品明细未取得。员工账户订单未从全体订单指标中一概排除。",
+      "query_status": "executed",
+      "actual_queries": [
+        {
+          "sql": "SELECT\n  order__channel\n  , SUM(__order_count) AS order_count\n  , SUM(__net_sales_cents) AS net_sales_cents\nFROM (\n  SELECT\n    channel AS order__channel\n    , CASE WHEN order_id IS NOT NULL THEN 1 ELSE 0 END AS __order_count\n    , case when status = 'paid' then paid_cents - refund_cents else 0 end AS __net_sales_cents\n  FROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_6\nGROUP BY\n  order__channel",
           "result": {
             "status": "ok",
             "intent": {
@@ -23,19 +185,9 @@
               "group_by": [
                 "order__channel"
               ],
-              "filters": [
-                {
-                  "field": "order__channel",
-                  "op": "in",
-                  "value": [
-                    "门店",
-                    "小程序",
-                    "商城"
-                  ]
-                }
-              ]
+              "filters": []
             },
-            "sql": "SELECT\n  order__channel\n  , SUM(order_count) AS order_count\n  , SUM(net_sales_cents) AS net_sales_cents\nFROM (\n  SELECT\n    channel AS order__channel\n    , CASE WHEN order_id IS NOT NULL THEN 1 ELSE 0 END AS order_count\n    , case when status = 'paid' then paid_cents - refund_cents else 0 end AS net_sales_cents\n  FROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_5\nWHERE order__channel in ('门店','小程序','商城')\nGROUP BY\n  order__channel",
+            "sql": "SELECT\n  order__channel\n  , SUM(__order_count) AS order_count\n  , SUM(__net_sales_cents) AS net_sales_cents\nFROM (\n  SELECT\n    channel AS order__channel\n    , CASE WHEN order_id IS NOT NULL THEN 1 ELSE 0 END AS __order_count\n    , case when status = 'paid' then paid_cents - refund_cents else 0 end AS __net_sales_cents\n  FROM \"data\".\"main\".\"orders_enriched\" orders_src_10000\n  WHERE DATE_TRUNC('day', ordered_at) BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_6\nGROUP BY\n  order__channel",
             "columns": [
               "order__channel",
               "order_count",
@@ -58,16 +210,16 @@
                 13682763
               ]
             ],
-            "seconds": 0.074,
+            "seconds": 0.043,
             "units": {
               "order_count": "count",
               "net_sales_cents": "cents"
             },
             "data_version": "qinghe-w04-v1.1",
-            "data_sha256": "b11d37818b7b611380652893836b310f3e8f48353dbab89ea35894686fec2f10",
-            "catalog_sha256": "5e2160479a94a7c4f0c11c4a055f69a345fca158c9cd968860371669c8e6a22b",
+            "data_sha256": "d5381618a8ebb58741054ab0a2394a408891a88d2d1d528813b065f314e46a29",
+            "catalog_sha256": "c2f9033f0bd99674621d8f12809bfdb0876a1606f1f2498d18683fb1e2e5558e",
             "coverage_notes": {
-              "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。",
+              "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。 迁移前未导出的订单及商品明细未取得，不能当零或据此分析商品结构。 保留退款大于实付的订单 84 笔，原金额不修正；全体订单口径的净销售额包含其负净额，有效购买、月度购买净销售额与月度复购按净额大于零筛选，不含这些订单；原因仍待凭据核实。 员工内购卡 299 张（244 个账户）留库，员工卡本身不授予月报付费资格；同账户其他范围内有效卡独立判定。员工账户的订单未从全体订单指标中一概排除。",
               "time_range": {
                 "start": "2024-09-01",
                 "end_exclusive": "2026-09-01"
@@ -84,7 +236,7 @@
         }
       ],
       "coverage_notes": {
-        "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。",
+        "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。 迁移前未导出的订单及商品明细未取得，不能当零或据此分析商品结构。 保留退款大于实付的订单 84 笔，原金额不修正；全体订单口径的净销售额包含其负净额，有效购买、月度购买净销售额与月度复购按净额大于零筛选，不含这些订单；原因仍待凭据核实。 员工内购卡 299 张（244 个账户）留库，员工卡本身不授予月报付费资格；同账户其他范围内有效卡独立判定。员工账户的订单未从全体订单指标中一概排除。",
         "time_range": {
           "start": "2024-09-01",
           "end_exclusive": "2026-09-01"
@@ -100,7 +252,7 @@
       "bad_case_reason": "",
       "tuning": {
         "before": {
-          "agent_answer": "统计范围：2026年8月1日至8月31日（按下单日期），在当前客户青禾的已加载CRM订单中，按成交渠道筛选门店、小程序、商城并分组统计。订单数按订单笔数计，每个订单号计一次，包含取消单；净销售额按已支付订单实付金额减退款，取消单不计，全额退款订单净额为零但仍计入已支付订单集合。结果：门店渠道4,479笔、净销售额363,507.34元；小程序渠道2,946笔、净销售额257,828.77元；商城渠道1,444笔、净销售额136,827.63元；三渠道合计8,869笔、净销售额758,163.74元。限制：本次只包含新CRM导出订单，门店老收银系统中还有部分会员消费未导出，因此这份CRM订单不能视为完整销售数据。",
+          "agent_answer": "2026年8月（8月1日至8月31日），按门店、小程序、商城三个渠道统计：\n\n| 渠道 | 创建订单数（含取消单） | 净销售额（元） |\n|---|---:|---:|\n| 门店 | 4,479 | 363,507.34 |\n| 小程序 | 2,946 | 257,828.77 |\n| 商城 | 1,444 | 136,827.63 |\n\n统计说明：创建订单数按订单笔数计，包含取消单；净销售额按已支付订单的实付金额减退款金额汇总，取消单不计，全退款订单净额为零但仍纳入，退款大于实付的订单保留其负净额且未修正。\n\n数据限制：本次结果仅覆盖新CRM导出订单；门店老收银系统中的部分会员消费记录未导出，因此不能将上述结果视为完整销售数据。",
           "query_status": "executed",
           "actual_queries": [
             {
@@ -142,26 +294,26 @@
                     25782877
                   ],
                   [
-                    "商城",
-                    1444,
-                    13682763
-                  ],
-                  [
                     "门店",
                     4479,
                     36350734
+                  ],
+                  [
+                    "商城",
+                    1444,
+                    13682763
                   ]
                 ],
-                "seconds": 0.072,
+                "seconds": 0.042,
                 "units": {
                   "order_count": "count",
                   "net_sales_cents": "cents"
                 },
                 "data_version": "qinghe-w04-v1.1",
-                "data_sha256": "b11d37818b7b611380652893836b310f3e8f48353dbab89ea35894686fec2f10",
-                "catalog_sha256": "5e2160479a94a7c4f0c11c4a055f69a345fca158c9cd968860371669c8e6a22b",
+                "data_sha256": "d5381618a8ebb58741054ab0a2394a408891a88d2d1d528813b065f314e46a29",
+                "catalog_sha256": "c2f9033f0bd99674621d8f12809bfdb0876a1606f1f2498d18683fb1e2e5558e",
                 "coverage_notes": {
-                  "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。",
+                  "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。 迁移前未导出的订单及商品明细未取得，不能当零或据此分析商品结构。 保留退款大于实付的订单 84 笔，原金额不修正；全体订单口径的净销售额包含其负净额，有效购买、月度购买净销售额与月度复购按净额大于零筛选，不含这些订单；原因仍待凭据核实。 员工内购卡 299 张（244 个账户）留库，员工卡本身不授予月报付费资格；同账户其他范围内有效卡独立判定。员工账户的订单未从全体订单指标中一概排除。",
                   "time_range": {
                     "start": "2024-09-01",
                     "end_exclusive": "2026-09-01"
@@ -178,7 +330,7 @@
             }
           ],
           "coverage_notes": {
-            "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。",
+            "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。 迁移前未导出的订单及商品明细未取得，不能当零或据此分析商品结构。 保留退款大于实付的订单 84 笔，原金额不修正；全体订单口径的净销售额包含其负净额，有效购买、月度购买净销售额与月度复购按净额大于零筛选，不含这些订单；原因仍待凭据核实。 员工内购卡 299 张（244 个账户）留库，员工卡本身不授予月报付费资格；同账户其他范围内有效卡独立判定。员工账户的订单未从全体订单指标中一概排除。",
             "time_range": {
               "start": "2024-09-01",
               "end_exclusive": "2026-09-01"
@@ -191,87 +343,12 @@
             }
           },
           "bad_case": true,
-          "bad_case_reason": "渠道分解答对了数字（门店4,479／小程序2,946／商城1,444，净额合计758,163.74元），但没有声明「按成交渠道分解不等于门店业绩归属」——小程序/商城是否计入门店业绩，陈姐（MSG-05365）与运营小林（MSG-05376）两侧均表示不掌握，属未定口径；回答缺少这层限定，容易被直接当成门店业绩使用。"
+          "bad_case_reason": "调优前渠道数字正确，但未区分成交渠道分解与门店业绩归属，未明确后者仍待业务确认。"
         },
         "change_location": "提示词／上下文",
-        "change": "新建 customer/w04/answer_prompt.txt（复制 product/w03_answer_prompt.txt，逐字保留），只在第二段「只说明实际应用的筛选和分组」之后插入一句：「按渠道分组时，要说清这是按成交渠道的分解，不等于门店业绩归属，渠道归属口径未经业务方确认时必须写明待确认」。全文仅此一处插入（47 字），其余逐字未动。",
-        "reason": "数据与 SQL 已独立复核一致（三渠道数字与清洗后 CSV 直算逐项相同），问题不在数据层也不在工具层，只在回答措辞没有把「未定口径」显式说出来；同一问题只改回答提示词一处，才能判断改善是否来自这一句。不在指标库或模型文档里硬写渠道归属规则，是因为业务方尚无该口径，写死等于把推断当已确认。"
+        "change": "以product/w03_answer_prompt.txt为底本，只在文件末尾追加一段：按渠道分组时，要说清这是按成交渠道的分解，不等于门店业绩归属，渠道归属口径未经业务方确认时必须写明待确认。覆盖说明列出的是各指标共同背景，回答只叙述实际查询指标的影响：全体订单净销售额包含超额退款的负净额；月度有效购买净销售额和月度复购先按净额大于零筛选，不含这些订单，不要把前者限制误套到后者。月报卡种来自运营说明，正式规则文件未取得，完整性待核；员工卡本身不授予资格。",
+        "reason": "同题、同一导入库、同一指标库，只更换回答提示词；补足渠道归属边界，并约束全体净销售与月度有效购买净销售的不同异常影响。查询结果需逐值比对，不能仅凭回答更长判改善。"
       }
-    },
-    {
-      "question": "2026年8月，付费会员的购买人数、销售额和复购率各是多少？",
-      "agent_answer": "2026年8月（完整自然月）付费会员口径下：购买人数为493个会员账户；净销售额为86,019.18元；复购率为23.33%（复购人数÷购买人数，分母493，复购率已定义）。统计口径为月末符合悦享年卡、家庭季卡付费资格且当月有有效订单的会员账户，覆盖全门店、全渠道；净销售额按有效订单实付减退款计算。限制：本次仅含新CRM导出数据，门店老收银系统部分会员消费记录未纳入，因此不能视为完整销售数据；人数按CRM会员账户计数，不等同于跨系统自然人。",
-      "query_status": "executed",
-      "actual_queries": [
-        {
-          "sql": "WITH sma_10003_cte AS (\n  SELECT\n    DATE_TRUNC('month', month_start) AS metric_time__month\n    , CASE WHEN case when is_paid_eligible then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_buyer_count\n    , case when is_paid_eligible then net_sales_cents else 0 end AS __monthly_paid_sales_cents\n    , CASE WHEN case when is_paid_eligible and valid_order_count >= 2 then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_repeat_buyer_count\n  FROM \"data\".\"main\".\"monthly_paid_member_summary\" monthly_paid_member_summary_src_10000\n)\n\nSELECT\n  MAX(subq_9.monthly_paid_buyer_count) AS monthly_paid_buyer_count\n  , MAX(subq_9.monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  , MAX(subq_16.monthly_paid_repeat_rate) AS monthly_paid_repeat_rate\nFROM (\n  SELECT\n    SUM(__monthly_paid_buyer_count) AS monthly_paid_buyer_count\n    , SUM(__monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_9\nCROSS JOIN (\n  SELECT\n    CAST(SUM(__monthly_paid_repeat_buyer_count) AS DOUBLE) / CAST(NULLIF(SUM(__monthly_paid_buyer_count), 0) AS DOUBLE) AS monthly_paid_repeat_rate\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_16",
-          "result": {
-            "status": "ok",
-            "intent": {
-              "metrics": [
-                "monthly_paid_buyer_count",
-                "monthly_paid_sales_cents",
-                "monthly_paid_repeat_rate"
-              ],
-              "start": "2026-08-01",
-              "end": "2026-09-01",
-              "group_by": [],
-              "filters": []
-            },
-            "sql": "WITH sma_10003_cte AS (\n  SELECT\n    DATE_TRUNC('month', month_start) AS metric_time__month\n    , CASE WHEN case when is_paid_eligible then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_buyer_count\n    , case when is_paid_eligible then net_sales_cents else 0 end AS __monthly_paid_sales_cents\n    , CASE WHEN case when is_paid_eligible and valid_order_count >= 2 then member_id end IS NOT NULL THEN 1 ELSE 0 END AS __monthly_paid_repeat_buyer_count\n  FROM \"data\".\"main\".\"monthly_paid_member_summary\" monthly_paid_member_summary_src_10000\n)\n\nSELECT\n  MAX(subq_9.monthly_paid_buyer_count) AS monthly_paid_buyer_count\n  , MAX(subq_9.monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  , MAX(subq_16.monthly_paid_repeat_rate) AS monthly_paid_repeat_rate\nFROM (\n  SELECT\n    SUM(__monthly_paid_buyer_count) AS monthly_paid_buyer_count\n    , SUM(__monthly_paid_sales_cents) AS monthly_paid_sales_cents\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_9\nCROSS JOIN (\n  SELECT\n    CAST(SUM(__monthly_paid_repeat_buyer_count) AS DOUBLE) / CAST(NULLIF(SUM(__monthly_paid_buyer_count), 0) AS DOUBLE) AS monthly_paid_repeat_rate\n  FROM sma_10003_cte\n  WHERE metric_time__month BETWEEN '2026-08-01' AND '2026-08-31'\n) subq_16",
-            "columns": [
-              "monthly_paid_buyer_count",
-              "monthly_paid_sales_cents",
-              "monthly_paid_repeat_rate"
-            ],
-            "rows": [
-              [
-                493,
-                8601918,
-                0.2332657200811359
-              ]
-            ],
-            "seconds": 0.082,
-            "units": {
-              "monthly_paid_buyer_count": "count",
-              "monthly_paid_sales_cents": "cents",
-              "monthly_paid_repeat_rate": "ratio"
-            },
-            "data_version": "qinghe-w04-v1.1",
-            "data_sha256": "b11d37818b7b611380652893836b310f3e8f48353dbab89ea35894686fec2f10",
-            "catalog_sha256": "5e2160479a94a7c4f0c11c4a055f69a345fca158c9cd968860371669c8e6a22b",
-            "coverage_notes": {
-              "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。",
-              "time_range": {
-                "start": "2024-09-01",
-                "end_exclusive": "2026-09-01"
-              },
-              "quarantined": {
-                "member": 0,
-                "order": 168,
-                "card": 0,
-                "shop": 0
-              }
-            }
-          },
-          "error": null
-        }
-      ],
-      "coverage_notes": {
-        "source": "本次只含新 CRM 的四个导出文件；门店老收银系统里还有一部分会员的消费记录，这次没有导出，所以这份 CRM 订单不能当作完整的销售数据（老周 MSG-05318）。",
-        "time_range": {
-          "start": "2024-09-01",
-          "end_exclusive": "2026-09-01"
-        },
-        "quarantined": {
-          "member": 0,
-          "order": 168,
-          "card": 0,
-          "shop": 0
-        }
-      },
-      "bad_case": false,
-      "bad_case_reason": ""
     }
   ]
 }
